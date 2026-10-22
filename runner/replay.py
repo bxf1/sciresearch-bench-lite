@@ -1,6 +1,7 @@
 """Trusted candidate execution, public diagnostics, and isolated numeric judging."""
 from __future__ import annotations
 import argparse
+from contextlib import nullcontext
 import importlib
 import json
 import math
@@ -14,6 +15,8 @@ from .artifact_gate import OUTPUT_NAMES
 from .common import read_json,write_json,tree_hashes,canonical,digest
 from .worker import docker,run_worker,InfrastructureError
 from .phase import validate_manifest, guard_replay, PhaseError
+from .performance import ORDER, summarize_attempts
+from .timing_host import TimingLease
 
 def prepare_judge(project, destination):
     project,destination=Path(project).resolve(),Path(destination).resolve()
@@ -50,11 +53,13 @@ def run_judge(task,inputs,truth,artifacts,run_dir,image,judge_source_root,*,free
         command[image_index:image_index]=["--mount",f"type=bind,src={Path(freeze_path).resolve()},dst=/freeze.json,readonly"]
         command.extend(["--freeze","/freeze.json","--image-id",image,"--judge-source","/trusted"])
     created=False
+    container_id=None
     started=time.perf_counter()
     try:
         docker(*command)
         created=True
         info=json.loads(docker("inspect",name).stdout)[0]
+        container_id=info["Id"]
         write_json(run_dir/"container.json",{k:info[k] for k in ("Id","Image","HostConfig","Mounts","Config")})
         proc=docker("start","-a",name,timeout=1200,check=False)
         (run_dir/"stdout.txt").write_text(proc.stdout)
@@ -69,6 +74,7 @@ def run_judge(task,inputs,truth,artifacts,run_dir,image,judge_source_root,*,free
         if created:
             docker("rm","-f",name,check=False)
     result["judge_wall_seconds"]=time.perf_counter()-started
+    result["judge_container_id"]=container_id
     write_json(run_dir/"result.json",result)
     return result
 
@@ -104,6 +110,7 @@ def replay_checkpoint(snapshot,checkpoint_id,source_hash,**config):
     config=dict(config)
     profile=config.pop("profile",None)
     baseline_source=config.pop("baseline_source",None)
+    timing_contract=config.pop("timing_contract",None)
     phase=guard_replay(config["task"],config["input_root"],config["truth_root"],config["image"],config["judge_source_root"],freeze_path=config.get("freeze_path"),profile=profile)
     if phase["formal"]:
         profile=phase["profile"]
@@ -112,21 +119,65 @@ def replay_checkpoint(snapshot,checkpoint_id,source_hash,**config):
         return {**result,"checkpoint_id":checkpoint_id,"source_hash":source_hash}
     if baseline_source is None:
         raise ValueError("T3 replay requires trusted Jacobi baseline_source")
+    result=run_t3_attempt(snapshot,baseline_source=baseline_source,timing_contract=timing_contract,profile=profile,**config)
+    result.update(checkpoint_id=checkpoint_id,source_hash=source_hash)
+    write_json(Path(config["output_root"])/"result.json",result)
+    return result
+
+
+def run_t3_attempt(snapshot, *, baseline_source, timing_contract=None, profile=None, candidate_method=None,
+                   parent_attempt=None, interference_resolution=None, execute=None, **config):
+    """One complete BCCBBC group; the optional lease qualifies fresh records only."""
+    config=dict(config)
     output=Path(config.pop("output_root"))
     output.mkdir(parents=True,exist_ok=False)
-    samples={"B":[],"C":[]}
-    for index,kind in enumerate("BCCBBC"):
-        row=replay_single(baseline_source if kind=="B" else snapshot,output_root=output/f"{index+1}-{kind}",method="jacobi" if kind=="B" else None,**config)
-        samples[kind].append(row)
-    b_correct=all(x.get("scientific_pass",False) for x in samples["B"])
-    c_correct=all(x.get("scientific_pass",False) for x in samples["C"])
-    times={key:[x["worker"]["execution_wall_seconds"] for x in rows if "execution_wall_seconds" in x["worker"]] for key,rows in samples.items()}
-    diagnostic_speedup=statistics.median(times["B"])/statistics.median(times["C"]) if b_correct and c_correct and len(times["B"])==len(times["C"])==3 else None
-    # Current host timing contains Docker exec overhead. It is never promoted to formal performance.
-    result={"checkpoint_id":checkpoint_id,"source_hash":source_hash,"profile":profile,"scientific_pass":c_correct,"baseline_correct":b_correct,"reward":int(c_correct) if profile=="accuracy_with_efficiency_diagnostic" else None,"score":None,"evaluation_status":"valid" if all(r["evaluation_status"]=="valid" for rows in samples.values() for r in rows) else "evaluation_invalid","performance_status":"invalid_environment","diagnostic_speedup":diagnostic_speedup,"samples":samples,"cache_state":"host page cache not cleared; B,C,C,B,B,C"}
-    if result["evaluation_status"]!="valid":
-        result["reward"]=None
+    execute=execute or replay_single
+    rows=[]
+    hashes={"B":digest(canonical(tree_hashes(baseline_source))),"C":digest(canonical(tree_hashes(snapshot)))}
+    evidence={"machine_exclusive_verified":False,"other_workloads":None,
+              "cache_state":"host page cache not cleared; BCCBBC; local diagnostic"}
+    qualification_error=None
+    with TimingLease(timing_contract) if timing_contract is not None else nullcontext(None) as lease:
+        for index,role in enumerate(ORDER):
+            row=execute(baseline_source if role=="B" else snapshot,output_root=output/f"{index+1}-{role}",
+                        method="jacobi" if role=="B" else candidate_method,**config)
+            rows.append({**row,"role":role,"source_hash":hashes[role]})
+        if lease is not None:
+            try:
+                rows=lease.qualify(rows)
+                evidence=lease.evidence
+            except (ValueError,OSError,InfrastructureError) as exc:
+                qualification_error=str(exc)
+    attempt={"attempt_id":output.name,"baseline_method":"jacobi","candidate_method":candidate_method,
+             "samples":rows,"evidence":evidence,"parent_attempt":parent_attempt,
+             "interference_resolution":interference_resolution}
+    summary=summarize_attempts([attempt],profile=profile)
+    samples={role:[row for row in rows if row["role"]==role] for role in ("B","C")}
+    times={role:[row["worker"].get("execution_wall_seconds") for row in samples[role]] for role in samples}
+    valid_times=all(type(value) in (int,float) and math.isfinite(value) and value>0 for group in times.values() for value in group)
+    diagnostic=(statistics.median(times["B"])/statistics.median(times["C"]) if valid_times
+                and all(row.get("scientific_pass") is True and row.get("evaluation_status")=="valid" for row in rows) else None)
+    result={**summary,"samples":samples,"protocol_attempt":attempt,"diagnostic_speedup":diagnostic,
+            "qualification_error":qualification_error,"formal_environment_qualified":summary["formal_evidence_valid"],
+            "formal_timing":summary["formal_evidence_valid"] and all(row["worker"].get("formal_timing") is True for row in rows)}
+    if qualification_error:
+        result.update(evaluation_status="evaluation_invalid",performance_status="invalid_environment",reward=None,score=None)
     write_json(output/"result.json",result)
+    return result
+
+
+def retry_t3_attempt(original, snapshot, *, interference_resolution, profile=None, **config):
+    """A trusted caller investigates first, then explicitly requests one new group."""
+    if original.get("retry_permitted") is not True or original.get("performance_status")!="baseline_unstable":
+        raise ValueError("only an unstable baseline permits a complete group retry")
+    if not isinstance(interference_resolution,str) or not interference_resolution.strip():
+        raise ValueError("the interference investigation must be recorded before retry")
+    first=original["protocol_attempt"]
+    result=run_t3_attempt(snapshot,parent_attempt=first["attempt_id"],interference_resolution=interference_resolution,
+                          profile=profile,**config)
+    combined=summarize_attempts([first,result["protocol_attempt"]],profile=profile)
+    result.update(combined)
+    write_json(Path(config["output_root"])/"result.json",result)
     return result
 
 if __name__=="__main__":

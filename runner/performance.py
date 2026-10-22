@@ -32,7 +32,9 @@ def _formal_evidence(samples, evidence):
     if not machine:
         reasons.append("missing_machine_identity")
     workers = [sample.get("worker", {}) for sample in samples]
-    if any(worker.get("formal_timing") is not True for worker in workers):
+    qualified_failure = lambda worker: (worker.get("attempt_status") in EXECUTION_FAILURES
+                                        and worker.get("failure_in_qualified_environment") is True)
+    if any(worker.get("formal_timing") is not True and not qualified_failure(worker) for worker in workers):
         reasons.append("diagnostic_timing_cannot_be_promoted")
     for field in ("input_sha256", "resource_contract_sha256"):
         values = [worker.get(field) for worker in workers]
@@ -53,6 +55,10 @@ def _formal_evidence(samples, evidence):
             reasons.append(f"sample_{index}_resources_not_qualified")
         if worker.get("all_processes_terminated") is not True:
             reasons.append(f"sample_{index}_processes_not_terminated")
+        # A timeout/OOM has no completed interval. Its fresh-container/resource
+        # provenance still qualifies the failure; it can never be a denominator.
+        if qualified_failure(worker):
+            continue
         if worker.get("output_initially_empty") is not True:
             reasons.append(f"sample_{index}_output_not_verified_empty")
         if worker.get("timing_scope") != FORMAL_TIMING_SCOPE:

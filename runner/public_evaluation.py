@@ -7,6 +7,7 @@ import math
 import os
 from pathlib import Path
 import signal
+import statistics
 import subprocess
 import sys
 import time
@@ -21,6 +22,7 @@ from runner.common import file_hash, write_json
 from runner.phase import validate_manifest
 from runner.replay import evaluate_public
 from runner.worker import run_worker
+from runner.performance import ORDER
 
 MAX_CHECK_OUTPUT = 65536
 WORKER_FIELDS = ("attempt_status", "execution_wall_seconds", "total_wall_seconds", "cpu_seconds",
@@ -115,36 +117,71 @@ def run_public_evaluation(task, snapshot, input_root, run, image, timeout, *, ex
     if manifest["split"] not in ("public-dev", "pilot-smoke"):
         raise ValueError("research feedback accepts only public-dev or explicit pilot-smoke")
     execute = execute or run_worker
+    if task == "poisson":
+        return _poisson_public(snapshot, input_root, run, image, deadline, started, execute, check)
     worker = execute(task, snapshot, input_root, run, image, timeout=_remaining(deadline))
     feedback = _feedback(task, input_root, run, worker, deadline, check)
-    if task == "poisson":
-        comparison = {"method": "jacobi_cg", "formal_timing": False, "status": "not_run",
-                      "diagnostic_wall_ratio": None, "diagnostic_cpu_ratio": None, "diagnostic_memory_ratio": None,
-                      "timing_note": "One current W run each; preparation and cleanup are reported separately. No formal speedup or reward is inferred."}
+    feedback["public_evaluation_wall_seconds"] = time.monotonic() - started
+    feedback["research_budget_exhausted"] = time.monotonic() >= deadline
+    write_json(run / "public_feedback.json", feedback)
+    return feedback
+
+
+def _poisson_public(snapshot, inputs, run, image, deadline, started, execute, check):
+    """One registration consumes one BCCBBC protocol, all within its wall budget."""
+    run.mkdir(parents=True, exist_ok=False)
+    source = run / "comparison-source"
+    source.mkdir()
+    fixed_source = Path(__file__).resolve().parents[1] / "public/poisson_compare.py"
+    (source / "solve.py").write_bytes(fixed_source.read_bytes())
+    samples = {"B": [], "C": []}
+    order = []
+    protocol_status, reason = "completed", None
+    for index, role in enumerate(ORDER):
         try:
-            _remaining(deadline)
-            source = run / "comparison-source"
-            source.mkdir(parents=True, exist_ok=False)
-            fixed_source = Path(__file__).resolve().parents[1] / "public/poisson_compare.py"
-            (source / "solve.py").write_bytes(fixed_source.read_bytes())
-            comparison["source_sha256"] = file_hash(source / "solve.py")
-            baseline_run = run / "comparison-worker"
-            baseline = execute(task, source, input_root, baseline_run, image, timeout=_remaining(deadline))
-            comparison.update(_feedback(task, input_root, baseline_run, baseline, deadline, check))
-            comparison["status"] = "completed"
-            correct = lambda value: (value["artifact_valid"] and value["public_check_status"] == "completed"
-                                     and all(row.get("residual_pass") is True for row in value["cases"]))
-            if correct(feedback) and correct(comparison):
-                for field, ratio in (("wall_seconds", "diagnostic_wall_ratio"), ("cpu_seconds", "diagnostic_cpu_ratio"),
-                                     ("memory_peak_bytes", "diagnostic_memory_ratio")):
-                    numerator, denominator = comparison.get(field), feedback.get(field)
-                    if isinstance(numerator, (int, float)) and isinstance(denominator, (int, float)) and math.isfinite(numerator) and math.isfinite(denominator) and numerator >= 0 and denominator > 0:
-                        comparison[ratio] = numerator / denominator
+            folder = run / f"sample-{index+1}-{role}"
+            worker = execute("poisson", source if role == "B" else snapshot, inputs, folder, image, timeout=_remaining(deadline))
+            sample = _feedback("poisson", inputs, folder, worker, deadline, check)
+            samples[role].append(sample)
+            order.append(role)
+            if worker.get("attempt_status") == "infrastructure_failed":
+                protocol_status, reason = "infrastructure_failed", "trusted worker failed during the public batch"
+                break
         except (TimeoutError, subprocess.TimeoutExpired) as exc:
-            comparison.update(status="budget_timeout", reason=str(exc)[:1024])
+            protocol_status, reason = "budget_timeout", str(exc)[:1024]
+            break
         except Exception as exc:
-            comparison.update(status="failed", reason=type(exc).__name__ + ": " + str(exc)[:1024])
-        feedback["comparison"] = comparison
+            protocol_status, reason = "infrastructure_failed", type(exc).__name__ + ": " + str(exc)[:1024]
+            break
+    candidates = samples["C"]
+    feedback = dict(candidates[0]) if candidates else {"artifact_valid": False, "public_check_status": "not_run"}
+    feedback["artifact_valid"] = len(candidates) == 3 and all(row["artifact_valid"] for row in candidates)
+    feedback["attempt_status"] = protocol_status if protocol_status != "completed" else next(
+        (row["attempt_status"] for row in candidates if row["attempt_status"] != "completed"), "completed")
+    if not feedback["artifact_valid"] and protocol_status == "completed":
+        feedback["attempt_status"] = "invalid_artifact"
+    correct = lambda row: (row["artifact_valid"] and row["public_check_status"] == "completed"
+                           and all(case.get("residual_pass") is True for case in row["cases"]))
+    feedback["all_public_residuals_pass"] = len(candidates) == 3 and all(correct(row) for row in candidates)
+    comparison = {"method": "jacobi_cg", "source_sha256": file_hash(source / "solve.py"), "formal_timing": False,
+                  "status": protocol_status, "reason": reason, "order": order, "required_order": list(ORDER),
+                  "baseline_repeats": samples["B"], "candidate_repeats": candidates,
+                  "diagnostic_wall_ratio": None, "diagnostic_cpu_ratio": None, "diagnostic_memory_ratio": None,
+                  "timing_note": "Three fresh W runs per method in BCCBBC order. Raw process intervals; formal hardware/exclusivity acceptance remains separate."}
+    if order == list(ORDER) and all(correct(row) for group in samples.values() for row in group):
+        for field, ratio in (("wall_seconds", "diagnostic_wall_ratio"), ("cpu_seconds", "diagnostic_cpu_ratio"),
+                             ("memory_peak_bytes", "diagnostic_memory_ratio")):
+            values = {role: [row.get(field) for row in samples[role]] for role in ("B", "C")}
+            if all(type(value) in (int, float) and math.isfinite(value) and value > 0 for group in values.values() for value in group):
+                feedback[field] = statistics.median(values["C"])
+                comparison[ratio] = statistics.median(values["B"]) / feedback[field]
+    feedback.update(formal_timing=False, comparison=comparison)
+    totals={}
+    for role,field in (("C","candidate_cpu_seconds_total"),("B","baseline_cpu_seconds_total")):
+        values=[row.get("cpu_seconds") for row in samples[role]]
+        totals[field]=sum(values) if values and all(type(value) in (int,float) and math.isfinite(value) and value>=0 for value in values) else None
+    feedback.update(totals)
+    feedback["evaluation_cpu_seconds_total"]=sum(totals.values()) if all(value is not None for value in totals.values()) else None
     feedback["public_evaluation_wall_seconds"] = time.monotonic() - started
     feedback["research_budget_exhausted"] = time.monotonic() >= deadline
     write_json(run / "public_feedback.json", feedback)

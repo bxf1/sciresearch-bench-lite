@@ -156,9 +156,10 @@ def assess(name, result, run_dir, sentinel):
         checks["private_paths_unreadable"] = len(observed) == 7 and all(not row["readable"] for row in observed)
         info = read_json(run_dir / "container.json")
         mounts = info["Mounts"]
-        checks["only_source_and_input_host_binds"] = {m["Destination"] for m in mounts if m["Type"] == "bind"} == {"/submission", "/input"}
+        checks["only_public_source_input_and_trusted_timer_binds"] = {m["Destination"] for m in mounts if m["Type"] == "bind"} == {"/submission", "/input", "/trusted/process_timer.py"}
         checks["no_network"] = info["HostConfig"]["NetworkMode"] == "none"
-        checks["non_root"] = info["Config"]["User"] == "65534:65534"
+        checks["distinct_nonroot_init_and_candidate"] = (info["Config"]["User"] == "65533:65533"
+            and any(event.get("uid") == 65534 for event in events))
         checks["read_only_root"] = info["HostConfig"]["ReadonlyRootfs"] is True
         cg = read_json(run_dir / "cgroup_before.json")
         quota, period = cg["cpu.max"].split()
@@ -178,11 +179,11 @@ def assess(name, result, run_dir, sentinel):
         checks["candidate_failure_preserved"] = status == "candidate_failed"
     if name == "timeout":
         checks["timeout_reported"] = status == "timeout"
-        checks["bounded_execution"] = result.get("execution_wall_seconds", 100) < 10
+        checks["bounded_execution"] = result.get("total_wall_seconds", 100) < 10
     if name == "pids_pressure":
         event = next((e for e in events if e.get("probe") == "pids"), {})
         checks["pid_limit_enforced"] = event.get("limit_enforced") is True and event.get("spawned", 1000) < 128
-        checks["candidate_failure_preserved"] = status in ("candidate_failed", "candidate_resource_failure")
+        checks["candidate_failure_preserved"] = status in ("candidate_failed", "candidate_resource_failure", "timeout")
     return {"checks": checks, "passed": all(checks.values()), "events": events,
             "attempt_status": status, "artifact_valid": result["artifact_valid"], "worker_reason": result.get("reason")}
 
@@ -213,6 +214,7 @@ def main():
             "probe_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             "candidate_source_sha256": hashlib.sha256((source / "solve.py").read_bytes()).hexdigest(),
             "worker_source_sha256": hashlib.sha256(worker_source.read_bytes()).hexdigest(),
+            "timer_source_sha256": hashlib.sha256((PROJECT/"runner/process_timer.py").read_bytes()).hexdigest(),
             "artifact_gate_source_sha256": hashlib.sha256(gate_source.read_bytes()).hexdigest(),
             "input_manifest_sha256": hashlib.sha256((args.input / "manifest.json").read_bytes()).hexdigest(),
             "formal": False, "model_execution": False, "started_at": time.time(),
@@ -224,7 +226,8 @@ def main():
         print(json.dumps({"probe": name, **report}, ensure_ascii=False), flush=True)
         rows = [{"probe": p.parent.name, **read_json(p)} for p in sorted(root.glob("*/probe.json"))]
         write_json(root / "summary.json", {"formal": False, "probes": rows, "passed": sum(r["passed"] for r in rows),
-                                           "total": len(rows), "not_run": ["real 4GiB OOM pressure", "R/model endpoint isolation", "formal T3 exclusive timing"]})
+                                           "total": len(rows), "termination_protocol":"separate-UID PID1 waits for natural descendant termination; original deadline kills the whole W",
+                                           "not_run": ["real 4GiB OOM pressure", "R/model endpoint isolation", "formal T3 exclusive timing"]})
         if name == "normal_zero" and not report["passed"]:
             raise SystemExit("Normal worker path failed; preserve evidence and fix before attack probes")
 

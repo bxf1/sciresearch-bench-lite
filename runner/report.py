@@ -101,6 +101,158 @@ def engineering_evidence(project):
     return records
 
 
+def _pilot_file(project, path):
+    """Read only fixed host-evidence paths; never follow run-local symlinks."""
+    relative = path.relative_to(project / "logs")
+    current = project / "logs"
+    for part in relative.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError("pilot evidence must not use symlinks")
+    if not path.is_file() or path.stat().st_size > 16 * 1024**2:
+        raise ValueError("missing or excessive pilot evidence")
+    return path.read_text()
+
+
+def _relay_status(value):
+    names = ("schema_version", "state", "model", "request_count", "successful_requests", "failed_requests",
+             "rejected_requests", "inflight", "reserved_output_tokens", "charged_output_tokens",
+             "remaining_output_tokens", "protocol_violation", "evidence_error", "last_upstream_status",
+             "last_request_outcome", "last_failure_reason", "budget_exhausted", "expired", "failure_counts")
+    limits = ("model", "request_output_limit", "session_output_limit", "session_seconds", "request_seconds",
+              "max_body_bytes", "max_concurrency", "max_requests", "stream_required", "thinking", "temperature", "top_p")
+    return {**{key: value.get(key) for key in names},
+            "limits": {key: (value.get("limits") or {}).get(key) for key in limits}} if value else None
+
+
+def _relay_requests(project, path, run_id):
+    if not path.exists():
+        return [], None
+    rows = {}
+    for line in _pilot_file(project, path).splitlines():
+        event = json.loads(line)
+        if event.get("event") not in ("request_accepted", "request_finished"):
+            continue
+        identifier = event.get("request_id")
+        if not isinstance(identifier, str) or re.fullmatch(r"[0-9a-f]{32}", identifier) is None:
+            raise ValueError("invalid trusted relay request identity")
+        row = rows.setdefault(identifier, {"run_id": run_id, "request_id": identifier, "formal": False,
+                                          "cost_usd": None, "evidence": path.relative_to(project).as_posix()})
+        key = "accepted" if event["event"] == "request_accepted" else "finished"
+        if row.get(key):
+            raise ValueError("duplicate trusted relay request event")
+        row[key] = True
+        row[key + "_at"] = event.get("timestamp")
+        fields = ("requested_max_tokens", "effective_max_tokens", "requested_temperature", "effective_temperature",
+                  "body_sha256", "system_sha256", "tools_sha256") if key == "accepted" else (
+                  "upstream_status", "outcome", "failure_reason", "output_usage_complete", "input_tokens", "output_tokens",
+                  "cache_read_input_tokens", "cache_creation_input_tokens", "charged_output_tokens",
+                  "refunded_output_tokens", "protocol_violation")
+        row.update({name: event.get(name) for name in fields})
+    return list(rows.values()), file_hash(path)
+
+
+def native_pilot_evidence(project):
+    """Export full-Trial diagnostics separately from every formal research cell."""
+    attempts, requests = [], []
+    for path in sorted((project / "logs").glob("harbor-native-pilot-*/result.json")):
+        value = json.loads(_pilot_file(project, path))
+        if value.get("formal") is not False or value.get("replay_split") != "pilot-smoke":
+            raise ValueError("native pilot report requires formal=false and replay_split=pilot-smoke")
+        diagnostics = {}
+        diagnostic_paths = sorted((path.parent / "harbor").glob("*/verifier/research-replay.json"))
+        if len(diagnostic_paths) > 1:
+            raise ValueError("native pilot must have at most one verifier record")
+        if diagnostic_paths:
+            diagnostics = json.loads(_pilot_file(project, diagnostic_paths[0]))
+            for role in ("first", "final"):
+                for repeat in (diagnostics.get(role) or {}).get("repeats", []):
+                    phase = repeat.get("phase") or {}
+                    if phase.get("split") != "pilot-smoke" or phase.get("formal") is not False:
+                        raise ValueError("native pilot report refuses non-pilot replay scores")
+        registry = value.get("registry") or {}
+        evaluations = {row["id"]: row for row in registry.get("evaluations", [])}
+        valid = (value.get("status") == "pilot_completed" and value.get("evaluation_status") == "valid"
+                 and value.get("attempt_status") in ("completed", "research_timeout"))
+        row = {"run_id": path.parent.name, "evidence": path.relative_to(project).as_posix(),
+               "evidence_sha256": file_hash(path), "formal": False, "replay_split": "pilot-smoke",
+               "cost_usd": None, "score": value.get("score") if valid else None,
+               "reward": value.get("reward") if valid else None,
+               **{name: value.get(name) for name in ("status", "attempt_status", "task", "study_phase", "resource_status",
+                   "model_run_started", "research_budget_seconds", "max_turns", "max_evaluations", "started_at",
+                   "finished_at", "native_exception", "native_reward_valid", "trusted_budget_override", "evaluation_status", "error")},
+               "registry_closed": registry.get("closed"), "registered_evaluations": len(evaluations),
+               "selection_reason": registry.get("selection_reason"),
+               "relay_status": _relay_status(value.get("relay_status")),
+               "cleanup_errors": value.get("cleanup_errors"), "bridge_errors": value.get("bridge_errors"),
+               "resource_checks": value.get("resource_checks"),
+               "worker_resources_removed": (value.get("worker_cleanup") or {}).get("all_removed"),
+               "relay_resources_removed": (value.get("relay_cleanup") or {}).get("all_removed"),
+               "model_configuration_evidence": value.get("native_setup_evidence"),
+               "trusted_source_sha256": value.get("trusted_source_sha256"),
+               "verifier_evidence_sha256": file_hash(diagnostic_paths[0]) if diagnostic_paths else None}
+        for role in ("first", "final"):
+            selected = diagnostics.get(role) or {}
+            identifier = registry.get(role + "_id")
+            if selected and selected.get("checkpoint_id") != identifier:
+                raise ValueError("native verifier checkpoint differs from the closed host registry")
+            row.update({role + "_id": identifier,
+                        role + "_source_hash": selected.get("source_hash", evaluations.get(identifier, {}).get("source_hash")),
+                        role + "_replay_count": selected.get("replay_count"),
+                        role + "_reused_from": selected.get("reused_from"),
+                        role + "_score": selected.get("score") if valid else None,
+                        role + "_reward": selected.get("reward") if valid else None})
+        hook_path = path.parent / "host-events.jsonl"
+        hooks = [json.loads(line) for line in _pilot_file(project, hook_path).splitlines()] if hook_path.exists() else []
+        row["native_hooks"] = [{"kind": hook.get("kind"), "time": hook.get("time"),
+                                "native_exception": (hook.get("fields") or {}).get("native_exception"),
+                                "event_hash": hook.get("event_hash")} for hook in hooks]
+        row["native_hooks_sha256"] = file_hash(hook_path) if hook_path.exists() else None
+        events, events_hash = _relay_requests(project, path.parent / "relay-evidence/evidence/events.jsonl", row["run_id"])
+        row["relay_events_sha256"] = events_hash
+        row["relay_request_rows"] = len(events)
+        successful = [event for event in events if event.get("outcome") == "success" and event.get("output_usage_complete") is True]
+        row["successful_usage_rows"] = len(successful)
+        for name in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
+            counts = [event.get(name) for event in successful]
+            row["successful_" + name] = sum(counts) if counts and all(type(count) is int and count >= 0 for count in counts) else None
+        requests.extend(events)
+        attempts.append(row)
+    if attempts:
+        _csv(project / "results/runs/harbor-native-pilots.csv", attempts, list(attempts[0]))
+    if requests:
+        _csv(project / "results/runs/harbor-native-pilot-requests.csv", requests,
+             ["run_id", "request_id", "formal", "accepted", "finished", "accepted_at", "finished_at",
+              "requested_max_tokens", "effective_max_tokens", "requested_temperature", "effective_temperature",
+              "upstream_status", "outcome", "failure_reason", "output_usage_complete", "input_tokens", "output_tokens",
+              "cache_read_input_tokens", "cache_creation_input_tokens", "charged_output_tokens", "refunded_output_tokens",
+              "protocol_violation", "body_sha256", "system_sha256", "tools_sha256", "cost_usd", "evidence"])
+    return {"attempts": attempts, "request_rows": len(requests), "formal_research_sessions_completed": 0}
+
+
+def relay_probe_evidence(project):
+    rows = []
+    for path in sorted((project / "logs").glob("relay-transport-probe-*/result.json")):
+        value = json.loads(_pilot_file(project, path))
+        if value.get("formal") is not False or type(value.get("model_calls")) is not int or value["model_calls"] != 0:
+            raise ValueError("relay transport probe requires nonformal evidence with zero model calls")
+        network = value.get("network") or {}
+        rows.append({"run_id": path.parent.name, "evidence": path.relative_to(project).as_posix(),
+                     "evidence_sha256": file_hash(path), "status": value.get("status"), "error": value.get("error"), "formal": False,
+                     "model_calls": 0, "cost_usd": None, "score": None, "reward": None,
+                     "network_passed": network.get("passed"), "network_checks": network.get("checks"),
+                     "dns_checks": network.get("dns_checks"), "external_raw_tcp_connected": network.get("external_raw_tcp_connected"),
+                     "environment_resources_removed": (value.get("environment_cleanup") or {}).get("orchestration_environment_removed"),
+                     "environment_cleanup_errors": (value.get("environment_cleanup") or {}).get("cleanup_errors"),
+                     "relay_resources_removed": (value.get("relay_cleanup") or {}).get("all_removed"),
+                     "relay_cleanup_errors": (value.get("relay_cleanup") or {}).get("errors"),
+                     "relay_status": _relay_status(value.get("relay_status")),
+                     "controller_sha256": value.get("controller_sha256"), "tool_hashes": value.get("tool_hashes")})
+    if rows:
+        _csv(project / "results/runs/relay-transport-probes.csv", rows, list(rows[0]))
+    return rows
+
+
 def research_pilot_evidence(project):
     rows = []
     for path in sorted((project / "logs").glob("research-loop-pilot-*/result.json")):
@@ -201,7 +353,8 @@ def clean_replay_evidence(project):
 
 def delivery_evidence(project):
     repository = project / "logs/github-repository-local-001.json"
-    head = project / "logs/github-remote-head-local-001.txt"
+    heads = sorted((project / "logs").glob("github-remote-head-local-*.txt"))
+    head = heads[-1] if heads else project / "logs/github-remote-head-local-001.txt"
     publication = None
     if repository.exists() and head.exists():
         metadata = read_json(repository)
@@ -214,19 +367,31 @@ def delivery_evidence(project):
                                     for path in (repository, head)]}
     tests = []
     for path in sorted((project / "logs").glob("unit-tests-final-local-*.txt")):
-        match = re.search(r"(\d+) passed in ([0-9.]+)s", path.read_text())
+        match = re.search(r"(\d+) passed(?:, [^\r\n]*?)? in ([0-9.]+)s", path.read_text())
         if match:
             tests.append({"passed": int(match[1]), "seconds": float(match[2]),
                           "evidence": path.relative_to(project).as_posix(), "evidence_sha256": file_hash(path)})
     archived_tests = []
     for path in sorted((project / "logs").glob("clean-replay-local-*/archived-unit-tests.txt")):
-        match = re.search(r"(\d+) passed in ([0-9.]+)s", path.read_text())
+        match = re.search(r"(\d+) passed(?:, [^\r\n]*?)? in ([0-9.]+)s", path.read_text())
         if match:
             archived_tests.append({"passed": int(match[1]), "seconds": float(match[2]),
                                    "evidence": path.relative_to(project).as_posix(), "evidence_sha256": file_hash(path)})
-    receipt = project / "freezes/local-delivery-001.json"
+    receipts = sorted((project / "freezes").glob("local-delivery-*.json"))
+    receipt = receipts[-1] if receipts else project / "freezes/local-delivery-001.json"
+    dependency_path = project / "logs/dependency-rebuild-local-001/result.json"
+    dependency = None
+    if dependency_path.exists():
+        value = json.loads(_pilot_file(project, dependency_path))
+        if value.get("formal") is not False:
+            raise ValueError("dependency rebuild report requires explicitly nonformal evidence")
+        dependency = {"evidence": dependency_path.relative_to(project).as_posix(),
+                      "evidence_sha256": file_hash(dependency_path),
+                      **{key: value.get(key) for key in ("status", "formal", "source_directory", "reuse_python_binary",
+                          "reuse_old_site_packages", "reuse_docker_daemon_and_numeric_image", "new_environment_replay_status", "files")}}
     return {"publication": publication, "latest_saved_unit_tests": tests[-1] if tests else None,
             "archived_source_unit_tests": archived_tests,
+            "dependency_environment": dependency,
             "local_delivery_receipt": {"path": receipt.relative_to(project).as_posix(), "sha256": file_hash(receipt)} if receipt.exists() else None}
 
 
@@ -301,6 +466,8 @@ def export_report(project, calibration, data):
     if research_pilots:
         _csv(project / "results/runs/research-pilots.csv", research_pilots, list(research_pilots[0]))
     research_replays = research_replay_evidence(project, research_pilots)
+    native_pilots = native_pilot_evidence(project)
+    relay_probes = relay_probe_evidence(project)
     stage = {"generated_at": datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
              "formal": False, "calibration_source_sha256": original_hash, "calibration_methods": len(run_rows),
              "calibration_source": calibration.relative_to(project).as_posix(),
@@ -309,6 +476,7 @@ def export_report(project, calibration, data):
              "model_pilots": model_rows, "pilot_model_wj": pilot_wj,
              "research_pilots": research_pilots,
              "research_pilot_replays": research_replays,
+             "harbor_native_pilots": native_pilots, "relay_transport_probes": relay_probes,
              "clean_replay": clean_replay_evidence(project), "delivery": delivery_evidence(project),
              "localhost_bridge": bridge,
              "final_test_scored": False, "formal_guidance_cells_completed": 0, "formal_research_sessions_completed": 0,
@@ -321,7 +489,8 @@ def export_report(project, calibration, data):
     if file_hash(calibration) != original_hash:
         raise RuntimeError("original calibration evidence changed during report export")
     return {"run_rows": len(run_rows), "case_rows": len(case_rows), "model_pilot_attempts": len(model_rows),
-            "research_pilot_attempts": len(research_pilots), "formal": False}
+            "research_pilot_attempts": len(research_pilots), "native_pilot_attempts": len(native_pilots["attempts"]),
+            "relay_transport_probes": len(relay_probes), "formal": False}
 
 
 def write_results_document(project, comparisons, stage):
@@ -340,10 +509,10 @@ def write_results_document(project, comparisons, stage):
         lines.append(f"| {row['task']} | {label} | {row['passed']}/{row['total']} | {score} |")
     lines += ["", "前向扩散会掩盖不稳定高频，因此不能把低观测/前向残差当作逆恢复成功。T2 合法但超出 K<=10 紧凑性限制的模型保留为0分。失败实例和原始误差均未删除。", "",
               f"固定 Tikhonov 的最大初场/前向误差为 {fmt(heat.get('E_init'))}/{fmt(heat.get('E_forward'))}。固定 SG/STLSQ 的最大 rollout/field 误差为 {fmt(ode.get('E_roll'))}/{fmt(ode.get('E_field'))}。LU 的最大残差/解误差为 {fmt(poisson.get('max_relative_residual'))}/{fmt(poisson.get('max_solution_error'))}。完整逐例误差、K、状态及失败ID见导出表和原始JSON。", "",
-              "T3 三种方法数值均通过；这里没有冻结性能 profile，也没有执行要求的三组独占 B,C,C,B,B,C 校准。日志中的执行墙钟含 Docker exec 开销且运行于共享宿主，正式 S3、speedup 门槛和任务 reward 保持 null。不要据单次墙钟比值发布加速结论。", "",
+              "T3 三种方法数值均通过；正式性能 profile 尚未冻结。本机新版可信计时、公开dev完整BCCBBC和三组校准诊断详见[计时说明](timing.md)，共享宿主诊断不满足独占验收。各批次计时范围以对应源码和原始日志为准；正式S3、speedup门槛和任务reward保持null。", "",
               f"可机读表：[{stage['calibration_case_rows']}个方法×实例记录](../results/cases/calibration.csv)、[{stage['calibration_methods']}个批次记录](../results/runs/calibration.csv)、[方法汇总及失败ID](../results/comparisons/calibration-summary.json)。CSV 中未知值为字面量 `null`；成本未估算。", "", "## 数据与复现证据", "",
               f"当前生成 {stage['generation']['case_count']} 例，{stage['generation']['qc_passed']} 例通过预声明 GT QC。每任务为6 dev、12 calibration、12 final；36个 final 实例仅做生成与GT检查，未读取求解成绩。", "",
-              "[同熵重建证据](../freezes/data-reproduction-local.json)记录同一固定Linux镜像重建90例，369个公开输入文件逐字节一致。生成器期间补充了来源快照和重复审计，但没有改变数据公式或随机流；重建来源保存在 `authoring/data/v0.3-local-reproduced/private/generator-code/`。这不是第二台独立机器上的重跑。", "",
+              "[同熵重建证据](../freezes/data-reproduction-local.json)记录同一固定Linux镜像重建90例，369个公开输入文件逐字节一致。生成器期间补充了来源快照和重复审计，但没有改变数据公式或随机流；重建来源保存在 `authoring/data/v0.3-local-reproduced/private/generator-code/`。", "",
               "T3 共有21个独立算子：10个易档实例共用固定 A、RHS 独立，20个中/难档 A 不同。T1易档全保留mask、固定网格、T2固定时间/初值以及T3逐档metadata是设计常量，不能冒充独立随机矩阵。", "", "## 运行时与模型 smoke", "",
               "W运行时第一轮11项通过10项，发现日志洪泛误分类；原失败保留。修复后对正常路径、洪泛、超时和后台管道四项重跑，4/4通过。两轮共15个专用探针容器已移除，原8个服务仍运行；参见 [第一轮](../logs/runtime-probes-001/summary.json)、[回归](../logs/runtime-probes-002/summary.json)及[协议边界](protocol.md)。", "",
               "真实模型 pilot 保留两个 attempt：第一次在镜像构建阶段失败，未调用模型；第二次通过 Harbor 内置 Pi 调用配置的 DeepSeek 兼容端点，读取公共形状并写出刻意要求的零解程序。它用于链路测试，不是自主求解成功，也不属于 G1/G2/G3 正式格。输入8924 token（含缓存6528）、输出625 token，模型阶段约11.84秒，金额未知为null。R使用2 CPU/2 GiB且网络未限定，仅属于诊断配置。参见 [原始失败](../logs/model-smoke-20261022-01/result.json)、[模型生成源码](../logs/model-smoke-20261022-02/result.json)和[集成说明](harbor-integration.md)。", ""]
@@ -391,7 +560,7 @@ def write_results_document(project, comparisons, stage):
     lines += ["", "旧W探针只证明各自 `provenance.json` 所记源码。stage-status同时保存当前worker哈希和是否与各轮探针匹配；不能把旧版本通过记录直接算作后续截止时间/资源修订的回归。公开T3 Jacobi-CG比较程序已加入共同任务环境，仅用A/RHS，内部时间为诊断；正式比较仍需可信W完整计时。", ""]
     clean = stage["clean_replay"]
     if clean["attempts"]:
-        lines += ["## 干净源码重放与交付", "", "从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；这不是第二台机器或独立依赖环境验收，也没有新增模型调用。", "",
+        lines += ["## 干净源码重放与交付", "", "从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；依赖环境是否重装按各次证据和新依赖环境记录分别报告。没有新增模型调用。", "",
                   "| 方法/候选 | 通过数 | score | reward |", "|---|---:|---:|---:|"]
         for row in clean["runs"]:
             lines.append(f"| {row['task']} / {row['method']} | {row['passed']}/{row['total']} | {_cell(row['score'])} | {_cell(row['reward'])} |")
@@ -407,11 +576,19 @@ def write_results_document(project, comparisons, stage):
         tests = delivery["latest_saved_unit_tests"]
         lines += ["", f"最新保存的[完整单测日志](../{tests['evidence']})为{tests['passed']} passed，用时{tests['seconds']}秒；测试数量随代码变化，以对应日志和源码版本为准。"]
     for tests in delivery["archived_source_unit_tests"]:
-        lines += ["", f"[归档源码单测](../{tests['evidence']})同样为{tests['passed']} passed，用时{tests['seconds']}秒；它复用了本机宿主依赖，未声明独立环境验收。"]
+        lines += ["", f"[归档源码单测](../{tests['evidence']})同样为{tests['passed']} passed，用时{tests['seconds']}秒；其依赖来源以对应重放记录为准，不代表第二台物理机器验收。"]
     if delivery["local_delivery_receipt"]:
-        lines += ["", f"[本机交付记录](../{delivery['local_delivery_receipt']['path']})绑定首提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。"]
+        lines += ["", f"[本机交付记录](../{delivery['local_delivery_receipt']['path']})绑定其对应提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。"]
+    native_complete = [row for row in stage.get("harbor_native_pilots", {}).get("attempts", [])
+                       if row.get("status") == "pilot_completed" and row.get("selection_reason") == "explicit_finalize"]
+    if native_complete:
+        links = "、".join(f"[{row['run_id']}](../{row['evidence']})" for row in native_complete)
+        lines += ["", f"真实模型的显式finalize和完整Harbor SingleStepTrial生命周期已由本机native pilot验证：{links}。这些记录仅使用public-dev研究与pilot-smoke重放，formal=false，不计入正式三组实验。"]
+    dependency = delivery.get("dependency_environment")
+    if dependency:
+        lines += ["", f"[新依赖环境记录](../{dependency['evidence']})的安装阶段状态为 `{dependency['status']}`，新环境重放状态为 `{dependency['new_environment_replay_status']}`。旧site-packages复用标记为 `{_cell(dependency['reuse_old_site_packages'])}`；安装完成不等于重放已完成。"]
     lines += ["", "自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。", "", "## 未完成的验收", "",
-              "正式资源、真实模型显式finalize与完整Harbor SingleStepTrial、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立主机与依赖环境复现仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。", ""]
+              "正式资源、固定模型参数/系统提示/有效工具配置及三任务freeze、至少9格（主目标15会话）的正式三组实验、first/final隐藏重放、T3性能profile与独占计时仍未完成。新依赖环境复现以其单独记录的重放状态为准。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。", ""]
     (project / "docs/results.md").write_text("\n".join(lines))
 
 

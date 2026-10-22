@@ -68,20 +68,23 @@ class PublicEvaluationTests(unittest.TestCase):
         self.assertNotIn("hidden_gt_sentinel", json.dumps(result))
         self.assertEqual(read_json(self.base / "run/public_feedback.json"), result)
 
-    def test_poisson_comparator_is_fixed_second_worker_on_same_six_dev_cases(self):
+    def test_poisson_comparator_is_fixed_bccbbc_on_same_six_dev_cases(self):
         inputs = self.inputs("poisson", "public-dev")
         result = self.run_evaluation("poisson", inputs=inputs)
-        self.assertEqual(len(self.calls), 2)
+        self.assertEqual(len(self.calls), 6)
         self.assertTrue(all(row[2] == inputs for row in self.calls))
         source = self.base / "run/comparison-source/solve.py"
         self.assertEqual(source.read_bytes(), (ROOT / "public/poisson_compare.py").read_bytes())
         comparator = result["comparison"]
         self.assertEqual(comparator["source_sha256"], file_hash(source))
-        self.assertEqual(len(comparator["cases"]), 6)
-        self.assertEqual(comparator["worker_diagnostics"]["total_wall_seconds"], 2)
-        self.assertEqual(comparator["diagnostic_wall_ratio"], 2)
-        self.assertEqual(comparator["diagnostic_cpu_ratio"], 2)
-        self.assertEqual(comparator["diagnostic_memory_ratio"], 2)
+        self.assertEqual(comparator["order"], list("BCCBBC"))
+        self.assertEqual([call[1] == source.parent for call in self.calls], [True,False,False,True,True,False])
+        self.assertEqual(len(comparator["baseline_repeats"]), 3)
+        self.assertEqual(len(comparator["candidate_repeats"]), 3)
+        self.assertTrue(all(len(row["cases"]) == 6 for row in comparator["baseline_repeats"] + comparator["candidate_repeats"]))
+        self.assertEqual(comparator["diagnostic_wall_ratio"], 4/3)
+        self.assertEqual(comparator["diagnostic_cpu_ratio"], 4/3)
+        self.assertEqual(comparator["diagnostic_memory_ratio"], 4/3)
         self.assertFalse(comparator["formal_timing"])
 
     def test_checker_timeout_preserves_structural_validity(self):
@@ -125,8 +128,9 @@ class PublicEvaluationTests(unittest.TestCase):
                                                       execute=slow, check=checking)
         self.assertEqual(self.calls[0][-1], 10)
         self.assertEqual(len(self.calls), 1)
-        self.assertTrue(result["artifact_valid"])
-        self.assertEqual(result["public_check_status"], "timeout")
+        self.assertFalse(result["artifact_valid"])
+        self.assertEqual(result["public_check_status"], "not_run")
+        self.assertEqual(result["comparison"]["baseline_repeats"][0]["public_check_status"], "timeout")
         self.assertEqual(result["comparison"]["status"], "budget_timeout")
         self.assertTrue(result["research_budget_exhausted"])
 
@@ -283,12 +287,21 @@ class WorkerDeadlineTests(unittest.TestCase):
                 output = "PID STAT COMMAND\n111 S sleep\n"
             elif args[0] == "exec" and "read_text" in args[-1]:
                 output = json.dumps(self.cgroup)
+            elif args[0] == "exec" and args[-1] == "read":
+                output = json.dumps({"schema_version": 1, "timing_scope": worker.SCOPE, "clock": "CLOCK_MONOTONIC",
+                                     "timer_uid": 65533, "candidate_uid": 65534, "machine_id": "synthetic",
+                                     "started_monotonic_ns": 1_000_000_000, "finished_monotonic_ns": 1_001_000_000,
+                                     "execution_wall_seconds": .001, "all_candidate_processes_terminated": True,
+                                     "formal_timing": False})
             else:
                 output = ""
             return SimpleNamespace(returncode=0, stdout=output, stderr="")
         began = time.monotonic()
+        timing={"execution_wall_seconds": .001,"started_monotonic_ns": 1_000_000_000,
+                "finished_monotonic_ns": 1_001_000_000,"machine_id": "synthetic"}
         with patch.object(worker, "docker", side_effect=control), \
                 patch.object(worker, "bounded_execution", return_value=("completed", 0, 0)), \
+                patch.object(worker, "collect_timer", return_value=timing), \
                 patch.object(worker.subprocess, "Popen", side_effect=trusted_sleep_pipe):
             result = worker.run_worker("heat", self.source, self.inputs, self.base / "run", "image", timeout=.1)
         self.assertLess(time.monotonic() - began, 2)
@@ -299,6 +312,16 @@ class WorkerDeadlineTests(unittest.TestCase):
         self.assertEqual(len(processes), 1)
         self.assertIsNotNone(processes[0].poll())
         self.assertTrue(processes[0].stdout.closed)
+
+    def test_descendant_wait_keeps_full_default_task_budget_above_thirty_seconds(self):
+        self.info["State"].update(Running=True,Pid=111)
+        for task in ("heat","poisson"):
+            with patch.object(worker,"docker",side_effect=self.control), \
+                    patch.object(worker,"bounded_execution",return_value=("completed",0,0)), \
+                    patch.object(worker,"collect_timer",side_effect=subprocess.TimeoutExpired("timer",60)) as collect:
+                result=worker.run_worker(task,self.source,self.inputs,self.base/("default-"+task),"image")
+            self.assertGreater(collect.call_args.args[1],30)
+            self.assertEqual(result["attempt_status"],"timeout")
 
 
 if __name__ == "__main__":

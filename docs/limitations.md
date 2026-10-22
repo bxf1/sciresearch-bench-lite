@@ -1,6 +1,6 @@
 # 当前局限与未完成验收
 
-本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码重放已通过，源码和证据已推送私有GitHub仓库。**正式三组研究、final-test重放、性能冻结、完整Harbor Trial和独立主机/依赖环境复现仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。
+本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码重放已通过，源码和证据已推送私有GitHub仓库。**正式三组研究、final-test重放、性能冻结和新依赖环境复现仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。最新[完整Harbor Trial与模型代理pilot](native-relay-pilot.md)已跑通，实际策略/用量记录、显式finalize、三次独立重放与清理均通过；不据此降低正式门槛。
 
 ## 研究与因果解释
 
@@ -22,11 +22,11 @@
 
 宿主Docker仅2 CPU、约3.81 GiB总内存且有其他长期运行服务。用户已经授权本机继续功能开发；正式R的4 vCPU/4 GiB预算仍未满足。W cgroup限制已实测为1 CPU、4 GiB、禁swap、pids128，但这不创造额外物理内存。为保护共享服务，尚未做真实4 GiB OOM压力；内存配额文字/实际cgroup检查不能替代OOM分类探针。
 
-W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配额、PID、超时和日志限制；首轮日志洪泛误归基础设施失败已修并在新目录回归。总截止时间修订的[新worker回归004](../logs/runtime-probes-004/summary.json)四项通过；各轮只对应保留的源码哈希，未重跑的旧攻击项目不能直接算作新worker通过。
+W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配额、PID、超时和日志限制；首轮日志洪泛误分类和timer002的超时误分类均保留。最新[worker005](../logs/runtime-probes-005/summary.json)11项和[timer004](../logs/process-timer-probe-004/summary.json)5项真实回归通过。各轮仍只对应保留的源码哈希；4 GiB OOM未测。
 
-[网络005](../logs/research-network-probe-005/result.json)已验证非root、ALL-drop、无swap配置下模型域名可连接、两个HTTP/TLS对照被阻断、标记/raw socket创建被拒绝，未做全面DNS/TLS绕过审计，也未运行Pi setup或模型请求。[文件桥001](../logs/file-bridge-runtime-001/result.json)已在真实R/W检查9项功能与边界，未调用模型。真实pilot001另记录Harbor可信配置helper所需CHOWN/DAC_OVERRIDE/FOWNER，研究进程有效capabilities仍为0，并实测setup后的限网；它与005配置不同。后续controller日志限额、清理与预检查修订有故障单测，尚未再次调用模型验证完整生命周期。
+[网络005](../logs/research-network-probe-005/result.json)已验证非root、ALL-drop、无swap配置下模型域名可连接、两个HTTP/TLS对照被阻断、标记/raw socket创建被拒绝，未做全面DNS/TLS绕过审计，也未运行Pi setup或模型请求。[文件桥001](../logs/file-bridge-runtime-001/result.json)已在真实R/W检查9项功能与边界，未调用模型。真实pilot001另记录Harbor可信配置helper所需CHOWN/DAC_OVERRIDE/FOWNER，研究进程有效capabilities仍为0，并实测setup后的限网；它与005配置不同。后续[harbor-native-pilot-001](../logs/harbor-native-pilot-001/result.json)已再次调用真实模型验证完整生命周期；它另外通过relay精确IP/端口限制和Docker DNS阻断，原网络005不追认这些新检查。
 
-本机执行墙钟包含Docker exec及宿主调度开销，且未在独占环境跑规定的三组交错校准；不能作为正式T3加速比。当前T3 score/reward为null，数值正确性单独报告。不存在由当前单次计时可推出的正式效率profile。
+新版可信计时已覆盖Python启动至全部后代退出，排除Docker准备，原始日志仍为formal=false。公开dev完整BCCBBC及三组校准已经运行，均通过数值检查，但处于共享本机，不能冻结正式T3加速比或效率profile。当前正式T3 score/reward保持null，数值正确性单独报告；详见[计时说明](timing.md)。
 
 ## 复现与发布
 

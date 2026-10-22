@@ -26,9 +26,9 @@ python solve.py --input /input --output /output --seed 0
 
 `runner/worker.py` 建立全新 W：非 root、只读根、独立 IPC、无网络、丢弃全部 capabilities、no-new-privileges、默认 seccomp、1 CPU、4 GiB 内存、禁 swap、最多 128 PID。源码与输入只读挂载；输出为 256 MiB tmpfs，临时目录为 64 MiB tmpfs。数值库线程固定为 1。heat/ode 每批最多 120 秒，poisson 最多 60 秒。宿主保存 Docker 配置和 cgroup 实际值；参数存在不等于资源探针已经验收。
 
-候选结束后，worker 使用可信 reaper 终止同 UID 的候选后代，再从 Docker 进程表验证仅剩可信 PID 1 和已退出的僵尸。随后由可信 tar 读取 tmpfs 输出并流入宿主暂存目录，移除容器后才检查并复制到只读评分输入。这样避免当前引擎 `docker cp` 未复制 tmpfs 内容的问题。J 不会执行或 import 提交代码；它只导入 `judge/`、`public/` 和少量可信序列化/格式工具。`runner/replay.py` 为 J 准备有哈希的可信代码快照，使用另一无网、非 root、只读根容器调用 `python -m judge.batch`，可信 J 总时限 20 分钟。只有被许可的数值产物挂载到 J；R 自写 reward 或源码没有官方评分效力。
+新版worker的可信PID1使用UID65533，候选使用UID65534。PID1等待候选主进程及所有被接管的后代退出；超过原执行预算则停止整个W并保留候选超时失败。宿主再核对进程树已清理。随后由可信 tar 读取 tmpfs 输出并流入宿主暂存目录，移除容器后才检查并复制到只读评分输入。这样避免当前引擎 `docker cp` 未复制 tmpfs 内容的问题。J 不会执行或 import 提交代码；它只导入 `judge/`、`public/` 和少量可信序列化/格式工具。`runner/replay.py` 为 J 准备有哈希的可信代码快照，使用另一无网、非 root、只读根容器调用 `python -m judge.batch`，可信 J 总时限 20 分钟。只有被许可的数值产物挂载到 J；R 自写 reward 或源码没有官方评分效力。
 
-当前 worker 的 `execution_wall_seconds` 含宿主 Docker exec 请求开销；worker 显式写 `formal_timing=false`。该值只能支持本机功能诊断，不能据此声称正式任务加速。实际配额、后台子进程、OOM/PID 压力、日志压力、格式炸弹和快照竞争条件仍以攻击探针证据为准。
+新版worker通过独立UID的可信PID1，记录固定Python exec前至全部后代退出的完整区间，涵盖启动、导入、I/O、计算与文件关闭；宿主Docker exec墙钟另存。原始记录始终为 `formal_timing=false`，仅有可信宿主资格合同、独占窗口与实际容器启动事件均通过后才能生成另存的正式资格记录。旧计时不追认。详见[计时实现及探针](timing.md)。
 
 ## 评分、错误状态与重放
 
@@ -44,7 +44,7 @@ T2 先将绝对值严格小于 1e-6 的系数置零。候选积分固定 DOP853�
 
 `judge.batch` 按完整 manifest 计分，缺失或非法实例仍保留在分母中。heat/ode 要求 12/12 通过且每档 4/4。正式 first/final 各三次清洁重放，同源码哈希可复用并注明。Harbor `ResearchReplayVerifier` 提供已关闭 registry 的重放接入点，并要求 separate verifier，拒绝自动传入任意研究产物；实际 Harbor 生命周期联调尚需集成证据。基础重放函数的单次结果并不代表已经完成三次正式复现。
 
-poisson 的重放次序为 B,C,C,B,B,C，各三次，不再外套三次。只有两者全部正确且资源合格，基线耗时才可作为速度分母。当前实现将本机性能标为 `invalid_environment`，只给 diagnostic_speedup；不能把该诊断值替代正式冻结的效率分。效率 profile 必须先由 calibration 的三组完整比较决定，不能看最终成绩后改 profile。
+poisson 的重放次序为 B,C,C,B,B,C，各三次，不再外套三次。只有两者全部正确且资源合格，基线耗时才可作为速度分母。未通过正式宿主资格门禁时，本机性能标为 `invalid_environment`，只给 diagnostic_speedup；不能把该诊断值替代正式冻结的效率分。效率 profile 必须先由 calibration 的三组完整比较决定，不能看最终成绩后改 profile。
 
 所有组共用的 `public/poisson_compare.py` 已打包到T3研究环境。它固定Jacobi-CG `rtol=1e-10,atol=0,maxiter=10000`，复用Jacobi预条件器、逐列求解四个RHS，只写标准solution.npy并输出公开残差。程序内部耗时明确为 `diagnostic_in_process_only`，排除了Python启动与模块导入，不能充当正式完整任务计时或科学reward。
 
@@ -86,3 +86,5 @@ PYTHONPATH=benchmark benchmark/.venv/bin/python -m runner.preflight \
 更新宿主评估代码后，[文件桥002](../logs/file-bridge-runtime-002/result.json)再次9/9通过，仍未调用模型。随后[真实研究pilot001](../logs/research-loop-pilot-001/result.json)登记一个有效candidate-001，但没有显式finalize，会话结束后回退选择同一候选，记录状态仍为 `pilot_returned_without_required_registration`。实际在12轮上限后结束，未达到600秒墙钟截止；原日志的 `deadline_fallback` 字段照录。其缩短预算600秒/4次只用于接线；正式会话的1800秒/20次保持不变。
 
 该候选随后通过[真实Harbor verifier hook及独立W/J](../logs/research-loop-pilot-001-wj-replay-003/result.json)，pilot-smoke三次均3/3通过，每次score=87.69277970613776、reward=1。first/final源码相同并复用重放，没有迭代增益；此前两次verifier基础设施失败的null成绩完整保留于[结果报告](results.md)。这些均不是final-test成绩。pilot请求reasoning off却记录12个thinking块，说明参数配置尚未证明落实；官方API行为与这一差异的推断见[集成说明](harbor-integration.md)，不能据此冻结模型参数。
+
+最新worker的[回归005](../logs/runtime-probes-005/summary.json)已重跑全部11项并通过；[timer004](../logs/process-timer-probe-004/summary.json)的5项真实进程树与权限探针通过。公开dev的6批BCCBBC及三组校准的18批均已数值通过，仍为诊断、profile=null；这些不会解锁final-test。全部11个基线已在新版worker统一重放，132个逐例科学指标与原校准完全一致：[比较证据](../logs/calibration-worker-replay-local-002.json)。

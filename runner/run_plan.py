@@ -24,11 +24,17 @@ MODEL_FIXED = {"model_id": "deepseek-v4-pro", "pi_version": "0.84.1",
                "harbor_commit": "38b9be0164a910015a0be9a37ba6e8e78c562dfe",
                "api_format": "anthropic_messages", "endpoint": "https://api.deepseek.com/anthropic"}
 PARAMETERS = ("thinking", "temperature", "output_token_limit")
-TOOL_FILES = ("public/bench.py", "public/file_bench.py", "public/export_source.py", "public/bridge_io.py",
-              "runner/bridge.py", "runner/file_bridge.py", "runner/registry.py", "runner/worker.py",
-              "runner/replay.py", "runner/public_evaluation.py", "runner/performance.py", "runner/research_loop.py",
-              "runner/run_plan.py", "runner/harbor_verifier.py", "runner/verify_pilot.py", "runner/clean_replay.py",
-              "runner/artifact_gate.py", "runner/common.py", "runner/phase.py")
+def trusted_tool_files(project):
+    """Freeze the complete trusted Python surface, including comparison methods."""
+    root = Path(project)
+    paths = {path.relative_to(root).as_posix()
+             for folder in ("runner", "public", "judge", "baselines")
+             for path in (root / folder).rglob("*.py") if "__pycache__" not in path.parts}
+    paths.add("authoring/package_tasks.py")  # Research input allowlist imported by the controller.
+    return tuple(sorted(paths))
+
+
+TOOL_FILES = trusted_tool_files(Path(__file__).resolve().parents[1])
 ORDER_ALGORITHM = "sha256-rank-within-task-repeat-v1"
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
 
@@ -78,7 +84,7 @@ def create_draft(project, *, order_entropy=None):
     project = Path(project)
     entropy = order_entropy if order_entropy is not None else secrets.token_hex(32)
     plan_id, runs = matrix(entropy)
-    tool_config = {"files": {name: file_hash(project / name) for name in TOOL_FILES},
+    tool_config = {"files": {name: file_hash(project / name) for name in trusted_tool_files(project)},
                    "skills": [], "extensions": [], "mcp_servers": [], "resume": False,
                    "runtime_tools": None, "runtime_enforcement": None}
     return {
@@ -194,13 +200,29 @@ def start_blockers(plan, project):
     try:
         if not isinstance(tools, dict) or plan.get("tool_config_sha256") != digest(canonical(tools)):
             raise ValueError("missing or mismatched tool configuration hash")
-        if tools.get("files") != {name: file_hash(Path(project) / name) for name in TOOL_FILES}:
+        if tools.get("files") != {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}:
             raise ValueError("trusted tooling files changed")
         if any(tools.get(key) != [] for key in ("skills", "extensions", "mcp_servers")) or tools.get("resume") is not False:
             raise ValueError("unrelated skills/extensions/MCP or session resume must be disabled")
         if not isinstance(tools.get("runtime_tools"), list) or not tools["runtime_tools"] or not all(isinstance(x, str) and x for x in tools["runtime_tools"]):
             raise ValueError("effective runtime tool inventory is unresolved")
-        _file_ref(project, tools.get("runtime_enforcement"))
+        policy = read_json(_file_ref(project, tools.get("runtime_enforcement")))
+        if not isinstance(policy, dict):
+            raise ValueError("wire policy must be an object")
+        from .model_relay import encoded
+        system = read_json(_file_ref(project, plan.get("system_prompt")))
+        inventory = read_json(_file_ref(project, policy.get("tools")))
+        if policy.get("status") != "verified":
+            raise ValueError("wire policy is not verified")
+        if not isinstance(system, (str, list)) or not system:
+            raise ValueError("system prompt must contain the actual wire JSON value")
+        if not isinstance(inventory, list) or not inventory or not all(isinstance(item, dict) and isinstance(item.get("name"), str) for item in inventory):
+            raise ValueError("wire tools must contain actual tool schemas")
+        names = [item["name"] for item in inventory]
+        if names != tools["runtime_tools"] or names != policy.get("runtime_tools") or len(set(names)) != len(names):
+            raise ValueError("wire tool inventory differs from frozen runtime tools")
+        if policy.get("wire_system_sha256") != digest(encoded(system)) or policy.get("wire_tools_sha256") != digest(encoded(inventory)):
+            raise ValueError("wire system/tools hash does not bind the retained policy JSON")
     except (ValueError, OSError, TypeError) as exc:
         blockers.append("tool configuration: " + str(exc))
 

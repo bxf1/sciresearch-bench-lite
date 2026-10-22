@@ -4,21 +4,24 @@
 
 **本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码重放已完成，源码和证据已推送私有GitHub仓库；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-001.json)。
 
+[完整 Harbor Trial 与模型代理 pilot](docs/native-relay-pilot.md)已连续两次成功：最新002的8次模型请求全部成功，显式evaluate/finalize，三次pilot重放均3/3通过、89.302分；first/final仍同一源码。已验证实际请求哈希门禁、用量额度和DNS出口限制，不能记作正式实验格。正式入口与结果汇总见[研究控制器](docs/study.md)，可信进程计时与三组诊断见[计时说明](docs/timing.md)。
+
 ## 当前验收状态
 
 | 项目 | 实际状态 | 证据 |
 |---|---|---|
 | 三任务生成与独立QC | 90/90；各任务6 dev、12 calibration、12 final | `authoring/data/v0.3-local/private/`、[动态汇总](results/stage-status.json) |
 | 同熵数据重建 | 同Linux镜像，369个公开输入文件逐字节一致 | [重建记录](freezes/data-reproduction-local.json) |
-| 作者基线 | 11方法、132个方法×实例记录；保留弱基线失败 | [原始校准](results/calibration-local-001/summary.json)、[CSV](results/cases/calibration.csv) |
+| 作者基线 | 11方法、132个方法×实例记录；保留弱基线失败 | [新版worker校准](results/calibration-local-002/summary.json)、[132例与旧版完全一致](logs/calibration-worker-replay-local-002.json)、[CSV](results/cases/calibration.csv) |
 | 干净源码重放 | 首提交Git archive、新W/J、同一宿主；三任务参考和真实heat候选分别3/3数值通过，T3分数null | [重放记录](logs/clean-replay-local-001/result.json) |
-| 保存的单测结果 | 工作源码184通过；归档源码184通过，仍使用本机依赖 | [工作源码](logs/unit-tests-final-local-002.txt)、[归档源码](logs/clean-replay-local-001/archived-unit-tests.txt) |
-| W隔离与资源 | 原两轮覆盖路径/链接/伪造奖励/日志/配额/PID等；新版截止时间逻辑另留4项回归 | [各版边界](docs/protocol.md)、[新版回归004](logs/runtime-probes-004/summary.json) |
+| 保存的单测结果 | 当前工作源码328通过；首版归档184通过，各自对应保存源码 | [当前测试](logs/unit-tests-final-local-004.txt)、[首版归档](logs/clean-replay-local-001/archived-unit-tests.txt) |
+| W隔离与资源 | 新版完整回归11/11、计时探针5/5；实际4GiB OOM仍未做 | [边界](docs/protocol.md)、[worker005](logs/runtime-probes-005/summary.json)、[timer004](logs/process-timer-probe-004/summary.json) |
 | 真实模型与独立评分 | 零解pilot为0分；研究pilot001按fallback选出的候选，经真实Harbor hook/W/J三次各3/3、87.693分，无迭代 | [零解W/J](logs/pilot-model-registry-wj-001/result.json)、[研究pilot](logs/research-loop-pilot-001/result.json)、[独立评分003](logs/research-loop-pilot-001-wj-replay-003/result.json) |
 | R限网 | 非root/ALL-drop配置005通过所测URL、socket与宿主边界检查；未运行Pi | [网络005](logs/research-network-probe-005/result.json)、[全部attempt](docs/harbor-integration.md) |
 | 三个R镜像 | 实际构建，分别8/8无网只读启动检查通过；记录不可变ID与公共构建上下文，非正式资源验收 | [镜像检查](logs/research-images-local-001/result.json) |
 | 受控桥 | localhost7项、R文件桥两轮各9项通过；文件桥包含真实W、6例公开反馈与不可改写快照，未调用模型 | [localhost](logs/bridge-runtime-001/result.json)、[文件桥001](logs/file-bridge-runtime-001/result.json)、[回归002](logs/file-bridge-runtime-002/result.json) |
-| 正式资源与完整模型研究循环 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
+| 完整原生Harbor Trial | **两次本机pilot通过**；最新8次可信模型请求、显式finalize、三次W/J、资源清理已核对 | [最新pilot002](logs/harbor-native-pilot-002/result.json)、[完整说明](docs/native-relay-pilot.md) |
+| 正式资源 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
 | 三任务×三组研究 | **0个正式格**；最低9格，主计划15会话 | [未完成事项](#仍需完成) |
 | 隐藏重放与正式性能 | **未完成**；不把校准或pilot记成final | [局限](docs/limitations.md) |
 | 个人GitHub发布 | **源码与证据已实际push到私有仓库**；首提交 `af5a19d` 已由远端HEAD核验 | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-001.txt)、[PRIVATE元数据](logs/github-repository-local-001.json) |
@@ -98,10 +101,10 @@ docker build -t sciresearch-numeric:0.3.0 environment
 ./reproduce.sh calibrate authoring/data/v0.3-local results/calibration-another-new
 ```
 
-已保存 [15会话运行草稿](freezes/research-run-plan-local-draft-003.json)及 [T1](freezes/heat-local-draft-003.json)、[T2](freezes/ode-local-draft-003.json)、[T3](freezes/poisson-local-draft-003.json) 任务草稿。清单沿用最初checkpoint的独立顺序熵，先覆盖九格，再补T1两轮，所有会话固定1800秒/20次/seed0。它们均为 `draft`；已记入三个实测R镜像ID/上下文，模型参数落实、正式资源与其他验收仍未冻结。以下校验应以退出码2拒绝启动；[守卫记录](logs/run-plan-local-draft-003/validation.json)保留具体缺项及此前草稿链：
+已保存 [15会话运行草稿](freezes/research-run-plan-local-draft-004.json)及 [T1](freezes/heat-local-draft-004.json)、[T2](freezes/ode-local-draft-004.json)、[T3](freezes/poisson-local-draft-004.json) 任务草稿。清单沿用最初checkpoint的独立顺序熵，先覆盖九格，再补T1两轮，所有会话固定1800秒/20次/seed0。它们均为 `draft`；已记入三个实测R镜像ID/上下文、完整系统提示/工具JSON、可信代理参数与当前完整代码哈希；供应商精确模型修订、正式资源与任务验收仍未冻结。以下校验应以退出码2拒绝启动；[守卫记录](logs/run-plan-local-draft-004/validation.json)保留具体缺项及此前草稿链：
 
 ```sh
-.venv/bin/python -m runner.run_plan validate --plan freezes/research-run-plan-local-draft-003.json
+.venv/bin/python -m runner.run_plan validate --plan freezes/research-run-plan-local-draft-004.json
 ```
 
 ## 环境
@@ -121,10 +124,10 @@ sed '/^harbor[ @=]/d' freezes/host-requirements.lock | .venv/bin/python -m pip i
 ## 仍需完成
 
 1. 满足并实测正式R的4 vCPU/4 GiB预算；用户同意本机继续开发不代表降低正式预算。当前没有修改已有服务或Colima资源。
-2. 真实pilot001已执行 `bench evaluate`、按fallback选定候选，并通过独立Harbor verifier/W/J；仍需真实模型显式 `bench finalize`、完整Harbor SingleStepTrial及当前修订controller的全流程验证，同时证明实际模型参数和限网配置落实。
+2. 完整Harbor SingleStepTrial、模型代理pilot、正式三任务三组入口、分阶段评分及结果汇总已实现并经过测试；正式环境中的实际矩阵执行仍未验收。
 3. 冻结模型、提示、镜像、数据、评分、顺序和预算后，完成至少3任务×3组各一次，主目标15会话；失败attempt全部保留。
 4. 对每次研究的first/final在同一final-test上按规定清洁重放；heat/ode各三次，T3采用内含三次的B,C,C,B,B,C。隐藏成绩不得回流研究。
 5. 在独占且可用资源环境完成T3三组校准，冻结profile并测正式性能；S3不与S1/S2直接平均。
-6. 在独立主机与依赖环境重跑三任务参考和至少一个真实候选，保留精确版本、全日志和成本；已通过的Git archive重放仍使用同一宿主和数值镜像。
+6. 在新依赖环境重跑三任务参考和至少一个真实候选，保留精确版本、全日志和成本；原Git archive重放仍复用宿主依赖。第二台物理主机不是计划的额外硬门槛，但同宿主复现的范围必须注明。
 
 [调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [结果](docs/results.md) · [局限](docs/limitations.md)

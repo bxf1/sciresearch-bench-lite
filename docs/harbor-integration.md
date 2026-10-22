@@ -2,9 +2,11 @@
 
 The user authorized continuing local functional work. Formal resource budgets
 remain unchanged, and completed formal guidance cells/sessions are still 0/0.
-The evidence currently consists of a real model/source/W/J pilot, network probe
-005, and a nine-check real R-to-W file-bridge probe. They are separate bounded
-tests; the complete model-driven research lifecycle still needs its own result.
+The latest [full native Harbor Trial](native-relay-pilot.md) completed with a
+bounded model relay, nine successful upstream requests, an explicit finalized
+candidate and three independent W/J replays. It is a local functional pilot;
+formal resources and the three-condition study matrix remain pending. Earlier
+separate bounded tests below are retained with their original scope.
 The first real research-loop pilot has now returned with one registered valid
 candidate but no explicit finalize; its `deadline_fallback` result is retained
 as `pilot_returned_without_required_registration`, not marked successful.
@@ -124,7 +126,10 @@ and ignored temperature in that mode; its Anthropic API supports `thinking`
 but ignores `budget_tokens`, while supporting `max_tokens` ([thinking controls](https://api-docs.deepseek.com/guides/thinking_mode/), [API compatibility](https://api-docs.deepseek.com/guides/anthropic_api/)).
 Default activation due to the omitted field is an inference, not a captured
 wire-payload observation; effective thinking, sampling and aggregate output-cap
-enforcement remain unresolved and must not be frozen as successfully applied.
+enforcement were unresolved for that old attempt. The new relay pilot explicitly
+enforces those fields and aggregate limits, retains the actual request-body
+hashes and rejects incompatible streamed responses; see [new evidence](native-relay-pilot.md).
+This does not retroactively change pilot001 or make formal resources ready.
 
 Pi setup runs an npm install each time. Pinning its version prevents a moving
 `latest`; preinstalling it alone does not skip Harbor's setup code. Trusted

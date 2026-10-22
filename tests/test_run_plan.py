@@ -18,6 +18,7 @@ from harbor.models.task.config import TaskConfig
 from authoring.package_tasks import INPUTS
 from runner import phase, run_plan
 from runner.common import TASKS, VERSION, canonical, digest, file_hash, read_json, write_json
+from runner.model_relay import encoded
 
 
 class RunPlanTests(unittest.TestCase):
@@ -56,8 +57,17 @@ class RunPlanTests(unittest.TestCase):
                               version_resolution={"status": "verified", "evidence": self.ref(evidence)},
                               enforcement={key: {"status": "verified", "evidence": self.ref(evidence)}
                                            for key in run_plan.PARAMETERS})
-        plan["system_prompt"] = self.ref(evidence)
-        plan["tool_config"].update(runtime_tools=["read", "write", "edit", "bash"], runtime_enforcement=self.ref(evidence))
+        system = self.project / "system.json"
+        inventory = self.project / "tools.json"
+        policy = self.project / "policy.json"
+        names = ["read", "write", "edit", "bash"]
+        write_json(system, [{"type": "text", "text": "Synthetic unit-test system prompt"}])
+        write_json(inventory, [{"name": name, "input_schema": {"type": "object"}} for name in names])
+        write_json(policy, {"status": "verified", "wire_system_sha256": digest(encoded(read_json(system))),
+                            "wire_tools_sha256": digest(encoded(read_json(inventory))),
+                            "tools": self.ref(inventory), "runtime_tools": names})
+        plan["system_prompt"] = self.ref(system)
+        plan["tool_config"].update(runtime_tools=names, runtime_enforcement=self.ref(policy))
         plan["tool_config_sha256"] = digest(canonical(plan["tool_config"]))
         for task in TASKS:
             context = {name.removeprefix("environment/"): sha for name, sha in plan["tasks"][task]["package_files"].items()
@@ -75,7 +85,7 @@ class RunPlanTests(unittest.TestCase):
                                                  "runner/common.py", "runner/artifact_gate.py", "runner/phase.py")}
             research = {key: plan["model"][key] for key in ("model_id", "model_version", "pi_version", "harbor_commit",
                                                             "temperature", "output_token_limit")}
-            research.update(reasoning_configuration=plan["model"]["thinking"], system_prompt_sha256=file_hash(evidence),
+            research.update(reasoning_configuration=plan["model"]["thinking"], system_prompt_sha256=file_hash(system),
                             tool_config_sha256=plan["tool_config_sha256"], run_matrix_sha256=plan["run_matrix_sha256"],
                             prompt_hashes=plan["tasks"][task]["prompt_hashes"],
                             model_version_resolution=plan["model"]["version_resolution"],
@@ -180,6 +190,37 @@ class RunPlanTests(unittest.TestCase):
             change(changed)
             self.blocked(changed, "heat research image")
 
+    def test_retained_wire_policy_cannot_be_placeholder_or_mismatched_hash(self):
+        plan = self.fixture()
+        path = self.project / "policy.json"
+        policy = read_json(path)
+        policy["wire_system_sha256"] = "0" * 64
+        write_json(path, policy)
+        plan["tool_config"]["runtime_enforcement"] = self.ref(path)
+        plan["tool_config_sha256"] = digest(canonical(plan["tool_config"]))
+        self.blocked(plan, "wire system/tools hash")
+        plan = self.fixture()
+        plan["system_prompt"] = self.ref(self.project / "evidence.txt")
+        self.blocked(plan, "tool configuration")
+
+    def test_wire_tool_schema_and_inventory_are_bound(self):
+        plan = self.fixture()
+        path = self.project / "tools.json"
+        tools = read_json(path)
+        tools[0]["input_schema"] = {"type": "string"}
+        write_json(path, tools)
+        policy_path = self.project / "policy.json"
+        policy = read_json(policy_path)
+        policy["tools"] = self.ref(path)
+        write_json(policy_path, policy)
+        plan["tool_config"]["runtime_enforcement"] = self.ref(policy_path)
+        plan["tool_config_sha256"] = digest(canonical(plan["tool_config"]))
+        self.blocked(plan, "wire system/tools hash")
+        plan = self.fixture()
+        plan["tool_config"]["runtime_tools"].append("undeclared-tool")
+        plan["tool_config_sha256"] = digest(canonical(plan["tool_config"]))
+        self.blocked(plan, "wire tool inventory")
+
     def test_missing_or_mismatched_acceptance_evidence_blocks(self):
         plan = self.fixture()
         plan["acceptance_evidence"]["heat"]["resources"] = None
@@ -244,6 +285,14 @@ class RunPlanTests(unittest.TestCase):
                 self.assertEqual(self.draft["tasks"][task]["combined_prompt_hashes"][group], digest(combined))
         self.assertIsNone(self.draft["system_prompt"])
         self.assertEqual(self.draft["freezes"], {task: None for task in TASKS})
+
+    def test_new_trusted_source_and_baseline_changes_require_refreeze(self):
+        plan = self.fixture()
+        (self.project / "runner/new_helper.py").write_text("# newly introduced trusted code\n")
+        self.blocked(plan, "trusted tooling files changed")
+        (self.project / "runner/new_helper.py").unlink()
+        (self.project / "baselines/poisson/solve.py").write_text("# changed comparator\n")
+        self.blocked(plan, "trusted tooling files changed")
 
 
 class PublicTaskPackageTests(unittest.TestCase):

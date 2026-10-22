@@ -11,3 +11,4 @@ logs/
 results/
 build/
 *.env
+research-runs/

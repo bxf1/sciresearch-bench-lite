@@ -1,12 +1,12 @@
 # 本机实施与校准结果
 
-报告生成时间：2026-10-22T09:22:38.718108+08:00。状态以该次读取的原始证据为准。
+报告生成时间：2026-10-22T12:07:24.791522+08:00。状态以该次读取的原始证据为准。
 
 当前证据支持三任务生成/QC、作者基线和 W/J 本机功能；正式三组研究及 final-test 成绩尚未完成。所有表格保留失败，不把实例数量当作研究会话数量。
 
 ## 作者校准
 
-来源：[原始完整结果](../results/calibration-local-001/summary.json)。每种方法只跑一次 author-calibration 批次，每批12例、每档4例；下表给出全部方法和分母。校准数值可解性不能替代未见测试或正式资源验收。
+来源：[原始完整结果](../results/calibration-local-002/summary.json)。每种方法只跑一次 author-calibration 批次，每批12例、每档4例；下表给出全部方法和分母。校准数值可解性不能替代未见测试或正式资源验收。
 
 | 任务 | 方法 | 通过数 | 连续分 |
 |---|---|---:|---:|
@@ -26,7 +26,7 @@
 
 固定 Tikhonov 的最大初场/前向误差为 0.055578/0.0039155。固定 SG/STLSQ 的最大 rollout/field 误差为 0.015645/0.020877。LU 的最大残差/解误差为 3.2114e-16/1.0913e-12。完整逐例误差、K、状态及失败ID见导出表和原始JSON。
 
-T3 三种方法数值均通过；这里没有冻结性能 profile，也没有执行要求的三组独占 B,C,C,B,B,C 校准。日志中的执行墙钟含 Docker exec 开销且运行于共享宿主，正式 S3、speedup 门槛和任务 reward 保持 null。不要据单次墙钟比值发布加速结论。
+T3 三种方法数值均通过；正式性能 profile 尚未冻结。本机新版可信计时、公开dev完整BCCBBC和三组校准诊断详见[计时说明](timing.md)，共享宿主诊断不满足独占验收。各批次计时范围以对应源码和原始日志为准；正式S3、speedup门槛和任务reward保持null。
 
 可机读表：[132个方法×实例记录](../results/cases/calibration.csv)、[11个批次记录](../results/runs/calibration.csv)、[方法汇总及失败ID](../results/comparisons/calibration-summary.json)。CSV 中未知值为字面量 `null`；成本未估算。
 
@@ -34,7 +34,7 @@ T3 三种方法数值均通过；这里没有冻结性能 profile，也没有执
 
 当前生成 90 例，90 例通过预声明 GT QC。每任务为6 dev、12 calibration、12 final；36个 final 实例仅做生成与GT检查，未读取求解成绩。
 
-[同熵重建证据](../freezes/data-reproduction-local.json)记录同一固定Linux镜像重建90例，369个公开输入文件逐字节一致。生成器期间补充了来源快照和重复审计，但没有改变数据公式或随机流；重建来源保存在 `authoring/data/v0.3-local-reproduced/private/generator-code/`。这不是第二台独立机器上的重跑。
+[同熵重建证据](../freezes/data-reproduction-local.json)记录同一固定Linux镜像重建90例，369个公开输入文件逐字节一致。生成器期间补充了来源快照和重复审计，但没有改变数据公式或随机流；重建来源保存在 `authoring/data/v0.3-local-reproduced/private/generator-code/`。
 
 T3 共有21个独立算子：10个易档实例共用固定 A、RHS 独立，20个中/难档 A 不同。T1易档全保留mask、固定网格、T2固定时间/初值以及T3逐档metadata是设计常量，不能冒充独立随机矩阵。
 
@@ -66,6 +66,8 @@ W运行时第一轮11项通过10项，发现日志洪泛误分类；原失败保
 
 文件桥001的9项检查包含：6例公开输入逐文件匹配，研究用户不能改写helper/反馈，路径逃逸被拒绝且消耗额度，已登记快照在独立W执行，反馈无隐藏指标，R事后改写不影响快照，finalize与first/final保留。这里没有模型调用；真实Pi研究循环须由其自己的完整结果验收。
 
+与本报告生成时worker源码哈希一致的回归：[runtime-probes-005](../logs/runtime-probes-005/summary.json) 11/11。这些回归只覆盖各自列出的探针，旧轮的覆盖范围仍按旧源码版本报告。
+
 模型研究循环pilot的当前记录如下；未结束或失败均不计成功，所有运行都不是正式研究格：
 
 | 运行 | 当前记录状态 | 已登记评估 / 最终选择 | 预算秒/评估上限 |
@@ -90,7 +92,7 @@ pilot001在12轮上限后结束，未达到600秒墙钟截止；原日志的 `de
 
 ## 干净源码重放与交付
 
-从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；这不是第二台机器或独立依赖环境验收，也没有新增模型调用。
+从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；依赖环境是否重装按各次证据和新依赖环境记录分别报告。没有新增模型调用。
 
 | 方法/候选 | 通过数 | score | reward |
 |---|---:|---:|---:|
@@ -103,16 +105,20 @@ pilot001在12轮上限后结束，未达到600秒墙钟截止；原日志的 `de
 
 导出[重放批次表](../results/runs/clean-replays.csv)和[12个逐例记录](../results/cases/clean-replays.csv)。原始运行证据保留，GT数组没有复制进交付日志。
 
-首版源码和证据已实际推送到私有仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)；远端核验提交为 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc`。核验记录：[github-repository-local-001.json](../logs/github-repository-local-001.json)、[github-remote-head-local-001.txt](../logs/github-remote-head-local-001.txt)。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。
+首版源码和证据已实际推送到私有仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)；远端核验提交为 `2af15fa2d233e62aa952d25f3799cfb02f617c54`。核验记录：[github-repository-local-001.json](../logs/github-repository-local-001.json)、[github-remote-head-local-002.txt](../logs/github-remote-head-local-002.txt)。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。
 
-最新保存的[完整单测日志](../logs/unit-tests-final-local-002.txt)为184 passed，用时10.26秒；测试数量随代码变化，以对应日志和源码版本为准。
+最新保存的[完整单测日志](../logs/unit-tests-final-local-004.txt)为328 passed，用时780.68秒；测试数量随代码变化，以对应日志和源码版本为准。
 
-[归档源码单测](../logs/clean-replay-local-001/archived-unit-tests.txt)同样为184 passed，用时10.39秒；它复用了本机宿主依赖，未声明独立环境验收。
+[归档源码单测](../logs/clean-replay-local-001/archived-unit-tests.txt)同样为184 passed，用时10.39秒；其依赖来源以对应重放记录为准，不代表第二台物理机器验收。
 
-[本机交付记录](../freezes/local-delivery-001.json)绑定首提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。
+[本机交付记录](../freezes/local-delivery-001.json)绑定其对应提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。
+
+真实模型的显式finalize和完整Harbor SingleStepTrial生命周期已由本机native pilot验证：[harbor-native-pilot-001](../logs/harbor-native-pilot-001/result.json)、[harbor-native-pilot-002](../logs/harbor-native-pilot-002/result.json)。这些记录仅使用public-dev研究与pilot-smoke重放，formal=false，不计入正式三组实验。
+
+[新依赖环境记录](../logs/dependency-rebuild-local-001/result.json)的安装阶段状态为 `fresh_dependency_environment_installed`，新环境重放状态为 `pending`。旧site-packages复用标记为 `false`；安装完成不等于重放已完成。
 
 自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。
 
 ## 未完成的验收
 
-正式资源、真实模型显式finalize与完整Harbor SingleStepTrial、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立主机与依赖环境复现仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。
+正式资源、固定模型参数/系统提示/有效工具配置及三任务freeze、至少9格（主目标15会话）的正式三组实验、first/final隐藏重放、T3性能profile与独占计时仍未完成。新依赖环境复现以其单独记录的重放状态为准。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。
