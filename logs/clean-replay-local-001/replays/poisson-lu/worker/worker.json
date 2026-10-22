@@ -1,0 +1,41 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "d35e75e301a0e2d0a24c",
+      "sha256": "3b298e5f982db74d4b1f0302c4b4870e180677ad1bd2a18d476e06c429f47d5e"
+    },
+    {
+      "artifact_valid": true,
+      "id": "f330f48f690806c52797",
+      "sha256": "a6184a19605ef3173f41abb10aae39fe9b7189b82d4c7062291a2cc365bd5bc3"
+    },
+    {
+      "artifact_valid": true,
+      "id": "c5d3ddf4baf85d6ac260",
+      "sha256": "8ee1f3d85a62186085ea0b6faa00c4a1716085f20956f4fba0ecd62962c92d98"
+    }
+  ],
+  "container_name": "sciresearch-w-72dceca634e4",
+  "cpu_seconds": 0.501907,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.5173804997466505,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "log_bytes_observed": 0,
+  "memory_peak_bytes": 58470400,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.6888855420984328,
+  "research_timeout_seconds": null,
+  "scientific_pass": false,
+  "timeout_seconds": 60,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.0947664170525968
+}

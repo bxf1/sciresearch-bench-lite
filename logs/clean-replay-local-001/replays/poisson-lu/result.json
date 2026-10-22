@@ -1,0 +1,130 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_res": [
+        2.175078082745628e-16,
+        2.38678242732285e-16,
+        2.0309779911208793e-16,
+        2.209958820376986e-16
+      ],
+      "E_sol": [
+        9.936398552674208e-16,
+        1.3931928534301316e-15,
+        1.2542475220649082e-15,
+        9.699617986436562e-16
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "d35e75e301a0e2d0a24c",
+      "level": 0,
+      "max_relative_residual": 2.38678242732285e-16,
+      "max_solution_error": 1.3931928534301316e-15,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        2.770362254389184e-16,
+        2.6494682709124445e-16,
+        2.6515006477771933e-16,
+        2.563769774124905e-16
+      ],
+      "E_sol": [
+        3.762242804330031e-14,
+        3.579473474086343e-14,
+        2.7687525466021922e-14,
+        1.5406103181256626e-14
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "f330f48f690806c52797",
+      "level": 1,
+      "max_relative_residual": 2.770362254389184e-16,
+      "max_solution_error": 3.762242804330031e-14,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        2.8467358325076557e-16,
+        2.9820335139223757e-16,
+        2.827552460104279e-16,
+        2.7663361817883208e-16
+      ],
+      "E_sol": [
+        1.5270933570071623e-13,
+        9.608985151497592e-13,
+        2.384791362920943e-13,
+        4.2403165132723063e-13
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "c5d3ddf4baf85d6ac260",
+      "level": 2,
+      "max_relative_residual": 2.9820335139223757e-16,
+      "max_solution_error": 9.608985151497592e-13,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_wall_seconds": 0.6696325829252601,
+  "passed": 3,
+  "performance_status": "not_measured",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": null,
+  "scientific_pass": true,
+  "score": null,
+  "total": 3,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "candidate_processes_terminated": true,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "d35e75e301a0e2d0a24c",
+        "sha256": "3b298e5f982db74d4b1f0302c4b4870e180677ad1bd2a18d476e06c429f47d5e"
+      },
+      {
+        "artifact_valid": true,
+        "id": "f330f48f690806c52797",
+        "sha256": "a6184a19605ef3173f41abb10aae39fe9b7189b82d4c7062291a2cc365bd5bc3"
+      },
+      {
+        "artifact_valid": true,
+        "id": "c5d3ddf4baf85d6ac260",
+        "sha256": "8ee1f3d85a62186085ea0b6faa00c4a1716085f20956f4fba0ecd62962c92d98"
+      }
+    ],
+    "container_name": "sciresearch-w-72dceca634e4",
+    "cpu_seconds": 0.501907,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 0.5173804997466505,
+    "exit_code": 0,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "log_bytes_observed": 0,
+    "memory_peak_bytes": 58470400,
+    "oom_killed": false,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 0.6888855420984328,
+    "research_timeout_seconds": null,
+    "scientific_pass": false,
+    "timeout_seconds": 60,
+    "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+    "total_wall_seconds": 1.0947664170525968
+  }
+}

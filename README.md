@@ -2,7 +2,7 @@
 
 三条合成科学计算任务：热方程逆恢复、二维多项式动力学辨识、稀疏 SPD 系统求解优化。实现依据 [执行契约的只读副本](docs/execution-plan-v0.3.md)，原设计和三个参考仓库未被本实现改写。副本中的相对证据链接沿用原 `design/` 树与本地参考仓库布局，保留其来源，不保证在独立GitHub仓库中可打开。
 
-**当前完成的是本机实现、校准、隔离功能探针与真实模型到独立评分的pilot链路，正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。完整结果见 [结果报告](docs/results.md)。
+**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码重放已完成，源码和证据已推送私有GitHub仓库；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-001.json)。
 
 ## 当前验收状态
 
@@ -11,6 +11,8 @@
 | 三任务生成与独立QC | 90/90；各任务6 dev、12 calibration、12 final | `authoring/data/v0.3-local/private/`、[动态汇总](results/stage-status.json) |
 | 同熵数据重建 | 同Linux镜像，369个公开输入文件逐字节一致 | [重建记录](freezes/data-reproduction-local.json) |
 | 作者基线 | 11方法、132个方法×实例记录；保留弱基线失败 | [原始校准](results/calibration-local-001/summary.json)、[CSV](results/cases/calibration.csv) |
+| 干净源码重放 | 首提交Git archive、新W/J、同一宿主；三任务参考和真实heat候选分别3/3数值通过，T3分数null | [重放记录](logs/clean-replay-local-001/result.json) |
+| 保存的单测结果 | 工作源码184通过；归档源码184通过，仍使用本机依赖 | [工作源码](logs/unit-tests-final-local-002.txt)、[归档源码](logs/clean-replay-local-001/archived-unit-tests.txt) |
 | W隔离与资源 | 原两轮覆盖路径/链接/伪造奖励/日志/配额/PID等；新版截止时间逻辑另留4项回归 | [各版边界](docs/protocol.md)、[新版回归004](logs/runtime-probes-004/summary.json) |
 | 真实模型与独立评分 | 零解pilot为0分；研究pilot001按fallback选出的候选，经真实Harbor hook/W/J三次各3/3、87.693分，无迭代 | [零解W/J](logs/pilot-model-registry-wj-001/result.json)、[研究pilot](logs/research-loop-pilot-001/result.json)、[独立评分003](logs/research-loop-pilot-001-wj-replay-003/result.json) |
 | R限网 | 非root/ALL-drop配置005通过所测URL、socket与宿主边界检查；未运行Pi | [网络005](logs/research-network-probe-005/result.json)、[全部attempt](docs/harbor-integration.md) |
@@ -19,17 +21,19 @@
 | 正式资源与完整模型研究循环 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
 | 三任务×三组研究 | **0个正式格**；最低9格，主计划15会话 | [未完成事项](#仍需完成) |
 | 隐藏重放与正式性能 | **未完成**；不把校准或pilot记成final | [局限](docs/limitations.md) |
-| 个人GitHub发布 | **已创建空私有仓库，源码尚待push**；`created_empty_until_push` | [bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite) |
+| 个人GitHub发布 | **源码与证据已实际push到私有仓库**；首提交 `af5a19d` 已由远端HEAD核验 | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-001.txt)、[PRIVATE元数据](logs/github-repository-local-001.json) |
 
 ## 文件与执行边界
 
 `authoring/` 为作者生成器和私有GT，`baselines/` 为11个只读公共输入的方法，`public/` 为公开诊断与所有组共享的T3 Jacobi-CG比较器，`judge/` 为独立数值评分，`runner/` 为登记/源码快照/W/J/Harbor桥，`prompts/<task>/` 保存共同契约和三组指导。`tasks/` 是三个可由真实Harbor TaskConfig解析的准备包，各仅含6例公开dev、公共helper/checker及格式工具；默认 `tests/test.sh` 故意失败，防止未经可信verifier生成reward。私有材料不能作为R或W镜像上下文。
 
+仓库包含源码、公共任务包、日志与结果；`authoring/data/` 的私有生成数据和GT数组未提交。新clone可按下方生成命令准备数据，原90例的根熵与GT仍留在作者本机。公开生成器/GT后不能声称永久保密或无训练污染。
+
 候选入口为 `python solve.py --input /input --output /output --seed 0`。输出必须是规定的数值文件。可信评估在独立W执行已登记快照；R可自行做公开实验，J不执行或import提交代码。任务和格式见 [任务卡](docs/task_cards.md)，具体安全边界见 [协议](docs/protocol.md)。
 
 ## 运行已有实现
 
-以下命令在本目录 `benchmark/` 执行，使用独立 `.venv`；现有目录不会被生成/校准命令覆盖。重新运行时选择新的输出目录。
+以下命令在仓库根目录（当前本地 `benchmark/`）执行，使用独立 `.venv`；现有目录不会被生成/校准命令覆盖。重新运行时选择新的输出目录。
 
 ```sh
 export PYTHONPATH=.
@@ -121,7 +125,6 @@ sed '/^harbor[ @=]/d' freezes/host-requirements.lock | .venv/bin/python -m pip i
 3. 冻结模型、提示、镜像、数据、评分、顺序和预算后，完成至少3任务×3组各一次，主目标15会话；失败attempt全部保留。
 4. 对每次研究的first/final在同一final-test上按规定清洁重放；heat/ode各三次，T3采用内含三次的B,C,C,B,B,C。隐藏成绩不得回流研究。
 5. 在独占且可用资源环境完成T3三组校准，冻结profile并测正式性能；S3不与S1/S2直接平均。
-6. 干净独立环境重跑三任务参考和至少一个真实候选，保留精确版本、全日志和成本。
-7. 将核查后的发布包实际推送到已创建的私有GitHub仓库，并验证远端commit；当前空仓库不算源码交付。发布GT后不再声称永久保密或无训练污染。
+6. 在独立主机与依赖环境重跑三任务参考和至少一个真实候选，保留精确版本、全日志和成本；已通过的Git archive重放仍使用同一宿主和数值镜像。
 
 [调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [结果](docs/results.md) · [局限](docs/limitations.md)

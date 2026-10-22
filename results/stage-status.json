@@ -3,7 +3,164 @@
   "calibration_methods": 11,
   "calibration_source": "results/calibration-local-001/summary.json",
   "calibration_source_sha256": "b11b579b81e720f5b1e99297c6b62eac63e5f23d064fe09b14f82ea7dd49c6f1",
+  "clean_replay": {
+    "attempts": [
+      {
+        "archive_sha256": "094f34f3c0358753e0a89de57145ee1783f6e4e755496eb3a25f65c06a38384d",
+        "evidence": "logs/clean-replay-local-001/result.json",
+        "evidence_sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e",
+        "formal": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "model_source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+        "run_id": "clean-replay-local-001",
+        "scope": "fresh Git archive and fresh containers on the same host",
+        "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+        "status": "completed"
+      }
+    ],
+    "case_rows": 12,
+    "runs": [
+      {
+        "archive_sha256": "094f34f3c0358753e0a89de57145ee1783f6e4e755496eb3a25f65c06a38384d",
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "evaluation_status": "valid",
+        "evidence": "logs/clean-replay-local-001/result.json",
+        "evidence_sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e",
+        "formal": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "method": "tikhonov",
+        "model_source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+        "passed": 3,
+        "performance_status": "not_applicable",
+        "repeat": 1,
+        "reward": 1,
+        "run_id": "clean-replay-local-001",
+        "scientific_pass": true,
+        "scope": "fresh Git archive and fresh containers on the same host",
+        "score": 87.69277970613761,
+        "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+        "split": "pilot-smoke",
+        "status": "completed",
+        "task": "heat",
+        "total": 3
+      },
+      {
+        "archive_sha256": "094f34f3c0358753e0a89de57145ee1783f6e4e755496eb3a25f65c06a38384d",
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "evaluation_status": "valid",
+        "evidence": "logs/clean-replay-local-001/result.json",
+        "evidence_sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e",
+        "formal": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "method": "fixed",
+        "model_source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+        "passed": 3,
+        "performance_status": "not_applicable",
+        "repeat": 1,
+        "reward": 1,
+        "run_id": "clean-replay-local-001",
+        "scientific_pass": true,
+        "scope": "fresh Git archive and fresh containers on the same host",
+        "score": 97.14755312766924,
+        "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+        "split": "pilot-smoke",
+        "status": "completed",
+        "task": "ode",
+        "total": 3
+      },
+      {
+        "archive_sha256": "094f34f3c0358753e0a89de57145ee1783f6e4e755496eb3a25f65c06a38384d",
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "evaluation_status": "valid",
+        "evidence": "logs/clean-replay-local-001/result.json",
+        "evidence_sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e",
+        "formal": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "method": "lu",
+        "model_source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+        "passed": 3,
+        "performance_status": "not_measured",
+        "repeat": 1,
+        "reward": null,
+        "run_id": "clean-replay-local-001",
+        "scientific_pass": true,
+        "scope": "fresh Git archive and fresh containers on the same host",
+        "score": null,
+        "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+        "split": "pilot-smoke",
+        "status": "completed",
+        "task": "poisson",
+        "total": 3
+      },
+      {
+        "archive_sha256": "094f34f3c0358753e0a89de57145ee1783f6e4e755496eb3a25f65c06a38384d",
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "evaluation_status": "valid",
+        "evidence": "logs/clean-replay-local-001/result.json",
+        "evidence_sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e",
+        "formal": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "method": "model",
+        "model_source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+        "passed": 3,
+        "performance_status": "not_applicable",
+        "repeat": 1,
+        "reward": 1,
+        "run_id": "clean-replay-local-001",
+        "scientific_pass": true,
+        "scope": "fresh Git archive and fresh containers on the same host",
+        "score": 87.69277970613776,
+        "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+        "split": "pilot-smoke",
+        "status": "completed",
+        "task": "heat",
+        "total": 3
+      }
+    ]
+  },
   "current_worker_source_sha256": "3e569ee688d64bfc427570b8513a144fdd5e0d93b08a08b34f9a98e4b175f98f",
+  "delivery": {
+    "archived_source_unit_tests": [
+      {
+        "evidence": "logs/clean-replay-local-001/archived-unit-tests.txt",
+        "evidence_sha256": "a86cd9ddcfc67bf5ce42fff47f17d6788f7a2f837128bff96cb21130ae6473a5",
+        "passed": 184,
+        "seconds": 10.39
+      }
+    ],
+    "latest_saved_unit_tests": {
+      "evidence": "logs/unit-tests-final-local-002.txt",
+      "evidence_sha256": "b00717f1e00ece33f066ac1e8225df2bed9b288ca18ea62f4d7e43194c0437f8",
+      "passed": 184,
+      "seconds": 10.26
+    },
+    "local_delivery_receipt": {
+      "path": "freezes/local-delivery-001.json",
+      "sha256": "0364f0bf5e0c7f2b282ad359eafe1fab0bfea9192ccfb1ae9d5b396561f15e2f"
+    },
+    "publication": {
+      "evidence": [
+        {
+          "path": "logs/github-repository-local-001.json",
+          "sha256": "2a56db631fb331f358c10c885853cca6d40e2be89e59f55f20afda1054c747ca"
+        },
+        {
+          "path": "logs/github-remote-head-local-001.txt",
+          "sha256": "a9de52fe061ba3a3bdd68c1150e262e2562f4d198963775027208cce749edbc8"
+        }
+      ],
+      "private": true,
+      "ref": "refs/heads/main",
+      "repository": "bxf1/sciresearch-bench-lite",
+      "status": "pushed_verified",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite",
+      "verified_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc"
+    }
+  },
   "engineering_probes": {
     "file_bridge": [
       {
@@ -113,7 +270,7 @@
   "formal_guidance_cells_completed": 0,
   "formal_research_sessions_completed": 0,
   "formal_resources_accepted": false,
-  "generated_at": "2026-10-22T09:15:02.338620+08:00",
+  "generated_at": "2026-10-22T09:22:38.718108+08:00",
   "generation": {
     "case_count": 90,
     "dataset": "v0.3-local",
@@ -709,6 +866,7 @@
     "logs/run-plan-local-draft-002/tests.stdout.txt",
     "logs/run-plan-review-002/tests.stdout.txt",
     "logs/unit-tests-20261022-01.txt",
-    "logs/unit-tests-final-local-001.txt"
+    "logs/unit-tests-final-local-001.txt",
+    "logs/unit-tests-final-local-002.txt"
   ]
 }

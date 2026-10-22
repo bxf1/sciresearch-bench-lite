@@ -1,0 +1,8 @@
+{
+  "action": "read_only_no_resource_modification",
+  "other_container_count": 17,
+  "other_running_container_count": 8,
+  "own_named_containers": [],
+  "passed": true,
+  "scope": "Container census; bench-/sciresearch- prefixes plus prior exact-session cleanup evidence"
+}

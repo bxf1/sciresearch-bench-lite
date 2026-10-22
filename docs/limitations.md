@@ -1,6 +1,6 @@
 # 当前局限与未完成验收
 
-本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot。**正式三组研究、final-test重放、性能冻结、独立环境复现和GitHub交付仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。
+本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码重放已通过，源码和证据已推送私有GitHub仓库。**正式三组研究、final-test重放、性能冻结、完整Harbor Trial和独立主机/依赖环境复现仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。
 
 ## 研究与因果解释
 
@@ -32,4 +32,6 @@ W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配�
 
 同熵重建已经在同固定Linux镜像复现90例、369个公开文件；它仍是同一宿主，不能替代独立干净环境重跑。Harbor/Pi pilot记录请求的 `deepseek-v4-pro`，没有独立的供应商服务端模型修订证明。正式清单因此保留待验证字段：确实不支持temperature或不公开模型版本时可用有原因、证据哈希的明确null，不能编造版本，也不能把普通未决null作为已冻结。系统提示、实际工具清单、输出token总上限与执行机制仍需完整记录。定价未核实，金额为null，不假定免费。
 
-私有GitHub仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)已创建，源码尚未push，状态为 `created_empty_until_push`；空仓库不算可复现源码交付。宿主依赖须按README固定Harbor commit安装；版本号本身不能代替源码身份。执行计划的仓库内副本保留原相对证据链接，这些链接依赖原design/参考仓库目录，未承诺在独立clone中全部可打开。公开生成器/GT以后，这套机制仅保证运行时访问隔离，不能保证永久保密或不存在训练污染。
+[干净源码重放](../logs/clean-replay-local-001/result.json)使用首提交 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc` 的Git archive展开新目录，并启动新的W/J容器；三任务参考和真实heat候选各3/3通过，T3 score/reward仍为null。工作源码和归档源码的保存日志均为184项通过。但它仍复用本机宿主依赖、同一Docker daemon和固定数值镜像，只支持fresh-source/fresh-container复现结论，不能冒充第二台干净机器、完整依赖重装或新增模型研究。
+
+源码及证据已推送私有GitHub仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)，[远端HEAD](../logs/github-remote-head-local-001.txt)核验了上述首提交，[仓库元数据](../logs/github-repository-local-001.json)确认PRIVATE。[本机交付记录](../freezes/local-delivery-001.json)保留提交与测试/重放哈希；私有生成数据和GT数组未提交。宿主依赖须按README固定Harbor commit安装，版本号本身不能代替源码身份。执行计划副本保留原design/参考仓库布局的相对链接，未承诺在独立clone中全部可打开。公开生成器/GT以后，这套机制仅保证运行时访问隔离，不能保证永久保密或不存在训练污染。

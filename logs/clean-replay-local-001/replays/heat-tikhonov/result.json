@@ -1,0 +1,91 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_forward": 0.0009350780985818299,
+      "E_init": 0.025878406135080318,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 92.78739899778465
+    },
+    {
+      "E_forward": 0.0011929678279956027,
+      "E_init": 0.08221757369248033,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 77.67765773934005
+    },
+    {
+      "E_forward": 0.0021171182877139025,
+      "E_init": 0.025053793210527017,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 92.61328238128816
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_wall_seconds": 0.7602518750354648,
+  "passed": 3,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 87.69277970613761,
+  "total": 3,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "candidate_processes_terminated": true,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "0e3ae8ab05af690cde9d",
+        "sha256": "e4654ff614657025f2e2161dd7272972ac3eb902d1ae0fb7cc16dda90e673ed0"
+      },
+      {
+        "artifact_valid": true,
+        "id": "bb4cf34c6e28fd43a260",
+        "sha256": "5701589c6793052baad56ac630dd107b464021ff24a1ba1493413b398f726cca"
+      },
+      {
+        "artifact_valid": true,
+        "id": "db9b3093c406087870f8",
+        "sha256": "9ecdb301880e7a97597f73162ca7102da4d05784ded823552991d65e89adb1eb"
+      }
+    ],
+    "container_name": "sciresearch-w-e13bfef5a328",
+    "cpu_seconds": 0.965067,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 1.6327147921547294,
+    "exit_code": 0,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "log_bytes_observed": 270,
+    "memory_peak_bytes": 57659392,
+    "oom_killed": false,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 1.807673332747072,
+    "research_timeout_seconds": null,
+    "scientific_pass": false,
+    "timeout_seconds": 120,
+    "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+    "total_wall_seconds": 2.514080666936934
+  }
+}

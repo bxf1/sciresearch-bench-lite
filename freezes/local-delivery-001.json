@@ -1,0 +1,57 @@
+{
+  "clean_replay": {
+    "formal": false,
+    "result": "logs/clean-replay-local-001/result.json",
+    "runs": [
+      {
+        "label": "heat-tikhonov",
+        "passed": 3,
+        "reward": 1,
+        "score": 87.69277970613761,
+        "status": "valid",
+        "total": 3
+      },
+      {
+        "label": "ode-fixed",
+        "passed": 3,
+        "reward": 1,
+        "score": 97.14755312766924,
+        "status": "valid",
+        "total": 3
+      },
+      {
+        "label": "poisson-lu",
+        "passed": 3,
+        "reward": null,
+        "score": null,
+        "status": "valid",
+        "total": 3
+      },
+      {
+        "label": "heat-model",
+        "passed": 3,
+        "reward": 1,
+        "score": 87.69277970613776,
+        "status": "valid",
+        "total": 3
+      }
+    ],
+    "same_host": true,
+    "sha256": "70088377d28124d22a3a8d23bee2216d3cb86f639377965f14eb04384f71ea5e"
+  },
+  "final_test_solutions_evaluated": false,
+  "formal_acceptance": "pending",
+  "formal_study_sessions": 0,
+  "private_data_published": false,
+  "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+  "source_commit": "af5a19dcffe1cda8d3fed570e715d97f2b954ccc",
+  "source_commit_remote_verified": true,
+  "status": "local_implementation_verified",
+  "tests": {
+    "archived_source": "logs/clean-replay-local-001/archived-unit-tests.txt",
+    "archived_source_sha256": "a86cd9ddcfc67bf5ce42fff47f17d6788f7a2f837128bff96cb21130ae6473a5",
+    "source": "logs/unit-tests-final-local-002.txt",
+    "source_sha256": "b00717f1e00ece33f066ac1e8225df2bed9b288ca18ea62f4d7e43194c0437f8"
+  },
+  "visibility": "PRIVATE"
+}

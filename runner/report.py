@@ -11,6 +11,7 @@ import csv
 import datetime
 import json
 from pathlib import Path
+import re
 
 from .common import file_hash, read_json, write_json
 
@@ -163,6 +164,72 @@ def research_replay_evidence(project, pilots):
     return runs
 
 
+def clean_replay_evidence(project):
+    attempts, runs, cases = [], [], []
+    for path in sorted((project / "logs").glob("clean-replay-local-*/result.json")):
+        value = read_json(path)
+        config = value.get("config") or {}
+        if value.get("formal") is not False or config.get("final_test_accessed") is not False:
+            raise ValueError("clean replay report requires explicitly non-final local evidence")
+        attempt = {"run_id": path.parent.name, "status": value.get("status"), "scope": value.get("scope"),
+                   "formal": False, "source_commit": config.get("source_commit"),
+                   "archive_sha256": config.get("archive_sha256"), "image": config.get("image"),
+                   "model_source_hash": config.get("model_source_hash"),
+                   "evidence": path.relative_to(project).as_posix(), "evidence_sha256": file_hash(path)}
+        attempts.append(attempt)
+        for batch in value.get("runs", []):
+            result = batch["result"]
+            if result.get("phase", {}).get("split") != "pilot-smoke" or result["phase"].get("formal") is not False:
+                raise ValueError("clean replay report refuses non-pilot case scores")
+            task, method = batch["label"].split("-", 1)
+            row = {**attempt, "task": task, "method": method, "split": "pilot-smoke", "repeat": 1,
+                   **{key: result.get(key) for key in ("attempt_status", "artifact_valid", "scientific_pass",
+                       "evaluation_status", "performance_status", "passed", "total", "score", "reward")}}
+            runs.append(row)
+            for case in result.get("cases", []):
+                cases.append({**row, "case_id": case["id"], **{key: val for key, val in case.items() if key != "id"}})
+    if runs:
+        _csv(project / "results/runs/clean-replays.csv", runs, list(runs[0]))
+    if cases:
+        _csv(project / "results/cases/clean-replays.csv", cases,
+             ["run_id", "task", "method", "split", "repeat", "case_id", "level", "formal", "artifact_valid",
+              "scientific_pass", "evaluation_status", "performance_status", "score", "E_init", "E_forward", "E_roll",
+              "E_field", "K", "E_res", "E_sol", "max_relative_residual", "max_solution_error", "source_commit",
+              "archive_sha256", "image", "evidence", "evidence_sha256"])
+    return {"attempts": attempts, "runs": runs, "case_rows": len(cases)}
+
+
+def delivery_evidence(project):
+    repository = project / "logs/github-repository-local-001.json"
+    head = project / "logs/github-remote-head-local-001.txt"
+    publication = None
+    if repository.exists() and head.exists():
+        metadata = read_json(repository)
+        commit, ref = head.read_text().strip().split()
+        if re.fullmatch(r"[0-9a-f]{40}", commit) is None or ref != "refs/heads/" + metadata["defaultBranchRef"]["name"]:
+            raise ValueError("invalid remote Git verification evidence")
+        publication = {"status": "pushed_verified", "repository": metadata["nameWithOwner"], "url": metadata["url"],
+                       "private": metadata["isPrivate"], "verified_commit": commit, "ref": ref,
+                       "evidence": [{"path": path.relative_to(project).as_posix(), "sha256": file_hash(path)}
+                                    for path in (repository, head)]}
+    tests = []
+    for path in sorted((project / "logs").glob("unit-tests-final-local-*.txt")):
+        match = re.search(r"(\d+) passed in ([0-9.]+)s", path.read_text())
+        if match:
+            tests.append({"passed": int(match[1]), "seconds": float(match[2]),
+                          "evidence": path.relative_to(project).as_posix(), "evidence_sha256": file_hash(path)})
+    archived_tests = []
+    for path in sorted((project / "logs").glob("clean-replay-local-*/archived-unit-tests.txt")):
+        match = re.search(r"(\d+) passed in ([0-9.]+)s", path.read_text())
+        if match:
+            archived_tests.append({"passed": int(match[1]), "seconds": float(match[2]),
+                                   "evidence": path.relative_to(project).as_posix(), "evidence_sha256": file_hash(path)})
+    receipt = project / "freezes/local-delivery-001.json"
+    return {"publication": publication, "latest_saved_unit_tests": tests[-1] if tests else None,
+            "archived_source_unit_tests": archived_tests,
+            "local_delivery_receipt": {"path": receipt.relative_to(project).as_posix(), "sha256": file_hash(receipt)} if receipt.exists() else None}
+
+
 def export_report(project, calibration, data):
     project, calibration, data = map(lambda p: Path(p).resolve(), (project, calibration, data))
     original_hash = file_hash(calibration)
@@ -242,6 +309,7 @@ def export_report(project, calibration, data):
              "model_pilots": model_rows, "pilot_model_wj": pilot_wj,
              "research_pilots": research_pilots,
              "research_pilot_replays": research_replays,
+             "clean_replay": clean_replay_evidence(project), "delivery": delivery_evidence(project),
              "localhost_bridge": bridge,
              "final_test_scored": False, "formal_guidance_cells_completed": 0, "formal_research_sessions_completed": 0,
              "local_execution_authorized": True, "formal_resources_accepted": False,
@@ -321,8 +389,29 @@ def write_results_document(project, comparisons, stage):
             lines += ["", "成功记录通过真实Harbor verifier hook调度独立W/J，数据仅为pilot-smoke。research-loop-pilot-001的同一candidate-001三次各3/3通过，每次score=87.69277970613776、reward=1；first与final源码相同，final复用first的三次记录，没有迭代增益。先前两次因容器检查/缺失包文件而失败，reward与score为null，属于基础设施attempt，不算候选科学失败。", "",
                       "全部attempt及parent链见[重放批次表](../results/runs/research-pilot-replays.csv)，真正执行的三个批次共9个case记录见[逐例表](../results/cases/research-pilot-replays.csv)；不重复计入复用的final。所有这些结果均非final-test，正式0格/0会话保持不变。"]
     lines += ["", "旧W探针只证明各自 `provenance.json` 所记源码。stage-status同时保存当前worker哈希和是否与各轮探针匹配；不能把旧版本通过记录直接算作后续截止时间/资源修订的回归。公开T3 Jacobi-CG比较程序已加入共同任务环境，仅用A/RHS，内部时间为诊断；正式比较仍需可信W完整计时。", ""]
-    lines += ["自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。测试数量随新增检查变化，以实际测试日志与当前运行输出为准，本报告不把旧计数固定成验收结论。", "", "## 未完成的验收", "",
-              "正式资源和完整Pi研究生命周期、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立干净环境复现、个人GitHub实际发布仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。", ""]
+    clean = stage["clean_replay"]
+    if clean["attempts"]:
+        lines += ["## 干净源码重放与交付", "", "从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；这不是第二台机器或独立依赖环境验收，也没有新增模型调用。", "",
+                  "| 方法/候选 | 通过数 | score | reward |", "|---|---:|---:|---:|"]
+        for row in clean["runs"]:
+            lines.append(f"| {row['task']} / {row['method']} | {row['passed']}/{row['total']} | {_cell(row['score'])} | {_cell(row['reward'])} |")
+        for attempt in clean["attempts"]:
+            lines += ["", f"[{attempt['run_id']}](../{attempt['evidence']})状态为 `{attempt['status']}`，源码commit为 `{attempt['source_commit']}`；archive、数值image、模型registry/源码及输入哈希保留在原始证据。各方法只重放一个三例批次，T3正式性能仍未测，因此其score/reward为null。"]
+        lines += ["", f"导出[重放批次表](../results/runs/clean-replays.csv)和[{clean['case_rows']}个逐例记录](../results/cases/clean-replays.csv)。原始运行证据保留，GT数组没有复制进交付日志。"]
+    delivery = stage["delivery"]
+    if delivery["publication"]:
+        publication = delivery["publication"]
+        links = "、".join(f"[{Path(ref['path']).name}](../{ref['path']})" for ref in publication["evidence"])
+        lines += ["", f"首版源码和证据已实际推送到{'私有' if publication['private'] else '公开'}仓库[{publication['repository']}]({publication['url']})；远端核验提交为 `{publication['verified_commit']}`。核验记录：{links}。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。"]
+    if delivery["latest_saved_unit_tests"]:
+        tests = delivery["latest_saved_unit_tests"]
+        lines += ["", f"最新保存的[完整单测日志](../{tests['evidence']})为{tests['passed']} passed，用时{tests['seconds']}秒；测试数量随代码变化，以对应日志和源码版本为准。"]
+    for tests in delivery["archived_source_unit_tests"]:
+        lines += ["", f"[归档源码单测](../{tests['evidence']})同样为{tests['passed']} passed，用时{tests['seconds']}秒；它复用了本机宿主依赖，未声明独立环境验收。"]
+    if delivery["local_delivery_receipt"]:
+        lines += ["", f"[本机交付记录](../{delivery['local_delivery_receipt']['path']})绑定首提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。"]
+    lines += ["", "自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。", "", "## 未完成的验收", "",
+              "正式资源、真实模型显式finalize与完整Harbor SingleStepTrial、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立主机与依赖环境复现仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。", ""]
     (project / "docs/results.md").write_text("\n".join(lines))
 
 

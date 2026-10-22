@@ -1,6 +1,6 @@
 # 本机实施与校准结果
 
-报告生成时间：2026-10-22T09:15:02.338620+08:00。状态以该次读取的原始证据为准。
+报告生成时间：2026-10-22T09:22:38.718108+08:00。状态以该次读取的原始证据为准。
 
 当前证据支持三任务生成/QC、作者基线和 W/J 本机功能；正式三组研究及 final-test 成绩尚未完成。所有表格保留失败，不把实例数量当作研究会话数量。
 
@@ -88,8 +88,31 @@ pilot001在12轮上限后结束，未达到600秒墙钟截止；原日志的 `de
 
 旧W探针只证明各自 `provenance.json` 所记源码。stage-status同时保存当前worker哈希和是否与各轮探针匹配；不能把旧版本通过记录直接算作后续截止时间/资源修订的回归。公开T3 Jacobi-CG比较程序已加入共同任务环境，仅用A/RHS，内部时间为诊断；正式比较仍需可信W完整计时。
 
-自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。测试数量随新增检查变化，以实际测试日志与当前运行输出为准，本报告不把旧计数固定成验收结论。
+## 干净源码重放与交付
+
+从已提交Git archive展开到新目录，在同一宿主使用新的W/J容器完成以下pilot-smoke重放；这不是第二台机器或独立依赖环境验收，也没有新增模型调用。
+
+| 方法/候选 | 通过数 | score | reward |
+|---|---:|---:|---:|
+| heat / tikhonov | 3/3 | 87.69277970613761 | 1 |
+| ode / fixed | 3/3 | 97.14755312766924 | 1 |
+| poisson / lu | 3/3 | null | null |
+| heat / model | 3/3 | 87.69277970613776 | 1 |
+
+[clean-replay-local-001](../logs/clean-replay-local-001/result.json)状态为 `completed`，源码commit为 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc`；archive、数值image、模型registry/源码及输入哈希保留在原始证据。各方法只重放一个三例批次，T3正式性能仍未测，因此其score/reward为null。
+
+导出[重放批次表](../results/runs/clean-replays.csv)和[12个逐例记录](../results/cases/clean-replays.csv)。原始运行证据保留，GT数组没有复制进交付日志。
+
+首版源码和证据已实际推送到私有仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)；远端核验提交为 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc`。核验记录：[github-repository-local-001.json](../logs/github-repository-local-001.json)、[github-remote-head-local-001.txt](../logs/github-remote-head-local-001.txt)。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。
+
+最新保存的[完整单测日志](../logs/unit-tests-final-local-002.txt)为184 passed，用时10.26秒；测试数量随代码变化，以对应日志和源码版本为准。
+
+[归档源码单测](../logs/clean-replay-local-001/archived-unit-tests.txt)同样为184 passed，用时10.39秒；它复用了本机宿主依赖，未声明独立环境验收。
+
+[本机交付记录](../freezes/local-delivery-001.json)绑定首提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。
+
+自动汇总见 [stage-status.json](../results/stage-status.json)，模型attempt表见 [model-pilots.csv](../results/runs/model-pilots.csv)。
 
 ## 未完成的验收
 
-正式资源和完整Pi研究生命周期、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立干净环境复现、个人GitHub实际发布仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。
+正式资源、真实模型显式finalize与完整Harbor SingleStepTrial、固定模型参数/系统提示/有效工具配置及各任务freeze、至少9格（主目标15会话）、first/final隐藏重放、T3性能profile与独占计时、独立主机与依赖环境复现仍未完成。正式研究当前为0格、0会话；final-test仅做GT QC，未查看任何求解成绩。15次分块运行清单只生成draft，遇到未证参数、缺freeze或哈希漂移会拒绝启动。详见 [README](../README.md)和[局限](limitations.md)。
