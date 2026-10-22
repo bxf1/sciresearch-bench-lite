@@ -1,0 +1,26 @@
+{
+  "edits": [
+    {
+      "new_end": 3557,
+      "new_start": 3531,
+      "new_text": "\u8003\u8651\u9884\u5904\u7406\u5f00\u9500\u3001\u91cd\u590d\u8ba1\u7b97\u548c\u591a\u4e2a\u53f3\u7aef\u9879\u4e4b\u95f4\u7684\u8ba1\u7b97\u590d\u7528\u3002",
+      "old_end": 3568,
+      "old_start": 3531,
+      "old_text": "# Additional detailed method guidance",
+      "operation": "replace"
+    },
+    {
+      "new_end": 3558,
+      "new_start": 3558,
+      "new_text": "",
+      "old_end": 4714,
+      "old_start": 3569,
+      "old_text": "\nStart with sparse LU and reuse each factorization across its four right-hand\nsides. Convert each CSR matrix to CSC once. Use a fill-reducing COLAMD column\nordering, factorize once, and solve the dense four-column RHS with the same\nfactors. Keep the result in original coordinates and row ordering. Check all\nfour residuals with the original A and B before writing the required array.\n\nNon-executable pseudocode:\n\n1. For each manifest case, load A and B.\n2. Convert A to CSC and construct a sparse LU factorization using COLAMD.\n3. Apply this one factorization to all four columns of B.\n4. Check relative residuals `norm(A*u_j-b_j)/max(norm(b_j),1e-12)`.\n5. Save the `(n*n,4)` solution as little-endian float64.\n6. Register the complete program for trusted dev evaluation and compare its\n   full execution time against the shared Jacobi-CG comparator.\n\nAvoid repeating symbolic ordering and factorization for each RHS. Include\nformat conversion, factorization and I/O when investigating total cost.\nYou may explore further changes if the public measurements justify them;\nevery final program must also work on new matrices and right-hand sides.\n",
+      "operation": "delete"
+    }
+  ],
+  "index_units": "Unicode code points",
+  "left_sha256": "cc83fb1c75c28c6fb791a6d1b854f5187d6e55a2015ff2c19a5435e7b9ee91e6",
+  "reconstruction_byte_exact": true,
+  "right_sha256": "04f50a6ebe4f036a49ad2489032c316b12b420620d127837e83505d63e7183eb"
+}

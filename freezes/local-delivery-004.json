@@ -1,0 +1,62 @@
+{
+  "additional_model_calls": 0,
+  "changes": [
+    "Exact public prompt pairwise differences archived for all three tasks and conditions",
+    "Nine Unicode edit sequences reconstruct each target byte-exactly; source prompts and hashes unchanged",
+    "Explicitly approved evidence and baseline source commits published and remote HEAD verified"
+  ],
+  "created_at": "2026-10-22T05:45:38.387575+00:00",
+  "evidence": {
+    "current_run_plan": {
+      "path": "freezes/research-run-plan-local-draft-007.json",
+      "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+    },
+    "prompt_differences": {
+      "path": "logs/prompt-diffs-local-001/manifest.json",
+      "sha256": "8bb7ea9633390d8d923f893e8aefd64afbc22bc996bd017ccc6c7edd9b6ede5a"
+    },
+    "publication": {
+      "path": "logs/publication-local-003/result.json",
+      "sha256": "005a1eb703a7f4e21068850da775c303b73fe8e29cabdb7f04a129c596fb2b08"
+    },
+    "scope_audit": {
+      "path": "logs/delivery-audit-prompt-diffs-local-001.json",
+      "sha256": "6f860e70bb1b3be277f943c8c33aaa04d0e6eab6541bfc72146203048c8420cb"
+    }
+  },
+  "final_test_solutions_evaluated": false,
+  "formal_acceptance": "pending",
+  "formal_study_cells": 0,
+  "formal_study_sessions": 0,
+  "pending": [
+    "Formal resource and 4 GiB memory-pressure acceptance; user deferred this while continuing locally",
+    "Provider alias revalidation and formal task/model/parameter freezes",
+    "At least nine valid task/group cells, target fifteen independent sessions",
+    "Final-test baseline/first/final replays after each task research barrier",
+    "Exclusive T3 calibration/profile/performance acceptance",
+    "Publication approval for this final prompt-diff and publication-status archive"
+  ],
+  "previous_delivery": {
+    "path": "freezes/local-delivery-003.json",
+    "sha256": "a30a2b70befc83ad9e88619180d4b3416adf95a44635037aab268385149a5d42"
+  },
+  "publication": {
+    "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+    "scope": "Records publication through 536c0d9; this supplemental prompt-diff/documentation archive was prepared after that verification and needs its own public-push authorization",
+    "status": "verified_through_recorded_source_commit",
+    "verified_commit": "536c0d968167313cf4169560b7df15751746d97f",
+    "visibility": "PUBLIC"
+  },
+  "schema_version": 1,
+  "source_commit": "536c0d968167313cf4169560b7df15751746d97f",
+  "source_commit_remote_verified": true,
+  "source_unchanged_since_347_test_run": true,
+  "status": "local_prompt_diff_archive_verified_formal_pending",
+  "tests": {
+    "passed": 347,
+    "path": "logs/unit-tests-final-local-005.txt",
+    "scope": "Full local synthetic/unit suite; no actual formal study or hidden replay",
+    "seconds": 15.48,
+    "sha256": "348c995fd974d0bf85af421d730a7313ffc4cb8f1dcf1f43c3fb7320f257052c"
+  }
+}

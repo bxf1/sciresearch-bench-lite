@@ -1,0 +1,31 @@
+--- heat/g1/common+guidance
++++ heat/g2/common+guidance
+@@ -17,27 +17,4 @@
+ The common research budget is 30 minutes and at most 20 accepted registered evaluations, including failed candidates. Research resources are 4 vCPU and 4 GiB. Each fresh candidate worker has 1 vCPU, 4 GiB, no swap, no network and a 120-second batch timeout, with numerical library threads fixed to one. Source is limited to 20 MiB and 1,000 ordinary files; output to 256 MiB and temporary storage to 64 MiB. Use the fixed preinstalled Python/NumPy/SciPy environment and the exact dataset manifest; do not install dependencies during candidate execution. Your program and its numeric outputs are independently replayed; self-reported scores are not used.
+ 
+ 
+-# Detailed method guidance
+-
+-Start with a fixed second-derivative Tikhonov method. For each observation `(x_i,t_i,y_i)`, form the 32-column matrix `A_ik=sin(pi*k*x_i)*exp(-kappa*pi^2*k^2*t_i)` for `k=1,...,32`. Let `D=diag(k^2)` and compute `A*D^-1=U*diag(s)*V^T`. With `lambda=alpha*s_max^2`, the regularized coefficient estimate is `a=D^-1*V*diag(s/(s^2+lambda))*U^T*y`. Begin with the fixed public choice `alpha=1e-5`. Evaluate the resulting sine series on the target grid and save it in the required output format.
+-
+-First implement and evaluate this fixed method. You may explore parameter selection using public observation residual and roughness; neither diagnostic guarantees lower hidden recovery error. A noise-based alternative uses the grid `alpha=logspace(-10,0,81)`. The residual-square acceptance bound is `delta2=sigma^2*chi2.ppf(0.99,m)`. Among grid candidates with `||A*a-y||^2 <= delta2`, choose the largest alpha. If none qualifies, fit the first five sine modes by ordinary least squares and set modes 6–32 to zero. Preserve a diagnostic of fallback, minimum residual, bound and parameter range. This 99% bound concerns the energy of the unfitted Gaussian noise; it is not a 99% recovery guarantee or a guarantee that any parameter will qualify.
+-
+-Non-executable outline:
+-
+-```text
+-for each public input case:
+-    read the actual observed positions, times, values, and common noise sigma
+-    form the 32-mode forward matrix
+-    compute the SVD after dividing column k by k squared
+-    solve first at fixed normalized alpha 1e-5
+-    evaluate the estimate at all 256 target points and save u0.npy
+-register and inspect the entire development batch
+-if exploring discrepancy selection:
+-    evaluate the stated alpha grid using only public observations
+-    choose largest accepted alpha; otherwise use the five-mode fallback
+-    compare public diagnostics and record the hypothesis for any change
+-finalize a registered candidate using only public evidence
+-```
+-
+-You may choose another valid algorithm or improve this approach. Do not infer hidden ground truth from the guidance or assume that adaptation must outperform the fixed method.
++考虑观测噪声与信息衰减对逆问题稳定性的影响，权衡拟合程度和解的稳定性。

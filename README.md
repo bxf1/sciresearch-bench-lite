@@ -2,7 +2,7 @@
 
 三条合成科学计算任务：热方程逆恢复、二维多项式动力学辨识、稀疏 SPD 系统求解优化。实现依据 [执行契约的只读副本](docs/execution-plan-v0.3.md)，原设计和三个参考仓库未被本实现改写。副本中的相对证据链接沿用原 `design/` 树与本地参考仓库布局，保留其来源，不保证在独立GitHub仓库中可打开。
 
-**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码和新依赖环境重放已完成；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。远端已核验提交为 `28da96e`；后续证据提交 `0a84f0c` 和本轮补充仍只保存在本机，公开推送待用户明确批准。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-003.json)。
+**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码和新依赖环境重放已完成；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。远端已核验至 `536c0d9`；`0a84f0c` 的证据与后续基线代码均在用户明确批准后公开推送。[发布记录](logs/publication-local-003/result.json)保留这次核验的具体提交。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-004.json)。
 
 [完整 Harbor Trial 与模型代理 pilot](docs/native-relay-pilot.md)已连续两次成功：最新002的8次模型请求全部成功，显式evaluate/finalize，三次pilot重放均3/3通过、89.302分；first/final仍同一源码。已验证实际请求哈希门禁、用量额度和DNS出口限制，不能记作正式实验格。正式入口与结果汇总见[研究控制器](docs/study.md)，包括11方法正式基线入口和相对固定参考的逐会话/逐组/逐例对照；这些新增路径已用合成测试验证，尚未运行正式隐藏重放。可信进程计时与三组诊断见[计时说明](docs/timing.md)。
 
@@ -24,7 +24,7 @@
 | 正式资源 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
 | 三任务×三组研究 | **0个正式格**；最低9格，主计划15会话 | [未完成事项](#仍需完成) |
 | 隐藏重放与正式性能 | **未完成**；不把校准或pilot记成final | [局限](docs/limitations.md) |
-| 个人GitHub发布 | 已核验远端源码提交 `28da96e`；后续证据提交 `0a84f0c` 尚未推送，本轮补充仅在本机；最新可见性为PUBLIC | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-002.txt)、[最新仓库元数据](logs/github-repository-local-002.json) |
+| 个人GitHub发布 | 用户明确批准后，已核验远端提交 `536c0d9`，包含 `0a84f0c` 的证据与正式基线入口/报告；可见性为PUBLIC | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-003.txt)、[最新仓库元数据](logs/github-repository-local-003.json) |
 
 ## 文件与执行边界
 
@@ -133,3 +133,5 @@ sed '/^harbor[ @=]/d' freezes/host-requirements.lock | .venv/bin/python -m pip i
 [调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [结果](docs/results.md) · [局限](docs/limitations.md)
 
 最新远端核验时仓库为公开状态；初次创建/检查的私有记录仍保留。源码28da96e完成了328项工作/新依赖归档测试，随后修正报告读取最新仓库可见性的逻辑，对应回归：[27项通过](logs/publication-report-unit-local-001.txt)。本轮另补正式基线编排与对照报告；执行器、I/O、计时、算法与科学指标未变化。
+
+三组提示的[逐字差分归档](logs/prompt-diffs-local-001/manifest.json)保留三任务各G1/G2/G3两两对照，共9组；同时提供行差分、Unicode字符编辑及原文哈希，9组均验证可逐字节重建目标提示。提示原文未改动，未估算token数冒充真实模型用量。

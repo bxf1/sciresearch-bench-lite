@@ -1,0 +1,28 @@
+--- poisson/g1/common+guidance
++++ poisson/g3/common+guidance
+@@ -59,25 +59,3 @@
+ an evidence-based experiment record within the common budget.
+ 
+ 
+-# Additional detailed method guidance
+-
+-Start with sparse LU and reuse each factorization across its four right-hand
+-sides. Convert each CSR matrix to CSC once. Use a fill-reducing COLAMD column
+-ordering, factorize once, and solve the dense four-column RHS with the same
+-factors. Keep the result in original coordinates and row ordering. Check all
+-four residuals with the original A and B before writing the required array.
+-
+-Non-executable pseudocode:
+-
+-1. For each manifest case, load A and B.
+-2. Convert A to CSC and construct a sparse LU factorization using COLAMD.
+-3. Apply this one factorization to all four columns of B.
+-4. Check relative residuals `norm(A*u_j-b_j)/max(norm(b_j),1e-12)`.
+-5. Save the `(n*n,4)` solution as little-endian float64.
+-6. Register the complete program for trusted dev evaluation and compare its
+-   full execution time against the shared Jacobi-CG comparator.
+-
+-Avoid repeating symbolic ordering and factorization for each RHS. Include
+-format conversion, factorization and I/O when investigating total cost.
+-You may explore further changes if the public measurements justify them;
+-every final program must also work on new matrices and right-hand sides.

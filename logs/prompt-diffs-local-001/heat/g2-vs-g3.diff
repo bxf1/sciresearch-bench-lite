@@ -1,0 +1,7 @@
+--- heat/g2/common+guidance
++++ heat/g3/common+guidance
+@@ -17,4 +17,3 @@
+ The common research budget is 30 minutes and at most 20 accepted registered evaluations, including failed candidates. Research resources are 4 vCPU and 4 GiB. Each fresh candidate worker has 1 vCPU, 4 GiB, no swap, no network and a 120-second batch timeout, with numerical library threads fixed to one. Source is limited to 20 MiB and 1,000 ordinary files; output to 256 MiB and temporary storage to 64 MiB. Use the fixed preinstalled Python/NumPy/SciPy environment and the exact dataset manifest; do not install dependencies during candidate execution. Your program and its numeric outputs are independently replayed; self-reported scores are not used.
+ 
+ 
+-考虑观测噪声与信息衰减对逆问题稳定性的影响，权衡拟合程度和解的稳定性。

@@ -1,0 +1,21 @@
+--- ode/g1/common+guidance
++++ ode/g2/common+guidance
+@@ -11,17 +11,4 @@
+ Research has a 30-minute wall-clock and 20 accepted-evaluation limit; public evaluation is inside that budget. Candidate execution is limited to one CPU, 4 GiB, 120 seconds per batch, and one numerical-library thread. Candidate execution has no network. Submit using the provided `bench evaluate` interface and select an already evaluated snapshot with `bench finalize`. Files must be ordinary files; no links or path traversal. Source is limited to 20 MiB and 1,000 files, output to 256 MiB, and temporary storage to 64 MiB. A valid but inaccurate initial submission remains the first valid checkpoint. The final program must generalize to unseen instances, not hardcode development answers.
+ 
+ 
+-Use a denoised derivative estimate followed by a sparse polynomial fit as an initial method. For each training trajectory and channel, apply a Savitzky-Golay filter with window length 31 and polynomial degree 3 to obtain both smoothed states and the first derivative; use the sample spacing from t.npy. Discard the first and last 15 time points. Evaluate all ten public monomials on the smoothed states and stack trajectories. Fit both derivative columns using least squares.
+-
+-Apply sequential thresholded least squares for eight rounds. In each derivative column, keep coefficients whose absolute value is at least 0.02, set the others to zero, and refit on the retained dictionary columns. If a column has no retained terms, leave it zero. Do not assume any term is present or absent before fitting. Convert any internal normalization back to the original coordinates.
+-
+-Pseudocode:
+-1. Load training states, times, and exact validation initial states.
+-2. Smooth and differentiate; trim 15 points at each end; build the full ten-column dictionary.
+-3. Fit coefficients and perform eight threshold/refit rounds.
+-4. Export the coefficient array and register an evaluation of the fixed method.
+-5. Optionally explore window lengths 11, 21, 31 with polynomial degree 3, trimming half the respective window, and thresholds 0, 0.02, 0.05, 0.1. Use the same eight rounds.
+-6. For each explored candidate, set absolute coefficients below 1e-6 to zero, reject K > 10, and integrate from both exact public validation initial states using the specified public integrator. Reject incomplete, nonfinite, or timed-out trajectories.
+-7. Select the valid candidate minimizing mean noisy validation relative Frobenius error plus 1e-4*K. If no search candidate qualifies, retain the fixed window31/threshold0.02 method. A failing fixed result remains a reported failure.
+-
+-Use public diagnostics to check whether changes help. This method is a starting point, and you may investigate other methods within the same interface and budget.
++考虑噪声稳健的动力学估计与模型简约性，用独立轨迹检查泛化。

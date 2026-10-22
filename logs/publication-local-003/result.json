@@ -1,0 +1,24 @@
+{
+  "approved_and_pushed_commits": [
+    "0a84f0cc934930f24b31e2f985a59426fe4907bc",
+    "536c0d968167313cf4169560b7df15751746d97f"
+  ],
+  "authorization": "Human explicitly approved the audited 0a84f0c batch, then explicitly allowed git push origin 536c0d9:refs/heads/main",
+  "final_test_scores_accessed": false,
+  "formal_sessions": 0,
+  "later_uncommitted_artifacts_included": false,
+  "previous_automatic_rejections": "Both were resolved by explicit human approval before the respective push",
+  "remote_head": {
+    "path": "logs/github-remote-head-local-003.txt",
+    "sha256": "9c1bd4446db7c98c63be8c88384834bc3ee54dc6d1e05b3fa5bdfc9640926a92"
+  },
+  "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+  "repository_metadata": {
+    "path": "logs/github-repository-local-003.json",
+    "sha256": "d49690131cec1b6f284986bd75573e301beeba7ad8681ac099e3b45f29375fd2"
+  },
+  "schema_version": 1,
+  "status": "pushed_verified",
+  "verified_at": "2026-10-22T05:44:27.196664+00:00",
+  "visibility": "PUBLIC"
+}

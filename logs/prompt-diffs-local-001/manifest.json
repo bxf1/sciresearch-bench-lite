@@ -1,0 +1,285 @@
+{
+  "comparisons": [
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/heat/g1-vs-g2.json",
+        "sha256": "99ab0690d6db7d9643395abea0408a20695b8052c3d047a19e20781cc7883fe8"
+      },
+      "left": "g1",
+      "left_sha256": "87364b598770ed6f242ff537ec15859ec86825f570ec69056e77a6e9a0c54615",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/heat/g1-vs-g2.diff",
+        "sha256": "d6a3f2283bbf4d565efda3691f530fe598eda14d5f960a6af66912bff2a622df"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g2",
+      "right_sha256": "1a5c4d4571850fe1458d9e5f933b3aa4063b29e3aab68ebdc7eb25dcc8b9ac1a",
+      "sources": [
+        {
+          "path": "prompts/heat/common.md",
+          "sha256": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678"
+        },
+        {
+          "path": "prompts/heat/g1.md",
+          "sha256": "5c7ea18fd71d0bd801084cb2c4066f81e81cf98122d3fa2c23a703e4457ed656"
+        },
+        {
+          "path": "prompts/heat/g2.md",
+          "sha256": "37a895f545dce268836105e0f0ee2d25a8ab1383e7b1025d8e6227fa1ad4183e"
+        }
+      ],
+      "task": "heat"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/heat/g2-vs-g3.json",
+        "sha256": "e4a376b886a77a9f17eac8b89d8b7c5480c5a36271b7ec60ff0fd365125a84c8"
+      },
+      "left": "g2",
+      "left_sha256": "1a5c4d4571850fe1458d9e5f933b3aa4063b29e3aab68ebdc7eb25dcc8b9ac1a",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/heat/g2-vs-g3.diff",
+        "sha256": "36a8e0f0248f7a3ab0e8dd71a95d340001bb3680f823ddb73b53029987b03c92"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "2357982ec7be12acf7e0b69a8d9872a441e605dcdf26c60bc477cf2747d4569e",
+      "sources": [
+        {
+          "path": "prompts/heat/common.md",
+          "sha256": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678"
+        },
+        {
+          "path": "prompts/heat/g2.md",
+          "sha256": "37a895f545dce268836105e0f0ee2d25a8ab1383e7b1025d8e6227fa1ad4183e"
+        },
+        {
+          "path": "prompts/heat/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "heat"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/heat/g1-vs-g3.json",
+        "sha256": "807e7174160775151a33a4e6dd76d23c50a74307fcd6a1cfb19c18d4d4deed96"
+      },
+      "left": "g1",
+      "left_sha256": "87364b598770ed6f242ff537ec15859ec86825f570ec69056e77a6e9a0c54615",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/heat/g1-vs-g3.diff",
+        "sha256": "998ba7d0a7d4b45d65ad91d5333457cdb6739612f4aef45ec6a4026505c156c0"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "2357982ec7be12acf7e0b69a8d9872a441e605dcdf26c60bc477cf2747d4569e",
+      "sources": [
+        {
+          "path": "prompts/heat/common.md",
+          "sha256": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678"
+        },
+        {
+          "path": "prompts/heat/g1.md",
+          "sha256": "5c7ea18fd71d0bd801084cb2c4066f81e81cf98122d3fa2c23a703e4457ed656"
+        },
+        {
+          "path": "prompts/heat/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "heat"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/ode/g1-vs-g2.json",
+        "sha256": "f6b4d02e6e4b4d2448980df2758fb2248c92a17f2c7c046846b89e1fbefb9375"
+      },
+      "left": "g1",
+      "left_sha256": "62fa2998b248687e20f608bb4752e49f926972f80780ccd385a06eb1b93379f9",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/ode/g1-vs-g2.diff",
+        "sha256": "19eeff670572052f4a2e699604e461669cb898d9c2063fa95ed7e8ba3d7ef41f"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g2",
+      "right_sha256": "602c710e31c440bedbb385fd5e4c4bf8115a4f7dc7f285f62be77fac84714531",
+      "sources": [
+        {
+          "path": "prompts/ode/common.md",
+          "sha256": "03af209343c9a6930e5e212ec0508bcccdada47e793996336520ff9adb6f8609"
+        },
+        {
+          "path": "prompts/ode/g1.md",
+          "sha256": "10f570aa2cea64cb17ffc1163c0e48d667259bdcd5bc8a41a068ea30947ca7e6"
+        },
+        {
+          "path": "prompts/ode/g2.md",
+          "sha256": "119995fed0511b509439dbe4460a14c9c02bac1b9142ae8323d2ef5dce9dcc8c"
+        }
+      ],
+      "task": "ode"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/ode/g2-vs-g3.json",
+        "sha256": "4af278941abecc6cdc784f40cec1ff95e06b60d8f4a5d7b574d46bab7ad172f2"
+      },
+      "left": "g2",
+      "left_sha256": "602c710e31c440bedbb385fd5e4c4bf8115a4f7dc7f285f62be77fac84714531",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/ode/g2-vs-g3.diff",
+        "sha256": "ee4dc31345d4b2a7a47cac10640fc1ead48fe28aa42b5d79ada76bcd2448c4b7"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "3975d02e214520d6c9a59389f040b0cd3ed1dd91f3d1a3fec491bfee49cf3b4b",
+      "sources": [
+        {
+          "path": "prompts/ode/common.md",
+          "sha256": "03af209343c9a6930e5e212ec0508bcccdada47e793996336520ff9adb6f8609"
+        },
+        {
+          "path": "prompts/ode/g2.md",
+          "sha256": "119995fed0511b509439dbe4460a14c9c02bac1b9142ae8323d2ef5dce9dcc8c"
+        },
+        {
+          "path": "prompts/ode/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "ode"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/ode/g1-vs-g3.json",
+        "sha256": "b2f177981d0ec1324cc693ab6274d085634a3ee54b576da41133f62b4b401b50"
+      },
+      "left": "g1",
+      "left_sha256": "62fa2998b248687e20f608bb4752e49f926972f80780ccd385a06eb1b93379f9",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/ode/g1-vs-g3.diff",
+        "sha256": "1d9fe4f319cdb01c6a01aa3e4b97172e27c4b3eac5b42f1b228f1bde5462494e"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "3975d02e214520d6c9a59389f040b0cd3ed1dd91f3d1a3fec491bfee49cf3b4b",
+      "sources": [
+        {
+          "path": "prompts/ode/common.md",
+          "sha256": "03af209343c9a6930e5e212ec0508bcccdada47e793996336520ff9adb6f8609"
+        },
+        {
+          "path": "prompts/ode/g1.md",
+          "sha256": "10f570aa2cea64cb17ffc1163c0e48d667259bdcd5bc8a41a068ea30947ca7e6"
+        },
+        {
+          "path": "prompts/ode/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "ode"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/poisson/g1-vs-g2.json",
+        "sha256": "7b15a8bc119bd7166efbc3739d2291344f64a50addeac289852b3b910d34d773"
+      },
+      "left": "g1",
+      "left_sha256": "cc83fb1c75c28c6fb791a6d1b854f5187d6e55a2015ff2c19a5435e7b9ee91e6",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/poisson/g1-vs-g2.diff",
+        "sha256": "0a96dd84ce2413f0ecf772f9cd3c01c4abdd980987ba2b4c2f74ffd3c2b59a03"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g2",
+      "right_sha256": "04f50a6ebe4f036a49ad2489032c316b12b420620d127837e83505d63e7183eb",
+      "sources": [
+        {
+          "path": "prompts/poisson/common.md",
+          "sha256": "01d1b53af36c4f5ff4d61f053df779a465220a3a62d5b7a4748785e612c94247"
+        },
+        {
+          "path": "prompts/poisson/g1.md",
+          "sha256": "76a11828eddb1e0ec3c3b601daec4003fb752e1c26f3fc306b1aa1f64f093a0b"
+        },
+        {
+          "path": "prompts/poisson/g2.md",
+          "sha256": "eb66e82319a02c56974c3b9aa7aee99d01e6110a72d736d23f9173f274f5d5ae"
+        }
+      ],
+      "task": "poisson"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/poisson/g2-vs-g3.json",
+        "sha256": "c763c078ac0495325141f1bd9e23b220a347b9fc3ddcb13d6d836b759bc3f4e9"
+      },
+      "left": "g2",
+      "left_sha256": "04f50a6ebe4f036a49ad2489032c316b12b420620d127837e83505d63e7183eb",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/poisson/g2-vs-g3.diff",
+        "sha256": "72cb4bea675b17252fd4624727f19919c8142610428a0afa82ddf2ea7796ab58"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "f583c7acb82d4fbbcd12887fe5eed20b1aab41a990acf28de34c98a8069a63ef",
+      "sources": [
+        {
+          "path": "prompts/poisson/common.md",
+          "sha256": "01d1b53af36c4f5ff4d61f053df779a465220a3a62d5b7a4748785e612c94247"
+        },
+        {
+          "path": "prompts/poisson/g2.md",
+          "sha256": "eb66e82319a02c56974c3b9aa7aee99d01e6110a72d736d23f9173f274f5d5ae"
+        },
+        {
+          "path": "prompts/poisson/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "poisson"
+    },
+    {
+      "character_edits": {
+        "path": "logs/prompt-diffs-local-001/poisson/g1-vs-g3.json",
+        "sha256": "12b94b54f8c4cb42f4dcfcbdae24a6dfdb093830e6c03fa010032b58b4ad5ce3"
+      },
+      "left": "g1",
+      "left_sha256": "cc83fb1c75c28c6fb791a6d1b854f5187d6e55a2015ff2c19a5435e7b9ee91e6",
+      "line_diff": {
+        "path": "logs/prompt-diffs-local-001/poisson/g1-vs-g3.diff",
+        "sha256": "ca3ac6c3d6d17e5c162eabe626fc8a37ead3f30a1b1b62a57bc92ea1208fbab0"
+      },
+      "reconstruction_byte_exact": true,
+      "right": "g3",
+      "right_sha256": "f583c7acb82d4fbbcd12887fe5eed20b1aab41a990acf28de34c98a8069a63ef",
+      "sources": [
+        {
+          "path": "prompts/poisson/common.md",
+          "sha256": "01d1b53af36c4f5ff4d61f053df779a465220a3a62d5b7a4748785e612c94247"
+        },
+        {
+          "path": "prompts/poisson/g1.md",
+          "sha256": "76a11828eddb1e0ec3c3b601daec4003fb752e1c26f3fc306b1aa1f64f093a0b"
+        },
+        {
+          "path": "prompts/poisson/g3.md",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "task": "poisson"
+    }
+  ],
+  "created_at": "2026-10-22T04:52:37.632967+00:00",
+  "final_test_scores_accessed": false,
+  "formal": false,
+  "model_calls": 0,
+  "run_plan": {
+    "path": "freezes/research-run-plan-local-draft-007.json",
+    "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+  },
+  "schema_version": 1,
+  "scope": "Exact existing public prompt differences required by plan section 6.2; Unicode code-point edits and line diffs, no estimated token counts",
+  "status": "verified"
+}

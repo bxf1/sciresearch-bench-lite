@@ -1,6 +1,6 @@
 # 本机实施与校准结果
 
-报告生成时间：2026-10-22T12:47:44.082587+08:00。状态以该次读取的原始证据为准。
+报告生成时间：2026-10-22T13:45:38.439300+08:00。状态以该次读取的原始证据为准。
 
 当前证据支持三任务生成/QC、作者基线和 W/J 本机功能；正式三组研究及 final-test 成绩尚未完成。所有表格保留失败，不把实例数量当作研究会话数量。
 
@@ -111,7 +111,7 @@ pilot001在12轮上限后结束，未达到600秒墙钟截止；原日志的 `de
 
 导出[重放批次表](../results/runs/clean-replays.csv)和[24个逐例记录](../results/cases/clean-replays.csv)。原始运行证据保留，GT数组没有复制进交付日志。
 
-首版源码和证据已实际推送到公开仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)；远端核验提交为 `28da96e1c1a8a50911c6a08dbb99bb6b72f145c9`。核验记录：[github-repository-local-002.json](../logs/github-repository-local-002.json)、[github-remote-head-local-002.txt](../logs/github-remote-head-local-002.txt)。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。
+首版源码和证据已实际推送到公开仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)；远端核验提交为 `536c0d968167313cf4169560b7df15751746d97f`。核验记录：[github-repository-local-003.json](../logs/github-repository-local-003.json)、[github-remote-head-local-003.txt](../logs/github-remote-head-local-003.txt)。此处记录已核验的提交，不将后续文档修改冒充该提交的内容。
 
 最新保存的[完整单测日志](../logs/unit-tests-final-local-005.txt)为347 passed，用时15.48秒；测试数量随代码变化，以对应日志和源码版本为准。
 
@@ -119,7 +119,7 @@ pilot001在12轮上限后结束，未达到600秒墙钟截止；原日志的 `de
 
 [归档源码单测](../logs/clean-replay-local-002/archived-unit-tests.txt)同样为328 passed，用时54.12秒；其依赖来源以对应重放记录为准，不代表第二台物理机器验收。
 
-[本机交付记录](../freezes/local-delivery-003.json)绑定其对应提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。
+[本机交付记录](../freezes/local-delivery-004.json)绑定其对应提交、重放结果与测试哈希，并明确formal pending、正式0会话及私有数据未发布。
 
 真实模型的显式finalize和完整Harbor SingleStepTrial生命周期已由本机native pilot验证：[harbor-native-pilot-001](../logs/harbor-native-pilot-001/result.json)、[harbor-native-pilot-002](../logs/harbor-native-pilot-002/result.json)。这些记录仅使用public-dev研究与pilot-smoke重放，formal=false，不计入正式三组实验。
 

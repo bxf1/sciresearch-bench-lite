@@ -1,0 +1,17 @@
+{
+  "edits": [
+    {
+      "new_end": 3920,
+      "new_start": 3920,
+      "new_text": "",
+      "old_end": 3956,
+      "old_start": 3920,
+      "old_text": "\u8003\u8651\u89c2\u6d4b\u566a\u58f0\u4e0e\u4fe1\u606f\u8870\u51cf\u5bf9\u9006\u95ee\u9898\u7a33\u5b9a\u6027\u7684\u5f71\u54cd\uff0c\u6743\u8861\u62df\u5408\u7a0b\u5ea6\u548c\u89e3\u7684\u7a33\u5b9a\u6027\u3002\n",
+      "operation": "delete"
+    }
+  ],
+  "index_units": "Unicode code points",
+  "left_sha256": "1a5c4d4571850fe1458d9e5f933b3aa4063b29e3aab68ebdc7eb25dcc8b9ac1a",
+  "reconstruction_byte_exact": true,
+  "right_sha256": "2357982ec7be12acf7e0b69a8d9872a441e605dcdf26c60bc477cf2747d4569e"
+}

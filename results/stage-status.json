@@ -277,18 +277,18 @@
       "seconds": 15.48
     },
     "local_delivery_receipt": {
-      "path": "freezes/local-delivery-003.json",
-      "sha256": "a30a2b70befc83ad9e88619180d4b3416adf95a44635037aab268385149a5d42"
+      "path": "freezes/local-delivery-004.json",
+      "sha256": "d27b26b911ab9abb00d1a5ba3e11dc215ddb822ed72e9adeb345ee724de82a63"
     },
     "publication": {
       "evidence": [
         {
-          "path": "logs/github-repository-local-002.json",
+          "path": "logs/github-repository-local-003.json",
           "sha256": "d49690131cec1b6f284986bd75573e301beeba7ad8681ac099e3b45f29375fd2"
         },
         {
-          "path": "logs/github-remote-head-local-002.txt",
-          "sha256": "6a30b432dbea72e7953865be9c0a9208afe3decc8c5b68bf83596628e6b7c2fb"
+          "path": "logs/github-remote-head-local-003.txt",
+          "sha256": "9c1bd4446db7c98c63be8c88384834bc3ee54dc6d1e05b3fa5bdfc9640926a92"
         }
       ],
       "private": false,
@@ -296,7 +296,7 @@
       "repository": "bxf1/sciresearch-bench-lite",
       "status": "pushed_verified",
       "url": "https://github.com/bxf1/sciresearch-bench-lite",
-      "verified_commit": "28da96e1c1a8a50911c6a08dbb99bb6b72f145c9"
+      "verified_commit": "536c0d968167313cf4169560b7df15751746d97f"
     }
   },
   "engineering_probes": {
@@ -408,7 +408,7 @@
   "formal_guidance_cells_completed": 0,
   "formal_research_sessions_completed": 0,
   "formal_resources_accepted": false,
-  "generated_at": "2026-10-22T12:47:44.082587+08:00",
+  "generated_at": "2026-10-22T13:45:38.439300+08:00",
   "generation": {
     "case_count": 90,
     "dataset": "v0.3-local",

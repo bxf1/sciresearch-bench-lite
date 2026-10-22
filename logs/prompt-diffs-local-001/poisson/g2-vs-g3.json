@@ -1,0 +1,17 @@
+{
+  "edits": [
+    {
+      "new_end": 3531,
+      "new_start": 3531,
+      "new_text": "",
+      "old_end": 3558,
+      "old_start": 3531,
+      "old_text": "\u8003\u8651\u9884\u5904\u7406\u5f00\u9500\u3001\u91cd\u590d\u8ba1\u7b97\u548c\u591a\u4e2a\u53f3\u7aef\u9879\u4e4b\u95f4\u7684\u8ba1\u7b97\u590d\u7528\u3002\n",
+      "operation": "delete"
+    }
+  ],
+  "index_units": "Unicode code points",
+  "left_sha256": "04f50a6ebe4f036a49ad2489032c316b12b420620d127837e83505d63e7183eb",
+  "reconstruction_byte_exact": true,
+  "right_sha256": "f583c7acb82d4fbbcd12887fe5eed20b1aab41a990acf28de34c98a8069a63ef"
+}

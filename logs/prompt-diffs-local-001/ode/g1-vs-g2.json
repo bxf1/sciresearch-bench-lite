@@ -1,0 +1,26 @@
+{
+  "edits": [
+    {
+      "new_end": 3112,
+      "new_start": 3083,
+      "new_text": "\u8003\u8651\u566a\u58f0\u7a33\u5065\u7684\u52a8\u529b\u5b66\u4f30\u8ba1\u4e0e\u6a21\u578b\u7b80\u7ea6\u6027\uff0c\u7528\u72ec\u7acb\u8f68\u8ff9\u68c0\u67e5\u6cdb\u5316\u3002",
+      "old_end": 3558,
+      "old_start": 3083,
+      "old_text": "Use a denoised derivative estimate followed by a sparse polynomial fit as an initial method. For each training trajectory and channel, apply a Savitzky-Golay filter with window length 31 and polynomial degree 3 to obtain both smoothed states and the first derivative; use the sample spacing from t.npy. Discard the first and last 15 time points. Evaluate all ten public monomials on the smoothed states and stack trajectories. Fit both derivative columns using least squares.",
+      "operation": "replace"
+    },
+    {
+      "new_end": 3113,
+      "new_start": 3113,
+      "new_text": "",
+      "old_end": 5096,
+      "old_start": 3559,
+      "old_text": "\nApply sequential thresholded least squares for eight rounds. In each derivative column, keep coefficients whose absolute value is at least 0.02, set the others to zero, and refit on the retained dictionary columns. If a column has no retained terms, leave it zero. Do not assume any term is present or absent before fitting. Convert any internal normalization back to the original coordinates.\n\nPseudocode:\n1. Load training states, times, and exact validation initial states.\n2. Smooth and differentiate; trim 15 points at each end; build the full ten-column dictionary.\n3. Fit coefficients and perform eight threshold/refit rounds.\n4. Export the coefficient array and register an evaluation of the fixed method.\n5. Optionally explore window lengths 11, 21, 31 with polynomial degree 3, trimming half the respective window, and thresholds 0, 0.02, 0.05, 0.1. Use the same eight rounds.\n6. For each explored candidate, set absolute coefficients below 1e-6 to zero, reject K > 10, and integrate from both exact public validation initial states using the specified public integrator. Reject incomplete, nonfinite, or timed-out trajectories.\n7. Select the valid candidate minimizing mean noisy validation relative Frobenius error plus 1e-4*K. If no search candidate qualifies, retain the fixed window31/threshold0.02 method. A failing fixed result remains a reported failure.\n\nUse public diagnostics to check whether changes help. This method is a starting point, and you may investigate other methods within the same interface and budget.\n",
+      "operation": "delete"
+    }
+  ],
+  "index_units": "Unicode code points",
+  "left_sha256": "62fa2998b248687e20f608bb4752e49f926972f80780ccd385a06eb1b93379f9",
+  "reconstruction_byte_exact": true,
+  "right_sha256": "602c710e31c440bedbb385fd5e4c4bf8115a4f7dc7f285f62be77fac84714531"
+}

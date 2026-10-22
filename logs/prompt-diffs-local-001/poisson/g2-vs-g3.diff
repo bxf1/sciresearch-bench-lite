@@ -1,0 +1,7 @@
+--- poisson/g2/common+guidance
++++ poisson/g3/common+guidance
+@@ -59,4 +59,3 @@
+ an evidence-based experiment record within the common budget.
+ 
+ 
+-考虑预处理开销、重复计算和多个右端项之间的计算复用。

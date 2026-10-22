@@ -1,0 +1,7 @@
+--- ode/g2/common+guidance
++++ ode/g3/common+guidance
+@@ -11,4 +11,3 @@
+ Research has a 30-minute wall-clock and 20 accepted-evaluation limit; public evaluation is inside that budget. Candidate execution is limited to one CPU, 4 GiB, 120 seconds per batch, and one numerical-library thread. Candidate execution has no network. Submit using the provided `bench evaluate` interface and select an already evaluated snapshot with `bench finalize`. Files must be ordinary files; no links or path traversal. Source is limited to 20 MiB and 1,000 files, output to 256 MiB, and temporary storage to 64 MiB. A valid but inaccurate initial submission remains the first valid checkpoint. The final program must generalize to unseen instances, not hardcode development answers.
+ 
+ 
+-考虑噪声稳健的动力学估计与模型简约性，用独立轨迹检查泛化。
