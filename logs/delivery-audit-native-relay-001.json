@@ -1,0 +1,15 @@
+{
+  "evidence_files": 1579,
+  "evidence_bytes": 40502805,
+  "source_files": 238,
+  "credential_scan_hits": [],
+  "original_design_files_checked": 40,
+  "original_design_changed": [],
+  "reference_worktree_status": {
+    "harbor": "",
+    "ASI-Bench": "",
+    "terminal-bench-science": ""
+  },
+  "private_relay_admissions_scanned": 3,
+  "scope": "Known environment credentials and private relay session tokens, literal/encoded/decoded JSON scan; selected source and evidence only; no secret values retained"
+}

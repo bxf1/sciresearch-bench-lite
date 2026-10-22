@@ -1,0 +1,20 @@
+{
+  "formal": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "model_calls": 0,
+  "passed": 1,
+  "probes": [
+    {
+      "attempt_status": "completed",
+      "execution_wall_seconds": 0.363733867,
+      "passed": true,
+      "probe": "normal",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-001/normal/worker/worker.json"
+    }
+  ],
+  "scientific_performance_measured": false,
+  "timer_source_sha256": "e515a1fd3d072ec0ae4df9a00d943eddffd4e291118b80abc8bd06ae03581b3a",
+  "total": 1,
+  "worker_source_sha256": "712fcd201953903480d82ddf9910631d618d18b24ffc1ca494672c87009186e0"
+}

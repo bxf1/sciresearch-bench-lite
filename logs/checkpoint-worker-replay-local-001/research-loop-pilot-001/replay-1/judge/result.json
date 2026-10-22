@@ -1,0 +1,50 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_forward": 0.0009350780985809136,
+      "E_init": 0.025878406135080245,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 92.78739899778498
+    },
+    {
+      "E_forward": 0.0011929678279954568,
+      "E_init": 0.08221757369248034,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 77.6776577393401
+    },
+    {
+      "E_forward": 0.0021171182877138895,
+      "E_init": 0.025053793210527028,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 92.61328238128817
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "cd9842e2a75bcf9fa5af918665148639423c3fddb1e74c219633de7a9661eee3",
+  "judge_wall_seconds": 0.45250479131937027,
+  "passed": 3,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 87.69277970613776,
+  "total": 3
+}

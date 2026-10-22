@@ -1,0 +1,173 @@
+{
+  "formal": false,
+  "final_test_scores_accessed": false,
+  "source": "results/calibration-local-001/summary.json",
+  "source_sha256": "b11b579b81e720f5b1e99297c6b62eac63e5f23d064fe09b14f82ea7dd49c6f1",
+  "script_sha256": "9d552ee604bd60819768c146193860060d82bba81e09b54b9eaa26f8915b06bf",
+  "observed_methods": [
+    {
+      "task": "heat",
+      "method": "ls",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.7038070419803262,
+      "judge_wall_seconds": 1.0566260842606425,
+      "combined_wall_seconds": 2.7604331262409687
+    },
+    {
+      "task": "heat",
+      "method": "rank5",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.8088621660135686,
+      "judge_wall_seconds": 0.9886854169890285,
+      "combined_wall_seconds": 2.797547583002597
+    },
+    {
+      "task": "heat",
+      "method": "tikhonov",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 2.0581368329003453,
+      "judge_wall_seconds": 1.0209378330036998,
+      "combined_wall_seconds": 3.079074665904045
+    },
+    {
+      "task": "heat",
+      "method": "discrepancy",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.5052220420911908,
+      "judge_wall_seconds": 0.49124004133045673,
+      "combined_wall_seconds": 1.9964620834216475
+    },
+    {
+      "task": "heat",
+      "method": "tsvd",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.276709625031799,
+      "judge_wall_seconds": 0.5595062500797212,
+      "combined_wall_seconds": 1.8362158751115203
+    },
+    {
+      "task": "ode",
+      "method": "raw",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.1873900410719216,
+      "judge_wall_seconds": 1.8617547499015927,
+      "combined_wall_seconds": 3.0491447909735143
+    },
+    {
+      "task": "ode",
+      "method": "fixed",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.2398405000567436,
+      "judge_wall_seconds": 2.0495973327197134,
+      "combined_wall_seconds": 3.289437832776457
+    },
+    {
+      "task": "ode",
+      "method": "search",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 3.0721998331137,
+      "judge_wall_seconds": 1.847673624753952,
+      "combined_wall_seconds": 4.919873457867652
+    },
+    {
+      "task": "poisson",
+      "method": "cg",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 7.1508272918872535,
+      "judge_wall_seconds": 0.790355124976486,
+      "combined_wall_seconds": 7.9411824168637395
+    },
+    {
+      "task": "poisson",
+      "method": "jacobi",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 2.01110808365047,
+      "judge_wall_seconds": 0.8365715420804918,
+      "combined_wall_seconds": 2.8476796257309616
+    },
+    {
+      "task": "poisson",
+      "method": "lu",
+      "cases": 12,
+      "evaluation_status": "valid",
+      "worker_wall_seconds": 1.2969227079302073,
+      "judge_wall_seconds": 0.8507477501407266,
+      "combined_wall_seconds": 2.147670458070934
+    }
+  ],
+  "proxy_checkpoint_replay_seconds": {
+    "heat": 9.237223997712135,
+    "ode": 9.868313498329371,
+    "poisson": 14.986050251405686
+  },
+  "scenarios": [
+    {
+      "label": "minimum_9",
+      "sessions": {
+        "heat": 3,
+        "ode": 3,
+        "poisson": 3
+      },
+      "distinct_checkpoints_per_session": 1,
+      "checkpoint_replay_seconds_estimate": 102.27476324234158,
+      "fresh_W_J_batches": 36,
+      "research_wall_budget_seconds": 16200
+    },
+    {
+      "label": "minimum_9",
+      "sessions": {
+        "heat": 3,
+        "ode": 3,
+        "poisson": 3
+      },
+      "distinct_checkpoints_per_session": 2,
+      "checkpoint_replay_seconds_estimate": 204.54952648468316,
+      "fresh_W_J_batches": 72,
+      "research_wall_budget_seconds": 16200
+    },
+    {
+      "label": "main_15",
+      "sessions": {
+        "heat": 9,
+        "ode": 3,
+        "poisson": 3
+      },
+      "distinct_checkpoints_per_session": 1,
+      "checkpoint_replay_seconds_estimate": 157.6981072286144,
+      "fresh_W_J_batches": 54,
+      "research_wall_budget_seconds": 27000
+    },
+    {
+      "label": "main_15",
+      "sessions": {
+        "heat": 9,
+        "ode": 3,
+        "poisson": 3
+      },
+      "distinct_checkpoints_per_session": 2,
+      "checkpoint_replay_seconds_estimate": 315.3962144572288,
+      "fresh_W_J_batches": 108,
+      "research_wall_budget_seconds": 27000
+    }
+  ],
+  "three_T3_profile_groups_seconds_estimate": 44.95815075421706,
+  "ode_per_checkpoint_rollout_timeout_ceiling_seconds": 720,
+  "cost_usd": null,
+  "limitations": [
+    "Observed local calibration totals include W/J setup and transfer, not a formal performance measurement.",
+    "Fixed methods are runtime proxies; unknown agent candidates can approach the published timeout budgets.",
+    "Excludes research setup, model/provider failure, baseline reruns, profile instability reruns and scheduling overhead.",
+    "One distinct source means identical first/final reuse; two means both need the required replay protocol.",
+    "T3 six-batch protocol is counted once per distinct checkpoint, not wrapped in another triple repetition."
+  ]
+}

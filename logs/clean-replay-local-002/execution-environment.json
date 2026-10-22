@@ -1,0 +1,33 @@
+{
+  "archived_test_command": [
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests"
+  ],
+  "archived_test_cwd": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/clean-replay-local-002/source",
+  "base_prefix": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none",
+  "executable": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/.venv/bin/python",
+  "formal": false,
+  "prefix": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/.venv",
+  "reuse_docker_daemon_and_numeric_image": true,
+  "reuse_old_site_packages": false,
+  "reuse_python_binary": true,
+  "site_packages": [
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/.venv/lib/python3.12/site-packages"
+  ],
+  "source_commit": "28da96e1c1a8a50911c6a08dbb99bb6b72f145c9",
+  "sys_path": [
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python312.zip",
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12",
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/lib-dynload",
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/.venv/lib/python3.12/site-packages"
+  ],
+  "versions": {
+    "harbor": "0.24.0",
+    "numpy": "2.2.6",
+    "pytest": "8.3.5",
+    "scipy": "1.15.3"
+  }
+}

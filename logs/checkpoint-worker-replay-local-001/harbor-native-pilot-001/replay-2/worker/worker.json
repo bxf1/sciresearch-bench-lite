@@ -1,0 +1,56 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "sha256": "0d513338625553c436d0366b56c0898190d64cb04739cad0477fd1be0acc7fb5"
+    },
+    {
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "sha256": "e18b59deef8a1b17a030c194712913defd4e2015620367b7adbc9fcc1bc2c600"
+    },
+    {
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "sha256": "698520020cd460e93826e6ab87b5ab1ebb9825e6ecd7a0e8ff57a8fceee6e151"
+    }
+  ],
+  "container_id": "9f595874b3551ea313819f8b79678e945ce0325f795d99f94159f02a8e61c3bc",
+  "container_name": "sciresearch-w-dec6c3644e9b",
+  "cpu_seconds": 0.629805,
+  "docker_execution_wall_seconds": 0.7097211251966655,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.539767473,
+  "exit_code": 0,
+  "finished_monotonic_ns": 3645773348481881,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "input_sha256": "5907033ba4ce6eaa7644f003f7dea0dfc6c292ccb00ee192416d05a5fe92aab0",
+  "log_bytes_observed": 0,
+  "machine_id": "2911eb01-a56b-44ff-9edf-081da4884739",
+  "memory_peak_bytes": 69140480,
+  "oom_killed": false,
+  "output_initially_empty": true,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.7651282921433449,
+  "research_timeout_seconds": null,
+  "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "source_hash": "174e4e6eb1d349a28504c53c5e578b087388e66dc597d597213457509b410c50",
+  "started_monotonic_ns": 3645772808714408,
+  "timeout_seconds": 120,
+  "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 1.1635059998370707
+}

@@ -177,6 +177,20 @@ class RelayProbeReportTests(unittest.TestCase):
 
 
 class ResultsDocumentTests(unittest.TestCase):
+    def test_current_repository_visibility_and_warning_bearing_test_log(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            base = {"nameWithOwner": "owner/benchmark", "url": "https://github.com/owner/benchmark",
+                    "defaultBranchRef": {"name": "main"}}
+            write_json(root / "logs/github-repository-local-001.json", {**base, "isPrivate": True})
+            write_json(root / "logs/github-repository-local-002.json", {**base, "isPrivate": False})
+            (root / "logs/github-remote-head-local-002.txt").write_text("a" * 40 + "\trefs/heads/main\n")
+            (root / "logs/unit-tests-final-local-004.txt").write_text("328 passed, 2 warnings in 54.12s\n")
+            result = delivery_evidence(root)
+            self.assertFalse(result["publication"]["private"])
+            self.assertEqual(result["latest_saved_unit_tests"]["passed"], 328)
+            self.assertTrue(read_json(root / "logs/github-repository-local-001.json")["isPrivate"])
+
     def test_native_completion_and_dependency_install_keep_separate_acceptance_statuses(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

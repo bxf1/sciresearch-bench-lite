@@ -1,0 +1,60 @@
+{
+  "container_id": "6846e118a7999c72e2500b42999026d3a0858c5ff4418c8941e4bbb9df7298d8",
+  "formal": false,
+  "health": {
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "output_config",
+        "service_tier",
+        "container"
+      ],
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 512,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-v4-pro",
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 32768,
+      "session_seconds": 600.0,
+      "stream_required": true,
+      "temperature": 0.0,
+      "thinking": {
+        "type": "disabled"
+      },
+      "top_p": 1.0
+    },
+    "request_count": 0,
+    "schema_version": 1,
+    "state": "ready"
+  },
+  "host_config": {
+    "CapDrop": [
+      "ALL"
+    ],
+    "Memory": 268435456,
+    "MemorySwap": 268435456,
+    "NanoCpus": 250000000,
+    "PidsLimit": 64,
+    "ReadonlyRootfs": true,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ]
+  },
+  "identity": "sciresearch-relay-161d27a41c6c",
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "mount_destinations": [
+    "/trusted/model_relay.py",
+    "/evidence"
+  ],
+  "provider_endpoint": "https://api.deepseek.com/anthropic/v1/messages",
+  "provider_key_in_R": false,
+  "relay_ip": "172.21.0.2",
+  "relay_source_sha256": "cd4608e1fb05b36bf39ee3a3e657f05915d0e4197cd6d2526b494986831cfca0",
+  "request_output_limit": 4096,
+  "session_output_limit": 32768,
+  "session_seconds": 600,
+  "status": "ready"
+}

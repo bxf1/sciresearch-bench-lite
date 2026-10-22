@@ -1,0 +1,2 @@
+Task sciresearch-pilot/heat: Configured runtime overrides apply only to the agent environment and are not propagated to separate verifier environments (extra_docker_compose: /Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-002/research-security-compose.json). Bake grading dependencies into the verifier image under tests/ or declare required agent outputs as artifacts.
+{"status": "pilot_completed", "formal": false, "model_run_started": true, "score": 89.30228457567675, "reward": 1}

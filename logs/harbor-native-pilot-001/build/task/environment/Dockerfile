@@ -1,0 +1,2 @@
+FROM sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb
+COPY public-dev/ /input/

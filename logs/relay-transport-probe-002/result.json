@@ -1,0 +1,212 @@
+{
+  "controller_sha256": "baebe3ecbc081aac759040b303994852c910bcc04a6a72f93bee885614f5170d",
+  "environment_cleanup": {
+    "cleanup_errors": {},
+    "inspection_filter": "label=com.docker.compose.project=bench-relay-probe-688fc503a3f0",
+    "native_stop_returned": true,
+    "orchestration_environment_removed": true,
+    "remaining_own_containers": [],
+    "remaining_own_networks": [],
+    "remaining_own_volumes": [],
+    "session_id": "bench-relay-probe-688fc503a3f0"
+  },
+  "formal": false,
+  "model_calls": 0,
+  "network": {
+    "checks": [
+      {
+        "health": {
+          "limits": {
+            "dropped_fields": [
+              "top_k",
+              "output_config",
+              "service_tier",
+              "container"
+            ],
+            "max_body_bytes": 1048576,
+            "max_concurrency": 4,
+            "max_event_bytes": 65536,
+            "max_requests": 512,
+            "max_response_bytes": 8388608,
+            "model": "deepseek-v4-pro",
+            "request_output_limit": 4096,
+            "request_seconds": 120,
+            "session_output_limit": 32768,
+            "session_seconds": 600.0,
+            "stream_required": true,
+            "temperature": 0.0,
+            "thinking": {
+              "type": "disabled"
+            },
+            "top_p": 1.0
+          },
+          "request_count": 0,
+          "schema_version": 1,
+          "state": "ready"
+        },
+        "http_response": true,
+        "label": "relay",
+        "status": 200
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "provider"
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "internet"
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "spoofed_host"
+      }
+    ],
+    "dns_checks": [
+      {
+        "address": "127.0.0.11",
+        "error_type": "TimeoutError",
+        "port": 53,
+        "protocol": "tcp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "PermissionError",
+        "port": 53,
+        "protocol": "udp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "TimeoutError",
+        "port": 39713,
+        "protocol": "tcp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "PermissionError",
+        "port": 57826,
+        "protocol": "udp",
+        "response_received": false
+      }
+    ],
+    "dns_resolvers": [
+      "127.0.0.11"
+    ],
+    "external_raw_tcp_connected": false,
+    "firewall": "container sidecar namespace only; exact IP/port before GOST DNAT",
+    "formal": false,
+    "model_calls": 0,
+    "passed": true,
+    "relay_ip": "172.21.0.2",
+    "relay_port": 8787
+  },
+  "relay_cleanup": {
+    "all_removed": true,
+    "container_id": "a8fccd04d4dff104fbd8fa32ec29269f952e689d692578d0048f5c39d8f49240",
+    "container_remove_returncode": 0,
+    "errors": {},
+    "network_name": "sciresearch-relay-e98bcde5e44b",
+    "network_remove_returncode": 0,
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "status_before_stop": {
+      "budget_exhausted": false,
+      "charged_output_tokens": 0,
+      "evidence_error": false,
+      "expired": false,
+      "failed_requests": 0,
+      "failure_counts": {},
+      "inflight": 0,
+      "last_request_outcome": null,
+      "last_upstream_status": null,
+      "limits": {
+        "dropped_fields": [
+          "top_k",
+          "output_config",
+          "service_tier",
+          "container"
+        ],
+        "max_body_bytes": 1048576,
+        "max_concurrency": 4,
+        "max_event_bytes": 65536,
+        "max_requests": 512,
+        "max_response_bytes": 8388608,
+        "model": "deepseek-v4-pro",
+        "request_output_limit": 4096,
+        "request_seconds": 120,
+        "session_output_limit": 32768,
+        "session_seconds": 600.0,
+        "stream_required": true,
+        "temperature": 0.0,
+        "thinking": {
+          "type": "disabled"
+        },
+        "top_p": 1.0
+      },
+      "model": "deepseek-v4-pro",
+      "protocol_violation": false,
+      "rejected_requests": 0,
+      "remaining_output_tokens": 32768,
+      "request_count": 0,
+      "reserved_output_tokens": 0,
+      "schema_version": 1,
+      "state": "ready",
+      "successful_requests": 0
+    }
+  },
+  "relay_status": {
+    "budget_exhausted": false,
+    "charged_output_tokens": 0,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_outcome": null,
+    "last_upstream_status": null,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "output_config",
+        "service_tier",
+        "container"
+      ],
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 512,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-v4-pro",
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 32768,
+      "session_seconds": 600.0,
+      "stream_required": true,
+      "temperature": 0.0,
+      "thinking": {
+        "type": "disabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-v4-pro",
+    "protocol_violation": false,
+    "rejected_requests": 0,
+    "remaining_output_tokens": 32768,
+    "request_count": 0,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "ready",
+    "successful_requests": 0
+  },
+  "session_id": "bench-relay-probe-688fc503a3f0",
+  "status": "passed",
+  "tool_hashes": {
+    "runner/model_relay.py": "cd4608e1fb05b36bf39ee3a3e657f05915d0e4197cd6d2526b494986831cfca0",
+    "runner/relay_transport.py": "ba82f67eb7424895a9592df59bf6a9197d4a7eea75328e16a8be559eb52e0d34"
+  }
+}

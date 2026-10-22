@@ -1,0 +1,1 @@
+{"run_rows": 11, "case_rows": 132, "model_pilot_attempts": 2, "research_pilot_attempts": 1, "native_pilot_attempts": 2, "relay_transport_probes": 2, "formal": false}

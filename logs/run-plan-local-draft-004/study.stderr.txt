@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 483, in <module>
+    main()
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 472, in main
+    result = asyncio.run(start(project, args.plan, args.run_id, retry_of=args.retry_of))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 176, in start
+    plan, plan_ref = frozen_plan(project, plan_path)  # Before any Docker/API work.
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 36, in frozen_plan
+    validate_start(plan, project)
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/run_plan.py", line 296, in validate_start
+    raise RunPlanError(blockers)
+runner.run_plan.RunPlanError: Formal research is blocked: run plan requires status=frozen and formal_ready=true; draft cannot start; model version: model version is unresolved; heat freeze: final-test requires status=frozen; a draft is not authorization; ode freeze: final-test requires status=frozen; a draft is not authorization; poisson freeze: final-test requires status=frozen; a draft is not authorization

@@ -1,0 +1,13 @@
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 65%]
+........................................................................ [ 87%]
+........................................                                 [100%]
+=============================== warnings summary ===============================
+tests/test_harbor_pilot.py::NativeTrialTests::test_native_admission_failure_cannot_reach_agent_or_verification
+tests/test_harbor_pilot.py::NativeTrialTests::test_native_trial_factory_and_lifecycle_hooks_without_container_or_model
+  /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/trial/trial.py:1090: DeprecationWarning: Task.checksum will be deprecated soon. Use TrialLock.task.digest from the trial lock when you need the task content hash.
+    task_checksum=self.task.checksum,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+328 passed, 2 warnings in 780.68s (0:13:00)

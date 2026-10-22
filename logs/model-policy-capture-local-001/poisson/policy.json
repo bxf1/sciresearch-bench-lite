@@ -1,0 +1,28 @@
+{
+  "capture_extension_sha256": "e265502bab8922a18c5dbb43f0d0b4b828a077bdc9b39cd5c3a4569615a31d8e",
+  "formal": false,
+  "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629",
+  "max_turns": null,
+  "model_calls": 0,
+  "pi_version": "0.84.1",
+  "runtime_tools": [
+    "read",
+    "bash",
+    "edit",
+    "write"
+  ],
+  "schema_version": 1,
+  "status": "verified",
+  "system": {
+    "path": "logs/model-policy-capture-local-001/poisson/system.json",
+    "sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd"
+  },
+  "task": "poisson",
+  "tools": {
+    "path": "logs/model-policy-capture-local-001/poisson/tools.json",
+    "sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a"
+  },
+  "verification": "offline native policy capture before HTTP",
+  "wire_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+  "wire_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a"
+}

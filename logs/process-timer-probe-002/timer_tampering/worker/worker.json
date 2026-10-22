@@ -1,0 +1,52 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    }
+  ],
+  "container_id": "1aeed71f4c986e755701a287272f9b1475ee6f96ec673d1028aaa7ff3a266791",
+  "container_name": "sciresearch-w-4edbe914ec16",
+  "cpu_seconds": 0.366933,
+  "docker_execution_wall_seconds": 0.31122816586866975,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.144987786,
+  "exit_code": 0,
+  "finished_monotonic_ns": 3643924880817340,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "log_bytes_observed": 310,
+  "machine_id": "2911eb01-a56b-44ff-9edf-081da4884739",
+  "memory_peak_bytes": 31485952,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.5023550828918815,
+  "research_timeout_seconds": 20,
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "started_monotonic_ns": 3643924735829554,
+  "timeout_seconds": 19.782719207927585,
+  "timer_source_sha256": "e515a1fd3d072ec0ae4df9a00d943eddffd4e291118b80abc8bd06ae03581b3a",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 0.9778340412303805
+}

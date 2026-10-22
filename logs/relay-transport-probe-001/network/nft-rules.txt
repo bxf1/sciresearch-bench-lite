@@ -1,0 +1,7 @@
+table inet bench_model_relay {
+	chain output {
+		type filter hook output priority mangle; policy drop;
+		oifname "lo" accept
+		ip daddr 172.21.0.2 tcp dport 8787 accept
+	}
+}

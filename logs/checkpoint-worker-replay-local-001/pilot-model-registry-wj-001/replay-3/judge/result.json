@@ -1,0 +1,50 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "scientific_pass": false,
+      "score": 0.0
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "79b5b3ddb60f87205239943b5412dfce5b4b27b4ce97f48834c5066c07b33a2b",
+  "judge_wall_seconds": 0.3982816659845412,
+  "passed": 0,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": 0,
+  "scientific_pass": false,
+  "score": 0.0,
+  "total": 3
+}

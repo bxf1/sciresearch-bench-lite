@@ -1,0 +1,6 @@
+Using Python 3.12.12 environment at: build/dependency-replay-local-001/.venv
+error: Request failed after 3 retries
+  Caused by: Failed to fetch: `https://pypi.org/simple/cryptography/`
+  Caused by: request or response body error
+  Caused by: error reading a body from connection
+  Caused by: peer closed connection without sending TLS close_notify: https://docs.rs/rustls/latest/rustls/manual/_03_howto/index.html#unexpected-eof

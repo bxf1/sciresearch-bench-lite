@@ -1,0 +1,149 @@
+{
+  "all_132_case_metrics_equal": true,
+  "all_sources_and_inputs_equal": true,
+  "current": {
+    "path": "results/calibration-local-002/summary.json",
+    "sha256": "2e6b7d22a84f9341b2ae00050450f80d04410731f0aec2cc8dd79a010fb41ca5"
+  },
+  "final_test_accessed": false,
+  "formal": false,
+  "methods": [
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "ls",
+      "new_passed": 1,
+      "old_passed": 1,
+      "score": 24.812298533210967,
+      "source_hash_unchanged": true,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "rank5",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 87.01477148159408,
+      "source_hash_unchanged": true,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "tikhonov",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 93.57211040826625,
+      "source_hash_unchanged": true,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "discrepancy",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 91.78010240872669,
+      "source_hash_unchanged": true,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "tsvd",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 92.50519815910975,
+      "source_hash_unchanged": true,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "raw",
+      "new_passed": 0,
+      "old_passed": 0,
+      "score": 0.0,
+      "source_hash_unchanged": true,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "fixed",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 95.79095210504317,
+      "source_hash_unchanged": true,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "search",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": 97.16554993227366,
+      "source_hash_unchanged": true,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "cg",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": null,
+      "source_hash_unchanged": true,
+      "task": "poisson",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "jacobi",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": null,
+      "source_hash_unchanged": true,
+      "task": "poisson",
+      "total": 12
+    },
+    {
+      "case_scientific_metrics_equal": true,
+      "evaluation_status": "valid",
+      "input_hash_unchanged": true,
+      "method": "lu",
+      "new_passed": 12,
+      "old_passed": 12,
+      "score": null,
+      "source_hash_unchanged": true,
+      "task": "poisson",
+      "total": 12
+    }
+  ],
+  "previous": {
+    "path": "results/calibration-local-001/summary.json",
+    "sha256": "b11b579b81e720f5b1e99297c6b62eac63e5f23d064fe09b14f82ea7dd49c6f1"
+  },
+  "reason": "Uniform re-execution after trusted process timer and W lifecycle change; original calibration retained"
+}

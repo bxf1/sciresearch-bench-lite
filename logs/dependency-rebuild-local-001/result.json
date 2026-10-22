@@ -1,0 +1,32 @@
+{
+  "archived_tests": {
+    "passed": 328,
+    "path": "logs/clean-replay-local-002/archived-unit-tests.txt",
+    "sha256": "eb8e4c9460f24a851c7153ca7b1f7506220d47d83d5e4d6f18a03608dd163df5"
+  },
+  "execution_environment": {
+    "path": "logs/clean-replay-local-002/execution-environment.json",
+    "sha256": "c634cd3d7fddf20c377ec1364f38b530d0164ae39310e4f293c2318a2b330c04"
+  },
+  "files": {
+    "dependency-install-002.txt": "92e91cd808dcee9e26fce88a868a00e482cd2f90710e6fdc406b567261da6643",
+    "dependency-install.txt": "eb2ee760670e1ba0be7469afe8fafc5b60890838eeba389232f97ae7dacbb0d3",
+    "dependency-verification.json": "f1c66692eefd3085966c11fb813a050e50ef76b2787fdc04892d8b32f3797ad4",
+    "harbor-install.txt": "f154e048365057c7c556131a9d5dd3b5acbb349dbafef5cbb53143f1e2ff8a78",
+    "requirements-without-harbor.lock": "074ce4f616be6d92d97a81d63642ce1e8b91dc2f81d264e556f7c7dbe653efa3",
+    "venv-create-002.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "venv-create.txt": "b643e107ff562be84e9c0e99429f4b7b7ae7927abb0d1829c906c8f032718225"
+  },
+  "formal": false,
+  "installation_record_sha256": "e44010eaa76159eb1d21c89309775a3400c17b1ab79ca701da1e73e70eb43378",
+  "new_environment_replay_status": "completed",
+  "replay_evidence": {
+    "path": "logs/clean-replay-local-002/result.json",
+    "sha256": "3dc7249461858de01dbe4e832c896ced0990d775a7e4f85be25cf3a3aa6cedf1"
+  },
+  "reuse_docker_daemon_and_numeric_image": true,
+  "reuse_old_site_packages": false,
+  "reuse_python_binary": true,
+  "source_directory": "build/dependency-replay-local-001",
+  "status": "fresh_dependency_environment_replayed"
+}

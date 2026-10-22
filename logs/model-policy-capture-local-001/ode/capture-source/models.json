@@ -1,0 +1,14 @@
+{
+  "providers": {
+    "harbor-endpoint": {
+      "baseUrl": "http://127.0.0.1:9",
+      "apiKey": "$BENCH_RELAY_KEY",
+      "api": "anthropic-messages",
+      "models": [
+        {
+          "id": "deepseek-v4-pro"
+        }
+      ]
+    }
+  }
+}

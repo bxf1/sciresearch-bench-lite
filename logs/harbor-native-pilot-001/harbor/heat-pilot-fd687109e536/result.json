@@ -1,0 +1,154 @@
+{
+    "id": "1d198798-7c8e-45c5-8679-2f5ec0740049",
+    "task_name": "sciresearch-pilot/heat",
+    "trial_name": "heat-pilot-fd687109e536",
+    "trial_uri": "file:///Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/harbor/heat-pilot-fd687109e536",
+    "task_id": {
+        "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/build/task"
+    },
+    "source": null,
+    "task_checksum": "f69c6564473a86e9b0892ef46b22c9b4200f3305ca29bc11488d521da479d756",
+    "config": {
+        "task": {
+            "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/build/task",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "heat-pilot-fd687109e536",
+        "trials_dir": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/harbor",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "pi",
+            "import_path": null,
+            "model_name": "anthropic/deepseek-v4-pro",
+            "model_base_url": "http://172.21.0.2:8787",
+            "model_api_key_name": "BENCH_RELAY_KEY",
+            "model_api_format": "anthropic_messages",
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": 600.0,
+            "override_setup_timeout_sec": 600.0,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "exclude_logs": [
+                "*",
+                "**/*"
+            ],
+            "kwargs": {
+                "version": "0.84.1",
+                "reasoning_effort": "off",
+                "max_turns": 12
+            },
+            "env": {
+                "BENCH_RELAY_KEY": "4c36****e75",
+                "ANTHROPIC_OAUTH_TOKEN": ""
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "runner.harbor_environment:ResearchDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "limit",
+            "memory_enforcement_policy": "limit",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [
+                "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/research-security-compose.json"
+            ],
+            "kwargs": {
+                "auto_mounting": false,
+                "enable_environment_dir_upload": false,
+                "pilot_audit_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/environment-audit"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "import_path": "runner.harbor_verifier:ResearchReplayVerifier",
+            "kwargs": {
+                "registry_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/registry",
+                "replay_config": {
+                    "task": "heat",
+                    "input_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/inputs/heat/pilot-smoke",
+                    "truth_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/private/heat/pilot-smoke",
+                    "output_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/replays",
+                    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+                    "judge_source_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/harbor-native-pilot-001/build/judge/e7e29bbbd5e02901de9f",
+                    "profile": null
+                }
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": null,
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "pi",
+        "version": "0.84.1",
+        "model_info": {
+            "name": "deepseek-v4-pro",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-22T02:50:05.824929Z",
+    "finished_at": "2026-10-22T02:52:15.222685Z",
+    "environment_setup": {
+        "started_at": "2026-10-22T02:50:05.935810Z",
+        "finished_at": "2026-10-22T02:50:08.769136Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-22T02:50:08.769243Z",
+        "finished_at": "2026-10-22T02:50:58.981740Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-22T02:51:11.397161Z",
+        "finished_at": "2026-10-22T02:51:53.940122Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-22T02:51:55.792163Z",
+        "finished_at": "2026-10-22T02:52:15.222499Z"
+    },
+    "step_results": null
+}

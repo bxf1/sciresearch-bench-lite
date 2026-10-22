@@ -1,0 +1,1 @@
+{"kill_init": true, "stop_init": true, "prlimit_init": true, "write_record": true, "unlink_private_dir": true, "read_init_memory": true, "write_init_stdout": true, "second_handshake": true, "ptrace_init": true, "no_inherited_socket": true, "uid65534": true, "no_capabilities": true, "no_new_privileges": true}

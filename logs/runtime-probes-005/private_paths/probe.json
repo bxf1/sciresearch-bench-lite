@@ -1,0 +1,64 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "checks": {
+    "actual_cpu_one": true,
+    "actual_host_sentinel_exists": true,
+    "actual_memory_4gib": true,
+    "actual_no_swap": true,
+    "actual_pids_128": true,
+    "candidate_not_misclassified_as_infrastructure": true,
+    "distinct_nonroot_init_and_candidate": true,
+    "legal_artifacts_accepted": true,
+    "no_network": true,
+    "only_public_source_input_and_trusted_timer_binds": true,
+    "private_paths_unreadable": true,
+    "read_only_root": true
+  },
+  "events": [
+    {
+      "home": "/nonexistent",
+      "observed": [
+        {
+          "errno": 2,
+          "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/runtime-probes-005/private-fixture/sentinel.txt",
+          "readable": false
+        },
+        {
+          "errno": 2,
+          "path": "/truth/sentinel.txt",
+          "readable": false
+        },
+        {
+          "errno": 2,
+          "path": "/privateGT/sentinel.txt",
+          "readable": false
+        },
+        {
+          "errno": 2,
+          "path": "/var/run/docker.sock",
+          "readable": false
+        },
+        {
+          "errno": 2,
+          "path": "/host/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/runtime-probes-005/private-fixture/sentinel.txt",
+          "readable": false
+        },
+        {
+          "errno": 2,
+          "path": "/host/home/sentinel.txt",
+          "readable": false
+        },
+        {
+          "errno": 13,
+          "path": "/root/sentinel.txt",
+          "readable": false
+        }
+      ],
+      "probe": "private_paths",
+      "uid": 65534
+    }
+  ],
+  "passed": true,
+  "worker_reason": null
+}

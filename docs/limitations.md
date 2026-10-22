@@ -1,6 +1,6 @@
 # 当前局限与未完成验收
 
-本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码重放已通过，源码和证据已推送私有GitHub仓库。**正式三组研究、final-test重放、性能冻结和新依赖环境复现仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。最新[完整Harbor Trial与模型代理pilot](native-relay-pilot.md)已跑通，实际策略/用量记录、显式finalize、三次独立重放与清理均通过；不据此降低正式门槛。
+本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码及新依赖环境重放已通过，源码和证据已推送GitHub仓库。**正式三组研究、final-test重放和性能冻结仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。最新[完整Harbor Trial与模型代理pilot](native-relay-pilot.md)已跑通，实际策略/用量记录、显式finalize、三次独立重放与清理均通过；不据此降低正式门槛。
 
 ## 研究与因果解释
 
@@ -30,8 +30,14 @@ W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配�
 
 ## 复现与发布
 
-同熵重建已经在同固定Linux镜像复现90例、369个公开文件；它仍是同一宿主，不能替代独立干净环境重跑。Harbor/Pi pilot记录请求的 `deepseek-v4-pro`，没有独立的供应商服务端模型修订证明。正式清单因此保留待验证字段：确实不支持temperature或不公开模型版本时可用有原因、证据哈希的明确null，不能编造版本，也不能把普通未决null作为已冻结。系统提示、实际工具清单、输出token总上限与执行机制仍需完整记录。定价未核实，金额为null，不假定免费。
+同熵重建已经在同固定Linux镜像复现90例、369个公开文件；它仍是同一宿主，不能替代独立干净环境重跑。Harbor/Pi pilot记录请求的 `deepseek-v4-pro`，没有独立的供应商服务端模型修订证明。正式清单因此保留待验证字段：确实不支持temperature或不公开模型版本时可用有原因、证据哈希的明确null，不能编造版本，也不能把普通未决null作为已冻结。系统提示/实际工具定义已在三个R镜像中离线捕获，可信代理已实测每请求4096、会话32768的输出额度和请求哈希门禁；这些不证明供应商未公开的内部模型修订。定价未核实，金额为null，不假定免费。
 
 [干净源码重放](../logs/clean-replay-local-001/result.json)使用首提交 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc` 的Git archive展开新目录，并启动新的W/J容器；三任务参考和真实heat候选各3/3通过，T3 score/reward仍为null。工作源码和归档源码的保存日志均为184项通过。但它仍复用本机宿主依赖、同一Docker daemon和固定数值镜像，只支持fresh-source/fresh-container复现结论，不能冒充第二台干净机器、完整依赖重装或新增模型研究。
 
-源码及证据已推送私有GitHub仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)，[远端HEAD](../logs/github-remote-head-local-001.txt)核验了上述首提交，[仓库元数据](../logs/github-repository-local-001.json)确认PRIVATE。[本机交付记录](../freezes/local-delivery-001.json)保留提交与测试/重放哈希；私有生成数据和GT数组未提交。宿主依赖须按README固定Harbor commit安装，版本号本身不能代替源码身份。执行计划副本保留原design/参考仓库布局的相对链接，未承诺在独立clone中全部可打开。公开生成器/GT以后，这套机制仅保证运行时访问隔离，不能保证永久保密或不存在训练污染。
+源码及证据已推送GitHub仓库[bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)，[远端HEAD](../logs/github-remote-head-local-001.txt)核验了上述首提交，[仓库元数据](../logs/github-repository-local-001.json)确认PRIVATE。[本机交付记录](../freezes/local-delivery-001.json)保留提交与测试/重放哈希；私有生成数据和GT数组未提交。宿主依赖须按README固定Harbor commit安装，版本号本身不能代替源码身份。执行计划副本保留原design/参考仓库布局的相对链接，未承诺在独立clone中全部可打开。公开生成器/GT以后，这套机制仅保证运行时访问隔离，不能保证永久保密或不存在训练污染。
+
+后续[清洁重放002](../logs/clean-replay-local-002/result.json)已使用源码提交 `28da96e1c1a8a50911c6a08dbb99bb6b72f145c9`、重新安装的95个锁定依赖加固定Harbor源码，以及全新W/J。三任务参考和最新真实模型候选各3/3通过；[归档源码328项测试](../logs/clean-replay-local-002/archived-unit-tests.txt)通过。它没有复用旧site-packages，但仍复用同一物理宿主、Python二进制、Docker daemon与数值镜像，不能写成第二台机器或正式性能验收。依赖安装的早期TLS失败、修正后成功记录及原安装阶段状态均保留。
+
+[正式研究控制器](study.md)已实现逐会话固定预算、研究与final分离、全部attempt留档、显式关联重试和T3至多一次经调查的重测；这些分支目前是合成测试证据。完整真实native pilot仅覆盖本机heat功能链路，正式三个任务的15会话没有执行。
+
+仓库可见性以[最新核验002](../logs/github-repository-local-002.json)为准：当前为PUBLIC。初次001的PRIVATE记录仅代表当时状态；本轮没有改变仓库可见性。随后报告仅修复了读取最新元数据的逻辑，独立回归通过，不涉及求解/执行/计时/科学指标。

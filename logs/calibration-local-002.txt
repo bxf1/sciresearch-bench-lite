@@ -1,0 +1,22 @@
+calibration heat/ls started
+{"task": "heat", "method": "ls", "status": "valid", "passed": 1, "total": 12, "score": 24.812298533210967}
+calibration heat/rank5 started
+{"task": "heat", "method": "rank5", "status": "valid", "passed": 12, "total": 12, "score": 87.01477148159408}
+calibration heat/tikhonov started
+{"task": "heat", "method": "tikhonov", "status": "valid", "passed": 12, "total": 12, "score": 93.57211040826625}
+calibration heat/discrepancy started
+{"task": "heat", "method": "discrepancy", "status": "valid", "passed": 12, "total": 12, "score": 91.78010240872669}
+calibration heat/tsvd started
+{"task": "heat", "method": "tsvd", "status": "valid", "passed": 12, "total": 12, "score": 92.50519815910975}
+calibration ode/raw started
+{"task": "ode", "method": "raw", "status": "valid", "passed": 0, "total": 12, "score": 0.0}
+calibration ode/fixed started
+{"task": "ode", "method": "fixed", "status": "valid", "passed": 12, "total": 12, "score": 95.79095210504317}
+calibration ode/search started
+{"task": "ode", "method": "search", "status": "valid", "passed": 12, "total": 12, "score": 97.16554993227366}
+calibration poisson/cg started
+{"task": "poisson", "method": "cg", "status": "valid", "passed": 12, "total": 12, "score": null}
+calibration poisson/jacobi started
+{"task": "poisson", "method": "jacobi", "status": "valid", "passed": 12, "total": 12, "score": null}
+calibration poisson/lu started
+{"task": "poisson", "method": "lu", "status": "valid", "passed": 12, "total": 12, "score": null}

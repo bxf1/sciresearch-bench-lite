@@ -1,0 +1,15 @@
+{
+  "capture_stage": "after successful probe; only byte hashes recorded before run are accepted",
+  "files": {
+    "runner/model_relay.py": {
+      "current_sha256": "cd4608e1fb05b36bf39ee3a3e657f05915d0e4197cd6d2526b494986831cfca0",
+      "matches_run_record": true,
+      "recorded_sha256": "cd4608e1fb05b36bf39ee3a3e657f05915d0e4197cd6d2526b494986831cfca0"
+    },
+    "runner/relay_transport.py": {
+      "current_sha256": "ea19141b6923ca72e4a1ba91f49046150fc7ae77cad7d57781268258477aa806",
+      "matches_run_record": true,
+      "recorded_sha256": "ea19141b6923ca72e4a1ba91f49046150fc7ae77cad7d57781268258477aa806"
+    }
+  }
+}

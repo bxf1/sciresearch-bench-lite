@@ -1,0 +1,23 @@
+{
+  "formal": false,
+  "formal_wire_policy": {
+    "path": "logs/model-policy-capture-local-001/heat/policy.json",
+    "sha256": "b5fb54b375ad7589fe8c9da6162ae6f96137aa77f67a9b223d812a277fdab0dd"
+  },
+  "model_id": "deepseek-v4-pro",
+  "model_version": null,
+  "native_pilot": {
+    "path": "logs/harbor-native-pilot-002/result.json",
+    "sha256": "e42cea0e4dfdc8b7a1b70d0916b0e4e209bfcfbbdfe4772c705b496aaf294093"
+  },
+  "relay_status": null,
+  "request_output_limit": 4096,
+  "scope": "Trusted relay wire normalization and bounded accounting, supported by the retained native local pilot; formal host resources remain pending",
+  "session_output_limit": 32768,
+  "status": "verified",
+  "temperature": 0,
+  "thinking": {
+    "type": "disabled"
+  },
+  "version_resolution": "unresolved; no independent provider revision proof"
+}

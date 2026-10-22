@@ -1,0 +1,242 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_forward": 0.0014505003836546714,
+      "E_init": 0.017597365761601903,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "68a40d307140a8bf4fa0",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 94.82386900235461
+    },
+    {
+      "E_forward": 0.0014439486264266387,
+      "E_init": 0.03807297953719622,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "73a7f5d4b3a0b7e8667f",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 89.3658892479388
+    },
+    {
+      "E_forward": 0.0006823500629617368,
+      "E_init": 0.01408116990515452,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "9872c8dfb10dcce670c3",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 96.01757133763822
+    },
+    {
+      "E_forward": 0.0006885282494236806,
+      "E_init": 0.006661791868639573,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "c55761f0887d3a2cd599",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 97.99401275188823
+    },
+    {
+      "E_forward": 0.0005068250089357363,
+      "E_init": 0.017197438461917326,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "9b9539f8842bdc889a39",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 95.24507474051013
+    },
+    {
+      "E_forward": 0.0009747607911403609,
+      "E_init": 0.013558253497900087,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "7645e440e0340548a785",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 96.05954547017987
+    },
+    {
+      "E_forward": 0.0015088455225621914,
+      "E_init": 0.024687594364019846,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "165a4bee8a0ce0a976ea",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 92.9136929954073
+    },
+    {
+      "E_forward": 0.00017501198327607144,
+      "E_init": 0.030429114025267268,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "cc3ced352bba1f4927c0",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 91.82723226550338
+    },
+    {
+      "E_forward": 0.002330783272267158,
+      "E_init": 0.021137258012003723,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "e194a9925966dd83dc68",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 93.58647010604331
+    },
+    {
+      "E_forward": 0.000983593476690699,
+      "E_init": 0.01409478862712111,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "116045eeba761cf357ae",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 95.91352520720415
+    },
+    {
+      "E_forward": 0.0003199019410823627,
+      "E_init": 0.017433526621573586,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0a34677d4393d7041455",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 95.2444255872196
+    },
+    {
+      "E_forward": 0.003915475636920359,
+      "E_init": 0.055578094751446434,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "d34c585661e1b84294e6",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 83.8740161873075
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "bda6c866ee324b946a058270b5b2b48d92853b6e3724ce8e04465a5cc27cb0ab",
+  "judge_wall_seconds": 0.4731299579143524,
+  "passed": 12,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "author-calibration"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 93.57211040826625,
+  "total": 12,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "candidate_processes_terminated": true,
+    "candidate_uid": 65534,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "68a40d307140a8bf4fa0",
+        "sha256": "7e7c69317007283d5eb46178259ee648432fca02673549b594ddc11c416a4f18"
+      },
+      {
+        "artifact_valid": true,
+        "id": "73a7f5d4b3a0b7e8667f",
+        "sha256": "d7797cb98827fbfab5083447b006bf8778b5fb9fa341929a1e2f65c066296f54"
+      },
+      {
+        "artifact_valid": true,
+        "id": "9872c8dfb10dcce670c3",
+        "sha256": "0cc35fcdb3b36d9a767d38cfca05a90013c2a2ea7c83eef82843a8fde12feabc"
+      },
+      {
+        "artifact_valid": true,
+        "id": "c55761f0887d3a2cd599",
+        "sha256": "016b445b12c2b27d347d3289b5a9abb75f66f793afd483125f0a47a7ba8bf6cc"
+      },
+      {
+        "artifact_valid": true,
+        "id": "9b9539f8842bdc889a39",
+        "sha256": "81e1290942669c5c57a6465622cb6c39db9b29174711c62aaaaa7dbf22139a17"
+      },
+      {
+        "artifact_valid": true,
+        "id": "7645e440e0340548a785",
+        "sha256": "3e366c9c2ed39944df45b25559395ccb08e9da5bf3bd86430c8ba45bf4e4d454"
+      },
+      {
+        "artifact_valid": true,
+        "id": "165a4bee8a0ce0a976ea",
+        "sha256": "7e2db83df7544ab94652f53c44581d8f6e6105e963f6c05abbe6f506eb84c0d7"
+      },
+      {
+        "artifact_valid": true,
+        "id": "cc3ced352bba1f4927c0",
+        "sha256": "51cbe9d45fdc30e446b224bea28ee16c06527ef85b747ad65e24b37057a0e647"
+      },
+      {
+        "artifact_valid": true,
+        "id": "e194a9925966dd83dc68",
+        "sha256": "9ef46d40c9aab7f8d7dc823ee07c5e929642d3615f20ea9e1d80f1dd4d1a2fbd"
+      },
+      {
+        "artifact_valid": true,
+        "id": "116045eeba761cf357ae",
+        "sha256": "e7d77d79edb3aeb83323928c5083451d432769e4f07e79c7b0ef6c23f8cba53d"
+      },
+      {
+        "artifact_valid": true,
+        "id": "0a34677d4393d7041455",
+        "sha256": "02bfdbc9aaa3cc5cb479277e7fbb68c30c3c4c338d5d9dba3a58f3848d8fd277"
+      },
+      {
+        "artifact_valid": true,
+        "id": "d34c585661e1b84294e6",
+        "sha256": "bac2d7d5cf63fa985eeb8b4417ad56ddd101767be64f5df4cd856a9c88447ea6"
+      }
+    ],
+    "container_id": "b098c5d99fdaf96f51511f04d4e4b107a2c43e97a95b753c4cbef0bb21eb3cc0",
+    "container_name": "sciresearch-w-cb7944910f3a",
+    "cpu_seconds": 0.618359,
+    "docker_execution_wall_seconds": 0.7556642917916179,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 0.579697572,
+    "exit_code": 0,
+    "finished_monotonic_ns": 3645487938226031,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "input_sha256": "3b77b4f87a944e2e4a3c55037112d19942e8c5164faf07ea20c28fbca033472c",
+    "log_bytes_observed": 1080,
+    "machine_id": "2911eb01-a56b-44ff-9edf-081da4884739",
+    "memory_peak_bytes": 69505024,
+    "oom_killed": false,
+    "output_initially_empty": true,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 0.8081018328666687,
+    "research_timeout_seconds": null,
+    "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+    "resource_limits_verified": true,
+    "scientific_pass": false,
+    "source_hash": "8778e7b4651d52e6bdbdc266e0edaeac751d89f6ca63527601d2631eeb0c433c",
+    "started_monotonic_ns": 3645487358528459,
+    "timeout_seconds": 120,
+    "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+    "timer_uid": 65533,
+    "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+    "timing_complete": true,
+    "timing_scope": "python_spawn_to_all_descendants_exit",
+    "total_wall_seconds": 1.2111321669071913
+  }
+}

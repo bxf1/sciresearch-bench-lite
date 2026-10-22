@@ -1,0 +1,2 @@
+Running command: set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | env -u NODE_VERSION bash && export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && nvm alias default 22 && npm -v && npm install -g --ignore-scripts @earendil-works/pi-coding-agent@0.84.1 && pi --version
+Command outputs captured

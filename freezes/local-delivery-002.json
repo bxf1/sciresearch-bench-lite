@@ -1,0 +1,146 @@
+{
+  "clean_replay": {
+    "environment": {
+      "path": "logs/clean-replay-local-002/execution-environment.json",
+      "sha256": "c634cd3d7fddf20c377ec1364f38b530d0164ae39310e4f293c2318a2b330c04"
+    },
+    "fresh_site_packages": true,
+    "result": {
+      "path": "logs/clean-replay-local-002/result.json",
+      "sha256": "3dc7249461858de01dbe4e832c896ced0990d775a7e4f85be25cf3a3aa6cedf1"
+    },
+    "runs": [
+      {
+        "evaluation_status": "valid",
+        "label": "heat-tikhonov",
+        "passed": 3,
+        "reward": 1,
+        "score": 87.69277970613761,
+        "total": 3
+      },
+      {
+        "evaluation_status": "valid",
+        "label": "ode-fixed",
+        "passed": 3,
+        "reward": 1,
+        "score": 97.14755312766924,
+        "total": 3
+      },
+      {
+        "evaluation_status": "valid",
+        "label": "poisson-lu",
+        "passed": 3,
+        "reward": null,
+        "score": null,
+        "total": 3
+      },
+      {
+        "evaluation_status": "valid",
+        "label": "heat-model",
+        "passed": 3,
+        "reward": 1,
+        "score": 89.30228457567675,
+        "total": 3
+      }
+    ],
+    "same_host": true
+  },
+  "evidence": {
+    "calibration": {
+      "path": "results/calibration-local-002/summary.json",
+      "sha256": "2e6b7d22a84f9341b2ae00050450f80d04410731f0aec2cc8dd79a010fb41ca5"
+    },
+    "dependency_rebuild": {
+      "path": "logs/dependency-rebuild-local-001/result.json",
+      "sha256": "1fa52b143850ff102231603b7fdadf700f016f4ea5537792f6de4fb5205f28e8"
+    },
+    "entry_guard": {
+      "path": "logs/run-plan-local-draft-004/entry-rejection.json",
+      "sha256": "c212aa3d38e2544c32c3921b68343b779811e42526c6d207a5f7ff8eea555095"
+    },
+    "native_pilot": {
+      "path": "logs/harbor-native-pilot-002/result.json",
+      "sha256": "e42cea0e4dfdc8b7a1b70d0916b0e4e209bfcfbbdfe4772c705b496aaf294093"
+    },
+    "offline_model_policy": {
+      "path": "logs/model-policy-capture-local-001/verification.json",
+      "sha256": "1453ae94d106d287970a7d9b3035432d9364013b943c936d4162f520f5796731"
+    },
+    "remote_source_head": {
+      "path": "logs/github-remote-head-local-002.txt",
+      "sha256": "6a30b432dbea72e7953865be9c0a9208afe3decc8c5b68bf83596628e6b7c2fb"
+    },
+    "repository": {
+      "path": "logs/github-repository-local-002.json",
+      "sha256": "d49690131cec1b6f284986bd75573e301beeba7ad8681ac099e3b45f29375fd2"
+    },
+    "run_plan": {
+      "path": "freezes/research-run-plan-local-draft-005.json",
+      "sha256": "9fde447a2cbce45989b26933498cfd21a97ced7d0595c7d63a657396f585d9a7"
+    },
+    "runtime_probe": {
+      "path": "logs/runtime-probes-005/summary.json",
+      "sha256": "31bc9d149b0d65c2c35b8462a1d12b855c199e8634b2c176b9524ed4180a354e"
+    },
+    "t3_diagnostic": {
+      "path": "logs/t3-calibration-diagnostic-001/summary.json",
+      "sha256": "dd2ce88db7f7a04b49aded271001ef90a2de2c51861ab779e711a0701792d906"
+    },
+    "timer_probe": {
+      "path": "logs/process-timer-probe-004/summary.json",
+      "sha256": "b7c22de63b41b5f55caed3bf1731bfa0459b42c162a8cfb07000187bd0a5ea20"
+    },
+    "uniform_calibration_comparison": {
+      "path": "logs/calibration-worker-replay-local-002.json",
+      "sha256": "725d0f441c9dfa59f465bf97a2e36fd2ad73ae241018af3beb655019d0ace194"
+    },
+    "uniform_old_checkpoint_replay": {
+      "path": "logs/checkpoint-worker-replay-local-001/result.json",
+      "sha256": "9c782f9f6feb1b54c17007ca790ab6dd47c70e2dec1b8ef473c47ddaeb343331"
+    }
+  },
+  "final_test_solutions_evaluated": false,
+  "formal_acceptance": "pending",
+  "formal_study_cells": 0,
+  "formal_study_sessions": 0,
+  "original_design_and_reference_repositories": "unchanged; see final scope audit",
+  "pending": [
+    "Formal R/W/control resource and memory-pressure acceptance on a suitable host",
+    "Independent provider model revision resolution or verified unavailable declaration",
+    "Final task/model/parameter/ordering freeze and at least 9 scientific cells (target 15 sessions)",
+    "Frozen final-test baseline/first/final replays; no hidden solver score has been read",
+    "Exclusive T3 calibration/profile/performance acceptance"
+  ],
+  "post_archive_reporting_change": {
+    "files": {
+      "runner/report.py": "f78975e5040516b71f664538d223e67dfc742aa29fcef49a7e445bcd902b515d",
+      "tests/test_report.py": "bde17727e68dfc57078a454ddfafda5dd8220846b1a08effe57ed56bfeaf3be2"
+    },
+    "reason": "Use latest verified repository visibility and regression-test warning-bearing pytest summaries; no solver, execution, timing or scientific metric change"
+  },
+  "private_data_published": false,
+  "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+  "source_commit": "28da96e1c1a8a50911c6a08dbb99bb6b72f145c9",
+  "source_commit_remote_verified": true,
+  "status": "local_implementation_verified_formal_pending",
+  "tests": {
+    "fresh_dependency_archive": {
+      "passed": 328,
+      "path": "logs/clean-replay-local-002/archived-unit-tests.txt",
+      "sha256": "eb8e4c9460f24a851c7153ca7b1f7506220d47d83d5e4d6f18a03608dd163df5",
+      "warnings": 2
+    },
+    "subsequent_reporting_fix": {
+      "path": "logs/publication-report-unit-local-001.txt",
+      "sha256": "f203be191004d5aeac99e99182562113af33534c4ea42a574306dcadf26baeea"
+    },
+    "worktree": {
+      "passed": 328,
+      "path": "logs/unit-tests-final-local-004.txt",
+      "sha256": "3db83e8c9e8a47d59f2bed727e80dad880cfb577dc358a754b1df647b39b167d",
+      "warnings": 2
+    }
+  },
+  "visibility": "PUBLIC",
+  "visibility_note": "Initial inspection001 was private; latest inspection002 is public. Current visibility was preserved."
+}

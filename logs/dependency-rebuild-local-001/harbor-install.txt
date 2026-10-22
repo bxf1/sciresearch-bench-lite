@@ -1,0 +1,7 @@
+Using Python 3.12.12 environment at: build/dependency-replay-local-001/.venv
+Resolved 1 package in 19ms
+   Building harbor @ file:///Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/harbor
+      Built harbor @ file:///Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/harbor
+Prepared 1 package in 29.44s
+Installed 1 package in 6ms
+ + harbor==0.24.0 (from file:///Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/dependency-replay-local-001/harbor)

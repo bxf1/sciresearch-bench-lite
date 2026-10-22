@@ -1,0 +1,18 @@
+{
+  "formal": false,
+  "status": "fresh_dependency_environment_installed",
+  "source_directory": "build/dependency-replay-local-001",
+  "reuse_python_binary": true,
+  "reuse_old_site_packages": false,
+  "reuse_docker_daemon_and_numeric_image": true,
+  "new_environment_replay_status": "pending",
+  "files": {
+    "dependency-install-002.txt": "92e91cd808dcee9e26fce88a868a00e482cd2f90710e6fdc406b567261da6643",
+    "dependency-install.txt": "eb2ee760670e1ba0be7469afe8fafc5b60890838eeba389232f97ae7dacbb0d3",
+    "dependency-verification.json": "f1c66692eefd3085966c11fb813a050e50ef76b2787fdc04892d8b32f3797ad4",
+    "harbor-install.txt": "f154e048365057c7c556131a9d5dd3b5acbb349dbafef5cbb53143f1e2ff8a78",
+    "requirements-without-harbor.lock": "074ce4f616be6d92d97a81d63642ce1e8b91dc2f81d264e556f7c7dbe653efa3",
+    "venv-create-002.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "venv-create.txt": "b643e107ff562be84e9c0e99429f4b7b7ae7927abb0d1829c906c8f032718225"
+  }
+}

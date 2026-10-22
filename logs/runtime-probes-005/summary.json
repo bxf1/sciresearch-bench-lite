@@ -1,0 +1,240 @@
+{
+  "formal": false,
+  "not_run": [
+    "real 4GiB OOM pressure",
+    "R/model endpoint isolation",
+    "formal T3 exclusive timing"
+  ],
+  "passed": 11,
+  "probes": [
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "descendants_cannot_mutate_admitted_artifacts": true
+      },
+      "events": [
+        {
+          "child_pid": 18,
+          "probe": "background"
+        }
+      ],
+      "passed": true,
+      "probe": "background_closed_pipe",
+      "worker_reason": "research deadline expired"
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "descendants_cannot_mutate_admitted_artifacts": true
+      },
+      "events": [
+        {
+          "child_pid": 19,
+          "probe": "background"
+        }
+      ],
+      "passed": true,
+      "probe": "background_inherited_pipe",
+      "worker_reason": "research deadline expired"
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "checks": {
+        "attack_rejected": true,
+        "candidate_not_misclassified_as_infrastructure": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "forged_reward",
+      "worker_reason": "output filename not allowlisted"
+    },
+    {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "legal_artifacts_accepted": true,
+        "saved_arrays_remain_zero": true
+      },
+      "events": [
+        {
+          "cases": 3,
+          "probe": "normal_zero"
+        }
+      ],
+      "passed": true,
+      "probe": "normal_zero",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "candidate_failed",
+      "checks": {
+        "candidate_failure_preserved": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "enospc_at_or_below_limit": true
+      },
+      "events": [
+        {
+          "errno": 28,
+          "file_bytes": 268435456,
+          "probe": "quota",
+          "written_bytes": 268435456
+        }
+      ],
+      "passed": true,
+      "probe": "output_quota",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "candidate_failure_preserved": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "pid_limit_enforced": true
+      },
+      "events": [
+        {
+          "errno": 11,
+          "limit_enforced": true,
+          "probe": "pids",
+          "spawned": 126
+        }
+      ],
+      "passed": true,
+      "probe": "pids_pressure",
+      "worker_reason": "research deadline expired"
+    },
+    {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "checks": {
+        "actual_cpu_one": true,
+        "actual_host_sentinel_exists": true,
+        "actual_memory_4gib": true,
+        "actual_no_swap": true,
+        "actual_pids_128": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "distinct_nonroot_init_and_candidate": true,
+        "legal_artifacts_accepted": true,
+        "no_network": true,
+        "only_public_source_input_and_trusted_timer_binds": true,
+        "private_paths_unreadable": true,
+        "read_only_root": true
+      },
+      "events": [
+        {
+          "home": "/nonexistent",
+          "observed": [
+            {
+              "errno": 2,
+              "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/runtime-probes-005/private-fixture/sentinel.txt",
+              "readable": false
+            },
+            {
+              "errno": 2,
+              "path": "/truth/sentinel.txt",
+              "readable": false
+            },
+            {
+              "errno": 2,
+              "path": "/privateGT/sentinel.txt",
+              "readable": false
+            },
+            {
+              "errno": 2,
+              "path": "/var/run/docker.sock",
+              "readable": false
+            },
+            {
+              "errno": 2,
+              "path": "/host/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/runtime-probes-005/private-fixture/sentinel.txt",
+              "readable": false
+            },
+            {
+              "errno": 2,
+              "path": "/host/home/sentinel.txt",
+              "readable": false
+            },
+            {
+              "errno": 13,
+              "path": "/root/sentinel.txt",
+              "readable": false
+            }
+          ],
+          "probe": "private_paths",
+          "uid": 65534
+        }
+      ],
+      "passed": true,
+      "probe": "private_paths",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "log_limit",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "host_log_storage_bounded": true,
+        "log_limit_reported": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "stdout_flood",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "checks": {
+        "attack_rejected": true,
+        "candidate_not_misclassified_as_infrastructure": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "symlink_output",
+      "worker_reason": "tar link or special file"
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "bounded_execution": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "timeout_reported": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "timeout",
+      "worker_reason": "research deadline expired"
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "candidate_failed",
+      "checks": {
+        "candidate_failure_preserved": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "enospc_at_or_below_limit": true
+      },
+      "events": [
+        {
+          "errno": 28,
+          "file_bytes": 67096576,
+          "probe": "quota",
+          "written_bytes": 67096576
+        }
+      ],
+      "passed": true,
+      "probe": "tmp_quota",
+      "worker_reason": null
+    }
+  ],
+  "termination_protocol": "separate-UID PID1 waits for natural descendant termination; original deadline kills the whole W",
+  "total": 11
+}

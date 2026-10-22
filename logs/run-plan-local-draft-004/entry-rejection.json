@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python",
+        "-m",
+        "runner.run_plan",
+        "validate",
+        "--plan",
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/freezes/research-run-plan-local-draft-004.json"
+      ],
+      "expected_rejection": true,
+      "returncode": 2
+    },
+    {
+      "command": [
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python",
+        "-m",
+        "runner.study",
+        "start",
+        "--plan",
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/freezes/research-run-plan-local-draft-004.json",
+        "--run-id",
+        "research-5db960ec2eb8d256-heat-g2-r1"
+      ],
+      "expected_rejection": true,
+      "returncode": 1
+    }
+  ],
+  "docker_endpoint_deliberately_unavailable": true,
+  "formal": false,
+  "no_model_credentials_in_child": true,
+  "plan_sha256": "89729e9ac9324f70014694b1bb72c9cbf2386a9913be4f4434627204b1f43f20",
+  "research_runs_existed_before": false,
+  "research_runs_exists_after": false
+}

@@ -1,0 +1,56 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "13a841e7b6de490e68f4",
+      "sha256": "637d5681db30c55269069a274a823318d3d5b3d282c915cbd888d7bad1b0ae2c"
+    },
+    {
+      "artifact_valid": true,
+      "id": "04f4c0643b4ee1f2cbb1",
+      "sha256": "5aefae9da937b73564481481b095def3dbaf7f634b378180b3651e004bcb5c21"
+    },
+    {
+      "artifact_valid": true,
+      "id": "e0eb9d7e4704b51f884c",
+      "sha256": "3d1bea0fd9e2161e36d3513d907b4f5380f1dfa2f5218c93f3d478d7e669547d"
+    },
+    {
+      "artifact_valid": true,
+      "id": "409ab21b0f5310a9d96e",
+      "sha256": "a2c94cb6d538a224a69a0d6c4393e3dfd21946e0062d5ca7d124267f55c68044"
+    },
+    {
+      "artifact_valid": true,
+      "id": "fca8a41a2ec5084c6760",
+      "sha256": "44335ac9a9b19035eea9cbc26cb1f50d9a5d93fc77c52711f4137aa03b4c7f63"
+    },
+    {
+      "artifact_valid": true,
+      "id": "16f9197b92a286dc0148",
+      "sha256": "6ae8d3333873fc5f8097fa2e87965c3f0857c6901ebc1150a16495b4fc59dd84"
+    }
+  ],
+  "container_name": "sciresearch-w-0c09484109d3",
+  "cpu_seconds": 0.647749,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.7314150002785027,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "log_bytes_observed": 0,
+  "memory_peak_bytes": 62472192,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.8581637921743095,
+  "research_timeout_seconds": 569.1453150366433,
+  "scientific_pass": false,
+  "timeout_seconds": 120,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.4502450418658555
+}

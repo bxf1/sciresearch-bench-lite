@@ -1,0 +1,296 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_res": [
+        8.637007362325975e-11,
+        7.175098534884228e-11,
+        9.812508487123079e-11,
+        7.905734476098979e-11
+      ],
+      "E_sol": [
+        5.743797787916682e-10,
+        4.842621481472241e-10,
+        6.992435929239026e-10,
+        5.7212414729738e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "fc7dad88cbe1bfc0ca8d",
+      "level": 0,
+      "max_relative_residual": 9.812508487123079e-11,
+      "max_solution_error": 6.992435929239026e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.804035319702072e-11,
+        9.495945664997431e-11,
+        7.642337292067167e-11,
+        8.570888687686351e-11
+      ],
+      "E_sol": [
+        7.716901836944604e-10,
+        6.547717490800867e-10,
+        5.020626309716625e-10,
+        6.17042820784024e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4cb9c3610b2b3f94dbee",
+      "level": 0,
+      "max_relative_residual": 9.804035319702072e-11,
+      "max_solution_error": 7.716901836944604e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        7.665375964768996e-11,
+        9.170975431063453e-11,
+        7.783695552529152e-11,
+        8.603718272423388e-11
+      ],
+      "E_sol": [
+        4.213612018725362e-10,
+        6.127631458273962e-10,
+        6.037064494541728e-10,
+        6.07360404218153e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "8cbef50dda93b4e3dfbe",
+      "level": 0,
+      "max_relative_residual": 9.170975431063453e-11,
+      "max_solution_error": 6.127631458273962e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        8.123707058203982e-11,
+        7.537800178261731e-11,
+        7.836875988493623e-11,
+        8.440903971961463e-11
+      ],
+      "E_sol": [
+        4.6010633298633203e-10,
+        3.8375958718937403e-10,
+        4.837673738267786e-10,
+        5.402220024486233e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "cf54cc628b77e59d6711",
+      "level": 0,
+      "max_relative_residual": 8.440903971961463e-11,
+      "max_solution_error": 5.402220024486233e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.286090039797166e-11,
+        9.816855561298886e-11,
+        9.299298701494796e-11,
+        9.037184616590822e-11
+      ],
+      "E_sol": [
+        1.0980930380653513e-08,
+        1.1449527485155623e-08,
+        8.298144164204186e-09,
+        8.632729683246615e-09
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "9d53e1089094cc42cb0d",
+      "level": 1,
+      "max_relative_residual": 9.816855561298886e-11,
+      "max_solution_error": 1.1449527485155623e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        8.520452054516936e-11,
+        9.155225403772191e-11,
+        9.139103061337537e-11,
+        9.40960292803955e-11
+      ],
+      "E_sol": [
+        9.759708692282042e-09,
+        8.947215065662341e-09,
+        1.1306257440731617e-08,
+        1.26175062636508e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "8cc1298039e238bc26b0",
+      "level": 1,
+      "max_relative_residual": 9.40960292803955e-11,
+      "max_solution_error": 1.26175062636508e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.901934908667544e-11,
+        9.494860866825999e-11,
+        9.558595640991714e-11,
+        9.228973430075274e-11
+      ],
+      "E_sol": [
+        1.1001349598035741e-08,
+        1.102570477078194e-08,
+        8.97471124885807e-09,
+        9.018736767863234e-09
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "fecf4545525cf4053d1a",
+      "level": 1,
+      "max_relative_residual": 9.901934908667544e-11,
+      "max_solution_error": 1.102570477078194e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.692268448695329e-11,
+        9.762416911289594e-11,
+        9.256675391365599e-11,
+        9.921379885093826e-11
+      ],
+      "E_sol": [
+        8.924699130959028e-09,
+        9.463262204362509e-09,
+        9.844315121447822e-09,
+        8.872608210681688e-09
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "c7c028a8f4d864b2ed1b",
+      "level": 1,
+      "max_relative_residual": 9.921379885093826e-11,
+      "max_solution_error": 9.844315121447822e-09,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.894904888839174e-11,
+        9.267275179569937e-11,
+        9.660673723887335e-11,
+        9.143181181395328e-11
+      ],
+      "E_sol": [
+        5.7910597612621366e-08,
+        7.092556183440381e-08,
+        5.9316439717590766e-08,
+        5.3523063242338475e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "1d1078417e91f215cf74",
+      "level": 2,
+      "max_relative_residual": 9.894904888839174e-11,
+      "max_solution_error": 7.092556183440381e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.995643921803651e-11,
+        9.914765399412795e-11,
+        9.564176914767124e-11,
+        9.603851791875605e-11
+      ],
+      "E_sol": [
+        4.90263240790487e-08,
+        5.6879245379015e-08,
+        5.010743842221706e-08,
+        7.398643408627323e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "601cb6a5c6448e36fb45",
+      "level": 2,
+      "max_relative_residual": 9.995643921803651e-11,
+      "max_solution_error": 7.398643408627323e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.893797078695336e-11,
+        9.619438772506809e-11,
+        9.758087073153412e-11,
+        9.510978359918262e-11
+      ],
+      "E_sol": [
+        4.5577050244110417e-08,
+        4.343829681259097e-08,
+        4.5930527110796596e-08,
+        4.7882964628026426e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "78d21628751391d6374c",
+      "level": 2,
+      "max_relative_residual": 9.893797078695336e-11,
+      "max_solution_error": 4.7882964628026426e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.99618541673848e-11,
+        9.282596490972083e-11,
+        9.513975999812115e-11,
+        9.617903311017912e-11
+      ],
+      "E_sol": [
+        7.843555133967203e-08,
+        4.35267939821053e-08,
+        7.948007200042666e-08,
+        4.276114110383325e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "d523306bb62b9ea7f332",
+      "level": 2,
+      "max_relative_residual": 9.99618541673848e-11,
+      "max_solution_error": 7.948007200042666e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "dd9faa112a1da1a67efe39e3dd9e08b84a1659b75a3a09f07a39afb848061771",
+  "judge_wall_seconds": 1.0590010420419276,
+  "passed": 12,
+  "performance_status": "not_measured",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "author-calibration"
+  },
+  "reward": null,
+  "scientific_pass": true,
+  "score": null,
+  "total": 12
+}

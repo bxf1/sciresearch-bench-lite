@@ -1,0 +1,52 @@
+{
+  "formal": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "model_calls": 0,
+  "passed": 5,
+  "probes": [
+    {
+      "attempt_status": "completed",
+      "execution_wall_seconds": 0.335400591,
+      "passed": true,
+      "probe": "normal",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-003/normal/worker/worker.json"
+    },
+    {
+      "attempt_status": "completed",
+      "execution_wall_seconds": 0.535357699,
+      "passed": true,
+      "probe": "double_fork_closed_pipes",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-003/double_fork_closed_pipes/worker/worker.json"
+    },
+    {
+      "attempt_status": "completed",
+      "execution_wall_seconds": 0.524346137,
+      "passed": true,
+      "probe": "candidate_subreaper",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-003/candidate_subreaper/worker/worker.json"
+    },
+    {
+      "attempt_status": "completed",
+      "execution_wall_seconds": 0.156244267,
+      "passed": true,
+      "probe": "timer_tampering",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-003/timer_tampering/worker/worker.json"
+    },
+    {
+      "attempt_status": "timeout",
+      "execution_wall_seconds": null,
+      "passed": true,
+      "probe": "background_timeout",
+      "remaining_container": null,
+      "result_path": "logs/process-timer-probe-003/background_timeout/worker/worker.json"
+    }
+  ],
+  "scientific_performance_measured": false,
+  "timer_source_sha256": "e515a1fd3d072ec0ae4df9a00d943eddffd4e291118b80abc8bd06ae03581b3a",
+  "total": 5,
+  "worker_source_sha256": "e8ceac03f5e46bc9b66b2f3d7eae30730b52a859b5c93b98c216a7de3c1ece41"
+}

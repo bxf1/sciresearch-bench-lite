@@ -352,7 +352,8 @@ def clean_replay_evidence(project):
 
 
 def delivery_evidence(project):
-    repository = project / "logs/github-repository-local-001.json"
+    repositories = sorted((project / "logs").glob("github-repository-local-*.json"))
+    repository = repositories[-1] if repositories else project / "logs/github-repository-local-001.json"
     heads = sorted((project / "logs").glob("github-remote-head-local-*.txt"))
     head = heads[-1] if heads else project / "logs/github-remote-head-local-001.txt"
     publication = None

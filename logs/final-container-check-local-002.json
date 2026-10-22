@@ -1,0 +1,6 @@
+{
+  "formal_resource_acceptance": false,
+  "remaining_own_containers": [],
+  "running_container_count": 8,
+  "scope": "Read-only final active-container check; no stop/prune/update was issued"
+}

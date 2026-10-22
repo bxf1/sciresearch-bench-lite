@@ -1,0 +1,89 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_res": [
+        2.175078082745628e-16,
+        2.38678242732285e-16,
+        2.0309779911208793e-16,
+        2.209958820376986e-16
+      ],
+      "E_sol": [
+        9.936398552674208e-16,
+        1.3931928534301316e-15,
+        1.2542475220649082e-15,
+        9.699617986436562e-16
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "d35e75e301a0e2d0a24c",
+      "level": 0,
+      "max_relative_residual": 2.38678242732285e-16,
+      "max_solution_error": 1.3931928534301316e-15,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        2.770362254389184e-16,
+        2.6494682709124445e-16,
+        2.6515006477771933e-16,
+        2.563769774124905e-16
+      ],
+      "E_sol": [
+        3.762242804330031e-14,
+        3.579473474086343e-14,
+        2.7687525466021922e-14,
+        1.5406103181256626e-14
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "f330f48f690806c52797",
+      "level": 1,
+      "max_relative_residual": 2.770362254389184e-16,
+      "max_solution_error": 3.762242804330031e-14,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        2.8467358325076557e-16,
+        2.9820335139223757e-16,
+        2.827552460104279e-16,
+        2.7663361817883208e-16
+      ],
+      "E_sol": [
+        1.5270933570071623e-13,
+        9.608985151497592e-13,
+        2.384791362920943e-13,
+        4.2403165132723063e-13
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "c5d3ddf4baf85d6ac260",
+      "level": 2,
+      "max_relative_residual": 2.9820335139223757e-16,
+      "max_solution_error": 9.608985151497592e-13,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "b95eeac9cb74ace40b51a0c1103a09121d88a7b41e227903ff6aa004db805a81",
+  "judge_wall_seconds": 0.7031972496770322,
+  "passed": 3,
+  "performance_status": "not_measured",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": null,
+  "scientific_pass": true,
+  "score": null,
+  "total": 3
+}

@@ -1,0 +1,89 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_field": 0.00022637514176785122,
+      "E_roll": 0.0005656129295201795,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "6043e8c71b2eb877ad3f",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0005439564644617146,
+        0.0005467530073526403,
+        0.0005656129295201795,
+        0.0005606370118967836
+      ],
+      "scientific_pass": true,
+      "score": 99.60400596435599
+    },
+    {
+      "E_field": 0.0015576316006506818,
+      "E_roll": 0.0023246257818678876,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "3f78292ca917c93a1543",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.0020805066239089746,
+        0.0020653998726741177,
+        0.0023233754762665543,
+        0.0023246257818678876
+      ],
+      "scientific_pass": true,
+      "score": 98.05887130874072
+    },
+    {
+      "E_field": 0.006917295985735136,
+      "E_roll": 0.005523139794442901,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "922056eb31ec4ffc09ae",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.005523139794442901,
+        0.004606976332353993,
+        0.004732941711160438,
+        0.004868212756897474
+      ],
+      "scientific_pass": true,
+      "score": 93.77978210991098
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "af0a67f5e7023d9d788b8f880c5de9ad40ee442899daf880cc2f63eff746bd0b",
+  "judge_wall_seconds": 1.0691349590197206,
+  "passed": 3,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 97.14755312766924,
+  "total": 3
+}

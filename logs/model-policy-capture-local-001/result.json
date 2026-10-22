@@ -1,0 +1,237 @@
+{
+  "formal": false,
+  "model_calls": 0,
+  "native_installation": {
+    "base_image_has_nvm": false,
+    "base_image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+    "cache": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/pi-policy-cache-local-001",
+    "cache_tree_sha256": "ce9d7f42649e05d4fa609d81c7ed8c39678632967e5982123a1ec52396686700",
+    "cleanup": {
+      "completed": true
+    },
+    "formal": false,
+    "model_calls": 0,
+    "network_phase": "native installation only; no model request",
+    "session_id": "bench-policy-setup-6b5f8dee03d7",
+    "sources": {
+      "base.py": "ddec59e2d33dd87ccc90be4f06e640b0d3208b476b108d08cf7370cab1538428",
+      "node_install.py": "67bae8c32bc7d98902cb3e1dcc56fde0026764606bd377b4d07b2346e82ad29d",
+      "pi.py": "3da99f2a14265ebed1e1c75da2a3f2335173fff8f28652b868fcb668d324c3f2"
+    },
+    "status": "installed",
+    "versions": [
+      "0.84.1",
+      "v22.23.4"
+    ]
+  },
+  "purpose": "offline native wire-policy precheck; no scientific scoring or resource acceptance",
+  "schema_version": 1,
+  "source_sha256": "358efb24e49ab352192cb2a84ea4bacbe8fda5e8457286ce2e9e25c759e2c1ac",
+  "status": "captured",
+  "tasks": [
+    {
+      "capture_extension_sha256": "e265502bab8922a18c5dbb43f0d0b4b828a077bdc9b39cd5c3a4569615a31d8e",
+      "cleanup": {
+        "absence_check_return_code": 0,
+        "remove_return_code": 0,
+        "removed": true
+      },
+      "command_evidence": "commands.json",
+      "container_name": "sciresearch-policy-capture-101f291c8c20",
+      "formal": false,
+      "hash_serialization": "runner.model_relay.encoded; ASCII compact JSON, insertion order",
+      "hook_process_exit_code": 0,
+      "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+      "image_repo_tags": [
+        "sciresearch-heat-r:0.3.1"
+      ],
+      "isolation": {
+        "cap_drop": [
+          "ALL"
+        ],
+        "container_id": "7e0b8d71138a89e5a04c41c12613bff12960eff6a8636eb7cfb37c47080d4611",
+        "credentials": "dummy_only",
+        "cwd": "/workspace",
+        "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+        "limits": {
+          "Memory": 1073741824,
+          "MemorySwap": 1073741824,
+          "NanoCpus": 1000000000,
+          "NetworkMode": "none",
+          "PidsLimit": 128
+        },
+        "mounts": [
+          {
+            "Destination": "/home/researcher/.nvm",
+            "RW": false,
+            "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/pi-policy-cache-local-001/nvm"
+          }
+        ],
+        "network_disabled": true,
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "1000:1000"
+      },
+      "max_turns": null,
+      "model_calls": 0,
+      "models_json_sha256": "186eabcb0e18755b2565c4ab12288de32f822627f8eba43062f7d6eef464fe5e",
+      "native_hook_before_http": true,
+      "pi_version": "0.84.1",
+      "provider_http_requests": 0,
+      "requested_max_tokens": 16384,
+      "resource_limits_diagnostic": true,
+      "schema_version": 1,
+      "status": "captured",
+      "system_json": "system.json",
+      "system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "task": "heat",
+      "tool_names": [
+        "read",
+        "bash",
+        "edit",
+        "write"
+      ],
+      "tools_json": "tools.json",
+      "tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "upstream_base_url": "http://127.0.0.1:9",
+      "wall_seconds": 12.208012875169516
+    },
+    {
+      "capture_extension_sha256": "e265502bab8922a18c5dbb43f0d0b4b828a077bdc9b39cd5c3a4569615a31d8e",
+      "cleanup": {
+        "absence_check_return_code": 0,
+        "remove_return_code": 0,
+        "removed": true
+      },
+      "command_evidence": "commands.json",
+      "container_name": "sciresearch-policy-capture-1cf145f0572a",
+      "formal": false,
+      "hash_serialization": "runner.model_relay.encoded; ASCII compact JSON, insertion order",
+      "hook_process_exit_code": 0,
+      "image_id": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11",
+      "image_repo_tags": [
+        "sciresearch-ode-r:0.3.1"
+      ],
+      "isolation": {
+        "cap_drop": [
+          "ALL"
+        ],
+        "container_id": "1cd27a14abe183eda53acf85181a214558ebb96c28a1e8d4cec50085c000315d",
+        "credentials": "dummy_only",
+        "cwd": "/workspace",
+        "image_id": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11",
+        "limits": {
+          "Memory": 1073741824,
+          "MemorySwap": 1073741824,
+          "NanoCpus": 1000000000,
+          "NetworkMode": "none",
+          "PidsLimit": 128
+        },
+        "mounts": [
+          {
+            "Destination": "/home/researcher/.nvm",
+            "RW": false,
+            "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/pi-policy-cache-local-001/nvm"
+          }
+        ],
+        "network_disabled": true,
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "1000:1000"
+      },
+      "max_turns": null,
+      "model_calls": 0,
+      "models_json_sha256": "186eabcb0e18755b2565c4ab12288de32f822627f8eba43062f7d6eef464fe5e",
+      "native_hook_before_http": true,
+      "pi_version": "0.84.1",
+      "provider_http_requests": 0,
+      "requested_max_tokens": 16384,
+      "resource_limits_diagnostic": true,
+      "schema_version": 1,
+      "status": "captured",
+      "system_json": "system.json",
+      "system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "task": "ode",
+      "tool_names": [
+        "read",
+        "bash",
+        "edit",
+        "write"
+      ],
+      "tools_json": "tools.json",
+      "tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "upstream_base_url": "http://127.0.0.1:9",
+      "wall_seconds": 11.291238625068218
+    },
+    {
+      "capture_extension_sha256": "e265502bab8922a18c5dbb43f0d0b4b828a077bdc9b39cd5c3a4569615a31d8e",
+      "cleanup": {
+        "absence_check_return_code": 0,
+        "remove_return_code": 0,
+        "removed": true
+      },
+      "command_evidence": "commands.json",
+      "container_name": "sciresearch-policy-capture-bbb6be013d17",
+      "formal": false,
+      "hash_serialization": "runner.model_relay.encoded; ASCII compact JSON, insertion order",
+      "hook_process_exit_code": 0,
+      "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629",
+      "image_repo_tags": [
+        "sciresearch-poisson-r:0.3.1"
+      ],
+      "isolation": {
+        "cap_drop": [
+          "ALL"
+        ],
+        "container_id": "3269f23f95cd94743ec806f4e7246723c25ef407f4d3d25aa09e237d432e4d75",
+        "credentials": "dummy_only",
+        "cwd": "/workspace",
+        "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629",
+        "limits": {
+          "Memory": 1073741824,
+          "MemorySwap": 1073741824,
+          "NanoCpus": 1000000000,
+          "NetworkMode": "none",
+          "PidsLimit": 128
+        },
+        "mounts": [
+          {
+            "Destination": "/home/researcher/.nvm",
+            "RW": false,
+            "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/pi-policy-cache-local-001/nvm"
+          }
+        ],
+        "network_disabled": true,
+        "security_opt": [
+          "no-new-privileges"
+        ],
+        "user": "1000:1000"
+      },
+      "max_turns": null,
+      "model_calls": 0,
+      "models_json_sha256": "186eabcb0e18755b2565c4ab12288de32f822627f8eba43062f7d6eef464fe5e",
+      "native_hook_before_http": true,
+      "pi_version": "0.84.1",
+      "provider_http_requests": 0,
+      "requested_max_tokens": 16384,
+      "resource_limits_diagnostic": true,
+      "schema_version": 1,
+      "status": "captured",
+      "system_json": "system.json",
+      "system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "task": "poisson",
+      "tool_names": [
+        "read",
+        "bash",
+        "edit",
+        "write"
+      ],
+      "tools_json": "tools.json",
+      "tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "upstream_base_url": "http://127.0.0.1:9",
+      "wall_seconds": 11.09107800014317
+    }
+  ]
+}

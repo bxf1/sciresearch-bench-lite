@@ -1,0 +1,56 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    }
+  ],
+  "container_id": "19acfae9ac11df4ebed339bb0f819e82ebd823141634e6a0f54c30c2d8c494aa",
+  "container_name": "sciresearch-w-e548f6bc0115",
+  "cpu_seconds": 0.276444,
+  "docker_execution_wall_seconds": 0.45212370809167624,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.321351738,
+  "exit_code": 0,
+  "finished_monotonic_ns": 3644935872684213,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "input_sha256": "5907033ba4ce6eaa7644f003f7dea0dfc6c292ccb00ee192416d05a5fe92aab0",
+  "log_bytes_observed": 0,
+  "machine_id": "2911eb01-a56b-44ff-9edf-081da4884739",
+  "memory_peak_bytes": 31334400,
+  "oom_killed": false,
+  "output_initially_empty": true,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.5299970423802733,
+  "research_timeout_seconds": 20,
+  "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "source_hash": "d41837407163c83ae42432e79b729cb1c6c5b03f1df674687a0b948d35346113",
+  "started_monotonic_ns": 3644935551332475,
+  "timeout_seconds": 19.740915291011333,
+  "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 1.0040565002709627
+}

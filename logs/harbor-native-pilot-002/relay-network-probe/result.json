@@ -1,0 +1,95 @@
+{
+  "checks": [
+    {
+      "health": {
+        "limits": {
+          "dropped_fields": [
+            "top_k",
+            "output_config",
+            "service_tier",
+            "container"
+          ],
+          "expected_system_sha256": "120b7c696c00bdce825e4711643679bee2c5b21a2b74ec2aa68cda2a4810ecae",
+          "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+          "max_body_bytes": 1048576,
+          "max_concurrency": 4,
+          "max_event_bytes": 65536,
+          "max_requests": 512,
+          "max_response_bytes": 8388608,
+          "model": "deepseek-v4-pro",
+          "request_output_limit": 4096,
+          "request_seconds": 120,
+          "session_output_limit": 32768,
+          "session_seconds": 1500.0,
+          "stream_required": true,
+          "temperature": 0.0,
+          "thinking": {
+            "type": "disabled"
+          },
+          "top_p": 1.0
+        },
+        "request_count": 0,
+        "schema_version": 1,
+        "state": "ready"
+      },
+      "http_response": true,
+      "label": "relay",
+      "status": 200
+    },
+    {
+      "error_type": "URLError",
+      "http_response": false,
+      "label": "provider"
+    },
+    {
+      "error_type": "URLError",
+      "http_response": false,
+      "label": "internet"
+    },
+    {
+      "error_type": "URLError",
+      "http_response": false,
+      "label": "spoofed_host"
+    }
+  ],
+  "dns_checks": [
+    {
+      "address": "127.0.0.11",
+      "error_type": "TimeoutError",
+      "port": 53,
+      "protocol": "tcp",
+      "response_received": false
+    },
+    {
+      "address": "127.0.0.11",
+      "error_type": "PermissionError",
+      "port": 53,
+      "protocol": "udp",
+      "response_received": false
+    },
+    {
+      "address": "127.0.0.11",
+      "error_type": "TimeoutError",
+      "port": 36757,
+      "protocol": "tcp",
+      "response_received": false
+    },
+    {
+      "address": "127.0.0.11",
+      "error_type": "PermissionError",
+      "port": 47260,
+      "protocol": "udp",
+      "response_received": false
+    }
+  ],
+  "dns_resolvers": [
+    "127.0.0.11"
+  ],
+  "external_raw_tcp_connected": false,
+  "firewall": "container sidecar namespace only; exact IP/port before GOST DNAT",
+  "formal": false,
+  "model_calls": 0,
+  "passed": true,
+  "relay_ip": "172.21.0.2",
+  "relay_port": 8787
+}

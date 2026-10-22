@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "research",
+      "time": 1792637405.822151
+    },
+    {
+      "kind": "research_network_sealed",
+      "policy": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792637471.389358
+    },
+    {
+      "kind": "native_pi_stdout_suppressed",
+      "time": 1792637471.8362172
+    },
+    {
+      "kind": "setup_network_restore_blocked",
+      "requested": {
+        "allowed_hosts": [],
+        "network_mode": "public"
+      },
+      "retained": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792637513.938886
+    },
+    {
+      "kind": "native_agent_log_download_suppressed",
+      "time": 1792637514.3168268
+    },
+    {
+      "kind": "empty_native_agent_log_upload_suppressed",
+      "time": 1792637514.317673
+    },
+    {
+      "kind": "native_artifacts_excluded",
+      "time": 1792637514.318275
+    }
+  ],
+  "formal": false,
+  "session_id": "heat-pilot-fd687109e536__env"
+}

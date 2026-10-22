@@ -1,0 +1,68 @@
+{
+  "capture_extension_sha256": "e265502bab8922a18c5dbb43f0d0b4b828a077bdc9b39cd5c3a4569615a31d8e",
+  "cleanup": {
+    "absence_check_return_code": 0,
+    "remove_return_code": 0,
+    "removed": true
+  },
+  "command_evidence": "commands.json",
+  "container_name": "sciresearch-policy-capture-101f291c8c20",
+  "formal": false,
+  "hash_serialization": "runner.model_relay.encoded; ASCII compact JSON, insertion order",
+  "hook_process_exit_code": 0,
+  "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+  "image_repo_tags": [
+    "sciresearch-heat-r:0.3.1"
+  ],
+  "isolation": {
+    "cap_drop": [
+      "ALL"
+    ],
+    "container_id": "7e0b8d71138a89e5a04c41c12613bff12960eff6a8636eb7cfb37c47080d4611",
+    "credentials": "dummy_only",
+    "cwd": "/workspace",
+    "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+    "limits": {
+      "Memory": 1073741824,
+      "MemorySwap": 1073741824,
+      "NanoCpus": 1000000000,
+      "NetworkMode": "none",
+      "PidsLimit": 128
+    },
+    "mounts": [
+      {
+        "Destination": "/home/researcher/.nvm",
+        "RW": false,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/pi-policy-cache-local-001/nvm"
+      }
+    ],
+    "network_disabled": true,
+    "security_opt": [
+      "no-new-privileges"
+    ],
+    "user": "1000:1000"
+  },
+  "max_turns": null,
+  "model_calls": 0,
+  "models_json_sha256": "186eabcb0e18755b2565c4ab12288de32f822627f8eba43062f7d6eef464fe5e",
+  "native_hook_before_http": true,
+  "pi_version": "0.84.1",
+  "provider_http_requests": 0,
+  "requested_max_tokens": 16384,
+  "resource_limits_diagnostic": true,
+  "schema_version": 1,
+  "status": "captured",
+  "system_json": "system.json",
+  "system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+  "task": "heat",
+  "tool_names": [
+    "read",
+    "bash",
+    "edit",
+    "write"
+  ],
+  "tools_json": "tools.json",
+  "tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+  "upstream_base_url": "http://127.0.0.1:9",
+  "wall_seconds": 12.208012875169516
+}
