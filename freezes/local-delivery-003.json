@@ -1,0 +1,73 @@
+{
+  "additional_model_calls": 0,
+  "changes": [
+    "Formal author-baseline entry for all eleven predeclared methods, with closed-research barrier and frozen source/method/image/phase bindings",
+    "Separate baseline attempts and fixed-reference run/group/case comparisons; scientific research denominators unchanged",
+    "Preserved preparation/replay failures and explicit linked retries; one investigated T3 instability remeasurement",
+    "Current provider-declared model alias mapping recorded without retroactively assigning versions or prices to earlier pilots"
+  ],
+  "created_at": "2026-10-22T04:47:25.085729+00:00",
+  "evidence": {
+    "draft_guard": {
+      "path": "logs/run-plan-local-draft-007/validation.json",
+      "sha256": "2cfc92ef9483bbdb7b0daa35209dd6c402919a345fc82f432193572d69ca231f"
+    },
+    "entry_guard": {
+      "path": "logs/baseline-study-local-001/entry-guard.json",
+      "sha256": "44ba99fbb323422023483757770fce94be45e4450737c6631d787afc09aeeceb"
+    },
+    "model_documentation": {
+      "path": "logs/model-policy-documentation-local-001/result.json",
+      "sha256": "bcc32702326a2af89ae098942155d1e9d407e0d21fbca1f41cd5b99171f2f098"
+    },
+    "run_plan": {
+      "path": "freezes/research-run-plan-local-draft-007.json",
+      "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+    },
+    "scope_audit": {
+      "path": "logs/delivery-audit-baseline-local-001.json",
+      "sha256": "ab0d68688e39585247747c51bc057e549e89d5a0d727e8a7ed5ebb46883ebed8"
+    }
+  },
+  "final_test_solutions_evaluated": false,
+  "formal_acceptance": "pending",
+  "formal_study_cells": 0,
+  "formal_study_sessions": 0,
+  "pending": [
+    "Formal resource and 4 GiB memory-pressure acceptance on a suitable host; user requested local work for now",
+    "Revalidate the provider alias mapping immediately before formal freezing",
+    "Complete formal task freezes and at least nine valid science cells, target fifteen independent research sessions",
+    "Final-test replay of all author methods and first/final candidates after the per-task research barrier",
+    "Exclusive T3 calibration, profile and performance acceptance",
+    "Explicit approval for public publication of the retained evidence payload"
+  ],
+  "previous_delivery": {
+    "path": "freezes/local-delivery-002.json",
+    "sha256": "560066ff9d842ab03a8182207518c5db733da2d8b6541f326005ad054d055a56"
+  },
+  "publication": {
+    "last_verified_remote_commit": "28da96e1c1a8a50911c6a08dbb99bb6b72f145c9",
+    "local_unpublished_evidence_commit": "0a84f0cc934930f24b31e2f985a59426fe4907bc",
+    "reason": "Automatic approval review rejected publication of the full log/result/source-snapshot payload to the public repository; known-credential scanning does not authorize disclosure of run metadata or private-input-derived evidence",
+    "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+    "status": "awaiting_explicit_user_approval",
+    "supplemental_work": "Local only; no additional push attempted",
+    "visibility": "PUBLIC"
+  },
+  "runtime_and_scientific_protocol": "Worker, process timer, judge, baseline algorithms and data unchanged from prior delivery; prior runtime evidence retains its original scope",
+  "schema_version": 1,
+  "source_files": {
+    "runner/study.py": "fa35368952b0510865dc487e2741ebcef3087ad74df060a7f57885c1fd50e4bb",
+    "runner/study_report.py": "15331217b08ce3fb221d2ed4d3e4d9947c820f1464ebfa0140bd6460e939bca1",
+    "tests/test_study.py": "c2cd5ba3af033cd07e8ecbe7411133548532c65baaba0ab97153ae562397d571",
+    "tests/test_study_report_baselines.py": "6172028dcedb612b79793f324e95bb0c5705d4e9c9c8c44f0f2a25db5bcddbb3"
+  },
+  "status": "local_baseline_orchestration_verified_formal_pending",
+  "tests": {
+    "passed": 347,
+    "path": "logs/unit-tests-final-local-005.txt",
+    "scope": "Full local synthetic/unit suite; no actual formal study or hidden replay",
+    "seconds": 15.48,
+    "sha256": "348c995fd974d0bf85af421d730a7313ffc4cb8f1dcf1f43c3fb7320f257052c"
+  }
+}

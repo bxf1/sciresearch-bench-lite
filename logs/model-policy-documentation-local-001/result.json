@@ -1,0 +1,45 @@
+{
+  "anthropic_parameter_support": {
+    "max_tokens": "Documented supported",
+    "system": "Documented supported",
+    "temperature": "Documented supported range 0 to 2",
+    "thinking": "Documented supported; budget_tokens ignored"
+  },
+  "credentials_sent": false,
+  "formal": false,
+  "model_calls": 0,
+  "model_id": "deepseek-v4-pro",
+  "model_version_evidence_kind": "Official published alias-to-version table, not an immutable request ID or proof of historical backend binary identity",
+  "official_sources": [
+    {
+      "content_sha256": "b856a6e93fa4793ecc8f3fd03a01bb7d8f7572f78a4739da8ce6dbdb09328d66",
+      "local_cache_not_for_publication": "build/model-revision-evidence-local-001/pricing.html",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing"
+    },
+    {
+      "content_sha256": "19b5e723f1c65f609c010999cdf3cc1929327c4369c54b0151e8ea82dc3dd033",
+      "local_cache_not_for_publication": "build/model-revision-evidence-local-001/anthropic-api.html",
+      "url": "https://api-docs.deepseek.com/guides/anthropic_api"
+    },
+    {
+      "content_sha256": "00007478226661f71064fa0469d096fce6683a9f8d03ba9bff5abd9183936b14",
+      "local_cache_not_for_publication": "build/model-revision-evidence-local-001/list-models.html",
+      "url": "https://api-docs.deepseek.com/api/list-models"
+    }
+  ],
+  "provider_declared_model_version": "DeepSeek-V4-Pro-0813",
+  "retrieved_at_utc": "2026-10-22T04:26:45.472154+00:00",
+  "schema_version": 1,
+  "scope_limitations": [
+    "Re-fetch and revalidate the provider alias mapping before the actual formal freeze, because an alias may later change.",
+    "Do not retroactively assign this version to earlier pilots; their retained request ID and original evidence remain unchanged.",
+    "No formal study, final-test replay or model inference was run for this documentation check.",
+    "Public documentation prices were not retroactively substituted for unknown billed cost."
+  ],
+  "selected_model_table_values": {
+    "anthropic_base_url": "https://api.deepseek.com/anthropic",
+    "model": "deepseek-v4-pro",
+    "model_version": "DeepSeek-V4-Pro-0813"
+  },
+  "status": "verified"
+}

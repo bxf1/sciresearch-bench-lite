@@ -16,6 +16,7 @@ from harbor.models.verifier.result import VerifierResult
 from harbor.verifier.base import BaseVerifier
 
 from .common import canonical, digest, file_hash, read_json, tree_hashes, write_json
+from .calibrate import METHODS, FIXED
 from .phase import checked_hashes, guard_replay
 from .registry import Registry
 from .run_plan import _file_ref, validate_start
@@ -253,6 +254,16 @@ def closed_research(project, entry, row):
     return registry, state
 
 
+def completed_task(project, plan, manifest, task):
+    """The common pre-hidden-data barrier for research and author baselines."""
+    latest = {entry["run_id"]: entry for entry in manifest["attempts"]}
+    for row in (row for row in plan["runs"] if row["task"] == task):
+        if row["run_id"] not in latest:
+            raise ValueError("all related research must finish before final data can be read")
+        closed_research(project, latest[row["run_id"]], row)
+    return latest
+
+
 def score_checkpoints(registry, state, config, *, execute=None, diagnostics=None):
     """Replay closed first/final selections without creating a research session."""
     if execute is None:
@@ -374,14 +385,9 @@ def final(project, plan_path, run_id, data_root, *, timing_contract=None, execut
     if row["task"] == "poisson" and timing_contract is None:
         raise ValueError("formal Poisson replay requires an explicit timing contract")
     with ledger(project, plan, plan_ref) as (manifest_path, manifest):
-        latest = {entry["run_id"]: entry for entry in manifest["attempts"]}
         # This barrier is evaluated before resolving or reading any final input
         # or truth path. All task repeats remain independent research sessions.
-        related = [item for item in plan["runs"] if item["task"] == row["task"]]
-        for item in related:
-            if item["run_id"] not in latest:
-                raise ValueError("all related research must finish before final data can be read")
-            closed_research(project, latest[item["run_id"]], item)
+        latest = completed_task(project, plan, manifest, row["task"])
         entry = latest[run_id]
         original = None
         if retry_replay is not None:
@@ -452,29 +458,188 @@ def final(project, plan_path, run_id, data_root, *, timing_contract=None, execut
         return wrapper
 
 
+def baseline_source(project, plan, task, destination=None):
+    """Copy only the pre-frozen author source, never a caller-selected solver."""
+    prefix = f"baselines/{task}/"
+    expected = {name.removeprefix(prefix): sha for name, sha in plan["tool_config"]["files"].items() if name.startswith(prefix)}
+    source = Path(project) / "baselines" / task
+    actual = checked_hashes(source)  # Reject links/special files before excluding ordinary bytecode caches.
+    for name in list(actual):
+        path = Path(name)
+        if (path.parent.name == "__pycache__" and re.fullmatch(r"[A-Za-z_]\w*\.(cpython|pypy)-\d+(\.opt-\d+)?\.pyc", path.name)
+                and (path.parent.parent / (path.name.split(".")[0] + ".py")).as_posix() in expected):
+            del actual[name]
+    if not expected or "solve.py" not in expected or actual != expected:
+        raise ValueError("author baseline source differs from the frozen tool configuration")
+    if destination is None:
+        return expected
+    destination = Path(destination)
+    destination.mkdir(parents=True, exist_ok=False)
+    for name in expected:
+        target = destination / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((source / name).read_bytes())
+        target.chmod(0o444)
+    if checked_hashes(destination) != expected:
+        raise ValueError("author baseline source changed while snapshotting")
+    for path in sorted(destination.rglob("*"), reverse=True):
+        if path.is_dir():
+            path.chmod(0o555)
+    destination.chmod(0o555)
+    return expected
+
+
+def baseline(project, plan_path, task, method, data_root, *, timing_contract=None,
+             retry_of=None, retry_reason=None, interference_resolution=None, execute=None):
+    """One of eleven frozen author methods, separate from research replication."""
+    from .replay import prepare_judge, replay_checkpoint, retry_t3_attempt
+    project = Path(project).resolve()
+    plan, plan_ref = frozen_plan(project, plan_path)
+    if task not in METHODS or method not in METHODS[task]:
+        raise ValueError("baseline task/method is not in the predeclared eleven methods")
+    if task == "poisson" and timing_contract is None:
+        raise ValueError("formal Poisson baseline requires an explicit timing contract")
+    with ledger(project, plan, plan_ref) as (manifest_path, manifest):
+        completed_task(project, plan, manifest, task)
+        entries = manifest.setdefault("baselines", [])
+        prior = [entry for entry in entries if entry["task"] == task and entry["method"] == method]
+        previous, retry_kind = None, None
+        if prior:
+            if retry_of != prior[-1]["attempt_id"]:
+                raise ValueError("baseline rerun requires the exact latest parent attempt")
+            previous = read_json(_file_ref(project, prior[-1]["result"]))
+            if (previous.get("task") != task or previous.get("method") != method
+                    or previous.get("attempt_id") != retry_of or previous.get("run_plan_sha256") != plan_ref["sha256"]
+                    or previous.get("freeze_sha256") != plan["freezes"][task]["sha256"]
+                    or previous.get("formal") is not True or previous.get("split") != "final-test"):
+                raise ValueError("baseline parent differs from its frozen final-test identity")
+            old = previous.get("diagnostics", {})
+            group = old.get("repeats", [])
+            if previous.get("status") == "baseline_invalid" and old.get("evaluation_status") == "invalid":
+                if not isinstance(retry_reason, str) or not retry_reason.strip() or interference_resolution is not None:
+                    raise ValueError("infrastructure retry requires its explicit investigation reason")
+                retry_kind = "infrastructure"
+            elif (task == "poisson" and previous.get("status") == "baseline_completed" and len(group) == 1
+                  and group[0].get("performance_status") == "baseline_unstable" and group[0].get("retry_permitted") is True):
+                if (not isinstance(interference_resolution, str) or not interference_resolution.strip()
+                        or any(read_json(_file_ref(project, entry["result"])).get("retry_kind") == "baseline_instability" for entry in prior)):
+                    raise ValueError("only one investigated baseline-instability retry is permitted")
+                retry_kind = "baseline_instability"
+                retry_reason = interference_resolution
+            else:
+                raise ValueError("a completed baseline, including scientific zero, cannot be rerun")
+        elif retry_of is not None or retry_reason is not None or interference_resolution is not None:
+            raise ValueError("baseline retry requires an existing parent attempt")
+        attempt_id = f"baseline-{task}-{method}-a{len(prior) + 1:03d}"
+        checkpoint_id = f"baseline-{task}-{method}"
+        output = manifest_path.parent / "author-baselines" / attempt_id
+        source = output / "source"
+        sources = baseline_source(project, plan, task)
+        source_hash = digest(canonical(sources))
+        if previous is not None and previous.get("source_hash") != source_hash:
+            raise ValueError("baseline retry source differs from its original source")
+        freeze_path = _file_ref(project, plan["freezes"][task])
+        freeze = read_json(freeze_path)
+        wrapper = {"schema_version": 1, "formal": True, "split": "final-test", "task": task, "method": method,
+                   "attempt_id": attempt_id, "parent_attempt": retry_of, "retry_kind": retry_kind,
+                   "retry_reason": retry_reason, "interference_resolution": interference_resolution,
+                   "source_hash": source_hash, "source_files": sources, "freeze_sha256": plan["freezes"][task]["sha256"],
+                   "run_plan_sha256": plan_ref["sha256"], "image_id": freeze["image_id"], "profile": freeze["profile"],
+                   "fixed_reference": method == FIXED[task], "status": "baseline_running", "started_at": time.time(),
+                   "diagnostics": {"checkpoint_id": checkpoint_id, "source_hash": source_hash, "repeats": [], "replay_count": 0,
+                                   "score": None, "reward": None, "evaluation_status": "invalid"}}
+        path = output / "result.json"
+        write_json(path, wrapper)
+        entry = {"task": task, "method": method, "attempt_id": attempt_id, "parent_attempt": retry_of,
+                 "result": reference(project, path)}
+        entries.append(entry)
+        manifest["finalized_tasks"] = sorted(set(manifest["finalized_tasks"]) | {task})
+        write_json(manifest_path, manifest)  # Before resolving or reading final data.
+        diagnostic = wrapper["diagnostics"]
+        try:
+            baseline_source(project, plan, task, source)
+            judge = prepare_judge(project, output / "judge-source")
+            if checked_hashes(judge) != freeze["judge_source_hashes"]:
+                raise ValueError("trusted judge source differs from freeze before final data access")
+            data = Path(data_root).resolve()
+            config = {"task": task, "input_root": data / "inputs" / task / "final-test",
+                      "truth_root": data / "private" / task / "final-test", "image": freeze["image_id"],
+                      "judge_source_root": judge, "freeze_path": freeze_path, "profile": freeze["profile"]}
+            guard_replay(task, config["input_root"], config["truth_root"], config["image"], judge,
+                         freeze_path=freeze_path, profile=freeze["profile"])
+            if task == "poisson":
+                config.update(baseline_source=source, candidate_method=method, timing_contract=timing_contract)
+            else:
+                config["method"] = method
+            for repeat in range(1 if task == "poisson" else 3):
+                current = dict(config, output_root=output / "replays" / f"repeat-{repeat + 1}")
+                if checked_hashes(source) != sources:
+                    raise ValueError("author baseline snapshot changed before execution")
+                if retry_kind == "baseline_instability":
+                    result = (execute or retry_t3_attempt)(previous["diagnostics"]["repeats"][0], source,
+                                interference_resolution=interference_resolution, **current)
+                    result.update(checkpoint_id=checkpoint_id, source_hash=source_hash)
+                else:
+                    result = (execute or replay_checkpoint)(source, checkpoint_id, source_hash, **current)
+                diagnostic["repeats"].append(result)
+                diagnostic["replay_count"] = len(diagnostic["repeats"])
+                if checked_hashes(source) != sources:
+                    raise ValueError("author baseline snapshot changed during execution")
+            repeats = diagnostic["repeats"]
+            rewards, scores = [item.get("reward") for item in repeats], [item.get("score") for item in repeats]
+            if (any(value is not None and (type(value) not in (int, float) or not math.isfinite(value)) for value in rewards + scores)
+                    or any(value is not None and value not in (0, 1) for value in rewards)):
+                raise ValueError("trusted baseline replay returned an invalid numeric verdict")
+            valid = all(item.get("evaluation_status") == "valid" for item in repeats)
+            diagnostic.update(evaluation_status="valid" if valid else "invalid",
+                              score=sum(scores) / len(scores) if valid and None not in scores else None,
+                              reward=int(all(rewards)) if valid and None not in rewards else None)
+            validate_start(plan, project)
+            wrapper["status"] = "baseline_completed" if valid else "baseline_invalid"
+        except BaseException as exc:
+            wrapper["status"] = "baseline_invalid"
+            diagnostic.update(evaluation_status="invalid", score=None, reward=None, reason=f"{type(exc).__name__}: {exc}"[:2048])
+        wrapper["finished_at"] = time.time()
+        write_json(path, wrapper)
+        entry["result"] = reference(project, path)
+        write_json(manifest_path, manifest)
+        return wrapper
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("start", "final"):
+    for name in ("start", "final", "baseline"):
         command = sub.add_parser(name)
         command.add_argument("--plan", type=Path, required=True)
-        command.add_argument("--run-id", required=True)
+        if name == "baseline":
+            command.add_argument("--task", choices=tuple(METHODS), required=True)
+            command.add_argument("--method", required=True)
+            command.add_argument("--retry-of")
+            command.add_argument("--retry-reason")
+        else:
+            command.add_argument("--run-id", required=True)
         if name == "start":
             command.add_argument("--retry-of")
         else:
             command.add_argument("--data", type=Path, required=True)
             command.add_argument("--timing-contract", type=Path)
-            command.add_argument("--retry-replay", type=Path)
+            if name == "final":
+                command.add_argument("--retry-replay", type=Path)
             command.add_argument("--interference-resolution")
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[1]
     if args.command == "start":
         result = asyncio.run(start(project, args.plan, args.run_id, retry_of=args.retry_of))
         ok = result.get("status") == "research_frozen"
-    else:
+    elif args.command == "final":
         result = final(project, args.plan, args.run_id, args.data, timing_contract=args.timing_contract,
                        retry_replay=args.retry_replay, interference_resolution=args.interference_resolution)
         ok = result["diagnostics"]["evaluation_status"] == "valid"
+    else:
+        result = baseline(project, args.plan, args.task, args.method, args.data, timing_contract=args.timing_contract,
+                          retry_of=args.retry_of, retry_reason=args.retry_reason, interference_resolution=args.interference_resolution)
+        ok = result["status"] == "baseline_completed"
     print(canonical(result).decode())
     raise SystemExit(0 if ok else 1)
 

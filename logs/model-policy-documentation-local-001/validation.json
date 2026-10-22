@@ -1,0 +1,21 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "heat freeze: final-test requires status=frozen; a draft is not authorization",
+    "ode freeze: final-test requires status=frozen; a draft is not authorization",
+    "poisson freeze: final-test requires status=frozen; a draft is not authorization"
+  ],
+  "current_plan": {
+    "path": "freezes/research-run-plan-local-draft-006.json",
+    "sha256": "9ac2842a3f86b699720eb589f7c34c5ac885fb815059ca4752e72a7d6b3dbff8"
+  },
+  "final_test_scores_accessed": false,
+  "formal_ready": false,
+  "formal_sessions": 0,
+  "model_calls": 0,
+  "previous_plan": {
+    "path": "freezes/research-run-plan-local-draft-005.json",
+    "sha256": "9fde447a2cbce45989b26933498cfd21a97ced7d0595c7d63a657396f585d9a7"
+  },
+  "run_matrix_unchanged": true
+}

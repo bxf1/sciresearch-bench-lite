@@ -2,9 +2,9 @@
 
 三条合成科学计算任务：热方程逆恢复、二维多项式动力学辨识、稀疏 SPD 系统求解优化。实现依据 [执行契约的只读副本](docs/execution-plan-v0.3.md)，原设计和三个参考仓库未被本实现改写。副本中的相对证据链接沿用原 `design/` 树与本地参考仓库布局，保留其来源，不保证在独立GitHub仓库中可打开。
 
-**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码及新依赖环境重放已完成，源码和证据已推送GitHub仓库；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-002.json)。
+**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码和新依赖环境重放已完成；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。远端已核验提交为 `28da96e`；后续证据提交 `0a84f0c` 和本轮补充仍只保存在本机，公开推送待用户明确批准。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-003.json)。
 
-[完整 Harbor Trial 与模型代理 pilot](docs/native-relay-pilot.md)已连续两次成功：最新002的8次模型请求全部成功，显式evaluate/finalize，三次pilot重放均3/3通过、89.302分；first/final仍同一源码。已验证实际请求哈希门禁、用量额度和DNS出口限制，不能记作正式实验格。正式入口与结果汇总见[研究控制器](docs/study.md)，可信进程计时与三组诊断见[计时说明](docs/timing.md)。
+[完整 Harbor Trial 与模型代理 pilot](docs/native-relay-pilot.md)已连续两次成功：最新002的8次模型请求全部成功，显式evaluate/finalize，三次pilot重放均3/3通过、89.302分；first/final仍同一源码。已验证实际请求哈希门禁、用量额度和DNS出口限制，不能记作正式实验格。正式入口与结果汇总见[研究控制器](docs/study.md)，包括11方法正式基线入口和相对固定参考的逐会话/逐组/逐例对照；这些新增路径已用合成测试验证，尚未运行正式隐藏重放。可信进程计时与三组诊断见[计时说明](docs/timing.md)。
 
 ## 当前验收状态
 
@@ -14,7 +14,7 @@
 | 同熵数据重建 | 同Linux镜像，369个公开输入文件逐字节一致 | [重建记录](freezes/data-reproduction-local.json) |
 | 作者基线 | 11方法、132个方法×实例记录；保留弱基线失败 | [新版worker校准](results/calibration-local-002/summary.json)、[132例与旧版完全一致](logs/calibration-worker-replay-local-002.json)、[CSV](results/cases/calibration.csv) |
 | 干净源码与新依赖环境 | 提交28da96e的Git archive、新site-packages、新W/J；三任务参考和最新真实候选各3/3通过，T3分数null；同宿主/Python二进制/数值镜像 | [重放002](logs/clean-replay-local-002/result.json)、[依赖记录](logs/dependency-rebuild-local-001/result.json) |
-| 保存的单测结果 | 当前工作源码328通过；新依赖环境归档源码328通过，各有2条Harbor弃用提示 | [工作源码](logs/unit-tests-final-local-004.txt)、[新环境归档](logs/clean-replay-local-002/archived-unit-tests.txt) |
+| 保存的单测结果 | 当前工作源码347通过；此前新依赖环境归档源码328通过，各有2条Harbor弃用提示 | [工作源码](logs/unit-tests-final-local-005.txt)、[新环境归档](logs/clean-replay-local-002/archived-unit-tests.txt) |
 | W隔离与资源 | 新版完整回归11/11、计时探针5/5；实际4GiB OOM仍未做 | [边界](docs/protocol.md)、[worker005](logs/runtime-probes-005/summary.json)、[timer004](logs/process-timer-probe-004/summary.json) |
 | 真实模型与独立评分 | 零解pilot为0分；研究pilot001按fallback选出的候选，经真实Harbor hook/W/J三次各3/3、87.693分，无迭代 | [零解W/J](logs/pilot-model-registry-wj-001/result.json)、[研究pilot](logs/research-loop-pilot-001/result.json)、[独立评分003](logs/research-loop-pilot-001-wj-replay-003/result.json) |
 | R限网 | 非root/ALL-drop配置005通过所测URL、socket与宿主边界检查；未运行Pi | [网络005](logs/research-network-probe-005/result.json)、[全部attempt](docs/harbor-integration.md) |
@@ -24,7 +24,7 @@
 | 正式资源 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
 | 三任务×三组研究 | **0个正式格**；最低9格，主计划15会话 | [未完成事项](#仍需完成) |
 | 隐藏重放与正式性能 | **未完成**；不把校准或pilot记成final | [局限](docs/limitations.md) |
-| 个人GitHub发布 | **源码与证据已实际push到GitHub仓库**；执行源码提交 `28da96e` 已由远端HEAD核验；最新可见性为PUBLIC | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-002.txt)、[最新仓库元数据](logs/github-repository-local-002.json) |
+| 个人GitHub发布 | 已核验远端源码提交 `28da96e`；后续证据提交 `0a84f0c` 尚未推送，本轮补充仅在本机；最新可见性为PUBLIC | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-002.txt)、[最新仓库元数据](logs/github-repository-local-002.json) |
 
 ## 文件与执行边界
 
@@ -101,10 +101,10 @@ docker build -t sciresearch-numeric:0.3.0 environment
 ./reproduce.sh calibrate authoring/data/v0.3-local results/calibration-another-new
 ```
 
-已保存 [15会话运行草稿](freezes/research-run-plan-local-draft-005.json)及 [T1](freezes/heat-local-draft-005.json)、[T2](freezes/ode-local-draft-005.json)、[T3](freezes/poisson-local-draft-005.json) 任务草稿。清单沿用最初checkpoint的独立顺序熵，先覆盖九格，再补T1两轮，所有会话固定1800秒/20次/seed0。它们均为 `draft`；已记入三个实测R镜像ID/上下文、完整系统提示/工具JSON、可信代理参数与当前完整代码哈希；供应商精确模型修订、正式资源与任务验收仍未冻结。以下校验应以退出码2拒绝启动；[守卫记录](logs/run-plan-local-draft-005/validation.json)保留具体缺项及此前草稿链：
+已保存 [15会话运行草稿](freezes/research-run-plan-local-draft-007.json)及 [T1](freezes/heat-local-draft-007.json)、[T2](freezes/ode-local-draft-007.json)、[T3](freezes/poisson-local-draft-007.json) 任务草稿。清单沿用最初checkpoint的独立顺序熵，先覆盖九格，再补T1两轮，所有会话固定1800秒/20次/seed0。它们均为 `draft`；已记入三个实测R镜像ID/上下文、完整系统提示/工具JSON、可信代理参数与当前完整代码哈希；供应商公开模型版本映射已取证，正式冻结前仍须复核；正式资源与任务验收待补。以下校验应以退出码2拒绝启动；[守卫记录](logs/run-plan-local-draft-007/validation.json)保留具体缺项及此前草稿链：
 
 ```sh
-.venv/bin/python -m runner.run_plan validate --plan freezes/research-run-plan-local-draft-005.json
+.venv/bin/python -m runner.run_plan validate --plan freezes/research-run-plan-local-draft-007.json
 ```
 
 ## 环境
@@ -126,10 +126,10 @@ sed '/^harbor[ @=]/d' freezes/host-requirements.lock | .venv/bin/python -m pip i
 1. 满足并实测正式R的4 vCPU/4 GiB预算；用户同意本机继续开发不代表降低正式预算。当前没有修改已有服务或Colima资源。
 2. 完整Harbor SingleStepTrial、模型代理pilot、正式三任务三组入口、分阶段评分及结果汇总已实现并经过测试；正式环境中的实际矩阵执行仍未验收。
 3. 冻结模型、提示、镜像、数据、评分、顺序和预算后，完成至少3任务×3组各一次，主目标15会话；失败attempt全部保留。
-4. 对每次研究的first/final在同一final-test上按规定清洁重放；heat/ode各三次，T3采用内含三次的B,C,C,B,B,C。隐藏成绩不得回流研究。
+4. 对11个作者基线和每次研究的first/final在同一final-test上按规定清洁重放；heat/ode各三次，T3采用内含三次的B,C,C,B,B,C。隐藏成绩不得回流研究。
 5. 在独占且可用资源环境完成T3三组校准，冻结profile并测正式性能；S3不与S1/S2直接平均。
-新依赖环境复现已完成：[清洁重放002](logs/clean-replay-local-002/result.json)。第二台物理主机不是计划的额外硬门槛；正式研究、资源与性能验收仍须补齐。供应商精确模型修订未取得独立证据，运行草稿保留该待决项。
+新依赖环境复现已完成：[清洁重放002](logs/clean-replay-local-002/result.json)。第二台物理主机不是计划的额外硬门槛；正式研究、资源与性能验收仍须补齐。已按[官方模型表](https://api-docs.deepseek.com/quick_start/pricing)记录当前别名对应 `DeepSeek-V4-Pro-0813`，见[取证记录](logs/model-policy-documentation-local-001/result.json)。正式冻结前须复核映射；这不能追认早期pilot的模型版本或证明服务端二进制身份。
 
 [调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [结果](docs/results.md) · [局限](docs/limitations.md)
 
-最新远端核验时仓库为公开状态；初次创建/检查的私有记录仍保留。源码28da96e完成了328项工作/新依赖归档测试，随后仅修正报告读取最新仓库可见性的逻辑，新增对应回归：[27项通过](logs/publication-report-unit-local-001.txt)。执行、I/O、计时和科学指标未变化。
+最新远端核验时仓库为公开状态；初次创建/检查的私有记录仍保留。源码28da96e完成了328项工作/新依赖归档测试，随后修正报告读取最新仓库可见性的逻辑，对应回归：[27项通过](logs/publication-report-unit-local-001.txt)。本轮另补正式基线编排与对照报告；执行器、I/O、计时、算法与科学指标未变化。

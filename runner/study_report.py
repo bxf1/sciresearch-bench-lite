@@ -14,7 +14,8 @@ import math
 from pathlib import Path
 import statistics
 
-from .common import file_hash, read_json, write_json
+from .calibrate import FIXED, METHODS
+from .common import canonical, digest, file_hash, read_json, write_json
 from .report import _csv
 from .run_plan import GROUPS, SHA256, _file_ref, validate_start
 
@@ -301,6 +302,188 @@ def _metric_means(rows):
     return {key: _mean([row.get(key) for row in rows]) for key in METRICS}
 
 
+def _case_ids(frozen):
+    identifiers = sorted({name.split("/")[1] for name in frozen["data"]["final-test"]["input_hashes"] if name.startswith("cases/")})
+    if len(identifiers) != 12:
+        raise ValueError("frozen final-test hashes must identify all 12 cases")
+    return identifiers
+
+
+def _baseline_retry(current, prior, chain):
+    kind = current.get("retry_kind")
+    if prior is None:
+        if kind is not None or current.get("retry_reason") is not None or current.get("interference_resolution") is not None:
+            raise ValueError("initial baseline attempt cannot claim a retry")
+        return
+    if not isinstance(current.get("retry_reason"), str) or not current["retry_reason"].strip():
+        raise ValueError("baseline retry requires a recorded reason")
+    if kind == "infrastructure":
+        if (prior.get("status") != "baseline_invalid" or prior["diagnostics"].get("evaluation_status") != "invalid"
+                or current.get("interference_resolution") is not None):
+            raise ValueError("a valid baseline, including scientific zero, cannot be replaced")
+        return
+    old, new = prior["diagnostics"].get("repeats", []), current["diagnostics"].get("repeats", [])
+    if (kind != "baseline_instability" or current["task"] != "poisson" or len(old) != 1
+            or prior.get("status") != "baseline_completed" or prior["diagnostics"].get("evaluation_status") != "valid"
+            or old[0].get("performance_status") != "baseline_unstable" or old[0].get("retry_permitted") is not True
+            or any(row.get("retry_kind") == "baseline_instability" for row in chain)
+            or not isinstance(current.get("interference_resolution"), str) or not current["interference_resolution"].strip()):
+        raise ValueError("only one investigated unstable baseline group can be retried")
+    # A failed trusted rerun may have no completed group; retain its null verdict.
+    if not new and current["diagnostics"].get("evaluation_status") == "invalid":
+        return
+    repeated = new[0] if len(new) == 1 else {}
+    history = repeated.get("attempts", [])
+    if (len(history) != 2 or history[0].get("record") != old[0].get("protocol_attempt")
+            or not isinstance(history[0].get("record"), dict)
+            or history[1].get("record") != repeated.get("protocol_attempt")
+            or not isinstance(history[1].get("record"), dict)
+            or not history[0]["record"].get("attempt_id")
+            or history[1]["record"].get("parent_attempt") != history[0]["record"]["attempt_id"]
+            or history[1]["record"].get("interference_resolution") != current["interference_resolution"]
+            or repeated.get("selected_attempt") != 1 or repeated.get("retry_permitted") is not False):
+        raise ValueError("baseline remeasurement must preserve both linked protocol attempts")
+
+
+def author_baselines(project, plan, plan_sha, manifest, research):
+    """Read indexed final replays only; author methods are never research samples."""
+    entries = manifest.get("baselines", [])
+    if not isinstance(entries, list):
+        raise ValueError("manifest baselines must be an explicit list")
+    attempts, cases, latest, histories, seen = [], [], {}, defaultdict(list), set()
+    for entry in entries:
+        task, method, identifier = entry.get("task"), entry.get("method"), entry.get("attempt_id")
+        key = (task, method)
+        if method not in METHODS.get(task, []) or not isinstance(identifier, str) or not identifier or identifier in seen:
+            raise ValueError("unknown baseline task/method or duplicate attempt identity")
+        required = {run["run_id"] for run in plan["runs"] if run["task"] == task}
+        closed = {row["run_id"] for row in research if row["task"] == task and row["research_valid"]}
+        if not required <= closed:
+            raise ValueError("baseline final replay requires all task research to be validly closed")
+        wrapper = _read(project, entry.get("result"))
+        frozen = _read(project, plan["freezes"][task])
+        prefix = "baselines/" + task + "/"
+        files = {name.removeprefix(prefix): sha for name, sha in plan["tool_config"]["files"].items() if name.startswith(prefix)}
+        source_hash = digest(canonical(files))
+        expected = {"schema_version": 1, "formal": True, "split": "final-test", "task": task, "method": method,
+                    "attempt_id": identifier, "parent_attempt": entry.get("parent_attempt"),
+                    "source_files": files, "source_hash": source_hash, "run_plan_sha256": plan_sha,
+                    "freeze_sha256": plan["freezes"][task]["sha256"], "image_id": frozen["image_id"], "profile": frozen["profile"]}
+        if (not files or wrapper.get("formal") is not True
+                or any(wrapper.get(name) != value for name, value in expected.items())):
+            raise ValueError("baseline replay differs from frozen task/split/plan/freeze/image/profile/source/method")
+        chain = histories[key]
+        prior = chain[-1] if chain else None
+        if entry.get("parent_attempt") != (prior["attempt_id"] if prior else None):
+            raise ValueError("baseline retries must link the latest attempt of the same task/method")
+        diagnostic = wrapper.get("diagnostics") or {}
+        checkpoint_id = "baseline-" + task + "-" + method
+        valid = diagnostic.get("evaluation_status") == "valid"
+        running = wrapper.get("status") == "baseline_running"
+        repeats = diagnostic.get("repeats", [])
+        if (diagnostic.get("evaluation_status") not in ("valid", "invalid")
+                or (not running and wrapper.get("status") != ("baseline_completed" if valid else "baseline_invalid"))
+                or (running and (valid or repeats))
+                or diagnostic.get("checkpoint_id") != checkpoint_id or diagnostic.get("source_hash") != source_hash
+                or not isinstance(repeats, list) or diagnostic.get("replay_count") != len(repeats)
+                or len(repeats) > (1 if task == "poisson" else 3)):
+            raise ValueError("baseline diagnostics do not match the declared checkpoint or status")
+        case_ids, partial = _case_ids(frozen), []
+        for repeat in repeats:
+            if repeat.get("checkpoint_id") != checkpoint_id or repeat.get("source_hash") != source_hash:
+                raise ValueError("baseline individual replay source differs")
+            if task == "poisson":
+                protocol = repeat.get("protocol_attempt") or {}
+                if protocol.get("candidate_method") != method or protocol.get("baseline_method") != "jacobi":
+                    raise ValueError("baseline T3 protocol method differs from the frozen method")
+            batches = _batches(repeat, task, expected["freeze_sha256"])
+            all_batches = (repeat["samples"]["B"] + repeat["samples"]["C"] if task == "poisson" and isinstance(repeat["samples"], dict)
+                           else repeat["samples"] if task == "poisson" else batches)
+            for batch in all_batches:
+                worker = batch.get("worker") or {}
+                if (batch["phase"].get("profile") != frozen["profile"] or worker.get("image") != frozen["image_id"]
+                        or worker.get("source_hash") != source_hash or batch.get("task", task) != task):
+                    raise ValueError("baseline batch differs from frozen task/profile/image/source")
+            if task == "poisson":
+                protocol_rows = repeat["protocol_attempt"].get("samples", [])
+                expected_rows = {role: [row for row in protocol_rows if row.get("role") == role] for role in ("B", "C")}
+                observed_rows = {role: [row for row in all_batches if row.get("role") == role] for role in ("B", "C")}
+                if [row.get("role") for row in protocol_rows] != list("BCCBBC") or expected_rows != observed_rows:
+                    raise ValueError("baseline T3 protocol samples differ from reported measurements")
+            for batch in batches:
+                number = 1 + len(partial) // len(case_ids)
+                partial.extend(dict(row, repeat=number) for row in _case_rows(batch, case_ids))
+        _baseline_retry(wrapper, prior, chain)
+        if valid:
+            # Reuse the checkpoint aggregation checks, without creating a study session.
+            selected = {"first_id": checkpoint_id, "evaluations": [{"id": checkpoint_id, "source_hash": source_hash}]}
+            summary, records = _checkpoint("first", diagnostic, selected, {"task": task}, expected["freeze_sha256"], case_ids)
+            if summary["evaluation_status"] != "valid":
+                raise ValueError("completed baseline contains invalid trusted replay")
+        else:
+            if diagnostic.get("score") is not None or diagnostic.get("reward") is not None:
+                raise ValueError("invalid baseline must preserve null verdicts")
+            summary = {"score": None, "reward": None, "passed": None, "artifact_valid": None, "scientific_pass": None,
+                       "evaluation_status": "not_run" if running else "invalid", "performance_status": None,
+                       "replay_count": len(repeats), "reason": diagnostic.get("reason")}
+            records = partial
+        row = {"task": task, "method": method, "fixed_reference": method == FIXED[task], "formal": True, "split": "final-test",
+               "attempt_id": identifier, "parent_attempt": entry.get("parent_attempt"), "retry_kind": wrapper.get("retry_kind"),
+               "retry_reason": wrapper.get("retry_reason"), "interference_resolution": wrapper.get("interference_resolution"),
+               "result_evidence": entry["result"], "source_hash": source_hash, "freeze_sha256": expected["freeze_sha256"],
+               "image_id": frozen["image_id"], "profile": frozen["profile"], **summary}
+        row["status"] = wrapper["status"]
+        attempts.append(row)
+        cases.extend({"task": task, "method": method, "attempt_id": identifier, **record} for record in records)
+        latest[key] = row
+        chain.append(wrapper)
+        seen.add(identifier)
+    methods = []
+    for task, names in METHODS.items():
+        for method in names:
+            methods.append(latest.get((task, method), {"task": task, "method": method, "fixed_reference": method == FIXED[task],
+                "attempt_id": None, "evaluation_status": "not_run", "score": None, "reward": None, "passed": None}))
+    return attempts, methods, cases
+
+
+def fixed_comparisons(plan, research, research_cases, methods, baseline_cases):
+    runs, groups, cases = [], [], []
+    references = {row["task"]: row for row in methods if row["fixed_reference"]}
+    for attempt in research:
+        baseline = references[attempt["task"]]
+        eligible = attempt["scientific_evaluated"] and baseline["evaluation_status"] == "valid"
+        row = {key: attempt[key] for key in ("task", "group", "run_id", "repeat", "attempt_id")}
+        row.update(reference_method=FIXED[attempt["task"]], baseline_attempt_id=baseline["attempt_id"],
+                   comparison_status="available" if eligible else "unavailable", final_score=attempt["final_score"],
+                   final_passed=attempt.get("final_passed"), baseline_score=baseline["score"], baseline_passed=baseline["passed"],
+                   delta_score=_difference(attempt["final_score"], baseline["score"]) if eligible else None,
+                   delta_passed=_difference(attempt.get("final_passed"), baseline["passed"]) if eligible else None,
+                   delta_reward=_difference(attempt["final_reward"], baseline["reward"]) if eligible else None)
+        runs.append(row)
+        role = "first" if attempt.get("final_reused_from") else "final"
+        candidate = [item for item in research_cases if item["attempt_id"] == attempt["attempt_id"] and item["checkpoint_role"] == role]
+        reference = [item for item in baseline_cases if item["attempt_id"] == baseline["attempt_id"]]
+        if eligible:
+            for identifier in sorted({item["case_id"] for item in candidate}):
+                selected = [[item for item in rows if item["case_id"] == identifier] for rows in (candidate, reference)]
+                a, b = map(_metric_means, selected)
+                passed = [_mean([int(item["scientific_pass"]) if type(item.get("scientific_pass")) is bool else None for item in rows]) for rows in selected]
+                cases.append({**{key: row[key] for key in ("task", "group", "run_id", "attempt_id", "reference_method", "baseline_attempt_id")},
+                              "case_id": identifier, "delta_pass_rate": _difference(passed[0], passed[1]),
+                              **{"delta_" + key: _difference(a[key], b[key]) for key in METRICS}})
+    for task in METHODS:
+        for group in GROUPS:
+            selected = [row for row in runs if row["task"] == task and row["group"] == group and row["comparison_status"] == "available"]
+            row = {"task": task, "group": group, "reference_method": FIXED[task], "compared_scientific_sessions": len(selected),
+                   "planned_sessions": sum(run["task"] == task and run["group"] == group for run in plan["runs"])}
+            for metric in ("score", "passed", "reward"):
+                values = [item["delta_" + metric] for item in selected if _number(item["delta_" + metric])]
+                row.update({metric + "_n": len(values), "median_delta_" + metric: statistics.median(values) if values else None,
+                            "min_delta_" + metric: min(values) if values else None, "max_delta_" + metric: max(values) if values else None})
+            groups.append(row)
+    return runs, groups, cases
+
+
 def group_summary(plan, attempts):
     rows, comparisons = [], []
     for task in ("heat", "ode", "poisson"):
@@ -416,9 +599,7 @@ def export_study(project, plan_path, manifest_path, output):
             row["evaluation_status"] = diagnostic.get("evaluation_status")
             if row["research_valid"]:
                 frozen = _read(project, freeze_ref)
-                case_ids = sorted({name.split("/")[1] for name in frozen["data"]["final-test"]["input_hashes"] if name.startswith("cases/")})
-                if len(case_ids) != 12:
-                    raise ValueError("frozen final-test hashes must identify all 12 cases")
+                case_ids = _case_ids(frozen)
                 if diagnostic.get("evaluation_status") != "valid":
                     if diagnostic.get("score") is not None or diagnostic.get("reward") is not None:
                         raise ValueError("trusted scoring failure must retain a null verdict")
@@ -458,6 +639,7 @@ def export_study(project, plan_path, manifest_path, output):
                     row.update({role + "_source_hash": checkpoint["source_hash"], role + "_replay_count": checkpoint["replay_count"],
                                 role + "_reused_from": checkpoint["reused_from"], role + "_score": checkpoint["score"] if valid else None,
                                 role + "_reward": checkpoint["reward"] if valid else None,
+                                role + "_passed": checkpoint["passed"] if valid else None,
                                 role + "_performance_status": checkpoint["performance_status"],
                                 role + "_artifact_valid": checkpoint["artifact_valid"], role + "_scientific_pass": checkpoint["scientific_pass"]})
                 if valid and row["first_id"] is not None:
@@ -481,18 +663,27 @@ def export_study(project, plan_path, manifest_path, output):
         attempts.append(row)
         seen[attempt_id], previous[run["run_id"]] = row, attempt_id
     groups, contrasts = group_summary(plan, attempts)
+    baseline_attempts, baselines, baseline_cases = author_baselines(project, plan, file_hash(plan_path), manifest, attempts)
+    reference_runs, reference_groups, reference_cases = fixed_comparisons(plan, attempts, cases, baselines, baseline_cases)
     summary = {"formal": True, "plan_sha256": file_hash(plan_path), "manifest_sha256": file_hash(manifest_path),
                "planned_sessions": len(plan["runs"]), "attempts": len(attempts), "scientific_sessions": len(completed),
                "scientific_guidance_cells": len({(row["task"], row["group"]) for row in attempts if row["scientific_evaluated"]}),
                "pending_run_ids": [run["run_id"] for run in plan["runs"] if run["run_id"] not in completed],
                "case_rows": len(cases), "checkpoint_rows": len(checkpoints), "groups": groups, "contrasts": contrasts,
+               "baseline_attempts": len(baseline_attempts), "baseline_methods": baselines,
+               "pending_baselines": [{"task": row["task"], "method": row["method"]} for row in baselines if row["evaluation_status"] != "valid"],
+               "fixed_reference_groups": reference_groups,
                "limitations": ["Independent research sessions are the replication unit; cases/replays/evaluations are not independent samples.",
                                "Contrasts are within task and paired repeat only; n=1 descriptive, n=3 exploratory.",
                                "First-to-final changes do not identify the causal effect of feedback.",
-                               "Missing costs remain null; relay reservation charges are not token usage or currency."]}
+                               "Missing costs remain null; relay reservation charges are not token usage or currency.",
+                               "Author baselines are fixed references, never additional research sessions; absent/invalid baselines yield null contrasts."]}
     output.mkdir(parents=True, exist_ok=False)
     for name, values in (("attempts", attempts), ("checkpoints", checkpoints), ("cases", cases), ("case-deltas", case_deltas),
-                         ("public-evaluations", evaluations), ("groups", groups), ("contrasts", contrasts)):
+                         ("public-evaluations", evaluations), ("groups", groups), ("contrasts", contrasts),
+                         ("baseline-attempts", baseline_attempts), ("baselines", baselines), ("baseline-cases", baseline_cases),
+                         ("fixed-reference-runs", reference_runs), ("fixed-reference-groups", reference_groups),
+                         ("fixed-reference-cases", reference_cases)):
         fields = list(dict.fromkeys(key for row in values for key in row)) or ["attempt_id"]
         _csv(output / (name + ".csv"), values, fields)
     write_json(output / "summary.json", summary)

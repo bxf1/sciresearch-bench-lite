@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "command": [
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python",
+        "-m",
+        "runner.study",
+        "baseline",
+        "--help"
+      ],
+      "output": {
+        "path": "logs/baseline-study-local-001/help.txt",
+        "sha256": "4fbdcc02444b3d4e0e8f584f8c6e5ee99d7dda9d71cb9a55a20345d95e686c5d"
+      },
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python",
+        "-m",
+        "runner.study",
+        "baseline",
+        "--plan",
+        "freezes/research-run-plan-local-draft-007.json",
+        "--task",
+        "heat",
+        "--method",
+        "tikhonov",
+        "--data",
+        "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/baseline-guard-no-data"
+      ],
+      "output": {
+        "path": "logs/baseline-study-local-001/draft-rejection.txt",
+        "sha256": "625023ab63fa39e9beded0b678621b1e2cdb6448ede8de94da78ade79369682d"
+      },
+      "returncode": 1
+    }
+  ],
+  "final_test_scores_accessed": false,
+  "formal": false,
+  "formal_sessions": 0,
+  "model_calls": 0,
+  "nonexistent_data_path_created": false,
+  "plan": {
+    "path": "freezes/research-run-plan-local-draft-007.json",
+    "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+  },
+  "status": "passed",
+  "worker_or_judge_executions": 0
+}

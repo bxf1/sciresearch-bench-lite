@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 648, in <module>
+    main()
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 640, in main
+    result = baseline(project, args.plan, args.task, args.method, args.data, timing_contract=args.timing_contract,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 497, in baseline
+    plan, plan_ref = frozen_plan(project, plan_path)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/study.py", line 37, in frozen_plan
+    validate_start(plan, project)
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/run_plan.py", line 296, in validate_start
+    raise RunPlanError(blockers)
+runner.run_plan.RunPlanError: Formal research is blocked: run plan requires status=frozen and formal_ready=true; draft cannot start; heat freeze: final-test requires status=frozen; a draft is not authorization; ode freeze: final-test requires status=frozen; a draft is not authorization; poisson freeze: final-test requires status=frozen; a draft is not authorization

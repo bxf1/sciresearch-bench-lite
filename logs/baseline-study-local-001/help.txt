@@ -1,0 +1,16 @@
+usage: study.py baseline [-h] --plan PLAN --task {heat,ode,poisson} --method
+                         METHOD [--retry-of RETRY_OF]
+                         [--retry-reason RETRY_REASON] --data DATA
+                         [--timing-contract TIMING_CONTRACT]
+                         [--interference-resolution INTERFERENCE_RESOLUTION]
+
+options:
+  -h, --help            show this help message and exit
+  --plan PLAN
+  --task {heat,ode,poisson}
+  --method METHOD
+  --retry-of RETRY_OF
+  --retry-reason RETRY_REASON
+  --data DATA
+  --timing-contract TIMING_CONTRACT
+  --interference-resolution INTERFERENCE_RESOLUTION

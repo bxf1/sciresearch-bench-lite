@@ -45,6 +45,12 @@ PYTHONPATH=. LITELLM_LOCAL_MODEL_COST_MAP=True .venv/bin/python -m runner.study_
   --manifest research-runs/<plan-id>/manifest.json --output results/<report-name>
 ```
 
+The report consumes the append-only `manifest.baselines` references separately from research attempts. Each author replay must bind the same task, final-test split, frozen plan, numeric image, scoring profile, declared method and complete frozen baseline source tree. The report also verifies each retained batch's phase/image/source and the Poisson protocol's candidate method and BCCBBC measurements. Calibration and pilot records cannot substitute for these final records, and all research sessions for the task must already be validly closed.
+
+`baselines.csv` always lists all eleven declared methods (five heat, three ODE, three Poisson); missing or unfinished methods remain explicitly unscored. `baseline-attempts.csv` preserves failed and linked retry attempts, while `baseline-cases.csv` retains their available case records. Only the latest admissible attempt for each method supplies a reference. An infrastructure retry must name the latest invalid parent; a scientific zero cannot be replaced. The single investigated Poisson instability retry must retain both protocol attempts.
+
+`fixed-reference-runs.csv`, `fixed-reference-groups.csv` and `fixed-reference-cases.csv` compare final research checkpoints with the predeclared heat `tikhonov`, ODE `fixed` and Poisson `lu` references. They retain score, passed-case and reward differences, and per-case score/error/pass-rate differences. Identical first/final sources reuse the first case records; a missing submission retains its twelve scientific zeros. An absent or invalid reference yields null comparisons. Author methods and their replays never increase research-session denominators; the existing n=1 descriptive and n=3 exploratory limits still apply.
+
 ## Investigated Poisson timing retry
 
 An original Poisson group marked `baseline_unstable` and `retry_permitted=true` permits one explicit complete BCCBBC remeasurement after the host investigates interference:
@@ -59,6 +65,28 @@ PYTHONPATH=. LITELLM_LOCAL_MODEL_COST_MAP=True .venv/bin/python -m runner.study 
 ```
 
 The path must identify the exact original replay in the ledger. The controller calls the existing `retry_t3_attempt` only for originally unstable checkpoints, preserves the original wrapper under `replay_history`, and stores a separate linked wrapper containing both protocol attempts. A stable checkpoint is reused unchanged; identical first/final sources share the remeasurement. A second final retry, a retry without investigation, or a retry of a stable or candidate-failed result is rejected before execution. The task remains closed to research. Reports count the selected group once and retain both original and retry evidence; cases, replay groups and retries do not become additional independent research sessions.
+
+## Frozen author baselines
+
+`study baseline` replays one predeclared author method on final-test using the same task research-completion barrier as `study final`. The source, image, freeze, and plan are checked before final-data access. The task is closed to further research before the replay begins.
+
+| Task | Methods | Fixed reference |
+| --- | --- | --- |
+| heat | `ls`, `rank5`, `tikhonov`, `discrepancy`, `tsvd` | `tikhonov` |
+| ode | `raw`, `fixed`, `search` | `fixed` |
+| poisson | `cg`, `jacobi`, `lu` | `lu` |
+
+```sh
+PYTHONPATH=. LITELLM_LOCAL_MODEL_COST_MAP=True .venv/bin/python -m runner.study baseline \
+  --plan path/to/frozen-plan.json --task heat --method tikhonov \
+  --data /host/path/to/retained-data
+```
+
+Poisson also requires `--timing-contract /host/path/to/accepted-timing-contract.json`. Each heat/ODE method receives three fresh replays. Each Poisson method receives one complete BCCBBC group, with Jacobi fixed as the baseline role and the declared method passed as `candidate_method`. Methods and source paths cannot be overridden beyond the table above. The controller makes a read-only copy of the exact baseline source files already hashed in the frozen plan. Ordinary Python bytecode caches are ignored and never copied; undeclared source/data files and links are rejected.
+
+`manifest.baselines` indexes every baseline attempt separately from `manifest.attempts`. Each result binds the method, source tree, freeze, plan, image and final-test split. Failures and partial replay evidence remain visible. They do not add research replications or change the research denominator.
+
+An infrastructure failure can receive an explicitly linked new attempt using `--retry-of <latest-baseline-attempt-id> --retry-reason 'Recorded investigation and repair'`. A normal result, including a scientific zero, cannot be rerun. A Poisson group with verified baseline instability permits one investigated linked remeasurement through the same command using `--retry-of <latest-baseline-attempt-id> --interference-resolution 'Recorded investigation and removal of interference'`. This calls the existing `retry_t3_attempt`, keeps both complete protocol groups, and retains the original baseline entry. No retry is automatic, and a second baseline-instability retry is rejected.
 
 ## Validation scope
 

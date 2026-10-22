@@ -271,14 +271,14 @@
       "status": "fresh_dependency_environment_replayed"
     },
     "latest_saved_unit_tests": {
-      "evidence": "logs/unit-tests-final-local-004.txt",
-      "evidence_sha256": "3db83e8c9e8a47d59f2bed727e80dad880cfb577dc358a754b1df647b39b167d",
-      "passed": 328,
-      "seconds": 780.68
+      "evidence": "logs/unit-tests-final-local-005.txt",
+      "evidence_sha256": "348c995fd974d0bf85af421d730a7313ffc4cb8f1dcf1f43c3fb7320f257052c",
+      "passed": 347,
+      "seconds": 15.48
     },
     "local_delivery_receipt": {
-      "path": "freezes/local-delivery-002.json",
-      "sha256": "560066ff9d842ab03a8182207518c5db733da2d8b6541f326005ad054d055a56"
+      "path": "freezes/local-delivery-003.json",
+      "sha256": "a30a2b70befc83ad9e88619180d4b3416adf95a44635037aab268385149a5d42"
     },
     "publication": {
       "evidence": [
@@ -408,7 +408,7 @@
   "formal_guidance_cells_completed": 0,
   "formal_research_sessions_completed": 0,
   "formal_resources_accepted": false,
-  "generated_at": "2026-10-22T12:14:23.708778+08:00",
+  "generated_at": "2026-10-22T12:47:44.082587+08:00",
   "generation": {
     "case_count": 90,
     "dataset": "v0.3-local",
@@ -1800,6 +1800,7 @@
     "logs/unit-tests-final-local-001.txt",
     "logs/unit-tests-final-local-002.txt",
     "logs/unit-tests-final-local-003.txt",
-    "logs/unit-tests-final-local-004.txt"
+    "logs/unit-tests-final-local-004.txt",
+    "logs/unit-tests-final-local-005.txt"
   ]
 }

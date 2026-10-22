@@ -1,0 +1,22 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "heat freeze: final-test requires status=frozen; a draft is not authorization",
+    "ode freeze: final-test requires status=frozen; a draft is not authorization",
+    "poisson freeze: final-test requires status=frozen; a draft is not authorization"
+  ],
+  "current_plan": {
+    "path": "freezes/research-run-plan-local-draft-007.json",
+    "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+  },
+  "final_test_scores_accessed": false,
+  "formal_ready": false,
+  "formal_sessions": 0,
+  "model_calls": 0,
+  "previous_plan": {
+    "path": "freezes/research-run-plan-local-draft-006.json",
+    "sha256": "9ac2842a3f86b699720eb589f7c34c5ac885fb815059ca4752e72a7d6b3dbff8"
+  },
+  "run_matrix_unchanged": true,
+  "scope": "Refresh complete trusted Python manifest; data, judge and methods unchanged; formal acceptance remains pending."
+}
