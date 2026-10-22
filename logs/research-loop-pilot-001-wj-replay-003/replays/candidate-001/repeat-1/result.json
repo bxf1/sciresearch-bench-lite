@@ -1,0 +1,90 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_forward": 0.0009350780985809136,
+      "E_init": 0.025878406135080245,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 92.78739899778498
+    },
+    {
+      "E_forward": 0.0011929678279954568,
+      "E_init": 0.08221757369248034,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 77.6776577393401
+    },
+    {
+      "E_forward": 0.0021171182877138895,
+      "E_init": 0.025053793210527028,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 92.61328238128817
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_wall_seconds": 0.47221004217863083,
+  "passed": 3,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": false,
+    "freeze_sha256": null,
+    "profile": null,
+    "split": "pilot-smoke"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 87.69277970613776,
+  "total": 3,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "candidate_processes_terminated": true,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "0e3ae8ab05af690cde9d",
+        "sha256": "490f84339d36040c1f0c2f869bd5728e3105a7ea9ee9ce1ef9b0cbc709a9b01e"
+      },
+      {
+        "artifact_valid": true,
+        "id": "bb4cf34c6e28fd43a260",
+        "sha256": "0ee197e202145248b538d816a09a59656561b3c1908455da616b8773d57310c2"
+      },
+      {
+        "artifact_valid": true,
+        "id": "db9b3093c406087870f8",
+        "sha256": "10242afda35a1928d8f49fe7f952b368135eaf0f420d37ac96868c63bca1f708"
+      }
+    ],
+    "cpu_seconds": 0.254331,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 0.22105962503701448,
+    "exit_code": 0,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "log_bytes_observed": 0,
+    "memory_peak_bytes": 20242432,
+    "oom_killed": false,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 0.36669900035485625,
+    "research_timeout_seconds": null,
+    "scientific_pass": false,
+    "timeout_seconds": 120,
+    "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+    "total_wall_seconds": 0.7986129587516189
+  }
+}

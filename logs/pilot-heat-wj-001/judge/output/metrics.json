@@ -1,0 +1,45 @@
+{
+  "artifact_valid": false,
+  "cases": [
+    {
+      "E_forward": null,
+      "E_init": null,
+      "artifact_valid": false,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "reason": "invalid_artifact: output must be a regular file",
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": null,
+      "E_init": null,
+      "artifact_valid": false,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "reason": "invalid_artifact: output must be a regular file",
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": null,
+      "E_init": null,
+      "artifact_valid": false,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "reason": "invalid_artifact: output must be a regular file",
+      "scientific_pass": false,
+      "score": 0.0
+    }
+  ],
+  "evaluation_status": "valid",
+  "passed": 0,
+  "performance_status": "not_applicable",
+  "reward": 0,
+  "scientific_pass": false,
+  "score": 0.0,
+  "total": 3
+}

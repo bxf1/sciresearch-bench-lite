@@ -1,0 +1,23 @@
+{
+  "task": "poisson",
+  "contract_version": "0.3",
+  "n": 64,
+  "shape": [
+    4096,
+    4096
+  ],
+  "rhs_shape": [
+    4096,
+    4
+  ],
+  "dtype": "little-endian float64",
+  "matrix_format": "CSR",
+  "matrix_properties": [
+    "symmetric",
+    "positive_definite"
+  ],
+  "indexing": "row-major i*n+j",
+  "relative_residual_limit": 1e-08,
+  "relative_solution_error_limit": 1e-05,
+  "same_operator_different_rhs": false
+}

@@ -1,0 +1,16 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "timeout",
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 1.1373976250179112,
+  "exit_code": 137,
+  "formal_timing": false,
+  "image": "sciresearch-numeric:0.3.0",
+  "log_bytes_observed": 0,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "scientific_pass": false,
+  "timeout_seconds": 1,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.594276084098965
+}

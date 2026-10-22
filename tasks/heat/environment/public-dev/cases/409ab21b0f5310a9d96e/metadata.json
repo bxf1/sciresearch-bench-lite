@@ -1,0 +1,21 @@
+{
+  "task": "heat",
+  "contract_version": "0.3",
+  "kappa": 1.2522086853969672,
+  "sigma": 0.009030281562037392,
+  "mode_limit": 32,
+  "times": [
+    0.003,
+    0.009
+  ],
+  "future_time": 0.01125,
+  "target_size": 256,
+  "noise": "independent zero-mean Gaussian with common absolute sigma",
+  "boundary": "u(0,t)=u(1,t)=0",
+  "units": "dimensionless",
+  "observation_columns": [
+    "x",
+    "t",
+    "y"
+  ]
+}

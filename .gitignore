@@ -1,0 +1,13 @@
+.venv/
+.bootstrap/
+.python/
+.cache/
+.docker/
+__pycache__/
+.pytest_cache/
+*.pyc
+authoring/data/
+logs/
+results/
+build/
+*.env

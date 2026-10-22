@@ -1,0 +1,83 @@
+{
+  "budget_seconds": 600,
+  "closed": true,
+  "condition": "pilot-smoke",
+  "evaluations": [
+    {
+      "accepted_at": 1792628690.6888409,
+      "artifact_valid": true,
+      "completed_at": 1792628691.966123,
+      "id": "candidate-001",
+      "result": {
+        "all_processes_terminated": true,
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "candidate_processes_terminated": true,
+        "cases": [
+          {
+            "artifact_valid": true,
+            "id": "0e3ae8ab05af690cde9d",
+            "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+          },
+          {
+            "artifact_valid": true,
+            "id": "bb4cf34c6e28fd43a260",
+            "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+          },
+          {
+            "artifact_valid": true,
+            "id": "db9b3093c406087870f8",
+            "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+          }
+        ],
+        "cpu_seconds": 0.250608,
+        "evaluation_status": "not_evaluated",
+        "execution_wall_seconds": 0.2402179166674614,
+        "exit_code": 0,
+        "formal_timing": false,
+        "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 19058688,
+        "oom_killed": false,
+        "performance_status": "not_measured",
+        "processes_quiesced_at_seconds": 0.3381991246715188,
+        "public_feedback": [
+          {
+            "R": 39959.82016891925,
+            "artifact_valid": true,
+            "id": "0e3ae8ab05af690cde9d",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 9999.038822028733,
+            "artifact_valid": true,
+            "id": "bb4cf34c6e28fd43a260",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 2503.594569985483,
+            "artifact_valid": true,
+            "id": "db9b3093c406087870f8",
+            "roughness": 0.0,
+            "status": "ok"
+          }
+        ],
+        "scientific_pass": false,
+        "timeout_seconds": 120,
+        "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+        "total_wall_seconds": 0.8424682919867337
+      },
+      "source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc"
+    }
+  ],
+  "final_id": "candidate-001",
+  "finalization_invalid": false,
+  "first_id": "candidate-001",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1792628690.599384,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/pilot-model-registry-wj-001/workspace"
+}

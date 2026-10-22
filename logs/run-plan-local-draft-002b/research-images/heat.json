@@ -1,0 +1,22 @@
+{
+  "build_context_sha256": "a54d21815c6160bd6c63c5c40e07265016020e1096d8358498567dd24f64c23a",
+  "checks": {
+    "input_exact_match": true,
+    "no_new_privileges": true,
+    "no_socket": true,
+    "nonroot": true,
+    "protected_helpers": true,
+    "protected_responses": true,
+    "six_cases": true,
+    "zero_capabilities": true
+  },
+  "formal": false,
+  "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+  "scope": "Image identity, exact packaged public context and eight startup checks only; not formal resource or full Pi lifecycle acceptance.",
+  "source_evidence": {
+    "path": "logs/research-images-local-001/result.json",
+    "sha256": "2a6409772d471d800f87cdfb70cef47d6ac752ec3863287356ff21f3cafe590d"
+  },
+  "status": "verified",
+  "task": "heat"
+}

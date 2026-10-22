@@ -1,0 +1,301 @@
+Sending build context to Docker daemon  2.048kB
+
+Step 1/6 : FROM sciresearch-numeric:0.3.0
+ ---> e0018a98b249
+Step 2/6 : USER root
+ ---> Running in aee09e904c38
+ ---> Removed intermediate container aee09e904c38
+ ---> b514e137ddfd
+Step 3/6 : RUN apt-get update && apt-get install -y --no-install-recommends bash curl ca-certificates git coreutils xz-utils && rm -rf /var/lib/apt/lists/*
+ ---> Running in 03eab178c3de
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+Get:4 http://deb.debian.org/debian bookworm/main arm64 Packages [8689 kB]
+Get:5 http://deb.debian.org/debian bookworm-updates/main arm64 Packages [6936 B]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main arm64 Packages [353 kB]
+Fetched 9291 kB in 4s (2084 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+coreutils is already the newest version (9.1-1).
+coreutils set to manually installed.
+The following additional packages will be installed:
+  git-man libbrotli1 libcurl3-gnutls libcurl4 liberror-perl libexpat1
+  libgdbm-compat4 libldap-2.5-0 liblzma5 libnghttp2-14 libperl5.36 libpsl5
+  librtmp1 libsasl2-2 libsasl2-modules-db libssh2-1 perl perl-base
+  perl-modules-5.36
+Suggested packages:
+  bash-doc gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email
+  git-gui gitk gitweb git-cvs git-mediawiki git-svn sensible-utils perl-doc
+  libterm-readline-gnu-perl | libterm-readline-perl-perl make
+  libtap-harness-archive-perl
+Recommended packages:
+  bash-completion patch less ssh-client libldap-common publicsuffix
+  libsasl2-modules
+The following NEW packages will be installed:
+  curl git git-man libbrotli1 libcurl3-gnutls libcurl4 liberror-perl libexpat1
+  libgdbm-compat4 libldap-2.5-0 libnghttp2-14 libperl5.36 libpsl5 librtmp1
+  libsasl2-2 libsasl2-modules-db libssh2-1 perl perl-modules-5.36 xz-utils
+The following packages will be upgraded:
+  bash ca-certificates liblzma5 perl-base
+4 upgraded, 20 newly installed, 0 to remove and 18 not upgraded.
+Need to get 22.1 MB of archives.
+After this operation, 106 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bookworm/main arm64 bash arm64 5.2.15-2+b13 [1444 kB]
+Get:2 http://deb.debian.org/debian-security bookworm-security/main arm64 perl-base arm64 5.36.0-7+deb12u4 [1478 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security/main arm64 perl-modules-5.36 all 5.36.0-7+deb12u4 [2817 kB]
+Get:4 http://deb.debian.org/debian bookworm/main arm64 libgdbm-compat4 arm64 1.23-3 [48.0 kB]
+Get:5 http://deb.debian.org/debian-security bookworm-security/main arm64 libperl5.36 arm64 5.36.0-7+deb12u4 [4002 kB]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main arm64 perl arm64 5.36.0-7+deb12u4 [239 kB]
+Get:7 http://deb.debian.org/debian-security bookworm-security/main arm64 liblzma5 arm64 5.4.1-1+deb12u2 [200 kB]
+Get:8 http://deb.debian.org/debian-security bookworm-security/main arm64 ca-certificates all 20250419~deb12u2 [161 kB]
+Get:9 http://deb.debian.org/debian-security bookworm-security/main arm64 xz-utils arm64 5.4.1-1+deb12u2 [471 kB]
+Get:10 http://deb.debian.org/debian bookworm/main arm64 libbrotli1 arm64 1.0.9-2+b6 [269 kB]
+Get:11 http://deb.debian.org/debian bookworm/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg-10 [20.8 kB]
+Get:12 http://deb.debian.org/debian bookworm/main arm64 libsasl2-2 arm64 2.1.28+dfsg-10 [58.0 kB]
+Get:13 http://deb.debian.org/debian bookworm/main arm64 libldap-2.5-0 arm64 2.5.13+dfsg-5 [171 kB]
+Get:14 http://deb.debian.org/debian bookworm/main arm64 libnghttp2-14 arm64 1.52.0-1+deb12u3 [69.0 kB]
+Get:15 http://deb.debian.org/debian bookworm/main arm64 libpsl5 arm64 0.21.2-1 [58.6 kB]
+Get:16 http://deb.debian.org/debian bookworm/main arm64 librtmp1 arm64 2.4+20151223.gitfa8646d.1-2+b2 [59.4 kB]
+Get:17 http://deb.debian.org/debian-security bookworm-security/main arm64 libssh2-1 arm64 1.10.0-3+deb12u1 [169 kB]
+Get:18 http://deb.debian.org/debian bookworm/main arm64 libcurl4 arm64 7.88.1-10+deb12u15 [367 kB]
+Get:19 http://deb.debian.org/debian bookworm/main arm64 curl arm64 7.88.1-10+deb12u15 [310 kB]
+Get:20 http://deb.debian.org/debian bookworm/main arm64 libcurl3-gnutls arm64 7.88.1-10+deb12u15 [362 kB]
+Get:21 http://deb.debian.org/debian-security bookworm-security/main arm64 libexpat1 arm64 2.5.0-1+deb12u4 [89.2 kB]
+Get:22 http://deb.debian.org/debian bookworm/main arm64 liberror-perl all 0.17029-2 [29.0 kB]
+Get:23 http://deb.debian.org/debian bookworm/main arm64 git-man all 1:2.39.5-0+deb12u3 [2053 kB]
+Get:24 http://deb.debian.org/debian bookworm/main arm64 git arm64 1:2.39.5-0+deb12u3 [7153 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 22.1 MB in 4s (4914 kB/s)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6689 files and directories currently installed.)
+Preparing to unpack .../bash_5.2.15-2+b13_arm64.deb ...
+update-alternatives: warning: alternative /usr/share/man/man7/bash-builtins.7.gz (part of link group builtins.7.gz) doesn't exist; removing from list of alternatives
+update-alternatives: warning: /etc/alternatives/builtins.7.gz is dangling; it will be updated with best choice
+Unpacking bash (5.2.15-2+b13) over (5.2.15-2+b10) ...
+Setting up bash (5.2.15-2+b13) ...
+update-alternatives: error: alternative path /usr/share/man/man7/bash-builtins.7.gz doesn't exist
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6689 files and directories currently installed.)
+Preparing to unpack .../perl-base_5.36.0-7+deb12u4_arm64.deb ...
+Unpacking perl-base (5.36.0-7+deb12u4) over (5.36.0-7+deb12u3) ...
+Setting up perl-base (5.36.0-7+deb12u4) ...
+Selecting previously unselected package perl-modules-5.36.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6690 files and directories currently installed.)
+Preparing to unpack .../perl-modules-5.36_5.36.0-7+deb12u4_all.deb ...
+Unpacking perl-modules-5.36 (5.36.0-7+deb12u4) ...
+Selecting previously unselected package libgdbm-compat4:arm64.
+Preparing to unpack .../libgdbm-compat4_1.23-3_arm64.deb ...
+Unpacking libgdbm-compat4:arm64 (1.23-3) ...
+Selecting previously unselected package libperl5.36:arm64.
+Preparing to unpack .../libperl5.36_5.36.0-7+deb12u4_arm64.deb ...
+Unpacking libperl5.36:arm64 (5.36.0-7+deb12u4) ...
+Selecting previously unselected package perl.
+Preparing to unpack .../perl_5.36.0-7+deb12u4_arm64.deb ...
+Unpacking perl (5.36.0-7+deb12u4) ...
+Preparing to unpack .../liblzma5_5.4.1-1+deb12u2_arm64.deb ...
+Unpacking liblzma5:arm64 (5.4.1-1+deb12u2) over (5.4.1-1) ...
+Setting up liblzma5:arm64 (5.4.1-1+deb12u2) ...
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 8695 files and directories currently installed.)
+Preparing to unpack .../00-ca-certificates_20250419~deb12u2_all.deb ...
+Unpacking ca-certificates (20250419~deb12u2) over (20230311+deb12u1) ...
+Selecting previously unselected package xz-utils.
+Preparing to unpack .../01-xz-utils_5.4.1-1+deb12u2_arm64.deb ...
+Unpacking xz-utils (5.4.1-1+deb12u2) ...
+Selecting previously unselected package libbrotli1:arm64.
+Preparing to unpack .../02-libbrotli1_1.0.9-2+b6_arm64.deb ...
+Unpacking libbrotli1:arm64 (1.0.9-2+b6) ...
+Selecting previously unselected package libsasl2-modules-db:arm64.
+Preparing to unpack .../03-libsasl2-modules-db_2.1.28+dfsg-10_arm64.deb ...
+Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
+Selecting previously unselected package libsasl2-2:arm64.
+Preparing to unpack .../04-libsasl2-2_2.1.28+dfsg-10_arm64.deb ...
+Unpacking libsasl2-2:arm64 (2.1.28+dfsg-10) ...
+Selecting previously unselected package libldap-2.5-0:arm64.
+Preparing to unpack .../05-libldap-2.5-0_2.5.13+dfsg-5_arm64.deb ...
+Unpacking libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
+Selecting previously unselected package libnghttp2-14:arm64.
+Preparing to unpack .../06-libnghttp2-14_1.52.0-1+deb12u3_arm64.deb ...
+Unpacking libnghttp2-14:arm64 (1.52.0-1+deb12u3) ...
+Selecting previously unselected package libpsl5:arm64.
+Preparing to unpack .../07-libpsl5_0.21.2-1_arm64.deb ...
+Unpacking libpsl5:arm64 (0.21.2-1) ...
+Selecting previously unselected package librtmp1:arm64.
+Preparing to unpack .../08-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_arm64.deb ...
+Unpacking librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+Selecting previously unselected package libssh2-1:arm64.
+Preparing to unpack .../09-libssh2-1_1.10.0-3+deb12u1_arm64.deb ...
+Unpacking libssh2-1:arm64 (1.10.0-3+deb12u1) ...
+Selecting previously unselected package libcurl4:arm64.
+Preparing to unpack .../10-libcurl4_7.88.1-10+deb12u15_arm64.deb ...
+Unpacking libcurl4:arm64 (7.88.1-10+deb12u15) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../11-curl_7.88.1-10+deb12u15_arm64.deb ...
+Unpacking curl (7.88.1-10+deb12u15) ...
+Selecting previously unselected package libcurl3-gnutls:arm64.
+Preparing to unpack .../12-libcurl3-gnutls_7.88.1-10+deb12u15_arm64.deb ...
+Unpacking libcurl3-gnutls:arm64 (7.88.1-10+deb12u15) ...
+Selecting previously unselected package libexpat1:arm64.
+Preparing to unpack .../13-libexpat1_2.5.0-1+deb12u4_arm64.deb ...
+Unpacking libexpat1:arm64 (2.5.0-1+deb12u4) ...
+Selecting previously unselected package liberror-perl.
+Preparing to unpack .../14-liberror-perl_0.17029-2_all.deb ...
+Unpacking liberror-perl (0.17029-2) ...
+Selecting previously unselected package git-man.
+Preparing to unpack .../15-git-man_1%3a2.39.5-0+deb12u3_all.deb ...
+Unpacking git-man (1:2.39.5-0+deb12u3) ...
+Selecting previously unselected package git.
+Preparing to unpack .../16-git_1%3a2.39.5-0+deb12u3_arm64.deb ...
+Unpacking git (1:2.39.5-0+deb12u3) ...
+Setting up libexpat1:arm64 (2.5.0-1+deb12u4) ...
+Setting up libpsl5:arm64 (0.21.2-1) ...
+Setting up libbrotli1:arm64 (1.0.9-2+b6) ...
+Setting up libnghttp2-14:arm64 (1.52.0-1+deb12u3) ...
+Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
+Setting up ca-certificates (20250419~deb12u2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+21 added, 15 removed; done.
+Setting up perl-modules-5.36 (5.36.0-7+deb12u4) ...
+Setting up librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+Setting up xz-utils (5.4.1-1+deb12u2) ...
+update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist
+Setting up libgdbm-compat4:arm64 (1.23-3) ...
+Setting up libsasl2-2:arm64 (2.1.28+dfsg-10) ...
+Setting up git-man (1:2.39.5-0+deb12u3) ...
+Setting up libssh2-1:arm64 (1.10.0-3+deb12u1) ...
+Setting up libperl5.36:arm64 (5.36.0-7+deb12u4) ...
+Setting up libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
+Setting up perl (5.36.0-7+deb12u4) ...
+Setting up libcurl4:arm64 (7.88.1-10+deb12u15) ...
+Setting up curl (7.88.1-10+deb12u15) ...
+Setting up libcurl3-gnutls:arm64 (7.88.1-10+deb12u15) ...
+Setting up liberror-perl (0.17029-2) ...
+Setting up git (1:2.39.5-0+deb12u3) ...
+Processing triggers for libc-bin (2.36-9+deb12u13) ...
+Processing triggers for debianutils (5.7-0.5~deb12u1) ...
+Processing triggers for ca-certificates (20250419~deb12u2) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+ ---> Removed intermediate container 03eab178c3de
+ ---> 0131d956efde
+Step 4/6 : RUN mkdir -p /workspace /input /logs/agent /logs/artifacts /logs/verifier
+ ---> Running in d6188edf1062
+ ---> Removed intermediate container d6188edf1062
+ ---> 4f90db450cc1
+Step 5/6 : WORKDIR /workspace
+ ---> Running in 5925551bfb7e
+ ---> Removed intermediate container 5925551bfb7e
+ ---> 59b700770b21
+Step 6/6 : CMD ["sleep", "infinity"]
+ ---> Running in 86e940260d16
+ ---> Removed intermediate container 86e940260d16
+ ---> 8d64a6f40e9a
+Successfully built 8d64a6f40e9a
+Successfully tagged sciresearch-research-smoke:0.3.0
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+

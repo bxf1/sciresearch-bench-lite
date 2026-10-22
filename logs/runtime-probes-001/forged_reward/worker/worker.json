@@ -1,0 +1,22 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "candidate_processes_terminated": true,
+  "cpu_seconds": 0.211376,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.172241291962564,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sciresearch-numeric:0.3.0",
+  "log_bytes_observed": 0,
+  "memory_peak_bytes": 19755008,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.27596925012767315,
+  "reason": "output filename not allowlisted",
+  "scientific_pass": false,
+  "timeout_seconds": 15,
+  "timing_scope": "host Docker exec request through process-tree quiescence; diagnostic only",
+  "total_wall_seconds": 0.6757816658355296
+}

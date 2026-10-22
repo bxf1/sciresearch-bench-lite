@@ -1,0 +1,39 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "model version: model version is unresolved",
+    "model parameter thinking is unresolved/invalid (unverified null cannot authorize a run)",
+    "thinking enforcement: effective enforcement is not verified",
+    "model parameter temperature is unresolved/invalid (unverified null cannot authorize a run)",
+    "temperature enforcement: effective enforcement is not verified",
+    "model parameter output_token_limit is unresolved/invalid (unverified null cannot authorize a run)",
+    "output_token_limit enforcement: effective enforcement is not verified",
+    "system prompt: missing path/hash reference",
+    "tool configuration: effective runtime tool inventory is unresolved",
+    "heat research image: missing immutable research image SHA256 ID",
+    "ode research image: missing immutable research image SHA256 ID",
+    "poisson research image: missing immutable research image SHA256 ID",
+    "heat freeze: missing path/hash reference",
+    "ode freeze: missing path/hash reference",
+    "poisson freeze: missing path/hash reference"
+  ],
+  "code_hashes": {
+    "public/poisson_compare.py": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+    "runner/run_plan.py": "d59384e56ac04a3226a025fe745e5469f839a11d3c2b4f8897bbc582c22b5acc",
+    "tests/test_poisson_compare.py": "ff8af175f8030ff334934d63f7de484b706b4fca331bd46ed8c82c8a713c97a6",
+    "tests/test_run_plan.py": "d62d3bd409c18316454cc702dcdf2a39dc973ce07cee85cdea81e7e52b7af15e"
+  },
+  "formal_ready": false,
+  "plan_path": "freezes/research-run-plan-checkpoint-001.json",
+  "plan_sha256": "a5dd9507ea0887ff5d9c956431fcc0edc4133350ef99b723c8eaa7db458ffaba",
+  "status": "draft_blocked",
+  "test_command": [
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/tests/test_run_plan.py",
+    "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/tests/test_poisson_compare.py"
+  ],
+  "test_exit_code": 0
+}

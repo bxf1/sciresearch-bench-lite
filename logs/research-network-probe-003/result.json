@@ -1,0 +1,76 @@
+{
+  "after": [],
+  "before": [],
+  "buildx": {
+    "docker_config": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.docker",
+    "provenance": {
+      "asset_sha256": "f508d57e82e661fc9daa4fc8bc5dc69e9625743366fe0d30c934deff55ed2526",
+      "asset_url": "https://github.com/docker/buildx/releases/download/v0.32.1/buildx-v0.32.1.darwin-arm64",
+      "checksums_sha256": "fd9873151e9805b6799c6e916e2e0ac87a68eacb12c21757af8a4adbb4a9f4a7",
+      "checksums_text_contains_darwin_binary": false,
+      "checksums_url": "https://github.com/docker/buildx/releases/download/v0.32.1/checksums.txt",
+      "global_docker_configuration_modified": false,
+      "initial_check_result": "checksums.txt excludes Darwin assets; official release API asset digest verified instead",
+      "installed_path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.docker/cli-plugins/docker-buildx",
+      "release_url": "https://github.com/docker/buildx/releases/tag/v0.32.1",
+      "verified_against": [
+        "Official GitHub release asset SHA-256 digest"
+      ],
+      "version": "github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2"
+    },
+    "returncode": 0,
+    "version": "github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2"
+  },
+  "cleanup_api_returned": true,
+  "controller_sha256": "eb4e28307d309ea91b996ecc13e5aba7848301a94f1e9db1ba1dba654c032d7b",
+  "credentials_forwarded": false,
+  "daemon_kernel": {
+    "Architecture": "aarch64",
+    "CgroupVersion": "2",
+    "KernelVersion": "6.8.0-100-generic",
+    "OperatingSystem": "Ubuntu 24.04.4 LTS"
+  },
+  "error": "RuntimeError: Docker compose command failed for environment bench-network-probe. Command: docker compose --project-name bench-network-probe-8e914e6e87c0 --project-directory /Users/baixiongfei/Documents/Projects/build_bench/benchmark/environment/research-smoke -f /private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpq9ggh3si/bench-network-probe-8e914e6e87c0-docker-compose-resources.json -f /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-prebuilt.yaml -f /private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpkc7bcj39/docker-compose-environment.json -f /private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmplvlpxn84/docker-compose-mounts.json -f /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml -f /private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpmtfa8if7/docker-compose-egress-control-services.json up --detach --wait. Return code: 125. Stdout: unknown flag: --project-name\n\nUsage:  docker [OPTIONS] COMMAND [ARG...]\n\nRun 'docker --help' for more information\n. Stderr: None. ",
+  "finished_at": 1792629531.4484842,
+  "formal": false,
+  "harbor_egress_control_enabled": true,
+  "host_network_configuration_modified": false,
+  "kind": "research_network_functional_probe",
+  "model_calls": 0,
+  "own_resources_removed": true,
+  "parent_attempt": "research-network-probe-002",
+  "remaining_own_containers": [],
+  "remaining_own_networks": [],
+  "remaining_own_volumes": [],
+  "requested_allowlist": [
+    "api.deepseek.com"
+  ],
+  "requested_research_resources": {
+    "cpus": 1,
+    "memory_mb": 1024
+  },
+  "research_image": {
+    "id": "sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a",
+    "reference": "sciresearch-research-smoke:0.3.0",
+    "repo_digests": [
+      "sciresearch-research-smoke@sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a"
+    ]
+  },
+  "session_id": "bench-network-probe-8e914e6e87c0",
+  "sidecar_build_context": {
+    "context": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/harbor-docker-egress-control-sidecar",
+    "context_files_sha256": {
+      "Dockerfile": "a2385dd6b3eee6e04c49b467df84ed2a273fd402a9cdd404a64fb535e9b26ff7",
+      "allowlist.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bin/network-policy": "ff1cacfb95e17cda3668f389176ae54e5e4139cff12ee54b4d745722ad0ff0b2",
+      "entrypoint.sh": "2e225ed745eb5976f93afd52d91c844b954b5f6f45373fb70c4c509e36d1e069",
+      "gost.yaml": "78c18e58efbc7c8e226cb311e2a4cf3863d5a2f3e54b3bf15a0ea4b885345290"
+    },
+    "context_hash": "e9f39ce1643ee690",
+    "platform": "linux/arm64",
+    "tag": "harbor-prebuilt:harbor-docker-egress-control-sidecar--e9f39ce1643ee690"
+  },
+  "started_at": 1792629527.292028,
+  "status": "probe_failed",
+  "total_wall_seconds": 4.156456232070923
+}

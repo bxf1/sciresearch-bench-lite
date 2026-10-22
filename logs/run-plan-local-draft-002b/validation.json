@@ -1,0 +1,70 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "model version: model version is unresolved",
+    "model parameter thinking is unresolved/invalid (unverified null cannot authorize a run)",
+    "thinking enforcement: effective enforcement is not verified",
+    "model parameter temperature is unresolved/invalid (unverified null cannot authorize a run)",
+    "temperature enforcement: effective enforcement is not verified",
+    "model parameter output_token_limit is unresolved/invalid (unverified null cannot authorize a run)",
+    "output_token_limit enforcement: effective enforcement is not verified",
+    "system prompt: missing path/hash reference",
+    "tool configuration: effective runtime tool inventory is unresolved",
+    "heat freeze: final-test requires status=frozen; a draft is not authorization",
+    "ode freeze: final-test requires status=frozen; a draft is not authorization",
+    "poisson freeze: final-test requires status=frozen; a draft is not authorization"
+  ],
+  "final_test_scores_accessed": false,
+  "formal": false,
+  "guard_cli_exit_code": 2,
+  "image_inspections": {
+    "heat": {
+      "build_context_sha256": "a54d21815c6160bd6c63c5c40e07265016020e1096d8358498567dd24f64c23a",
+      "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+      "inspection": {
+        "path": "logs/run-plan-local-draft-002b/research-images/heat.json",
+        "sha256": "61fd1041d579f901f1453631917fed6314233f982684353147b0de3894d741e7"
+      }
+    },
+    "ode": {
+      "build_context_sha256": "669cc8b3f77242aa2b0c382736e452ee2fb3c12d4f6445778a63092d0071cfe3",
+      "image_id": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11",
+      "inspection": {
+        "path": "logs/run-plan-local-draft-002b/research-images/ode.json",
+        "sha256": "6eba41250c3318f83f2c9a35a3d27c82c321c21bd8d9390222ff5f9544c7c4de"
+      }
+    },
+    "poisson": {
+      "build_context_sha256": "382b13b34a796411a246c2a065b06711937b39d3ca7ad4781f472b3347c9c197",
+      "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629",
+      "inspection": {
+        "path": "logs/run-plan-local-draft-002b/research-images/poisson.json",
+        "sha256": "e40ebe3a1d3790f4cbd539eb80ba86cca7c54cd2c2ca64a0883e64bc9d5452d0"
+      }
+    }
+  },
+  "order_entropy_reused": true,
+  "parent_attempt": "run-plan-local-draft-002",
+  "plan": "freezes/research-run-plan-local-draft-002b.json",
+  "plan_sha256": "ece27bd28007e0cc02ae4f05771dc2a10df7463ad10b00eec9acab68d03196d6",
+  "prior_plan_sha256": "b46a6a625563a091f36cd1c6ab9bd88283430aacbb684d6542b5a8dd09c949e3",
+  "run_matrix_unchanged": true,
+  "status": "expected_blocked",
+  "task_freeze_checks": {
+    "heat": {
+      "draft_sha256": "ba8b85ccaf36e18b74e715024c9e769eb401afec955dcf5f6adb88a9d477b34e",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "ode": {
+      "draft_sha256": "bccfd140faaf43fbb0c42328e3b78e04a9aa6767a1add9befdaad409cc7db966",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "poisson": {
+      "draft_sha256": "d0fe15b6b83dc2dcf3929deea2b0027d1cde8a5f0a7d6a3bfb14a32831deabea",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    }
+  }
+}

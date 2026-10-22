@@ -1,0 +1,1 @@
+{"status": "pilot_verifier_completed", "error": null, "reward": 1, "score": 87.69277970613776, "formal": false}

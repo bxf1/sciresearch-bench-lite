@@ -1,0 +1,51 @@
+{
+  "cases_changed": 0,
+  "reviews": [
+    {
+      "accepted": true,
+      "file": "mask.npy",
+      "levels": [
+        0
+      ],
+      "occurrences": 10,
+      "review": "expected constant: no missing easy heat observations",
+      "sha256": "b01fb60b9807e92476f518a2f7d8172ea0a0fe9378fd9c7100af307bd74d8a19",
+      "task": "heat"
+    },
+    {
+      "accepted": true,
+      "file": "metadata.json",
+      "levels": [
+        0
+      ],
+      "occurrences": 10,
+      "review": "expected constant: public matrix dimensions and contract per difficulty",
+      "sha256": "11e414d5d5db43949e9a9d5229904fb05ada700d46a2eddd32b63e8833c3a29b",
+      "task": "poisson"
+    },
+    {
+      "accepted": true,
+      "file": "metadata.json",
+      "levels": [
+        2
+      ],
+      "occurrences": 10,
+      "review": "expected constant: public matrix dimensions and contract per difficulty",
+      "sha256": "1dafe54759abfbed0b6e48d2a6da8f4500ce65bc98fb6fdab78b4d3d09f489a5",
+      "task": "poisson"
+    },
+    {
+      "accepted": true,
+      "file": "metadata.json",
+      "levels": [
+        1
+      ],
+      "occurrences": 10,
+      "review": "expected constant: public matrix dimensions and contract per difficulty",
+      "sha256": "9f363cd6902d0cfcd6ad4e0e7f65bdfbca1beba94f29b4f8e725ec65d6535510",
+      "task": "poisson"
+    }
+  ],
+  "root_entropy_changed": false,
+  "status": "passed"
+}

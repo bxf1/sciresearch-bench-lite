@@ -1,0 +1,25 @@
+Sending build context to Docker daemon  11.26kB
+
+Step 1/4 : FROM gogost/gost:3.2.7-nightly.20260602@sha256:afc0137758ab4ce399d47a299f9abbacbf522b52a17e59cbb4b4e7a1a66e9196
+3.2.7-nightly.20260602: Pulling from gogost/gost
+c3f7c517168c: Pulling fs layer
+6aadad46fb66: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Already exists
+477a5801ed14: Download complete
+6aadad46fb66: Download complete
+4f4fb700ef54: Pull complete
+6aadad46fb66: Pull complete
+c3f7c517168c: Download complete
+c3f7c517168c: Pull complete
+Digest: sha256:afc0137758ab4ce399d47a299f9abbacbf522b52a17e59cbb4b4e7a1a66e9196
+Status: Downloaded newer image for gogost/gost:3.2.7-nightly.20260602@sha256:afc0137758ab4ce399d47a299f9abbacbf522b52a17e59cbb4b4e7a1a66e9196
+ ---> afc0137758ab
+Step 2/4 : COPY gost.yaml allowlist.txt /opt/egress-sidecar/
+ ---> 5eab515423b5
+Step 3/4 : COPY --chmod=755 entrypoint.sh /opt/egress-sidecar/entrypoint.sh
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+the --chmod option requires BuildKit. Refer to https://docs.docker.com/go/buildkit/ to learn how to build images with BuildKit enabled

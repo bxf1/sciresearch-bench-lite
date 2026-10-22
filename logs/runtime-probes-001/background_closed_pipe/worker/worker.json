@@ -1,0 +1,38 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "candidate_processes_terminated": true,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    },
+    {
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+    }
+  ],
+  "cpu_seconds": 0.232934,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.17935604183003306,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sciresearch-numeric:0.3.0",
+  "log_bytes_observed": 41,
+  "memory_peak_bytes": 32165888,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.328643583226949,
+  "scientific_pass": false,
+  "timeout_seconds": 15,
+  "timing_scope": "host Docker exec request through process-tree quiescence; diagnostic only",
+  "total_wall_seconds": 0.7162896250374615
+}

@@ -1,0 +1,164 @@
+{
+  "blockers": [
+    {
+      "code": "research_cpu_shortfall",
+      "reason": "Research contract requires 4 vCPU; this Docker daemon exposes fewer.",
+      "scope": "formal"
+    },
+    {
+      "code": "research_memory_shortfall",
+      "reason": "Research contract requires at least 4 GiB; daemon total memory is smaller.",
+      "scope": "formal"
+    },
+    {
+      "code": "shared_daemon_workloads",
+      "reason": "Other containers are running; exclusive T3 timing has not been established. Existing services are left unchanged.",
+      "scope": "formal_performance"
+    },
+    {
+      "code": "model_endpoint_not_verified",
+      "reason": "No supported model-key environment variable is set. OAuth or an external proxy may exist but was not inspected; a real Pi request remains required.",
+      "scope": "model_execution"
+    }
+  ],
+  "checks": {
+    "docker_info": {
+      "architecture": "aarch64",
+      "available": true,
+      "cgroup_driver": "cgroupfs",
+      "cgroup_version": "2",
+      "cpus": 2,
+      "kernel": "6.8.0-100-generic",
+      "memory_bytes": 4091772928,
+      "operating_system": "Ubuntu 24.04.4 LTS",
+      "security_options": [
+        "name=apparmor",
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "swap_limit_supported": true
+    },
+    "docker_version": {
+      "available": true,
+      "client_version": "29.3.0",
+      "server_arch": "arm64",
+      "server_os": "linux",
+      "server_version": "29.2.1"
+    },
+    "github_auth": {
+      "authenticated": true,
+      "reason": "authenticated"
+    },
+    "host_python": {
+      "executable_name": "python",
+      "version": "3.12.12"
+    },
+    "model_credentials": {
+      "credential_values_recorded": false,
+      "environment_presence": {
+        "ANTHROPIC_API_KEY": false,
+        "AZURE_OPENAI_API_KEY": false,
+        "DEEPSEEK_API_KEY": false,
+        "GEMINI_API_KEY": false,
+        "GOOGLE_API_KEY": false,
+        "OPENAI_API_KEY": false,
+        "OPENROUTER_API_KEY": false,
+        "XAI_API_KEY": false
+      },
+      "oauth_or_external_proxy_inspected": false
+    },
+    "numeric_image": {
+      "architecture": "arm64",
+      "available": true,
+      "expected_dependencies": {
+        "numpy": "2.2.6",
+        "python": "3.12.12",
+        "scipy": "1.15.3"
+      },
+      "id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+      "os": "linux",
+      "reference": "sciresearch-numeric:0.3.0",
+      "repo_digests": [
+        "sciresearch-numeric@sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a"
+      ],
+      "runtime_versions_verified": false
+    },
+    "pi": {
+      "available": true,
+      "version": "0.84.1"
+    },
+    "running_containers": {
+      "available": true,
+      "containers": [
+        {
+          "ID": "3e87dfdeb3be",
+          "Image": "postgres:16-alpine",
+          "Names": "dcomp-demo-postgres",
+          "Status": "Up 4 days (healthy)"
+        },
+        {
+          "ID": "cb55db82a0c1",
+          "Image": "eos-p3-clamav-acceptance:1.4.4",
+          "Names": "eos-rpt-ux2-clamav-large",
+          "Status": "Up 2 weeks"
+        },
+        {
+          "ID": "49fc7e663a2c",
+          "Image": "postgres:16-alpine",
+          "Names": "eos-qa85-retest-20260928-rc1",
+          "Status": "Up 3 weeks"
+        },
+        {
+          "ID": "cbf2a579587f",
+          "Image": "postgres:16-alpine",
+          "Names": "eos-qa85-depth-20260928",
+          "Status": "Up 3 weeks"
+        },
+        {
+          "ID": "1bdf4642a8e9",
+          "Image": "postgres:16-alpine",
+          "Names": "eos-deferred42-20260914",
+          "Status": "Up 5 weeks"
+        },
+        {
+          "ID": "9511ade9d6eb",
+          "Image": "postgres:16-alpine",
+          "Names": "eos-cross-domain-20260905",
+          "Status": "Up 6 weeks"
+        },
+        {
+          "ID": "dc9dc75acad9",
+          "Image": "quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z",
+          "Names": "eos-p3-media-minio-1",
+          "Status": "Up 6 weeks (healthy)"
+        },
+        {
+          "ID": "601b341de885",
+          "Image": "postgres:16-alpine",
+          "Names": "eos-postgres",
+          "Status": "Up 6 weeks"
+        }
+      ],
+      "count": 8
+    }
+  },
+  "formal": false,
+  "formal_ready": false,
+  "formal_status": "not_accepted_by_prerequisite_inspection",
+  "functional_prerequisites_present": true,
+  "host": {
+    "machine": "arm64",
+    "release": "25.5.0",
+    "system": "Darwin"
+  },
+  "inspection_mode": "read_only",
+  "schema_version": "0.3",
+  "service_mutations": [],
+  "unverified_acceptance": [
+    "numeric image runtime versions",
+    "R/W/J isolation attack probes",
+    "live model request",
+    "exact model and harness freeze",
+    "exclusive timing and calibrated profile"
+  ]
+}

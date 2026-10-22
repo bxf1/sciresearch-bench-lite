@@ -1,0 +1,1 @@
+{"status": "passed", "candidate_cases": 6, "comparator_cases": 6, "formal_timing": false, "diagnostic_ratio": 1.566000046892304}

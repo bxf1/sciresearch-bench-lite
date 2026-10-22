@@ -1,0 +1,226 @@
+{
+  "Config": {
+    "AttachStderr": true,
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "Cmd": [
+      "python",
+      "-B",
+      "-m",
+      "judge.batch",
+      "--task",
+      "heat",
+      "--input",
+      "/input",
+      "--truth",
+      "/truth",
+      "--artifacts",
+      "/artifacts",
+      "--output",
+      "/result"
+    ],
+    "Domainname": "",
+    "Entrypoint": null,
+    "Env": [
+      "PYTHONPATH=/trusted",
+      "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.12",
+      "PYTHON_SHA256=fb85a13414b028c49ba18bbd523c2d055a30b56b18b92ce454ea2c51edc656c4",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONUNBUFFERED=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "VECLIB_MAXIMUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1"
+    ],
+    "Hostname": "3892c0e606fa",
+    "Image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "Labels": {
+      "sciresearch.project": "benchmark-v0.3"
+    },
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Tty": false,
+    "User": "65534:65534",
+    "Volumes": null,
+    "WorkingDir": "/trusted"
+  },
+  "HostConfig": {
+    "AutoRemove": false,
+    "Binds": null,
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceWriteIOps": [],
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "CapAdd": null,
+    "CapDrop": [
+      "ALL"
+    ],
+    "Cgroup": "",
+    "CgroupParent": "",
+    "CgroupnsMode": "private",
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "ContainerIDFile": "",
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpuShares": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "Devices": [],
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IOMaximumBandwidth": 0,
+    "IOMaximumIOps": 0,
+    "IpcMode": "private",
+    "Isolation": "",
+    "Links": null,
+    "LogConfig": {
+      "Config": {},
+      "Type": "json-file"
+    },
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "Memory": 4294967296,
+    "MemoryReservation": 0,
+    "MemorySwap": 4294967296,
+    "MemorySwappiness": null,
+    "Mounts": [
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/inputs/heat/pilot-smoke",
+        "Target": "/input",
+        "Type": "bind"
+      },
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/private/heat/pilot-smoke",
+        "Target": "/truth",
+        "Type": "bind"
+      },
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001-wj-replay-003/replays/candidate-001/repeat-2/worker/artifacts",
+        "Target": "/artifacts",
+        "Type": "bind"
+      },
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/judge/e7e29bbbd5e02901de9f",
+        "Target": "/trusted",
+        "Type": "bind"
+      },
+      {
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001-wj-replay-003/replays/candidate-001/repeat-2/judge/output",
+        "Target": "/result",
+        "Type": "bind"
+      }
+    ],
+    "NanoCpus": 1000000000,
+    "NetworkMode": "none",
+    "OomKillDisable": false,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "PidsLimit": 128,
+    "PortBindings": {},
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ],
+    "ReadonlyRootfs": true,
+    "RestartPolicy": {
+      "MaximumRetryCount": 0,
+      "Name": "no"
+    },
+    "Runtime": "runc",
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "ShmSize": 67108864,
+    "Tmpfs": {
+      "/tmp": "rw,noexec,nosuid,nodev,size=67108864,mode=1777"
+    },
+    "UTSMode": "",
+    "Ulimits": [],
+    "UsernsMode": "",
+    "VolumeDriver": "",
+    "VolumesFrom": null
+  },
+  "Id": "3892c0e606fa5deacf44ade74486f32e78a82e31fa6e393600c7be6ae81bc0f1",
+  "Image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "Mounts": [
+    {
+      "Destination": "/truth",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/private/heat/pilot-smoke",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/artifacts",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001-wj-replay-003/replays/candidate-001/repeat-2/worker/artifacts",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/trusted",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/judge/e7e29bbbd5e02901de9f",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/result",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": true,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001-wj-replay-003/replays/candidate-001/repeat-2/judge/output",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/input",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/pilot-smoke/inputs/heat/pilot-smoke",
+      "Type": "bind"
+    }
+  ]
+}

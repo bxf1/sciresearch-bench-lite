@@ -1,0 +1,60 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "model version: model version is unresolved",
+    "model parameter thinking is unresolved/invalid (unverified null cannot authorize a run)",
+    "thinking enforcement: effective enforcement is not verified",
+    "model parameter temperature is unresolved/invalid (unverified null cannot authorize a run)",
+    "temperature enforcement: effective enforcement is not verified",
+    "model parameter output_token_limit is unresolved/invalid (unverified null cannot authorize a run)",
+    "output_token_limit enforcement: effective enforcement is not verified",
+    "system prompt: missing path/hash reference",
+    "tool configuration: effective runtime tool inventory is unresolved",
+    "heat research image: missing immutable research image SHA256 ID",
+    "ode research image: missing immutable research image SHA256 ID",
+    "poisson research image: missing immutable research image SHA256 ID",
+    "heat freeze: final-test requires status=frozen; a draft is not authorization",
+    "ode freeze: final-test requires status=frozen; a draft is not authorization",
+    "poisson freeze: final-test requires status=frozen; a draft is not authorization"
+  ],
+  "checkpoint": "freezes/research-run-plan-checkpoint-001.json",
+  "checkpoint_sha256": "a5dd9507ea0887ff5d9c956431fcc0edc4133350ef99b723c8eaa7db458ffaba",
+  "final_test_scores_accessed": false,
+  "formal": false,
+  "guard_cli_exit_code": 2,
+  "independent_sessions": 15,
+  "order_entropy_reused": true,
+  "plan": "freezes/research-run-plan-local-draft-002.json",
+  "plan_sha256": "b46a6a625563a091f36cd1c6ab9bd88283430aacbb684d6542b5a8dd09c949e3",
+  "run_matrix_unchanged": true,
+  "status": "expected_blocked",
+  "task_freeze_checks": {
+    "heat": {
+      "draft_sha256": "ade8657b168c58f9d09ff7068914fe9545ccd0ae6f646f0af91ad45613ab4ad5",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "ode": {
+      "draft_sha256": "85f2b546959139c55ac1c133dc493948e24cad2fda7d8a2dc0fb23d0b23964c8",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "poisson": {
+      "draft_sha256": "81fb77496cf8a299ce06234517f784874e03e3654142a85c701e2697e6262352",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    }
+  },
+  "tests": {
+    "exit_code": 0,
+    "source_sha256": {
+      "public/poisson_compare.py": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+      "runner/run_plan.py": "38d41ed21017629abe27139f4927c294a727f8962bf51325f5999e10c0f3b8ad",
+      "tests/test_poisson_compare.py": "ff8af175f8030ff334934d63f7de484b706b4fca331bd46ed8c82c8a713c97a6",
+      "tests/test_run_plan.py": "d62d3bd409c18316454cc702dcdf2a39dc973ce07cee85cdea81e7e52b7af15e"
+    },
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "6320bc21f6d91e1394326621455046285ed9abfe002251b7ef04464f1d80f353"
+  },
+  "trusted_judge_snapshot": "logs/run-plan-local-draft-002/trusted-judge/e7e29bbbd5e02901de9f"
+}

@@ -1,0 +1,11 @@
+{
+  "both_generated_in_fixed_linux_image": true,
+  "cases": 90,
+  "differences": [],
+  "final_solver_scores_accessed": false,
+  "input_file_count": 369,
+  "input_tree_sha256": "2d36588b6fd7eb3053439ee7ba184222bbfc69cc89d6cd52fd31007ae9c7545a",
+  "same_root_entropy": true,
+  "source_hardening_only_no_change_to_data_or_rng": true,
+  "status": "passed"
+}

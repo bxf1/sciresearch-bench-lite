@@ -1,0 +1,96 @@
+{
+  "all_preexisting_still_running": true,
+  "all_probe_containers_removed": true,
+  "no_service_mutations_requested": true,
+  "preexisting_services": [
+    {
+      "id": "3e87dfdeb3be",
+      "still_running": true
+    },
+    {
+      "id": "cb55db82a0c1",
+      "still_running": true
+    },
+    {
+      "id": "49fc7e663a2c",
+      "still_running": true
+    },
+    {
+      "id": "cbf2a579587f",
+      "still_running": true
+    },
+    {
+      "id": "1bdf4642a8e9",
+      "still_running": true
+    },
+    {
+      "id": "9511ade9d6eb",
+      "still_running": true
+    },
+    {
+      "id": "dc9dc75acad9",
+      "still_running": true
+    },
+    {
+      "id": "601b341de885",
+      "still_running": true
+    }
+  ],
+  "probe_containers": [
+    {
+      "container_id": "388fc847448c02029bea6522d43362f3cb1f4d61b3d57c8455c029765dbb7d6f",
+      "probe": "background_closed_pipe",
+      "removed": true
+    },
+    {
+      "container_id": "cc0ab1542404a39cc8db5e15d7674b7fefd9d67dfb74c215905318c7f53e9b53",
+      "probe": "background_inherited_pipe",
+      "removed": true
+    },
+    {
+      "container_id": "b2204e9770297b5d54677685425cc173d2f8fde4a383f186beda0392eee28757",
+      "probe": "forged_reward",
+      "removed": true
+    },
+    {
+      "container_id": "d1f806192815527cd5f39f08e1ba31c2dfac37b4019c9ca8e7acf6b017045cd4",
+      "probe": "normal_zero",
+      "removed": true
+    },
+    {
+      "container_id": "5281b58619fe54b9f850f90274b9ac69ac92f856e753f1281e032611c286711e",
+      "probe": "output_quota",
+      "removed": true
+    },
+    {
+      "container_id": "eedc96a6e1a550b26d04cd94ebf130d16012157c4d17def6024de5524cf05595",
+      "probe": "pids_pressure",
+      "removed": true
+    },
+    {
+      "container_id": "5236fe598fec0ea9825f702e9b7646a008dbc67cdb235f57a58b496aad1ef5e3",
+      "probe": "private_paths",
+      "removed": true
+    },
+    {
+      "container_id": "7336470cc8717a3bf0e06ae0cb9d1e21cf4a0da515cd8766f7a17a485d5e95a4",
+      "probe": "stdout_flood",
+      "removed": true
+    },
+    {
+      "container_id": "328fc771174e17609a0891a996f738b6e0b7589e65110f6b521bbc1cf9383201",
+      "probe": "symlink_output",
+      "removed": true
+    },
+    {
+      "container_id": "0628bdb3ad8a7357b536890c8bff88520cf71ba1aa67d56d8f3ac1f4b65ceaa0",
+      "probe": "timeout",
+      "removed": true
+    },
+    {
+      "container_id": "cc41578af4d85665a9f0548e346a20a58fe307c6547e613d65f92fa8c8e9300e",
+      "probe": "tmp_quota",
+      "removed": true
+    }
+  ]
+}

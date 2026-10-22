@@ -1,0 +1,83 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "candidate_processes_terminated": true,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "bb196fc75beeb8f72b10",
+      "sha256": "13896ccca52a7794169543baaeb9be4cf1869bc27f991e8d85bf75761f89fcc9"
+    },
+    {
+      "artifact_valid": true,
+      "id": "55ddc6c36603130a6d33",
+      "sha256": "d5d266c4a50c9701c2a033da3a73af9215dec1a87714d779d21ed63e5daf02b4"
+    },
+    {
+      "artifact_valid": true,
+      "id": "9d1194948f7fe76bfa30",
+      "sha256": "4de64603fbebfe4c5989baccb23c20d71ea8c57c07f5110b3b48ea4d45166af2"
+    },
+    {
+      "artifact_valid": true,
+      "id": "a4b15a247cc5d9e1b41d",
+      "sha256": "b0d068459b06d41d91990844b60025bbe612080a37c689e2944ce152e9c7dcb9"
+    },
+    {
+      "artifact_valid": true,
+      "id": "4c2355858f2c499586e1",
+      "sha256": "93118bdb1724717f978ae7e5c1acbc1535e32ee8bebf1e2a118d4d7a5bb766e9"
+    },
+    {
+      "artifact_valid": true,
+      "id": "4363bb74b8ecba72c848",
+      "sha256": "f0df879ddcce4fab01c2a42a317cda26ac45a98e0b3a9b70f2ce55a89c1db628"
+    },
+    {
+      "artifact_valid": true,
+      "id": "fe3bd0dea097943d4434",
+      "sha256": "936f93a6a19b86d6de25adfa5e417d12beca4537e05ddc76616b7c9ccef40bd3"
+    },
+    {
+      "artifact_valid": true,
+      "id": "b062840ac09bb4afd83b",
+      "sha256": "a8f55b8196499a7cb9ac1dfb2b9df433ae4dc13b2cc95c9055d81cdcb05d1b0a"
+    },
+    {
+      "artifact_valid": true,
+      "id": "40e7397063395ca9b4da",
+      "sha256": "8b379fbcaa75c118ba9dbf7c582c71b1567dbdd770d877351f9f4c53a5f0d26a"
+    },
+    {
+      "artifact_valid": true,
+      "id": "a545385e2fd03a6dd506",
+      "sha256": "0d471fa7b8348b87125174912da0fbd79443b2080741317678919180ab99c6b7"
+    },
+    {
+      "artifact_valid": true,
+      "id": "4a3bc8728a97c3415179",
+      "sha256": "e5da02961d239264dcb9227f86ac5e33d2185d4caa2937deca13cc1ac1e82716"
+    },
+    {
+      "artifact_valid": true,
+      "id": "3a52dd2a1b23f8489b79",
+      "sha256": "b2f22f0f2022f3300e0fcbdec5f98f833f697c04c47052d2d1eebc15e8a61d29"
+    }
+  ],
+  "cpu_seconds": 0.614068,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.71613849978894,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "log_bytes_observed": 1452,
+  "memory_peak_bytes": 59076608,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.8086606250144541,
+  "scientific_pass": false,
+  "timeout_seconds": 120,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.2398405000567436
+}

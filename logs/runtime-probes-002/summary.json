@@ -1,0 +1,73 @@
+{
+  "formal": false,
+  "not_run": [
+    "real 4GiB OOM pressure",
+    "R/model endpoint isolation",
+    "formal T3 exclusive timing"
+  ],
+  "passed": 4,
+  "probes": [
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "descendants_cannot_mutate_admitted_artifacts": true
+      },
+      "events": [
+        {
+          "child_pid": 19,
+          "probe": "background"
+        }
+      ],
+      "passed": true,
+      "probe": "background_inherited_pipe",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "legal_artifacts_accepted": true,
+        "saved_arrays_remain_zero": true
+      },
+      "events": [
+        {
+          "cases": 3,
+          "probe": "normal_zero"
+        }
+      ],
+      "passed": true,
+      "probe": "normal_zero",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "log_limit",
+      "checks": {
+        "candidate_not_misclassified_as_infrastructure": true,
+        "host_log_storage_bounded": true,
+        "log_limit_reported": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "stdout_flood",
+      "worker_reason": null
+    },
+    {
+      "artifact_valid": false,
+      "attempt_status": "timeout",
+      "checks": {
+        "bounded_execution": true,
+        "candidate_not_misclassified_as_infrastructure": true,
+        "timeout_reported": true
+      },
+      "events": [],
+      "passed": true,
+      "probe": "timeout",
+      "worker_reason": null
+    }
+  ],
+  "total": 4
+}

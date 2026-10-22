@@ -1,0 +1,12 @@
+{
+  "checked_at": 1792630797.345789,
+  "kind": "literal_and_JSON_decoded_string_credential_scan",
+  "counts": {
+    "files_scanned": 80,
+    "literal_occurrences": 0,
+    "decoded_string_occurrences": 0,
+    "decoded_base64_occurrences": 0
+  },
+  "secret_value_recorded": false,
+  "passed": true
+}

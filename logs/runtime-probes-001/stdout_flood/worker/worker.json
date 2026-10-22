@@ -1,0 +1,13 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "infrastructure_failed",
+  "evaluation_status": "not_evaluated",
+  "formal_timing": false,
+  "image": "sciresearch-numeric:0.3.0",
+  "performance_status": "not_measured",
+  "reason": "Command '['docker', 'exec', 'sciresearch-w-1ce01ea1be41', 'python', '-B', '/submission/solve.py', '--input', '/input', '--output', '/output', '--seed', '0']' timed out after 10 seconds",
+  "scientific_pass": false,
+  "timeout_seconds": 15,
+  "timing_scope": "host Docker exec request through process-tree quiescence; diagnostic only",
+  "total_wall_seconds": 10.679595292080194
+}

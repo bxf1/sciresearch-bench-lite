@@ -1,0 +1,373 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_field": 0.00025213802750990386,
+      "E_roll": 0.0006366470071412165,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb196fc75beeb8f72b10",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0006366470071412165,
+        0.0006017943616499862,
+        0.0005377818284903322,
+        0.0005501816241567335
+      ],
+      "scientific_pass": true,
+      "score": 99.55560748267445
+    },
+    {
+      "E_field": 0.00018497069670174183,
+      "E_roll": 0.0003216839396778998,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "55ddc6c36603130a6d33",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.00027276805777214243,
+        0.0003216839396778998,
+        0.00024850944726996716,
+        0.00024534083827419065
+      ],
+      "scientific_pass": true,
+      "score": 99.74667268181018
+    },
+    {
+      "E_field": 0.0008296635265710309,
+      "E_roll": 0.0005696410870799171,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "9d1194948f7fe76bfa30",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0005696410870799171,
+        0.00045558162125033784,
+        0.00043126050071930693,
+        0.0004625674721426154
+      ],
+      "scientific_pass": true,
+      "score": 99.30034769317453
+    },
+    {
+      "E_field": 0.0012391460196818159,
+      "E_roll": 0.0025239951782791057,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "a4b15a247cc5d9e1b41d",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0025239951782791057,
+        0.0021993449912725365,
+        0.00134399528515596,
+        0.001363574452326932
+      ],
+      "scientific_pass": true,
+      "score": 98.11842940101954
+    },
+    {
+      "E_field": 0.0019334719384662608,
+      "E_roll": 0.0031120790431507805,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4c2355858f2c499586e1",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.003002091868178605,
+        0.0028795846970317536,
+        0.0030572197804927034,
+        0.0031120790431507805
+      ],
+      "scientific_pass": true,
+      "score": 97.47722450919147
+    },
+    {
+      "E_field": 0.001692028697234619,
+      "E_roll": 0.002187608766258913,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4363bb74b8ecba72c848",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.002187608766258913,
+        0.0018174756692524974,
+        0.0008073263355214027,
+        0.0009112006870949701
+      ],
+      "scientific_pass": true,
+      "score": 98.06018126825325
+    },
+    {
+      "E_field": 0.0014683178246524833,
+      "E_roll": 0.002435455146329078,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "fe3bd0dea097943d4434",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.002435455146329078,
+        0.002086730623819716,
+        0.001993568583112345,
+        0.0020954551785513083
+      ],
+      "scientific_pass": true,
+      "score": 98.04811351450921
+    },
+    {
+      "E_field": 0.0007125860464992798,
+      "E_roll": 0.0018397823505214704,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "b062840ac09bb4afd83b",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.0018397823505214704,
+        0.0015970907695797224,
+        0.0008456102700611248,
+        0.00088693281684493
+      ],
+      "scientific_pass": true,
+      "score": 98.72381580148964
+    },
+    {
+      "E_field": 0.01164798166286544,
+      "E_roll": 0.0079232503832818,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "40e7397063395ca9b4da",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0079232503832818,
+        0.006629511358725412,
+        0.005957776282160159,
+        0.0062553325090233865
+      ],
+      "scientific_pass": true,
+      "score": 90.21438397692638
+    },
+    {
+      "E_field": 0.0047823497658034154,
+      "E_roll": 0.005414768426210811,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "a545385e2fd03a6dd506",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.004806001947347092,
+        0.00519335366260162,
+        0.005414768426210811,
+        0.005127000635887052
+      ],
+      "scientific_pass": true,
+      "score": 94.90144090399288
+    },
+    {
+      "E_field": 0.0034471438618700815,
+      "E_roll": 0.004690064925336025,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4a3bc8728a97c3415179",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.004690064925336025,
+        0.0037484917096619074,
+        0.0030827815190719475,
+        0.0031707579497315635
+      ],
+      "scientific_pass": true,
+      "score": 95.93139560639695
+    },
+    {
+      "E_field": 0.002892403710850819,
+      "E_roll": 0.0052896235934581206,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "3a52dd2a1b23f8489b79",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0052896235934581206,
+        0.0046552856558026365,
+        0.0026874494278440546,
+        0.0029032395175302927
+      ],
+      "scientific_pass": true,
+      "score": 95.90898634784553
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_wall_seconds": 1.847673624753952,
+  "passed": 12,
+  "performance_status": "not_applicable",
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 97.16554993227366,
+  "total": 12,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "candidate_processes_terminated": true,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "bb196fc75beeb8f72b10",
+        "sha256": "4000d005b8fb6c315208dba6c919130d6ec781017d4c7f8f5462c45d70ae1564"
+      },
+      {
+        "artifact_valid": true,
+        "id": "55ddc6c36603130a6d33",
+        "sha256": "d5d266c4a50c9701c2a033da3a73af9215dec1a87714d779d21ed63e5daf02b4"
+      },
+      {
+        "artifact_valid": true,
+        "id": "9d1194948f7fe76bfa30",
+        "sha256": "d8253e82d2d4d65934e4537ddc9e757d730e5ce0f0914ddd7d6d0c0e73a99a08"
+      },
+      {
+        "artifact_valid": true,
+        "id": "a4b15a247cc5d9e1b41d",
+        "sha256": "b0d068459b06d41d91990844b60025bbe612080a37c689e2944ce152e9c7dcb9"
+      },
+      {
+        "artifact_valid": true,
+        "id": "4c2355858f2c499586e1",
+        "sha256": "10044e8b585e423a44a1e3422a1fbf90c76f057bf0ab47380b529090c437889d"
+      },
+      {
+        "artifact_valid": true,
+        "id": "4363bb74b8ecba72c848",
+        "sha256": "f0df879ddcce4fab01c2a42a317cda26ac45a98e0b3a9b70f2ce55a89c1db628"
+      },
+      {
+        "artifact_valid": true,
+        "id": "fe3bd0dea097943d4434",
+        "sha256": "d677c24f06ff03d38d94c10de4716144de6b76c3ab7bf875ca9d5d8a7a650b28"
+      },
+      {
+        "artifact_valid": true,
+        "id": "b062840ac09bb4afd83b",
+        "sha256": "d35ffdde3799a5416f8d1bc58379a0cb2cdfec9af21bb7ce0088c49bbdabe977"
+      },
+      {
+        "artifact_valid": true,
+        "id": "40e7397063395ca9b4da",
+        "sha256": "e173efa28a90bd202966b95a480268d8879d9df900ec6325af27e1d2f8d0f8af"
+      },
+      {
+        "artifact_valid": true,
+        "id": "a545385e2fd03a6dd506",
+        "sha256": "0263830a141be050b9f96f02e0cd448f797c960594e32a0b8f64217dc778d56f"
+      },
+      {
+        "artifact_valid": true,
+        "id": "4a3bc8728a97c3415179",
+        "sha256": "cb129aa05d0a5b34a8dd0b2382177c920441583c684e3a06a7ccbf919fea8c7e"
+      },
+      {
+        "artifact_valid": true,
+        "id": "3a52dd2a1b23f8489b79",
+        "sha256": "b2f22f0f2022f3300e0fcbdec5f98f833f697c04c47052d2d1eebc15e8a61d29"
+      }
+    ],
+    "cpu_seconds": 1.988766,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 2.3832644168287516,
+    "exit_code": 0,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "log_bytes_observed": 22255,
+    "memory_peak_bytes": 59604992,
+    "oom_killed": false,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 2.494546583853662,
+    "scientific_pass": false,
+    "timeout_seconds": 120,
+    "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+    "total_wall_seconds": 3.0721998331137
+  }
+}

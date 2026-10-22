@@ -1,0 +1,61 @@
+{
+  "all_preexisting_still_running": true,
+  "all_probe_containers_removed": true,
+  "no_service_mutations_requested": true,
+  "preexisting_services": [
+    {
+      "id": "3e87dfdeb3be",
+      "still_running": true
+    },
+    {
+      "id": "cb55db82a0c1",
+      "still_running": true
+    },
+    {
+      "id": "49fc7e663a2c",
+      "still_running": true
+    },
+    {
+      "id": "cbf2a579587f",
+      "still_running": true
+    },
+    {
+      "id": "1bdf4642a8e9",
+      "still_running": true
+    },
+    {
+      "id": "9511ade9d6eb",
+      "still_running": true
+    },
+    {
+      "id": "dc9dc75acad9",
+      "still_running": true
+    },
+    {
+      "id": "601b341de885",
+      "still_running": true
+    }
+  ],
+  "probe_containers": [
+    {
+      "container_id": "8d379d9cd488e14ed0e5e23d37d764f0b4f683ab108e6170b4b657e86156be36",
+      "probe": "background_inherited_pipe",
+      "removed": true
+    },
+    {
+      "container_id": "187ad78798d230c4c8b10d55caf501750e20eb76885a9a5d04a59dad96b4bfb2",
+      "probe": "normal_zero",
+      "removed": true
+    },
+    {
+      "container_id": "57600e85c97460cc4232dbc650805de1371dbc38c07a53d6769d0f86d9d94eac",
+      "probe": "stdout_flood",
+      "removed": true
+    },
+    {
+      "container_id": "8cd1e6875c5a6d0527bd06796211468f8ac0e2e82abbedbd5fe36631da4692e1",
+      "probe": "timeout",
+      "removed": true
+    }
+  ]
+}

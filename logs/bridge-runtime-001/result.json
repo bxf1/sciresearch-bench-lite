@@ -1,0 +1,87 @@
+{
+  "controller_sha256": "993ff84cb8ed51e0917acf1d013a9f1178e6ca8911dc11eed7b336e67a8b3b5a",
+  "final_id": "candidate-002",
+  "first_id": "candidate-002",
+  "formal": false,
+  "probes": [
+    {
+      "passed": true,
+      "probe": "wrong_token",
+      "status": 403
+    },
+    {
+      "passed": true,
+      "probe": "extra_command_field",
+      "status": 400
+    },
+    {
+      "passed": true,
+      "probe": "path_escape_consumes_slot_without_execution",
+      "response": {
+        "candidate_id": "candidate-001",
+        "feedback": {
+          "artifact_valid": false,
+          "attempt_status": "submission_failed",
+          "reason": "unsafe path"
+        },
+        "source_hash": null
+      }
+    },
+    {
+      "passed": true,
+      "probe": "real_evaluate",
+      "response": {
+        "candidate_id": "candidate-002",
+        "feedback": {
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "cases": [
+            {
+              "R": 2.6141504479106294,
+              "artifact_valid": true,
+              "id": "0e3ae8ab05af690cde9d",
+              "roughness": 38.144933918978026,
+              "status": "ok"
+            },
+            {
+              "R": 1.7956332034165243,
+              "artifact_valid": true,
+              "id": "bb4cf34c6e28fd43a260",
+              "roughness": 38.86803711981897,
+              "status": "ok"
+            },
+            {
+              "R": 1.0721000532624203,
+              "artifact_valid": true,
+              "id": "db9b3093c406087870f8",
+              "roughness": 14.878062619935951,
+              "status": "ok"
+            }
+          ],
+          "cpu_seconds": 0.598756,
+          "memory_peak_bytes": 59654144,
+          "wall_seconds": 0.6849924582056701
+        },
+        "source_hash": "8778e7b4651d52e6bdbdc266e0edaeac751d89f6ca63527601d2631eeb0c433c"
+      }
+    },
+    {
+      "passed": true,
+      "probe": "public_feedback_no_hidden_fields"
+    },
+    {
+      "passed": true,
+      "probe": "workspace_mutation_does_not_change_registered_source"
+    },
+    {
+      "passed": true,
+      "probe": "finalize_evaluated_id",
+      "response": {
+        "finalized": "candidate-002"
+      }
+    }
+  ],
+  "registered_requests": 2,
+  "scope": "localhost authenticated bridge to trusted registry and isolated W public feedback only; not an R-container network test",
+  "status": "passed"
+}

@@ -1,0 +1,82 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0e3ae8ab05af690cde9d",
+      "level": 0,
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "bb4cf34c6e28fd43a260",
+      "level": 1,
+      "scientific_pass": false,
+      "score": 0.0
+    },
+    {
+      "E_forward": 1.0,
+      "E_init": 1.0,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "db9b3093c406087870f8",
+      "level": 2,
+      "scientific_pass": false,
+      "score": 0.0
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_wall_seconds": 0.40414616698399186,
+  "passed": 0,
+  "performance_status": "not_applicable",
+  "reward": 0,
+  "scientific_pass": false,
+  "score": 0.0,
+  "total": 3,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "candidate_processes_terminated": true,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "0e3ae8ab05af690cde9d",
+        "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+      },
+      {
+        "artifact_valid": true,
+        "id": "bb4cf34c6e28fd43a260",
+        "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+      },
+      {
+        "artifact_valid": true,
+        "id": "db9b3093c406087870f8",
+        "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+      }
+    ],
+    "cpu_seconds": 0.204888,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 0.2075974582694471,
+    "exit_code": 0,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "log_bytes_observed": 0,
+    "memory_peak_bytes": 18989056,
+    "oom_killed": false,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 0.30393258295953274,
+    "scientific_pass": false,
+    "timeout_seconds": 120,
+    "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+    "total_wall_seconds": 0.6843966669403017
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "after": [],
+  "before": [],
+  "controller_sha256": "a4055f23964d479736dd843cd073527a4ea0eba41449d0c537ac0adb05e3e7d2",
+  "credentials_forwarded": false,
+  "daemon_kernel": {
+    "Architecture": "aarch64",
+    "CgroupVersion": "2",
+    "KernelVersion": "6.8.0-100-generic",
+    "OperatingSystem": "Ubuntu 24.04.4 LTS"
+  },
+  "error": "RuntimeError: Failed to build Docker image harbor-prebuilt:harbor-docker-egress-control-sidecar--e9f39ce1643ee690, exit code 125, output: unknown flag: --file\n\nUsage:  docker [OPTIONS] COMMAND [ARG...]\n\nRun 'docker --help' for more information\n",
+  "finished_at": 1792629106.9458199,
+  "formal": false,
+  "harbor_egress_control_enabled": true,
+  "host_network_configuration_modified": false,
+  "kind": "research_network_functional_probe",
+  "model_calls": 0,
+  "own_resources_removed": true,
+  "remaining_own_containers": [],
+  "requested_allowlist": [
+    "api.deepseek.com"
+  ],
+  "requested_research_resources": {
+    "cpus": 1,
+    "memory_mb": 1024
+  },
+  "research_image": {
+    "id": "sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a",
+    "reference": "sciresearch-research-smoke:0.3.0",
+    "repo_digests": [
+      "sciresearch-research-smoke@sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a"
+    ]
+  },
+  "session_id": "bench-network-probe-66aa43e8c316",
+  "started_at": 1792629094.9862452,
+  "status": "probe_failed",
+  "total_wall_seconds": 11.959574699401855
+}

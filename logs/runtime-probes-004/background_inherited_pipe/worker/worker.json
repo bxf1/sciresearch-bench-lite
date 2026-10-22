@@ -1,0 +1,20 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "timeout",
+  "budget_timeout": true,
+  "budget_timeout_stage": "post_execution",
+  "cleanup_status": "completed",
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.8150857919827104,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sciresearch-numeric:0.3.0",
+  "log_bytes_observed": 41,
+  "performance_status": "not_measured",
+  "reason": "research deadline expired",
+  "research_timeout_seconds": 1,
+  "scientific_pass": false,
+  "timeout_seconds": 0.7572456658817828,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.0824690419249237
+}

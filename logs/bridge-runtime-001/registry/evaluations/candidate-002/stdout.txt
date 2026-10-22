@@ -1,0 +1,3 @@
+{"case": "0e3ae8ab05af690cde9d", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "bb4cf34c6e28fd43a260", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "db9b3093c406087870f8", "method": "tikhonov", "fallback": false, "alpha": 1e-05}

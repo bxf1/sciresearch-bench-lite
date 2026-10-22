@@ -1,0 +1,46 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  1.777MB
+Step 1/13 : FROM sciresearch-numeric:0.3.0
+ ---> e0018a98b249
+Step 2/13 : USER root
+ ---> Using cache
+ ---> b514e137ddfd
+Step 3/13 : RUN apt-get update && apt-get install -y --no-install-recommends bash curl ca-certificates git coreutils xz-utils && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 0131d956efde
+Step 4/13 : RUN useradd --create-home --uid 1000 --shell /bin/bash researcher && mkdir -p /workspace/.bench/requests /workspace/.bench/responses /input /opt/bench/public /logs/agent /logs/artifacts /run/bench-export && chmod 1777 /workspace && chmod 700 /run/bench-export && chown researcher:researcher /workspace/.bench/requests /logs/agent /logs/artifacts
+ ---> Using cache
+ ---> 612df75db17a
+Step 5/13 : COPY public-dev/ /input/
+ ---> ee5a4b20b627
+Step 6/13 : COPY public/ /opt/bench/public/
+ ---> e40debe20eba
+Step 7/13 : COPY helpers/ /opt/bench/
+ ---> 358582fa37b7
+Step 8/13 : COPY trusted/ /opt/bench/trusted/
+ ---> 0043dee49619
+Step 9/13 : RUN chmod -R a-w /input /opt/bench && cp /opt/bench/public/bench /usr/local/bin/bench && chmod 755 /usr/local/bin/bench
+ ---> Running in ec61f2519eac
+ ---> Removed intermediate container ec61f2519eac
+ ---> dd244f8d9d21
+Step 10/13 : ENV HOME=/home/researcher PYTHONPATH=/opt/bench
+ ---> Running in 8800e96c5084
+ ---> Removed intermediate container 8800e96c5084
+ ---> d3086ed19010
+Step 11/13 : USER researcher
+ ---> Running in 141bac374d64
+ ---> Removed intermediate container 141bac374d64
+ ---> 354c4b2da41b
+Step 12/13 : WORKDIR /workspace
+ ---> Running in aff8cb40e416
+ ---> Removed intermediate container aff8cb40e416
+ ---> 6573d99f5b70
+Step 13/13 : CMD ["sleep", "infinity"]
+ ---> Running in 84c54fee7dda
+ ---> Removed intermediate container 84c54fee7dda
+ ---> 29c3702340ac
+Successfully built 29c3702340ac
+Successfully tagged sciresearch-poisson-r:0.3.1

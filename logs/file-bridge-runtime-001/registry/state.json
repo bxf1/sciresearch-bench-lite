@@ -1,0 +1,85 @@
+{
+  "budget_seconds": 240,
+  "closed": true,
+  "condition": "file-bridge-functional-probe",
+  "evaluations": [
+    {
+      "accepted_at": 1792629953.146147,
+      "artifact_valid": false,
+      "completed_at": 1792629953.317544,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792629953.643946,
+      "artifact_valid": true,
+      "completed_at": 1792629954.671102,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 39977.25207244317,
+            "artifact_valid": true,
+            "id": "13a841e7b6de490e68f4",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 40020.43332968604,
+            "artifact_valid": true,
+            "id": "04f4c0643b4ee1f2cbb1",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 10009.078899961632,
+            "artifact_valid": true,
+            "id": "e0eb9d7e4704b51f884c",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 9992.920343885135,
+            "artifact_valid": true,
+            "id": "409ab21b0f5310a9d96e",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 2490.547911849906,
+            "artifact_valid": true,
+            "id": "fca8a41a2ec5084c6760",
+            "roughness": 0.0,
+            "status": "ok"
+          },
+          {
+            "R": 2495.565173438723,
+            "artifact_valid": true,
+            "id": "16f9197b92a286dc0148",
+            "roughness": 0.0,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.233253,
+        "memory_peak_bytes": 19763200,
+        "wall_seconds": 0.21151837520301342
+      },
+      "source_hash": "ecb67d62cd8d737aab54aed9e03a7d5a8be505dbd1677619f26db362da2fd10b"
+    }
+  ],
+  "final_id": "candidate-002",
+  "finalization_invalid": false,
+  "first_id": "candidate-002",
+  "max_evaluations": 3,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1792629952.9263308,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/file-bridge-runtime-001/imports"
+}

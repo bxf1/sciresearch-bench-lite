@@ -1,0 +1,47 @@
+{
+  "all_removed": true,
+  "checked_at": "2026-10-22T01:16:37.704412+00:00",
+  "resources": {
+    "containers": {
+      "command": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 0,
+      "stderr": ""
+    },
+    "networks": {
+      "command": [
+        "docker",
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 0,
+      "stderr": ""
+    },
+    "volumes": {
+      "command": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 0,
+      "stderr": ""
+    }
+  },
+  "scope": "Read-only post hoc exact-session resource audit; does not rewrite the original verifier result",
+  "session_id": "bench-verify-pilot-c1dcd7ef6741",
+  "source_result_sha256": "0bc41a57cbc0aef5140b534eba1903faf9add250dde3893b15c7b9b0e415b2f5"
+}

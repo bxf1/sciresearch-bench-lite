@@ -1,0 +1,16 @@
+{
+  "controller_sha256": "3cb1da7886860c9da9e03dc34db8117d0f8f0bdfff9899883eaba3b776fac1cd",
+  "data_split": "pilot-smoke",
+  "error": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/public/__init__.py'",
+  "formal": false,
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "orchestration_environment_removed": true,
+  "parent_attempt": "research-loop-pilot-001-wj-replay",
+  "registry": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001/registry",
+  "registry_sha256": "d119c73569f1c0448bb3c063d8ce98ac57ce0bd33b166a5172153427f8f0308e",
+  "reward": null,
+  "scope": "Real Harbor verifier hook; replay runner owns the separate W and numeric-only J.",
+  "score": null,
+  "session_id": "bench-verify-pilot-04cbffb4be47",
+  "status": "pilot_verifier_failed"
+}

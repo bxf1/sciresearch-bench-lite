@@ -1,0 +1,47 @@
+{
+  "all_removed": false,
+  "checked_at": "2026-10-22T01:16:06.886602+00:00",
+  "resources": {
+    "containers": {
+      "command": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 1,
+      "stderr": "permission denied while trying to connect to the docker API at unix:///Users/baixiongfei/.colima/default/docker.sock\n"
+    },
+    "networks": {
+      "command": [
+        "docker",
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 1,
+      "stderr": "permission denied while trying to connect to the docker API at unix:///Users/baixiongfei/.colima/default/docker.sock\n"
+    },
+    "volumes": {
+      "command": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=com.docker.compose.project=bench-verify-pilot-c1dcd7ef6741"
+      ],
+      "remaining": [],
+      "returncode": 1,
+      "stderr": "permission denied while trying to connect to the docker API at unix:///Users/baixiongfei/.colima/default/docker.sock\n"
+    }
+  },
+  "scope": "Read-only post hoc exact-session resource audit; does not rewrite the original verifier result",
+  "session_id": "bench-verify-pilot-c1dcd7ef6741",
+  "source_result_sha256": "0bc41a57cbc0aef5140b534eba1903faf9add250dde3893b15c7b9b0e415b2f5"
+}

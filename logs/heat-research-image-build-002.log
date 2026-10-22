@@ -1,0 +1,47 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  153.6kB
+Step 1/13 : FROM sciresearch-numeric:0.3.0
+ ---> e0018a98b249
+Step 2/13 : USER root
+ ---> Using cache
+ ---> b514e137ddfd
+Step 3/13 : RUN apt-get update && apt-get install -y --no-install-recommends bash curl ca-certificates git coreutils xz-utils && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 0131d956efde
+Step 4/13 : RUN useradd --create-home --uid 1000 --shell /bin/bash researcher && mkdir -p /workspace/.bench/requests /workspace/.bench/responses /input /opt/bench/public /logs/agent /logs/artifacts /run/bench-export && chmod 1777 /workspace && chmod 700 /run/bench-export && chown researcher:researcher /workspace/.bench/requests /logs/agent /logs/artifacts
+ ---> Running in a67d3b8cfab9
+ ---> Removed intermediate container a67d3b8cfab9
+ ---> 612df75db17a
+Step 5/13 : COPY public-dev/ /input/
+ ---> 466d860b2d6b
+Step 6/13 : COPY public/ /opt/bench/public/
+ ---> cbcc74785ba3
+Step 7/13 : COPY helpers/ /opt/bench/
+ ---> a18fb237b550
+Step 8/13 : COPY trusted/ /opt/bench/trusted/
+ ---> c2a47ae0fb4b
+Step 9/13 : RUN chmod -R a-w /input /opt/bench && cp /opt/bench/public/bench /usr/local/bin/bench && chmod 755 /usr/local/bin/bench
+ ---> Running in ffe56597bd3c
+ ---> Removed intermediate container ffe56597bd3c
+ ---> 7567a9160df8
+Step 10/13 : ENV HOME=/home/researcher PYTHONPATH=/opt/bench
+ ---> Running in 583b6e072a65
+ ---> Removed intermediate container 583b6e072a65
+ ---> fa306df36054
+Step 11/13 : USER researcher
+ ---> Running in 9b4c40ae9e93
+ ---> Removed intermediate container 9b4c40ae9e93
+ ---> e0619f8db5d7
+Step 12/13 : WORKDIR /workspace
+ ---> Running in 44f818ff3140
+ ---> Removed intermediate container 44f818ff3140
+ ---> fbf469f7d9da
+Step 13/13 : CMD ["sleep", "infinity"]
+ ---> Running in abf09fb3d563
+ ---> Removed intermediate container abf09fb3d563
+ ---> 6619dd1526ec
+Successfully built 6619dd1526ec
+Successfully tagged sciresearch-heat-r:0.3.1

@@ -1,0 +1,3 @@
+mode: controlled egress
+allowlist: /opt/egress-sidecar/allowlist.txt
+(empty: deny all controlled TCP egress)

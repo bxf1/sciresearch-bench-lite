@@ -1,0 +1,43 @@
+{
+  "attempt_status": "infrastructure_failed",
+  "auxiliary_log_hashes": {},
+  "build_context_hashes": {
+    "Dockerfile": "a3c529c7ca25e2a14e4c4a60d7d79ecb674c391adc70a6e0e758d4e14b146ddc"
+  },
+  "controller_sha256": "53e4ba6962315fa6d530e8f65d1811e6a40377ca9a38b6f2ca4829178a4749a4",
+  "cost_usd": null,
+  "cpu_request": 2,
+  "credential_values_recorded": false,
+  "error": "RuntimeError: research image build failed (125)",
+  "finished_at": 1792604218.279661,
+  "formal": false,
+  "harbor_commit": "38b9be0164a910015a0be9a37ba6e8e78c562dfe",
+  "max_turns": 5,
+  "memory_request_mb": 2048,
+  "model_api_format": "anthropic_messages",
+  "model_endpoint": "https://api.deepseek.com/anthropic",
+  "model_requested": "deepseek-v4-pro",
+  "network_status": "pilot_network_unrestricted",
+  "pi_version_requested": "0.84.1",
+  "prompt_sha256": "c3f1b55cf04d630e39a06bfdf69451e151aa48a01ea752085fe258c6127c1908",
+  "public_input_hashes": {
+    "cases/0e3ae8ab05af690cde9d/metadata.json": "e26e6cd9c4816a15704f08870e5c95c9831a532f4569e6dc29e7ab835e310b3d",
+    "cases/0e3ae8ab05af690cde9d/observations.csv": "c30394308ac597b7e4eceb6269e8a1fcb53490aa7e9b92678a74483bc368e122",
+    "cases/0e3ae8ab05af690cde9d/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/bb4cf34c6e28fd43a260/metadata.json": "3377352f95128ad0e093a1da2d923efa830fb0c459e8d53b77e4a32382f5e54e",
+    "cases/bb4cf34c6e28fd43a260/observations.csv": "723bcd29870a952a47b459a62b1ab875d88b20c868fbf68256f97c3fca3bb3d6",
+    "cases/bb4cf34c6e28fd43a260/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/db9b3093c406087870f8/metadata.json": "b0ccecc4109a13fe9457de942dccaf6aa796e4c4cdd3574c2dc7e09d423550ce",
+    "cases/db9b3093c406087870f8/observations.csv": "6bc782484c5485bcb1913b69546490a6b38a31f83710ba77f80107d031f33753",
+    "cases/db9b3093c406087870f8/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "manifest.json": "7b7e3a053e5823da1b29cbab9303cb4947138b87e17f1cfa33cebfd0edd72387"
+  },
+  "reasoning_effort": "off",
+  "research_timeout_seconds": 300,
+  "resource_status": "resource_limits_diagnostic",
+  "source": null,
+  "started_at": 1792604218.2611132,
+  "study_phase": "pilot-smoke",
+  "task": "heat",
+  "total_wall_seconds": 0.018547773361206055
+}

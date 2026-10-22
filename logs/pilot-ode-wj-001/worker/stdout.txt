@@ -1,0 +1,3 @@
+{"case": "6043e8c71b2eb877ad3f", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "3f78292ca917c93a1543", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "922056eb31ec4ffc09ae", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}

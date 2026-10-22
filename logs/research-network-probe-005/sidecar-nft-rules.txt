@@ -1,0 +1,21 @@
+table inet gost_egress {
+	chain output {
+		type nat hook output priority dstnat; policy accept;
+		meta mark 0x0001bf52 return
+		fib daddr type local return
+		ip daddr 127.0.0.11 udp dport 53 return
+		ip daddr 127.0.0.11 tcp dport 53 return
+		meta l4proto tcp redirect to :12345
+	}
+
+	chain egress {
+		type filter hook output priority filter; policy accept;
+		meta mark 0x0001bf52 accept
+		fib daddr type local accept
+		ip daddr 127.0.0.11 udp dport 53 accept
+		ip daddr 127.0.0.11 tcp dport 53 accept
+		ip protocol icmp accept
+		ip6 nexthdr ipv6-icmp accept
+		meta l4proto != tcp reject
+	}
+}

@@ -1,0 +1,12 @@
+{"case": "bb196fc75beeb8f72b10", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "55ddc6c36603130a6d33", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "9d1194948f7fe76bfa30", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "a4b15a247cc5d9e1b41d", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "4c2355858f2c499586e1", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "4363bb74b8ecba72c848", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "fe3bd0dea097943d4434", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "b062840ac09bb4afd83b", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "40e7397063395ca9b4da", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "a545385e2fd03a6dd506", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "4a3bc8728a97c3415179", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}
+{"case": "3a52dd2a1b23f8489b79", "method": "fixed", "fallback": false, "window": 31, "threshold": 0.02, "iterations": 8}

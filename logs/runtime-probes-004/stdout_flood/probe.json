@@ -1,0 +1,12 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "log_limit",
+  "checks": {
+    "candidate_not_misclassified_as_infrastructure": true,
+    "host_log_storage_bounded": true,
+    "log_limit_reported": true
+  },
+  "events": [],
+  "passed": true,
+  "worker_reason": null
+}

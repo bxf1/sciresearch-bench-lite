@@ -1,0 +1,231 @@
+{
+  "controller_sha256": "981019ac1729d24d9428a1a7a903647746af07caed6e0bfb4521750743b8ec27",
+  "feedback": {
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "cases": [
+      {
+        "E_res": [
+          2.1437759849800012e-16,
+          2.2153378956521232e-16,
+          2.1520978237147495e-16,
+          2.101620548534987e-16
+        ],
+        "artifact_valid": true,
+        "id": "4549893e7753717d3ca1",
+        "max_relative_residual": 2.2153378956521232e-16,
+        "residual_pass": true
+      },
+      {
+        "E_res": [
+          2.4908789582130395e-16,
+          2.2135608701541776e-16,
+          2.18163412258091e-16,
+          2.0898209677354101e-16
+        ],
+        "artifact_valid": true,
+        "id": "6103d8a7b17a67b85bde",
+        "max_relative_residual": 2.4908789582130395e-16,
+        "residual_pass": true
+      },
+      {
+        "E_res": [
+          2.532551118667177e-16,
+          2.5583880563033043e-16,
+          2.7174159924606725e-16,
+          2.726856421442282e-16
+        ],
+        "artifact_valid": true,
+        "id": "842bbbfcbaa65cf8c192",
+        "max_relative_residual": 2.726856421442282e-16,
+        "residual_pass": true
+      },
+      {
+        "E_res": [
+          2.2599021440122116e-16,
+          2.434852604327577e-16,
+          2.501317688786321e-16,
+          2.490718252469712e-16
+        ],
+        "artifact_valid": true,
+        "id": "ca507d4594ca727cc307",
+        "max_relative_residual": 2.501317688786321e-16,
+        "residual_pass": true
+      },
+      {
+        "E_res": [
+          2.894509910044002e-16,
+          2.71021292293095e-16,
+          2.811653304131866e-16,
+          2.7573800881800423e-16
+        ],
+        "artifact_valid": true,
+        "id": "d8e78b2115453c1ce7d6",
+        "max_relative_residual": 2.894509910044002e-16,
+        "residual_pass": true
+      },
+      {
+        "E_res": [
+          2.650935870414511e-16,
+          2.584242603383694e-16,
+          2.992952025257329e-16,
+          2.8634564189541306e-16
+        ],
+        "artifact_valid": true,
+        "id": "c001ae8fbb3f52c2c996",
+        "max_relative_residual": 2.992952025257329e-16,
+        "residual_pass": true
+      }
+    ],
+    "comparison": {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "cases": [
+        {
+          "E_res": [
+            8.493268739721888e-11,
+            9.289716460744622e-11,
+            7.647922183659296e-11,
+            8.867390665230346e-11
+          ],
+          "artifact_valid": true,
+          "id": "4549893e7753717d3ca1",
+          "max_relative_residual": 9.289716460744622e-11,
+          "residual_pass": true
+        },
+        {
+          "E_res": [
+            9.663378812234754e-11,
+            7.843679408166872e-11,
+            8.977926858231665e-11,
+            9.638633220024903e-11
+          ],
+          "artifact_valid": true,
+          "id": "6103d8a7b17a67b85bde",
+          "max_relative_residual": 9.663378812234754e-11,
+          "residual_pass": true
+        },
+        {
+          "E_res": [
+            9.273423927230204e-11,
+            9.208809268048366e-11,
+            8.67501215227202e-11,
+            9.010996848977384e-11
+          ],
+          "artifact_valid": true,
+          "id": "842bbbfcbaa65cf8c192",
+          "max_relative_residual": 9.273423927230204e-11,
+          "residual_pass": true
+        },
+        {
+          "E_res": [
+            9.410937487440005e-11,
+            9.74557014628345e-11,
+            9.251747811823944e-11,
+            8.601072465316624e-11
+          ],
+          "artifact_valid": true,
+          "id": "ca507d4594ca727cc307",
+          "max_relative_residual": 9.74557014628345e-11,
+          "residual_pass": true
+        },
+        {
+          "E_res": [
+            9.555778653052345e-11,
+            9.987739245658884e-11,
+            9.438330943127878e-11,
+            9.732102564398249e-11
+          ],
+          "artifact_valid": true,
+          "id": "d8e78b2115453c1ce7d6",
+          "max_relative_residual": 9.987739245658884e-11,
+          "residual_pass": true
+        },
+        {
+          "E_res": [
+            9.227678872421198e-11,
+            9.422628461401428e-11,
+            9.50594384652109e-11,
+            9.921260749997035e-11
+          ],
+          "artifact_valid": true,
+          "id": "c001ae8fbb3f52c2c996",
+          "max_relative_residual": 9.921260749997035e-11,
+          "residual_pass": true
+        }
+      ],
+      "cpu_seconds": 0.851778,
+      "diagnostic_cpu_ratio": 1.5515110227887483,
+      "diagnostic_memory_ratio": 0.6819084171519323,
+      "diagnostic_wall_ratio": 1.566000046892304,
+      "formal_timing": false,
+      "memory_peak_bytes": 42209280,
+      "method": "jacobi_cg",
+      "public_check_status": "completed",
+      "source_sha256": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+      "status": "completed",
+      "timing_note": "One current W run each; preparation and cleanup are reported separately. No formal speedup or reward is inferred.",
+      "wall_seconds": 0.9533429169096053,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "completed",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.851778,
+        "execution_wall_seconds": 0.9533429169096053,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 1379,
+        "memory_peak_bytes": 42209280,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 1.0571453338488936,
+        "reason": null,
+        "research_timeout_seconds": 178.43374341307208,
+        "timeout_seconds": 60,
+        "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+        "total_wall_seconds": 1.500359875150025
+      }
+    },
+    "cpu_seconds": 0.548999,
+    "formal_timing": false,
+    "memory_peak_bytes": 61898752,
+    "public_check_status": "completed",
+    "public_evaluation_wall_seconds": 3.1444600829854608,
+    "research_budget_exhausted": false,
+    "wall_seconds": 0.6087757907807827,
+    "worker_diagnostics": {
+      "all_processes_terminated": true,
+      "attempt_status": "completed",
+      "budget_timeout": false,
+      "budget_timeout_stage": null,
+      "candidate_processes_terminated": true,
+      "cleanup_status": null,
+      "cpu_seconds": 0.548999,
+      "execution_wall_seconds": 0.6087757907807827,
+      "exit_code": 0,
+      "formal_timing": false,
+      "log_bytes_observed": 0,
+      "memory_peak_bytes": 61898752,
+      "oom_killed": false,
+      "processes_quiesced_at_seconds": 0.7116308328695595,
+      "reason": null,
+      "research_timeout_seconds": 179.92145712208003,
+      "timeout_seconds": 60,
+      "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+      "total_wall_seconds": 1.2586732502095401
+    }
+  },
+  "formal": false,
+  "source_hash": "69e630261fdde37de4c129424c8c9ec2072d432c753216235babc7a6a999b889",
+  "status": "passed",
+  "trusted_source_hashes": {
+    "public/poisson.py": "beb0213eb36dc193f25ddcd9174af51516f74a89e16da6f5bc885bb729d56385",
+    "public/poisson_compare.py": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+    "runner/artifact_gate.py": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+    "runner/public_evaluation.py": "a82b21bd2ec731e34116a558cb23f45978fb94db37383ce691a1f11de9e5481b",
+    "runner/worker.py": "aa1c20b23eb766397b3b556b2c0f7004deacd8b3970a32f886cc92ecef8d9c75"
+  },
+  "worker_image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a"
+}

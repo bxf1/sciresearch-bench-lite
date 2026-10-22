@@ -1,0 +1,46 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  340.5kB
+Step 1/13 : FROM sciresearch-numeric:0.3.0
+ ---> e0018a98b249
+Step 2/13 : USER root
+ ---> Using cache
+ ---> b514e137ddfd
+Step 3/13 : RUN apt-get update && apt-get install -y --no-install-recommends bash curl ca-certificates git coreutils xz-utils && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 0131d956efde
+Step 4/13 : RUN useradd --create-home --uid 1000 --shell /bin/bash researcher && mkdir -p /workspace/.bench/requests /workspace/.bench/responses /input /opt/bench/public /logs/agent /logs/artifacts /run/bench-export && chmod 1777 /workspace && chmod 700 /run/bench-export && chown researcher:researcher /workspace/.bench/requests /logs/agent /logs/artifacts
+ ---> Using cache
+ ---> 612df75db17a
+Step 5/13 : COPY public-dev/ /input/
+ ---> 47eb24857546
+Step 6/13 : COPY public/ /opt/bench/public/
+ ---> 77b0cf432f46
+Step 7/13 : COPY helpers/ /opt/bench/
+ ---> 1b8f3305fa11
+Step 8/13 : COPY trusted/ /opt/bench/trusted/
+ ---> ac5de6a462b0
+Step 9/13 : RUN chmod -R a-w /input /opt/bench && cp /opt/bench/public/bench /usr/local/bin/bench && chmod 755 /usr/local/bin/bench
+ ---> Running in 4ebbd4489439
+ ---> Removed intermediate container 4ebbd4489439
+ ---> ea63ce08d217
+Step 10/13 : ENV HOME=/home/researcher PYTHONPATH=/opt/bench
+ ---> Running in ed77a3a16b33
+ ---> Removed intermediate container ed77a3a16b33
+ ---> 195c45dd02c7
+Step 11/13 : USER researcher
+ ---> Running in 2539d96ec2c1
+ ---> Removed intermediate container 2539d96ec2c1
+ ---> 63be903cb3a9
+Step 12/13 : WORKDIR /workspace
+ ---> Running in da49080ee274
+ ---> Removed intermediate container da49080ee274
+ ---> e11880f01cc0
+Step 13/13 : CMD ["sleep", "infinity"]
+ ---> Running in 0011c1f06890
+ ---> Removed intermediate container 0011c1f06890
+ ---> c01f7a36320f
+Successfully built c01f7a36320f
+Successfully tagged sciresearch-ode-r:0.3.1

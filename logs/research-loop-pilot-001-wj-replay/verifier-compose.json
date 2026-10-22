@@ -1,0 +1,15 @@
+{
+  "services": {
+    "main": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "mem_limit": "512m",
+      "memswap_limit": "512m",
+      "pids_limit": 128,
+      "security_opt": [
+        "no-new-privileges:true"
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "infrastructure_failed",
+  "checks": {
+    "candidate_not_misclassified_as_infrastructure": false,
+    "host_log_storage_bounded": true,
+    "log_limit_reported": false
+  },
+  "events": [],
+  "passed": false,
+  "worker_reason": "Command '['docker', 'exec', 'sciresearch-w-1ce01ea1be41', 'python', '-B', '/submission/solve.py', '--input', '/input', '--output', '/output', '--seed', '0']' timed out after 10 seconds"
+}

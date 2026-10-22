@@ -1,0 +1,17 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "checks": {
+    "candidate_not_misclassified_as_infrastructure": true,
+    "descendants_cannot_mutate_admitted_artifacts": true,
+    "saved_arrays_remain_zero": true
+  },
+  "events": [
+    {
+      "child_pid": 19,
+      "probe": "background"
+    }
+  ],
+  "passed": true,
+  "worker_reason": null
+}

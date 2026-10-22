@@ -1,0 +1,231 @@
+{
+  "formal": false,
+  "independent_model_sessions": 0,
+  "methods": [
+    {
+      "failed_case_ids": [
+        "73a7f5d4b3a0b7e8667f",
+        "9872c8dfb10dcce670c3",
+        "c55761f0887d3a2cd599",
+        "9b9539f8842bdc889a39",
+        "7645e440e0340548a785",
+        "165a4bee8a0ce0a976ea",
+        "cc3ced352bba1f4927c0",
+        "e194a9925966dd83dc68",
+        "116045eeba761cf357ae",
+        "0a34677d4393d7041455",
+        "d34c585661e1b84294e6"
+      ],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": 0.0040539215888620046,
+        "E_init": 284005329.68462527,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "ls",
+      "passed": 1,
+      "score": 24.812298533210967,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": 0.022593007437920382,
+        "E_init": 0.08438836247056197,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "rank5",
+      "passed": 12,
+      "score": 87.01477148159408,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": true,
+      "maxima": {
+        "E_field": null,
+        "E_forward": 0.003915475636920359,
+        "E_init": 0.055578094751446434,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "tikhonov",
+      "passed": 12,
+      "score": 93.57211040826625,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": 0.005302987838364856,
+        "E_init": 0.0713935746300985,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "discrepancy",
+      "passed": 12,
+      "score": 91.78010240872669,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": 0.0038015532886851874,
+        "E_init": 0.06357499446209407,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "tsvd",
+      "passed": 12,
+      "score": 92.50519815910975,
+      "task": "heat",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [
+        "bb196fc75beeb8f72b10",
+        "55ddc6c36603130a6d33",
+        "9d1194948f7fe76bfa30",
+        "a4b15a247cc5d9e1b41d",
+        "4c2355858f2c499586e1",
+        "4363bb74b8ecba72c848",
+        "fe3bd0dea097943d4434",
+        "b062840ac09bb4afd83b",
+        "40e7397063395ca9b4da",
+        "a545385e2fd03a6dd506",
+        "4a3bc8728a97c3415179",
+        "3a52dd2a1b23f8489b79"
+      ],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": 0.07855231823697235,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": 0.08855009050912722,
+        "K": 20,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "raw",
+      "passed": 0,
+      "score": 0.0,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": true,
+      "maxima": {
+        "E_field": 0.020877439949845915,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": 0.015645273980807593,
+        "K": 6,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "fixed",
+      "passed": 12,
+      "score": 95.79095210504317,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": 0.01164798166286544,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": 0.0079232503832818,
+        "K": 5,
+        "max_relative_residual": null,
+        "max_solution_error": null
+      },
+      "method": "search",
+      "passed": 12,
+      "score": 97.16554993227366,
+      "task": "ode",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": 9.998953523435894e-11,
+        "max_solution_error": 7.597108679650385e-07
+      },
+      "method": "cg",
+      "passed": 12,
+      "score": null,
+      "task": "poisson",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": false,
+      "maxima": {
+        "E_field": null,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": 9.99618541673848e-11,
+        "max_solution_error": 7.948007200042666e-08
+      },
+      "method": "jacobi",
+      "passed": 12,
+      "score": null,
+      "task": "poisson",
+      "total": 12
+    },
+    {
+      "failed_case_ids": [],
+      "fixed_reference": true,
+      "maxima": {
+        "E_field": null,
+        "E_forward": null,
+        "E_init": null,
+        "E_roll": null,
+        "K": null,
+        "max_relative_residual": 3.2113984954978427e-16,
+        "max_solution_error": 1.0913192579887728e-12
+      },
+      "method": "lu",
+      "passed": 12,
+      "score": null,
+      "task": "poisson",
+      "total": 12
+    }
+  ],
+  "source": "results/calibration-local-001/summary.json",
+  "source_sha256": "b11b579b81e720f5b1e99297c6b62eac63e5f23d064fe09b14f82ea7dd49c6f1"
+}

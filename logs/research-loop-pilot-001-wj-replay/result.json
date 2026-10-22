@@ -1,0 +1,15 @@
+{
+  "controller_sha256": "86fda7d2e05d55f2cac6baaf3e8ba435bfa2fd1d4df99f8c4e8b028deb137c0b",
+  "data_split": "pilot-smoke",
+  "error": "RuntimeError: Unexpected Harbor verifier mounts or containers",
+  "formal": false,
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "orchestration_environment_removed": true,
+  "registry": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001/registry",
+  "registry_sha256": "d119c73569f1c0448bb3c063d8ce98ac57ce0bd33b166a5172153427f8f0308e",
+  "reward": null,
+  "scope": "Real Harbor verifier hook; replay runner owns the separate W and numeric-only J.",
+  "score": null,
+  "session_id": "bench-verify-pilot-14b8f076e33e",
+  "status": "pilot_verifier_failed"
+}

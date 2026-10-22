@@ -1,0 +1,714 @@
+{
+  "calibration_case_rows": 132,
+  "calibration_methods": 11,
+  "calibration_source": "results/calibration-local-001/summary.json",
+  "calibration_source_sha256": "b11b579b81e720f5b1e99297c6b62eac63e5f23d064fe09b14f82ea7dd49c6f1",
+  "current_worker_source_sha256": "3e569ee688d64bfc427570b8513a144fdd5e0d93b08a08b34f9a98e4b175f98f",
+  "engineering_probes": {
+    "file_bridge": [
+      {
+        "controller_sha256": "ea4c8a8e55a1d3a14bdbdfe4331812e712e082784944653eccbf612ec2d7312f",
+        "evidence": "logs/file-bridge-runtime-001/result.json",
+        "evidence_sha256": "5b5ec79cd3c0e81b0a2325b53150bd7360c0803467dc3e251ccf23e90e625b91",
+        "forbidden_http_requests_rejected": null,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": 9,
+        "run_id": "file-bridge-runtime-001",
+        "status": "functional_probe_passed",
+        "total": 9
+      },
+      {
+        "controller_sha256": "ea4c8a8e55a1d3a14bdbdfe4331812e712e082784944653eccbf612ec2d7312f",
+        "evidence": "logs/file-bridge-runtime-002/result.json",
+        "evidence_sha256": "1b4f133966d4d851e4e14351f56081efd0b64368d6022adda8b0796abcb6ea69",
+        "forbidden_http_requests_rejected": null,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": 9,
+        "run_id": "file-bridge-runtime-002",
+        "status": "functional_probe_passed",
+        "total": 9
+      }
+    ],
+    "research_network": [
+      {
+        "controller_sha256": "a4055f23964d479736dd843cd073527a4ea0eba41449d0c537ac0adb05e3e7d2",
+        "evidence": "logs/research-network-probe-001/result.json",
+        "evidence_sha256": "93421fa4d90600740124825873a6b0eda59c6c7049dfb503bcfc2ecf47b9632c",
+        "forbidden_http_requests_rejected": null,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": null,
+        "run_id": "research-network-probe-001",
+        "status": "probe_failed",
+        "total": null
+      },
+      {
+        "controller_sha256": "5e9e592e549a10c9658766cd991ee259520896fee9c3391ea3c20bf265a587c6",
+        "evidence": "logs/research-network-probe-002/result.json",
+        "evidence_sha256": "046eaa6dec9691bc32b5312372c48d055b851d94278b64753666d96a9087b6cb",
+        "forbidden_http_requests_rejected": null,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": null,
+        "run_id": "research-network-probe-002",
+        "status": "probe_failed",
+        "total": null
+      },
+      {
+        "controller_sha256": "eb4e28307d309ea91b996ecc13e5aba7848301a94f1e9db1ba1dba654c032d7b",
+        "evidence": "logs/research-network-probe-003/result.json",
+        "evidence_sha256": "7f0e7a3093159bbc3be14918628be549915616a8d69403dd11d230289b27efb7",
+        "forbidden_http_requests_rejected": null,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": null,
+        "run_id": "research-network-probe-003",
+        "status": "probe_failed",
+        "total": null
+      },
+      {
+        "controller_sha256": "eb4e28307d309ea91b996ecc13e5aba7848301a94f1e9db1ba1dba654c032d7b",
+        "evidence": "logs/research-network-probe-004/result.json",
+        "evidence_sha256": "4519d59ace8e304a09ea42b86180be5bb31dd33953e8d76a45c71bffd9727ecc",
+        "forbidden_http_requests_rejected": true,
+        "formal": false,
+        "hardening_verified": null,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": null,
+        "run_id": "research-network-probe-004",
+        "status": "functional_probe_passed",
+        "total": null
+      },
+      {
+        "controller_sha256": "cf009ff4f1fd40fac8d3bd442509d36b0e596531d89a02d02bfb6bd059e2a652",
+        "evidence": "logs/research-network-probe-005/result.json",
+        "evidence_sha256": "bab2b08ad154a2336a6ea42ea3a629c6283a5d62e80b11c19c12e850164a3fb4",
+        "forbidden_http_requests_rejected": true,
+        "formal": false,
+        "hardening_verified": true,
+        "model_calls": 0,
+        "own_resources_removed": true,
+        "passed": null,
+        "run_id": "research-network-probe-005",
+        "status": "functional_probe_passed",
+        "total": null
+      }
+    ]
+  },
+  "final_test_scored": false,
+  "formal": false,
+  "formal_guidance_cells_completed": 0,
+  "formal_research_sessions_completed": 0,
+  "formal_resources_accepted": false,
+  "generated_at": "2026-10-22T09:15:02.338620+08:00",
+  "generation": {
+    "case_count": 90,
+    "dataset": "v0.3-local",
+    "generation_manifest_sha256": "68fb20f56c78eb6e5f8a2b09757cdecb951b51a116195104203577ebf6182cbc",
+    "qc_passed": 90,
+    "same_entropy_reproduction": {
+      "both_generated_in_fixed_linux_image": true,
+      "cases": 90,
+      "differences": [],
+      "final_solver_scores_accessed": false,
+      "input_file_count": 369,
+      "input_tree_sha256": "2d36588b6fd7eb3053439ee7ba184222bbfc69cc89d6cd52fd31007ae9c7545a",
+      "same_root_entropy": true,
+      "source_hardening_only_no_change_to_data_or_rng": true,
+      "status": "passed"
+    },
+    "status": "generated_qc_passed_not_frozen",
+    "tasks": {
+      "heat": {
+        "cases": 30,
+        "latent_unique": 30,
+        "operator_unique": null,
+        "qc_passed": 30,
+        "splits": {
+          "author-calibration": 12,
+          "final-test": 12,
+          "public-dev": 6
+        }
+      },
+      "ode": {
+        "cases": 30,
+        "latent_unique": 30,
+        "operator_unique": null,
+        "qc_passed": 30,
+        "splits": {
+          "author-calibration": 12,
+          "final-test": 12,
+          "public-dev": 6
+        }
+      },
+      "poisson": {
+        "cases": 30,
+        "latent_unique": 30,
+        "operator_unique": 21,
+        "qc_passed": 30,
+        "splits": {
+          "author-calibration": 12,
+          "final-test": 12,
+          "public-dev": 6
+        }
+      }
+    },
+    "versions": {
+      "bit_generator": "PCG64",
+      "numpy": "2.2.6",
+      "platform": "Linux-6.8.0-100-generic-aarch64-with-glibc2.36",
+      "python": "3.12.12 (main, Feb 24 2026, 20:41:46) [GCC 12.2.0]",
+      "scipy": "1.15.3",
+      "version": "0.3.0"
+    }
+  },
+  "local_execution_authorized": true,
+  "localhost_bridge": {
+    "controller_sha256": "993ff84cb8ed51e0917acf1d013a9f1178e6ca8911dc11eed7b336e67a8b3b5a",
+    "final_id": "candidate-002",
+    "first_id": "candidate-002",
+    "formal": false,
+    "probes": [
+      {
+        "passed": true,
+        "probe": "wrong_token",
+        "status": 403
+      },
+      {
+        "passed": true,
+        "probe": "extra_command_field",
+        "status": 400
+      },
+      {
+        "passed": true,
+        "probe": "path_escape_consumes_slot_without_execution",
+        "response": {
+          "candidate_id": "candidate-001",
+          "feedback": {
+            "artifact_valid": false,
+            "attempt_status": "submission_failed",
+            "reason": "unsafe path"
+          },
+          "source_hash": null
+        }
+      },
+      {
+        "passed": true,
+        "probe": "real_evaluate",
+        "response": {
+          "candidate_id": "candidate-002",
+          "feedback": {
+            "artifact_valid": true,
+            "attempt_status": "completed",
+            "cases": [
+              {
+                "R": 2.6141504479106294,
+                "artifact_valid": true,
+                "id": "0e3ae8ab05af690cde9d",
+                "roughness": 38.144933918978026,
+                "status": "ok"
+              },
+              {
+                "R": 1.7956332034165243,
+                "artifact_valid": true,
+                "id": "bb4cf34c6e28fd43a260",
+                "roughness": 38.86803711981897,
+                "status": "ok"
+              },
+              {
+                "R": 1.0721000532624203,
+                "artifact_valid": true,
+                "id": "db9b3093c406087870f8",
+                "roughness": 14.878062619935951,
+                "status": "ok"
+              }
+            ],
+            "cpu_seconds": 0.598756,
+            "memory_peak_bytes": 59654144,
+            "wall_seconds": 0.6849924582056701
+          },
+          "source_hash": "8778e7b4651d52e6bdbdc266e0edaeac751d89f6ca63527601d2631eeb0c433c"
+        }
+      },
+      {
+        "passed": true,
+        "probe": "public_feedback_no_hidden_fields"
+      },
+      {
+        "passed": true,
+        "probe": "workspace_mutation_does_not_change_registered_source"
+      },
+      {
+        "passed": true,
+        "probe": "finalize_evaluated_id",
+        "response": {
+          "finalized": "candidate-002"
+        }
+      }
+    ],
+    "registered_requests": 2,
+    "scope": "localhost authenticated bridge to trusted registry and isolated W public feedback only; not an R-container network test",
+    "status": "passed"
+  },
+  "model_pilots": [
+    {
+      "attempt_status": "infrastructure_failed",
+      "cached_tokens": null,
+      "cost_usd": null,
+      "evidence": "logs/model-smoke-20261022-01/result.json",
+      "evidence_sha256": "246f94a4326a6bc2579f6f727d7ec1fe7c411d14d259c106ca8f2ae85706129c",
+      "formal": false,
+      "input_tokens": null,
+      "model_requested": "deepseek-v4-pro",
+      "model_wall_seconds": null,
+      "network_status": "pilot_network_unrestricted",
+      "output_tokens": null,
+      "parent_attempt": null,
+      "research_container_removed": null,
+      "resource_status": "resource_limits_diagnostic",
+      "run_id": "model-smoke-20261022-01",
+      "source_hash": null,
+      "study_phase": "pilot-smoke"
+    },
+    {
+      "attempt_status": "model_source_retained",
+      "cached_tokens": 6528,
+      "cost_usd": null,
+      "evidence": "logs/model-smoke-20261022-02/result.json",
+      "evidence_sha256": "74b02d968aeb6390a006728d0ed1387b2bc53cb2f6daf74639b863a5468acf54",
+      "formal": false,
+      "input_tokens": 8924,
+      "model_requested": "deepseek-v4-pro",
+      "model_wall_seconds": 11.84437037492171,
+      "network_status": "pilot_network_unrestricted",
+      "output_tokens": 625,
+      "parent_attempt": "model-smoke-20261022-01",
+      "research_container_removed": true,
+      "resource_status": "resource_limits_diagnostic",
+      "run_id": "model-smoke-20261022-02",
+      "source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc",
+      "study_phase": "pilot-smoke"
+    }
+  ],
+  "pilot_model_wj": {
+    "controller_sha256": "b54c20578920dd6f0871fd218602f6df86d0ca4d8e8881187264ab41bdd55e81",
+    "cost_usd": null,
+    "data_split": "pilot-smoke",
+    "final_id": "candidate-001",
+    "first_id": "candidate-001",
+    "formal": false,
+    "formal_acceptance": "not_satisfied",
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "iteration_conclusion": "No research iteration tested: model was explicitly asked to emit a zero solution.",
+    "model_attempt": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/model-smoke-20261022-02",
+    "model_result_sha256": "74b02d968aeb6390a006728d0ed1387b2bc53cb2f6daf74639b863a5468acf54",
+    "model_source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc",
+    "repeats": [
+      {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "0e3ae8ab05af690cde9d",
+            "level": 0,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "bb4cf34c6e28fd43a260",
+            "level": 1,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "db9b3093c406087870f8",
+            "level": 2,
+            "scientific_pass": false,
+            "score": 0.0
+          }
+        ],
+        "checkpoint_id": "candidate-001",
+        "evaluation_status": "valid",
+        "judge_wall_seconds": 0.40518249990418553,
+        "passed": 0,
+        "performance_status": "not_applicable",
+        "reward": 0,
+        "scientific_pass": false,
+        "score": 0.0,
+        "source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc",
+        "total": 3,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "candidate_processes_terminated": true,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "0e3ae8ab05af690cde9d",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "bb4cf34c6e28fd43a260",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "db9b3093c406087870f8",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            }
+          ],
+          "cpu_seconds": 0.207862,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.1508530406281352,
+          "exit_code": 0,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 19066880,
+          "oom_killed": false,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.2593282498419285,
+          "scientific_pass": false,
+          "timeout_seconds": 120,
+          "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+          "total_wall_seconds": 0.7441746657714248
+        }
+      },
+      {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "0e3ae8ab05af690cde9d",
+            "level": 0,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "bb4cf34c6e28fd43a260",
+            "level": 1,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "db9b3093c406087870f8",
+            "level": 2,
+            "scientific_pass": false,
+            "score": 0.0
+          }
+        ],
+        "checkpoint_id": "candidate-001",
+        "evaluation_status": "valid",
+        "judge_wall_seconds": 0.4618215002119541,
+        "passed": 0,
+        "performance_status": "not_applicable",
+        "reward": 0,
+        "scientific_pass": false,
+        "score": 0.0,
+        "source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc",
+        "total": 3,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "candidate_processes_terminated": true,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "0e3ae8ab05af690cde9d",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "bb4cf34c6e28fd43a260",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "db9b3093c406087870f8",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            }
+          ],
+          "cpu_seconds": 0.20816,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.17335020937025547,
+          "exit_code": 0,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 19259392,
+          "oom_killed": false,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.3274580002762377,
+          "scientific_pass": false,
+          "timeout_seconds": 120,
+          "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+          "total_wall_seconds": 0.6955160419456661
+        }
+      },
+      {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "0e3ae8ab05af690cde9d",
+            "level": 0,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "bb4cf34c6e28fd43a260",
+            "level": 1,
+            "scientific_pass": false,
+            "score": 0.0
+          },
+          {
+            "E_forward": 1.0,
+            "E_init": 1.0,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "db9b3093c406087870f8",
+            "level": 2,
+            "scientific_pass": false,
+            "score": 0.0
+          }
+        ],
+        "checkpoint_id": "candidate-001",
+        "evaluation_status": "valid",
+        "judge_wall_seconds": 0.40414616698399186,
+        "passed": 0,
+        "performance_status": "not_applicable",
+        "reward": 0,
+        "scientific_pass": false,
+        "score": 0.0,
+        "source_hash": "065e1e089661b397b9561409c01710a0416abdd47b60baa84b0eff94ba6c98bc",
+        "total": 3,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "candidate_processes_terminated": true,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "0e3ae8ab05af690cde9d",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "bb4cf34c6e28fd43a260",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            },
+            {
+              "artifact_valid": true,
+              "id": "db9b3093c406087870f8",
+              "sha256": "390717932f4cc5354780d26ea7fc6be8f84e657d805995996189deffbe801d12"
+            }
+          ],
+          "cpu_seconds": 0.204888,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.2075974582694471,
+          "exit_code": 0,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 18989056,
+          "oom_killed": false,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.30393258295953274,
+          "scientific_pass": false,
+          "timeout_seconds": 120,
+          "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+          "total_wall_seconds": 0.6843966669403017
+        }
+      }
+    ],
+    "research_condition": null,
+    "reward": 0,
+    "same_source_reused_for_first_final": true,
+    "score": 0.0,
+    "status": "pilot_model_to_independent_scoring_completed"
+  },
+  "research_pilot_replays": [
+    {
+      "error": "RuntimeError: Unexpected Harbor verifier mounts or containers",
+      "evidence": "logs/research-loop-pilot-001-wj-replay/result.json",
+      "evidence_sha256": "a263578f5782468050c8a8c94541e6d25b06d18d60eef1496688a5b95941c475",
+      "final_id": null,
+      "final_replay_count": null,
+      "final_reused_from": null,
+      "first_id": null,
+      "first_replay_count": null,
+      "formal": false,
+      "parent_attempt": null,
+      "registry_sha256": "d119c73569f1c0448bb3c063d8ce98ac57ce0bd33b166a5172153427f8f0308e",
+      "research_run_id": "research-loop-pilot-001",
+      "reward": null,
+      "run_id": "research-loop-pilot-001-wj-replay",
+      "score": null,
+      "source_hash": null,
+      "split": "pilot-smoke",
+      "status": "pilot_verifier_failed",
+      "task": "heat"
+    },
+    {
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/public/__init__.py'",
+      "evidence": "logs/research-loop-pilot-001-wj-replay-002/result.json",
+      "evidence_sha256": "c7ffa5b0a3d343deec71278b87be11616851e6e51c45cd2049f682f1a7e98483",
+      "final_id": null,
+      "final_replay_count": null,
+      "final_reused_from": null,
+      "first_id": null,
+      "first_replay_count": null,
+      "formal": false,
+      "parent_attempt": "research-loop-pilot-001-wj-replay",
+      "registry_sha256": "d119c73569f1c0448bb3c063d8ce98ac57ce0bd33b166a5172153427f8f0308e",
+      "research_run_id": "research-loop-pilot-001",
+      "reward": null,
+      "run_id": "research-loop-pilot-001-wj-replay-002",
+      "score": null,
+      "source_hash": null,
+      "split": "pilot-smoke",
+      "status": "pilot_verifier_failed",
+      "task": "heat"
+    },
+    {
+      "error": null,
+      "evidence": "logs/research-loop-pilot-001-wj-replay-003/result.json",
+      "evidence_sha256": "0bc41a57cbc0aef5140b534eba1903faf9add250dde3893b15c7b9b0e415b2f5",
+      "final_id": "candidate-001",
+      "final_replay_count": 0,
+      "final_reused_from": "candidate-001",
+      "first_id": "candidate-001",
+      "first_replay_count": 3,
+      "formal": false,
+      "parent_attempt": "research-loop-pilot-001-wj-replay-002",
+      "registry_sha256": "d119c73569f1c0448bb3c063d8ce98ac57ce0bd33b166a5172153427f8f0308e",
+      "research_run_id": "research-loop-pilot-001",
+      "reward": 1,
+      "run_id": "research-loop-pilot-001-wj-replay-003",
+      "score": 87.69277970613776,
+      "source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b",
+      "split": "pilot-smoke",
+      "status": "pilot_verifier_completed",
+      "task": "heat"
+    }
+  ],
+  "research_pilots": [
+    {
+      "cached_tokens": 120064,
+      "condition": "g1-pilot",
+      "cost_usd": null,
+      "evidence": "logs/research-loop-pilot-001/result.json",
+      "evidence_sha256": "c242a8043af001d4e95c2c0171b455ac04edea5395816086ebb5e54bb4d07839",
+      "final_id": "candidate-001",
+      "first_id": "candidate-001",
+      "formal": false,
+      "input_tokens": 131931,
+      "max_evaluations": 4,
+      "model_requested": "deepseek-v4-pro",
+      "model_run_started": true,
+      "model_wall_seconds": 108.39163064956665,
+      "output_tokens": 12409,
+      "own_resources_removed": true,
+      "registered_evaluations": 1,
+      "research_budget_seconds": 600,
+      "run_id": "research-loop-pilot-001",
+      "selection_reason": "deadline_fallback",
+      "status": "pilot_returned_without_required_registration",
+      "study_phase": "public-dev-pilot",
+      "task": "heat"
+    }
+  ],
+  "runtime_probes": [
+    {
+      "evidence": "logs/runtime-probes-001/summary.json",
+      "failed": [
+        "stdout_flood"
+      ],
+      "matches_current_worker_source": false,
+      "passed": 10,
+      "sha256": "56da194ecc07b1bdfca113a26cead95130bcb9f84dd3c23750c2009e2bef7600",
+      "total": 11,
+      "worker_source_hashes": [
+        "a9aedb5124f6ad60ef87d675ae65f32be72507978a931cd402d6044db3133be0"
+      ]
+    },
+    {
+      "evidence": "logs/runtime-probes-002/summary.json",
+      "failed": [],
+      "matches_current_worker_source": false,
+      "passed": 4,
+      "sha256": "a7c1760f22c3f8ba38e635c6b26b597a5249b2c6c915665a4bf6cf7eb7e314a5",
+      "total": 4,
+      "worker_source_hashes": [
+        "92af642da879ea3d1ce0998db3c83cd5a93c47d4c5329a3bd3c4cf7b999b2847"
+      ]
+    },
+    {
+      "evidence": "logs/runtime-probes-004/summary.json",
+      "failed": [],
+      "matches_current_worker_source": false,
+      "passed": 4,
+      "sha256": "17b1aa0e6c6b680e79e37773791692e47eab3d4a7d32c386c0249b7aac84ff34",
+      "total": 4,
+      "worker_source_hashes": [
+        "531730b687c747cbe34245ca4c79413a4aad9e7bfe09b9a5ecc577bd023c2b54"
+      ]
+    }
+  ],
+  "test_evidence": [
+    "logs/run-plan-checkpoint-001/tests.stdout.txt",
+    "logs/run-plan-local-draft-002/tests.stdout.txt",
+    "logs/run-plan-review-002/tests.stdout.txt",
+    "logs/unit-tests-20261022-01.txt",
+    "logs/unit-tests-final-local-001.txt"
+  ]
+}

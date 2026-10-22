@@ -1,0 +1,1 @@
+{"status": "functional_probe_passed", "error": null, "source_hash": "ecb67d62cd8d737aab54aed9e03a7d5a8be505dbd1677619f26db362da2fd10b", "research_container_removed": true}

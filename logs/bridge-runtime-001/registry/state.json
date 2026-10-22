@@ -1,0 +1,64 @@
+{
+  "budget_seconds": 120,
+  "closed": true,
+  "condition": "pilot-bridge",
+  "evaluations": [
+    {
+      "accepted_at": 1792628744.757528,
+      "artifact_valid": false,
+      "completed_at": 1792628744.757959,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "unsafe path"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792628744.765989,
+      "artifact_valid": true,
+      "completed_at": 1792628746.191914,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 2.6141504479106294,
+            "artifact_valid": true,
+            "id": "0e3ae8ab05af690cde9d",
+            "roughness": 38.144933918978026,
+            "status": "ok"
+          },
+          {
+            "R": 1.7956332034165243,
+            "artifact_valid": true,
+            "id": "bb4cf34c6e28fd43a260",
+            "roughness": 38.86803711981897,
+            "status": "ok"
+          },
+          {
+            "R": 1.0721000532624203,
+            "artifact_valid": true,
+            "id": "db9b3093c406087870f8",
+            "roughness": 14.878062619935951,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.598756,
+        "memory_peak_bytes": 59654144,
+        "wall_seconds": 0.6849924582056701
+      },
+      "source_hash": "8778e7b4651d52e6bdbdc266e0edaeac751d89f6ca63527601d2631eeb0c433c"
+    }
+  ],
+  "final_id": "candidate-002",
+  "finalization_invalid": false,
+  "first_id": "candidate-002",
+  "max_evaluations": 3,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1792628744.6201658,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/bridge-runtime-001/workspace"
+}

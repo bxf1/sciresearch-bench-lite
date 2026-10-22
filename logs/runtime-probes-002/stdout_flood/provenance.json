@@ -1,0 +1,10 @@
+{
+  "artifact_gate_source_sha256": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+  "candidate_source_sha256": "28be2aa75a11c26cb2b1145b5a92da0594b159008e10bec4eff0193b7172cc9f",
+  "formal": false,
+  "input_manifest_sha256": "7b7e3a053e5823da1b29cbab9303cb4947138b87e17f1cfa33cebfd0edd72387",
+  "model_execution": false,
+  "probe_source_sha256": "fff1645f46d4fe99cf7d765c99ab57c04dcf2592c2c941edf5d8f289fb9a3eb2",
+  "started_at": 1792604313.448998,
+  "worker_source_sha256": "92af642da879ea3d1ce0998db3c83cd5a93c47d4c5329a3bd3c4cf7b999b2847"
+}

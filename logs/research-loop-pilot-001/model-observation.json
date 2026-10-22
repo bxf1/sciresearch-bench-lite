@@ -1,0 +1,22 @@
+{
+  "provenance": "R-authored bounded JSONL; auxiliary_only_not_billing_or_verdict",
+  "reported_n_input_tokens_including_cache": 131931,
+  "reported_n_output_tokens": 12409,
+  "reported_cache_read_tokens": 120064,
+  "reported_cache_write_tokens": 0,
+  "assistant_messages": 13,
+  "assistant_messages_with_usage": 12,
+  "observed_thinking_blocks": 12,
+  "recorded_models": [
+    "deepseek-v4-pro"
+  ],
+  "requested_reasoning_effort": "off",
+  "reasoning_disable_confirmed": false,
+  "cost_usd": null,
+  "observed_at": 1792631068.916308,
+  "kind": "post_run_auxiliary_model_observation",
+  "native_pi_requested_max_turns": 12,
+  "explicit_finalize": false,
+  "selection": "last valid candidate fallback",
+  "interpretation": "Configured 12-turn budget ended the native session after an actual public evaluation. Wall deadline of 600 seconds was not reached. Session token/thinking observations are auxiliary, not trusted billing or API-failure evidence."
+}

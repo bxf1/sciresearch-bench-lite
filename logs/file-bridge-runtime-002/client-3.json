@@ -1,0 +1,12 @@
+{
+  "candidate_id": "candidate-001",
+  "feedback": {
+    "artifact_valid": false,
+    "attempt_status": "submission_failed",
+    "reason": "source preparation failed: ReadError: empty file",
+    "source_export_error": "ReadError: empty file"
+  },
+  "ok": true,
+  "request_id": "08b44da928744ab4bf0f28a5c247456f",
+  "source_hash": null
+}

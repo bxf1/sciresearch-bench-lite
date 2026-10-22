@@ -1,0 +1,17 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "checks": {
+    "candidate_not_misclassified_as_infrastructure": true,
+    "legal_artifacts_accepted": true,
+    "saved_arrays_remain_zero": true
+  },
+  "events": [
+    {
+      "cases": 3,
+      "probe": "normal_zero"
+    }
+  ],
+  "passed": true,
+  "worker_reason": null
+}

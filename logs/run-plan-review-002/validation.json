@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "formal": false,
+  "command": "PYTHONPATH=benchmark OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 benchmark/.venv/bin/python -m pytest -q benchmark/tests/test_run_plan.py benchmark/tests/test_poisson_compare.py",
+  "exit_code": 0,
+  "stdout_origin": "captured actual exec_command output",
+  "source_sha256": {
+    "runner/run_plan.py": "3d6a28948e7c69bbdc4107a0efc090d2369aba09bf9114a5b9482acb75a8f646",
+    "public/poisson_compare.py": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+    "tests/test_run_plan.py": "d62d3bd409c18316454cc702dcdf2a39dc973ce07cee85cdea81e7e52b7af15e",
+    "tests/test_poisson_compare.py": "ff8af175f8030ff334934d63f7de484b706b4fca331bd46ed8c82c8a713c97a6"
+  }
+}

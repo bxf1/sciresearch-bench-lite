@@ -1,0 +1,43 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  120.3kB
+Step 1/11 : FROM sciresearch-numeric:0.3.0
+ ---> e0018a98b249
+Step 2/11 : USER root
+ ---> Using cache
+ ---> b514e137ddfd
+Step 3/11 : RUN apt-get update && apt-get install -y --no-install-recommends bash curl ca-certificates git coreutils xz-utils && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 0131d956efde
+Step 4/11 : RUN useradd --create-home --uid 1000 --shell /bin/bash researcher && mkdir -p /workspace /input /opt/bench/public /logs/agent /logs/artifacts && chown researcher:researcher /workspace /logs/agent /logs/artifacts
+ ---> Running in 3857e82ed906
+ ---> Removed intermediate container 3857e82ed906
+ ---> b17c25794506
+Step 5/11 : COPY public-dev/ /input/
+ ---> 11c7f16bcc13
+Step 6/11 : COPY public/ /opt/bench/public/
+ ---> 8eeb430cdc68
+Step 7/11 : RUN chmod -R a-w /input /opt/bench && cp /opt/bench/public/bench /usr/local/bin/bench && chmod 755 /usr/local/bin/bench
+ ---> Running in 4ac4f2f4b3f9
+ ---> Removed intermediate container 4ac4f2f4b3f9
+ ---> 624432f891d1
+Step 8/11 : ENV HOME=/home/researcher PYTHONPATH=/opt/bench
+ ---> Running in 731286a18cb4
+ ---> Removed intermediate container 731286a18cb4
+ ---> 8209213292a8
+Step 9/11 : USER researcher
+ ---> Running in 582b0cca6c91
+ ---> Removed intermediate container 582b0cca6c91
+ ---> 2527dfd20a1a
+Step 10/11 : WORKDIR /workspace
+ ---> Running in 80264a270eb3
+ ---> Removed intermediate container 80264a270eb3
+ ---> 9cf460981fa4
+Step 11/11 : CMD ["sleep", "infinity"]
+ ---> Running in 52f2f291406e
+ ---> Removed intermediate container 52f2f291406e
+ ---> 63f80e228454
+Successfully built 63f80e228454
+Successfully tagged sciresearch-heat-r:0.3.0

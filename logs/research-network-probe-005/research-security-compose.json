@@ -1,0 +1,20 @@
+{
+  "services": {
+    "harbor-docker-egress-control-sidecar": {
+      "cpus": 0.25,
+      "mem_limit": "128m",
+      "memswap_limit": "128m"
+    },
+    "main": {
+      "cap_drop": [
+        "ALL"
+      ],
+      "mem_limit": "1g",
+      "memswap_limit": "1g",
+      "pids_limit": 128,
+      "security_opt": [
+        "no-new-privileges:true"
+      ]
+    }
+  }
+}

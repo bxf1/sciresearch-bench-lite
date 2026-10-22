@@ -1,0 +1,56 @@
+{
+  "after": [],
+  "before": [],
+  "controller_sha256": "5e9e592e549a10c9658766cd991ee259520896fee9c3391ea3c20bf265a587c6",
+  "credentials_forwarded": false,
+  "daemon_kernel": {
+    "Architecture": "aarch64",
+    "CgroupVersion": "2",
+    "KernelVersion": "6.8.0-100-generic",
+    "OperatingSystem": "Ubuntu 24.04.4 LTS"
+  },
+  "error": "RuntimeError: Unchanged Harbor sidecar legacy build failed; see sidecar-build.log",
+  "finished_at": 1792629221.4537752,
+  "formal": false,
+  "host_network_configuration_modified": false,
+  "kind": "research_network_functional_probe",
+  "model_calls": 0,
+  "own_resources_removed": true,
+  "parent_attempt": "research-network-probe-001",
+  "remaining_own_containers": [],
+  "remaining_own_networks": [],
+  "remaining_own_volumes": [],
+  "requested_allowlist": [
+    "api.deepseek.com"
+  ],
+  "requested_research_resources": {
+    "cpus": 1,
+    "memory_mb": 1024
+  },
+  "research_image": {
+    "id": "sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a",
+    "reference": "sciresearch-research-smoke:0.3.0",
+    "repo_digests": [
+      "sciresearch-research-smoke@sha256:8d64a6f40e9a8a6010392a2c70bb6ce8ba87c78fce9243bcdd7b1dec0e11085a"
+    ]
+  },
+  "session_id": "bench-network-probe-cde464c919d7",
+  "sidecar_prebuild": {
+    "builder": "legacy docker build; unchanged Harbor Dockerfile/context",
+    "context": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/harbor-docker-egress-control-sidecar",
+    "context_files_sha256": {
+      "Dockerfile": "a2385dd6b3eee6e04c49b467df84ed2a273fd402a9cdd404a64fb535e9b26ff7",
+      "allowlist.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bin/network-policy": "ff1cacfb95e17cda3668f389176ae54e5e4139cff12ee54b4d745722ad0ff0b2",
+      "entrypoint.sh": "2e225ed745eb5976f93afd52d91c844b954b5f6f45373fb70c4c509e36d1e069",
+      "gost.yaml": "78c18e58efbc7c8e226cb311e2a4cf3863d5a2f3e54b3bf15a0ea4b885345290"
+    },
+    "context_hash": "e9f39ce1643ee690",
+    "platform": "linux/arm64",
+    "returncode": 1,
+    "tag": "harbor-prebuilt:harbor-docker-egress-control-sidecar--e9f39ce1643ee690"
+  },
+  "started_at": 1792629213.63217,
+  "status": "probe_failed",
+  "total_wall_seconds": 7.821605205535889
+}

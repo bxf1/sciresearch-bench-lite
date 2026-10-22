@@ -1,0 +1,38 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "candidate_processes_terminated": true,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "sha256": "e4654ff614657025f2e2161dd7272972ac3eb902d1ae0fb7cc16dda90e673ed0"
+    },
+    {
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "sha256": "5701589c6793052baad56ac630dd107b464021ff24a1ba1493413b398f726cca"
+    },
+    {
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "sha256": "9ecdb301880e7a97597f73162ca7102da4d05784ded823552991d65e89adb1eb"
+    }
+  ],
+  "cpu_seconds": 0.598756,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.6849924582056701,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "log_bytes_observed": 270,
+  "memory_peak_bytes": 59654144,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.7802492082118988,
+  "scientific_pass": false,
+  "timeout_seconds": 119.85256671905518,
+  "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+  "total_wall_seconds": 1.2310180417262018
+}

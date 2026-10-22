@@ -1,0 +1,342 @@
+{
+  "auxiliary_log_hashes": {
+    "pi.txt": "d098b31c30f9188fd686cf4949b443f1b855ebf0803ad56888f182bb22799de2",
+    "pi/sessions/2026-10-22T00-51-57-824Z_01a16117-e300-7654-9a09-4f01b77c1a28.jsonl": "888fb72b378e120e30885e16457217a7780b7c686a3a93c59fe91d08435a24d7",
+    "trajectory.json": "2c51a349da5d1dc1cad6d8c99752ff4b98d3100c93d8cbb9982d28061b8d6ed7"
+  },
+  "auxiliary_logs": {
+    "complete": true,
+    "files": [
+      {
+        "credential_redacted": false,
+        "path": "pi/sessions/2026-10-22T00-51-57-824Z_01a16117-e300-7654-9a09-4f01b77c1a28.jsonl",
+        "retained_sha256": "888fb72b378e120e30885e16457217a7780b7c686a3a93c59fe91d08435a24d7",
+        "source_bytes": 79712
+      },
+      {
+        "credential_redacted": false,
+        "path": "pi.txt",
+        "retained_sha256": "d098b31c30f9188fd686cf4949b443f1b855ebf0803ad56888f182bb22799de2",
+        "source_bytes": 341482
+      }
+    ],
+    "max_file_bytes": 4194304,
+    "max_total_bytes": 16777216,
+    "source_bytes": 421194
+  },
+  "bridge_errors": [],
+  "bridge_joined": true,
+  "compose_overlay_sha256": "712bb1276dea9cf26607212fb7868e62db40ec9bd987123345c14ea5026a77d7",
+  "condition": "g1-pilot",
+  "containers": [
+    {
+      "host_config": {
+        "CapAdd": [
+          "CAP_CHOWN",
+          "CAP_DAC_OVERRIDE",
+          "CAP_FOWNER"
+        ],
+        "CapDrop": [
+          "ALL"
+        ],
+        "Memory": 1073741824,
+        "MemorySwap": 1073741824,
+        "NanoCpus": 1000000000,
+        "NetworkMode": "container:dca6621a2a360d1bf43ae03b349bae1f37a037f44da04e0864650fe7c8a9ffad",
+        "PidMode": "",
+        "PidsLimit": 128,
+        "Privileged": false,
+        "SecurityOpt": [
+          "no-new-privileges:true"
+        ]
+      },
+      "id": "ed2d448ea930eab7d013f3b0545b75b038c3cd063ac947f2f647dcd852916a28",
+      "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+      "mounts": [],
+      "service": "main",
+      "user": "researcher"
+    },
+    {
+      "host_config": {
+        "CapAdd": [
+          "CAP_NET_ADMIN",
+          "CAP_NET_RAW"
+        ],
+        "CapDrop": null,
+        "Memory": 134217728,
+        "MemorySwap": 134217728,
+        "NanoCpus": 250000000,
+        "NetworkMode": "bench-research-pilot-1ad81cadc844_default",
+        "PidMode": "",
+        "PidsLimit": null,
+        "Privileged": false,
+        "SecurityOpt": null
+      },
+      "id": "dca6621a2a360d1bf43ae03b349bae1f37a037f44da04e0864650fe7c8a9ffad",
+      "image_id": "sha256:db417066dc87f39c9aae48fc36485fc2c72f5460cc32612c7cbf5d0110a1a3ec",
+      "mounts": [],
+      "service": "harbor-docker-egress-control-sidecar",
+      "user": ""
+    }
+  ],
+  "controller_sha256": "1f7e5589d8083b2e7a1c39837c65d49903f4e631989b2bcfe51af7ad8aaec3ed",
+  "cost_usd": null,
+  "finished_at": 1792630425.300051,
+  "formal": false,
+  "harbor_commit": "38b9be0164a910015a0be9a37ba6e8e78c562dfe",
+  "hidden_or_final_evaluation": false,
+  "installed_versions": [
+    "0.84.1",
+    "v22.23.4"
+  ],
+  "max_evaluations": 4,
+  "max_turns": 12,
+  "model_api_format": "anthropic_messages",
+  "model_endpoint": "https://api.deepseek.com/anthropic",
+  "model_requested": "deepseek-v4-pro",
+  "model_run_started": true,
+  "model_started_at": 1792630315.8379352,
+  "model_usage": {
+    "cost_usd": null,
+    "metadata": null,
+    "model_usage": null,
+    "n_cache_tokens": 120064,
+    "n_input_tokens": 131931,
+    "n_output_tokens": 12409,
+    "rollout_details": null
+  },
+  "model_wall_seconds": 108.39163064956665,
+  "network_checks": [
+    {
+      "http_response": true,
+      "proxy_environment_used": false,
+      "redirects_followed": false,
+      "status": 401,
+      "timeout_seconds": 3,
+      "tls_certificate_verification": false,
+      "url": "https://api.deepseek.com",
+      "wall_seconds": 1.516964530106634
+    },
+    {
+      "error": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "http_response": false,
+      "proxy_environment_used": false,
+      "redirects_followed": false,
+      "timeout_seconds": 3,
+      "tls_certificate_verification": false,
+      "url": "https://example.com",
+      "wall_seconds": 0.5976589918136597
+    },
+    {
+      "error": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)>",
+      "http_response": false,
+      "proxy_environment_used": false,
+      "redirects_followed": false,
+      "timeout_seconds": 3,
+      "tls_certificate_verification": false,
+      "url": "https://1.1.1.1",
+      "wall_seconds": 0.0032846760004758835
+    }
+  ],
+  "network_policy": "public_setup_then_model_allowlist",
+  "own_resources_removed": true,
+  "parent_attempt": null,
+  "pi_version_requested": "0.84.1",
+  "prompt_sha256": "127e1c7b37d374313d659f374c9bcb4b07f0473b49917c4013f4e77af5c38947",
+  "prompt_source_sha256": {
+    "common": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678",
+    "g1": "5c7ea18fd71d0bd801084cb2c4066f81e81cf98122d3fa2c23a703e4457ed656"
+  },
+  "public_input_hashes": {
+    "cases/04f4c0643b4ee1f2cbb1/metadata.json": "2f650c8c0f37115f32aa764f88a6e0239940f15e009dbb2dbb58f090f23770e5",
+    "cases/04f4c0643b4ee1f2cbb1/observations.csv": "19d1bbef1dabcd3866a7acbb9f05ba15fda4d33e278f77cf5c70de9a9b97f943",
+    "cases/04f4c0643b4ee1f2cbb1/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/13a841e7b6de490e68f4/metadata.json": "bc10879ce559d4d4aaf10cd50e8d65305ee21ef450cbe32aa718f9c040173ba3",
+    "cases/13a841e7b6de490e68f4/observations.csv": "d638e6db940fac4ff0dfe1149d42d365237352c8156bd3a8fb95eabd8e36859f",
+    "cases/13a841e7b6de490e68f4/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/16f9197b92a286dc0148/metadata.json": "4efdf494f551c820086b2c86239a51478a69836a06363d73617aa51d21f74649",
+    "cases/16f9197b92a286dc0148/observations.csv": "65e1dd4d8cbb4d7e548a5c019082f32656128571934d4d447b5e8cbc7608ca85",
+    "cases/16f9197b92a286dc0148/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/409ab21b0f5310a9d96e/metadata.json": "9d0afa73da72aa9b659d2d8756dc1de320c2b8a02a59d5cba8610f3284c1b97c",
+    "cases/409ab21b0f5310a9d96e/observations.csv": "12349a6702619ae829b4479fba4742299c06b1067053223c557d668b604c1f31",
+    "cases/409ab21b0f5310a9d96e/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/e0eb9d7e4704b51f884c/metadata.json": "3097854a87a2fa1418b8947d1515bc985e871250928aa87019fdedcc5dda919b",
+    "cases/e0eb9d7e4704b51f884c/observations.csv": "c62464537914b30f1140630f6ca6392090ca80a0f0f5f32d22baeae1785892e8",
+    "cases/e0eb9d7e4704b51f884c/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/fca8a41a2ec5084c6760/metadata.json": "ad1141b4c7fdb9a1f8eb24a9ecede0005b5b6537dbf89be88179f05b31a65676",
+    "cases/fca8a41a2ec5084c6760/observations.csv": "fb6e9f7c84f236194e636e2f8dfa4c7a1117b4bd950db16d68c8d1042bcf6ba7",
+    "cases/fca8a41a2ec5084c6760/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "manifest.json": "f5f133274ca3fd055631366a095b1e1bdc4d2b7489c415fbb6f4396018549ff7"
+  },
+  "reasoning_effort": "off",
+  "registered_snapshot_hashes": {
+    "candidate-001": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b"
+  },
+  "registry": {
+    "budget_seconds": 600,
+    "closed": true,
+    "condition": "g1-pilot",
+    "evaluations": [
+      {
+        "accepted_at": 1792630422.6633868,
+        "artifact_valid": true,
+        "completed_at": 1792630424.085192,
+        "id": "candidate-001",
+        "result": {
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "cases": [
+            {
+              "R": 1.2526983921137897,
+              "artifact_valid": true,
+              "id": "13a841e7b6de490e68f4",
+              "roughness": 25.923822741193998,
+              "status": "ok"
+            },
+            {
+              "R": 2.1348076349019154,
+              "artifact_valid": true,
+              "id": "04f4c0643b4ee1f2cbb1",
+              "roughness": 42.30182735675545,
+              "status": "ok"
+            },
+            {
+              "R": 1.1069527499155607,
+              "artifact_valid": true,
+              "id": "e0eb9d7e4704b51f884c",
+              "roughness": 19.439426362458658,
+              "status": "ok"
+            },
+            {
+              "R": 1.358518110253295,
+              "artifact_valid": true,
+              "id": "409ab21b0f5310a9d96e",
+              "roughness": 34.12442585034897,
+              "status": "ok"
+            },
+            {
+              "R": 0.9863242463813456,
+              "artifact_valid": true,
+              "id": "fca8a41a2ec5084c6760",
+              "roughness": 14.811205409052002,
+              "status": "ok"
+            },
+            {
+              "R": 0.9232384381152552,
+              "artifact_valid": true,
+              "id": "16f9197b92a286dc0148",
+              "roughness": 13.683462825655427,
+              "status": "ok"
+            }
+          ],
+          "cpu_seconds": 0.235205,
+          "formal_timing": false,
+          "memory_peak_bytes": 20328448,
+          "public_check_status": "completed",
+          "public_evaluation_wall_seconds": 1.1692055417224765,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.18759883381426334,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "completed",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.235205,
+            "execution_wall_seconds": 0.18759883381426334,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 20328448,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.32289549987763166,
+            "reason": null,
+            "research_timeout_seconds": 492.9187304293737,
+            "timeout_seconds": 120,
+            "timing_scope": "host Docker exec request through main process/pipe completion; process quiescence reported separately; diagnostic only",
+            "total_wall_seconds": 0.877987917046994
+          }
+        },
+        "source_hash": "87f89f466a74b5cffd58fab2283b66d52d03ba247118598c4f09a23d7761c53b"
+      }
+    ],
+    "final_id": "candidate-001",
+    "finalization_invalid": false,
+    "first_id": "candidate-001",
+    "max_evaluations": 4,
+    "selection_reason": "deadline_fallback",
+    "started_at": 1792630315.83553,
+    "task": "heat",
+    "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/research-loop-pilot-001/imported-workspace"
+  },
+  "remaining_own_containers": [],
+  "remaining_own_networks": [],
+  "remaining_own_volumes": [],
+  "research_budget_seconds": 600,
+  "research_image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb",
+  "research_security": {
+    "cap_bnd": "000000000000000b",
+    "cap_eff": "0000000000000000",
+    "cap_net_admin": false,
+    "cap_net_raw": false,
+    "cap_prm": "0000000000000000",
+    "cgroup": {
+      "cpu.max": "100000 100000",
+      "memory.max": "1073741824",
+      "memory.swap.max": "0",
+      "pids.max": "128"
+    },
+    "docker_host_env_present": false,
+    "docker_socket_present": false,
+    "gid": 1000,
+    "host_mount_paths_present": [],
+    "kernel_nft_fib_inet_config": null,
+    "network_namespace": "net:[4026532852]",
+    "no_new_privs": "1",
+    "pid_namespace": "pid:[4026532915]",
+    "uid": 1000
+  },
+  "research_stop_returncode": 0,
+  "resource_status": "local_pilot_diagnostic",
+  "root_helper_capabilities": [
+    "CHOWN",
+    "DAC_OVERRIDE",
+    "FOWNER"
+  ],
+  "root_helper_capabilities_reason": "Harbor's native Pi config writer uploads as root, traverses the researcher's 0700 config directory, then chowns and chmods the file. These capabilities are available only to host-issued trusted root helpers; researcher is UID 1000 with CapEff=0, NoNewPrivs=1 and neither NET_ADMIN nor NET_RAW.",
+  "session_id": "bench-research-pilot-1ad81cadc844",
+  "socket_privileges": {
+    "marked_socket": {
+      "errno": 1,
+      "error": "[Errno 1] Operation not permitted",
+      "permission_denied": true
+    },
+    "network_packets_sent": false,
+    "raw_socket": {
+      "errno": 1,
+      "error": "[Errno 1] Operation not permitted",
+      "permission_denied": true
+    }
+  },
+  "started_at": 1792630264.2671082,
+  "status": "pilot_returned_without_required_registration",
+  "study_phase": "public-dev-pilot",
+  "task": "heat",
+  "total_wall_seconds": 161.03294277191162,
+  "trusted_source_sha256": {
+    "public/heat.py": "817b507cc05a2464dba236ad7a08c5d3511438f58ca733ed07744186eb4dbcce",
+    "runner/artifact_gate.py": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+    "runner/common.py": "e1735db1a1514030f0a87e1654fce275689c5d03d80cce994813dd77bb1dcac4",
+    "runner/file_bridge.py": "86a32a8edd69b2cf8aead1e25c25915f71c787ebc1561a76e9c740bca2c1cdc7",
+    "runner/model_smoke.py": "dec95f59c94ee9e8a6aa12977ac842d26d6d91f48d066d33cdc38f5d736f9f2e",
+    "runner/phase.py": "4f2eced24bb43be0721dcceba8bb37c9388e3bd26899f65aefa8934b7808af8e",
+    "runner/registry.py": "4ff293fe049988a68a522ec144b045a1cb4beda0ada3ccb662599d42e130a936",
+    "runner/replay.py": "82f79bb0edce0ddc4e7c08868c2a5bd32c50feb0fcf56eed7220f4fcbf007f08",
+    "runner/research_loop.py": "1f7e5589d8083b2e7a1c39837c65d49903f4e631989b2bcfe51af7ad8aaec3ed",
+    "runner/research_network_probe.py": "cf009ff4f1fd40fac8d3bd442509d36b0e596531d89a02d02bfb6bd059e2a652",
+    "runner/worker.py": "531730b687c747cbe34245ca4c79413a4aad9e7bfe09b9a5ecc577bd023c2b54"
+  },
+  "watchdog_events": [],
+  "worker_image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a"
+}

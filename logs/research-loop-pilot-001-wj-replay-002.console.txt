@@ -1,0 +1,1 @@
+{"status": "pilot_verifier_failed", "error": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/public/__init__.py'", "reward": null, "score": null, "formal": false}

@@ -1,0 +1,11 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "checks": {
+    "attack_rejected": true,
+    "candidate_not_misclassified_as_infrastructure": true
+  },
+  "events": [],
+  "passed": true,
+  "worker_reason": "tar link or special file"
+}

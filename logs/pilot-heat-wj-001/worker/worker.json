@@ -1,0 +1,36 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "cases": [
+    {
+      "artifact_valid": false,
+      "id": "0e3ae8ab05af690cde9d",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/pilot-heat-wj-001/worker/quarantine/cases/0e3ae8ab05af690cde9d/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "bb4cf34c6e28fd43a260",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/pilot-heat-wj-001/worker/quarantine/cases/bb4cf34c6e28fd43a260/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "db9b3093c406087870f8",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/pilot-heat-wj-001/worker/quarantine/cases/db9b3093c406087870f8/u0.npy'"
+    }
+  ],
+  "cpu_seconds": 0.566645,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.6715423753485084,
+  "exit_code": 0,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "memory_peak_bytes": 57720832,
+  "oom_killed": false,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.8038082080893219,
+  "scientific_pass": false,
+  "timeout_seconds": 120,
+  "timing_scope": "host Docker exec request through process-tree quiescence; diagnostic only",
+  "total_wall_seconds": 1.1883662501350045
+}

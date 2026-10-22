@@ -1,0 +1,30 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "R": 2.6141504479106294,
+      "artifact_valid": true,
+      "id": "0e3ae8ab05af690cde9d",
+      "roughness": 38.144933918978026,
+      "status": "ok"
+    },
+    {
+      "R": 1.7956332034165243,
+      "artifact_valid": true,
+      "id": "bb4cf34c6e28fd43a260",
+      "roughness": 38.86803711981897,
+      "status": "ok"
+    },
+    {
+      "R": 1.0721000532624203,
+      "artifact_valid": true,
+      "id": "db9b3093c406087870f8",
+      "roughness": 14.878062619935951,
+      "status": "ok"
+    }
+  ],
+  "cpu_seconds": 0.598756,
+  "memory_peak_bytes": 59654144,
+  "wall_seconds": 0.6849924582056701
+}

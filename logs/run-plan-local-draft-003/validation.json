@@ -1,0 +1,56 @@
+{
+  "blockers": [
+    "run plan requires status=frozen and formal_ready=true; draft cannot start",
+    "model version: model version is unresolved",
+    "model parameter thinking is unresolved/invalid (unverified null cannot authorize a run)",
+    "thinking enforcement: effective enforcement is not verified",
+    "model parameter temperature is unresolved/invalid (unverified null cannot authorize a run)",
+    "temperature enforcement: effective enforcement is not verified",
+    "model parameter output_token_limit is unresolved/invalid (unverified null cannot authorize a run)",
+    "output_token_limit enforcement: effective enforcement is not verified",
+    "system prompt: missing path/hash reference",
+    "tool configuration: effective runtime tool inventory is unresolved",
+    "heat freeze: final-test requires status=frozen; a draft is not authorization",
+    "ode freeze: final-test requires status=frozen; a draft is not authorization",
+    "poisson freeze: final-test requires status=frozen; a draft is not authorization"
+  ],
+  "final_test_scores_accessed": false,
+  "formal": false,
+  "guard_cli_exit_code": 2,
+  "image_inspections_unchanged": true,
+  "order_entropy_reused": true,
+  "packages_unchanged": true,
+  "parent_attempt": "run-plan-local-draft-002b",
+  "plan": "freezes/research-run-plan-local-draft-003.json",
+  "plan_sha256": "3df53f987012649e935bf71adff785db6b3673c2008212b3995029e8895e250f",
+  "prior_plan_sha256": "ece27bd28007e0cc02ae4f05771dc2a10df7463ad10b00eec9acab68d03196d6",
+  "run_matrix_unchanged": true,
+  "status": "expected_blocked",
+  "task_freeze_checks": {
+    "heat": {
+      "draft_sha256": "3e6363ebf79ffdef6e941d0f5363bb156b29731e2956f9e796ba779c5f217d54",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "ode": {
+      "draft_sha256": "950d5cb09375b32aa8d1115d22dcf86bd798507dec0d907cada3744a6f08a13b",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    },
+    "poisson": {
+      "draft_sha256": "cfb3a6c58eb3f70871ec13825016eeb75be6a628c228c8ac3d292d3a28d693bb",
+      "reason": "final-test requires status=frozen; a draft is not authorization",
+      "rejected_as_expected": true
+    }
+  },
+  "tool_changes_since_previous": {
+    "runner/clean_replay.py": {
+      "previous_sha256": "62bcd563da1b58d9856907b3bb3ed44dd93f38a0fa591981e4c7f9293859862e",
+      "sha256": "b04c56bdce4febabc9850d93fe57469cc574ef6a1c0668ce55626f092123f7cd"
+    },
+    "runner/verify_pilot.py": {
+      "previous_sha256": "3cb1da7886860c9da9e03dc34db8117d0f8f0bdfff9899883eaba3b776fac1cd",
+      "sha256": "42a7336f7c6ba01e1663ddbbaf6cd46e2c6a5511f85e864069e76cb68a2e106b"
+    }
+  }
+}
