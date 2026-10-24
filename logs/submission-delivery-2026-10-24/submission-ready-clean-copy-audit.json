@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "verified_files": 12708,
+  "indexed_instances": 90,
+  "public_instances_in_clone": 18,
+  "author_baseline_methods": 11,
+  "formal_sessions": 15,
+  "valid_scores": 14,
+  "reward_one": 6,
+  "author_archive_verified": true,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "scope": "Delivery consistency and integrity audit; not a new scientific replay.",
+  "source_commit": "bf665bcb8a25c1d3e9249b0ea23b8a80290b1039",
+  "extracted_git_archive": true,
+  "isolated_python_mode": true,
+  "uses_same_host_interpreter": true,
+  "no_git_or_venv_in_copy": true,
+  "intentional_public_input_corruption_rejected": true,
+  "corruption_probe_returncode": 1
+}

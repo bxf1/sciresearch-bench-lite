@@ -1,0 +1,10 @@
+{
+  "archive": "submission-ready-20261024.tar.gz",
+  "source_commit": "bf665bcb8a25c1d3e9249b0ea23b8a80290b1039",
+  "bytes": 283451577,
+  "sha256": "d6f3839e364d0ff87f8cac48702bfbbca11c7ee2c8ae1b8566cfd83b69906156",
+  "files": 12725,
+  "members_verified_against_committed_worktree": true,
+  "clean_copy_audit": "passed",
+  "scope": "Complete tracked source, public task data, reports, results and retained logs. Full author data and original large trajectories remain separate unchanged Release assets."
+}

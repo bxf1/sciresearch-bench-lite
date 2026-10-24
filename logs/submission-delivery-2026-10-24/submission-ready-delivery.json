@@ -1,0 +1,37 @@
+{
+  "status": "published_and_verified",
+  "content_commit": "bf665bcb8a25c1d3e9249b0ea23b8a80290b1039",
+  "repository_url": "https://github.com/bxf1/sciresearch-bench-lite",
+  "repository_public": true,
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "release_notes_match_local": true,
+  "original_assets_unchanged": 8,
+  "total_assets": 11,
+  "new_assets": [
+    {
+      "name": "submission-ready-20261024.tar.gz",
+      "size": 283451577,
+      "digest": "sha256:d6f3839e364d0ff87f8cac48702bfbbca11c7ee2c8ae1b8566cfd83b69906156",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/submission-ready-20261024.tar.gz"
+    },
+    {
+      "name": "submission-ready-manifest.json",
+      "size": 3444167,
+      "digest": "sha256:9705d171dae3c4b0562932800c4b9e5255f0d8bd4bc44e412ed353249c7f4e37",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/submission-ready-manifest.json"
+    },
+    {
+      "name": "submission-ready-integrity.json",
+      "size": 506,
+      "digest": "sha256:4c3c87df9f0ff9a97cc8b1a1bb7980c99d4a08d6abbe76802ffde15fb1d8e30d",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/submission-ready-integrity.json"
+    }
+  ],
+  "clean_copy_audit": "submission-ready-clean-copy-audit.json",
+  "credential_scan": "submission-ready-scan.json",
+  "formal_scores_unchanged": true,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "supplemental_queue_cancelled": true,
+  "final_report": "docs/submission-report-2026-10-24.md"
+}

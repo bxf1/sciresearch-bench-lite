@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "files_scanned": 12733,
+  "bytes": 369249659,
+  "known_credential_and_base64_matches": 0,
+  "credential_pattern_matches": 0,
+  "private_runtime_paths": 0,
+  "local_document_links_checked": 92,
+  "broken_local_links": 0,
+  "new_model_calls": 0
+}
