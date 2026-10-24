@@ -2,7 +2,7 @@
 
 科学计算 Auto Research Benchmark：热逆问题、动力学辨识与稀疏求解优化。
 
-已公开发布：[完整证据与作者数据](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。5 个附件的服务端 SHA256 与本地文件一致。
+已公开发布：[Release：最终报告、完整证据与作者数据](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。原 5 个附件保留，新增最终报告包、文件清单及校验记录；共 8 个附件已核验。可直接下载[最终报告包](https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-20261024.tar.gz)。
 
 **[最终实验报告](docs/submission-report-2026-10-24.md)** · **[Benchmark 调研与逻辑图](docs/survey.md)** · **[复现指南](docs/reproduction.md)** · **[补跑取消与诊断记录](docs/supplemental-results-2026-10-24.md)**
 

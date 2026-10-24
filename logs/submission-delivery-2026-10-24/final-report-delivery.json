@@ -1,0 +1,30 @@
+{
+  "status": "published_and_verified",
+  "report_commit": "6aee5c514871cf039e99f515192343f97d7f0432",
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "new_assets": [
+    {
+      "name": "final-report-20261024.tar.gz",
+      "size": 979561,
+      "digest": "sha256:b6a9c52b58a721c2c172c37a0f3bec6cabb01465262c436558376dfa170f27c8",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-20261024.tar.gz"
+    },
+    {
+      "name": "final-report-manifest.json",
+      "size": 27381,
+      "digest": "sha256:cdf4a34e9fa871690b351b3a64cf30b9b48fb9da9962ee9a68240938a784a28f",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-manifest.json"
+    },
+    {
+      "name": "final-report-integrity.json",
+      "size": 408,
+      "digest": "sha256:ece7bc02a2bb5619e319071b5d66794ec611ea251c3f877e70eabae722fddbdb",
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-integrity.json"
+    }
+  ],
+  "original_five_assets_unchanged": true,
+  "formal_scores_unchanged": true,
+  "supplemental_status": "cancelled_by_user",
+  "monitor_deleted": true,
+  "release_notes_verified": true
+}
