@@ -1,0 +1,8 @@
+{
+  "Architecture": "aarch64",
+  "CgroupVersion": "2",
+  "KernelVersion": "6.8.0-100-generic",
+  "MemTotal": 10401181696,
+  "NCPU": 6,
+  "OperatingSystem": "Ubuntu 24.04.4 LTS"
+}

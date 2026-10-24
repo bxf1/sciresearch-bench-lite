@@ -1,0 +1,35 @@
+{
+  "boundary_coverage": "49 successful synthetic streams charge exactly 200000 (48*4096+3392), then reject; 513 one-token requests remain admitted.",
+  "max_requests": 3125,
+  "model_id": "deepseek-flash",
+  "model_version": "DeepSeek-V4.1-Flash-1017",
+  "native_live": {
+    "path": "logs/formal-freeze-local-003/native-live-summary/result.json",
+    "sha256": "485778d2f44c9ad197e602b4bb95fc5708fd12df41284399d2b786c253e59746"
+  },
+  "prior_native_pilot": {
+    "path": "logs/harbor-native-compaction-pilot-001/result.json",
+    "sha256": "1bb5e6211eabacf7b3d963810b359673ee1a62d322e596f3cda694bf46b254bc"
+  },
+  "provider_version": {
+    "path": "logs/model-policy-documentation-local-003/result.json",
+    "sha256": "77e2b9beec2eaffd6c6c9d9835e862225355b403bdecd659ec8cae4808fdbc93"
+  },
+  "request_output_limit": 4096,
+  "runtime_policy_unchanged": {
+    "path": "logs/model-policy-capture-compaction-local-003/heat/policy.json",
+    "sha256": "a9c52aeb210aaa2983692ec34cd9f3ede5709b1511293e9837a09b2b474a9c87"
+  },
+  "scope": "Rebind new limits and parameter plumbing. Scientific kernels and native Pi payload/source policy unchanged. No hidden scores.",
+  "session_output_limit": 200000,
+  "status": "verified",
+  "temperature": 0,
+  "thinking": {
+    "type": "disabled"
+  },
+  "top_p": 1.0,
+  "unit_tests": {
+    "path": "logs/formal-freeze-local-003/unit-tests-final.txt",
+    "sha256": "60e6cb7a1c506189ef50d296325b53e70b5297534158b4d834f77753656a86f7"
+  }
+}

@@ -1,0 +1,49 @@
+ M README.md
+ M docs/limitations.md
+ M docs/results.md
+ M docs/study.md
+ M docs/timing.md
+ M runner/harbor_pilot.py
+ M runner/model_relay.py
+ M runner/model_smoke.py
+ M runner/policy_capture.py
+ M runner/relay_transport.py
+ M runner/replay.py
+ M runner/research_loop.py
+ M runner/run_plan.py
+ M runner/study.py
+ M runner/timing_host.py
+ M tests/test_harbor_pilot.py
+ M tests/test_model_relay.py
+ M tests/test_policy_capture.py
+ M tests/test_relay_transport.py
+ M tests/test_run_plan.py
+ M tests/test_timing_host.py
+?? docs/budget-freeze-2026-10-23.md
+?? docs/compaction-freeze-2026-10-23.md
+?? docs/execution-blocker-2026-10-23.md
+?? docs/execution-handoff-2026-10-23.md
+?? docs/execution-status-2026-10-23.md
+?? docs/formal-freeze-2026-10-23.md
+?? docs/formal-results-2026-10-23.md
+?? docs/resource-timing-acceptance-2026-10-23.md
+?? docs/submission-diagnosis-2026-10-23.md
+?? freezes/formal-freeze-local-001.json
+?? freezes/formal-freeze-local-002.json
+?? freezes/formal-freeze-local-003.json
+?? freezes/heat-formal-001.json
+?? freezes/heat-formal-002.json
+?? freezes/heat-formal-003.json
+?? freezes/ode-formal-001.json
+?? freezes/ode-formal-002.json
+?? freezes/ode-formal-003.json
+?? freezes/poisson-formal-001.json
+?? freezes/poisson-formal-002.json
+?? freezes/poisson-formal-003.json
+?? freezes/research-run-plan-formal-001.json
+?? freezes/research-run-plan-formal-002.json
+?? freezes/research-run-plan-formal-003.json
+?? freezes/resource-acceptance-local-001.json
+?? freezes/t3-profile-local-001.json
+?? tests/accepted_t3_calibration.py
+?? tests/resource_acceptance_probe.py

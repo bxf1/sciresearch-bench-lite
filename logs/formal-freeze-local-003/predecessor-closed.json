@@ -1,0 +1,51 @@
+{
+  "attempts": [
+    {
+      "attempt_id": "research-0301cbdf4d96c055-heat-g2-r1-a001",
+      "attempt_status": "completed",
+      "run_id": "research-0301cbdf4d96c055-heat-g2-r1",
+      "status": "research_frozen"
+    },
+    {
+      "attempt_id": "research-0301cbdf4d96c055-heat-g3-r1-a001",
+      "attempt_status": "research_timeout",
+      "run_id": "research-0301cbdf4d96c055-heat-g3-r1",
+      "status": "research_frozen"
+    },
+    {
+      "attempt_id": "research-0301cbdf4d96c055-heat-g1-r1-a001",
+      "attempt_status": "infrastructure_failed",
+      "run_id": "research-0301cbdf4d96c055-heat-g1-r1",
+      "status": "research_invalid"
+    },
+    {
+      "attempt_id": "research-0301cbdf4d96c055-heat-g1-r1-a002",
+      "attempt_status": "research_timeout",
+      "run_id": "research-0301cbdf4d96c055-heat-g1-r1",
+      "status": "research_frozen"
+    },
+    {
+      "attempt_id": "research-0301cbdf4d96c055-ode-g1-r1-a001",
+      "attempt_status": "infrastructure_failed",
+      "run_id": "research-0301cbdf4d96c055-ode-g1-r1",
+      "status": "research_invalid"
+    }
+  ],
+  "dispatcher_action": {
+    "command": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python /Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/formal-execution-local-003/research_sequence.py",
+    "pid": 22736,
+    "scope": "Paused dispatcher only, after its active child exited and cleanup completed.",
+    "signals": [
+      "SIGTERM",
+      "SIGCONT"
+    ]
+  },
+  "hidden_scores_accessed": false,
+  "ledger": {
+    "path": "research-runs/research-0301cbdf4d96c055/manifest.json",
+    "sha256": "4bd1e91342b6d127e10927e98d7c5cdc46b307a5ab95019d90d2aca6c9283f09"
+  },
+  "no_running_containers": true,
+  "recorded_at_unix": 1792716664.9895759,
+  "status": "closed_for_budget_revision"
+}

@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-012",
+  "completed_at": 1792718399.1411352,
+  "export_finished_at": 1792718398.526211,
+  "export_started_at": 1792718398.452064,
+  "imported_source": "imported-93fb4bd6de564b1c8ccfd4763cacd47e",
+  "original_r_source": "probe",
+  "received_at": 1792718398.4509802,
+  "record_sha256": "3a03af35d07c89bcecad0634da00c05a28dec858f34720c1c43cc8005a06bdbe",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "93fb4bd6de564b1c8ccfd4763cacd47e",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "93fb4bd6de564b1c8ccfd4763cacd47e",
+  "response": {
+    "candidate_id": "candidate-012",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.212313,
+      "formal_timing": false,
+      "memory_peak_bytes": 29642752,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.6133522498421371,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.084632489,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.212313,
+        "execution_wall_seconds": 0.084632489,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 29642752,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.23142437497153878,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1308.7041162732057,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.6109047499485314
+      }
+    },
+    "ok": true,
+    "request_id": "93fb4bd6de564b1c8ccfd4763cacd47e",
+    "source_hash": "15df372cef44acfa6b9ccad4754163a0ab230d93fbf21ef2ca862f4141832fd4"
+  },
+  "status": "completed"
+}

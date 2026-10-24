@@ -1,0 +1,76 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "R": 0.9753889646335552,
+      "artifact_valid": true,
+      "id": "13a841e7b6de490e68f4",
+      "roughness": 29.831293222890302,
+      "status": "ok"
+    },
+    {
+      "R": 0.9058147944271701,
+      "artifact_valid": true,
+      "id": "04f4c0643b4ee1f2cbb1",
+      "roughness": 51.05175655306704,
+      "status": "ok"
+    },
+    {
+      "R": 1.077396133993176,
+      "artifact_valid": true,
+      "id": "e0eb9d7e4704b51f884c",
+      "roughness": 21.174870118188604,
+      "status": "ok"
+    },
+    {
+      "R": 1.1766327589365004,
+      "artifact_valid": true,
+      "id": "409ab21b0f5310a9d96e",
+      "roughness": 39.131472300507674,
+      "status": "ok"
+    },
+    {
+      "R": 1.00299226632422,
+      "artifact_valid": true,
+      "id": "fca8a41a2ec5084c6760",
+      "roughness": 14.114150873826754,
+      "status": "ok"
+    },
+    {
+      "R": 0.9246505399211845,
+      "artifact_valid": true,
+      "id": "16f9197b92a286dc0148",
+      "roughness": 13.563244998583045,
+      "status": "ok"
+    }
+  ],
+  "cpu_seconds": 0.252018,
+  "formal_timing": false,
+  "memory_peak_bytes": 31842304,
+  "public_check_status": "completed",
+  "public_evaluation_wall_seconds": 0.770383084192872,
+  "research_budget_exhausted": false,
+  "wall_seconds": 0.142833798,
+  "worker_diagnostics": {
+    "all_processes_terminated": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "budget_timeout_stage": null,
+    "candidate_processes_terminated": true,
+    "cleanup_status": null,
+    "cpu_seconds": 0.252018,
+    "execution_wall_seconds": 0.142833798,
+    "exit_code": 0,
+    "formal_timing": false,
+    "log_bytes_observed": 0,
+    "memory_peak_bytes": 31842304,
+    "oom_killed": false,
+    "processes_quiesced_at_seconds": 0.29229458374902606,
+    "reason": null,
+    "research_timeout_seconds": 814.7712821858004,
+    "timeout_seconds": 120,
+    "timing_scope": "python_spawn_to_all_descendants_exit",
+    "total_wall_seconds": 0.6283037918619812
+  }
+}

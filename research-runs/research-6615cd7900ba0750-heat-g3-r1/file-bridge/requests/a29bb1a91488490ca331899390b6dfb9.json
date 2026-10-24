@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-003",
+  "completed_at": 1792718364.3250299,
+  "export_finished_at": 1792718363.649358,
+  "export_started_at": 1792718363.572764,
+  "imported_source": "imported-a29bb1a91488490ca331899390b6dfb9",
+  "original_r_source": "submission",
+  "received_at": 1792718363.571934,
+  "record_sha256": "c2def64e6fef8b851299e7758dcd698263e1cbc6d5af2ea3c7ec19d9da83e7a1",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "a29bb1a91488490ca331899390b6dfb9",
+    "source": "submission",
+    "version": 1
+  },
+  "request_id": "a29bb1a91488490ca331899390b6dfb9",
+  "response": {
+    "candidate_id": "candidate-003",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.242692,
+      "formal_timing": false,
+      "memory_peak_bytes": 31399936,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.6743160830810666,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.140480019,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.242692,
+        "execution_wall_seconds": 0.140480019,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 31399936,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.28585433308035135,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1343.580523824785,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.6687755002640188
+      }
+    },
+    "ok": true,
+    "request_id": "a29bb1a91488490ca331899390b6dfb9",
+    "source_hash": "766fc5141f6f9145615280d9bf9717bf330037bcfbd83127bd2b23c81a63c270"
+  },
+  "status": "completed"
+}

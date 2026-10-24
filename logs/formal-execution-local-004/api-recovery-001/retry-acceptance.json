@@ -1,0 +1,17 @@
+{
+  "docker": {
+    "CgroupVersion": "2",
+    "MemTotal": 10401181696,
+    "NCPU": 6
+  },
+  "hidden_scores_accessed": false,
+  "parent_attempt": "research-6615cd7900ba0750-ode-g1-r1-a002",
+  "parent_result_sha256": "520b5bf927b13caaf8f48b85b31af19fe07397c5494334cc906c38e89c91c164",
+  "plan_sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033",
+  "power": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=22544483)\t73%; discharging; 6:55 remaining present: true\n",
+  "reason": "User confirmed account resolution; one synthetic Messages request completed with HTTP 200. Retain the HTTP 402 attempt and create a new session under the unchanged third freeze.",
+  "recovery_probe_sha256": "fea19eb17537e40d36ea6e9593a957558e6f93b8bbe8857ed9d3074728e2a841",
+  "retry_limit_this_investigation": 1,
+  "user_authorization": "\u5df2\u5904\u7406\uff0c\u7ee7\u7eed\u539f\u8ba1\u5212",
+  "vm_boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b"
+}

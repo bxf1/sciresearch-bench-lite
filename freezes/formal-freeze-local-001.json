@@ -1,0 +1,96 @@
+{
+  "base_git_commit": "cbaf82a800f46544faf66e9eed5c885b3ecab677",
+  "cleanup_and_secret_scan": {
+    "path": "logs/formal-freeze-local-001/cleanup-secret-scan.json",
+    "sha256": "c83014242e07ab9094db2a58130a6c62e62fbec2eef4d83740ed5605f232e2de"
+  },
+  "cli_validation": {
+    "path": "logs/formal-freeze-local-001/cli-validation.json",
+    "sha256": "54a26adb36cf30f4492a118aaf1663a30bc79f0234ac37eb05971d8945ff4e15"
+  },
+  "created_at": "2026-10-22T17:01:06.317611+00:00",
+  "environment_inspection": {
+    "path": "logs/formal-freeze-local-001/environment-inspection.json",
+    "sha256": "a8b0f143b9f981910b90d1bdbe4a024ddc4921950f5a40597564df46752ab142"
+  },
+  "final_phase_gate_validation_only": {
+    "path": "logs/formal-freeze-local-001/final-gate-validation-only.json",
+    "sha256": "e9effa60cedcc857b7a3a9c671674b074c8ead399bb752517db7a2d420ea59e0"
+  },
+  "final_test_scores_accessed": false,
+  "flash_smoke": {
+    "path": "logs/harbor-native-flash-pilot-001/result.json",
+    "sha256": "46205708cba97236d744af4776a149640ef42bfad6fe663ccbc8fe0960ef50d5"
+  },
+  "formal_ready": true,
+  "formal_sessions_started": 0,
+  "kind": "complete_study_freeze",
+  "model_id": "deepseek-flash",
+  "model_switch_impact": {
+    "path": "logs/formal-freeze-local-001/model-switch-impact.json",
+    "sha256": "ad2673a5be5cdaac497a1c290472d9699c6c9a973486daba1f05f5e03c56a733"
+  },
+  "model_version": "DeepSeek-V4.1-Flash-1017",
+  "model_version_evidence": {
+    "path": "logs/model-policy-documentation-local-003/result.json",
+    "sha256": "77e2b9beec2eaffd6c6c9d9835e862225355b403bdecd659ec8cae4808fdbc93"
+  },
+  "plan": {
+    "path": "freezes/research-run-plan-formal-001.json",
+    "sha256": "7f66e8676f01a4940b3483e066de15b89dd8a3ff59df06e3a7f7853290261071"
+  },
+  "planned_sessions": 15,
+  "previous_draft": {
+    "path": "freezes/research-run-plan-local-draft-007.json",
+    "sha256": "d2dfe78cb5e3e1f3d9a25cbcc082b25a6266eb887ef0f4dd75e47b1a5947323a"
+  },
+  "prior_resource_t3_archive_integrity": {
+    "path": "logs/resource-t3-delivery-local-001/integrity.json",
+    "sha256": "7670b2082a2eb44f28862cc8dbf73b2edbd6b3a34a26b0788d1328ce4e0cef96"
+  },
+  "publication_performed": false,
+  "resource_acceptance": {
+    "path": "freezes/resource-acceptance-local-001.json",
+    "sha256": "60ca58e3a592484a4396d46ca18dc308ebbfb2ceea0baa4eaf6705665cbd97e3"
+  },
+  "run_matrix_sha256": "f9461853fa8b7d067fc3467b1b6576e3c319da339973ec07ce2a48dbf83f0832",
+  "schema_version": 1,
+  "source_snapshot_manifest": {
+    "path": "logs/formal-freeze-local-001/source-snapshot-manifest.json",
+    "sha256": "8346f388983c40afddccfaaddc9d146fde5724e41d31fa09a05a5742bb23c158"
+  },
+  "status": "frozen",
+  "t3_profile": {
+    "path": "freezes/t3-profile-local-001.json",
+    "sha256": "fb4924afca4c67f929b71c8da9a820ab67fc40eddad645291be27a349843d95c"
+  },
+  "task_freezes": {
+    "heat": {
+      "path": "freezes/heat-formal-001.json",
+      "sha256": "77d48cde38556486116b716755b108e9913c3ebf87b92908b5b54dcca618a42b"
+    },
+    "ode": {
+      "path": "freezes/ode-formal-001.json",
+      "sha256": "e1a8343c64d43a64a5717a94f48c25532f3812b9ac2120789b30de631bc8f74f"
+    },
+    "poisson": {
+      "path": "freezes/poisson-formal-001.json",
+      "sha256": "e0117cccee098dc7dfdbb1ebccb8d1eebec0c1a412164fa356b95ee1e9c80649"
+    }
+  },
+  "tool_config_sha256": "ebedad9d591469a98280f0f1430c31e5127598b979a63d56726521bac5917c94",
+  "tool_files_count": 49,
+  "unit_tests": {
+    "log": {
+      "path": "logs/formal-freeze-local-001/model-switch/unit-tests.txt",
+      "sha256": "c053948742ee14e2554902e6291eef8db35d013422370875e33ecca885827dab"
+    },
+    "passed": 348,
+    "warnings": 2
+  },
+  "validation": {
+    "path": "logs/formal-freeze-local-001/validation.json",
+    "sha256": "3dfee046348987be1d58adf34e3128b7d2b07d6b28b3ea3690a77292128ef486"
+  },
+  "working_tree_snapshot_is_authoritative": true
+}

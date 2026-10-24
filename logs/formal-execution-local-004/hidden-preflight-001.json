@@ -1,0 +1,19 @@
+{
+  "all_attempt_cleanup_verified": true,
+  "docker": {
+    "CgroupVersion": "2",
+    "MemTotal": 10401181696,
+    "NCPU": 6
+  },
+  "hidden_scores_accessed": false,
+  "ledger_sha256": "4173aa7003627a580d8f8ad3ac1e792fdb83e7e977477106a56a26a1fede7c46",
+  "no_running_containers": true,
+  "observed_at_unix": 1792742906.2894,
+  "plan_sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033",
+  "research_attempts": 19,
+  "retry_attempts_after_user_policy": [],
+  "status": "passed",
+  "timing_windows": "Fresh continuous observation per Poisson operation; old calibration window is not reused.",
+  "validly_closed_research": 15,
+  "vm_boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b"
+}

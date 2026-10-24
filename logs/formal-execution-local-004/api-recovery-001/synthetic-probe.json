@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "formal": false,
+  "http_status": 200,
+  "model": "deepseek-flash",
+  "observed_at_unix": 1792722576.1605089,
+  "request_output_limit": 4096,
+  "request_sha256": "6298c4ecf31778bd11212d6aa0540429a042694622e434d025b52a9c1abe546b",
+  "response_sha256": "d57bba9b60ca6477115d03132efb9e05f0b821ffaaa8a2a21fa6f4a3a7d2b5ca",
+  "scope": "One synthetic short request after explicit account-resolution confirmation; no scientific data.",
+  "usage_observations": [
+    {
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "input_tokens": 14,
+      "output_tokens": 0,
+      "service_tier": "standard"
+    },
+    {
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "input_tokens": 14,
+      "output_tokens": 1,
+      "service_tier": "standard"
+    }
+  ],
+  "user_authorization": "\u5df2\u5904\u7406\uff0c\u7ee7\u7eed\u539f\u8ba1\u5212"
+}

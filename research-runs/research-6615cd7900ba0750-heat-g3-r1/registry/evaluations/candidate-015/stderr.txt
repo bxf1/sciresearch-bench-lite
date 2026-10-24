@@ -1,0 +1,1 @@
+OUT=/output IN=/input outexists=True outlist=[] inlist=['cases', 'manifest.json']

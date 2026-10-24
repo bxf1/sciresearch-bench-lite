@@ -97,15 +97,17 @@ def validate_admission(admission):
 
 def relay_outcome(status, *, interrupted=False):
     """Only host-read relay state can establish provider failure."""
-    if not isinstance(status, dict) or status.get("schema_version") != 1 or status.get("model") != "deepseek-v4-pro":
+    if not isinstance(status, dict) or status.get("schema_version") != 1 or status.get("model") != "deepseek-flash":
         return "infrastructure_failed", "missing trusted relay status schema"
     for key in ("request_count", "successful_requests", "failed_requests", "inflight"):
         if type(status.get(key)) is not int or status[key] < 0:
             return "infrastructure_failed", "invalid trusted relay counters"
-    if status.get("evidence_error") is not False or status.get("state") == "failed_closed":
+    if status.get("evidence_error") is not False:
         return "infrastructure_failed", "relay could not persist trusted evidence"
     if status.get("protocol_violation") is not False or status["inflight"]:
         return "infrastructure_failed", "relay protocol violation or active upstream request"
+    if status.get("state") == "failed_closed":
+        return "infrastructure_failed", "relay failed closed"
     outcome = status.get("last_request_outcome")
     if outcome == "evidence_error":
         return "infrastructure_failed", "relay could not persist trusted evidence"
@@ -125,7 +127,7 @@ async def native_setup_evidence(agent, environment, config, relay_status, *, set
     settings = settings or pilot_settings()
     limits = relay_status.get("limits", {})
     if (relay_status.get("state") != "ready" or relay_status.get("request_count") != 0
-            or relay_status.get("model") != "deepseek-v4-pro" or relay_status.get("inflight") != 0
+            or relay_status.get("model") != "deepseek-flash" or relay_status.get("inflight") != 0
             or relay_status.get("protocol_violation") is not False or relay_status.get("evidence_error") is not False
             or limits.get("thinking") != {"type": "disabled"} or limits.get("temperature") != 0.0
             or limits.get("top_p") != 1.0 or limits.get("request_output_limit") != settings["request_output_limit"]
@@ -134,8 +136,11 @@ async def native_setup_evidence(agent, environment, config, relay_status, *, set
     expected = {"models.json": digest((json.dumps(config, indent=2) + "\n").encode())}
     if settings["max_turns"] is not None:
         expected["max-turns.ts"] = digest(agent._build_max_turns_extension(settings["max_turns"]).encode())
-    if settings["formal"] and any(limits.get(key) != settings[key] for key in ("expected_system_sha256", "expected_tools_sha256")):
+    if settings["formal"] and any(limits.get(key) != settings.get(key) for key in (
+            "expected_system_sha256", "expected_tools_sha256", "expected_compaction_system_sha256")):
         raise RuntimeError("fresh relay wire system/tools policy differs from the frozen research contract")
+    if settings["formal"] and limits.get("max_requests", 512) != settings.get("max_requests", 512):
+        raise RuntimeError("fresh relay request count limit differs from the frozen research contract")
     program = """import hashlib,json,pathlib,shutil
 root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
 package=json.loads((root/'package.json').read_text())
@@ -145,6 +150,7 @@ sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-work
 tools=sorted((root/'dist/core/tools').rglob('*.js'))
 assert tools
 sources+=tools
+sources+=[root/'dist/core/agent-session.js']+sorted((root/'dist/core/compaction').glob('*.js'))
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 NAMES
 print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(config/name) for name in names},'installed_source_sha256':{p.relative_to(root).as_posix():sha(p) for p in sources}}))
@@ -159,6 +165,9 @@ print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(
     observed = json.loads(actual.stdout)
     if observed.get("version") != "0.84.1" or observed.get("configuration_sha256") != expected:
         raise RuntimeError("native Pi version or configuration hash mismatch")
+    for name, sha in settings.get("expected_compaction_sources", {}).items():
+        if observed.get("installed_source_sha256", {}).get(name) != sha:
+            raise RuntimeError("native Pi compaction source hash mismatch: " + name)
     return {**observed, "native_requested_reasoning_effort": "off",
             "max_turns": settings["max_turns"],
             "relay_enforced_policy": limits, "fresh_upstream_request_count": 0,
@@ -227,6 +236,7 @@ def build_task(directory, public_root, research_image, numeric_image, relay_host
         prompt, hashes = pilot_prompt(settings["research_seconds"])
     (directory / "instruction.md").write_text(prompt)
     quoted = json.dumps
+    agent_timeout = "" if settings["research_seconds"] is None else f"timeout_sec = {float(settings['research_seconds'])}"
     (directory / "task.toml").write_text(f'''schema_version = "1.4"
 artifacts = [{{source = "/logs/artifacts", exclude = ["*", "**/*"]}}]
 [task]
@@ -234,7 +244,7 @@ name = "{'sciresearch' if settings['formal'] else 'sciresearch-pilot'}/{settings
 description = "Public development research; host-controlled registration"
 authors = []
 [agent]
-timeout_sec = {float(settings['research_seconds'])}
+{agent_timeout}
 user = "researcher"
 network_mode = "allowlist"
 allowed_hosts = [{quoted(relay_host)}]
@@ -269,7 +279,7 @@ def trial_config(output, task, admission, overlay, replay_config, *, settings=No
                 if settings["formal"] else VerifierConfig(import_path="runner.harbor_verifier:ResearchReplayVerifier",
                     kwargs={"registry_root": str(output / "registry"), "replay_config": replay_config}))
     return TrialConfig(task=TaskConfig(path=task), trial_name=settings.get("attempt_id", "heat-pilot-" + uuid.uuid4().hex[:12]),
-        trials_dir=output / "harbor", agent=AgentConfig(name="pi", model_name="anthropic/deepseek-v4-pro",
+        trials_dir=output / "harbor", agent=AgentConfig(name="pi", model_name="anthropic/deepseek-flash",
             model_base_url=admission["base_url"], model_api_key_name="BENCH_RELAY_KEY", model_api_format="anthropic_messages",
             env={"BENCH_RELAY_KEY": admission["token"], "ANTHROPIC_OAUTH_TOKEN": ""},
             kwargs={"version": "0.84.1", "reasoning_effort": "off", "max_turns": settings["max_turns"]},
@@ -424,7 +434,7 @@ class PilotController:
             # writer now; the approved root capabilities must work before model use.
             agent = self.trial.agent
             self.record["model_credential_admission"] = verify_model_credential(agent, self.admission)
-            config = agent._build_custom_models_json(agent.model_connection, "deepseek-v4-pro")
+            config = agent._build_custom_models_json(agent.model_connection, "deepseek-flash")
             await agent._write_custom_models_json(env, config)
             if self.settings["max_turns"] is not None:
                 await agent._write_max_turns_extension(env, self.settings["max_turns"])
@@ -458,9 +468,10 @@ class PilotController:
                 command(["docker", "stop", "--time", "0", self.cid], timeout=30)
             except Exception as exc:
                 self.cleanup_errors["deadline_stop"] = self.redact(exc)
-        self.watchdog = threading.Timer(max(.01, self.agent_started_at + self.settings["research_seconds"] - time.time()), deadline_stop)
-        self.watchdog.daemon = True
-        self.watchdog.start()
+        if self.settings["research_seconds"] is not None:
+            self.watchdog = threading.Timer(max(.01, self.agent_started_at + self.settings["research_seconds"] - time.time()), deadline_stop)
+            self.watchdog.daemon = True
+            self.watchdog.start()
         self.record["model_run_started"] = True
         self.event("research_admitted", input_hashes=self.record["actual_input_sha256"])
 
@@ -629,7 +640,10 @@ async def run(args, *, session_spec=None):
     if session_spec is not None:
         # Direct programmatic calls have the same gate as the study CLI. This
         # must precede mkdir, image inspection, relay allocation and Trial.create.
-        from .study import validate_session
+        if session_spec.get("supplemental") is True:
+            from .supplemental import validate_session
+        else:
+            from .study import validate_session
         validate_session(session_spec)
         if Path(session_spec["project"]).resolve() != Path(__file__).resolve().parents[1]:
             raise ValueError("formal controller must execute from the frozen project source")
@@ -676,7 +690,9 @@ async def run(args, *, session_spec=None):
                                              session_output_limit=settings["session_output_limit"],
                                              request_output_limit=settings["request_output_limit"],
                                              expected_system_sha256=settings.get("expected_system_sha256"),
-                                             expected_tools_sha256=settings.get("expected_tools_sha256")))
+                                             expected_tools_sha256=settings.get("expected_tools_sha256"),
+                                             expected_compaction_system_sha256=settings.get("expected_compaction_system_sha256"),
+                                             max_requests=settings.get("max_requests", 512)))
         validate_admission(admission)
         private_root = Path(admission["output_root"]).resolve()
         if not private_root.is_relative_to((root / "build").resolve()) or not Path(admission["admission_path"]).resolve().is_relative_to(private_root):

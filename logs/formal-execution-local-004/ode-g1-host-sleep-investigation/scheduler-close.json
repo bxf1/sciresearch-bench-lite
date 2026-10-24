@@ -1,0 +1,9 @@
+{
+  "pid": 26956,
+  "signals": [
+    "SIGTERM",
+    "SIGCONT"
+  ],
+  "at_unix": 1792721413.033068,
+  "scope": "Old scheduler only, after cancelled child cleanup. Replacement controller will perform the single linked retry then resume the same frozen order."
+}

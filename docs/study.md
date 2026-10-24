@@ -1,6 +1,8 @@
 # Formal study controller
 
-`runner.study` is the minimal host entry point for the frozen 15-session matrix. It does not freeze or approve a plan. The current local acceptance results do not authorize formal research: a draft, unresolved policy, missing freeze, changed trusted source or insufficient actual Docker resources fails before a relay, research container or model request is allocated.
+当前第三版执行已收束，见[正式结果](formal-results-2026-10-23.md)。15 次研究有效关闭、11 作者方法及全部 first/final 操作已执行；14 个有效科学结果，Poisson G2 计时无效留空，不重测。用户减少重试指令之后未新增关联研究重试。下文是控制器能力说明，不是重新启动实验的授权。
+
+`runner.study` is the minimal host entry point for the frozen 15-session matrix. It does not freeze or approve a plan. The authorized [third freeze](budget-freeze-2026-10-23.md) binds the 15 sessions to DeepSeek-V4.1-Flash-1017 with a cumulative 200,000 output-token cap per session; all have closed. A draft, unresolved policy, missing freeze, changed trusted source or insufficient actual Docker resources still fails before a relay, research container or model request is allocated.
 
 From `benchmark/`, launch one predeclared row:
 
@@ -90,6 +92,6 @@ An infrastructure failure can receive an explicitly linked new attempt using `--
 
 ## Validation scope
 
-The controller and reporting paths have synthetic no-Docker/no-API coverage. A real formal matrix and final replay have not been executed or accepted. The existing nonformal heat pilot remains separate, at 600 seconds, four evaluations, 12 turns and R 1 vCPU/1 GiB.
+The controller and reporting paths have synthetic no-Docker/no-API coverage. The third frozen matrix and all required hidden operations have now executed. Full valid scientific acceptance was not achieved: one Poisson research performance window was invalid and retained without remeasurement. The existing nonformal heat pilot remains separate, at 600 seconds, four evaluations, 12 turns and R 1 vCPU/1 GiB.
 
 Recovery tests cover an unchanged closed registry followed by host cleanup failure, explicit linked research retry, and a complete T3 replay-history/report path using synthetic groups. They verify that one original and one linked remeasurement remain one scientific session. No final attempt is deleted or replaced to obtain a better score.

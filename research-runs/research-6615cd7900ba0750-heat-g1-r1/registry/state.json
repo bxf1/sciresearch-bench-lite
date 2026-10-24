@@ -1,0 +1,141 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "c587ff35e982814089e164dd8bd2f66a0c52408d94bc424fcafa2f2cdd0108dd",
+    "reason": "native Pi returned",
+    "recorded_at": 1792719076.820508,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g1",
+  "evaluations": [
+    {
+      "accepted_at": 1792719032.949783,
+      "artifact_valid": false,
+      "completed_at": 1792719033.077352,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792719036.8947499,
+      "artifact_valid": false,
+      "completed_at": 1792719036.965461,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792719042.3173969,
+      "artifact_valid": false,
+      "completed_at": 1792719042.3892741,
+      "id": "candidate-003",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792719057.615495,
+      "artifact_valid": true,
+      "completed_at": 1792719058.64464,
+      "id": "candidate-004",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 0.9865428145282318,
+            "artifact_valid": true,
+            "id": "13a841e7b6de490e68f4",
+            "roughness": 29.191735114757034,
+            "status": "ok"
+          },
+          {
+            "R": 0.9431154642071804,
+            "artifact_valid": true,
+            "id": "04f4c0643b4ee1f2cbb1",
+            "roughness": 49.47604026968899,
+            "status": "ok"
+          },
+          {
+            "R": 1.0071148707481807,
+            "artifact_valid": true,
+            "id": "e0eb9d7e4704b51f884c",
+            "roughness": 25.700058600026853,
+            "status": "ok"
+          },
+          {
+            "R": 1.063700424605687,
+            "artifact_valid": true,
+            "id": "409ab21b0f5310a9d96e",
+            "roughness": 41.389985893829156,
+            "status": "ok"
+          },
+          {
+            "R": 0.9829838154063231,
+            "artifact_valid": true,
+            "id": "fca8a41a2ec5084c6760",
+            "roughness": 15.725786882944718,
+            "status": "ok"
+          },
+          {
+            "R": 0.9226112926299654,
+            "artifact_valid": true,
+            "id": "16f9197b92a286dc0148",
+            "roughness": 13.845261566915086,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.250083,
+        "formal_timing": false,
+        "memory_peak_bytes": 31748096,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 0.954309375025332,
+        "research_budget_exhausted": false,
+        "wall_seconds": 0.143311069,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 0.250083,
+          "execution_wall_seconds": 0.143311069,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 31748096,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 0.28575554210692644,
+          "reason": null,
+          "research_timeout_seconds": 1287.0721368626691,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 0.682824790943414
+        }
+      },
+      "source_hash": "fa3cb320623e7b98af86d2b78ea7af92b87287ac871ea3e197daa4f0b608e616"
+    }
+  ],
+  "final_id": "candidate-004",
+  "finalization_invalid": false,
+  "first_id": "candidate-004",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1792718544.7628999,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g1-r1/workspace"
+}

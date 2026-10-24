@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-013",
+  "completed_at": 1792718400.384002,
+  "export_finished_at": 1792718399.7512891,
+  "export_started_at": 1792718399.674689,
+  "imported_source": "imported-537ba217a3374249bd178897b1fda9c6",
+  "original_r_source": "probe",
+  "received_at": 1792718399.673514,
+  "record_sha256": "277275c2acaf17b2a1bdbe3789e514a6fc8343d9e21c6c77d14a431b1f3922d6",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "537ba217a3374249bd178897b1fda9c6",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "537ba217a3374249bd178897b1fda9c6",
+  "response": {
+    "candidate_id": "candidate-013",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.212551,
+      "formal_timing": false,
+      "memory_peak_bytes": 29659136,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.6312231658957899,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.086388901,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.212551,
+        "execution_wall_seconds": 0.086388901,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 29659136,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.235512750223279,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1307.4791246191598,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.6290127504616976
+      }
+    },
+    "ok": true,
+    "request_id": "537ba217a3374249bd178897b1fda9c6",
+    "source_hash": "18f2b9eaedae518fcf656a3026f4b6fe643cb23a6d7cf9a9da85193770ecbe4d"
+  },
+  "status": "completed"
+}

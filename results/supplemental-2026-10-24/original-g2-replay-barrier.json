@@ -1,0 +1,16 @@
+{
+  "model_calls": 0,
+  "no_running_containers": true,
+  "original_closed_sessions": 15,
+  "original_ledger": {
+    "path": "research-runs/research-6615cd7900ba0750/manifest.json",
+    "sha256": "baf192d8ee63e29bcd0e7267928a38d5aa1c8b6af5b3fb35991b617bcd5b8008"
+  },
+  "original_plan": {
+    "path": "freezes/research-run-plan-formal-003.json",
+    "sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033"
+  },
+  "scope": "Replay original closed G2 snapshots only, while supplemental model batch is stopped for HTTP 402. No new or unfinished research is scored.",
+  "status": "passed",
+  "timestamp": 1792847735.9388978
+}

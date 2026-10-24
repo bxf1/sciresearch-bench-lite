@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-008",
+  "completed_at": 1792718389.891103,
+  "export_finished_at": 1792718389.319052,
+  "export_started_at": 1792718389.241336,
+  "imported_source": "imported-dfc672c0c81a4aff96dc97c0bac1562a",
+  "original_r_source": "probe",
+  "received_at": 1792718389.240274,
+  "record_sha256": "144536a2b51936fcbf0e8c1521c818b592f656baf2974ff032cb553502ca1d31",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "dfc672c0c81a4aff96dc97c0bac1562a",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "dfc672c0c81a4aff96dc97c0bac1562a",
+  "response": {
+    "candidate_id": "candidate-008",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.210758,
+      "formal_timing": false,
+      "memory_peak_bytes": 29659136,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.5706340842880309,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.08464092,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.210758,
+        "execution_wall_seconds": 0.08464092,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 29659136,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.2309705000370741,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1317.911424874328,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.5683357920497656
+      }
+    },
+    "ok": true,
+    "request_id": "dfc672c0c81a4aff96dc97c0bac1562a",
+    "source_hash": "676bb4de94a0a549bec73cfaad7f748e9fdfa40ed964365704a2bd94757fd28c"
+  },
+  "status": "completed"
+}

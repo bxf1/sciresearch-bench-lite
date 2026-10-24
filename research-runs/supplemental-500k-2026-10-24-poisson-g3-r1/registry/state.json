@@ -1,0 +1,21 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "fc629f59a7bee5d6c67cf9e094a99dbbd4177f69890a4bb9be55c94412b9e023",
+    "reason": "Host Codex exec/controller terminated during connection failure; research container survived without host bridge. Infrastructure-invalid, not scientific failure.",
+    "recorded_at": 1792813941.7885041,
+    "status": "infrastructure_failed"
+  },
+  "attempt_status": "infrastructure_failed",
+  "budget_seconds": null,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": null,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792812870.618525,
+  "task": "poisson",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1/workspace"
+}

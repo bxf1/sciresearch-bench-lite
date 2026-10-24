@@ -1,0 +1,7 @@
+{
+  "observed_at_unix": 1792734781.169879,
+  "user_instruction": "没研究出来的任务就正常关闭，无需过多重试",
+  "policy": "No new automatic retry attempts after this instruction. Research with no valid submission closes under the existing time/token/evaluation limits and retains its actual outcome. API/infrastructure failures retain their real classification; do not relabel them as valid scientific results. The already running heat G3 r2 a002 may finish normally, followed by the unchanged remaining order.",
+  "frozen_model_prompts_data_scoring_unchanged": true,
+  "existing_attempts_preserved": true
+}

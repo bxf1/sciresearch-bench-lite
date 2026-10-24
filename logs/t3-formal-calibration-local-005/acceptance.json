@@ -1,0 +1,12 @@
+{
+  "calibration_summary_sha256": "130b60ddd6b8b9bbe1aad970fed3bf73797081e19a47bae12877e8bf12ab2470",
+  "completed_at": "2026-10-22T16:30:47.539960+00:00",
+  "final_test_scores_accessed": false,
+  "formal_profile_ready": true,
+  "host_observations_sha256": "5cb3c5488740d1aa6ecc552543f943c2d5a1f74459f02d093232450a263ef303",
+  "model_calls": 0,
+  "observer_errors": [],
+  "selected_profile": "efficiency_gate_1.5",
+  "status": "passed",
+  "violations": []
+}

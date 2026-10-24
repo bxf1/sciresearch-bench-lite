@@ -1,0 +1,20 @@
+{
+  "all_15_specs_validated": true,
+  "blockers": [],
+  "final_test_scores_accessed": false,
+  "formal_ready": true,
+  "formal_sessions_started": 0,
+  "plan": {
+    "path": "freezes/research-run-plan-formal-003.json",
+    "sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033"
+  },
+  "predecessor_ledger_unchanged": {
+    "path": "research-runs/research-0301cbdf4d96c055/manifest.json",
+    "sha256": "4bd1e91342b6d127e10927e98d7c5cdc46b307a5ab95019d90d2aca6c9283f09"
+  },
+  "previous_plan": {
+    "path": "freezes/research-run-plan-formal-002.json",
+    "sha256": "5ab5c8e35ce5afa39ebfd53482dfa49d86f7401e76e7ce0af0d579dbfad4cceb"
+  },
+  "status": "passed"
+}

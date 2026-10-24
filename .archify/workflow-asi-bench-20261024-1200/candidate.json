@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "ASI-Bench：指导强度、执行与评分",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-asi-bench-20261024-1200/asi-bench.html",
+    "repository": {
+      "url": "https://github.com/apexin-ai/ASI-Bench",
+      "revision": "b100adef1acef9e38cc2cea298f2d07a8cc1fd84"
+    }
+  },
+  "lanes": [
+    {
+      "id": "author",
+      "label": "任务与数据构造"
+    },
+    {
+      "id": "run",
+      "label": "执行与独立评分"
+    },
+    {
+      "id": "audit",
+      "label": "诊断与改进"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "domain",
+      "lane": "author",
+      "col": 0,
+      "label": "科研任务",
+      "sublabel": "60 个项目／11 个领域",
+      "type": "external",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 75,
+          "end_line": 101
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "lane": "author",
+      "col": 1,
+      "label": "参数化实例",
+      "sublabel": "生成数据与独立参考",
+      "type": "database",
+      "width": 180,
+      "sources": [
+        {
+          "path": "ai4sci_bench/generators/instance_generator.py",
+          "line": 127,
+          "end_line": 212
+        }
+      ]
+    },
+    {
+      "id": "guidance",
+      "lane": "author",
+      "col": 2,
+      "label": "B1 → B4",
+      "sublabel": "目标、数据与评价匹配",
+      "type": "backend",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 90,
+          "end_line": 104
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "lane": "run",
+      "col": 2,
+      "label": "Agent 与工具",
+      "sublabel": "沙箱内完成科研产物",
+      "type": "backend",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 150,
+          "end_line": 176
+        }
+      ]
+    },
+    {
+      "id": "gates",
+      "lane": "run",
+      "col": 3,
+      "label": "门槛与连续分",
+      "sublabel": "硬门槛、软惩罚与权重",
+      "type": "security",
+      "width": 180,
+      "sources": [
+        {
+          "path": "ai4sci_bench/core/scoring.py",
+          "line": 106,
+          "end_line": 205
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "lane": "audit",
+      "col": 3,
+      "label": "分开报告状态",
+      "sublabel": "运行失败／评分器错误",
+      "type": "database",
+      "width": 180,
+      "sources": [
+        {
+          "path": "ai4sci_bench/local_scoring.py",
+          "line": 527,
+          "end_line": 580
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "lane": "audit",
+      "col": 2,
+      "label": "匹配条件比较",
+      "sublabel": "指导强度与轨迹诊断",
+      "type": "backend",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 80,
+          "end_line": 110
+        }
+      ]
+    },
+    {
+      "id": "revision",
+      "lane": "audit",
+      "col": 1,
+      "label": "作者审查修订",
+      "sublabel": "排除泄漏与不稳定任务",
+      "type": "external",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 104,
+          "end_line": 115
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "domain",
+      "to": "data",
+      "label": "构造"
+    },
+    {
+      "id": "e1",
+      "from": "data",
+      "to": "guidance",
+      "label": "匹配"
+    },
+    {
+      "id": "e2",
+      "from": "guidance",
+      "to": "agent",
+      "label": "执行"
+    },
+    {
+      "id": "e3",
+      "from": "agent",
+      "to": "gates",
+      "label": "产物"
+    },
+    {
+      "id": "e4",
+      "from": "gates",
+      "to": "status",
+      "label": "记录"
+    },
+    {
+      "id": "e5",
+      "from": "status",
+      "to": "compare",
+      "label": "分析"
+    },
+    {
+      "id": "e6",
+      "from": "compare",
+      "to": "revision",
+      "label": "审查"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "评分与归因不同",
+      "items": [
+        "门槛和指标核验产物；匹配条件和执行轨迹支持分析。",
+        "任务修订面向下一版；图中没有把隐藏评分返回同一研究会话。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "自迭代边界",
+      "items": [
+        "Agent 可在任务内根据工具输出修改方法。",
+        "该流程本身不证明 Agent 自身代码或模型权重发生递归改进。"
+      ]
+    }
+  ]
+}

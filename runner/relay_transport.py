@@ -22,7 +22,7 @@ import uuid
 from .common import file_hash, read_json, write_json
 
 PORT = 8787
-MODEL = "deepseek-v4-pro"
+MODEL = "deepseek-flash"
 NETWORK_PREFIX = "sciresearch-relay-"
 
 
@@ -94,11 +94,13 @@ def read_status(admission):
 
 def start_relay(output, *, image, provider_key=None, session_seconds=600,
                 session_output_limit=32768, request_output_limit=4096,
-                expected_system_sha256=None, expected_tools_sha256=None):
+                expected_system_sha256=None, expected_tools_sha256=None,
+                expected_compaction_system_sha256=None, max_requests=512):
     from .model_relay import Limits
     Limits(session_seconds=session_seconds, session_output_limit=session_output_limit,
            request_output_limit=request_output_limit, expected_system_sha256=expected_system_sha256,
-           expected_tools_sha256=expected_tools_sha256)
+           expected_tools_sha256=expected_tools_sha256,
+           expected_compaction_system_sha256=expected_compaction_system_sha256, max_requests=max_requests)
     secret = provider_key if provider_key is not None else os.environ.get("ANTHROPIC_AUTH_TOKEN", "")
     if not secret:
         raise ValueError("Provider credential unavailable")
@@ -120,7 +122,9 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
               "provider_endpoint": "https://api.deepseek.com/anthropic/v1/messages",
               "session_seconds": session_seconds, "session_output_limit": session_output_limit,
               "request_output_limit": request_output_limit, "status": "starting",
-              "expected_system_sha256": expected_system_sha256, "expected_tools_sha256": expected_tools_sha256}
+              "max_requests": max_requests,
+              "expected_system_sha256": expected_system_sha256, "expected_tools_sha256": expected_tools_sha256,
+              "expected_compaction_system_sha256": expected_compaction_system_sha256}
     write_json(output / "startup.json", record)
     try:
         docker("network", "create", "--driver", "bridge", "--label", "sciresearch.project=benchmark-v0.3", identity)
@@ -128,6 +132,8 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
         environment.update(BENCH_RELAY_PROVIDER_KEY=secret, BENCH_RELAY_SESSION_TOKEN=token)
         expected_args = ([] if expected_system_sha256 is None else
                          ["--expected-system-sha256", expected_system_sha256, "--expected-tools-sha256", expected_tools_sha256])
+        if expected_compaction_system_sha256 is not None:
+            expected_args += ["--expected-compaction-system-sha256", expected_compaction_system_sha256]
         docker("create", "--name", identity, "--label", "sciresearch.project=benchmark-v0.3",
                "--network", identity, "--cpus", "0.25", "--memory", "256m", "--memory-swap", "256m",
                "--pids-limit", "64", "--cap-drop", "ALL", "--security-opt", "no-new-privileges",
@@ -137,8 +143,9 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
                "--env", "BENCH_RELAY_PROVIDER_KEY", "--env", "BENCH_RELAY_SESSION_TOKEN", image_id,
                "python", "-I", "/trusted/model_relay.py", "--bind", "0.0.0.0", "--port", str(PORT),
                "--events", "/evidence/events.jsonl", "--model", MODEL,
-               "--session-seconds", str(session_seconds), "--session-output-limit", str(session_output_limit),
-               "--request-output-limit", str(request_output_limit), *expected_args, env=environment)
+               "--session-seconds", "none" if session_seconds is None else str(session_seconds), "--session-output-limit", str(session_output_limit),
+               "--request-output-limit", str(request_output_limit), "--max-requests", "none" if max_requests is None else str(max_requests),
+               *expected_args, env=environment)
         docker("start", identity)
         info = json.loads(docker("inspect", identity).stdout)[0]
         admission = {"schema_version": 1, "model": MODEL, "token": token,

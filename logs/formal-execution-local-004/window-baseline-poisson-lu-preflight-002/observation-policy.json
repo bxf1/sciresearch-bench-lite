@@ -1,0 +1,10 @@
+{
+  "cache_policy": "Unmodified warm host/guest page cache; no cache eviction between BCCBBC samples; fresh containers and outputs. Resource probes precede a quiet settling window.",
+  "maximum_swapin_pages_per_interval": null,
+  "maximum_swapout_pages_per_interval": 0,
+  "maximum_unrelated_process_core_percent": 5,
+  "preflight_seconds": 30,
+  "revision": 3,
+  "sample_interval_seconds": 2,
+  "swapin_policy": "Record global macOS swap-ins as diagnostic overhead, not a standalone rejection. Global counters cannot attribute reads of previously swapped pages to the VM. No calibration samples were executed under revision 1. Zero new swap-outs, no active unrelated workloads, guest swap prohibition and the original baseline stability threshold remain required."
+}

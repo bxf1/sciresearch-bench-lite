@@ -1,0 +1,5 @@
+{
+  "status": "rejected_audit_draft",
+  "reason": "Audit draft incorrectly expected resource_qualified on heat/ODE worker records. This field belongs to the performance-qualified Poisson path; resource_limits_verified is required for every worker. No benchmark result or trusted code was changed.",
+  "draft": "audit_final_delivery-draft-001.py"
+}

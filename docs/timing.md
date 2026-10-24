@@ -1,5 +1,7 @@
 # T3计时实现与本机验证
 
+2026-10-23 第三版 final-test 已执行：7 个 BCCBBC 组、42 个 W 批次，5 组性能有效；Poisson G2 的 first/final 两组因后台 VPN CPU 峰值而无效，性能留空且未重测。LU 另保留一次未开始测量的前置窗口拒绝，新合格准入后仅测一次。新窗口、哈希和逐组结果见[交付审计](../logs/formal-execution-local-004/final-audit-001.json)与[最终报告](formal-results-2026-10-23.md)。旧校准时间窗口没有复用。
+
 新W将Linux PID1设为非root UID65533，候选仍是UID65534；cap-drop ALL、no-new-privileges、只读根目录、1 CPU、4 GiB、禁swap和pids128保持不变。可信计时器替换原有sleep PID1，不增加容器配额。其CPU和内存仍计入W的整体资源使用。
 
 只读launcher在执行任何候选代码前，通过SO_PEERCRED核验的一次性UNIX连接记录起点，随后立即exec固定Python。连接CLOEXEC，监听器在放行前关闭。PID1持有主进程pidfd，等待其退出后通过waitpid收完全部被接管的后代；双fork、setsid、关闭stdout或自设subreaper不会提前结束计时。区间包含Python启动、导入、I/O、计算和全部后代退出/文件关闭；不包含容器准备和J。宿主总墙钟另外保存。
@@ -17,7 +19,9 @@
 - 运行时重新核对证据哈希、Docker至少4 CPU/4 GiB/cgroup v2、空闲容器清单，并持有本项目唯一flock。组内每个W必须在该lease的Docker start事件中恰好出现一次，不能升级历史诊断样本，也不能夹入其他容器启动。
 - 新group记录还核对机器、镜像、timer/source/input/resource哈希、空输出、实际cgroup和进程清理。原始worker文件不变。候选超时/OOM/日志限制在合格环境中仍是有效零分，没有完整区间；基线失败不能提供速度分母。已冻结accuracy profile可保留候选正确性reward，efficiency profile的性能reward为null。
 
-这个资源合同可先于profile校准存在，以免循环要求“已有profile才可测profile”。它不解锁final-test；隐藏重放仍另需完整任务freeze。当前本机没有通过此正式门控，其正反分支仅有合成单测。
+这个资源合同可先于profile校准存在，以免循环要求“已有profile才可测profile”。它不解锁final-test；隐藏重放仍另需完整任务freeze。2026-10-23 本机已通过资源门控及独占窗口的三组正式校准，冻结 `efficiency_gate_1.5`，详见[验收记录](resource-timing-acceptance-2026-10-23.md)。
+
+Docker 事件从组开始前实时订阅，以从不启动的标记容器 create 事件确认订阅及结束边界。这样无需比较 macOS 与 Linux VM 的墙钟，也不依赖 Docker 有限的历史事件缓冲。每个 W 必须恰好启动一次，未知启动事件仍导致资格拒绝；完整 start 事件和边界 ID 随资格证据保存。
 
 ## 完整批次入口
 
@@ -33,10 +37,11 @@
 
 ## 已保存证据
 
+- [正式资源与校准005](resource-timing-acceptance-2026-10-23.md)：资源15/15、真实4GiB OOM分类、三组合计216个方法×实例检查通过，18个W均有新正式资格记录；profile及全部证据见[冻结记录](../freezes/t3-profile-local-001.json)。此前拒绝轮次保留。
 - [最新W完整回归005](../logs/runtime-probes-005/summary.json)：11/11通过，包括tmpfs配额、PID压力、输出/路径攻击、日志限制与超时。未执行4 GiB OOM压力。后台进程现在自然等待到原预算，超时失败；不沿用旧worker主动reap后的计时结论。
 - [最新timer探针004](../logs/process-timer-probe-004/summary.json)：5/5通过，含双fork、setsid、候选subreaper和13项权限/FD检查。002中一次超时分类错误保留；003和004为修复后的独立attempt。
 - [公开dev完整比较](../logs/t3-public-bccbbc-local-001/public_feedback.json)：六批BCCBBC、每批六例全部残差通过，仍为诊断。
 - [三组校准诊断](../logs/t3-calibration-diagnostic-001/summary.json)：十八个W/J批次、每批12例全部通过，`calibration_not_formal`、`profile=null`。诊断速度比不能作为正式效率结论。
 - [定向单测](../logs/t3-timer-unit-local-001.txt)：计时协议、资格门控、历史样本拒绝、失败分类、BCCBBC、三组及一次linked retry的回归。
 
-本轮没有模型调用，没有读取final-test求解成绩，也没有停止或修改其他服务。
+上述历史功能/校准轮次没有模型调用或final-test成绩；不包括本页顶部的新正式重放。2026-10-23 正式验收按用户授权将Colima调为6 vCPU/10 GiB并停止其他8个服务容器，数据卷保留；此次仍无模型调用或隐藏求解成绩。

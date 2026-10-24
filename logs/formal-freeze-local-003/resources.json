@@ -1,0 +1,36 @@
+{
+  "current_environment": {
+    "path": "logs/formal-freeze-local-003/environment-inspection.json",
+    "sha256": "c3c10e8bc86bd44c20416bdd533e52d77be62042b11567ec02d6c621baeb007d"
+  },
+  "formal_resources_accepted": true,
+  "prior_acceptance": {
+    "path": "freezes/resource-acceptance-local-001.json",
+    "sha256": "60ca58e3a592484a4396d46ca18dc308ebbfb2ceea0baa4eaf6705665cbd97e3"
+  },
+  "resources": {
+    "filesystem_depth": 32,
+    "filesystem_entries": 2000,
+    "heat_ode_worker_seconds": 120,
+    "judge_seconds": 1200,
+    "max_evaluations": 20,
+    "output_bytes": 268435456,
+    "poisson_worker_seconds": 60,
+    "research_memory_bytes": 4294967296,
+    "research_seconds": 1800,
+    "research_vcpu": 4,
+    "source_bytes": 20971520,
+    "source_files": 1000,
+    "tmp_bytes": 67108864,
+    "worker_memory_bytes": 4294967296,
+    "worker_pids": 128,
+    "worker_swap_bytes": 0,
+    "worker_threads": 1,
+    "worker_vcpu": 1
+  },
+  "revision_impact": {
+    "path": "logs/formal-freeze-local-003/revision-impact.json",
+    "sha256": "25ac807ecc33e49e44ae71d083980d2e2793ddc23e73c36393c21773d1d6975c"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "verifier",
+      "time": 1792729211.081386
+    }
+  ],
+  "formal": true,
+  "session_id": "research-6615cd7900ba0750-poisson-g3-r1-a001__verifier__trial"
+}

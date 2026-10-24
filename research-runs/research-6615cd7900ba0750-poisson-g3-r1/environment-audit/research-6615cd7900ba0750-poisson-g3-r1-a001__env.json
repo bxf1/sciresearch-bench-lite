@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "research",
+      "time": 1792727351.0441039
+    },
+    {
+      "kind": "research_network_sealed",
+      "policy": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792727409.7116601
+    },
+    {
+      "kind": "native_pi_stdout_suppressed",
+      "time": 1792727409.921601
+    },
+    {
+      "kind": "setup_network_restore_blocked",
+      "requested": {
+        "allowed_hosts": [],
+        "network_mode": "public"
+      },
+      "retained": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792729209.6642401
+    },
+    {
+      "kind": "native_agent_log_download_suppressed",
+      "time": 1792729209.845431
+    },
+    {
+      "kind": "empty_native_agent_log_upload_suppressed",
+      "time": 1792729209.8462179
+    },
+    {
+      "kind": "native_artifacts_excluded",
+      "time": 1792729209.846764
+    }
+  ],
+  "formal": true,
+  "session_id": "research-6615cd7900ba0750-poisson-g3-r1-a001__env"
+}

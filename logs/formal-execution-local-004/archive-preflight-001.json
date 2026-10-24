@@ -1,0 +1,35 @@
+{
+  "historical_archives_verified": [
+    {
+      "path": "logs/formal-freeze-delivery-local-001/evidence.tar.gz",
+      "sha256": "b600c63663894c1f6efda545c586d6f6c724732ab4d648a9a09fd438819d62ca"
+    },
+    {
+      "path": "logs/formal-execution-delivery-local-001/evidence.tar.gz",
+      "sha256": "171a7464b6cf8a3ad341cd5b68286b7166bf30da12b834b8c9f96f0f8bb79059"
+    },
+    {
+      "path": "logs/formal-freeze-delivery-local-002/evidence.tar.gz",
+      "sha256": "505628e1928cb902a79c908b56ce0651b6f17701d1252b43763f13bfa6e5b9a1"
+    },
+    {
+      "path": "logs/formal-execution-delivery-local-003/evidence.tar.gz",
+      "sha256": "dc1c1162b82462505e4d1b8538bc83cf54e287735fb8f0d70f325af708f28e42"
+    },
+    {
+      "path": "logs/formal-freeze-delivery-local-003/evidence.tar.gz",
+      "sha256": "7f2583a90ec1be58d3890729e54223937268f35596bf84d87f7ebb50691a8af5"
+    },
+    {
+      "path": "logs/formal-execution-delivery-local-004/evidence.tar.gz",
+      "sha256": "45bfbdae47bc5c89a1de393623c800837e7145350ba034ea4bbfecde5a4f169c"
+    }
+  ],
+  "manifest_sha256": "baf192d8ee63e29bcd0e7267928a38d5aa1c8b6af5b3fb35991b617bcd5b8008",
+  "no_running_containers": true,
+  "plan_sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033",
+  "retained_registry_files_included": true,
+  "scope": "Current source, frozen source snapshot, current-plan raw evidence and candidates, resource/calibration acceptance, final tables, operational scripts and documents. Private numeric data, setup build directories, bytecode caches, dependencies and Docker images are excluded. Prior archives remain separate and hash-bound; no publication.",
+  "source_snapshot_files_verified": 213,
+  "status": "passed"
+}

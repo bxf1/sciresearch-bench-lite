@@ -1,0 +1,142 @@
+{
+  "candidate_id": "candidate-004",
+  "completed_at": 1792725432.886125,
+  "export_finished_at": 1792725407.055265,
+  "export_started_at": 1792725406.972626,
+  "imported_source": "imported-2941be78dd8f4df8bb7a7e43df041de2",
+  "original_r_source": "solution",
+  "received_at": 1792725406.97152,
+  "record_sha256": "4f60b2420aeee8872d1bd9e2163b0617d00126f9a09fc2add1c8e1f3e6ce6812",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "2941be78dd8f4df8bb7a7e43df041de2",
+    "source": "solution",
+    "version": 1
+  },
+  "request_id": "2941be78dd8f4df8bb7a7e43df041de2",
+  "response": {
+    "candidate_id": "candidate-004",
+    "feedback": {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "cases": [
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "677b9a2d151ff70c6e10",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.005149327682016608,
+            0.005127015776117278
+          ],
+          "validation_mean": 0.005138171729066943
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "f82d125dd9cef7170507",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.004977438666885975,
+            0.005091359418050061
+          ],
+          "validation_mean": 0.005034399042468018
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "f9220f7a4cd047832b15",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.014654434782172952,
+            0.01517732578615261
+          ],
+          "validation_mean": 0.014915880284162781
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "b4da37f25d6bc95ee155",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.015453458362227461,
+            0.015110327964536562
+          ],
+          "validation_mean": 0.01528189316338201
+        },
+        {
+          "K": 5,
+          "artifact_valid": true,
+          "id": "d597bf08ace1c7ec1368",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.0312993284505487,
+            0.03053954848181413
+          ],
+          "validation_mean": 0.030919438466181413
+        },
+        {
+          "K": 5,
+          "artifact_valid": true,
+          "id": "4f49905d2c9a6bbb918b",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.029723765941394274,
+            0.03125196118665622
+          ],
+          "validation_mean": 0.030487863564025247
+        }
+      ],
+      "cpu_seconds": 22.559285,
+      "formal_timing": false,
+      "memory_peak_bytes": 59764736,
+      "public_check_status": "completed",
+      "public_evaluation_wall_seconds": 25.828747290652245,
+      "research_budget_exhausted": false,
+      "wall_seconds": 22.648268824,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "completed",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 22.559285,
+        "execution_wall_seconds": 22.648268824,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 59764736,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 22.802884082775563,
+        "reason": null,
+        "research_timeout_seconds": 133.85334574989974,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 23.18363737501204
+      }
+    },
+    "ok": true,
+    "request_id": "2941be78dd8f4df8bb7a7e43df041de2",
+    "source_hash": "1bf4c53406f0f963d11a6c67b6ddf74660853640be71bd7b6dbe6a9d92510257"
+  },
+  "status": "completed"
+}

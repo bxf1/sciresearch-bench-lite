@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "verifier",
+      "time": 1792723660.0704541
+    }
+  ],
+  "formal": true,
+  "session_id": "research-6615cd7900ba0750-ode-g1-r1-a003__verifier__trial"
+}

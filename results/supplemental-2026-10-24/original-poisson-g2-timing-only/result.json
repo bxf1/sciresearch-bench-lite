@@ -1,0 +1,21 @@
+{
+  "diagnostics": {
+    "evaluation_status": "not_run",
+    "reason": "host_preflight_rejected; no hidden replay performed",
+    "reward": null,
+    "score": null
+  },
+  "freeze": {
+    "path": "freezes/poisson-formal-003.json",
+    "sha256": "0663ac65edb74bd24d137cfbf5c7f69b46ab82a96661b61861e38332a411f01e"
+  },
+  "kind": "timing_only",
+  "model_calls": 0,
+  "original_results_replaced": false,
+  "registry": {
+    "path": "research-runs/research-6615cd7900ba0750-poisson-g2-r1/registry/state.json",
+    "sha256": "fad4730f1c941cbbfd83ba605f557fccbf1f4d57e87a6215638ba71d35e44df1"
+  },
+  "run_id": "original-poisson-g2-timing-only",
+  "task": "poisson"
+}

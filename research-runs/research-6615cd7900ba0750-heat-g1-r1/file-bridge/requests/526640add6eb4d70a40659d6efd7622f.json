@@ -1,0 +1,31 @@
+{
+  "candidate_id": "candidate-001",
+  "completed_at": 1792719033.078063,
+  "export_error": "ReadError: empty file",
+  "export_finished_at": 1792719033.077328,
+  "export_started_at": 1792719032.950149,
+  "imported_source": "imported-526640add6eb4d70a40659d6efd7622f",
+  "original_r_source": "/tmp/out",
+  "received_at": 1792719032.9490829,
+  "record_sha256": "2cfe01c6cebbc285116b530d6870ca6008ac92bd8a245d9295f2e58be21b4714",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "526640add6eb4d70a40659d6efd7622f",
+    "source": "/tmp/out",
+    "version": 1
+  },
+  "request_id": "526640add6eb4d70a40659d6efd7622f",
+  "response": {
+    "candidate_id": "candidate-001",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "submission_failed",
+      "reason": "source preparation failed: ReadError: empty file",
+      "source_export_error": "ReadError: empty file"
+    },
+    "ok": true,
+    "request_id": "526640add6eb4d70a40659d6efd7622f",
+    "source_hash": null
+  },
+  "status": "completed"
+}

@@ -1,0 +1,11 @@
+{
+  "attempt_status": "research_timeout",
+  "evaluation_status": "not_run",
+  "final_id": "candidate-001",
+  "first_id": "candidate-001",
+  "formal": true,
+  "registration_status": "registered",
+  "registry_sha256": "782a3781fc7caf24f5395f82a9b23fb0585161528c56e7dbf3ccacf093533a8b",
+  "reward": null,
+  "score": null
+}

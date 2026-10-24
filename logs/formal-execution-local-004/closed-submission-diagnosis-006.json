@@ -1,0 +1,427 @@
+{
+  "observed_at_unix": 1792729246.623318,
+  "plan_id": "research-6615cd7900ba0750",
+  "ledger_sha256_at_observation": "567c62c2d838f7e61b3f6c4d275a78835a1be4b85b1efb58e1bcabb63c0e7b37",
+  "hidden_scores_accessed": false,
+  "scope": "Closed research attempts only. Native tool errors describe agent behavior; they are not automatically infrastructure failures.",
+  "attempts": [
+    {
+      "run_id": "research-6615cd7900ba0750-heat-g2-r1",
+      "attempt_id": "research-6615cd7900ba0750-heat-g2-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "completed",
+      "result_sha256": "7ccc12ccfb6a961e0ecbba329427a9dd72b3c3f18cb022e214afe98b9658c59f",
+      "registry_sha256": "ad15ca500fd32402def21c010ce59b6b26c6abf242ad5fcfde35662bf4d7124a",
+      "public_evaluations": 7,
+      "artifact_valid_evaluations": 4,
+      "first_id": "candidate-004",
+      "final_id": "candidate-007",
+      "selection_reason": "explicit_finalize",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 402,
+        "write": 9
+      },
+      "unique_tool_calls": 52,
+      "longest_identical_tool_call_streak": 354,
+      "tool_results": 411,
+      "tool_error_categories": {
+        "output_limit_truncation": 1
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 408,
+        "length": 7,
+        "stop": 1
+      },
+      "native_compactions": 6,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-heat-g2-r1/auxiliary-agent/pi/sessions/2026-10-23T00-53-47-266Z_01a1663f-ea82-78fa-b318-64e61648a656.jsonl",
+          "sha256": "1734fa96d4e93d8dfee49b15411e5a3a3e8aa704102590155093a28aca2f7ed6"
+        }
+      ],
+      "successful_requests": 422,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 422
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 122638,
+      "charged_output_tokens": 122638,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-heat-g3-r1",
+      "attempt_id": "research-6615cd7900ba0750-heat-g3-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "completed",
+      "result_sha256": "4c9881f8914f3b0460b56d07ebf855ee9383667b12481ed51a0341e680920f1a",
+      "registry_sha256": "638a2713f8b417b88fbb48ab79ef0854e860e27d618664d24cc2ecf1018885ac",
+      "public_evaluations": 18,
+      "artifact_valid_evaluations": 2,
+      "first_id": "candidate-017",
+      "final_id": "candidate-018",
+      "selection_reason": "explicit_finalize",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 211,
+        "write": 2,
+        "edit": 3
+      },
+      "unique_tool_calls": 213,
+      "longest_identical_tool_call_streak": 1,
+      "tool_results": 216,
+      "tool_error_categories": {
+        "output_limit_truncation": 1,
+        "other_tool_error": 3
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 213,
+        "length": 4,
+        "stop": 1
+      },
+      "native_compactions": 3,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-heat-g3-r1/auxiliary-agent/pi/sessions/2026-10-23T01-11-49-518Z_01a16650-6e0e-7723-8d06-19e20ed3212d.jsonl",
+          "sha256": "1554620daf2a2e9f8fe5f8e3ff75b8aee9f97f506ccecc3865fc3b07e0c69b88"
+        }
+      ],
+      "successful_requests": 221,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 221
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 76374,
+      "charged_output_tokens": 76374,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-heat-g1-r1",
+      "attempt_id": "research-6615cd7900ba0750-heat-g1-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "completed",
+      "result_sha256": "878d3d1e4333537ae76a2db78076652279a8a38d0d273d26daf74fb38ef3864f",
+      "registry_sha256": "b1c92a8dbf464640de618f0efad592fd14691c91859ff21e0eab36f963e1f21f",
+      "public_evaluations": 4,
+      "artifact_valid_evaluations": 1,
+      "first_id": "candidate-004",
+      "final_id": "candidate-004",
+      "selection_reason": "explicit_finalize",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 176,
+        "write": 3,
+        "read": 1
+      },
+      "unique_tool_calls": 47,
+      "longest_identical_tool_call_streak": 84,
+      "tool_results": 180,
+      "tool_error_categories": {},
+      "assistant_stop_reasons": {
+        "toolUse": 178,
+        "length": 6,
+        "stop": 1
+      },
+      "native_compactions": 6,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-heat-g1-r1/auxiliary-agent/pi/sessions/2026-10-23T01-22-27-045Z_01a1665a-2865-7ad9-b0ce-3444dee46bba.jsonl",
+          "sha256": "750d9aabbf7e917d7aacb95e59f8deb4fa55fc6452afcf6a5da0ad3c4cc26a52"
+        }
+      ],
+      "successful_requests": 191,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 191
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 74313,
+      "charged_output_tokens": 74313,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-ode-g1-r1",
+      "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a001",
+      "parent_attempt": null,
+      "status": "research_invalid",
+      "attempt_status": "cancelled",
+      "result_sha256": "7f61bd86eef10f606497ead81cf8e5aff2516c10a5d6acf5632b233b74690d74",
+      "registry_sha256": "1399a2a050e0f3cfc9f1080672e460db499a98cd2905db92584d0e62ba96735b",
+      "public_evaluations": 0,
+      "artifact_valid_evaluations": 0,
+      "first_id": null,
+      "final_id": null,
+      "selection_reason": "no_valid_submission",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 10
+      },
+      "unique_tool_calls": 10,
+      "longest_identical_tool_call_streak": 1,
+      "tool_results": 9,
+      "tool_error_categories": {},
+      "assistant_stop_reasons": {
+        "toolUse": 9
+      },
+      "native_compactions": 0,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/auxiliary-agent/pi/sessions/2026-10-23T01-32-21-225Z_01a16663-3969-7790-92b0-fe0cd1cff2c5.jsonl",
+          "sha256": "883013aefca6663fd5309127e22bcd5c918f63646009a6d517fb9729ffff693e"
+        }
+      ],
+      "successful_requests": 9,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 9
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 2721,
+      "charged_output_tokens": 2721,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-ode-g1-r1",
+      "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a002",
+      "parent_attempt": "research-6615cd7900ba0750-ode-g1-r1-a001",
+      "status": "research_invalid",
+      "attempt_status": "api_failed",
+      "result_sha256": "520b5bf927b13caaf8f48b85b31af19fe07397c5494334cc906c38e89c91c164",
+      "registry_sha256": "91009661fbb3a9a2662254d0ad4093627f63fb7faba21ff54d48898fec2ebe3e",
+      "public_evaluations": 0,
+      "artifact_valid_evaluations": 0,
+      "first_id": null,
+      "final_id": null,
+      "selection_reason": "no_valid_submission",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 255
+      },
+      "unique_tool_calls": 14,
+      "longest_identical_tool_call_streak": 242,
+      "tool_results": 255,
+      "tool_error_categories": {},
+      "assistant_stop_reasons": {
+        "toolUse": 253,
+        "error": 1
+      },
+      "native_compactions": 0,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/retries/research-6615cd7900ba0750-ode-g1-r1-a002/auxiliary-agent/pi/sessions/2026-10-23T02-11-21-319Z_01a16686-ee67-759f-867e-b5a273554f1d.jsonl",
+          "sha256": "0d73b185c1e56a4a78263c80046b792a778f3e3798677b47b26a671dbf0bcba3"
+        }
+      ],
+      "successful_requests": 253,
+      "failed_requests": 1,
+      "request_outcomes": {
+        "success": 253,
+        "upstream_http_error": 1
+      },
+      "request_failure_reasons": {
+        "upstream_http_error": 1
+      },
+      "known_successful_output_tokens": 69828,
+      "charged_output_tokens": 73924,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-ode-g1-r1",
+      "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a003",
+      "parent_attempt": "research-6615cd7900ba0750-ode-g1-r1-a002",
+      "status": "research_frozen",
+      "attempt_status": "completed",
+      "result_sha256": "82ca64ca526460c3b90a91a878dbdced0a2b64fca77378b9744024082c6d93b8",
+      "registry_sha256": "4cadfd054aaaf46aad1062d4496af2152290e15d384e0f4c23230dc244f1f693",
+      "public_evaluations": 3,
+      "artifact_valid_evaluations": 1,
+      "first_id": "candidate-003",
+      "final_id": "candidate-003",
+      "selection_reason": "explicit_finalize",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 78,
+        "read": 1,
+        "write": 1
+      },
+      "unique_tool_calls": 46,
+      "longest_identical_tool_call_streak": 8,
+      "tool_results": 80,
+      "tool_error_categories": {
+        "output_limit_truncation": 24,
+        "process_creation_resource": 20
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 54,
+        "length": 26,
+        "stop": 1
+      },
+      "native_compactions": 2,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/retries/research-6615cd7900ba0750-ode-g1-r1-a003/auxiliary-agent/pi/sessions/2026-10-23T02-34-30-721Z_01a1669c-21c1-7b9f-a12d-d659b2d3db68.jsonl",
+          "sha256": "49f7abf08def051656c3035deb989740a9c125a1527f1830c08e45d0951cd4da"
+        }
+      ],
+      "successful_requests": 83,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 83
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 185235,
+      "charged_output_tokens": 185235,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-ode-g2-r1",
+      "attempt_id": "research-6615cd7900ba0750-ode-g2-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "completed",
+      "result_sha256": "c5a99350d9937f9637f69dfcf8edc5ddd41f9f817b326fce1c85ee5220234deb",
+      "registry_sha256": "045a468001b6e33e36e786965ad1854a3ec1f5325d4637c4f04c117d165dfb89",
+      "public_evaluations": 4,
+      "artifact_valid_evaluations": 4,
+      "first_id": "candidate-001",
+      "final_id": "candidate-001",
+      "selection_reason": "explicit_finalize",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 359,
+        "edit": 2
+      },
+      "unique_tool_calls": 361,
+      "longest_identical_tool_call_streak": 1,
+      "tool_results": 361,
+      "tool_error_categories": {
+        "other_tool_error": 2,
+        "output_limit_truncation": 2
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 357,
+        "length": 4,
+        "stop": 1
+      },
+      "native_compactions": 2,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-ode-g2-r1/auxiliary-agent/pi/sessions/2026-10-23T02-49-03-698Z_01a166a9-73d2-751a-99d6-1e928563d9a5.jsonl",
+          "sha256": "abe0c63e7b0c4278e4babac991f62a3b3c272e8a25634c7023b59f382262c35f"
+        }
+      ],
+      "successful_requests": 364,
+      "failed_requests": 0,
+      "request_outcomes": {
+        "success": 364
+      },
+      "request_failure_reasons": {},
+      "known_successful_output_tokens": 158843,
+      "charged_output_tokens": 158843,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-ode-g3-r1",
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "research_timeout",
+      "result_sha256": "7a1ffaa83d5148a3b5aa1934a848ada34344ac1c6277d37e750f8f2bf09cbf0a",
+      "registry_sha256": "fce33eb8d68890273a2f95e1f681362d3617460d1ae6856c294277281cc8922a",
+      "public_evaluations": 7,
+      "artifact_valid_evaluations": 1,
+      "first_id": "candidate-007",
+      "final_id": "candidate-007",
+      "selection_reason": "deadline_fallback",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 821,
+        "write": 1
+      },
+      "unique_tool_calls": 48,
+      "longest_identical_tool_call_streak": 749,
+      "tool_results": 822,
+      "tool_error_categories": {
+        "output_limit_truncation": 1,
+        "other_tool_error": 1
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 819,
+        "length": 5
+      },
+      "native_compactions": 4,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/auxiliary-agent/pi/sessions/2026-10-23T03-18-51-015Z_01a166c4-b987-7bd5-aee5-a0d723b1d55e.jsonl",
+          "sha256": "92216270b8e3b8f8fe22d451dec13d7d86b9381261eadd9f409934e078401a90"
+        }
+      ],
+      "successful_requests": 828,
+      "failed_requests": 1,
+      "request_outcomes": {
+        "success": 828,
+        "client_disconnected": 1
+      },
+      "request_failure_reasons": {
+        "client_disconnected": 1
+      },
+      "known_successful_output_tokens": 141704,
+      "charged_output_tokens": 145800,
+      "cost_usd": null
+    },
+    {
+      "run_id": "research-6615cd7900ba0750-poisson-g3-r1",
+      "attempt_id": "research-6615cd7900ba0750-poisson-g3-r1-a001",
+      "parent_attempt": null,
+      "status": "research_frozen",
+      "attempt_status": "research_timeout",
+      "result_sha256": "2fb3934dc0c749cfca3d748ffde5bd7f548c707987a14d20541ecdd64c5fafe9",
+      "registry_sha256": "6b347df406b323d82a9237312afe94898054ff9c9e821428b5636acc1dc1cf6a",
+      "public_evaluations": 3,
+      "artifact_valid_evaluations": 0,
+      "first_id": null,
+      "final_id": null,
+      "selection_reason": "no_valid_submission",
+      "finalization_invalid": false,
+      "tool_calls": {
+        "bash": 706,
+        "write": 1
+      },
+      "unique_tool_calls": 40,
+      "longest_identical_tool_call_streak": 223,
+      "tool_results": 707,
+      "tool_error_categories": {
+        "other_tool_error": 1,
+        "output_limit_truncation": 2
+      },
+      "assistant_stop_reasons": {
+        "toolUse": 703,
+        "length": 6
+      },
+      "native_compactions": 4,
+      "native_log_files": [
+        {
+          "path": "research-runs/research-6615cd7900ba0750-poisson-g3-r1/auxiliary-agent/pi/sessions/2026-10-23T03-50-12-575Z_01a166e1-6f5f-7280-8652-5feb4ae896eb.jsonl",
+          "sha256": "fcb9ac342a9ddbefb83c8b3bce00635425e4fe96f96e42485be80101ba96beff"
+        }
+      ],
+      "successful_requests": 713,
+      "failed_requests": 1,
+      "request_outcomes": {
+        "success": 713,
+        "client_disconnected": 1
+      },
+      "request_failure_reasons": {
+        "client_disconnected": 1
+      },
+      "known_successful_output_tokens": 177200,
+      "charged_output_tokens": 181296,
+      "cost_usd": null
+    }
+  ]
+}

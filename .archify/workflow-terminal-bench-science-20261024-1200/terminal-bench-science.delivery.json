@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "949c6afd-95f8-43fc-a02c-280796c5939f",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.archify/workflow-terminal-bench-science-20261024-1200/candidate.json",
+  "output": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.archify/workflow-terminal-bench-science-20261024-1200/terminal-bench-science.html",
+  "specification": {
+    "sha256": "fee5a4569fc172aedd62a3c7afa8c4f993d833081762398f500faa69d63731ba",
+    "bytes": 4913
+  },
+  "artifact": {
+    "sha256": "2d24a1b2f394d9ec3827a418353fda25a43e64685cdb45ae336b8715e79a32d1",
+    "bytes": 758344
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "research",
+      "time": 1792725462.7299042
+    },
+    {
+      "kind": "research_network_sealed",
+      "policy": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792725528.367893
+    },
+    {
+      "kind": "native_pi_stdout_suppressed",
+      "time": 1792725528.582895
+    },
+    {
+      "kind": "setup_network_restore_blocked",
+      "requested": {
+        "allowed_hosts": [],
+        "network_mode": "public"
+      },
+      "retained": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792727328.20963
+    },
+    {
+      "kind": "native_agent_log_download_suppressed",
+      "time": 1792727328.380194
+    },
+    {
+      "kind": "empty_native_agent_log_upload_suppressed",
+      "time": 1792727328.380979
+    },
+    {
+      "kind": "native_artifacts_excluded",
+      "time": 1792727328.381542
+    }
+  ],
+  "formal": true,
+  "session_id": "research-6615cd7900ba0750-ode-g3-r1-a001__env"
+}

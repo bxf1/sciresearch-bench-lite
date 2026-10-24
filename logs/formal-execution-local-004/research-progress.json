@@ -1,0 +1,21 @@
+{
+  "completed_run_ids": [
+    "research-6615cd7900ba0750-heat-g2-r1",
+    "research-6615cd7900ba0750-heat-g3-r1",
+    "research-6615cd7900ba0750-heat-g1-r1",
+    "research-6615cd7900ba0750-ode-g1-r1",
+    "research-6615cd7900ba0750-ode-g2-r1",
+    "research-6615cd7900ba0750-ode-g3-r1",
+    "research-6615cd7900ba0750-poisson-g3-r1",
+    "research-6615cd7900ba0750-poisson-g2-r1",
+    "research-6615cd7900ba0750-poisson-g1-r1",
+    "research-6615cd7900ba0750-heat-g3-r2",
+    "research-6615cd7900ba0750-heat-g1-r2",
+    "research-6615cd7900ba0750-heat-g2-r2",
+    "research-6615cd7900ba0750-heat-g3-r3",
+    "research-6615cd7900ba0750-heat-g1-r3",
+    "research-6615cd7900ba0750-heat-g2-r3"
+  ],
+  "planned": 15,
+  "validly_closed": 15
+}

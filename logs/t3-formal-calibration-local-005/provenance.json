@@ -1,0 +1,25 @@
+{
+  "base_git_commit": "cbaf82a800f46544faf66e9eed5c885b3ecab677",
+  "working_tree_changes_present": true,
+  "numeric_image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "source_manifest": {
+    "path": "logs/t3-formal-calibration-local-005/source-manifest.json",
+    "sha256": "55c34eee71e4e53f7d40f3eb943594ec2726cca6a3a6abb3ee45c149c6560396"
+  },
+  "data_manifest": {
+    "path": "logs/t3-formal-calibration-local-005/data-manifest.json",
+    "sha256": "21432b85cec87e41678c8228917f422a68be96856284224e4c1beb7e44504242"
+  },
+  "formal_study_frozen": false,
+  "formal_research_sessions": 0,
+  "model_calls": 0,
+  "final_test_scores_accessed": false,
+  "unit_tests": {
+    "passed": 348,
+    "warnings": 2,
+    "log": {
+      "path": "logs/t3-formal-calibration-local-005/unit-tests.txt",
+      "sha256": "99577f464042214425531c8ecbaed75121b86b40bc6910161274869fcd0c7a93"
+    }
+  }
+}

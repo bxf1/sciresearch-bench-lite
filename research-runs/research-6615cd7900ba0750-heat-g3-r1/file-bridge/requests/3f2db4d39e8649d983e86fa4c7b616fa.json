@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-014",
+  "completed_at": 1792718403.4448462,
+  "export_finished_at": 1792718402.9254138,
+  "export_started_at": 1792718402.848833,
+  "imported_source": "imported-3f2db4d39e8649d983e86fa4c7b616fa",
+  "original_r_source": "probe",
+  "received_at": 1792718402.846735,
+  "record_sha256": "df3bafbb2f4c86e96884abf680720091181edf685079f1e7600fe4a7708a9da0",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "3f2db4d39e8649d983e86fa4c7b616fa",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "3f2db4d39e8649d983e86fa4c7b616fa",
+  "response": {
+    "candidate_id": "candidate-014",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.136722,
+      "formal_timing": false,
+      "memory_peak_bytes": 24236032,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.5175787503831089,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.010425562,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.136722,
+        "execution_wall_seconds": 0.010425562,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 91,
+        "memory_peak_bytes": 24236032,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.16681641712784767,
+        "reason": null,
+        "research_timeout_seconds": 1304.3049532570876,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.5154647920280695
+      }
+    },
+    "ok": true,
+    "request_id": "3f2db4d39e8649d983e86fa4c7b616fa",
+    "source_hash": "ea209de7811480be448caeed799facf283e2c996d6374c94e87431b6ab30452a"
+  },
+  "status": "completed"
+}

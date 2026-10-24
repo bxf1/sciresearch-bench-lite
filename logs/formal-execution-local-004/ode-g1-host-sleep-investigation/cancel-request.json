@@ -1,0 +1,7 @@
+{
+  "pid": 37162,
+  "command": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python -m runner.study start --plan /Users/baixiongfei/Documents/Projects/build_bench/benchmark/freezes/research-run-plan-formal-003.json --run-id research-6615cd7900ba0750-ode-g1-r1",
+  "signal": "SIGINT",
+  "at_unix": 1792721320.715281,
+  "reason": "Host clamshell suspension during the fixed wall-clock research budget, with research still running beyond the deadline. Retain as invalid/cancelled attempt, not a scientific failure."
+}

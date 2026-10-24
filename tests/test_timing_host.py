@@ -1,16 +1,18 @@
 """Synthetic host admission only: these fixtures do not certify local hardware."""
 import copy
 import json
+import os
 from pathlib import Path
 import tempfile
 import time
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from runner.common import canonical,digest,file_hash,write_json
 from runner.phase import RESOURCES
 from runner.performance import ACCURACY_PROFILE,EFFICIENCY_PROFILE,calibrate_profile,summarize_group
-from runner.timing_host import TimingLease
+from runner.timing_host import DockerEventStream,TimingLease
 from tests.test_performance import fixture
 
 
@@ -48,7 +50,14 @@ class TimingHostTests(unittest.TestCase):
         return SimpleNamespace(stdout=output)
 
     def lease(self):
-        return TimingLease(self.root/"contract.json",execute=self.execute,lock_path=self.root/"measurement.lock")
+        owner=self
+        class Events:
+            def __init__(self,*unused): pass
+            def start(self): pass
+            def finish(self):
+                return {"mode":"synthetic", "start_events":[{"Actor":{"ID":identifier}} for identifier in owner.events]}
+            def close(self): pass
+        return TimingLease(self.root/"contract.json",execute=self.execute,lock_path=self.root/"measurement.lock",event_stream_factory=Events)
 
     def test_live_qualified_records_are_new_and_raw_worker_evidence_stays_diagnostic(self):
         with self.lease() as lease:
@@ -121,6 +130,44 @@ class TimingHostTests(unittest.TestCase):
             calibrated=calibrate_profile([[attempt],[attempt],[attempt]])
         self.assertEqual(calibrated["profile"],ACCURACY_PROFILE)
         self.assertTrue(calibrated["formal_profile_ready"])
+
+
+class DockerEventStreamTests(unittest.TestCase):
+    def test_live_capture_has_barriers_and_retains_more_than_256_events(self):
+        state={"file":None,"markers":[],"removed":[],"exited":False}
+        def emit(event):
+            os.write(state["file"].fileno(),(json.dumps(event)+"\n").encode())
+        def execute(*args):
+            if args[0]=="create":
+                identifier="marker-"+str(len(state["markers"]))
+                state["markers"].append(identifier)
+                emit({"Action":"create","Actor":{"ID":identifier}})
+                return SimpleNamespace(stdout=identifier+"\n")
+            self.assertEqual(args[0],"rm")
+            state["removed"].append(args[1])
+            return SimpleNamespace(stdout="")
+        class Process:
+            def poll(self): return 0 if state["exited"] else None
+            def terminate(self): state["exited"]=True
+            def wait(self,**unused): return 0
+        def launch(command,**kwargs):
+            self.assertNotIn("--since",command)
+            self.assertNotIn("--until",command)
+            state["file"]=kwargs["stdout"]
+            return Process()
+        stream=DockerEventStream("synthetic-image",execute)
+        with patch("runner.timing_host.subprocess.Popen",side_effect=launch):
+            try:
+                stream.start()
+                for i in range(600):emit({"Action":"start","Actor":{"ID":str(i)},"time":123})
+                capture=stream.finish()
+                self.assertEqual(len(capture["start_events"]),600)
+                self.assertEqual(len(capture["barrier_container_ids"]),2)
+                self.assertEqual(state["markers"],state["removed"])
+                state["exited"]=True
+                with self.assertRaisesRegex(ValueError,"exited"):
+                    stream.finish()
+            finally:stream.close()
 
 
 if __name__=="__main__": unittest.main()

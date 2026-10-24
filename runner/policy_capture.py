@@ -24,12 +24,19 @@ from .model_relay import encoded, strict_json
 
 
 TASKS = ("heat", "ode", "poisson")
-MODEL = "deepseek-v4-pro"
+MODEL = "deepseek-flash"
 MARKER = "BENCH_POLICY_CAPTURE_V1 "
 DUMMY_KEY = "offline-policy-capture-dummy-not-a-credential"
 IMAGE_ID = re.compile(r"sha256:[0-9a-f]{64}\Z")
 MAX_CAPTURE_BYTES = 1024 * 1024
 EXPECTED_TOOLS = ["read", "bash", "edit", "write"]
+COMPACTION_SOURCES = (
+    "dist/core/compaction/compaction.js", "dist/core/compaction/branch-summarization.js",
+    "dist/core/compaction/utils.js", "dist/core/compaction/index.js",
+    "dist/core/agent-session.js", "dist/core/provider-composer.js",
+    "node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js",
+    "node_modules/@earendil-works/pi-ai/dist/api/simple-options.js",
+)
 MODELS = {"providers": {"harbor-endpoint": {
     "baseUrl": "http://127.0.0.1:9", "apiKey": "$BENCH_RELAY_KEY",
     "api": "anthropic-messages", "models": [{"id": MODEL}],
@@ -49,7 +56,7 @@ export default function (pi) {
   pi.on("before_provider_request", (event) => {
     try {
       const p = event.payload;
-      if (p.model !== "deepseek-v4-pro" || p.stream !== true ||
+      if (p.model !== "deepseek-flash" || p.stream !== true ||
           !Array.isArray(p.system) || !Array.isArray(p.tools)) {
         process.exit(71);
       }
@@ -65,6 +72,34 @@ export default function (pi) {
     }
   });
 }
+'''
+
+# Invoke the installed native summarizer and its actual SDK serializer. The hook
+# exits synchronously before HTTP. Both initial and updated summaries are checked.
+COMPACTION_CAPTURE = r'''import { writeSync, realpathSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { dirname } from 'node:path';
+const root = dirname(dirname(realpathSync(process.argv[2])));
+const { generateSummaryWithUsage } = await import(pathToFileURL(root + '/dist/core/compaction/compaction.js'));
+const { streamSimple } = await import(pathToFileURL(root + '/node_modules/@earendil-works/pi-ai/dist/compat.js'));
+const model = {id:'deepseek-flash', name:'offline capture', api:'anthropic-messages',
+  provider:'harbor-endpoint', baseUrl:'http://127.0.0.1:9', reasoning:false,
+  input:['text'], contextWindow:128000, maxTokens:16384,
+  cost:{input:0, output:0, cacheRead:0, cacheWrite:0}};
+const messages = [{role:'user',content:[{type:'text',text:'Synthetic offline policy capture.'}],timestamp:0}];
+const capture = (model, context, options) => streamSimple(model, context, {...options,
+  onPayload(p) {
+    if ('tools' in p || p.model !== 'deepseek-flash' || p.stream !== true) process.exit(74);
+    const data = Buffer.from('BENCH_COMPACTION_CAPTURE_V1 ' + JSON.stringify({
+      schema_version:1, stage:'native_compaction_before_http', model:p.model,
+      stream:p.stream, requested_max_tokens:p.max_tokens, system:p.system, tools_absent:true}) + '\n');
+    let offset=0; while(offset<data.length) offset+=writeSync(1,data,offset);
+    process.exit(0);
+  }});
+await generateSummaryWithUsage(messages, model, 16384, 'offline-dummy-key',
+  undefined, undefined, undefined, process.argv[3]==='update' ? 'Synthetic earlier summary.' : undefined,
+  'off', capture, undefined, {enabled:false});
+process.exit(75);
 '''
 
 # Only immutable installed code and the public manifest are read. No case arrays
@@ -91,6 +126,7 @@ names=['package.json','dist/config.js','dist/core/system-prompt.js','dist/core/s
  'dist/core/provider-composer.js','node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',
  'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js']
 names+=sorted(p.relative_to(root).as_posix() for p in (root/'dist/core/tools').rglob('*.js'))
+names+=sorted(p.relative_to(root).as_posix() for p in (root/'dist/core/compaction').glob('*.js'))
 sources={name:(root/name).read_text() for name in names}
 api=sources['node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js']
 start=api.index('let params = buildParams(model, context, isOAuth, options);')
@@ -128,6 +164,23 @@ def parse_capture(stdout: str) -> dict:
         raise ValueError("native tools differ from the default four tools")
     if any("You have a hard budget of" in block["text"] for block in system):
         raise ValueError("unexpected max-turns system extension")
+    return record
+
+
+def parse_compaction_capture(stdout: str) -> dict:
+    marker = "BENCH_COMPACTION_CAPTURE_V1 "
+    records = [line[len(marker):] for line in stdout.splitlines() if line.startswith(marker)]
+    if len(records) != 1 or len(records[0].encode()) > MAX_CAPTURE_BYTES:
+        raise ValueError("expected one bounded native compaction capture")
+    record = strict_json(records[0].encode())
+    if (record.get("schema_version") != 1 or record.get("stage") != "native_compaction_before_http"
+            or record.get("model") != MODEL or record.get("stream") is not True
+            or record.get("tools_absent") is not True or "tools" in record
+            or type(record.get("requested_max_tokens")) is not int or record["requested_max_tokens"] <= 0
+            or not isinstance(record.get("system"), list) or not record["system"]
+            or any(not isinstance(block, dict) or block.get("type") != "text"
+                   or not isinstance(block.get("text"), str) for block in record["system"])):
+        raise ValueError("invalid native compaction capture")
     return record
 
 
@@ -194,7 +247,7 @@ async def prepare_pi_cache(image: str, cache: Path, output: Path) -> dict:
         await asyncio.wait_for(environment.start(force_build=False), 120)
         previous = await environment.exec(command="test -r /home/researcher/.nvm/nvm.sh", timeout_sec=10)
         result["base_image_has_nvm"] = previous.return_code == 0
-        agent = Pi(logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-v4-pro",
+        agent = Pi(logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-flash",
                    version="0.84.1", model_base_url="http://127.0.0.1:9",
                    model_api_key_name="BENCH_RELAY_KEY", model_api_format="anthropic_messages",
                    extra_env={"BENCH_RELAY_KEY": DUMMY_KEY, "ANTHROPIC_OAUTH_TOKEN": ""},
@@ -233,6 +286,7 @@ def capture_task(task: str, image: str, output: Path, *, pi_cache: Path | None =
     staging = output / "capture-source"
     staging.mkdir()
     (staging / "capture.mjs").write_text(CAPTURE_EXTENSION)
+    (staging / "compaction.mjs").write_text(COMPACTION_CAPTURE)
     (staging / "models.json").write_text(json.dumps(MODELS, indent=2) + "\n")
     (staging / "audit.py").write_text(AUDIT_PROGRAM)
     name = "sciresearch-policy-capture-" + uuid.uuid4().hex[:12]
@@ -297,7 +351,7 @@ def capture_task(task: str, image: str, output: Path, *, pi_cache: Path | None =
         command = ("set -e; " + nvm + "mkdir /tmp/harbor-pi-agent; "
                    "cp /tmp/policy-capture-source/models.json /tmp/harbor-pi-agent/models.json; "
                    "exec pi --print --mode json --no-session --provider harbor-endpoint "
-                   "--model deepseek-v4-pro --thinking off "
+                   "--model deepseek-flash --thinking off "
                    "--extension /tmp/policy-capture-source/capture.mjs "
                    + shlex.quote("Offline policy capture only. Do not execute tools."))
         capture = docker("exec", name, "bash", "-c", command, timeout=45, check=False)
@@ -306,6 +360,20 @@ def capture_task(task: str, image: str, output: Path, *, pi_cache: Path | None =
         if capture.returncode:
             raise RuntimeError("native policy hook exited unsuccessfully: " + str(capture.returncode))
         payload = parse_capture(capture.stdout)
+        summaries = []
+        for mode in ("initial", "update"):
+            command = ("set -e; " + nvm + "node /tmp/policy-capture-source/compaction.mjs "
+                       '"$(command -v pi)" ' + mode)
+            summary = docker("exec", name, "bash", "-c", command, timeout=30, check=False)
+            (output / ("compaction-" + mode + ".stdout.txt")).write_text(summary.stdout)
+            (output / ("compaction-" + mode + ".stderr.txt")).write_text(summary.stderr)
+            if summary.returncode:
+                raise RuntimeError("native compaction capture failed: " + str(summary.returncode))
+            summaries.append(parse_compaction_capture(summary.stdout))
+        if summaries[0]["system"] != summaries[1]["system"]:
+            raise ValueError("native initial/update compaction system differs")
+        (output / "compaction-system.json").write_bytes(encoded(summaries[0]["system"]))
+        record["compaction_system_sha256"] = file_hash(output / "compaction-system.json")
         for field in ("system", "tools"):
             # Exactly relay.encoded: preserve object order; do not use write_json,
             # whose sorted keys would change the frozen wire-policy hash.
@@ -344,6 +412,17 @@ def capture_task(task: str, image: str, output: Path, *, pi_cache: Path | None =
                                 "sha256": file_hash(output / "tools.json")},
                       "runtime_tools": EXPECTED_TOOLS, "model_calls": 0, "max_turns": None,
                       "pi_version": "0.84.1", "image_id": image, "capture_extension_sha256": record["capture_extension_sha256"]}
+            policy["native_compaction"] = {
+                "status": "verified", "tools": "absent", "model_calls": 0,
+                "wire_system_sha256": record["compaction_system_sha256"],
+                "system": {"path": (output / "compaction-system.json").resolve().relative_to(project).as_posix(),
+                           "sha256": file_hash(output / "compaction-system.json")},
+                "installed_audit": {"path": (output / "installed-audit.json").resolve().relative_to(project).as_posix(),
+                                    "sha256": file_hash(output / "installed-audit.json")},
+                "source_sha256": {name: audit["source_sha256"][name] for name in COMPACTION_SOURCES},
+                "capture_script_sha256": file_hash(staging / "compaction.mjs"),
+                "modes": ["initial", "update"],
+            }
             write_json(output / "policy.json", policy)
         write_json(output / "result.json", record)
     return record

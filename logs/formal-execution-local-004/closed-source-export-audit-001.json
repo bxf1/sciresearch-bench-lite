@@ -1,0 +1,216 @@
+{
+  "observed_at_unix": 1792731588.540999,
+  "plan_id": "research-6615cd7900ba0750",
+  "scope": "Closed public research attempts only; no hidden scores read. Requested paths are recorded without assuming their filesystem type.",
+  "closed_public_evaluations": 61,
+  "recorded_export_requests": 61,
+  "source_export_failures": 24,
+  "failure_source_counts": {
+    ".": 8,
+    "/tmp/sub1": 1,
+    "/tmp/out1": 1,
+    "/tmp/out": 4,
+    "/tmp/sub": 1,
+    "/workspace": 3,
+    "solve.py": 4,
+    "out": 1,
+    "/tmp/t1": 1
+  },
+  "failure_error_counts": {
+    "ReadError: empty file": 24
+  },
+  "failures": [
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g2-r1-a001",
+      "candidate_id": "candidate-003",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g2-r1/file-bridge/requests/1b8f2d00c52d4b3b93d06f2993697851.json",
+      "evidence_sha256": "cf7b4264d907504c011416271a9aabc570421421049dda469665025bf814ce9a"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g2-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": "/tmp/sub1",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g2-r1/file-bridge/requests/648b4d0167ef4d6193b2c851e195f5ef.json",
+      "evidence_sha256": "7a2ca0b54a369e24714cb137a1a34121a9be043b140f8fff11a6a434df0420e9"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g2-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": "/tmp/out1",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g2-r1/file-bridge/requests/ae4f5f2512c24deda6110d1993aecd80.json",
+      "evidence_sha256": "dfdc44c603c8a892a4f4534a3ef6f4d2ee5ec2ea43f45fc40d42058ca0bccb4d"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g3-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": "/tmp/out",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g3-r1/file-bridge/requests/0911712a31414bb9b3d31dd727c3bd30.json",
+      "evidence_sha256": "fda8d1096d906f65a4445f99bafee8398b49c7ee2c348ec453d800fe70f294ff"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g3-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": "/tmp/sub",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g3-r1/file-bridge/requests/f7665596513949cda9f7b80c6158aae7.json",
+      "evidence_sha256": "3b64c056cad2077a9001b4967bad47aece13a62df8c5d683862516769223d8ad"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g1-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": "/workspace",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g1-r1/file-bridge/requests/35d93e9377e741ca828d12765548989c.json",
+      "evidence_sha256": "7463a4893be49ef3ee4aa79e121df9c6c11de6de6532a710264737079adf5414"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g1-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": "/tmp/out",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g1-r1/file-bridge/requests/526640add6eb4d70a40659d6efd7622f.json",
+      "evidence_sha256": "e96403a10eaa844956f09ba66777a77f110acd2d08812b3e9255f987a1694056"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-heat-g1-r1-a001",
+      "candidate_id": "candidate-003",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-heat-g1-r1/file-bridge/requests/be8c45751ae4415da4759132f60facad.json",
+      "evidence_sha256": "c3cc949986a4f31676dd5b39453d6147d5434572046e8851a83de5446ec8f586"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a003",
+      "candidate_id": "candidate-002",
+      "requested_source": "solve.py",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/retries/research-6615cd7900ba0750-ode-g1-r1-a003/file-bridge/requests/2a3941f479514d4398b87ca321342cfa.json",
+      "evidence_sha256": "159145aa26823954fe689fd1541ed4eeac5e9ebc060abfc691ebf23050422c55"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a003",
+      "candidate_id": "candidate-001",
+      "requested_source": "/tmp/out",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/retries/research-6615cd7900ba0750-ode-g1-r1-a003/file-bridge/requests/d37bb0a9ff5444c9a836ccf00661cba1.json",
+      "evidence_sha256": "b9d5016b9869f7a12df392b747a685ad3d95995c380ac005f57a9367bd007c70"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-004",
+      "requested_source": "solve.py",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/1af5cb208325423b8317ad857673dfad.json",
+      "evidence_sha256": "1757e371578c08e40a272cc097b82f52ead555cb2b4e2fed7c2b1b3dc2533928"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": "out",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/3f77aa58b6344817adf0447c8c9849fa.json",
+      "evidence_sha256": "838d70ff0cb8ea89f175804447a3f4b9c3e27fbd6f0780e9cf70b66ec98367ed"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-003",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/4a2237d7b9ef4fe0bd4cd54879d09563.json",
+      "evidence_sha256": "df2db90ecedcf40486707e9be05c858afc79a3eac1e857a6216f9f2df825851c"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": "/tmp/out",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/80c9c781ea8444d498b4afcfaa683762.json",
+      "evidence_sha256": "9f871af82e3f7e9948fe35f00d5754a1ae1e8dbe50b1edd6f4067c1b45c48823"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-005",
+      "requested_source": "solve.py",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/8d60c3b1e4434502b07f79319951db99.json",
+      "evidence_sha256": "55876c5419a6f83eb4e64a887f5e852a221fe68ee396f2eebe5199277f7db8be"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+      "candidate_id": "candidate-006",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-ode-g3-r1/file-bridge/requests/f5b1f328133948218d07be3af420a5ed.json",
+      "evidence_sha256": "82cdce74b5b761325eb3d20855f2616b79ca770b51efbf055d2a827578cc846d"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g3-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g3-r1/file-bridge/requests/34e6bfe916b34252918212494029a143.json",
+      "evidence_sha256": "5a03ebe9b484ac82cb6303cce9b03480847b00bd6a6b7470ef8fab0ba3ca4f9c"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g3-r1-a001",
+      "candidate_id": "candidate-003",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g3-r1/file-bridge/requests/b11629396a1b4eeba2cfd420d11d042e.json",
+      "evidence_sha256": "6c059c9bf74bddae9fa2f5b13ee34bf89ab953be4336c7ec0075c368f326ea02"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g3-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": "solve.py",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g3-r1/file-bridge/requests/e4295b247fdc4460a826534191c62fb9.json",
+      "evidence_sha256": "069d8c3a5006f0b097acb94ec17430f9dfdf117d72fad80930d93bdfd0b38952"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g2-r1-a001",
+      "candidate_id": "candidate-002",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g2-r1/file-bridge/requests/46acb89b613446eb835561cc8baf8cc5.json",
+      "evidence_sha256": "3b978a9230a9870111efd1e7c404ba14df6c22f90930a96afb78879f201972b7"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g2-r1-a001",
+      "candidate_id": "candidate-001",
+      "requested_source": "/workspace",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g2-r1/file-bridge/requests/aa3f7f234a97410f9fe4cb24cbfdd72a.json",
+      "evidence_sha256": "dbc9ebcf8c38edaadf50ee44036d8423e29a9d42055aa17ec90d6dadd6220461"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g1-r1-a002",
+      "candidate_id": "candidate-003",
+      "requested_source": "/tmp/t1",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/file-bridge/requests/1803e0f7139f4b4eae19e95adb3b6de5.json",
+      "evidence_sha256": "a65c125142d0d95fba3574e16fece6cd59964b53affaba2d680e74b5d7d1f9d7"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g1-r1-a002",
+      "candidate_id": "candidate-002",
+      "requested_source": ".",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/file-bridge/requests/58c6827876d8479a8e34a255d855979f.json",
+      "evidence_sha256": "8e7b48114ca428f113e3c121c24389b9a3850e23ef3cf8f5d24678db3ae242ec"
+    },
+    {
+      "attempt_id": "research-6615cd7900ba0750-poisson-g1-r1-a002",
+      "candidate_id": "candidate-001",
+      "requested_source": "/workspace",
+      "error": "ReadError: empty file",
+      "evidence_path": "research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/file-bridge/requests/db80ebdbd7ca4771930c313bb7ac10a7.json",
+      "evidence_sha256": "e0d0b1ce73dca6fc42a1f7d69422d0d5283828b40a390353185b678f49118804"
+    }
+  ]
+}

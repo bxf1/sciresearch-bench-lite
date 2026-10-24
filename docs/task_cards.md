@@ -11,7 +11,7 @@
 | 保存证据 | 文件哈希、潜变量指纹、每例QC、噪声/clean/中间GT、来源版本和异常记录 |
 | 提交入口 | `python solve.py --input /input --output /output --seed 0`，处理manifest全部新实例 |
 | 类型与单位 | binary64、有限数、明确shape、无pickle/对象/复数；各任务采用无量纲约定 |
-| 当前状态 | 数据已生成与QC；11方法本机校准完成；正式数据/运行配置尚未完成freeze |
+| 当前状态 | 数据、QC、冻结、11方法正式重放及15次Agent研究已完成；补充批次另报 |
 | 许可证 | 本阶段尚未声明独立发布许可证；发布前明确，不自动继承参考仓库许可证 |
 
 ## T1 heat：热方程初场恢复
@@ -38,6 +38,6 @@ GT保存系数、clean、实际noise、mask、初场和未来场。检查连续R
 
 作者从独立流采样四列iid正态U*，保存binary64 B=A U*；它是离散制造解。保存系数场、圆、边权、U*、独立复算B与浮点误差界。检查对称、非对角符号、正权、8×8独立节点模板/Cholesky、全尺寸独立通量复算与舍入界。易档固定A可重复但RHS独立；全数据独立算子21个，中/难档不重复。
 
-每列真实残差≤1e-8、解误差≤1e-5且资源合格才正确。三基线为CG、Jacobi-CG（rtol1e-10/atol0/maxiter10000）、每A一次LU复用四RHS。正式比较各三次B,C,C,B,B,C，含Python启动、导入、I/O、转换/分解/全部求解；profile须先由三组校准决定。当前只完成本机数值校准，性能分数和正式reward为空。详见 [poisson数据卡](poisson.md)。
+每列真实残差≤1e-8、解误差≤1e-5且资源合格才正确。三基线为CG、Jacobi-CG（rtol1e-10/atol0/maxiter10000）、每A一次LU复用四RHS。正式比较各三次B,C,C,B,B,C，含Python启动、导入、I/O、转换/分解/全部求解；profile须先由三组校准决定。正式三组校准已冻结 efficiency_gate_1.5；作者基线与研究重放结果见正式报告。详见 [poisson数据卡](poisson.md)。
 
 所有提示组的研究环境都包含同一[公开Jacobi-CG比较程序](../public/poisson_compare.py)，仅读取A/RHS并写标准数值产物；它不含私有GT或隐藏解误差。程序打印的内部耗时不含Python启动/导入，只能用于诊断；正式速度比较由可信W计完整批次时间。

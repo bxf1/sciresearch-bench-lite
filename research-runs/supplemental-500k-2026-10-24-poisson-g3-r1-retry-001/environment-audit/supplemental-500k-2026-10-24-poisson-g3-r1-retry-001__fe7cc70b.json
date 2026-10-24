@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "verifier",
+      "time": 1792815030.762263
+    }
+  ],
+  "formal": true,
+  "session_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001__fe7cc70b"
+}

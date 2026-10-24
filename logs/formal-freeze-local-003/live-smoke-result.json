@@ -1,0 +1,6 @@
+{
+  "formal": false,
+  "scope": "Fresh relay startup at 200000 cumulative output / 3125 requests plus native initial/update summaries. Prior full Harbor pilot remains version 002 evidence; no final-test data.",
+  "status": "passed",
+  "summary_result": "native-live-summary/result.json"
+}

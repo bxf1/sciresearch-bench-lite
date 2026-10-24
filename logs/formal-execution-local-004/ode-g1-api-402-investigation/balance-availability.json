@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://api.deepseek.com/user/balance",
+  "http_status": 200,
+  "is_available": true,
+  "observed_at_unix": 1792722257.027225,
+  "scope": "Read-only account availability check after actual model HTTP 402. No credential or account amount retained."
+}

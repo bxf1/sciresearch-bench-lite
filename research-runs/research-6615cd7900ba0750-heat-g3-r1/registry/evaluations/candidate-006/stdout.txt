@@ -1,0 +1,4 @@
+ARGV ['/submission/solve.py', '--input', '/input', '--output', '/output', '--seed', '0']
+CWD /submission
+ENV {}
+LS ['solve.py']

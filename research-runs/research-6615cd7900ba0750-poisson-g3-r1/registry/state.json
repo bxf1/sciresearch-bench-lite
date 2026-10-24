@@ -1,0 +1,58 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "61b5aabdaa58dee709e6b897d7b303324bc8a512518b7a62068f64a4a8b918d6",
+    "reason": "host/native research wall budget reached",
+    "recorded_at": 1792729211.0772219,
+    "status": "research_timeout"
+  },
+  "attempt_status": "research_timeout",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [
+    {
+      "accepted_at": 1792728362.061166,
+      "artifact_valid": false,
+      "completed_at": 1792728362.198048,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792728368.435623,
+      "artifact_valid": false,
+      "completed_at": 1792728368.504719,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792728373.820478,
+      "artifact_valid": false,
+      "completed_at": 1792728373.890614,
+      "id": "candidate-003",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    }
+  ],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": 20,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792727409.712528,
+  "task": "poisson",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g3-r1/workspace"
+}

@@ -1,0 +1,7 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-ode-g3-r1-a001",
+  "dominant_call_count": 749,
+  "dominant_call_arguments_sha256": "f1ff3bd4084a4f59a7d1ce4eb1aa104539a58bc00df22c7d9d59f29932da9fa6",
+  "distinct_result_contents": 1,
+  "scope": "Closed public-dev native trace only; no hidden score access."
+}

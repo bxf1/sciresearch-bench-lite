@@ -1,0 +1,1 @@
+{"status": "frozen", "plan_id": "research-6615cd7900ba0750", "plan": {"path": "freezes/research-run-plan-formal-003.json", "sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033"}, "sessions": 15}

@@ -1,0 +1,7 @@
+{
+  "status": "rejected_before_archive_creation",
+  "draft": "logs/formal-execution-local-004/archive_final-draft-001.py",
+  "draft_sha256": "08edb805ee5dd319967feb5d1b921574d58d06ca20884f0715c2b5f7d686c558",
+  "reason": "The first historical freeze uses integrity.archive.sha256; later receipts use integrity.archive_sha256. The draft assumed the later schema for every archive. No experimental records were changed and final archive directory had not been created.",
+  "repair": "Verify the first historical archive against its recorded nested path, sha256 and bytes; keep top-level sha256 verification for the five later archives."
+}

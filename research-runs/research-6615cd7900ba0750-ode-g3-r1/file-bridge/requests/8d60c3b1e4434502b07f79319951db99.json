@@ -1,0 +1,31 @@
+{
+  "candidate_id": "candidate-005",
+  "completed_at": 1792727221.229847,
+  "export_error": "ReadError: empty file",
+  "export_finished_at": 1792727221.229124,
+  "export_started_at": 1792727221.150644,
+  "imported_source": "imported-8d60c3b1e4434502b07f79319951db99",
+  "original_r_source": "solve.py",
+  "received_at": 1792727221.1497731,
+  "record_sha256": "79170883d1311468c92f485745d83184752d79490ed47fd1d9714272b4b2ed74",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "8d60c3b1e4434502b07f79319951db99",
+    "source": "solve.py",
+    "version": 1
+  },
+  "request_id": "8d60c3b1e4434502b07f79319951db99",
+  "response": {
+    "candidate_id": "candidate-005",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "submission_failed",
+      "reason": "source preparation failed: ReadError: empty file",
+      "source_export_error": "ReadError: empty file"
+    },
+    "ok": true,
+    "request_id": "8d60c3b1e4434502b07f79319951db99",
+    "source_hash": null
+  },
+  "status": "completed"
+}

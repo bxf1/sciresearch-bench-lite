@@ -1,0 +1,2013 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-heat-g1-r3-a001",
+  "native_logs": [
+    {
+      "path": "research-runs/research-6615cd7900ba0750-heat-g1-r3/auxiliary-agent/pi/sessions/2026-10-23T07-24-02-034Z_01a167a5-3272-77dd-b81f-34d254b8db1b.jsonl",
+      "sha256": "5c1c3835258651236626f53ecab2c7a69376e2b82119fd75f378522afe9f505a"
+    }
+  ],
+  "matched_simulation_calls": 221,
+  "distinct_seeds": 220,
+  "seed_range": [
+    1,
+    220
+  ],
+  "distinct_result_text_hashes": 220,
+  "alpha_grid_counts": {
+    "['for alpha in [1e-8,1e-7,1e-6,1e-5,1e-4]:']": 1,
+    "['for alpha in [1e-10,1e-9,1e-8,1e-7]:']": 1,
+    "['for alpha in [1e-12,1e-11,1e-10]:']": 1,
+    "['for alpha in [1e-9,1e-8,1e-7,1e-6]:']": 1,
+    "['for alpha in [1e-11,1e-10,1e-9,1e-8]:']": 1,
+    "['for alpha in [1e-12,1e-11,1e-10,1e-9]:']": 214,
+    "[]": 2
+  },
+  "calls": [
+    {
+      "call_id": "call_00_qqDxFmNsJQoi08aNBVAL0246",
+      "command_sha256": "713b56082d342d2275945d6ead8b6d44f31f3522175a27b155360142be459c10",
+      "seed": 1,
+      "alpha_grid_lines": [
+        "for alpha in [1e-8,1e-7,1e-6,1e-5,1e-4]:"
+      ],
+      "result_text_sha256": "6bbb10ab3290e5f4297bb1745b7df3de2a21e5fd398d2ca57a7e89198579ab11"
+    },
+    {
+      "call_id": "call_00_oAlpsaDyYGF7ygmly8rN0217",
+      "command_sha256": "18153ac7707d829d2e972f8d078608fd9f30d233c54a66687cc8dea35e87fb4e",
+      "seed": 2,
+      "alpha_grid_lines": [
+        "for alpha in [1e-10,1e-9,1e-8,1e-7]:"
+      ],
+      "result_text_sha256": "0193a16864ddc3abcd3f1256cade5cd3d3bf148a8f1013ecc8c90ad4ddbb2976"
+    },
+    {
+      "call_id": "call_00_VYdTyFyjxgAU4T5rF0I47797",
+      "command_sha256": "bf7c49536fb60a900775412753aa5199862f7ad5cb3b6b7dd3144905a162f5d9",
+      "seed": 3,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10]:"
+      ],
+      "result_text_sha256": "b9e4b8fc2e72b7d7425c4da8ca1e907784109c0e0a62171c5f3e7b2d195d3fff"
+    },
+    {
+      "call_id": "call_00_BAUTF02q2uQfszguuL6C7068",
+      "command_sha256": "57b234040a2846333767d8ae936b7f78d418c62e772d4cd04075c0891dad4e19",
+      "seed": 4,
+      "alpha_grid_lines": [
+        "for alpha in [1e-9,1e-8,1e-7,1e-6]:"
+      ],
+      "result_text_sha256": "fbe4a20fd28ad20cd3b00d3e8d2ecd85bfd11c8381287f2695443c59f83ec47a"
+    },
+    {
+      "call_id": "call_00_ZThOdmZnxubrlAsIabHY9688",
+      "command_sha256": "78a6b6c439c3f7ce8d1943730a242b043fc4afdd8295d31ef836b095ed2dab99",
+      "seed": 5,
+      "alpha_grid_lines": [
+        "for alpha in [1e-11,1e-10,1e-9,1e-8]:"
+      ],
+      "result_text_sha256": "f932b59451e90397a47fc6263e7dbb3ebd0e9dcc86835d9ea5fc10eda9736000"
+    },
+    {
+      "call_id": "call_00_jp8wAPKbIi5XoTsXxgm81624",
+      "command_sha256": "0f0a181d848bf61548fe16196d8d9635f0f03d39115ab278671b4c74bcee829b",
+      "seed": 6,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "146b360d6e91479b61a59061b895efa4569fce16a79273b16f1f8b8a1b19d437"
+    },
+    {
+      "call_id": "call_00_LHdcLMqZbnhKVhbKbxi24130",
+      "command_sha256": "3410f12a7e2d65dfb23db2e9f1290b9155659a1d2d55c1d6e8295b630b82ec78",
+      "seed": 7,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e6e2d9d155c0d5f22a9341b4c71b4e3ae59cae3f6851bdd9bef2bea014e43e1f"
+    },
+    {
+      "call_id": "call_00_eCd36TDXsCntpOJkeXnd8302",
+      "command_sha256": "ab8b124b73c0758c55e9e947c27bcc3cf09d9d7e83a885869a935be9f5185ee2",
+      "seed": 8,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c380aae871f1285d1102b6e53fd9702256de80c53d6a091129bec29b382c843a"
+    },
+    {
+      "call_id": "call_00_tH8eOijPMmrepsOQw9Zz1859",
+      "command_sha256": "1fc2f2cc87a58facce588aabfaa7c7c806776433180349f0ac5239f8e358a532",
+      "seed": 9,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "dbb1f05c02d44fd5d4ab52b4bf3864f5b59a3bb79068a2db258148d6d7e16a13"
+    },
+    {
+      "call_id": "call_00_Wb2YO6YctDPRwsNX4ArS8527",
+      "command_sha256": "583adf47321c26d0ccf94a93414195fa75f8830a4410a1c42a61bf43d603d45b",
+      "seed": 10,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b0b07268f2773a72c568cffe46f0515920c346374db0578950f63158e2e09064"
+    },
+    {
+      "call_id": "call_00_2HEIMFhXn6lLSLtitaGf6983",
+      "command_sha256": "e5eab72602bacfa8fdc97b1ce113edb1cb3ec347a94a726affeb0596ccc27a41",
+      "seed": 11,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2855030c00bf515f1998d9cb56af68876363230bb0e543f59bc9bb5b4907ac49"
+    },
+    {
+      "call_id": "call_00_pbi4mwvqMe6QuQTpsPqn8090",
+      "command_sha256": "7976ae2171cb80eb3efb984b58d08f4a0995e1ca1f5f3ae4d4a39fac7abddd56",
+      "seed": 12,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "199fd32a1410d2b7a0c1cd0d54821ca8d93ed8155aae65f5302793f9e010774c"
+    },
+    {
+      "call_id": "call_00_B9Z72XPKCAnUsa9sVpoA0647",
+      "command_sha256": "84013baa25ad4abc8c06d5284cefdafc878145f3c88cc5e1ea01caff874024d2",
+      "seed": 13,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "13ebfad9274fec0b3b3e993da97632ab03e9deb56cf4fa4eb6719eea9dc32590"
+    },
+    {
+      "call_id": "call_00_VhRM9jyYNLbxDGHAidp47093",
+      "command_sha256": "2b78df6ec89dbafda57da3d62d527eb2ce0896caa18795e979987aec32a98cd9",
+      "seed": 14,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "cb6d8b64967491409a97da5df1ddf150fec509a0eaa241d10d10b43c63f47f3e"
+    },
+    {
+      "call_id": "call_00_fYn3LM9AwcTlEoVGSkyH9245",
+      "command_sha256": "4291e9e7608da4931288236dffd594775110fcb71bb42c67898f342b4966fbea",
+      "seed": 15,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "39ac0ac218cd75cb717692b71de024c5fd56388f963dec14d05412684c3da1cd"
+    },
+    {
+      "call_id": "call_00_mmiIyUsOAAoBl76iQBZs1022",
+      "command_sha256": "ca24ac61d105f06909c7ecf30820e4e8ddefa674c09a7ef7d3abebd62ba56a5e",
+      "seed": 16,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e55c18a46f48685d45faf2fae4f22b2f368c7d03a93b3f93e8408c5f84c9c259"
+    },
+    {
+      "call_id": "call_00_6SZuE6BzMDGKM2Hl0kcO7342",
+      "command_sha256": "1efc1efe7160502f2af0ddd5608c70446ce67a5aa6701f39835b88452cfbb872",
+      "seed": 17,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "dc2e87d4a800dc07391950d139d7ff1dbbfd87e625901871e95a588ae9503a7e"
+    },
+    {
+      "call_id": "call_00_IrI4zAQdJ2Jqn0FNlaa67806",
+      "command_sha256": "2a19e60b492450f04b9d6439134c5db302ece1c2a3610ab8c13bf2f9d6b5e203",
+      "seed": 18,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "08ba1c41b7b49082801d6d468459bba48c5cc30c7a73e7b7163c65ca635186dd"
+    },
+    {
+      "call_id": "call_00_11IZ29f8tx38vU8evZm58896",
+      "command_sha256": "83697d168756699fef4c527489f3498bd74defd63a3cbec2302499b27a01254a",
+      "seed": 19,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "57011392bf37e6466fe4d4130b502e3e05297d493a2d312ecc52a3e096ed24cd"
+    },
+    {
+      "call_id": "call_00_AiRvsM65fpxH8jZz5JqM7300",
+      "command_sha256": "36144e4f66e1be5dea8ba41226efc8979c0160fde5f78ace86c7e4df1922e894",
+      "seed": 20,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9381719d732fe0afa2b5ad4b033107823a845b40eb6e6b523dba99725e4a18d5"
+    },
+    {
+      "call_id": "call_00_2mAqPXlQkXucne5emx150200",
+      "command_sha256": "ecc2878af998bfb6857729d19cf056d52385f28982765554fe3fac56470f33e7",
+      "seed": 21,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "4e414788cf6672a0462c41a6728b0c019234735f3d8c960cdee43410fcdb40b0"
+    },
+    {
+      "call_id": "call_00_rqHVVu8Z999i5ZoO09DQ1014",
+      "command_sha256": "80a3e4ec62e4d441ac1ba211ce80482d45e53f6099f3d3f955d2a77904df76e1",
+      "seed": 22,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2cd3126064c84e1f1aef6bb76c462b74f8445073df4484d2e5513e495482db60"
+    },
+    {
+      "call_id": "call_00_rPTzEBMPBjcpFggGxRJ46827",
+      "command_sha256": "3529e20903f0ec3ed5be900ff4316b4ea22c84924e5ac5a8475b00d16f57925e",
+      "seed": 23,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "bf3a48def1868a6db515855815f8d8f1365a8fbf760868353ea688b529928811"
+    },
+    {
+      "call_id": "call_00_4ZbUgIYC4AV9fIwjbhOU0766",
+      "command_sha256": "20ac24eabe329d10ed418b7edcb6d1ffabe53d1aae643c597e3c52c8c5189715",
+      "seed": 24,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f49fd9b551f7ab70727a4ad796b67bedcf67db251a18920cc2578b61ade5b874"
+    },
+    {
+      "call_id": "call_00_UGLakSbbfXjco9bhtRS18855",
+      "command_sha256": "63e89516b9631fbd30ba624fcff91408d28d1480953a10a7dcf7387b27a16151",
+      "seed": 25,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3114611909066441bb8d21e640bae73a44548370ca5fdcbab67cb253e4aae570"
+    },
+    {
+      "call_id": "call_00_XPj5nSNT2I67fWJsvkmN8021",
+      "command_sha256": "f082c994212b644c010874c3d9675be66060dbcca7b0ccdd5b38eba52455b96a",
+      "seed": 26,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "16c173a9cb923b19679c0f2b50c2d0b68a6dbf21a8cfd3007e66d7ce1de8888b"
+    },
+    {
+      "call_id": "call_00_Fdx6cmkaNhnKmpO5rQko8973",
+      "command_sha256": "8477aa9875bfda516e68a0a1e2a35b9bcac23db32287001a624728295d6147ec",
+      "seed": 27,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7355bfa788264cf280c9750d2ea380965849a425ee679d4da300ddd616c09e83"
+    },
+    {
+      "call_id": "call_00_MVkmqrR1ccrRXcIRqwh35324",
+      "command_sha256": "e552d2ab0fd90116f0d02d227a987d07c6bc563c2fab0552ab3dcea173c5731a",
+      "seed": 28,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f3c42f6468374cdc15fb11cac9837ba6bf07eaeac777d553e34f48c277a10aa9"
+    },
+    {
+      "call_id": "call_00_Cs71AMwgizYuKXHPSw9E1904",
+      "command_sha256": "d60c762d88abfd1b063ae85c9dff81062aafe5c02ed1344f8ed2f688c834f0a3",
+      "seed": 29,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "21a23f0e6d29d79a3d0027eb50536d8d25aa76821937bb2dba4a2be73835a825"
+    },
+    {
+      "call_id": "call_00_p8VkhCm9AsOkbRtWnVi87739",
+      "command_sha256": "730d42727b2b68bd0049a8d7afbfb91a03ac7341e172a8702aa2e8110eb61f4a",
+      "seed": 30,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8e4f4b53cbdc06a5300529448af8be79e98584e22c0112689a4c19f625de4733"
+    },
+    {
+      "call_id": "call_00_yjSoA7YbgfIbOY2V2TKN3199",
+      "command_sha256": "ac9b433be63436f8eb351f02dbbcfff1cf600c93416fd5d092bbf71ee23380cd",
+      "seed": 31,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c3ff0d85cdd994cc1cd6bebe2f7a9f4950824bf2146f8a89802f49d989321fab"
+    },
+    {
+      "call_id": "call_00_aN5VfwQF97qjF2LVEpeM2420",
+      "command_sha256": "42af37148a99ba8fc376e7875eec7890c892b89dccdf58d58051342fa231dcde",
+      "seed": 32,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "6dd79b75b4959699fb29dbbe4ef2fb453bd73dcd3dbaac2491eed00b52075a42"
+    },
+    {
+      "call_id": "call_00_qUe1YDIYhKQsUqpeEM5C1492",
+      "command_sha256": "9f30bafb3ba0cc08693ff17f1b32730fb151ea195b385cc0ab8c159db04b450c",
+      "seed": 33,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d9ad91fb61db2663374438116e1f4fa472c0d4b5d99db88db59f4eedca5df1bb"
+    },
+    {
+      "call_id": "call_00_eszH9Bgokfeke5yDgTJz5762",
+      "command_sha256": "9d88f9af0ed35d9ec3fa69742dd7827c653913f7ed5c13a6f6f6c798d3becaeb",
+      "seed": 34,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8ea1e601c938fd447edb1e2479b0351de1b308ef8bd5491973e18a407c3b5c28"
+    },
+    {
+      "call_id": "call_00_C64iU9mXSJr5OvWbPs4g9708",
+      "command_sha256": "4590834de97c48ea6d14561ef5655939a6833752112332fcc2be36f56b73d7bb",
+      "seed": 35,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7219b4a3610879c071bc1867cccff781faf0b31824679b748f01d9e7110d1fcf"
+    },
+    {
+      "call_id": "call_00_F1RVXLUsQzVzaDRNXO6z0171",
+      "command_sha256": "db77814d52f1986276e0b1e64b015199836982a6ec27a828971e3a0639ec674d",
+      "seed": 36,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "75c64a03984cdf969e77d52172b1224fd93fcc8513a46a6070d30e783ead7ace"
+    },
+    {
+      "call_id": "call_00_OTAkit3iGuMEIqeKNnVE8423",
+      "command_sha256": "5439c004be5e27ae8e4e241c8dfc08bd0e50c1df2e8f48a629f8123e3abedced",
+      "seed": 37,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "868e3b370747cbe9c16fc409de25c6f8e2c5a8fd0134926536e1cbebb1f6b499"
+    },
+    {
+      "call_id": "call_00_Vm4Vxtzq6Jn5jlLwGLAl6473",
+      "command_sha256": "19800b5b8c7a77e99bf656c2a6075ad0f0b2ea5d9fb43783c22e364d6759b77a",
+      "seed": 38,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "0308ad57190ca3f658481c07a2888d389739c6fb183d96517cb1a4da9c13beff"
+    },
+    {
+      "call_id": "call_00_iiD147QnEIFgL2yUEcuE4372",
+      "command_sha256": "50497799856efd7828c329dc83b7f4c6b6fb3af5cc3b82d8927003de777d2b9b",
+      "seed": 39,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b945d86ad5084ef73484295d1223e9f69ee43e0b78a5bc3a48954d307aefc18d"
+    },
+    {
+      "call_id": "call_00_lBppNLl9v4AGEZSZJ8hA9186",
+      "command_sha256": "ec8820d889ba8a5baf5df12b79ab172c97270fd3082de6b6f264f273c22d85ac",
+      "seed": 40,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c0d6ce4ad0406a5efedad89dc17732374b3d0330e37669e1ab59a1e727674f3b"
+    },
+    {
+      "call_id": "call_00_Gv6E9DEVs5N1Ih6Oj2814835",
+      "command_sha256": "6ec7bc716f794503e2d1c46cf0efd6a1d8fe88b245cd9b8525b62fa6fd23fd5c",
+      "seed": 41,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c7f9b5d2f2c66a2d38979e115eddb6e9a587c683ee56cb6d89d0dc1cb694e6e9"
+    },
+    {
+      "call_id": "call_00_9lTdpNvTjVKpQgHzesOy9335",
+      "command_sha256": "da35107a59527909ef27b5c46f1e5962139a842660675d682c22040769eb26c5",
+      "seed": 42,
+      "alpha_grid_lines": [],
+      "result_text_sha256": "c70d4bcb01a7ad87424011b777d486cdc14bc8711048609bc084a8768f96cc24"
+    },
+    {
+      "call_id": "call_00_BAdhx8cPpTz04BAsfocs4508",
+      "command_sha256": "78cb80f0dda4f3cc36c0c0ae9068339c1dc19e4e61f5d4d0ee80c6d23a390ddc",
+      "seed": 42,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "03b4b5b90c1d038d9b7e518f632480710f9b2d4b2da93bdb158b1c5e97795c7a"
+    },
+    {
+      "call_id": "call_00_tyV894TVbZ3TrU1Sz6T94947",
+      "command_sha256": "3fa36da07fe35fcc131b621635647b810e4d849f9c4d675a569d4d33e60d2414",
+      "seed": 43,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "dcfa77e0e510240f13338541a4b2b2efa13e605ca6fd0e7557fb3894b6d334d5"
+    },
+    {
+      "call_id": "call_00_eVmADvsQKh8CCLxfFto31947",
+      "command_sha256": "223020ddc371cd0c301cee05dc16474a04e8af6b6290aac65e3792c7c9594759",
+      "seed": 44,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7c2e79a6e45b1f9d787e66bcabffb1c9d78ca5fa72f509c83cdcaa2c5f2e45b1"
+    },
+    {
+      "call_id": "call_00_O8cu3cNeNgHjv5HO5ikE5654",
+      "command_sha256": "8fddcd5596d59d0030bac63f7800e25bd81d9d3d41d298d4fd80897141dc9cc1",
+      "seed": 45,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "12a8c9e6180acc317606d921fa7c8ac584f2a6a55a2e42b62512aa3c7628b984"
+    },
+    {
+      "call_id": "call_00_q2eUCQM5vrkKBWcKcNtJ3325",
+      "command_sha256": "2cd505d00a5e355a420dbb39c715b068cef6653e833b482f71066b81901fe32c",
+      "seed": 46,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "da73f9eff10fff0eb7aa30e42b7c3eb69adfb74178b4181b8a4bb5cf986a4316"
+    },
+    {
+      "call_id": "call_00_mIAkL10pSMjL1Tv4oCnK1924",
+      "command_sha256": "00af79b61f6e36e1c24acf332bb06ce9ce6d1ceffbf578eda651d2268545f1a7",
+      "seed": 47,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8f9fb082fa4a7405e6807a8d87e402f8ac26d38f3274339e068c62a8cfdd1d43"
+    },
+    {
+      "call_id": "call_00_qEcOkH96dyNltXuSwtmP7033",
+      "command_sha256": "a03ddbd8dbea4116bbfba57402efb6cd006c473aca3d11d2ce7521e23274e9a9",
+      "seed": 48,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ec045d7a31820d1ec73313a60cac990acf8904ec1ba29057c044b6c647204467"
+    },
+    {
+      "call_id": "call_00_u2fHZrIr1ERWiOXN2Eq36161",
+      "command_sha256": "9ccc20a2689c46afbe7c5133e71ebb5b8944bca1d3e4febdeeb3ce7897fd7d13",
+      "seed": 49,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3e3b9b4c85de8199922d1f3dfc528873f766c6afeadcbc521f57a8d53ce1bce8"
+    },
+    {
+      "call_id": "call_00_3tz0DYKrat1mb19dG2kB8437",
+      "command_sha256": "e75a8af32e3fc071a6a1e30b28435f429569c0a4e4007734a397c58dae9463e5",
+      "seed": 50,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b026e2c0f326051ca6a82f8d1be37ecec1fc80faa6b6f9f2c5c10e85c4742649"
+    },
+    {
+      "call_id": "call_00_G4isBkcQ7Wv2OGbAA6E28301",
+      "command_sha256": "c188da45b7f7eee81aa655a1361fff94ef71fb5121fc511028ee8dd0a480b9d6",
+      "seed": 51,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8d30e1550720f89d906ee65b2a295407a582c44827522bb7de87df8d7d8a5ba5"
+    },
+    {
+      "call_id": "call_00_anMKxPXugQ1xwggNJAvv8583",
+      "command_sha256": "cc98f7be69b5dce606c3389b5e8655c56f0b6a28d0413e3ba12ebd95ff505d16",
+      "seed": 52,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "527d5d33c441ad09a22a6608b2f11f795eef30f304e7592cd060af582ecf8976"
+    },
+    {
+      "call_id": "call_00_1lCRh20kylHK5H6g9EZ31530",
+      "command_sha256": "62b23184b0d061b9af87c80c2c7c253148678544c0c92eb179ddad2d849e7af9",
+      "seed": 53,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "568e7523fcc10365620a3f3bf857e431163226ec635e6256f30e03cd975913bf"
+    },
+    {
+      "call_id": "call_00_wTl5VcrgwwkvkwAh6kzw6492",
+      "command_sha256": "9dbd1e2422709e003b38fbfc8d0b4a6b3bc881663caa9930881df7cc2445d277",
+      "seed": 54,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c4af1bc757aa8da07a1fb533a3c88eec8475bd563b73af29a5dbe591d52e6330"
+    },
+    {
+      "call_id": "call_00_TedUf6bOXRT1OKzqqWio9082",
+      "command_sha256": "ea55b7d1d68c3c837f01d1991c45d9ea78805bd6f816a54b48b7527a13a38d8f",
+      "seed": 55,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2e820376bedc9f9f6e70ec3bdecb7fc2e04317a50be5fcbb42dcb289586db613"
+    },
+    {
+      "call_id": "call_00_R3d16CDrVb5txwjVWu3e5039",
+      "command_sha256": "ee6ec1a9b77dd0e06511d24328a20b7b7c0e6f0c335fe82d955f74099a9b56e7",
+      "seed": 56,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "67f575ccb823d249d117d6510765ee5ae8a8de5209cd9d4e9f2a93498a478ad2"
+    },
+    {
+      "call_id": "call_00_c45Y4ezlt7uiHGX9tKZd4896",
+      "command_sha256": "fecc3c219cc0609977c782638d2b27e817580b4691627606bcf976d4c3cbaac4",
+      "seed": 57,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "610bea7ecbec5b0fe2bbf06c3aa5d706b06db856da15c17737ccfeefe9225ee9"
+    },
+    {
+      "call_id": "call_00_RfIb3xrZiQ89t4YBLWEQ3354",
+      "command_sha256": "7996eddbee845ff15097b585c400f870987033cf95071c0697d60efdc16534bd",
+      "seed": 58,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "59791c5be3121564da65322cdb378ec0eeb7910c795c8af72a62c8ab7e2a9f22"
+    },
+    {
+      "call_id": "call_00_jUGbsjWwygduWVtsxFp21486",
+      "command_sha256": "5f134fed048592af92705bfc4a7ca5d1d16281be8f01a717ba962d0f67fd25a9",
+      "seed": 59,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "430ac8c30b8328b1ec5ec28715eb31c01f711a1d1e77defa8ddc11b614ab9c6a"
+    },
+    {
+      "call_id": "call_00_a2ov82udVZ6SfDkgJCT96647",
+      "command_sha256": "d4e390b6fd2ce6d898904de05522418a4a97933e9f28ff5a7b99a25d09aaaa0b",
+      "seed": 60,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "809569f738b7b3e55efaa2b3d8bef65639f860fb5962e1aef073f1dd59d8d402"
+    },
+    {
+      "call_id": "call_00_gQE1XD39LQrvNMMpCHK19100",
+      "command_sha256": "7445bc95226aa841b44f818344a9d1c184a30143df75546b2e02dad9585aef94",
+      "seed": 61,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "06e09b27802c26dd6e0c02e8221792be388b77e6782f6a9b4c4598734c712178"
+    },
+    {
+      "call_id": "call_00_Kstii9hbihvtRHT8MUkB6503",
+      "command_sha256": "adf860066c8c5773d934ff253572a0e25e42d0c2e188c44f30172bbb2912d36b",
+      "seed": 62,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3387ee7d2ecd887931dab2139ac0fddba8480cf53eb76879d9c22b364250a510"
+    },
+    {
+      "call_id": "call_00_dAoV1n60ulTgGSxeEOd48084",
+      "command_sha256": "6c1c337a72e2b33eca8bb5fc89d5ad553c99619bc6c0f864d9818c374dbffa6b",
+      "seed": 63,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a257fae78290b548028c1283b8daac248ad1162bad2cf48ea97f97b4fdbfde54"
+    },
+    {
+      "call_id": "call_00_ukMA7R31fjnDAexm42S55340",
+      "command_sha256": "5875fab3c5f1d490a2562b49176da932d83e20794a6b83b8d1787143b3d31ba1",
+      "seed": 64,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "bcae2c3b1da1dda245ee62e0ecbb556149307da510abb14edaa0432392d107b3"
+    },
+    {
+      "call_id": "call_00_TmC3CI5TjwEbPqyRtcBm4503",
+      "command_sha256": "5da15ce6fd50a94b187574c5b8ad85ca40d2f773bd68db4dac9dfb8884498230",
+      "seed": 65,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "eb0b77cad22faf4b90113934ef43d61cb6013070b9405b1211b77fc09758a656"
+    },
+    {
+      "call_id": "call_00_zHfAIvbae4iWibxOz1QQ1227",
+      "command_sha256": "9861ede4110c577926fb48241034824d328926a427f4098efbe38cff791490ce",
+      "seed": 66,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2c98748bcf337bb1545308abc48bc5312aa6584c44f70633a3c43fbc8d9d3ac4"
+    },
+    {
+      "call_id": "call_00_4ItoejZIRlpH1k57KKGx8613",
+      "command_sha256": "839dc6cc83a00f051d0555793f9b617fa4aa2260b9f83810d538576c44fbdda2",
+      "seed": 67,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "31a04c7c5b18b01200d2a2f6269f07c2ef3a12f5b5c46dce419ba053bef5ddf0"
+    },
+    {
+      "call_id": "call_00_YfPZD3v2mTQtifAY91cB8074",
+      "command_sha256": "29e191b0345d820aa6b771c19608494bad654039646444f1308fa5fff1740297",
+      "seed": 68,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "28b2ac86f66d18b3ba8dd3ad85efec31fc6d93bb73e54782e07497e7ccc8eee0"
+    },
+    {
+      "call_id": "call_00_HBAKEJ4trRTXZfzq9lcd3359",
+      "command_sha256": "c130341bf620ad4cdd0f29c42e900f35ff2f435ab06f3198ab4669464069fb70",
+      "seed": 69,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9db0c505d0c072547c4c50daea88c2bd6292dfa8d32b854e116014162fd7cf86"
+    },
+    {
+      "call_id": "call_00_jNsSdPJMA1kkKRWgZWKc4602",
+      "command_sha256": "8cba9c7e1d4b433a86052de8835c66f667216167624b5241778b207b7341a476",
+      "seed": 70,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "db47d0881f0450c77bd36c10daba349fbebb56a0e192c8afc17d24baa30db62f"
+    },
+    {
+      "call_id": "call_00_JEOvs3JDVV6PzqOAkwo14328",
+      "command_sha256": "0a360c3666b76ff102d0450437980bd2c5163f356b78e86f633fdab9e9c07179",
+      "seed": 71,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "4b37d3b857c2f2489e34fde2818017eccfa121eecd5f68c58ac820a520befee5"
+    },
+    {
+      "call_id": "call_00_AxsQe4vWwwrlpyII8kSo6921",
+      "command_sha256": "b226cbc5b1312b9e19ff710f0d2a602452963225586f6ce5172625c5507f45f6",
+      "seed": 72,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ba73321d6b3788d4ef6ee9c55fdc0a13aa19bc4a31c392a74e2c4f52319db497"
+    },
+    {
+      "call_id": "call_00_mvSqr8I9htoFaLemmiE72103",
+      "command_sha256": "406e528489558d8c90c90a17cb56ae7cf58fd0a51bb191fa7e74e1af0e3bc21b",
+      "seed": 73,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "6585bd251b29af277617ba0fb5b11754af3f0d2bae8b2e244d5cfb5f5a30da13"
+    },
+    {
+      "call_id": "call_00_qgSdRXmVD5l72DtvdMjd2599",
+      "command_sha256": "695d1b84f2a470ab6d618a65056a7e9506b9a5593b6b09ad0887335b2cae5f0f",
+      "seed": 74,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "24c25be04fe350809692421aa9cd523fc11d35a30475959bd419b3e0833235b3"
+    },
+    {
+      "call_id": "call_00_hb5D5EEEHGIc4DkHBE372692",
+      "command_sha256": "b17c4c2575ba211073e4432fa70f46946ddfa7ba86ec43a1f93b1f7f78a4626a",
+      "seed": 75,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "1f1ad0cf292d88ddbf074b120885f7a028d830eae218470990708144dfc6dc01"
+    },
+    {
+      "call_id": "call_00_YdfN7WZe28raVcw2RvAn4856",
+      "command_sha256": "2b9b955bc02547f2bf7e83d330a5e52a9317b7bd5ad19ae65171660e111580ec",
+      "seed": 76,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "85b37c409c7c44f9e9cb3b0425c269661b661402b68d842a956ff8c8f49f60a5"
+    },
+    {
+      "call_id": "call_00_3uUAvixXgiCIYcGzyFP93986",
+      "command_sha256": "3643818859183623adedf7e990293cd7d1831d3fc9f9470fa2abc384ff96083d",
+      "seed": 77,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9b0853d66b1bfdb4384882a51ef44ec695dcf1d44ba78496c99d7a1dd958b56e"
+    },
+    {
+      "call_id": "call_00_GqwYjJSR3q9gyWMFIhqU1669",
+      "command_sha256": "09c81cf09530523d7470a30c8fcfeaa1521fae87a6ba875964ca00dea5c2d97d",
+      "seed": 78,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "feb64e53747657a7a89dfcf83214d18c4eb259cd9a5920a8da2c1bf4597c37a1"
+    },
+    {
+      "call_id": "call_00_x1ANUyLVLfMQ0vTMvgf81651",
+      "command_sha256": "8153e10c0be1a9b4debebe90acc5b255f9fd3d346bd726ef990202228f136a47",
+      "seed": 79,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f9ead8ba366ecda29cc1fcabdd301a10d60d156587317812a6da87ee2cd06465"
+    },
+    {
+      "call_id": "call_00_flhXf1ZmtuPljBL01nIf2235",
+      "command_sha256": "2dc39431042c54fd9740ea7a3f6e366e47911f1257edacce76b1bbb1898e79e2",
+      "seed": 80,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "df09b2bc17e9d4b3987685fa14ea56fabdd522cb5c2c8d8344460475360190ac"
+    },
+    {
+      "call_id": "call_00_yOHp8L1exPhhx9BszS1i5702",
+      "command_sha256": "0c26b738f7d91d1f2ec9284b9d2890eb0cb9eaf8cf286f837e0c06afd91d1f71",
+      "seed": 81,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b9570ea97cb674ab9f0ca14a36ee4683d552c87701ffa2e34f88ef8cda90c2fa"
+    },
+    {
+      "call_id": "call_00_jz4VelDYX9WHO5qHQ9HL6097",
+      "command_sha256": "d80279b077ad87a7fdf8107cd65a97cdf73ebde84a62ba42ccf561cc09b4b376",
+      "seed": 82,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7a113e4adec8330e70151f4048ff2a02cbc20120aad93b67055cd950e54b0fd6"
+    },
+    {
+      "call_id": "call_00_fUur226oN7l9kXu6dde07506",
+      "command_sha256": "ccb50839fe919059bf4601efcd69ec0c9d96f62dcc56274067b69c46af5a5f14",
+      "seed": 83,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "6ea3eb4cfa88edfa1e6ffe4852487f1a01f5051a8848660f603d4be2c3d4746a"
+    },
+    {
+      "call_id": "call_00_sqINKMOaRCXWQeQV9V9B8047",
+      "command_sha256": "7a1b4f3c2aeef799534bd082a2cee8ac474aafae5117cac6a4446a84554a6f33",
+      "seed": 84,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "76a32a2e1a81c1d58b991e9d14079ccb7027db998a3953d7d2c6233d42b383c4"
+    },
+    {
+      "call_id": "call_00_gu4ieI2szFGWMFZ2ykBl3073",
+      "command_sha256": "7cca1eb4be6fc023fdb9bd7ca6471f98d168443bca24776345ba3006abbb6a97",
+      "seed": 85,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "876655fd0aff36c5ab84b8f98f90f236422572c1d7ba68af8d8abd702af5a2f7"
+    },
+    {
+      "call_id": "call_00_9v9C8Rji4WdEEetsIKMS5798",
+      "command_sha256": "08c8c0fcdea17ed01302d6147091aada4fe604a123b33a7fabe402dde03d6612",
+      "seed": 86,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e1bcabc87be65f43b37166fbc833f554d7584ec61c640cdfab49a7b97e3d23be"
+    },
+    {
+      "call_id": "call_00_B2wctWZdcNxJbvT2gY6z2135",
+      "command_sha256": "acf58e7623213d157f72fc7a62d6e8cbdcf0d78702e0342f75a62cd521d13c0a",
+      "seed": 87,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "770248195f67b3304f7d05d6d73bf1d2762ed8c6889f3b1ee4cd91842a5f7637"
+    },
+    {
+      "call_id": "call_00_t4juetKgvGTxJ8OQYHQW3469",
+      "command_sha256": "d67b2b65846b05fa449c230bacae7fa25b4e24135c9ff9c4d624f7d412826983",
+      "seed": 88,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c2182fb1baff63bcde15d8957c4452d4645f94f3f480968b845ee3e2a0b09a77"
+    },
+    {
+      "call_id": "call_00_xmgWDjnrRjx2NKWQSG4V9107",
+      "command_sha256": "0180516ab154dda5204eeb54874ff2e41c820bdbd42d502c1d3d2743cbafccf0",
+      "seed": 89,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "daca93bbc3f2f3fbcca96f8fa9d0902511e9a38c0798b06bb7d84e45571ddcbb"
+    },
+    {
+      "call_id": "call_00_QR3LnEOAmBq0a1mg52FG5167",
+      "command_sha256": "1736986ba4866d1ab1a913b94e4f6e066b633e7c82532de1bc864d85cf035411",
+      "seed": 90,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "38dc06ac589d04b55e6c527d421b10731c9117f6a8913f2bff009a60dfdffdc6"
+    },
+    {
+      "call_id": "call_00_2FmLop3Ov23OjoU1LKlr2619",
+      "command_sha256": "2b3829e5e4c0d57655c1752c0ffb5e661aca4421b15470b1a3c217a2a42891ee",
+      "seed": 91,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "61f0e0adad630a969041ef29b7b47ee43e04cbe832a3473eea40ba5441e62ba5"
+    },
+    {
+      "call_id": "call_00_siyxaexG9USY62Rjld1T7305",
+      "command_sha256": "e7d9a0abe109faddd06d54ffc062655e49f42f57d8190d5c4afa3f201df2bcf0",
+      "seed": 92,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "5824aaf1447f2992d3ee00c7770e6428a4830ccb8ad4da48574c8b8782695816"
+    },
+    {
+      "call_id": "call_00_KBPc7zkE7brg4FBrSVvA9741",
+      "command_sha256": "0ec6164735dba437c03afaa7a7601edcccba847ad8fae1c7c8fb185a4315f024",
+      "seed": 93,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "522428f76908dbcffc1641f8684c26f20340581683a62effe3fe96862fabe93a"
+    },
+    {
+      "call_id": "call_00_p0X5nzhCBgm8zL5o7EFh5022",
+      "command_sha256": "2197f8a1a7307aaf3c1e20184659f1629870b6fdd8b499a06813c55ceea3a852",
+      "seed": 94,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "4bf333d1e70527688e2f5e99e1db8d1e74767e88c24ae94e6aa5fcca10d3429d"
+    },
+    {
+      "call_id": "call_00_Il6PiAqrdjhC1Lzbc2Tt4468",
+      "command_sha256": "e3e3e032147961c7dc1d2d1ec805ee4f95f4bc43e0731c2faf390fe7b2bd78c8",
+      "seed": 95,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2ecb28f0caef877c79988fe5d913103836b8c4630cc9c118f45afbb9eda772f8"
+    },
+    {
+      "call_id": "call_00_ijhzxsK99zpoEW1VB0jK2529",
+      "command_sha256": "a426b595f8378ba21cf9875d9484f93a40751a72794672333afb3b8358c74da6",
+      "seed": 96,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3305debd163fc6f2b7cde699322e7f104e3c6c628e152bebf474b3dc8b15124d"
+    },
+    {
+      "call_id": "call_00_cMOnRTCGC6QEwS3MK3Bv6206",
+      "command_sha256": "7e8d34d7f7ceb828e326ca8594a9a71e29077d5a3fd4cee48b08a519419b3313",
+      "seed": 97,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "063e86826a9b2d208067b0a307c9890c4cffea831feb75ab298bfe3615019f30"
+    },
+    {
+      "call_id": "call_00_e5eTHp8Fs1LhuQo683HJ2087",
+      "command_sha256": "7397ca1e51d0a35da495a4e95c3135f64759d9b3fa1c293886ca643af3dae3a2",
+      "seed": 98,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3e18e331e5fa4155d1567d6f5f9b4c7d9ad106f083c2f193a5cd6270677f1b1b"
+    },
+    {
+      "call_id": "call_00_0s09vcyPEsvHq9DU6EVn2737",
+      "command_sha256": "7b3dbeef7953d93a4ad2d9f4739f50661fbd3383e2dc8dbe41626b7d4bb64d1d",
+      "seed": 99,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "84383f8e3ce4883acbd5298ff050c3ed886208c3d143bf8c2cf4bfc15462907e"
+    },
+    {
+      "call_id": "call_00_evpHDN9Q3QE2dSsADgHk1100",
+      "command_sha256": "5d0cbb5d92fcff65ec8149c62ff59393c79ba36b882974fa2b6db745e890567c",
+      "seed": 100,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "479e17ec19c682f5923fbdabaf2d6c7d728496863aa6bec91ffc6e010d06ec65"
+    },
+    {
+      "call_id": "call_00_mJzSRiyqtZXNLYMCT96h4821",
+      "command_sha256": "581faa0c5d04c597f7f35e5bcb8b431af2a2f35f71240fd29e544be70282fa50",
+      "seed": 101,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "1a675ca4cca3bae720ab61766797d8f26aba8313d131d3fc5f34a82657f039c6"
+    },
+    {
+      "call_id": "call_00_Ou9zH7Bi0LCtDOQR4JpT9254",
+      "command_sha256": "ead3e141d1909497b78cdb9b91238b33333fe14b1b890ff90417378114f95449",
+      "seed": 102,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3ed00360f952ef93e24d10a7a6de3402b01ca1bac77d947c2fe84862ae4d2474"
+    },
+    {
+      "call_id": "call_00_p4DaApnQMrqDqpPcV9dv4388",
+      "command_sha256": "fd65d460a82ff9f1aa75f24b5c1cb147b49c66340d4be515d3af5e44ec6e9281",
+      "seed": 103,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d44b3bd6c292fa3a8f8be462f91438b88d7712e02576d44a99fb436858170c3f"
+    },
+    {
+      "call_id": "call_00_NDxkMsklkUi2vzaH7G4y3324",
+      "command_sha256": "1a0266374c621cb1bee2dd942803df9d9f11b4b0e13a5b3aa191a85a31cf3748",
+      "seed": 104,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "0e0e4ed7a653de75357d9a936d476379bc9939f290a7c2b7eab497f8adfc689c"
+    },
+    {
+      "call_id": "call_00_o3VdNFRRskUazNUuhCbE8789",
+      "command_sha256": "7fc1ae3de3c0840ec73ad4505e552bb62006d118a958d5b35d1d4e2b01d1f1c8",
+      "seed": 105,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9da7406fdebae35f0a0705f1b58f7ba47c259f4c3342260b9cab491f844ff25b"
+    },
+    {
+      "call_id": "call_00_AraWp5v76RuuFJetqthI8256",
+      "command_sha256": "8f9e46fb33efed7fd878593c90cbdc532927c2e6568e6d97d833fece9793425c",
+      "seed": 106,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "c15b2551b4c9e19c8cb29965aaf1fa406bb481f63ab688fb17b01315a9095331"
+    },
+    {
+      "call_id": "call_00_upVqFOyAnMEJEuHwD4w73179",
+      "command_sha256": "c5faf6372e0567c30447a669876bc6e2ae4df39f3aa69995d4479c5da4aa4068",
+      "seed": 107,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d364a0fa2a2fcf92baa57d004a71e63ed8e2b12f3b0e4325fe939f980a4b895b"
+    },
+    {
+      "call_id": "call_00_4M9qasLch0sEUtpLVqly4258",
+      "command_sha256": "922274ba59f68dcb72b61c5f3affa06122af9866e918b02cfcc69d9cf16cbce9",
+      "seed": 108,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "773cffbc92f25c0508a7f2b357bf709a446c2373a74b2451471f2bf4f8cecb57"
+    },
+    {
+      "call_id": "call_00_I79hY16I5lWyakenWgRX9692",
+      "command_sha256": "225f8f4f8aeabaf37e8b5dd0b287697918f01be3ae73a7b48dd8ad4aca2697cc",
+      "seed": 109,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7f1bf62d9b951928107e2645bb53f9fb781e24b7a5bbd42eaf98be3fec265235"
+    },
+    {
+      "call_id": "call_00_ZpsfcZUYTcEPTalY1w7j8606",
+      "command_sha256": "3d41e1bf1b89015749c3d2a37dff332aab53bde6c04e9515a34436a002338dbb",
+      "seed": 110,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8273e7992e83dc21870e5c2c301fdf995c3759f5b2dcfc5b3ec4781ba8269d7d"
+    },
+    {
+      "call_id": "call_00_2mEeL4w8SgGgKjIaPdfG2024",
+      "command_sha256": "95390f8d157493b0fed4e6e90b1c42a27ffd4ff83359298bb2f7af323a1d6906",
+      "seed": 111,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f581fe55555c3375de579c01cc0cfbda58879cd82c7a60fe8e0351883a6ed106"
+    },
+    {
+      "call_id": "call_00_2ULuPiqk730sGPFgBPFo1791",
+      "command_sha256": "c48ce8226b6d32df1456a8bbd556d8251aad9726efe17b611a76c301fd3e26ce",
+      "seed": 112,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "41accf14b214ab16cc7f7fd96bea008e4c1fbe31c96973fc5bf106e8083f5c72"
+    },
+    {
+      "call_id": "call_00_aWudZ0ObK4wSSJw2OOyX7822",
+      "command_sha256": "8072696ef0d0d1fcbc45a85c53ea04e2bef0d9ef53acda7aea3fa69f2d01ea14",
+      "seed": 113,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "1bd9b98fc50aa4be3148a6e738ff4db1339a761cef95bd7476ae606e5c9b23d0"
+    },
+    {
+      "call_id": "call_00_qF3mij3xd7f02rfvKftb5059",
+      "command_sha256": "49d252e837fba062d1dd154796e143e09dfea23cfee3ceb779a0cd709d9ed8df",
+      "seed": 114,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a5b744a995d12f20f13171c9ce1a3c93cd95457bc96d974eea43d9206f46598c"
+    },
+    {
+      "call_id": "call_00_BZ5CckwkBCVOZryrxfNM3996",
+      "command_sha256": "3bfd4e3c4801320410e8db121a57d5341a4f54277b54026dbd383ce53e1634e0",
+      "seed": 115,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "af878d64bd69d7ed226198f97bdae742a82dbee7d1027751e9577035c1aa8aea"
+    },
+    {
+      "call_id": "call_00_GkPP4iEmCpLdXHfZRbs31018",
+      "command_sha256": "b4f0ac628e9b539b76bff74192ff1420329d50d6e82802ac620b24db45c43034",
+      "seed": 116,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "133e24279dff554c55470f37806092519a616969d293281745970caf30059e99"
+    },
+    {
+      "call_id": "call_00_iYWY0L2OFHKfFfxrXEGP4293",
+      "command_sha256": "5a4b1b1ea422597a4054a7525ba81d164e7c11f9be6bfff8f635a59933d5baf9",
+      "seed": 117,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "22fabd71920545f9d5701496d22a95a798c452d407d0f6950a68dee518950fb6"
+    },
+    {
+      "call_id": "call_00_pcGutDaxYvCRwAUjxvkf5550",
+      "command_sha256": "adb5455c29cc5664206c1ee1fb8d737da36b973db646cd5df1ce93765cbe37e2",
+      "seed": 118,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "09e8bd3f23b53f202f9aae2ee4c9c7202e46043cd04b3a0d7756e916b989e69c"
+    },
+    {
+      "call_id": "call_00_RbuzY9IP56hcETXTxv1y6262",
+      "command_sha256": "39e87a1a7b4afc3871f03667bdc49d84719a9096777403700f8669f46afeb587",
+      "seed": 119,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b228329d8e2b085a9a8ab6bab55794de794c129fa784ea65c99265c30d6bc915"
+    },
+    {
+      "call_id": "call_00_amkEZk70dasR322vULvT1980",
+      "command_sha256": "cc04c2acf6fd4a3d2a150794f46f57a9adcde1b1765ad8c9e6a08192feacf8f7",
+      "seed": 120,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9ccc906b813f8fc421b920de482b654afe754d29068723a00d98044b71e8d928"
+    },
+    {
+      "call_id": "call_00_ir9awjxbddZpI2DPumYE0421",
+      "command_sha256": "a748c154df4307a6f570dbe69d0905ebc631c1b18a99a1379bc2fab7bee12620",
+      "seed": 121,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "0704954f42cfaa33f698d9926f6e2a7312b125aa854f0eca5ffe5bc288dc46b1"
+    },
+    {
+      "call_id": "call_00_4xnwjufOtokYa4pafP499494",
+      "command_sha256": "ee22c0698e3b40019e56f7cc9b533ded82d951f5b6aebdfbf3769da35ee90973",
+      "seed": 122,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2353fd08fb46f24826ad4a4155b17d63dabd3c50a9a50a5541052aa78122ae4c"
+    },
+    {
+      "call_id": "call_00_7pJtfVPIIRLOiHqKhTrD3721",
+      "command_sha256": "1d67e17a996d5cce2a858194f21c6808be5708307a7cd1674e07c0504a3f4611",
+      "seed": 123,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "25ecda72af343093bb3f23068726cbc5592887e9f80fbb4ca54df98677555bea"
+    },
+    {
+      "call_id": "call_00_ZCpgWn9eVw7EAz8kendR4491",
+      "command_sha256": "8c473acd87ddf64b31e4821ab0d86593dee2593d2c484ca05a541ca721bd9156",
+      "seed": 124,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "aa14afc98cdd08502d43aae0757ceb26d623a64e59b3b7788831d40ccfcf915e"
+    },
+    {
+      "call_id": "call_00_oPTxsFieEalA98JnjHMX5704",
+      "command_sha256": "c479126a5615f74221f64331f9cd8a0a0d6f6e0d28bb8e3b8308c4a6e9c7fb0b",
+      "seed": 125,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "31ededd6fb6a176ba538005fc1211c3762ac61c4b1df02a5154aa3915e185589"
+    },
+    {
+      "call_id": "call_00_vBaQnv2Mrm5McxNhQ0Q74463",
+      "command_sha256": "7eaef20e878c66e35c158e4ac9e8a10ae2f8585ad53812bfb87d7b785731beee",
+      "seed": 126,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "13ceba5e47a5c6441b3f07ab4087dccf192186ee0e20f5ac6f489e1a71f7a19a"
+    },
+    {
+      "call_id": "call_00_8calXp0dkfHrRcsqnA2o8451",
+      "command_sha256": "3ac9f33b2a37d8b8da1752a0e06dab2164a3ad5eceba77bbfbab5d7926832a1d",
+      "seed": 127,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "62a5745ed1f85f435ec6a4fc897d16d6bcfb9f36c0ecba620abeb71983f0f688"
+    },
+    {
+      "call_id": "call_00_tQx3FcopWrP30JWEUcqY3944",
+      "command_sha256": "80c77d9439edf5f68ecfdf33dafd9442625bcf2db6f67f461f59b7e779201ec6",
+      "seed": 128,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e977a12e90de572f45c5fffe758054686e1c1bd036c31341b62411e5909ee860"
+    },
+    {
+      "call_id": "call_00_iI3gnecsXIIOBPiWogPr8341",
+      "command_sha256": "30fe7513b7ee58d0eec8a837b3e85f6653a8c4a227de916ace623ef72a852524",
+      "seed": 129,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "6265f104c9916782aff25fdb5c5625be483232cb1c6c03dd7db25846e3e18cc9"
+    },
+    {
+      "call_id": "call_00_qXQE2vkJ93snQYP1GhYz3732",
+      "command_sha256": "a77a236ca15d28ad564c5012eb862b018a9ca424eca483534595b335b7c51e7b",
+      "seed": 130,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b4fefb895aa25ea48db5ff6893886dc5ed710e5a0ceeba2cba7c2e57bca4e8c7"
+    },
+    {
+      "call_id": "call_00_yblvsU7aKUpUes9ScBeG0868",
+      "command_sha256": "04ae0d5d12e47fcf94d6a53100fe403645949e08b441c3bed821aaf99e96b097",
+      "seed": 131,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "66a1081403c2cd08b774b142f51cfcda8aa0ac0c396fc7fea0193972d7cf98ee"
+    },
+    {
+      "call_id": "call_00_dCoXbVaJTekmq01rwccD1878",
+      "command_sha256": "c1c680c61a8c04ee02cdd583c1270970d45c47df68dbb94fbcf028966d91b6c0",
+      "seed": 132,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f48120b877513bb65b3a2ab6febefa37e5dfa602d4bc0c8b26922c393596312f"
+    },
+    {
+      "call_id": "call_00_HAtx9dkvK4MAAx4BZCim6904",
+      "command_sha256": "d75f4e03d32472f8a11fbff7389bac72ff2dbbea76c9dc341dcded806bdd837f",
+      "seed": 133,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ea3c8572cfd5ef231cdcc434ab163224418455c96ec5428c3b4fd19d1b7eef9a"
+    },
+    {
+      "call_id": "call_00_c8gQL6hFI56vZPgTkMK28606",
+      "command_sha256": "b844d907a796aacae10471e01809cface21020d6a6fb9c90a0bf0dc720ed2a9f",
+      "seed": 134,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3c0ca9e7f5a3bec76043f3c5ba50b6c813b6d219d104f611151e8899fb61b981"
+    },
+    {
+      "call_id": "call_00_zgOx9GlDfrBZBG1c6KxC8704",
+      "command_sha256": "a1edf9a9da3150fac3ef0a151f767989a474f1c45a15e92223dafd18c0ec7c2d",
+      "seed": 135,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "10da1acfdc983e3b0bc3fc2b5600dcf8dfae8663f0fbc31e1709f1e05240194a"
+    },
+    {
+      "call_id": "call_00_d091GSnefRu3Wdw6kGIH8153",
+      "command_sha256": "0294a629b7062693661fb08ed56ef01c4484448a1ab8f3c818ae603ebfe342fa",
+      "seed": 136,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b5f567b3bca658d90bda8e3da46372dcea8bca859330291cc3e610eb6d1952e6"
+    },
+    {
+      "call_id": "call_00_0vHpUXXlAyDazVEldSPK6512",
+      "command_sha256": "1c52c26e01b27f5ae8b6e091c24dfd388b151db3c12ac0090cece4d11b4895b5",
+      "seed": 137,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "64ff369b91324379f3a8a44b934c1138ab386410c3cd7faf365e1478528cc312"
+    },
+    {
+      "call_id": "call_00_NvL2MsYBTlo0KbJdIJcg6829",
+      "command_sha256": "5da65364b88f68e4af4a637824b4cc2bbfc8d381d062516619831ae8813cc239",
+      "seed": 138,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "375400ebe62e58c2fe59a87dbe0ce591db319a2fcda4d802eff7c2afd47849b5"
+    },
+    {
+      "call_id": "call_00_u1YJIN8Aw2lzYRtVqd971630",
+      "command_sha256": "d8a224f5bd4543e8f63be4b6058ed88fa1f363b7f6a0eaa46b31c846fab042fb",
+      "seed": 139,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "fdac49aad2831b356d107d436e4cbb3b4931a317759584bf6f19af99177af0d9"
+    },
+    {
+      "call_id": "call_00_8srHkoGe6p1dbFBjRf5p5619",
+      "command_sha256": "b21fa968c9ca1b6ac46bee864221db64cb05be968435ff403c695d6802d73b9d",
+      "seed": 140,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b2c63719b1d8e9b9a48282467cfa06d9ef7698049b400f8e67343d8884e0d5c0"
+    },
+    {
+      "call_id": "call_00_iPupQcsim7wI2XXoqelx5034",
+      "command_sha256": "8551fe2418946cfd96f56b0e00aae3f04be6814ef65e0a6d461ddf862bef8034",
+      "seed": 141,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8e57f39f5f616088b2087f3b4e1cd35a48c8d9bebf7a78fa189731f70178d835"
+    },
+    {
+      "call_id": "call_00_4hdd9ByxSfYCxUvbwPn12840",
+      "command_sha256": "0af4ef943baf4a2b233c5a5cb4c7c91bd59a978ec5c5b46a054188dabb8755a1",
+      "seed": 142,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ebb0bdb52b6a5efad3788ed4e729c6fbcb1c027bd356b9b50355b516cecca448"
+    },
+    {
+      "call_id": "call_00_kVlGnCHdp5280ku7MPhu7116",
+      "command_sha256": "5d6fd7c8c54bb85305696ac300a4c908f3a492c9ceac9c91614d0628b77a1a5b",
+      "seed": 143,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "320ffa7cb52d87f68319aac5e43a255fc98320a7bd58d82dba1a0b3098e54a8c"
+    },
+    {
+      "call_id": "call_00_G2gOPEN52tXLNvnezofh3202",
+      "command_sha256": "df4b4ad34bd68aaad4e16aab34af959db78a15c7d67f8a6bec74f6e25cfcc222",
+      "seed": 144,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "bf76c188afd22f446e53fde96a940baccc13163b0907174cba873444ae7e8142"
+    },
+    {
+      "call_id": "call_00_pOcu64Q3nLUJLXXV4FlX5872",
+      "command_sha256": "c37852aa242dbd9fbbbbd1164e45b9e4597fd2bafab759ab37508959d2ab7f67",
+      "seed": 145,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "39e5e634b5884de4120726098e70e4ad51afd2d581f40d8f9a9dd821f59dab16"
+    },
+    {
+      "call_id": "call_00_YD19NnvTrYMXVSNuCmKa1278",
+      "command_sha256": "7118a84270a346fbb7f40364df41bfbd1563943e4051cb09440a6cc3a04c0105",
+      "seed": 146,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3dc0c7aa172af695ae295d2afdca1667bb7c5f668795f54bb00d64e2212a6ee7"
+    },
+    {
+      "call_id": "call_00_we7ZJmdXzu6xB0Qqiobl3866",
+      "command_sha256": "ddbbf25e937d59be40f2f7264342a66af1d1ca9d0d315ece7945c8c585f247d7",
+      "seed": 147,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e055b5ba2fb5d22f566dd47262e0afe18528adf852632f2d20ecc9e186b1adcd"
+    },
+    {
+      "call_id": "call_00_TKGS5Ycx7qyikLrrZhAO7972",
+      "command_sha256": "ab3dd2c78f5c54c6a9ba74f20a0a047fad70610957ca81e4fce0fd4ef2e8ebee",
+      "seed": 148,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f3f88976a41f17fe651c85628981d771defad02d3c40fa251e94771bb4912364"
+    },
+    {
+      "call_id": "call_00_IG3D1szOh9Dh6azFhqzZ7912",
+      "command_sha256": "6fb6c9f95f3a3940f4340c8ed19f6942f1c82407dc3408fae305db31303087e6",
+      "seed": 149,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "3b533aa3a7540c74ebf9b07ac6171e70f8cbfdef8895913ef485c17baccdae02"
+    },
+    {
+      "call_id": "call_00_tT4UkfY1sXU349lplP0D1993",
+      "command_sha256": "08a97e1263bf5b57288362211138d266de5839c7514c300b749d952e2d1df53e",
+      "seed": 150,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ef6f5019aad25c438521359e81906c53ad734b4b9c140e3f9cf24fc2272c8df4"
+    },
+    {
+      "call_id": "call_00_C8OTsYPEXRYm6dEU3Lg82409",
+      "command_sha256": "f86a45617f9a1aee23393b0c0ae38ec3433e66697812a98f9a1fbf770be1da91",
+      "seed": 151,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a5ac93dd273b1b0575a6c53edf6f3951b0cc57b66eb1055125a49af58b61c71b"
+    },
+    {
+      "call_id": "call_00_olTRvz0PxnP7sXhxod864525",
+      "command_sha256": "189542f95052af61faec0233f6558d249a4da669bb8b7807575b7eb0b36da233",
+      "seed": 152,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f7c0cff372838ce18f45112a82b98a984aac0e4f4f88c9b6330b58a45f5e8a8b"
+    },
+    {
+      "call_id": "call_00_p8XvvmHuvJobmbjQSOBN9385",
+      "command_sha256": "c981f4c8a8c4150dfa0c197f298eca9f12a5e7d6cb5d51346d7fec8cfc73c211",
+      "seed": 153,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f354340790599d0f32c33ac93f6d1c698ab858229caae56d31018ee28aa7c3a7"
+    },
+    {
+      "call_id": "call_00_qj5JrYz94U4nPMKlRLFH1671",
+      "command_sha256": "1d938c43e70d0c8c17fd06c7a6682f0f46004da7dcaebac0dcfe0334876e3ff7",
+      "seed": 154,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7fbe485bb796c7afb8fbd86c59e07a84016c99c5b5019b731270df9f410179cf"
+    },
+    {
+      "call_id": "call_00_tB93uKEjCe7N2ObSL47w5524",
+      "command_sha256": "ad356aa06e9e0befe0ad51beebdaf6e2820b6fdf29c00ae64a5ed152501e99cd",
+      "seed": 155,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7c1ffd2b7cde8795a192e61cdd8db557537d81608ccedaec9c1a4cea14eab778"
+    },
+    {
+      "call_id": "call_00_IDkFiVgWExOQA5ozxBuA6789",
+      "command_sha256": "3d0d8569efeb77c45658d65042c1486eeafc876b8a8d8ef881550dfbeb670b3a",
+      "seed": 156,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2a664f523b3f10ae58d77c1ec3cb4aacf2804c9089f4fd6c00a290b63f5e7ce8"
+    },
+    {
+      "call_id": "call_00_dGWCK2DXbLVPYAVqyqkC3773",
+      "command_sha256": "c6775c1ff2a14fe7767c26074ba119389e54e8a938d702f1c26cc619b7331462",
+      "seed": 157,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8a74ed25ca79f0e3b0311e3e4360c8d0568e5d40a72dd59c6c4ba62004488825"
+    },
+    {
+      "call_id": "call_00_WbBrFzd30yDizGgjUUsb6521",
+      "command_sha256": "dea8cbac13c798bf736f3b3ed17a0541f3bc6948eb14e652f113c42208088f6a",
+      "seed": 158,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "36099707c1db8a6d1c7f1090b9b7c723c86e6f3e1ab552eeb8e3288ff5830159"
+    },
+    {
+      "call_id": "call_00_X6EGNdrLVO3BG9Wwjt6a9337",
+      "command_sha256": "1ae3e7b6b0d9b987b2ec823bd4dd223c5d110a4d00474802135feac437f163d8",
+      "seed": 159,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ebe67f2c72f5576ab4ade3ae11c42762630c24e5bde29e9e5eb244ffefeaacb8"
+    },
+    {
+      "call_id": "call_00_VSoR5wWXYDHGG1hj8ZnC7839",
+      "command_sha256": "9b95fe7d0be2fb8fb68aff452bb000c426e3f520765c985e04acee7821d34b1a",
+      "seed": 160,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "16859688a9cb0d84247426bc7c84717a83e616ca90bc1adec6e926dd5ea2f0f6"
+    },
+    {
+      "call_id": "call_00_H32hMGbddGD1QMCtqFiR1731",
+      "command_sha256": "3efe5acfaba8d141ccd209a6f82ea05f348ab666bb3674a48f8bd4e709a58a0c",
+      "seed": 161,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e255b38a82ada8634183e79e483f516a92a6c292665cd1f2b3520a4422cf8484"
+    },
+    {
+      "call_id": "call_00_AXem82eU6qmDzHxCuylo0255",
+      "command_sha256": "d925a0ef548465f37e9270ac93689e3483a575604f858b3eb6e61a89bac2f252",
+      "seed": 162,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "fa54625fc917ac866f97d9676c6a0f69649230dca355124884f584705715d435"
+    },
+    {
+      "call_id": "call_00_inrjiWys3Ozv6poX2tpO8239",
+      "command_sha256": "17150eff873b1dffd61da8ec731bdebfce0d311c1bc07e9abc9fe6291cc17baf",
+      "seed": 163,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e55506acf66866967ac51804da8f8707d819fbf06c922e2e6d4067ca5d4ab7e0"
+    },
+    {
+      "call_id": "call_00_PqXPX6yIYT9zFDCvwuTu2101",
+      "command_sha256": "b598950ce4a97f0a45782b8ac1711de2da6cdfdd520e184ed9ede9b44435f9e5",
+      "seed": 164,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "de47c54e697a129596210c309cca835665a551d5d8e2d0264038c276a8b31f3e"
+    },
+    {
+      "call_id": "call_00_JQPU7hdu3VXDPaimzzf28497",
+      "command_sha256": "d091e810ca6382f842c27b94015b5eadd4d4e4581df28c433b9a53962f42c06e",
+      "seed": 165,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "283bbb79a9a840ece9436191a56bc62854b69ab5c4a4bcb81ad6faa5e4a74ba1"
+    },
+    {
+      "call_id": "call_00_H1HMgKaAvjRlICK1WrZT7339",
+      "command_sha256": "a037b05e118c0ec7891a6007a966d15cdf72781430a1a7a67b290eb9bd8320f5",
+      "seed": 166,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "57c334ace7b1aea0ec330bf780efab879dfdba9f1977278d6e57365a88e1b575"
+    },
+    {
+      "call_id": "call_00_ExcfdgkcsA9wCG7rrSJS8544",
+      "command_sha256": "c1eb2364e792a125bd1b443fb50881421518fae2df1b4fb634e743fcb8ccc2e3",
+      "seed": 167,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a9b826b419f5b33f47aaf76e586339a9e46f173b40eb6a03f5739bfce2f5a145"
+    },
+    {
+      "call_id": "call_00_OoNzg0dpK9AyntlmruZ84669",
+      "command_sha256": "00336575e7c9df1278c32fe07f2436d6de3daaeb53b0621bb8eaf001f7b93830",
+      "seed": 168,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d60a53c732a8f3ebd3c454c0af874da2b06b903ea052fd87431017c902a641ed"
+    },
+    {
+      "call_id": "call_00_vV5xYg6pnc531yx2rjGO1034",
+      "command_sha256": "a75f849c9d26f52887f2b0b9ff17872dd19c9aec21519cebf615096bc5c598aa",
+      "seed": 169,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2f6ecce6a63961a83e5165d054170314532c005d045ebd0a0e1075d9e1840dcc"
+    },
+    {
+      "call_id": "call_00_FrVEctlDHpRJ7tOrQvoI7538",
+      "command_sha256": "9d9888b8d9bda1308d331ca6cdf0a4983f35711552ed9155e889a9c60324de09",
+      "seed": 170,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "634bc4c5760e2ee888a2e9a3042e677a0bfde478858fb358ef16bdfb4c9d1625"
+    },
+    {
+      "call_id": "call_00_H5aL2wId41XNDEay3MRM2072",
+      "command_sha256": "7c317b7dc3d74f503882fbe1dd890f71c2af38a72dd51df4757fb294984a7afa",
+      "seed": 171,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9b75d79454067392977d5d2a6f0cdb3c3c54ebc0a8fc07e3fac81a59c44f7d0e"
+    },
+    {
+      "call_id": "call_00_VoOWPlGQiC0ZNxEOKA7v3309",
+      "command_sha256": "5d5052fd3dcb2a70a4700c872ac3226729bc4bab11230dfba2fd155e331875f0",
+      "seed": 172,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ecc6ee140c67101f8357b5281a0d27da06a1cc3096ac32db76553a96c462890c"
+    },
+    {
+      "call_id": "call_00_vBs53rAajMCYUykDddg44031",
+      "command_sha256": "1538489944cfea66d55b21a3f1750f35f3af78a22dc278ff3ebe0839c604cf68",
+      "seed": 173,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "515698729f95514b621c46a484cd769c7fd5930f94e589c124b4991842d578cd"
+    },
+    {
+      "call_id": "call_00_5cqpEzaAaQjoNP2BXkvz8140",
+      "command_sha256": "ddb9a9fef51e8ff25f2ab0289cdbccc250646f43899736aee178d8ff5f361102",
+      "seed": 174,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "0bc296746647ddbd0acb31c141b8f40ec2e96a3eab51a090641b49777cd306f8"
+    },
+    {
+      "call_id": "call_00_awbOyUibFsUtZh7k9ihT8771",
+      "command_sha256": "042295858f9a8ed88f4555cacd5d4164033e092b0055c60f9fab23452d5a5ebc",
+      "seed": 175,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "2aefcaa8a5f9273c76f705ba09950af932232e02ea7c87a2ab159633273eb8a5"
+    },
+    {
+      "call_id": "call_00_9Q4ui24R7IeZCPKlBSrr8717",
+      "command_sha256": "17e6ac32b38b4e5a34d838bd6a287f35d4a5ff19753b68e4924c3b0faa33f3cb",
+      "seed": 176,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "25e9e3127688744836f2c449f4320c4dbd7d91997d9042cc229a1bc14edd6d50"
+    },
+    {
+      "call_id": "call_00_4y3pzOwpCXoqQtHQMq4X5323",
+      "command_sha256": "a698f6d0575c81fe4229d94d699b718c832b4f5cd125979da84b4fe858fda658",
+      "seed": 177,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "1ad8843034243c3174390cce230c5f65d95b870f286435e39e61111ba3067327"
+    },
+    {
+      "call_id": "call_00_0AFDBqKXO6bocWbR72ER8571",
+      "command_sha256": "e5180d0656d09ef5179f8e52ae5a200895410294131618efd69d7aef21be9f46",
+      "seed": 178,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b03e74e363cfd09d81a5172b0327f5901ed01c076be5c15d18704a8fcaca414f"
+    },
+    {
+      "call_id": "call_00_kAlnfxqrtmy9lLjxOtGI0670",
+      "command_sha256": "95905111e82a4669ecf141aab17ad00558fc0e365c0cc1c4889c79193be3d9a5",
+      "seed": 179,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "0f30983cf96cb8e44e35450fd7b4e3c128b3103dd197da167be9cb5f5f773a00"
+    },
+    {
+      "call_id": "call_00_QJpJhwfA7nswROaiN86q1147",
+      "command_sha256": "5eda91817952d3ae19b07a355adf0fa361f14b1c6ac7922544124c6730f9733f",
+      "seed": 180,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a59b776ca81f48e9145d243afa487ebc1b1ed55a0ec4f0d0a5aad70a6dd0190e"
+    },
+    {
+      "call_id": "call_00_SPxTm8jBZ7EpDTIyPVTj1948",
+      "command_sha256": "40d52865da6776282ade2598b13894b256e37289540313343421ddced75c5aa3",
+      "seed": 181,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "65abcd8926d38da6753527eba52ddc8c51766d1873a961d88ac10542d2d0612f"
+    },
+    {
+      "call_id": "call_00_KvfiwCZmeTwIzBg1uwiN3767",
+      "command_sha256": "05410b3cf005f61c194e11aede24645184b72bdd4cb099ddd094087b42099bac",
+      "seed": 182,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f832ec31ff3a77e62a43d7b5dd3a646d7d3f2c605e26ee4ba8ff7b0cb990da0d"
+    },
+    {
+      "call_id": "call_00_KLU4mo9wpOgELftOOaBD2600",
+      "command_sha256": "83e181335e81956802cce150075baa48c090c93396b7aed8873a9d3999db969e",
+      "seed": 183,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d04f096fc0f5a44be9b1617f184b71103cb651c4a109dc496f4da8ade541e134"
+    },
+    {
+      "call_id": "call_00_3f0ZlnxC4qIB5G5RgcKZ3916",
+      "command_sha256": "5e3f6834b25d67d68bfb9eb358ef728166406279e34152d0d345cd1154975f8d",
+      "seed": 184,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d0c3a707b013b3e9c23553e10ce02ec394b273ada8e7abd7f0df835dc0d2fd75"
+    },
+    {
+      "call_id": "call_00_adQslzRun1vlrronxT0B3578",
+      "command_sha256": "3d4283daa1f525b11d2cf11e034d442d1ac33cc7d577bc9e7f710fe9071cd230",
+      "seed": 185,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e65eeae6d575dc788d1dd82e5fc62dccf384fe504016d5fc68785da92036e112"
+    },
+    {
+      "call_id": "call_00_gTCxD4FfcAzaNp0T5Mq22618",
+      "command_sha256": "f9217eb7106e1636e155db93a8d8a8ca0f822a663b7ec22b0b6133d93d0e8ad9",
+      "seed": 186,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e8c67db2f6be27697d7cdf07e635a8b793acfb749fe6884a9dda6e217ab1cd83"
+    },
+    {
+      "call_id": "call_00_jL64XpLdk79lOOofDygy9780",
+      "command_sha256": "8267e8bb4db1f545f596075c75c3d05e355f499270c87ec4d4091e98a6a040aa",
+      "seed": 187,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "840972a74b7fd6cde189b2bf97781eaec17b7c38391b4d716630023ff572bca0"
+    },
+    {
+      "call_id": "call_00_SAY9J3MOVq5UO9U0J5Ws5008",
+      "command_sha256": "69ee318cee30de5aef76d352a3f6c9b1846fe779e8597211d186f36aefbfec13",
+      "seed": 188,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "72ebd989fa9d795cadf97e911c097a10a12659d7149d6a72b8a9c16fb082df03"
+    },
+    {
+      "call_id": "call_00_cYwg6IUwn4Z8AKODW4VA4172",
+      "command_sha256": "0298e5c9285a316d662f3eddfe608f75c5adcc521966be9b535c5dc2af4baadb",
+      "seed": 189,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7020a390b726ef32b372c82b0139df52bd352252adb437fbfcb51a57813d3f7b"
+    },
+    {
+      "call_id": "call_00_26oWJ5eKwBcBgFZA2Ylb6125",
+      "command_sha256": "6d796c08ac22e958b77e61ec111cfbb0e644cc89d070e001e6ab0ea8a8105cea",
+      "seed": 190,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ec560c4cb653e28aea421c466dc7f7309cfb1b087501046e6abfde88fa0f079b"
+    },
+    {
+      "call_id": "call_00_OOUwmenWQ1nsLrwLvDAt6055",
+      "command_sha256": "aebf8e9e561d2fea0ba1c65d027ff081e292abaa430f63b5d9b841370b0f6886",
+      "seed": 191,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "ee0f90d585b9c05b61b483a691dd3dc3ed4af875da2b1793c0b27055bca3c52d"
+    },
+    {
+      "call_id": "call_00_UNLUS3p4jtmB3d9sKeIR3023",
+      "command_sha256": "3e2320fc678d3c8eda0d6cc93afc8d1abbf80418fa3cb680a2f097995082d9ed",
+      "seed": 192,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "29ef9070c7fcda5cd08da9fd97589e726013569b3be8fa27eb3bf20a447734e2"
+    },
+    {
+      "call_id": "call_00_SxfHuHoS1T0SjAvbZxfH1899",
+      "command_sha256": "c2317aeae86b6cb4f2ee9995e82ce0e14ec3a7bfef6c3a49b931a9a08f6f8a61",
+      "seed": 193,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e617a0f489bb7b13e05efa15711a72bbe39a3fa5f9dab37c5933f0e3d6d65878"
+    },
+    {
+      "call_id": "call_00_LiA60P6gxAvJMs0YOaJj8107",
+      "command_sha256": "1465486fb28495d7f276d4b07d405553985f2f502e15dde0cc4cec717f0ae7be",
+      "seed": 194,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "de53b7d80f921ecb5909065c88f48eefb0ba9788f3efa2d090b6943926be338b"
+    },
+    {
+      "call_id": "call_00_Q5b8VWAvgpXz5owWUlw47294",
+      "command_sha256": "0e0dbe91da831162750289ea59bb59d85dbe7102ab6d9af5eb6c56e71b5f5dc0",
+      "seed": 195,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "23f85b42d6c77471fb52c7a93fb0e2ef98db4f91e0e26526dee514c32259a625"
+    },
+    {
+      "call_id": "call_00_PhSVwdM4UTYqsKSq57zT3221",
+      "command_sha256": "7df6b27be65f788334e53a117cbe333644a773041baa857b9314faf259f7fc80",
+      "seed": 196,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "385ccb51e4cb8399d48f29cc6e996201ca42aecb1c084cede57448673acd54a9"
+    },
+    {
+      "call_id": "call_00_LKjnvTW5YtwiNjXhiSUx4643",
+      "command_sha256": "1975af16e9959e449afd3d8f2ada0b771a0af96f48a94d126beefe37bef27a4b",
+      "seed": 197,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "cebd1f1d4f414342f2c61cef516cecdfac54ec905ba1b4dad3357a6334ab480e"
+    },
+    {
+      "call_id": "call_00_X7DKbZvqjDKXGTtviu6U6336",
+      "command_sha256": "ee9714d63eccdd44c7991d6627d0d50accb827d1b1744ed1e7afb741cf9535ac",
+      "seed": 198,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a64058bc340ff5233c9fdbf8e0bd4f80a51544ab293627030ce2c9a9c6e9d361"
+    },
+    {
+      "call_id": "call_00_qOriWGUTO0F5BUTKRAF90730",
+      "command_sha256": "1feed66a0a074bf410708ae2ab14826cdeca8cd65ba42b9b5cc8d02e12e2848c",
+      "seed": 199,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d75ffb3a81fab6587d14c065948f83e2be45f6cedf95bfb2bc88b5ffed2c3517"
+    },
+    {
+      "call_id": "call_00_b0LMB3DUBYPaq0ry1Ynj6779",
+      "command_sha256": "84fe401b3cbdc3e66fc7d3052e8bcfa2bd0a65259dabb0a0f41473759db46fc6",
+      "seed": 200,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b48bbe416bcc04efdfa2ebf4b752c983746eb8d6b6b69c73f953f3b85d9b87d4"
+    },
+    {
+      "call_id": "call_00_isj6JWCRrch5N7fbW0oh9354",
+      "command_sha256": "71a38c8097409c4ea1f1d631117d5e7e95c59550dc5bd866852d061e66d7a3dc",
+      "seed": 201,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "1b9b6c46c944278061e110f7931e79922681610f6809ae342b5baa53317826ad"
+    },
+    {
+      "call_id": "call_00_IkeogT7pzSzeeTMjG8IH6700",
+      "command_sha256": "9adcaa83c04c3833541b0be6591e86d314ce1ac85206489cbe30bdecbb626198",
+      "seed": 202,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a30e8bd3d8ffaac6ed166adc895833644b55e2574d8e510b3d178e676980bbab"
+    },
+    {
+      "call_id": "call_00_xzqzSwmmf0l3Tg9DFe4G3674",
+      "command_sha256": "6a0098634121bd42379dd9c60b3cbf264c0b58a415eec0fba47f2fa22b0a1220",
+      "seed": 203,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f65788c1e2be4f2272f7bd5d90393a7eb73b8909c6a558081f34903776146548"
+    },
+    {
+      "call_id": "call_00_m3b4scqwHvtnpcRCWsTu7396",
+      "command_sha256": "2b09e4b21fa89133f9080b78f035e988a4e292d4306ebc4e5c2a3ff831a00f4d",
+      "seed": 204,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "b89d3cd87a50f13aac6914dd114ace729b3bc11100fa2ae0c8644edad8490c4d"
+    },
+    {
+      "call_id": "call_00_XbzEtffIJY2KMcUsWFCi6781",
+      "command_sha256": "c709f771a015dae0fdff7d83a0fb96c27fdc1888f889f150c43ca904fdfce0c3",
+      "seed": 205,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "40be9ab7fff6ac70bb0533a426b514c5ba5cfa498157405ae2642ab82466ad45"
+    },
+    {
+      "call_id": "call_00_usENV5PJXOfhvyPDP4eC7994",
+      "command_sha256": "2ea68a080122a1566f72093fbda12f45b6afb431c905616174557143afc8ff65",
+      "seed": 206,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "651ecccad589603c00ba8d7251b3e96e0f135066e0fb9cbf00b2e9e8d11f9085"
+    },
+    {
+      "call_id": "call_00_25YB0AjThIOfDbqSb5sY1875",
+      "command_sha256": "805db00fc13f1e4ab082ad91ee0ec8e15cd65097c80e78ab568b7c54d27e8ab3",
+      "seed": 207,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "99a6e68b8eefa8ed9a8dcea7e40024bed4a8135eff6a519860e5e61be84bfe80"
+    },
+    {
+      "call_id": "call_00_RTkvJ3O1rBZdXQq65Plx9107",
+      "command_sha256": "a41c42a1c19bd9d3951effb0a1c57ca8d2f2b1e2f1dede72710736b911dc200d",
+      "seed": 208,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "d175354b9f61dc7f4ca0c72a8d70176460dd51bede28dda53b685c5230563c92"
+    },
+    {
+      "call_id": "call_00_3ipPX5CXt8uvKOCdRUsU8408",
+      "command_sha256": "9701c61c3a94948c7dfb9f330f1d0098f0df239669682cb502481c182a1bd4ee",
+      "seed": 209,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "63a02535a900711a12012101b93a8145bac70815e54fa831e3ee06565e2783c0"
+    },
+    {
+      "call_id": "call_00_z1wEOqFK3VODXdQAPxHY9166",
+      "command_sha256": "0b32a76feeb1f691a21b45d7ab2fc50a05cab8f5a735da6de3f8dfe027b9fce6",
+      "seed": 210,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "7edbd3c040626f2cf8e1ec49a895c915a4818f0574f2a88afec90bb73231fe70"
+    },
+    {
+      "call_id": "call_00_yoBay69ysAWsfUV50my06503",
+      "command_sha256": "5f2a96fdb85ba0044308dedf782f4569cb9902d6ab9bdbfcc6cc82b8dbccdd8d",
+      "seed": 211,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "e4fde1c91ad466ebfc4bf06e309eba23879b8e099597cfe94de115e31a596402"
+    },
+    {
+      "call_id": "call_00_57jgGLZbKZt4UQ2qhSrQ6837",
+      "command_sha256": "1d86c040ba36c0d03025805ef14d0857ed6cbaa46fd6bb6309751b3625405066",
+      "seed": 212,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "a295579f81f10b7825921d9e0534450dcf363ea9e4c129568a56720c23da0ec5"
+    },
+    {
+      "call_id": "call_00_RwPQfUQm6tGFiexljKDS1404",
+      "command_sha256": "56ca19e89c86ee4c942fbfef1d61bd974cc3ce40e4d25dac444017cb6d00faf5",
+      "seed": 213,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "282886ad63404c48d3df70e779c3cd6172ecf3fbc8e8ce623b749a81540b89ae"
+    },
+    {
+      "call_id": "call_00_r6PyOn0tVUVrtZxpyezj3603",
+      "command_sha256": "b5c3bccae266114d8735538f4f7ee34d9396ab0981e5a86878e50d5d8eac1931",
+      "seed": 214,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "9a3caa76e37b5ad79dfc741d449246f18afc6d4036d7a695b0ca3fc2657f5af1"
+    },
+    {
+      "call_id": "call_00_Wm3iZ57DaXrorXZJEGqT8447",
+      "command_sha256": "8aada044a49cc8523d5613d01cb7f0008d6a238e40c379a402cb324b98703d5a",
+      "seed": 215,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "33cabeddb876fac33f7b5283f8e5fa0f27c1002db07a1a77a7d57b33b798e7db"
+    },
+    {
+      "call_id": "call_00_Hl55EDwJB5JGzb306VXO1523",
+      "command_sha256": "3532677d834d6bce0352f4ff8bfe347e4f3342f84fa3111e055141df51821d51",
+      "seed": 216,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "fd0a565bc2bb519d066d0fa089422ff00d419443a8909926efb95d52912afe7b"
+    },
+    {
+      "call_id": "call_00_kT48Vuys6d4vQD5RO9rD0842",
+      "command_sha256": "d706d54207ee004d1f41f07380c71536a5a31e54c436b6e9f57eedd02a1a44f0",
+      "seed": 217,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "8109caa0c3fad10bb0316a150b28cf823c4bf4d214a3692af2a8e3e659e428f6"
+    },
+    {
+      "call_id": "call_00_XFQoWQibBxDTmz5hZjSQ9263",
+      "command_sha256": "f39c4614bc79eec45902738ca07f03d38f4ad47936ae92551ea70034d15bf4d4",
+      "seed": 218,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "426d474844f25e576fdf32460cbe0263eb49c0011354cc24cbd6fb36d56972b6"
+    },
+    {
+      "call_id": "call_00_AlxbI7gwIjvUrvD6OzB20480",
+      "command_sha256": "e896df9525d976cf9cba62f66e5f8ba43fcf0bc63624f5a6113414fe7a94e560",
+      "seed": 219,
+      "alpha_grid_lines": [
+        "for alpha in [1e-12,1e-11,1e-10,1e-9]:"
+      ],
+      "result_text_sha256": "f90f51d64bd366cc19c63d9e279acb4a04f12bafda7fc86f1d450d140f3551e4"
+    },
+    {
+      "call_id": "call_00_eIaG00gifkhKNBG4iyx05158",
+      "command_sha256": "328d17804c37c922b1a68f4a34a05c196320fc53159d8dd731a99cddb38e10e2",
+      "seed": 220,
+      "alpha_grid_lines": [],
+      "result_text_sha256": "c70d4bcb01a7ad87424011b777d486cdc14bc8711048609bc084a8768f96cc24"
+    }
+  ],
+  "scope": "Closed attempt; literal extraction from generated sim<number>.py commands. Seeds change, so these are not classified as identical computations. No hidden data accessed."
+}

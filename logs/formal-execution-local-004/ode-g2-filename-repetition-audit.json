@@ -1,0 +1,38 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-ode-g2-r1-a001",
+  "native_logs": [
+    {
+      "path": "research-runs/research-6615cd7900ba0750-ode-g2-r1/auxiliary-agent/pi/sessions/2026-10-23T02-49-03-698Z_01a166a9-73d2-751a-99d6-1e928563d9a5.jsonl",
+      "sha256": "abe0c63e7b0c4278e4babac991f62a3b3c272e8a25634c7023b59f382262c35f"
+    }
+  ],
+  "normalization": "Replace only whole filenames matching \\b(explore|diag)\\d+\\.py\\b with the same prefix plus <N>.py; no other bytes changed.",
+  "bash_calls": 359,
+  "raw_unique_commands": 359,
+  "normalized_unique_commands": 67,
+  "longest_normalized_identical_streak": 1,
+  "top_normalized_commands": [
+    {
+      "count": 79,
+      "normalized_command": "cd /workspace/dev && cat > explore<N>.py <<'EOF'\nimport numpy as np, json, sys\nfrom scipy.integrate import solve_ivp\nfrom scipy.optimize import least_squares\nfrom explore import basis, smooth\n\nd=sys.argv[1]\ntr=np.load(d+'/train.npy'); va=np.load(d+'/validation.npy'); t=np.load(d+'/t.npy')\nti=np.load(d+'/train_initial.npy'); vi=np.load(d+'/validation_initial.npy')\nmd=json.load(open(d+'/metadata.json'))\nsig=np.array(md['noise']['train_sigma']); vsig=np.array(md['noise']['validation_sigma'])\n\ndef rollout(C, z0, t):\n    def f(tt,z):\n        return (basis(z[None,:])@C)[0]\n    sol=solve_ivp(f,(t[0],t[-1]),z0,t_eval=t,method='DOP853',rtol=1e-9,atol=1e-11)\n    if sol.y.shape[1]!=len(t): return None\n    return sol.y.T\n\ndef resid(p):\n    C=p.reshape(10,2)\n    r=[]\n    for k in range(6):\n        R=rollout(C,ti[k],t)\n        if R is None: return np.full(6*301*2,1e3)\n        r.append(((R-tr[k])/sig[k]).ravel())\n    return np.concatenate(r)\n\nCs=[]\nfor k in range(6):\n    Xs,dXs=smooth(t,tr[k],sig[k],0.05)\n    Cs.append(np.linalg.lstsq(basis(Xs),dXs,rcond=None)[0])\nC0=np.mean(Cs,axis=0)\nprint('init rms', np.sqrt(np.mean(resid(C0.ravel())**2)))\nprint(np.round(C0,3).T)\nfor k in range(6):\n    R=rollout(C0,ti[k],t)\n    print(k, None if R is None else np.abs(R-tr[k]).max())\nEOF\ntimeout 300 python explore<N>.py /input/cases/4f49905d2c9a6bbb918b",
+      "normalized_command_sha256": "57f9a287580cc206cce055a8438c9f9310560e3129d7ef891ce7a2c773015880",
+      "matched_results": 79,
+      "distinct_tool_result_text_hashes": 1
+    },
+    {
+      "count": 79,
+      "normalized_command": "cd /workspace/dev && cat > explore<N>.py <<'EOF'\nimport numpy as np, json, sys\nfrom scipy.integrate import solve_ivp\nfrom scipy.optimize import least_squares\nfrom explore import basis, smooth\n\nd=sys.argv[1]\ntr=np.load(d+'/train.npy'); va=np.load(d+'/validation.npy'); t=np.load(d+'/t.npy')\nti=np.load(d+'/train_initial.npy'); vi=np.load(d+'/validation_initial.npy')\nmd=json.load(open(d+'/metadata.json'))\nsig=np.array(md['noise']['train_sigma']); vsig=np.array(md['noise']['validation_sigma'])\n\ndef rollout(C, z0, t):\n    def f(tt,z):\n        return (basis(z[None,:])@C)[0]\n    sol=solve_ivp(f,(t[0],t[-1]),z0,t_eval=t,method='DOP853',rtol=1e-9,atol=1e-11)\n    if sol.y.shape[1]!=len(t): return None\n    return sol.y.T\n\ndef resid(p):\n    C=p.reshape(10,2)\n    r=[]\n    for k in range(6):\n        R=rollout(C,ti[k],t)\n        if R is None: return np.full(6*301*2,1e3)\n        r.append(((R-tr[k])/sig[k]).ravel())\n    return np.concatenate(r)\n\nCs=[]\nfor k in range(6):\n    Xs,dXs=smooth(t,tr[k],sig[k],0.05)\n    Cs.append(np.linalg.lstsq(basis(Xs),dXs,rcond=None)[0])\nC0=np.mean(Cs,axis=0)\nprint('init rms', np.sqrt(np.mean(resid(C0.ravel())**2)))\nprint(np.round(C0,3).T)\nfor k in range(6):\n    R=rollout(C0,ti[k],t)\n    print(k, None if R is None else np.abs(R-tr[k]).max())\nEOF\ntimeout 300 python explore<N>.py /input/cases/b4da37f25d6bc95ee155",
+      "normalized_command_sha256": "f9b838b3228a92afc4cbd452c549f185a539f921e447f90e77edc6abd0008d79",
+      "matched_results": 79,
+      "distinct_tool_result_text_hashes": 1
+    },
+    {
+      "count": 69,
+      "normalized_command": "cd /workspace/dev && cat > diag<N>.py <<'EOF'\nimport numpy as np, json, sys\nfrom scipy.integrate import solve_ivp\nfrom scipy.optimize import least_squares\nfrom explore import basis, smooth\nd=sys.argv[1]\ntr=np.load(d+'/train.npy'); t=np.load(d+'/t.npy'); ti=np.load(d+'/train_initial.npy')\nmd=json.load(open(d+'/metadata.json'))\nsig=np.array(md['noise']['train_sigma'])\nCs=[]\nfor k in range(6):\n    Xs,dXs=smooth(t,tr[k],sig[k],0.05)\n    Cs.append(np.linalg.lstsq(basis(Xs),dXs,rcond=None)[0])\nC0=np.mean(Cs,axis=0)\ndef f(tt,z): return (basis(z[None,:])@C0)[0]\nfor k in range(6):\n    sol=solve_ivp(f,(0,6),ti[k],t_eval=t,method='DOP853',rtol=1e-9,atol=1e-11)\n    n=sol.y.shape[1]\n    print(k,'n',n,'max|z|',np.abs(sol.y).max().round(2))\n    if n>0:\n        idx=np.argmax(np.abs(sol.y).max(axis=0))\n        print('   blowup at t=',sol.t[idx].round(2),'z=',np.round(sol.y[:,idx],2))\nEOF\ntimeout 120 python diag<N>.py /input/cases/b4da37f25d6bc95ee155",
+      "normalized_command_sha256": "ce5fedc1f42d5e8dd5322d9fb8c5c192ef19969eeec4825b892fda0a7dd4f2ef",
+      "matched_results": 69,
+      "distinct_tool_result_text_hashes": 1
+    }
+  ],
+  "scope": "Closed attempt only. Post hoc literal filename normalization; not an exhaustive semantic equivalence test or inference about model internal reasoning."
+}

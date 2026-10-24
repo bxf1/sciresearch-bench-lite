@@ -1,0 +1,34 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-poisson-g3-r1-a001",
+  "diagnostics": {
+    "adapter": "study-final",
+    "evaluation_status": "valid",
+    "final": {
+      "checkpoint_id": null,
+      "evaluation_status": "valid",
+      "reason": "no_valid_submission",
+      "replay_count": 0,
+      "reward": 0,
+      "score": 0.0,
+      "source_hash": null
+    },
+    "first": {
+      "checkpoint_id": null,
+      "evaluation_status": "valid",
+      "reason": "no_valid_submission",
+      "replay_count": 0,
+      "reward": 0,
+      "score": 0.0,
+      "source_hash": null
+    },
+    "reward": 0,
+    "score": 0.0,
+    "selection_reason": "no_valid_submission"
+  },
+  "formal": true,
+  "freeze_sha256": "0663ac65edb74bd24d137cfbf5c7f69b46ab82a96661b61861e38332a411f01e",
+  "registry_sha256": "6b347df406b323d82a9237312afe94898054ff9c9e821428b5636acc1dc1cf6a",
+  "replay_retry_number": 0,
+  "run_id": "research-6615cd7900ba0750-poisson-g3-r1",
+  "split": "final-test"
+}

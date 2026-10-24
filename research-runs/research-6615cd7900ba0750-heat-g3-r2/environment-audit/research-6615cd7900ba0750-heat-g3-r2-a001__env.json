@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "kind": "created",
+      "role": "research",
+      "time": 1792730983.299475
+    },
+    {
+      "kind": "research_network_sealed",
+      "policy": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792731043.905679
+    },
+    {
+      "kind": "native_pi_stdout_suppressed",
+      "time": 1792731044.1340191
+    },
+    {
+      "kind": "setup_network_restore_blocked",
+      "requested": {
+        "allowed_hosts": [],
+        "network_mode": "public"
+      },
+      "retained": {
+        "allowed_hosts": [
+          "172.21.0.2"
+        ],
+        "network_mode": "allowlist"
+      },
+      "time": 1792732646.120533
+    },
+    {
+      "kind": "native_agent_log_download_suppressed",
+      "time": 1792732646.2795599
+    },
+    {
+      "kind": "empty_native_agent_log_upload_suppressed",
+      "time": 1792732646.280542
+    },
+    {
+      "kind": "native_artifacts_excluded",
+      "time": 1792732646.281227
+    }
+  ],
+  "formal": true,
+  "session_id": "research-6615cd7900ba0750-heat-g3-r2-a001__env"
+}

@@ -1,0 +1,32 @@
+{
+  "completed_at": "2026-10-23T08:20:25.689632+00:00",
+  "evaluation_status": "invalid",
+  "final_test_scores_accessed": true,
+  "host_observations_sha256": "5f56ae5e4a0de300935d34307f469ca830e7c72efba748c9607e31f4d73db0ca",
+  "identity": "research-6615cd7900ba0750-poisson-g2-r1",
+  "kind": "final",
+  "model_calls": 0,
+  "no_running_containers": true,
+  "observer_errors": [],
+  "operation_result_sha256": "a96bc3320a1b6bdbf0ba141f2ad0bec99a385e619521ba6095fa7e4b1801ae08",
+  "status": "rejected",
+  "violations": [
+    {
+      "active": [
+        {
+          "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+          "core_percent": 6.4058037859730605,
+          "pid": "57101"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792743603.8685079
+    }
+  ]
+}

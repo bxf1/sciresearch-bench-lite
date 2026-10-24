@@ -9,14 +9,14 @@ from unittest.mock import patch
 
 from runner.model_relay import encoded
 from runner.policy_capture import (CAPTURE_EXTENSION, DUMMY_KEY, EXPECTED_TOOLS, MARKER,
-                                   capture_task, parse_capture, validate_container)
+                                   capture_task, parse_capture, parse_compaction_capture, validate_container)
 
 
 IMAGE = "sha256:" + "a" * 64
 
 
 def payload():
-    return {"schema_version": 1, "stage": "before_provider_request", "model": "deepseek-v4-pro",
+    return {"schema_version": 1, "stage": "before_provider_request", "model": "deepseek-flash",
             "stream": True, "requested_max_tokens": 16384,
             "system": [{"type": "text", "text": "中文", "cache_control": {"type": "ephemeral"}}],
             "tools": [{"name": name, "description": name, "input_schema": {"type": "object"}}
@@ -33,6 +33,18 @@ def container():
 
 
 class PolicyCaptureTests(unittest.TestCase):
+    def test_compaction_capture_requires_explicit_tool_absence_and_bounded_single_receipt(self):
+        marker = 'BENCH_COMPACTION_CAPTURE_V1 '
+        value = {'schema_version':1,'stage':'native_compaction_before_http','model':'deepseek-flash',
+                 'stream':True,'requested_max_tokens':13107,'system':[{'type':'text','text':'summary'}],
+                 'tools_absent':True}
+        self.assertEqual(parse_compaction_capture(marker+json.dumps(value)),value)
+        for changes in ({'tools':[]},{'tools_absent':False},{'system':[]},{'model':'unknown'}):
+            with self.assertRaises(ValueError):
+                parse_compaction_capture(marker+json.dumps({**value,**changes}))
+        with self.assertRaises(ValueError):
+            parse_compaction_capture((marker+json.dumps(value)+'\n')*2)
+
     def test_receipt_preserves_native_key_order_for_relay_hash(self):
         value = parse_capture(MARKER + json.dumps(payload()))
         self.assertEqual(list(value["system"][0]), ["type", "text", "cache_control"])

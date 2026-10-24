@@ -1,10 +1,34 @@
-# SciResearch-Bench-Lite v0.3
+# SciResearch-Bench-Lite
 
-三条合成科学计算任务：热方程逆恢复、二维多项式动力学辨识、稀疏 SPD 系统求解优化。实现依据 [执行契约的只读副本](docs/execution-plan-v0.3.md)，原设计和三个参考仓库未被本实现改写。副本中的相对证据链接沿用原 `design/` 树与本地参考仓库布局，保留其来源，不保证在独立GitHub仓库中可打开。
+科学计算 Auto Research Benchmark：热逆问题、动力学辨识与稀疏求解优化。
 
-**本机实现、校准、隔离功能探针、真实模型到独立评分的pilot链路及干净源码和新依赖环境重放已完成；正式 Benchmark 验收尚未完成。** 已生成90例并通过GT QC，11个作者方法通过统一W/J执行；固定T1、T2、T3参考各12/12通过校准。刻意零解pilot经三次W/J得0分；后续真实研究候选在pilot-smoke三次均3/3通过、得87.693分，但未显式finalize，first/final同一源码，没有迭代收益证据。各次基础设施失败均保留。正式三组研究仍为0格、0会话，final-test求解成绩均未查看，T3正式加速比尚不可报告。远端已核验至 `536c0d9`；`0a84f0c` 的证据与后续基线代码均在用户明确批准后公开推送。[发布记录](logs/publication-local-003/result.json)保留这次核验的具体提交。完整结果见 [结果报告](docs/results.md)和[本机交付记录](freezes/local-delivery-004.json)。
+**[提交报告](docs/submission-report-2026-10-24.md)** · **[Benchmark 调研与逻辑图](docs/survey.md)** · **[复现指南](docs/reproduction.md)** · **[50 万 token 补充实验](docs/supplemental-results-2026-10-24.md)**
 
-[完整 Harbor Trial 与模型代理 pilot](docs/native-relay-pilot.md)已连续两次成功：最新002的8次模型请求全部成功，显式evaluate/finalize，三次pilot重放均3/3通过、89.302分；first/final仍同一源码。已验证实际请求哈希门禁、用量额度和DNS出口限制，不能记作正式实验格。正式入口与结果汇总见[研究控制器](docs/study.md)，包括11方法正式基线入口和相对固定参考的逐会话/逐组/逐例对照；这些新增路径已用合成测试验证，尚未运行正式隐藏重放。可信进程计时与三组诊断见[计时说明](docs/timing.md)。
+2026-10-24 当前状态：三任务共 90 例数据完成生成与 QC；11 种作者基线、15 次原正式研究及全部隐藏评分操作已执行。原批次 9 次有提交、6 次正常无提交，有效评分 14/15（包括零分）；Poisson G2 计时无效留空。各任务均有端到端 Agent 评测，原结果满足三任务基线与至少一条端到端验证的交付要求。
+
+用户授权的补充批次在 2026-10-24 12:10 因供应商 HTTP 402 中止：仅补跑原 6 个无提交会话，每会话 500,000 输出 token、无研究总墙钟上限；Poisson G2 仅重放原候选。首个恢复会话已知输出 60,285 token、无提交；余下五个会话未启动，详情见补充报告。原结果保持不变。补跑是选择性新批次，不能合并为等预算指导比较。
+
+[原正式结果与成本](docs/formal-results-2026-10-23.md) · [机器可读结果](results/formal-study-003/summary.json) · [失败诊断](docs/submission-diagnosis-2026-10-23.md) · [数据卡](docs/task_cards.md)
+
+## 快速验证
+
+```bash
+# Python 3.12 + Docker；完整依赖安装步骤见复现指南
+python3.12 -m venv .venv
+.venv/bin/pip install -r requirements.txt pytest
+.venv/bin/python -m authoring.generate --output authoring/data/new-local
+# 生成完整三任务数据和 QC；不会调用模型
+```
+
+作者基线、可信评分、固定依赖、模型入口、历史证据和完整数据的使用方法见[复现指南](docs/reproduction.md)。不要直接用默认 Harbor test.sh 作为正式评分：它有意拒绝缺少可信登记的运行。
+
+## 历史验收记录（2026-10-23 及此前）
+
+以下记录保留原时间范围；其中“未发布”“尚未运行”等文字不能覆盖上面的当前状态。
+
+## 正式执行前的实现与 pilot 证据
+
+下表中的生成、校准、隔离、pilot 与干净环境记录保留各自历史范围。90 例 GT QC、11 方法校准、真实模型接线和同宿主新依赖环境重放均已完成；它们不替代上方的正式 final-test 结果。历史发布以[既有发布记录](logs/publication-local-003/result.json)为限，不代表本轮内容已发布。
 
 ## 当前验收状态
 
@@ -12,18 +36,20 @@
 |---|---|---|
 | 三任务生成与独立QC | 90/90；各任务6 dev、12 calibration、12 final | `authoring/data/v0.3-local/private/`、[动态汇总](results/stage-status.json) |
 | 同熵数据重建 | 同Linux镜像，369个公开输入文件逐字节一致 | [重建记录](freezes/data-reproduction-local.json) |
-| 作者基线 | 11方法、132个方法×实例记录；保留弱基线失败 | [新版worker校准](results/calibration-local-002/summary.json)、[132例与旧版完全一致](logs/calibration-worker-replay-local-002.json)、[CSV](results/cases/calibration.csv) |
+| 作者校准（历史） | 11方法、132个方法×实例记录；保留弱基线失败 | [新版worker校准](results/calibration-local-002/summary.json)、[132例与旧版完全一致](logs/calibration-worker-replay-local-002.json)、[CSV](results/cases/calibration.csv) |
 | 干净源码与新依赖环境 | 提交28da96e的Git archive、新site-packages、新W/J；三任务参考和最新真实候选各3/3通过，T3分数null；同宿主/Python二进制/数值镜像 | [重放002](logs/clean-replay-local-002/result.json)、[依赖记录](logs/dependency-rebuild-local-001/result.json) |
-| 保存的单测结果 | 当前工作源码347通过；此前新依赖环境归档源码328通过，各有2条Harbor弃用提示 | [工作源码](logs/unit-tests-final-local-005.txt)、[新环境归档](logs/clean-replay-local-002/archived-unit-tests.txt) |
-| W隔离与资源 | 新版完整回归11/11、计时探针5/5；实际4GiB OOM仍未做 | [边界](docs/protocol.md)、[worker005](logs/runtime-probes-005/summary.json)、[timer004](logs/process-timer-probe-004/summary.json) |
+| 保存的单测结果 | 第三版冻结源码357通过；历史新依赖环境归档源码328通过，各有2条Harbor弃用提示 | [第三版冻结源码](logs/formal-freeze-local-003/unit-tests-final.txt)、[新环境归档](logs/clean-replay-local-002/archived-unit-tests.txt) |
+| W隔离与资源 | 完整回归11/11、计时探针5/5；新增真实4GiB OOM及资源验收15/15通过 | [边界](docs/protocol.md)、[worker005](logs/runtime-probes-005/summary.json)、[timer004](logs/process-timer-probe-004/summary.json) |
 | 真实模型与独立评分 | 零解pilot为0分；研究pilot001按fallback选出的候选，经真实Harbor hook/W/J三次各3/3、87.693分，无迭代 | [零解W/J](logs/pilot-model-registry-wj-001/result.json)、[研究pilot](logs/research-loop-pilot-001/result.json)、[独立评分003](logs/research-loop-pilot-001-wj-replay-003/result.json) |
 | R限网 | 非root/ALL-drop配置005通过所测URL、socket与宿主边界检查；未运行Pi | [网络005](logs/research-network-probe-005/result.json)、[全部attempt](docs/harbor-integration.md) |
-| 三个R镜像 | 实际构建，分别8/8无网只读启动检查通过；记录不可变ID与公共构建上下文，非正式资源验收 | [镜像检查](logs/research-images-local-001/result.json) |
+| 三个R镜像 | 实际构建与8/8启动检查；另完成三个镜像的正式4 vCPU/4 GiB配额、CPU节流实测 | [镜像检查](logs/research-images-local-001/result.json) |
 | 受控桥 | localhost7项、R文件桥两轮各9项通过；文件桥包含真实W、6例公开反馈与不可改写快照，未调用模型 | [localhost](logs/bridge-runtime-001/result.json)、[文件桥001](logs/file-bridge-runtime-001/result.json)、[回归002](logs/file-bridge-runtime-002/result.json) |
 | 完整原生Harbor Trial | **两次本机pilot通过**；最新8次可信模型请求、显式finalize、三次W/J、资源清理已核对 | [最新pilot002](logs/harbor-native-pilot-002/result.json)、[完整说明](docs/native-relay-pilot.md) |
-| 正式资源 | **未验收**；用户已允许本机继续功能开发，2 CPU共享环境不满足正式资源 | [只读预检](logs/preflight-local.json) |
-| 三任务×三组研究 | **0个正式格**；最低9格，主计划15会话 | [未完成事项](#仍需完成) |
-| 隐藏重放与正式性能 | **未完成**；不把校准或pilot记成final | [局限](docs/limitations.md) |
+| 正式资源 | **资源探针已通过**；Docker 6 vCPU／约9.69 GiB，R/W并发压力与真实4GiB OOM通过；T3独占计时窗口也已通过 | [验收002](logs/resource-acceptance-local-002/summary.json)、[范围与证据](docs/resource-timing-acceptance-2026-10-23.md) |
+| T3正式校准 | **三组通过**；216/216数值检查，冻结 `efficiency_gate_1.5`；非模型研究成绩 | [结果与范围](docs/resource-timing-acceptance-2026-10-23.md)、[冻结](freezes/t3-profile-local-001.json) |
+| 正式任务冻结 | **完成**；三任务及15会话计划为frozen，Flash版本/参数、镜像、数据、评分、提示、工具、顺序均绑定 | [冻结说明](docs/formal-freeze-2026-10-23.md)、[当前正式计划](freezes/research-run-plan-formal-003.json) |
+| 三任务×三组研究 | **15/15研究关闭、9/9研究格**；9有候选、6无提交，另4无效attempt | [最终结果](docs/formal-results-2026-10-23.md) |
+| 隐藏重放与正式性能 | 全部操作已执行；**14/15有效评分、8/9有效科学格**，Poisson G2计时无效 | [最终报告](results/formal-study-003/summary.json) |
 | 个人GitHub发布 | 用户明确批准后，已核验远端提交 `536c0d9`，包含 `0a84f0c` 的证据与正式基线入口/报告；可见性为PUBLIC | [仓库](https://github.com/bxf1/sciresearch-bench-lite)、[远端HEAD](logs/github-remote-head-local-003.txt)、[最新仓库元数据](logs/github-repository-local-003.json) |
 
 ## 文件与执行边界
@@ -101,11 +127,7 @@ docker build -t sciresearch-numeric:0.3.0 environment
 ./reproduce.sh calibrate authoring/data/v0.3-local results/calibration-another-new
 ```
 
-已保存 [15会话运行草稿](freezes/research-run-plan-local-draft-007.json)及 [T1](freezes/heat-local-draft-007.json)、[T2](freezes/ode-local-draft-007.json)、[T3](freezes/poisson-local-draft-007.json) 任务草稿。清单沿用最初checkpoint的独立顺序熵，先覆盖九格，再补T1两轮，所有会话固定1800秒/20次/seed0。它们均为 `draft`；已记入三个实测R镜像ID/上下文、完整系统提示/工具JSON、可信代理参数与当前完整代码哈希；供应商公开模型版本映射已取证，正式冻结前仍须复核；正式资源与任务验收待补。以下校验应以退出码2拒绝启动；[守卫记录](logs/run-plan-local-draft-007/validation.json)保留具体缺项及此前草稿链：
-
-```sh
-.venv/bin/python -m runner.run_plan validate --plan freezes/research-run-plan-local-draft-007.json
-```
+本轮执行采用 [formal-003 计划](freezes/research-run-plan-formal-003.json)及三任务同号 freeze，已完成全部规定操作。原数据、镜像和可信源码不能重建或替换后冒充本次证据；运行/报告恢复入口见[收束交接](docs/execution-handoff-2026-10-23.md)。上述 draft、生成和校准命令仅供独立新工作使用，不是当前待办。
 
 ## 环境
 
@@ -121,16 +143,13 @@ sed '/^harbor[ @=]/d' freezes/host-requirements.lock | .venv/bin/python -m pip i
 
 以上命令过滤锁文件中单独的Harbor条目，并安装相邻固定源码；不要用同版本号的未知构建替代该commit。没有相邻checkout时，最后一步可改为 `.venv/bin/python -m pip install --no-deps 'git+https://github.com/harbor-framework/harbor.git@38b9be0164a910015a0be9a37ba6e8e78c562dfe'`。新site-packages重建和重放已实际通过，见[新依赖环境记录](logs/dependency-rebuild-local-001/result.json)；复用了同一宿主、Python二进制和数值镜像。模型凭据由授权的专用运行环境提供；不要写进配置、镜像、提示、日志或版本控制。模型端点和实际请求证据见 [集成说明](docs/harbor-integration.md)。
 
-## 仍需完成
+## 执行范围与未达成项
 
-1. 满足并实测正式R的4 vCPU/4 GiB预算；用户同意本机继续开发不代表降低正式预算。当前没有修改已有服务或Colima资源。
-2. 完整Harbor SingleStepTrial、模型代理pilot、正式三任务三组入口、分阶段评分及结果汇总已实现并经过测试；正式环境中的实际矩阵执行仍未验收。
-3. 冻结模型、提示、镜像、数据、评分、顺序和预算后，完成至少3任务×3组各一次，主目标15会话；失败attempt全部保留。
-4. 对11个作者基线和每次研究的first/final在同一final-test上按规定清洁重放；heat/ode各三次，T3采用内含三次的B,C,C,B,B,C。隐藏成绩不得回流研究。
-5. 在独占且可用资源环境完成T3三组校准，冻结profile并测正式性能；S3不与S1/S2直接平均。
-新依赖环境复现已完成：[清洁重放002](logs/clean-replay-local-002/result.json)。第二台物理主机不是计划的额外硬门槛；正式研究、资源与性能验收仍须补齐。已按[官方模型表](https://api-docs.deepseek.com/quick_start/pricing)记录当前别名对应 `DeepSeek-V4-Pro-0813`，见[取证记录](logs/model-policy-documentation-local-001/result.json)。正式冻结前须复核映射；这不能追认早期pilot的模型版本或证明服务端二进制身份。
+本轮规定操作已全部尝试并本地归档；Poisson G2 的性能测量无效，因此完整 15/15 有效科学验收未达成。按用户减少重试的要求，此项保留 null，不再自动测量。其他正常无提交与零分结果也不补跑。若以后继续实验或发布，需要明确新工作范围，不能覆盖本轮失败证据。
 
-[调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [结果](docs/results.md) · [局限](docs/limitations.md)
+三类受控合成任务、heat 每组 n=3、ODE/Poisson 每组 n=1、同一物理宿主与供应商模型别名均限制外推。首次→最终变化不证明反馈的因果效果，T3不与T1/T2平均。私有数值数组、运行镜像和宿主依赖仍需本机保留；证据包不是独立的完整运行环境。
+
+[调研对应关系](docs/survey.md) · [任务卡](docs/task_cards.md) · [协议](docs/protocol.md) · [正式结果](docs/formal-results-2026-10-23.md) · [历史结果](docs/results.md) · [局限](docs/limitations.md)
 
 最新远端核验时仓库为公开状态；初次创建/检查的私有记录仍保留。源码28da96e完成了328项工作/新依赖归档测试，随后修正报告读取最新仓库可见性的逻辑，对应回归：[27项通过](logs/publication-report-unit-local-001.txt)。本轮另补正式基线编排与对照报告；执行器、I/O、计时、算法与科学指标未变化。
 

@@ -1,0 +1,22 @@
+{"event": "starting", "kind": "baseline", "task": "heat", "identity": "ls"}
+{"event": "finished", "kind": "baseline", "task": "heat", "identity": "ls", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "heat", "identity": "rank5"}
+{"event": "finished", "kind": "baseline", "task": "heat", "identity": "rank5", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "heat", "identity": "tikhonov"}
+{"event": "finished", "kind": "baseline", "task": "heat", "identity": "tikhonov", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "heat", "identity": "discrepancy"}
+{"event": "finished", "kind": "baseline", "task": "heat", "identity": "discrepancy", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "heat", "identity": "tsvd"}
+{"event": "finished", "kind": "baseline", "task": "heat", "identity": "tsvd", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "ode", "identity": "raw"}
+{"event": "finished", "kind": "baseline", "task": "ode", "identity": "raw", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "ode", "identity": "fixed"}
+{"event": "finished", "kind": "baseline", "task": "ode", "identity": "fixed", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "ode", "identity": "search"}
+{"event": "finished", "kind": "baseline", "task": "ode", "identity": "search", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "poisson", "identity": "cg"}
+{"event": "finished", "kind": "baseline", "task": "poisson", "identity": "cg", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "poisson", "identity": "jacobi"}
+{"event": "finished", "kind": "baseline", "task": "poisson", "identity": "jacobi", "exit_code": 0}
+{"event": "starting", "kind": "baseline", "task": "poisson", "identity": "lu"}
+{"event": "finished", "kind": "baseline", "task": "poisson", "identity": "lu", "exit_code": 2}

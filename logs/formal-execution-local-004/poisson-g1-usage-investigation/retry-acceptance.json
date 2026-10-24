@@ -1,0 +1,42 @@
+{
+  "causal_limit": "The log identifies the field and values but does not establish why the provider changed them or whether aggregate billing changed.",
+  "docker": {
+    "CgroupVersion": "2",
+    "MemTotal": 10401181696,
+    "NCPU": 6
+  },
+  "failed_request": {
+    "cache_creation_input_tokens": null,
+    "cache_read_input_tokens": null,
+    "charged_output_tokens": 4096,
+    "effective_max_tokens": 4096,
+    "event": "request_finished",
+    "failure_reason": "usage_decreased",
+    "input_tokens": null,
+    "outcome": "protocol_error",
+    "output_tokens": null,
+    "output_usage_complete": false,
+    "protocol_violation": true,
+    "refunded_output_tokens": 0,
+    "request_id": "7a20b5abbb1b46d2ba30c8f24e560af7",
+    "requested_max_tokens": 16384,
+    "schema_version": 1,
+    "timestamp": 1792730319.2941573,
+    "upstream_request_id_sha256": null,
+    "upstream_status": 200,
+    "usage_violation": {
+      "field": "input_tokens",
+      "observed": 306,
+      "previous": 434
+    }
+  },
+  "hidden_scores_accessed": false,
+  "parent_attempt": "research-6615cd7900ba0750-poisson-g1-r1-a001",
+  "parent_result_sha256": "3413d505fbe1ab89be16050d90954d9f356e8fc5710c6b694a00c5708df0a796",
+  "plan_sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033",
+  "power": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=22544483)\t42%; discharging; 3:32 remaining present: true\n",
+  "reason": "The first upstream HTTP 200 response reported input_tokens decreasing from 434 to 306. The frozen per-field monotonicity guard rejected it; output usage is unknown. No model tool or public evaluation completed. Preserve this invalid attempt and create one fresh linked retry without changing the usage guard, model, prompts, limits, data, or scoring.",
+  "relay_events_sha256": "ea4e35f3b36e3daaa9c4409c9e5fc59b8b9dba5035fb7358803d7d02331fde82",
+  "retry_limit_this_investigation": 1,
+  "vm_boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b"
+}

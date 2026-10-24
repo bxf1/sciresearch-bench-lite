@@ -1,0 +1,49 @@
+{
+    "task": {
+        "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/build/task"
+    },
+    "trial_name": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001-a002",
+    "trials_dir": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/harbor",
+    "agent": {
+        "name": "pi",
+        "model_name": "anthropic/deepseek-flash",
+        "model_base_url": "http://172.21.0.2:8787",
+        "model_api_key_name": "BENCH_RELAY_KEY",
+        "model_api_format": "anthropic_messages",
+        "override_setup_timeout_sec": 600.0,
+        "exclude_logs": [
+            "*",
+            "**/*"
+        ],
+        "kwargs": {
+            "version": "0.84.1",
+            "reasoning_effort": "off",
+            "max_turns": null
+        },
+        "env": {
+            "BENCH_RELAY_KEY": "47ac****3fa",
+            "ANTHROPIC_OAUTH_TOKEN": ""
+        }
+    },
+    "environment": {
+        "import_path": "runner.harbor_environment:ResearchDockerEnvironment",
+        "cpu_enforcement_policy": "limit",
+        "memory_enforcement_policy": "limit",
+        "extra_docker_compose": [
+            "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/research-security-compose.json"
+        ],
+        "kwargs": {
+            "auto_mounting": false,
+            "enable_environment_dir_upload": false,
+            "pilot_audit_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/environment-audit",
+            "formal": true
+        }
+    },
+    "verifier": {
+        "import_path": "runner.study:RegistrationVerifier",
+        "kwargs": {
+            "registry_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/registry",
+            "task_name": "poisson"
+        }
+    }
+}

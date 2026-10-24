@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "groups": [
+    {
+      "group": 1,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.110948739,
+        1.116471218,
+        1.099702219
+      ],
+      "candidate_seconds": [
+        0.500529597,
+        0.484622093,
+        0.493831729
+      ],
+      "baseline_median_seconds": 1.110948739,
+      "candidate_median_seconds": 0.493831729,
+      "speedup": 2.2496503844531217,
+      "baseline_time_ratio": 1.0152486725135907,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    },
+    {
+      "group": 2,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.108073357,
+        1.102899382,
+        1.095607419
+      ],
+      "candidate_seconds": [
+        0.492527305,
+        0.495275537,
+        0.502452618
+      ],
+      "baseline_median_seconds": 1.102899382,
+      "candidate_median_seconds": 0.495275537,
+      "speedup": 2.2268400104727966,
+      "baseline_time_ratio": 1.0113781065953151,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    },
+    {
+      "group": 3,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.106468643,
+        1.109624304,
+        1.096992055
+      ],
+      "candidate_seconds": [
+        0.489886154,
+        0.499894766,
+        0.503152858
+      ],
+      "baseline_median_seconds": 1.106468643,
+      "candidate_median_seconds": 0.499894766,
+      "speedup": 2.2134031365313396,
+      "baseline_time_ratio": 1.0115153514033426,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    }
+  ],
+  "method_case_checks": 216,
+  "unique_workers": 18,
+  "raw_worker_records_unchanged_diagnostic": true,
+  "all_original_services_stopped": true,
+  "originally_running_container_count": 8,
+  "total_retained_stopped_containers": 17,
+  "remaining_running_containers": 0,
+  "thermal_status": "No recorded thermal or performance warnings; CPU power status unavailable"
+}

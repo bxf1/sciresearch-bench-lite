@@ -1,0 +1,493 @@
+{
+  "candidate_id": "candidate-004",
+  "completed_at": 1792730800.524438,
+  "export_finished_at": 1792730794.667754,
+  "export_started_at": 1792730794.585849,
+  "imported_source": "imported-dcb46a91033b49ba9a3b84bc0d64e0f1",
+  "original_r_source": "cand",
+  "received_at": 1792730794.584956,
+  "record_sha256": "9ff1efc321d8fbd5779d9cdc81700ba4f9b493be616787b9fe118f0e44c64cea",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "dcb46a91033b49ba9a3b84bc0d64e0f1",
+    "source": "cand",
+    "version": 1
+  },
+  "request_id": "dcb46a91033b49ba9a3b84bc0d64e0f1",
+  "response": {
+    "candidate_id": "candidate-004",
+    "feedback": {
+      "all_public_residuals_pass": false,
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "baseline_cpu_seconds_total": 2.460431,
+      "candidate_cpu_seconds_total": 0.415249,
+      "comparison": {
+        "baseline_repeats": [
+          {
+            "artifact_valid": true,
+            "attempt_status": "completed",
+            "cases": [
+              {
+                "E_res": [
+                  8.493268739721888e-11,
+                  9.289716460744622e-11,
+                  7.647922183659296e-11,
+                  8.867390665230346e-11
+                ],
+                "artifact_valid": true,
+                "id": "4549893e7753717d3ca1",
+                "max_relative_residual": 9.289716460744622e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.663378812234754e-11,
+                  7.843679408166872e-11,
+                  8.977926858231665e-11,
+                  9.638633220024903e-11
+                ],
+                "artifact_valid": true,
+                "id": "6103d8a7b17a67b85bde",
+                "max_relative_residual": 9.663378812234754e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.273423927230204e-11,
+                  9.208809268048366e-11,
+                  8.67501215227202e-11,
+                  9.010996848977384e-11
+                ],
+                "artifact_valid": true,
+                "id": "842bbbfcbaa65cf8c192",
+                "max_relative_residual": 9.273423927230204e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.410937487440005e-11,
+                  9.74557014628345e-11,
+                  9.251747811823944e-11,
+                  8.601072465316624e-11
+                ],
+                "artifact_valid": true,
+                "id": "ca507d4594ca727cc307",
+                "max_relative_residual": 9.74557014628345e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.555778653052345e-11,
+                  9.987739245658884e-11,
+                  9.438330943127878e-11,
+                  9.732102564398249e-11
+                ],
+                "artifact_valid": true,
+                "id": "d8e78b2115453c1ce7d6",
+                "max_relative_residual": 9.987739245658884e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.227678872421198e-11,
+                  9.422628461401428e-11,
+                  9.50594384652109e-11,
+                  9.921260749997035e-11
+                ],
+                "artifact_valid": true,
+                "id": "c001ae8fbb3f52c2c996",
+                "max_relative_residual": 9.921260749997035e-11,
+                "residual_pass": true
+              }
+            ],
+            "cpu_seconds": 0.806066,
+            "formal_timing": false,
+            "memory_peak_bytes": 53567488,
+            "public_check_status": "completed",
+            "wall_seconds": 0.710111406,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "completed",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.806066,
+              "execution_wall_seconds": 0.710111406,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 1379,
+              "memory_peak_bytes": 53567488,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.8620603326708078,
+              "reason": null,
+              "research_timeout_seconds": 1530.347775161732,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 1.250541124958545
+            }
+          },
+          {
+            "artifact_valid": true,
+            "attempt_status": "completed",
+            "cases": [
+              {
+                "E_res": [
+                  8.493268739721888e-11,
+                  9.289716460744622e-11,
+                  7.647922183659296e-11,
+                  8.867390665230346e-11
+                ],
+                "artifact_valid": true,
+                "id": "4549893e7753717d3ca1",
+                "max_relative_residual": 9.289716460744622e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.663378812234754e-11,
+                  7.843679408166872e-11,
+                  8.977926858231665e-11,
+                  9.638633220024903e-11
+                ],
+                "artifact_valid": true,
+                "id": "6103d8a7b17a67b85bde",
+                "max_relative_residual": 9.663378812234754e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.273423927230204e-11,
+                  9.208809268048366e-11,
+                  8.67501215227202e-11,
+                  9.010996848977384e-11
+                ],
+                "artifact_valid": true,
+                "id": "842bbbfcbaa65cf8c192",
+                "max_relative_residual": 9.273423927230204e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.410937487440005e-11,
+                  9.74557014628345e-11,
+                  9.251747811823944e-11,
+                  8.601072465316624e-11
+                ],
+                "artifact_valid": true,
+                "id": "ca507d4594ca727cc307",
+                "max_relative_residual": 9.74557014628345e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.555778653052345e-11,
+                  9.987739245658884e-11,
+                  9.438330943127878e-11,
+                  9.732102564398249e-11
+                ],
+                "artifact_valid": true,
+                "id": "d8e78b2115453c1ce7d6",
+                "max_relative_residual": 9.987739245658884e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.227678872421198e-11,
+                  9.422628461401428e-11,
+                  9.50594384652109e-11,
+                  9.921260749997035e-11
+                ],
+                "artifact_valid": true,
+                "id": "c001ae8fbb3f52c2c996",
+                "max_relative_residual": 9.921260749997035e-11,
+                "residual_pass": true
+              }
+            ],
+            "cpu_seconds": 0.83203,
+            "formal_timing": false,
+            "memory_peak_bytes": 53366784,
+            "public_check_status": "completed",
+            "wall_seconds": 0.735132316,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "completed",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.83203,
+              "execution_wall_seconds": 0.735132316,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 1379,
+              "memory_peak_bytes": 53366784,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.8868538751266897,
+              "reason": null,
+              "research_timeout_seconds": 1527.7743979529478,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 1.2441103751771152
+            }
+          },
+          {
+            "artifact_valid": true,
+            "attempt_status": "completed",
+            "cases": [
+              {
+                "E_res": [
+                  8.493268739721888e-11,
+                  9.289716460744622e-11,
+                  7.647922183659296e-11,
+                  8.867390665230346e-11
+                ],
+                "artifact_valid": true,
+                "id": "4549893e7753717d3ca1",
+                "max_relative_residual": 9.289716460744622e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.663378812234754e-11,
+                  7.843679408166872e-11,
+                  8.977926858231665e-11,
+                  9.638633220024903e-11
+                ],
+                "artifact_valid": true,
+                "id": "6103d8a7b17a67b85bde",
+                "max_relative_residual": 9.663378812234754e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.273423927230204e-11,
+                  9.208809268048366e-11,
+                  8.67501215227202e-11,
+                  9.010996848977384e-11
+                ],
+                "artifact_valid": true,
+                "id": "842bbbfcbaa65cf8c192",
+                "max_relative_residual": 9.273423927230204e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.410937487440005e-11,
+                  9.74557014628345e-11,
+                  9.251747811823944e-11,
+                  8.601072465316624e-11
+                ],
+                "artifact_valid": true,
+                "id": "ca507d4594ca727cc307",
+                "max_relative_residual": 9.74557014628345e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.555778653052345e-11,
+                  9.987739245658884e-11,
+                  9.438330943127878e-11,
+                  9.732102564398249e-11
+                ],
+                "artifact_valid": true,
+                "id": "d8e78b2115453c1ce7d6",
+                "max_relative_residual": 9.987739245658884e-11,
+                "residual_pass": true
+              },
+              {
+                "E_res": [
+                  9.227678872421198e-11,
+                  9.422628461401428e-11,
+                  9.50594384652109e-11,
+                  9.921260749997035e-11
+                ],
+                "artifact_valid": true,
+                "id": "c001ae8fbb3f52c2c996",
+                "max_relative_residual": 9.921260749997035e-11,
+                "residual_pass": true
+              }
+            ],
+            "cpu_seconds": 0.822335,
+            "formal_timing": false,
+            "memory_peak_bytes": 53624832,
+            "public_check_status": "completed",
+            "wall_seconds": 0.72123418,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "completed",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.822335,
+              "execution_wall_seconds": 0.72123418,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 1380,
+              "memory_peak_bytes": 53624832,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.869497625157237,
+              "reason": null,
+              "research_timeout_seconds": 1526.3968432028778,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 1.2561762924306095
+            }
+          }
+        ],
+        "candidate_repeats": [
+          {
+            "artifact_valid": false,
+            "attempt_status": "invalid_artifact",
+            "cpu_seconds": 0.136938,
+            "formal_timing": false,
+            "memory_peak_bytes": 24416256,
+            "public_check_status": "not_run",
+            "wall_seconds": 0.00864667,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "invalid_artifact",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.136938,
+              "execution_wall_seconds": 0.00864667,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 3,
+              "memory_peak_bytes": 24416256,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.15645658317953348,
+              "reason": null,
+              "research_timeout_seconds": 1528.8688040776178,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 0.5385710829868913
+            }
+          },
+          {
+            "artifact_valid": false,
+            "attempt_status": "invalid_artifact",
+            "cpu_seconds": 0.139432,
+            "formal_timing": false,
+            "memory_peak_bytes": 24289280,
+            "public_check_status": "not_run",
+            "wall_seconds": 0.008358659,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "invalid_artifact",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.139432,
+              "execution_wall_seconds": 0.008358659,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 3,
+              "memory_peak_bytes": 24289280,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.16287258313968778,
+              "reason": null,
+              "research_timeout_seconds": 1528.3276573698968,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 0.5508427079766989
+            }
+          },
+          {
+            "artifact_valid": false,
+            "attempt_status": "invalid_artifact",
+            "cpu_seconds": 0.138879,
+            "formal_timing": false,
+            "memory_peak_bytes": 24199168,
+            "public_check_status": "not_run",
+            "wall_seconds": 0.008077066,
+            "worker_diagnostics": {
+              "all_processes_terminated": true,
+              "attempt_status": "invalid_artifact",
+              "budget_timeout": false,
+              "budget_timeout_stage": null,
+              "candidate_processes_terminated": true,
+              "cleanup_status": null,
+              "cpu_seconds": 0.138879,
+              "execution_wall_seconds": 0.008077066,
+              "exit_code": 0,
+              "formal_timing": false,
+              "log_bytes_observed": 3,
+              "memory_peak_bytes": 24199168,
+              "oom_killed": false,
+              "processes_quiesced_at_seconds": 0.15601420775055885,
+              "reason": null,
+              "research_timeout_seconds": 1525.0032367445529,
+              "timeout_seconds": 60,
+              "timing_scope": "python_spawn_to_all_descendants_exit",
+              "total_wall_seconds": 0.5057969158515334
+            }
+          }
+        ],
+        "diagnostic_cpu_ratio": null,
+        "diagnostic_memory_ratio": null,
+        "diagnostic_wall_ratio": null,
+        "formal_timing": false,
+        "method": "jacobi_cg",
+        "order": [
+          "B",
+          "C",
+          "C",
+          "B",
+          "B",
+          "C"
+        ],
+        "reason": null,
+        "required_order": [
+          "B",
+          "C",
+          "C",
+          "B",
+          "B",
+          "C"
+        ],
+        "source_sha256": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+        "status": "completed",
+        "timing_note": "Three fresh W runs per method in BCCBBC order. Raw process intervals; formal hardware/exclusivity acceptance remains separate."
+      },
+      "cpu_seconds": 0.136938,
+      "evaluation_cpu_seconds_total": 2.87568,
+      "formal_timing": false,
+      "memory_peak_bytes": 24416256,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 5.8542350004427135,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.00864667,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.136938,
+        "execution_wall_seconds": 0.00864667,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 3,
+        "memory_peak_bytes": 24416256,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.15645658317953348,
+        "reason": null,
+        "research_timeout_seconds": 1528.8688040776178,
+        "timeout_seconds": 60,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.5385710829868913
+      }
+    },
+    "ok": true,
+    "request_id": "dcb46a91033b49ba9a3b84bc0d64e0f1",
+    "source_hash": "8051ced1fdde9c486d7d56a89d904cf988260043cd31bf74c7dd353500efe2d0"
+  },
+  "status": "completed"
+}

@@ -1,0 +1,27 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-ode-g1-r1-a003",
+  "observed_at_unix": 1792723217.9166818,
+  "scope": "Read-only native Pi log and cgroup counters during research. No research inputs, model parameters, tools, or candidate decisions changed.",
+  "tool_calls": {
+    "bash": 42
+  },
+  "tool_results": 42,
+  "assistant_stop_reasons": {
+    "toolUse": 23,
+    "length": 17
+  },
+  "error_first_lines": {
+    "Tool call \"bash\" was not executed: the response hit the output token limit, so its arguments may be truncated. Re-issue the tool call with complete arguments.": 17,
+    "/bin/bash: fork: retry: Resource temporarily unavailable": 1
+  },
+  "cgroup": {
+    "pids.current": 18,
+    "pids.max": 128,
+    "pids.events.max": 5,
+    "memory.current": 697233408,
+    "memory.max": 4294967296,
+    "memory.events.oom": 0,
+    "memory.events.oom_kill": 0
+  },
+  "interpretation": "The native tool runner rejected 17 length-truncated calls under the unchanged 4096 per-request cap. One shell result reported transient process creation failure; current pids are 18/128 with no OOM. This snapshot does not establish an infrastructure failure and does not authorize a retry."
+}

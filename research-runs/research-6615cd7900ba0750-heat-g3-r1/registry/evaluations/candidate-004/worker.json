@@ -1,0 +1,71 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": false,
+      "id": "13a841e7b6de490e68f4",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/13a841e7b6de490e68f4/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "04f4c0643b4ee1f2cbb1",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/04f4c0643b4ee1f2cbb1/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "e0eb9d7e4704b51f884c",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/e0eb9d7e4704b51f884c/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "409ab21b0f5310a9d96e",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/409ab21b0f5310a9d96e/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "fca8a41a2ec5084c6760",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/fca8a41a2ec5084c6760/u0.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "16f9197b92a286dc0148",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/evaluations/candidate-004/quarantine/cases/16f9197b92a286dc0148/u0.npy'"
+    }
+  ],
+  "container_id": "1912b86003b537ede2dac6831483786f29a59c4aa702ed6b3efdc0f2d5d40b31",
+  "container_name": "sciresearch-w-5933a06eeca9",
+  "cpu_seconds": 0.134974,
+  "docker_execution_wall_seconds": 0.11502933315932751,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.010168063,
+  "exit_code": 0,
+  "finished_monotonic_ns": 33789760663913,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "input_sha256": "3a9eeba4b14ec084a56a1d83c1d58c4ea5eb156e39c2c6f3645fbd9cc1a0ed4d",
+  "log_bytes_observed": 105,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "memory_peak_bytes": 24248320,
+  "oom_killed": false,
+  "output_initially_empty": true,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.1560169579461217,
+  "research_timeout_seconds": 1335.6014410606585,
+  "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "source_hash": "7b692b63af1c7184c742252834eb01297852790b0b82d7ebe62aab0875945694",
+  "started_monotonic_ns": 33789750495850,
+  "timeout_seconds": 120,
+  "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 0.5295376661233604
+}

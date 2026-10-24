@@ -1,0 +1,189 @@
+{
+  "Config": {
+    "AttachStderr": true,
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "Cmd": [
+      "python",
+      "-I",
+      "/trusted/process_timer.py",
+      "supervise"
+    ],
+    "Domainname": "",
+    "Entrypoint": null,
+    "Env": [
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "VECLIB_MAXIMUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.12.12",
+      "PYTHON_SHA256=fb85a13414b028c49ba18bbd523c2d055a30b56b18b92ce454ea2c51edc656c4",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONUNBUFFERED=1"
+    ],
+    "Hostname": "76c16230db5f",
+    "Image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "Labels": {
+      "sciresearch.project": "benchmark-v0.3"
+    },
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Tty": false,
+    "User": "65533:65533",
+    "Volumes": null,
+    "WorkingDir": "/submission"
+  },
+  "HostConfig": {
+    "AutoRemove": false,
+    "Binds": null,
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceWriteIOps": [],
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "CapAdd": null,
+    "CapDrop": [
+      "ALL"
+    ],
+    "Cgroup": "",
+    "CgroupParent": "",
+    "CgroupnsMode": "private",
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "ContainerIDFile": "",
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpuShares": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "Devices": [],
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IOMaximumBandwidth": 0,
+    "IOMaximumIOps": 0,
+    "IpcMode": "private",
+    "Isolation": "",
+    "Links": null,
+    "LogConfig": {
+      "Config": {},
+      "Type": "json-file"
+    },
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "Memory": 4294967296,
+    "MemoryReservation": 0,
+    "MemorySwap": 4294967296,
+    "MemorySwappiness": null,
+    "Mounts": [
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750/author-baselines/baseline-poisson-lu-a001/source",
+        "Target": "/submission",
+        "Type": "bind"
+      },
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/v0.3-local/inputs/poisson/final-test",
+        "Target": "/input",
+        "Type": "bind"
+      },
+      {
+        "ReadOnly": true,
+        "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750/author-baselines/baseline-poisson-lu-a001/replays/repeat-1/6-C/worker/trusted/process_timer.py",
+        "Target": "/trusted/process_timer.py",
+        "Type": "bind"
+      }
+    ],
+    "NanoCpus": 1000000000,
+    "NetworkMode": "none",
+    "OomKillDisable": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "PidsLimit": 128,
+    "PortBindings": {},
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ],
+    "ReadonlyRootfs": true,
+    "RestartPolicy": {
+      "MaximumRetryCount": 0,
+      "Name": "no"
+    },
+    "Runtime": "runc",
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "ShmSize": 1048576,
+    "Tmpfs": {
+      "/output": "rw,noexec,nosuid,nodev,size=268435456,mode=1777",
+      "/tmp": "rw,noexec,nosuid,nodev,size=67108864,mode=1777"
+    },
+    "UTSMode": "",
+    "Ulimits": [],
+    "UsernsMode": "",
+    "VolumeDriver": "",
+    "VolumesFrom": null
+  },
+  "Id": "76c16230db5fe39fee53a7e4b4a23034b24f9c49ebddc0f459b7e3641009fef6",
+  "Image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "Mounts": [
+    {
+      "Destination": "/trusted/process_timer.py",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750/author-baselines/baseline-poisson-lu-a001/replays/repeat-1/6-C/worker/trusted/process_timer.py",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/submission",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750/author-baselines/baseline-poisson-lu-a001/source",
+      "Type": "bind"
+    },
+    {
+      "Destination": "/input",
+      "Mode": "",
+      "Propagation": "rprivate",
+      "RW": false,
+      "Source": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/authoring/data/v0.3-local/inputs/poisson/final-test",
+      "Type": "bind"
+    }
+  ]
+}

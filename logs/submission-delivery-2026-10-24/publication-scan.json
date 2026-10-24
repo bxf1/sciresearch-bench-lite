@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "staged_files": 8221,
+  "bytes": 163392917,
+  "checked_known_provider_and_session_secrets": true,
+  "historical_evidence_hashes_verified": 8149,
+  "large_archives_staged": false
+}

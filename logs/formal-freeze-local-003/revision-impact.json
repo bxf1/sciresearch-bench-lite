@@ -1,0 +1,67 @@
+{
+  "budget_change": {
+    "max_requests": {
+      "new": 3125,
+      "old": 512
+    },
+    "session_output_tokens": {
+      "new": 200000,
+      "old": 32768
+    }
+  },
+  "changed_trusted_files": {
+    "runner/harbor_pilot.py": {
+      "new_sha256": "8e72bfcdb73f5147d60da3d6f779a1042509521ab1dd906bbbb5b1c1b64636b6",
+      "old_sha256": "2a81e3502361ca3696992b5fbbb97fc3666992927564aeeac90fee727294c80c"
+    },
+    "runner/model_relay.py": {
+      "new_sha256": "712823b4fbb49ac1369755583ce99bc8e0838df003d94e4cec7294147ab87969",
+      "old_sha256": "be7bf9286382ce89385a8d7dade87eb42729a9223f141df0bf68d82aec180fc8"
+    },
+    "runner/relay_transport.py": {
+      "new_sha256": "475146d11be0e5e5da776c215d027e94092f8a9f57486c1a2aea873cc2b0fe1b",
+      "old_sha256": "c1f364c8152c976cd7c422fefb2f0b7ae07dac3ee68a2a441149bdd41dfdc31f"
+    },
+    "runner/study.py": {
+      "new_sha256": "82be72c0e8db62bad27bd948e0903c41c28cfcd447dcb68b01bda6981066c0c2",
+      "old_sha256": "1f1e8dc0fbde5e78244e58b229ec1e4b04257c8665d3445fca3d620d83939e2c"
+    }
+  },
+  "diagnostic_change": "Rejected decreasing usage retains only its field name and validated integer previous/observed values; acceptance and accounting rules unchanged.",
+  "fresh_observed_t3_window_required": true,
+  "numerical_sources_unchanged": [
+    "baselines/heat/solve.py",
+    "baselines/ode/solve.py",
+    "baselines/poisson/solve.py",
+    "judge/batch.py",
+    "judge/heat.py",
+    "judge/ode.py",
+    "judge/poisson.py",
+    "public/bench.py",
+    "public/bridge_io.py",
+    "public/export_source.py",
+    "public/file_bench.py",
+    "public/heat.py",
+    "public/ode.py",
+    "public/poisson.py",
+    "public/poisson_compare.py",
+    "runner/common.py",
+    "runner/performance.py",
+    "runner/phase.py",
+    "runner/process_timer.py",
+    "runner/replay.py",
+    "runner/t3_calibrate.py",
+    "runner/timing_host.py",
+    "runner/worker.py"
+  ],
+  "prior_attempts": "Retained as predecessor-version evidence, excluded from new-version 15-session denominator.",
+  "status": "passed",
+  "unchanged": {
+    "accepted_evaluations": 20,
+    "model_prompts_tools_data_images_resources_scoring_order": true,
+    "native_context_window": 128000,
+    "native_max_tokens": 16384,
+    "request_output_limit": 4096,
+    "research_seconds": 1800
+  }
+}

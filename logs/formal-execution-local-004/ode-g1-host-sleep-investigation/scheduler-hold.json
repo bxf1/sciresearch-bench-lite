@@ -1,0 +1,7 @@
+{
+  "pid": 26956,
+  "command": ".venv/bin/python logs/formal-execution-local-004/research_sequence.py",
+  "signal": "SIGSTOP",
+  "at_unix": 1792721268.01669,
+  "scope": "Prevent next formal session pending host suspension investigation."
+}

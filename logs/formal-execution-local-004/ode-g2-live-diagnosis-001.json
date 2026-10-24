@@ -1,0 +1,16 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-ode-g2-r1-a001",
+  "observed_at_unix": 1792724245.6098514,
+  "scope": "Read-only native tool counters; research inputs unchanged.",
+  "tool_calls": {
+    "bash": 136
+  },
+  "unique_tool_calls": 136,
+  "longest_identical_streak": 1,
+  "tool_results": 136,
+  "error_tool_results": 1,
+  "assistant_stop_reasons": {
+    "toolUse": 134
+  },
+  "native_compactions": 0
+}

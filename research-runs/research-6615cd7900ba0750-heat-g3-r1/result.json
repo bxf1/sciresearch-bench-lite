@@ -1,0 +1,1385 @@
+{
+  "actual_input_sha256": {
+    "cases/04f4c0643b4ee1f2cbb1/metadata.json": "2f650c8c0f37115f32aa764f88a6e0239940f15e009dbb2dbb58f090f23770e5",
+    "cases/04f4c0643b4ee1f2cbb1/observations.csv": "19d1bbef1dabcd3866a7acbb9f05ba15fda4d33e278f77cf5c70de9a9b97f943",
+    "cases/04f4c0643b4ee1f2cbb1/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/13a841e7b6de490e68f4/metadata.json": "bc10879ce559d4d4aaf10cd50e8d65305ee21ef450cbe32aa718f9c040173ba3",
+    "cases/13a841e7b6de490e68f4/observations.csv": "d638e6db940fac4ff0dfe1149d42d365237352c8156bd3a8fb95eabd8e36859f",
+    "cases/13a841e7b6de490e68f4/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/16f9197b92a286dc0148/metadata.json": "4efdf494f551c820086b2c86239a51478a69836a06363d73617aa51d21f74649",
+    "cases/16f9197b92a286dc0148/observations.csv": "65e1dd4d8cbb4d7e548a5c019082f32656128571934d4d447b5e8cbc7608ca85",
+    "cases/16f9197b92a286dc0148/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/409ab21b0f5310a9d96e/metadata.json": "9d0afa73da72aa9b659d2d8756dc1de320c2b8a02a59d5cba8610f3284c1b97c",
+    "cases/409ab21b0f5310a9d96e/observations.csv": "12349a6702619ae829b4479fba4742299c06b1067053223c557d668b604c1f31",
+    "cases/409ab21b0f5310a9d96e/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/e0eb9d7e4704b51f884c/metadata.json": "3097854a87a2fa1418b8947d1515bc985e871250928aa87019fdedcc5dda919b",
+    "cases/e0eb9d7e4704b51f884c/observations.csv": "c62464537914b30f1140630f6ca6392090ca80a0f0f5f32d22baeae1785892e8",
+    "cases/e0eb9d7e4704b51f884c/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "cases/fca8a41a2ec5084c6760/metadata.json": "ad1141b4c7fdb9a1f8eb24a9ecede0005b5b6537dbf89be88179f05b31a65676",
+    "cases/fca8a41a2ec5084c6760/observations.csv": "fb6e9f7c84f236194e636e2f8dfa4c7a1117b4bd950db16d68c8d1042bcf6ba7",
+    "cases/fca8a41a2ec5084c6760/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+    "manifest.json": "f5f133274ca3fd055631366a095b1e1bdc4d2b7489c415fbb6f4396018549ff7"
+  },
+  "attempt_id": "research-6615cd7900ba0750-heat-g3-r1-a001",
+  "attempt_status": "completed",
+  "auxiliary_log_error": "auxiliary log retention quota exceeded",
+  "bridge_errors": [],
+  "cleanup_errors": {},
+  "cost_usd": null,
+  "evaluation_status": "not_run",
+  "finished_at": 1792718499.323825,
+  "formal": true,
+  "group": "g3",
+  "max_evaluations": 20,
+  "max_turns": null,
+  "model_credential_admission": {
+    "native_api_key_matches_relay_token": true,
+    "provider_credential_absent_from_native_env": true
+  },
+  "model_run_started": true,
+  "native_exception": null,
+  "native_result_path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/harbor/research-6615cd7900ba0750-heat-g3-r1-a001/result.json",
+  "native_reward_valid": false,
+  "native_setup_evidence": {
+    "configuration_sha256": {
+      "models.json": "2dafdbf66266b5a235d90796db779a9b828809273d4815cf8101696baf4f1073"
+    },
+    "fresh_upstream_request_count": 0,
+    "installed_source_sha256": {
+      "dist/core/agent-session.js": "91e72d5497f665e731cbd79da6a6e826d8cae7d2ce156a7dee39f8ca205e32c8",
+      "dist/core/compaction/branch-summarization.js": "4a7bb44988126ff4164fd0c6b3d70df0f4791862d82c5f42e7f7103fcaee9a3c",
+      "dist/core/compaction/compaction.js": "fcb12f1eb4d38578978e1a8e3e382a3fccfd5e0ccf87bc86979a9a8d9c145c7b",
+      "dist/core/compaction/index.js": "2ab40284c2650bf3c3f195442be00497f0ee3cb726ac47c29bfa4b3ae209697e",
+      "dist/core/compaction/utils.js": "eba26429c8ed717754bcdc3c1164715b1d2f2d68655530cf1e0df975c18f6891",
+      "dist/core/provider-composer.js": "0aa496b035f94f82d09f779e60e30c26e4391b0c5c5f2b1a314c134874b2b174",
+      "dist/core/tools/bash.js": "fda4002e5b82f5a93bc9ffb1a3bcc365362dd07cc6b016a55e1448765e541258",
+      "dist/core/tools/edit-diff.js": "e5be0b9f44195c329aa9e374122d1e19c931ceeee4c9c8df91518f06410cfaa8",
+      "dist/core/tools/edit.js": "2485be953c7859ebefb3da0b93c5076577a57d8eb62b9c9dddd239cef22743c3",
+      "dist/core/tools/file-mutation-queue.js": "cd300f1ecae2b8d45a7c69011221f4f2e4e289865bf879df537c859889f26e5b",
+      "dist/core/tools/find.js": "a87ea307ede30436156dd55fd9ceeec9ac6db1f97615dbf16a2232a55188a7d8",
+      "dist/core/tools/grep.js": "15485f75d1ff037ab7c2b2be9cb38684deaf129356f4df1250e800d8a0b555dd",
+      "dist/core/tools/index.js": "dfaf1bd64b1ad800adde93324094ad6c4c9aa6da720a407263dc6f408146c7b9",
+      "dist/core/tools/ls.js": "3b5902da8c8b2bca41d871adc7c443a5267eca3afcb91f58d2d08c7ef1e69a8c",
+      "dist/core/tools/output-accumulator.js": "4fe5f89ce61446ec50da5ea26e9f66e34ed7d628df8563eda403b804a67af50a",
+      "dist/core/tools/path-utils.js": "76acb2622a7f4f54c871a553501340829580f0f9caad627e7dafb8aee8b449af",
+      "dist/core/tools/read.js": "8de2f9c4fcd1f18c1dbad7d7f6749f0cde9d16863a41c7d9a3cac782908b5773",
+      "dist/core/tools/render-utils.js": "7f5cc3236c321dfe27fb3911a022ef0a9f96e8f3ae048bb0461d78026848be03",
+      "dist/core/tools/tool-definition-wrapper.js": "b08ccb77cf3664c3b42e5cee858e150925c0eedbaca397474c3af3de22030abd",
+      "dist/core/tools/truncate.js": "3a627a6407f3726aa56a9580548db230c20e4fee59b212ea3d12e2c45073f75d",
+      "dist/core/tools/write.js": "2d0da4779c8f0ad799b5a896b520da718c55405e41ff0a226d1d0fdc4b3c5fef",
+      "node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js": "56185b5210f946dfaa99796e72f370606baf9bedbdf391fd6675c612d7070adc",
+      "node_modules/@earendil-works/pi-ai/dist/api/simple-options.js": "52bfce3a553fb83ba3ec07b3484fb66f5042573db338cc4400aab28aa4905b2e"
+    },
+    "max_turns": null,
+    "native_requested_reasoning_effort": "off",
+    "policy_source": "trusted relay status; native off alone does not prove disabled thinking",
+    "relay_enforced_policy": {
+      "dropped_fields": [
+        "top_k",
+        "output_config",
+        "service_tier",
+        "container"
+      ],
+      "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+      "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 2700.0,
+      "stream_required": true,
+      "temperature": 0.0,
+      "thinking": {
+        "type": "disabled"
+      },
+      "top_p": 1.0
+    },
+    "version": "0.84.1"
+  },
+  "parent_attempt": null,
+  "physical_resource_admission": {
+    "acceptance_source": "frozen plan plus actual daemon capacity; no acceptance was promoted",
+    "actual_memory_bytes": 10401181696,
+    "actual_vcpu": 6,
+    "minimum_memory_bytes": 9126805504,
+    "minimum_vcpu": 6
+  },
+  "plan_ref": {
+    "path": "freezes/research-run-plan-formal-003.json",
+    "sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033"
+  },
+  "registration_status": "registered",
+  "registry": {
+    "attempt_outcome": {
+      "evidence_sha256": "95b77bfe8ea1d4f615b819d9fff2a3e035c07508b11e7a2d727177be10753ad4",
+      "reason": "native Pi returned",
+      "recorded_at": 1792718483.744046,
+      "status": "completed"
+    },
+    "attempt_status": "completed",
+    "budget_seconds": 1800,
+    "closed": true,
+    "condition": "g3",
+    "evaluations": [
+      {
+        "accepted_at": 1792718350.7310798,
+        "artifact_valid": false,
+        "completed_at": 1792718350.860457,
+        "id": "candidate-001",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "submission_failed",
+          "reason": "source preparation failed: ReadError: empty file"
+        },
+        "source_hash": null
+      },
+      {
+        "accepted_at": 1792718358.178991,
+        "artifact_valid": false,
+        "completed_at": 1792718358.249832,
+        "id": "candidate-002",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "submission_failed",
+          "reason": "source preparation failed: ReadError: empty file"
+        },
+        "source_hash": null
+      },
+      {
+        "accepted_at": 1792718363.572413,
+        "artifact_valid": false,
+        "completed_at": 1792718364.3246899,
+        "id": "candidate-003",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.242692,
+          "formal_timing": false,
+          "memory_peak_bytes": 31399936,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.6743160830810666,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.140480019,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.242692,
+            "execution_wall_seconds": 0.140480019,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 31399936,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.28585433308035135,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1343.580523824785,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6687755002640188
+          }
+        },
+        "source_hash": "766fc5141f6f9145615280d9bf9717bf330037bcfbd83127bd2b23c81a63c270"
+      },
+      {
+        "accepted_at": 1792718371.550024,
+        "artifact_valid": false,
+        "completed_at": 1792718372.161788,
+        "id": "candidate-004",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.134974,
+          "formal_timing": false,
+          "memory_peak_bytes": 24248320,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5318442499265075,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.010168063,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.134974,
+            "execution_wall_seconds": 0.010168063,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 105,
+            "memory_peak_bytes": 24248320,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.1560169579461217,
+            "reason": null,
+            "research_timeout_seconds": 1335.6014410606585,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5295376661233604
+          }
+        },
+        "source_hash": "7b692b63af1c7184c742252834eb01297852790b0b82d7ebe62aab0875945694"
+      },
+      {
+        "accepted_at": 1792718378.496795,
+        "artifact_valid": false,
+        "completed_at": 1792718379.075584,
+        "id": "candidate-005",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "candidate_failed",
+          "cpu_seconds": 0.160918,
+          "formal_timing": false,
+          "memory_peak_bytes": 24174592,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5026260828599334,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.036430524,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "candidate_failed",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.160918,
+            "execution_wall_seconds": 0.036430524,
+            "exit_code": 1,
+            "formal_timing": false,
+            "log_bytes_observed": 290,
+            "memory_peak_bytes": 24174592,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.18771150009706616,
+            "reason": null,
+            "research_timeout_seconds": 1328.6584277190268,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5003157081082463
+          }
+        },
+        "source_hash": "d60bbe3dc5fa3a96139cf25e4c9543508716ce55a465e54f2c15662f2ebc49dc"
+      },
+      {
+        "accepted_at": 1792718381.5669818,
+        "artifact_valid": false,
+        "completed_at": 1792718382.221801,
+        "id": "candidate-006",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.161388,
+          "formal_timing": false,
+          "memory_peak_bytes": 24207360,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.577473291195929,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.036586151,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.161388,
+            "execution_wall_seconds": 0.036586151,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 128,
+            "memory_peak_bytes": 24207360,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.18422612501308322,
+            "reason": null,
+            "research_timeout_seconds": 1325.5870353984646,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5752861248329282
+          }
+        },
+        "source_hash": "230a2acfa6e8cbe3736478356508050b03b96b19fe54bc2fc97a36c5169dd819"
+      },
+      {
+        "accepted_at": 1792718386.188433,
+        "artifact_valid": false,
+        "completed_at": 1792718386.780853,
+        "id": "candidate-007",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.135991,
+          "formal_timing": false,
+          "memory_peak_bytes": 24166400,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5182349998503923,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.010281978,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.135991,
+            "execution_wall_seconds": 0.010281978,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 89,
+            "memory_peak_bytes": 24166400,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.1563934157602489,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1320.9687734735198,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5160488751716912
+          }
+        },
+        "source_hash": "16fc47ae2d4b16959c4b0d5c2c119a6cff9def26f4313a31b4583c5d54e97dfe"
+      },
+      {
+        "accepted_at": 1792718389.240798,
+        "artifact_valid": false,
+        "completed_at": 1792718389.890608,
+        "id": "candidate-008",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.210758,
+          "formal_timing": false,
+          "memory_peak_bytes": 29659136,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5706340842880309,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.08464092,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.210758,
+            "execution_wall_seconds": 0.08464092,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 29659136,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.2309705000370741,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1317.911424874328,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5683357920497656
+          }
+        },
+        "source_hash": "676bb4de94a0a549bec73cfaad7f748e9fdfa40ed964365704a2bd94757fd28c"
+      },
+      {
+        "accepted_at": 1792718392.82962,
+        "artifact_valid": false,
+        "completed_at": 1792718393.4934962,
+        "id": "candidate-009",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.209013,
+          "formal_timing": false,
+          "memory_peak_bytes": 29487104,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5833094171248376,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.084528871,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.209013,
+            "execution_wall_seconds": 0.084528871,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 234,
+            "memory_peak_bytes": 29487104,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.23172124987468123,
+            "reason": null,
+            "research_timeout_seconds": 1314.3211711300537,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5810482078231871
+          }
+        },
+        "source_hash": "4bc277330463c430cbfd2a70efd7c0bf8dda4c165fb7be0572ee5e30a3d48f23"
+      },
+      {
+        "accepted_at": 1792718395.962754,
+        "artifact_valid": false,
+        "completed_at": 1792718396.6944242,
+        "id": "candidate-010",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.214374,
+          "formal_timing": false,
+          "memory_peak_bytes": 29360128,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.647105083335191,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.085873228,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.214374,
+            "execution_wall_seconds": 0.085873228,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 29360128,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.2324343752115965,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1311.1840306580998,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6449148328974843
+          }
+        },
+        "source_hash": "676bb4de94a0a549bec73cfaad7f748e9fdfa40ed964365704a2bd94757fd28c"
+      },
+      {
+        "accepted_at": 1792718397.2306812,
+        "artifact_valid": false,
+        "completed_at": 1792718397.907535,
+        "id": "candidate-011",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.217325,
+          "formal_timing": false,
+          "memory_peak_bytes": 29347840,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.596715500112623,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.085784224,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.217325,
+            "execution_wall_seconds": 0.085784224,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 29347840,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.23771033296361566,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1309.9205529163592,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5945062092505395
+          }
+        },
+        "source_hash": "74332b602c3828dc3f87f484bfaa6c7259ef5a08d3c7f9452e7d0d065e239ddb"
+      },
+      {
+        "accepted_at": 1792718398.451471,
+        "artifact_valid": false,
+        "completed_at": 1792718399.140595,
+        "id": "candidate-012",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.212313,
+          "formal_timing": false,
+          "memory_peak_bytes": 29642752,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.6133522498421371,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.084632489,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.212313,
+            "execution_wall_seconds": 0.084632489,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 29642752,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.23142437497153878,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1308.7041162732057,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6109047499485314
+          }
+        },
+        "source_hash": "15df372cef44acfa6b9ccad4754163a0ab230d93fbf21ef2ca862f4141832fd4"
+      },
+      {
+        "accepted_at": 1792718399.674056,
+        "artifact_valid": false,
+        "completed_at": 1792718400.383453,
+        "id": "candidate-013",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.212551,
+          "formal_timing": false,
+          "memory_peak_bytes": 29659136,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.6312231658957899,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.086388901,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.212551,
+            "execution_wall_seconds": 0.086388901,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 29659136,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.235512750223279,
+            "reason": "output filename not allowlisted",
+            "research_timeout_seconds": 1307.4791246191598,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6290127504616976
+          }
+        },
+        "source_hash": "18f2b9eaedae518fcf656a3026f4b6fe643cb23a6d7cf9a9da85193770ecbe4d"
+      },
+      {
+        "accepted_at": 1792718402.847275,
+        "artifact_valid": false,
+        "completed_at": 1792718403.443996,
+        "id": "candidate-014",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.136722,
+          "formal_timing": false,
+          "memory_peak_bytes": 24236032,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.5175787503831089,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.010425562,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.136722,
+            "execution_wall_seconds": 0.010425562,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 91,
+            "memory_peak_bytes": 24236032,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.16681641712784767,
+            "reason": null,
+            "research_timeout_seconds": 1304.3049532570876,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5154647920280695
+          }
+        },
+        "source_hash": "ea209de7811480be448caeed799facf283e2c996d6374c94e87431b6ab30452a"
+      },
+      {
+        "accepted_at": 1792718405.909725,
+        "artifact_valid": false,
+        "completed_at": 1792718406.4753962,
+        "id": "candidate-015",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "candidate_failed",
+          "cpu_seconds": 0.140705,
+          "formal_timing": false,
+          "memory_peak_bytes": 24272896,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.48987062461674213,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.009367205,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "candidate_failed",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.140705,
+            "execution_wall_seconds": 0.009367205,
+            "exit_code": 1,
+            "formal_timing": false,
+            "log_bytes_observed": 82,
+            "memory_peak_bytes": 24272896,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.16906441701576114,
+            "reason": null,
+            "research_timeout_seconds": 1301.245884316042,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.4872284587472677
+          }
+        },
+        "source_hash": "6e5b2e11cc1c7742b80519d10e063ad1c988bba6a746c389fd7a16be24da87cf"
+      },
+      {
+        "accepted_at": 1792718409.928122,
+        "artifact_valid": false,
+        "completed_at": 1792718410.549214,
+        "id": "candidate-016",
+        "result": {
+          "artifact_valid": false,
+          "attempt_status": "invalid_artifact",
+          "cpu_seconds": 0.143031,
+          "formal_timing": false,
+          "memory_peak_bytes": 24129536,
+          "public_check_status": "not_run",
+          "public_evaluation_wall_seconds": 0.54373349994421,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.009341287,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "invalid_artifact",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.143031,
+            "execution_wall_seconds": 0.009341287,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 24129536,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.1542297499254346,
+            "reason": null,
+            "research_timeout_seconds": 1297.2259011869319,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.5414684591814876
+          }
+        },
+        "source_hash": "1cfb0cf1ef80e951e49a00820d7a480eb590f91a9f62241e25c1f4c169f107de"
+      },
+      {
+        "accepted_at": 1792718419.272237,
+        "artifact_valid": true,
+        "completed_at": 1792718420.2931042,
+        "id": "candidate-017",
+        "result": {
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "cases": [
+            {
+              "R": 0.9058499699409166,
+              "artifact_valid": true,
+              "id": "13a841e7b6de490e68f4",
+              "roughness": 2774.7137511800242,
+              "status": "ok"
+            },
+            {
+              "R": 0.8585516161693413,
+              "artifact_valid": true,
+              "id": "04f4c0643b4ee1f2cbb1",
+              "roughness": 1440.1814489258434,
+              "status": "ok"
+            },
+            {
+              "R": 0.9420033409128544,
+              "artifact_valid": true,
+              "id": "e0eb9d7e4704b51f884c",
+              "roughness": 1181.3320621047876,
+              "status": "ok"
+            },
+            {
+              "R": 0.970696182652531,
+              "artifact_valid": true,
+              "id": "409ab21b0f5310a9d96e",
+              "roughness": 681.6316216048762,
+              "status": "ok"
+            },
+            {
+              "R": 0.9644542692128891,
+              "artifact_valid": true,
+              "id": "fca8a41a2ec5084c6760",
+              "roughness": 800.6790707126607,
+              "status": "ok"
+            },
+            {
+              "R": 0.9184449913835036,
+              "artifact_valid": true,
+              "id": "16f9197b92a286dc0148",
+              "roughness": 305.1559319438206,
+              "status": "ok"
+            }
+          ],
+          "cpu_seconds": 0.247526,
+          "formal_timing": false,
+          "memory_peak_bytes": 31633408,
+          "public_check_status": "completed",
+          "public_evaluation_wall_seconds": 0.9444944998249412,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.142396708,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "completed",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.247526,
+            "execution_wall_seconds": 0.142396708,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 31633408,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.29288329230621457,
+            "reason": null,
+            "research_timeout_seconds": 1287.8829572312534,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6828292496502399
+          }
+        },
+        "source_hash": "3623657fcdff83e64e3e2eca4047738955002cea043f0baecf50a21f06bddf13"
+      },
+      {
+        "accepted_at": 1792718470.060749,
+        "artifact_valid": true,
+        "completed_at": 1792718470.957081,
+        "id": "candidate-018",
+        "result": {
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "cases": [
+            {
+              "R": 0.981504023773167,
+              "artifact_valid": true,
+              "id": "13a841e7b6de490e68f4",
+              "roughness": 44.838834912267004,
+              "status": "ok"
+            },
+            {
+              "R": 0.9037872123996574,
+              "artifact_valid": true,
+              "id": "04f4c0643b4ee1f2cbb1",
+              "roughness": 81.28079770981635,
+              "status": "ok"
+            },
+            {
+              "R": 0.9879369375409427,
+              "artifact_valid": true,
+              "id": "e0eb9d7e4704b51f884c",
+              "roughness": 40.74395562125799,
+              "status": "ok"
+            },
+            {
+              "R": 1.0048094686732074,
+              "artifact_valid": true,
+              "id": "409ab21b0f5310a9d96e",
+              "roughness": 50.68193542045402,
+              "status": "ok"
+            },
+            {
+              "R": 0.9848097654888165,
+              "artifact_valid": true,
+              "id": "fca8a41a2ec5084c6760",
+              "roughness": 19.196529204199063,
+              "status": "ok"
+            },
+            {
+              "R": 0.9282889076738176,
+              "artifact_valid": true,
+              "id": "16f9197b92a286dc0148",
+              "roughness": 14.116808668237299,
+              "status": "ok"
+            }
+          ],
+          "cpu_seconds": 0.248259,
+          "formal_timing": false,
+          "memory_peak_bytes": 31539200,
+          "public_check_status": "completed",
+          "public_evaluation_wall_seconds": 0.8095536660403013,
+          "research_budget_exhausted": false,
+          "wall_seconds": 0.14312252,
+          "worker_diagnostics": {
+            "all_processes_terminated": true,
+            "attempt_status": "completed",
+            "budget_timeout": false,
+            "budget_timeout_stage": null,
+            "candidate_processes_terminated": true,
+            "cleanup_status": null,
+            "cpu_seconds": 0.248259,
+            "execution_wall_seconds": 0.14312252,
+            "exit_code": 0,
+            "formal_timing": false,
+            "log_bytes_observed": 0,
+            "memory_peak_bytes": 31539200,
+            "oom_killed": false,
+            "processes_quiesced_at_seconds": 0.2897538333199918,
+            "reason": null,
+            "research_timeout_seconds": 1237.0838605081663,
+            "timeout_seconds": 120,
+            "timing_scope": "python_spawn_to_all_descendants_exit",
+            "total_wall_seconds": 0.6384747088886797
+          }
+        },
+        "source_hash": "01e6638167d5ecc896c3c88832dc603fdfd8a6bcf90aa60b3fd8bda08f0d9054"
+      }
+    ],
+    "final_id": "candidate-018",
+    "finalization_invalid": false,
+    "first_id": "candidate-017",
+    "max_evaluations": 20,
+    "selection_reason": "explicit_finalize",
+    "started_at": 1792717907.2315352,
+    "task": "heat",
+    "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r1/workspace"
+  },
+  "relay": {
+    "admission_path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/build/relay-67e299eed11b/admission.json",
+    "base_url": "http://172.21.0.2:8787",
+    "container_id": "9075810aa22a2e624e82c60c634a357fce2d6f136ae2854a4721fb042534c6ce",
+    "container_name": "sciresearch-relay-6db950e9877b",
+    "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "network_name": "sciresearch-relay-6db950e9877b",
+    "relay_ip": "172.21.0.2",
+    "relay_port": 8787
+  },
+  "relay_cleanup": {
+    "all_removed": true,
+    "container_id": "9075810aa22a2e624e82c60c634a357fce2d6f136ae2854a4721fb042534c6ce",
+    "container_remove_returncode": 0,
+    "errors": {},
+    "network_name": "sciresearch-relay-6db950e9877b",
+    "network_remove_returncode": 0,
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "status_before_stop": {
+      "budget_exhausted": false,
+      "charged_output_tokens": 76374,
+      "evidence_error": false,
+      "expired": false,
+      "failed_requests": 0,
+      "failure_counts": {},
+      "inflight": 0,
+      "last_request_failure_reason": null,
+      "last_request_outcome": "success",
+      "last_upstream_status": 200,
+      "limits": {
+        "dropped_fields": [
+          "top_k",
+          "output_config",
+          "service_tier",
+          "container"
+        ],
+        "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+        "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+        "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+        "max_body_bytes": 1048576,
+        "max_concurrency": 4,
+        "max_event_bytes": 65536,
+        "max_requests": 3125,
+        "max_response_bytes": 8388608,
+        "model": "deepseek-flash",
+        "request_output_limit": 4096,
+        "request_seconds": 120,
+        "session_output_limit": 200000,
+        "session_seconds": 2700.0,
+        "stream_required": true,
+        "temperature": 0.0,
+        "thinking": {
+          "type": "disabled"
+        },
+        "top_p": 1.0
+      },
+      "model": "deepseek-flash",
+      "protocol_violation": false,
+      "rejected_requests": 0,
+      "remaining_output_tokens": 123626,
+      "request_count": 221,
+      "reserved_output_tokens": 0,
+      "schema_version": 1,
+      "state": "ready",
+      "successful_requests": 221
+    }
+  },
+  "relay_evidence_sha256": {
+    "cleanup.json": "f5c50ecea6da340061e56b4ed480538b6bb6949790f2f117c47fba27e5fde146",
+    "evidence/events.jsonl": "33fb38abbc55021ed9d2d9f134cf77da358397ff575e2275aa9103774b1ec746",
+    "startup.json": "98b83a2ce564578834393dc38e4f5c59a93194bee39ac8e3dec588ed2de5619c"
+  },
+  "relay_network_probe": {
+    "checks": [
+      {
+        "health": {
+          "limits": {
+            "dropped_fields": [
+              "top_k",
+              "output_config",
+              "service_tier",
+              "container"
+            ],
+            "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+            "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+            "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+            "max_body_bytes": 1048576,
+            "max_concurrency": 4,
+            "max_event_bytes": 65536,
+            "max_requests": 3125,
+            "max_response_bytes": 8388608,
+            "model": "deepseek-flash",
+            "request_output_limit": 4096,
+            "request_seconds": 120,
+            "session_output_limit": 200000,
+            "session_seconds": 2700.0,
+            "stream_required": true,
+            "temperature": 0.0,
+            "thinking": {
+              "type": "disabled"
+            },
+            "top_p": 1.0
+          },
+          "request_count": 0,
+          "schema_version": 1,
+          "state": "ready"
+        },
+        "http_response": true,
+        "label": "relay",
+        "status": 200
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "provider"
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "internet"
+      },
+      {
+        "error_type": "URLError",
+        "http_response": false,
+        "label": "spoofed_host"
+      }
+    ],
+    "dns_checks": [
+      {
+        "address": "127.0.0.11",
+        "error_type": "TimeoutError",
+        "port": 53,
+        "protocol": "tcp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "PermissionError",
+        "port": 53,
+        "protocol": "udp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "TimeoutError",
+        "port": 37675,
+        "protocol": "tcp",
+        "response_received": false
+      },
+      {
+        "address": "127.0.0.11",
+        "error_type": "PermissionError",
+        "port": 56614,
+        "protocol": "udp",
+        "response_received": false
+      }
+    ],
+    "dns_resolvers": [
+      "127.0.0.11"
+    ],
+    "external_raw_tcp_connected": false,
+    "firewall": "container sidecar namespace only; exact IP/port before GOST DNAT",
+    "formal": false,
+    "model_calls": 0,
+    "passed": true,
+    "relay_ip": "172.21.0.2",
+    "relay_port": 8787
+  },
+  "relay_status": {
+    "budget_exhausted": false,
+    "charged_output_tokens": 76374,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_failure_reason": null,
+    "last_request_outcome": "success",
+    "last_upstream_status": 200,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "output_config",
+        "service_tier",
+        "container"
+      ],
+      "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+      "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 2700.0,
+      "stream_required": true,
+      "temperature": 0.0,
+      "thinking": {
+        "type": "disabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-flash",
+    "protocol_violation": false,
+    "rejected_requests": 0,
+    "remaining_output_tokens": 123626,
+    "request_count": 221,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "ready",
+    "successful_requests": 221
+  },
+  "relay_ttl_seconds": 2700,
+  "repeat": 1,
+  "replay_split": null,
+  "research_budget_seconds": 1800,
+  "research_security": {
+    "cap_bnd": "000000000000000b",
+    "cap_eff": "0000000000000000",
+    "cap_net_admin": false,
+    "cap_net_raw": false,
+    "cap_prm": "0000000000000000",
+    "cgroup": {
+      "cpu.max": "400000 100000",
+      "memory.max": "4294967296",
+      "memory.swap.max": "0",
+      "pids.max": "128"
+    },
+    "docker_host_env_present": false,
+    "docker_socket_present": false,
+    "gid": 1000,
+    "host_mount_paths_present": [],
+    "kernel_nft_fib_inet_config": null,
+    "network_namespace": "net:[4026532505]",
+    "no_new_privs": "1",
+    "pid_namespace": "pid:[4026532568]",
+    "uid": 1000
+  },
+  "research_stop_requested_at": 1792718482.364992,
+  "research_stop_returncode": 0,
+  "resource_checks": {
+    "research-6615cd7900ba0750-heat-g3-r1-a001__env": {
+      "containers": [],
+      "networks": [],
+      "volumes": []
+    },
+    "research-6615cd7900ba0750-heat-g3-r1-a001__verifier__trial": {
+      "containers": [],
+      "networks": [],
+      "volumes": []
+    }
+  },
+  "resource_status": "frozen_contract_pending_runtime_admission",
+  "reward": null,
+  "root_helper_capabilities": [
+    "CHOWN",
+    "DAC_OVERRIDE",
+    "FOWNER"
+  ],
+  "root_helper_capabilities_reason": "Harbor's native Pi config writer uploads as root, traverses the researcher's 0700 config directory, then chowns and chmods the file. These capabilities are available only to host-issued trusted root helpers; researcher is UID 1000 with CapEff=0, NoNewPrivs=1 and neither NET_ADMIN nor NET_RAW.",
+  "run_id": "research-6615cd7900ba0750-heat-g3-r1",
+  "score": null,
+  "session_id": "74cdd038-cc91-569f-9bf8-35b0323568f7",
+  "socket_privileges": {
+    "marked_socket": {
+      "errno": 1,
+      "error": "[Errno 1] Operation not permitted",
+      "permission_denied": true
+    },
+    "network_packets_sent": false,
+    "raw_socket": {
+      "errno": 1,
+      "error": "[Errno 1] Operation not permitted",
+      "permission_denied": true
+    }
+  },
+  "started_at": 1792717867.431403,
+  "status": "research_frozen",
+  "study_phase": "public-dev",
+  "task": "heat",
+  "task_build": {
+    "files": {
+      "environment/Dockerfile": "5e6e18305ff71b23221db3b0019cf6608897fe535af8f61bb54fdc7f61935795",
+      "environment/public-dev/cases/04f4c0643b4ee1f2cbb1/metadata.json": "2f650c8c0f37115f32aa764f88a6e0239940f15e009dbb2dbb58f090f23770e5",
+      "environment/public-dev/cases/04f4c0643b4ee1f2cbb1/observations.csv": "19d1bbef1dabcd3866a7acbb9f05ba15fda4d33e278f77cf5c70de9a9b97f943",
+      "environment/public-dev/cases/04f4c0643b4ee1f2cbb1/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/cases/13a841e7b6de490e68f4/metadata.json": "bc10879ce559d4d4aaf10cd50e8d65305ee21ef450cbe32aa718f9c040173ba3",
+      "environment/public-dev/cases/13a841e7b6de490e68f4/observations.csv": "d638e6db940fac4ff0dfe1149d42d365237352c8156bd3a8fb95eabd8e36859f",
+      "environment/public-dev/cases/13a841e7b6de490e68f4/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/cases/16f9197b92a286dc0148/metadata.json": "4efdf494f551c820086b2c86239a51478a69836a06363d73617aa51d21f74649",
+      "environment/public-dev/cases/16f9197b92a286dc0148/observations.csv": "65e1dd4d8cbb4d7e548a5c019082f32656128571934d4d447b5e8cbc7608ca85",
+      "environment/public-dev/cases/16f9197b92a286dc0148/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/cases/409ab21b0f5310a9d96e/metadata.json": "9d0afa73da72aa9b659d2d8756dc1de320c2b8a02a59d5cba8610f3284c1b97c",
+      "environment/public-dev/cases/409ab21b0f5310a9d96e/observations.csv": "12349a6702619ae829b4479fba4742299c06b1067053223c557d668b604c1f31",
+      "environment/public-dev/cases/409ab21b0f5310a9d96e/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/cases/e0eb9d7e4704b51f884c/metadata.json": "3097854a87a2fa1418b8947d1515bc985e871250928aa87019fdedcc5dda919b",
+      "environment/public-dev/cases/e0eb9d7e4704b51f884c/observations.csv": "c62464537914b30f1140630f6ca6392090ca80a0f0f5f32d22baeae1785892e8",
+      "environment/public-dev/cases/e0eb9d7e4704b51f884c/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/cases/fca8a41a2ec5084c6760/metadata.json": "ad1141b4c7fdb9a1f8eb24a9ecede0005b5b6537dbf89be88179f05b31a65676",
+      "environment/public-dev/cases/fca8a41a2ec5084c6760/observations.csv": "fb6e9f7c84f236194e636e2f8dfa4c7a1117b4bd950db16d68c8d1042bcf6ba7",
+      "environment/public-dev/cases/fca8a41a2ec5084c6760/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "environment/public-dev/manifest.json": "f5f133274ca3fd055631366a095b1e1bdc4d2b7489c415fbb6f4396018549ff7",
+      "instruction.md": "2357982ec7be12acf7e0b69a8d9872a441e605dcdf26c60bc477cf2747d4569e",
+      "task.toml": "853ad06f11179a0f89fd8d9b4ccc3cb465ce66c1e47e89923bca919755e0d14d",
+      "tests/test.sh": "b9a7dc64d25a87d176e856be3a675a5499f0bf04862ebfcc17d4081789e11f32"
+    },
+    "image_mode": "pinned_prebuilt_with_fresh_public_task",
+    "prompt_source_sha256": {
+      "common.md": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678",
+      "g1.md": "5c7ea18fd71d0bd801084cb2c4066f81e81cf98122d3fa2c23a703e4457ed656",
+      "g2.md": "37a895f545dce268836105e0f0ee2d25a8ab1383e7b1025d8e6227fa1ad4183e",
+      "g3.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "public_input_sha256": {
+      "cases/04f4c0643b4ee1f2cbb1/metadata.json": "2f650c8c0f37115f32aa764f88a6e0239940f15e009dbb2dbb58f090f23770e5",
+      "cases/04f4c0643b4ee1f2cbb1/observations.csv": "19d1bbef1dabcd3866a7acbb9f05ba15fda4d33e278f77cf5c70de9a9b97f943",
+      "cases/04f4c0643b4ee1f2cbb1/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "cases/13a841e7b6de490e68f4/metadata.json": "bc10879ce559d4d4aaf10cd50e8d65305ee21ef450cbe32aa718f9c040173ba3",
+      "cases/13a841e7b6de490e68f4/observations.csv": "d638e6db940fac4ff0dfe1149d42d365237352c8156bd3a8fb95eabd8e36859f",
+      "cases/13a841e7b6de490e68f4/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "cases/16f9197b92a286dc0148/metadata.json": "4efdf494f551c820086b2c86239a51478a69836a06363d73617aa51d21f74649",
+      "cases/16f9197b92a286dc0148/observations.csv": "65e1dd4d8cbb4d7e548a5c019082f32656128571934d4d447b5e8cbc7608ca85",
+      "cases/16f9197b92a286dc0148/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "cases/409ab21b0f5310a9d96e/metadata.json": "9d0afa73da72aa9b659d2d8756dc1de320c2b8a02a59d5cba8610f3284c1b97c",
+      "cases/409ab21b0f5310a9d96e/observations.csv": "12349a6702619ae829b4479fba4742299c06b1067053223c557d668b604c1f31",
+      "cases/409ab21b0f5310a9d96e/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "cases/e0eb9d7e4704b51f884c/metadata.json": "3097854a87a2fa1418b8947d1515bc985e871250928aa87019fdedcc5dda919b",
+      "cases/e0eb9d7e4704b51f884c/observations.csv": "c62464537914b30f1140630f6ca6392090ca80a0f0f5f32d22baeae1785892e8",
+      "cases/e0eb9d7e4704b51f884c/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "cases/fca8a41a2ec5084c6760/metadata.json": "ad1141b4c7fdb9a1f8eb24a9ecede0005b5b6537dbf89be88179f05b31a65676",
+      "cases/fca8a41a2ec5084c6760/observations.csv": "fb6e9f7c84f236194e636e2f8dfa4c7a1117b4bd950db16d68c8d1042bcf6ba7",
+      "cases/fca8a41a2ec5084c6760/target_grid.npy": "7f771d7b1b8140013fb73abadb2965735caefbf33b3b49330a9d9f463ec0b044",
+      "manifest.json": "f5f133274ca3fd055631366a095b1e1bdc4d2b7489c415fbb6f4396018549ff7"
+    }
+  },
+  "trusted_budget_override": false,
+  "trusted_source_sha256": {
+    "judge/batch.py": "38a327848550af79fdcbc27593cef48ff6120cdb6fcaa3c5c65a715e4c4062f3",
+    "judge/heat.py": "1f8a48bb41ec4cd03505f31cf9ce84541e9e624bccc90861e5d80853afbc3b28",
+    "judge/ode.py": "81a105ceab82d9251f3bec17c71c7aa9fb4b6dd00d8dbd1a65f3f590cc78a123",
+    "judge/poisson.py": "b683451edc32e35bef8a1d3e1facf08621d03afa1997bc9244476d497e5e8a0b",
+    "prompts/heat/common.md": "e8b76e134ddeeaf0271e514feaa0f84c2fbd36c5f51036d85933e0e2b9dde678",
+    "prompts/heat/g1.md": "5c7ea18fd71d0bd801084cb2c4066f81e81cf98122d3fa2c23a703e4457ed656",
+    "prompts/heat/g3.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public/bench.py": "638f5597753553bdbf9662ef92d06bc95d365daee0cbf553b111e8ade6aefc90",
+    "public/bridge_io.py": "e6e6000f4ac9f4a252237e1de0843d912d771e20ef502e69c35312ea7430d509",
+    "public/export_source.py": "a19be0357659d6f0bc2320546a09eb4ac4025bcf5f63b7b73dccf0a2adc90896",
+    "public/file_bench.py": "3ec8fdb6d6ecc2a71a37d08bd0896f511d8cdab73b3d56135463f72f12601c2e",
+    "public/heat.py": "817b507cc05a2464dba236ad7a08c5d3511438f58ca733ed07744186eb4dbcce",
+    "public/ode.py": "cc8399a068e227c223989d04a6d428b1295669ab0b0ae7fa399cf81110adebdb",
+    "public/poisson.py": "beb0213eb36dc193f25ddcd9174af51516f74a89e16da6f5bc885bb729d56385",
+    "public/poisson_compare.py": "77618d7d4097627764bcc0a069597cf469462b9a0ba9ff2cd19fcf78f965767f",
+    "runner/__init__.py": "ae55a4a8b01ad80e3971551df98460e1b3cb688195b72a4741505bbd233793d1",
+    "runner/artifact_gate.py": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+    "runner/bridge.py": "8653f55cf0af273336922525528e4f21b06a7edabe763c268d88d87d9a61229a",
+    "runner/calibrate.py": "59b8e56b32c3412a45105a05a663d60cbfeb4bc6abadd0bad9ddfb2fec167d98",
+    "runner/clean_replay.py": "b04c56bdce4febabc9850d93fe57469cc574ef6a1c0668ce55626f092123f7cd",
+    "runner/common.py": "e1735db1a1514030f0a87e1654fce275689c5d03d80cce994813dd77bb1dcac4",
+    "runner/file_bridge.py": "86a32a8edd69b2cf8aead1e25c25915f71c787ebc1561a76e9c740bca2c1cdc7",
+    "runner/file_bridge_probe.py": "ea4c8a8e55a1d3a14bdbdfe4331812e712e082784944653eccbf612ec2d7312f",
+    "runner/harbor_environment.py": "f47b8e9dd9385b8dd8686f6e010cc1c3f395c09a4bff585ff9a013a16065ef4b",
+    "runner/harbor_pilot.py": "8e72bfcdb73f5147d60da3d6f779a1042509521ab1dd906bbbb5b1c1b64636b6",
+    "runner/harbor_verifier.py": "52dcad5c503170dd26c7cc7e030f5d5d8dabb43e0c233e5d9007a43c2565405b",
+    "runner/model_relay.py": "712823b4fbb49ac1369755583ce99bc8e0838df003d94e4cec7294147ab87969",
+    "runner/model_smoke.py": "710861ba2fc1bfbac09d42d4e65900ecedf66a5648dd8418d602fc35f45065dc",
+    "runner/performance.py": "624ec909cf001177c9b71cd836ca9d114993da62029c9c927f7f185554b7ae68",
+    "runner/phase.py": "4f2eced24bb43be0721dcceba8bb37c9388e3bd26899f65aefa8934b7808af8e",
+    "runner/pilot_e2e.py": "b54c20578920dd6f0871fd218602f6df86d0ca4d8e8881187264ab41bdd55e81",
+    "runner/policy_capture.py": "7fab4e8a4c96ef5bc2bb77fdaee15621431c5bbbe0a9569c7a55ad5bf8fe9f90",
+    "runner/preflight.py": "3bfca02d853cfc40f19c0aca27298361577fe5a6af9a08da216c37277554fdf0",
+    "runner/process_timer.py": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+    "runner/public_evaluation.py": "1db3e1a627749a767a4e8f659075560173f8fef4a36c4116665b80bf6174932d",
+    "runner/registry.py": "42dea7690998bc453a5d2abee9bc0ad8d3cad63c0fa6b2805b7251463b9b6eb9",
+    "runner/relay_transport.py": "475146d11be0e5e5da776c215d027e94092f8a9f57486c1a2aea873cc2b0fe1b",
+    "runner/replay.py": "655f1c9d71a3e7e7dd52c7fbbf01555a1c519dd910d2b6013d1ee8a7cf1034ff",
+    "runner/report.py": "f78975e5040516b71f664538d223e67dfc742aa29fcef49a7e445bcd902b515d",
+    "runner/research_loop.py": "7702992f1f71c982571ed64b4bdc390a82d4f0488db1fdbf64a60b1a51d4cad6",
+    "runner/research_network_probe.py": "cf009ff4f1fd40fac8d3bd442509d36b0e596531d89a02d02bfb6bd059e2a652",
+    "runner/run_plan.py": "e098d3576eb45b7777f601a742cd2a60f1dd8e60067659d7a9c5b017d21a15cf",
+    "runner/study.py": "82be72c0e8db62bad27bd948e0903c41c28cfcd447dcb68b01bda6981066c0c2",
+    "runner/study_report.py": "15331217b08ce3fb221d2ed4d3e4d9947c820f1464ebfa0140bd6460e939bca1",
+    "runner/t3_calibrate.py": "fd84ae304ec81b85f1e3ce3782d66e6857bdd7413fd59f8722f08e4d698ce5b9",
+    "runner/timing_host.py": "c8be45b3284e07164bf0ef711c78465598b2277434b5c7d84fddd081a5194ed2",
+    "runner/verify_pilot.py": "42a7336f7c6ba01e1663ddbbaf6cd46e2c6a5511f85e864069e76cb68a2e106b",
+    "runner/worker.py": "c851c5bf2d6f97157d8bc1cc23acf063047987950b5ea498926ea9312cd49984"
+  },
+  "worker_cleanup": {
+    "all_removed": true,
+    "errors": {},
+    "records": [
+      {
+        "candidate_id": "candidate-003",
+        "found": [],
+        "recorded_container": "cad2e8c342265a65b5d17e75701d00b26c485f32593521eb2b2759600ec481d2",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-004",
+        "found": [],
+        "recorded_container": "1912b86003b537ede2dac6831483786f29a59c4aa702ed6b3efdc0f2d5d40b31",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-005",
+        "found": [],
+        "recorded_container": "434b9e41ebad2955a3a5da016603fc437c49a21f9851d05417d378a76b14da4c",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-006",
+        "found": [],
+        "recorded_container": "52d7e640222f15f847f088c102966b42bbd53f6cad2854f8bfbfeb7ac7eb97c7",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-007",
+        "found": [],
+        "recorded_container": "31f4b64e7326b9973b7a81b6a682f58d6ea415cdc7a8d0ecff0d9dd5991424dc",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-008",
+        "found": [],
+        "recorded_container": "c123786ae8b0e2624edf76434088fd6730e195f8b414bcbc6a7555652c48a993",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-009",
+        "found": [],
+        "recorded_container": "a323d6cf56951aad546ce5fccfae3a7504a7077ac49ef82d746be7b6a0c8f5fc",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-010",
+        "found": [],
+        "recorded_container": "dd53c02b3ac9086250e4ed367350ffa34b60d5b86b8e34ed59272962e37259bf",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-011",
+        "found": [],
+        "recorded_container": "91cdb8f11f000361834292f5948a12bfe56bbb20028908a41d2b9a3a452c7703",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-012",
+        "found": [],
+        "recorded_container": "315b4862f2a1f1f36770e60fa28a8f9602d7c36e0b0a8219f0974c07a71a4402",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-013",
+        "found": [],
+        "recorded_container": "6e3fe0c45e257a7b948cb007c1942ef490b83305cc520921308c50a92cd2775f",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-014",
+        "found": [],
+        "recorded_container": "17e5fec58d84ca1aafbb71a81d9cfd8e731095eee6783929039b51b907e232c3",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-015",
+        "found": [],
+        "recorded_container": "2f2c8d7349bf7b23dd7156ff4fda64de45a524f1d6d5a70105eb003e9aab633e",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-016",
+        "found": [],
+        "recorded_container": "ae85f97baf27f8da006adf181ff17558829d1b870768c548ae5b14d5e75b8112",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-017",
+        "found": [],
+        "recorded_container": "321a55d7ff4bff6de58fa9364e082964408e7ccbbb670cad092dc59d63eac874",
+        "remaining": [],
+        "status": "removed_or_absent"
+      },
+      {
+        "candidate_id": "candidate-018",
+        "found": [],
+        "recorded_container": "e89ad3e1b90a47bfe42d085aa92142c614bfb38ebba5ecceed69f3a7b89c2c8b",
+        "remaining": [],
+        "status": "removed_or_absent"
+      }
+    ]
+  }
+}

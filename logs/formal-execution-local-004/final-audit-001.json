@@ -1,0 +1,1519 @@
+{
+  "all_planned_operations_attempted": true,
+  "author_attempts": 11,
+  "author_methods": 11,
+  "charged_output_tokens_all_attempts": 2613274,
+  "checkpoints": [
+    {
+      "checkpoint_id": "baseline-heat-ls",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-heat-ls-a001",
+      "physical_replay_count": 3,
+      "source_hash": "3b9fa85e398abfe074b53f497353529aa72c78dbe660a9b0e0866419756a2226",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "baseline-heat-rank5",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-heat-rank5-a001",
+      "physical_replay_count": 3,
+      "source_hash": "3b9fa85e398abfe074b53f497353529aa72c78dbe660a9b0e0866419756a2226",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "baseline-heat-tikhonov",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-heat-tikhonov-a001",
+      "physical_replay_count": 3,
+      "source_hash": "3b9fa85e398abfe074b53f497353529aa72c78dbe660a9b0e0866419756a2226",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "baseline-heat-discrepancy",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-heat-discrepancy-a001",
+      "physical_replay_count": 3,
+      "source_hash": "3b9fa85e398abfe074b53f497353529aa72c78dbe660a9b0e0866419756a2226",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "baseline-heat-tsvd",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-heat-tsvd-a001",
+      "physical_replay_count": 3,
+      "source_hash": "3b9fa85e398abfe074b53f497353529aa72c78dbe660a9b0e0866419756a2226",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "baseline-ode-raw",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-ode-raw-a001",
+      "physical_replay_count": 3,
+      "source_hash": "a5f00032b20c3d9bcaf6f47234495453c13a3e1f9de139dd56387f873cc55d42",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "baseline-ode-fixed",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-ode-fixed-a001",
+      "physical_replay_count": 3,
+      "source_hash": "a5f00032b20c3d9bcaf6f47234495453c13a3e1f9de139dd56387f873cc55d42",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "baseline-ode-search",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-ode-search-a001",
+      "physical_replay_count": 3,
+      "source_hash": "a5f00032b20c3d9bcaf6f47234495453c13a3e1f9de139dd56387f873cc55d42",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "baseline-poisson-cg",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "physical_replay_count": 1,
+      "source_hash": "69e630261fdde37de4c129424c8c9ec2072d432c753216235babc7a6a999b889",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "baseline-poisson-jacobi",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "physical_replay_count": 1,
+      "source_hash": "69e630261fdde37de4c129424c8c9ec2072d432c753216235babc7a6a999b889",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "baseline-poisson-lu",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "physical_replay_count": 1,
+      "source_hash": "69e630261fdde37de4c129424c8c9ec2072d432c753216235babc7a6a999b889",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "candidate-004",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "dc344c1d47a36a56f39940469846efea747057ddefdd06da5609b99e5fe3307f",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:final",
+      "physical_replay_count": 3,
+      "source_hash": "54b756aa121fc5850943773d34304d6c78012f765e09a03b806ea664bfb07941",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "candidate-017",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "3623657fcdff83e64e3e2eca4047738955002cea043f0baecf50a21f06bddf13",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "candidate-018",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:final",
+      "physical_replay_count": 3,
+      "source_hash": "01e6638167d5ecc896c3c88832dc603fdfd8a6bcf90aa60b3fd8bda08f0d9054",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "candidate-004",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g1-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "fa3cb320623e7b98af86d2b78ea7af92b87287ac871ea3e197daa4f0b608e616",
+      "task": "heat"
+    },
+    {
+      "checkpoint_id": "candidate-003",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g1-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "d64bba28feb1e47ba5de95755ea975e3f0246464c616e0dc5f11ac2ca9ab08d6",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "candidate-001",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g2-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "1bf4c53406f0f963d11a6c67b6ddf74660853640be71bd7b6dbe6a9d92510257",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g3-r1:first",
+      "physical_replay_count": 3,
+      "source_hash": "76a7a9fdbebc8343bd06b1cbf4277a42928b450a2d43376c02e4d31844360979",
+      "task": "ode"
+    },
+    {
+      "checkpoint_id": "candidate-003",
+      "evaluation_status": "invalid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "physical_replay_count": 1,
+      "source_hash": "67fb87b10397452442cd9ddffc70a629a6d9df599525a2fd7e04b8a27d65f33c",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "invalid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "physical_replay_count": 1,
+      "source_hash": "ebfb27f6ff2bb72ff394a100cc4fc4387dfcd854bd2479a8ffa7be4b69afe7d2",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "candidate-005",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "physical_replay_count": 1,
+      "source_hash": "88bf1a61c216308147ce3cb4ffbaff3ebaba2d5db524b3e477209d636a64d91a",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "physical_replay_count": 1,
+      "source_hash": "8f1017343f7474149cb9baffbeacb0546016464c81d698fdde268bc8d5bd8e5a",
+      "task": "poisson"
+    },
+    {
+      "checkpoint_id": "candidate-001",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r2:first",
+      "physical_replay_count": 3,
+      "source_hash": "fe37368c81508aab59abcfe97c081896dacbfb75a8409018dee13dfc05455926",
+      "task": "heat"
+    }
+  ],
+  "cost_usd": null,
+  "full_valid_scientific_acceptance": false,
+  "heat_ode_independent_replays": 51,
+  "hidden_worker_cpu_seconds": 285.577152,
+  "hidden_worker_cpu_seconds_by_kind": {
+    "author": 49.782583,
+    "research": 235.794569
+  },
+  "interpretation": "All prescribed operations were attempted. Poisson G2 final scores and speedups remain null because its continuous host window was invalid. It is not an unexecuted run or a scientific zero. No measurement retry was performed.",
+  "invalid_measurement_run_ids": [
+    "research-6615cd7900ba0750-poisson-g2-r1"
+  ],
+  "iteration_status": {
+    "degraded": 1,
+    "improved": 2,
+    "not_observed_same_source": 5,
+    "unavailable": 7
+  },
+  "known_public_candidate_cpu_seconds": 116.572969,
+  "manifest_sha256": "baf192d8ee63e29bcd0e7267928a38d5aa1c8b6af5b3fb35991b617bcd5b8008",
+  "model_api_requests": 7650,
+  "no_running_containers": true,
+  "no_valid_submission": 6,
+  "non_scientific_research_attempts": 4,
+  "observed_at_unix": 1792744202.754635,
+  "physical_worker_batches": 93,
+  "physical_worker_case_executions": 1116,
+  "plan_sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033",
+  "poisson_batches": 42,
+  "poisson_bccbbc_groups": 7,
+  "poisson_groups": [
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "baseline-poisson-cg",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "baseline-poisson-cg-a001",
+      "performance_status": "valid",
+      "reward": 0,
+      "score": 0.0,
+      "speedup": 0.19924031678126952
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "baseline-poisson-jacobi",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "baseline-poisson-jacobi-a001",
+      "performance_status": "valid",
+      "reward": 0,
+      "score": 0.01373074749997073,
+      "speedup": 1.0002855636330312
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "baseline-poisson-lu",
+      "evaluation_status": "valid",
+      "kind": "author",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "baseline-poisson-lu-a001",
+      "performance_status": "valid",
+      "reward": 1,
+      "score": 38.97594493239069,
+      "speedup": 2.248991717418765
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "candidate-003",
+      "evaluation_status": "evaluation_invalid",
+      "kind": "research",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "performance_status": "invalid_environment",
+      "reward": null,
+      "score": null,
+      "speedup": null
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "evaluation_invalid",
+      "kind": "research",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "performance_status": "invalid_environment",
+      "reward": null,
+      "score": null,
+      "speedup": null
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "candidate-005",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "performance_status": "valid",
+      "reward": 1,
+      "score": 37.095856992632555,
+      "speedup": 2.1627631938287064
+    },
+    {
+      "baseline_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "candidate_passed_counts": [
+        12,
+        12,
+        12
+      ],
+      "checkpoint_id": "candidate-007",
+      "evaluation_status": "valid",
+      "kind": "research",
+      "order": [
+        "B",
+        "C",
+        "C",
+        "B",
+        "B",
+        "C"
+      ],
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "performance_status": "valid",
+      "reward": 1,
+      "score": 44.30807640649213,
+      "speedup": 2.512706721251994
+    }
+  ],
+  "public_rows_with_unknown_cpu": 24,
+  "report_files": {
+    "attempts.csv": "7a7fd6fd29e6390bef1931191fc79cc9683afe990240d7c49cf9bc15e760f4f7",
+    "baseline-attempts.csv": "cae348d7f61420358db0398acedc11e1cdb2c4fd856af645784b43ac37e11ec9",
+    "baseline-cases.csv": "1e821581f5ace03c403036023e926e7614446e4d4007c9534625b835ef26d209",
+    "baselines.csv": "cae348d7f61420358db0398acedc11e1cdb2c4fd856af645784b43ac37e11ec9",
+    "case-deltas.csv": "e3f511388ef90bd19c0b67abb099a1d13664e15a592b828593c1fb375fb8ccf4",
+    "cases.csv": "fff09a1d5997ea0ed1cac242ba8b6035582fe60c26d863eeb8075037d12106c9",
+    "checkpoints.csv": "0a90f3983c885d3efdb2a78f5bf10052d993cd8ef5ceaf1cbd41d54bf0671ec0",
+    "contrasts.csv": "762b5332e3745d761900d9a09c605e90b7e4a7d85a9e7ca2854cb107e652dc37",
+    "fixed-reference-cases.csv": "cc27df5fec41ee1224eb6bb5b6f34f3b4be2ed6d770624546dd77cd754c19d12",
+    "fixed-reference-groups.csv": "a1d73221229b00226b797adb48a1099c6771ab00f71f746b4328aeede35db809",
+    "fixed-reference-runs.csv": "2b85f8b88af3c2659db0adc243903c8dec08d6856deb7000a2626343593ed492",
+    "groups.csv": "3c5e5e60fd32280761df3fc7b3fc0f6ea3ae93e5d7532583ee5034d8c365bc24",
+    "public-evaluations.csv": "d80134c3de6227aa1e22a017242495ef5c24aa6193ac043807c3af564234fae2",
+    "summary.json": "435207e1a52fe5c6afe0d9b1d471ff2853ed9b0f1a18961172aaf39f779c84e4"
+  },
+  "research_attempts": 19,
+  "research_wall_seconds_all_attempts": 23428.332544088364,
+  "research_wall_seconds_valid_research": 18992.861564159393,
+  "status": "execution_closed_with_one_invalid_performance_measurement",
+  "successful_output_tokens_all_attempts": 2591496,
+  "successful_output_tokens_valid_research": 2324341,
+  "timing_windows": [
+    {
+      "final_test_scores_accessed": true,
+      "identity": "cg",
+      "kind": "baseline",
+      "path": "logs/formal-execution-local-004/window-baseline-poisson-cg/acceptance.json",
+      "sha256": "3585a327e94feee5bd3e01810a5bae177e66f1bf39953bd6cf89fd0c113fb6a4",
+      "status": "passed",
+      "violations": []
+    },
+    {
+      "final_test_scores_accessed": true,
+      "identity": "jacobi",
+      "kind": "baseline",
+      "path": "logs/formal-execution-local-004/window-baseline-poisson-jacobi/acceptance.json",
+      "sha256": "f0da2670adefbfcd8b6b8671cb44e8e0a9e7dab2e388b9c6efb10c2b0cf0f529",
+      "status": "passed",
+      "violations": []
+    },
+    {
+      "final_test_scores_accessed": false,
+      "identity": "lu",
+      "kind": "baseline",
+      "path": "logs/formal-execution-local-004/window-baseline-poisson-lu/acceptance.json",
+      "sha256": "fec27cee619c6bde5406f4d5c0201bac77b8ca1d56fae3f61a534383e15a636d",
+      "status": "host_preflight_rejected",
+      "violations": [
+        {
+          "active": [
+            {
+              "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+              "core_percent": 7.2322519192166785,
+              "pid": "32184"
+            },
+            {
+              "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+              "core_percent": 8.196552175235018,
+              "pid": "57101"
+            }
+          ],
+          "issues": [
+            "unrelated_active_process"
+          ],
+          "swap": {
+            "Swapins": 0,
+            "Swapouts": 0
+          },
+          "unix": 1792743107.557791
+        }
+      ]
+    },
+    {
+      "final_test_scores_accessed": true,
+      "identity": "lu",
+      "kind": "baseline",
+      "path": "logs/formal-execution-local-004/window-baseline-poisson-lu-preflight-002/acceptance.json",
+      "sha256": "4405ad64941b2f0184d96f01f13d3fde6a8291096fe028911c28d5df20364ff2",
+      "status": "passed",
+      "violations": []
+    },
+    {
+      "final_test_scores_accessed": true,
+      "identity": "research-6615cd7900ba0750-poisson-g1-r1",
+      "kind": "final",
+      "path": "logs/formal-execution-local-004/window-final-poisson-research-6615cd7900ba0750-poisson-g1-r1/acceptance.json",
+      "sha256": "bf11aea0a93bbb312591f2be4523755b48f6199ef7547ab16a0f045999e99c62",
+      "status": "passed",
+      "violations": []
+    },
+    {
+      "final_test_scores_accessed": true,
+      "identity": "research-6615cd7900ba0750-poisson-g2-r1",
+      "kind": "final",
+      "path": "logs/formal-execution-local-004/window-final-poisson-research-6615cd7900ba0750-poisson-g2-r1/acceptance.json",
+      "sha256": "ea46a27ae666f2afb8b377d30b3f947d845d880d846182362e721791bae72051",
+      "status": "rejected",
+      "violations": [
+        {
+          "active": [
+            {
+              "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+              "core_percent": 6.4058037859730605,
+              "pid": "57101"
+            }
+          ],
+          "issues": [
+            "unrelated_active_process"
+          ],
+          "swap": {
+            "Swapins": 0,
+            "Swapouts": 0
+          },
+          "unix": 1792743603.8685079
+        }
+      ]
+    },
+    {
+      "final_test_scores_accessed": true,
+      "identity": "research-6615cd7900ba0750-poisson-g3-r1",
+      "kind": "final",
+      "path": "logs/formal-execution-local-004/window-final-poisson-research-6615cd7900ba0750-poisson-g3-r1/acceptance.json",
+      "sha256": "917d1caaa9bd6951638e6fe20369c45c78cb21412fe3a62f95eb4ee9e0b910a0",
+      "status": "passed",
+      "violations": []
+    }
+  ],
+  "unattempted_operations": [],
+  "valid_final_scientific_results": 14,
+  "valid_research_sessions": 15,
+  "valid_scientific_guidance_cells": 8,
+  "vm_boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "with_first_final": 9,
+  "workers": {
+    "00929c0a1139ca2a6ed086e39e66c42829566d41c0856960f0e93a62bb2280cd": {
+      "cases": 12,
+      "cpu_seconds": 0.265215,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.161725995,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r2:first",
+      "role": null,
+      "task": "heat"
+    },
+    "0225879a517c07f0ad18a32698d8c67b6fc5af23d0d902251bdcad8d8ad76a64": {
+      "cases": 12,
+      "cpu_seconds": 0.525646,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.441678887,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "C",
+      "task": "poisson"
+    },
+    "04888043d5409318e87999afdbbf33093b2346d67e9c8edebe726ae9eed4706e": {
+      "cases": 12,
+      "cpu_seconds": 1.189618,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 1.104376482,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "07c4f6978f4f404e63d433bbaf16c76634d63e7c4fd15f095ab82728e4f9029a": {
+      "cases": 12,
+      "cpu_seconds": 0.631679,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.508931514,
+      "kind": "author",
+      "owner": "baseline-heat-rank5-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "096edfc51407a873d2d62aec696bd81c7a97d874699f7f7f0f76ecac91bf04c6": {
+      "cases": 12,
+      "cpu_seconds": 0.268782,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.162528508,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "0ca6466c1d8ca1d471f810b7f018efea3f5d4abb8bae160170f70bf418745ac9": {
+      "cases": 12,
+      "cpu_seconds": 1.183165,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.11797456,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "0f36e437d1221391f867ec5141279d3b213ecf909f66f9b1b8dd51023458982b": {
+      "cases": 12,
+      "cpu_seconds": 0.542719,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.444425899,
+      "kind": "author",
+      "owner": "baseline-heat-tikhonov-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "0f995f1cce4da1d4c80bb3af14ded44ffdb3f2eae0eaf71f04143eefe1d95bb8": {
+      "cases": 12,
+      "cpu_seconds": 48.538004,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 48.881522895,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g2-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "151de190756a960d1bea91b4535cb4a754b00a24358372f0fffd47dce724caa6": {
+      "cases": 12,
+      "cpu_seconds": 0.268383,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.164606037,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g1-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "1ae72bc95d15a3e43ef31d328cb277fba5a8790769fde5e8525555fac0eda992": {
+      "cases": 12,
+      "cpu_seconds": 1.189772,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.116419211,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "1d769a1b6aa30f74fb5149f0619489cc010b9d9dc1772ca160c21c1cdffc86df": {
+      "cases": 12,
+      "cpu_seconds": 0.616903,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.502827599,
+      "kind": "author",
+      "owner": "baseline-heat-rank5-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "225d66ef1eb7d7587397bd8711af559334c333b5912f8005d4edbcf895b28dca": {
+      "cases": 12,
+      "cpu_seconds": 1.201523,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.125761559,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "23ae3d94a5eeefcd39d7b7c7ae1114ef70f29e8fa3406a3fba1a6272154cd911": {
+      "cases": 12,
+      "cpu_seconds": 3.837526,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 3.813041774,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g1-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "243905c15154a849ee27060e48c26d47db274984fc3cf6c9c4e7f1b87ee940fb": {
+      "cases": 12,
+      "cpu_seconds": 0.546657,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.448404775,
+      "kind": "author",
+      "owner": "baseline-heat-ls-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "26a2d7703500477090d01ed7d521e41347f14a7e0b10e02ff6ca5bc3d4a66da2": {
+      "cases": 12,
+      "cpu_seconds": 0.554442,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.450714685,
+      "kind": "author",
+      "owner": "baseline-heat-discrepancy-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "2c6707f61fa6c98e1fcfaef31410d83f223c079e21e78fd72218e0f278481007": {
+      "cases": 12,
+      "cpu_seconds": 0.543026,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.442100017,
+      "kind": "author",
+      "owner": "baseline-ode-raw-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "2d85779d3b904ecf8e9e71d90a206b4383bcef2b0bad18a86b531f18d7c3e95f": {
+      "cases": 12,
+      "cpu_seconds": 1.1949,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 1.121340013,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "3153593b44d0b84984357bfeba937747776c3973a17dbb69ae930474858ad8fc": {
+      "cases": 12,
+      "cpu_seconds": 1.19644,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.108406746,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "32f873336f8c5fdbb606934353f4405d12e8a77d0532b54ba91b4cd6467368d2": {
+      "cases": 12,
+      "cpu_seconds": 1.185016,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.10384525,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "36b8783995b22931dfb8497c17bb45e39ab98fd3f445cd33d4304eb70b010f74": {
+      "cases": 12,
+      "cpu_seconds": 0.269775,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.178630219,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "39c93f018d2d5b65b50176c36e58a5f9cbc3468237763d92cd18cb612330acb8": {
+      "cases": 12,
+      "cpu_seconds": 1.1847,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.106382341,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "3a9e00dd05791484d22b5003d06ece33a047ef55d37598cac438d92a3a1e0902": {
+      "cases": 12,
+      "cpu_seconds": 0.267649,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.16491824,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "3b49419f3e5b4e8b16eead5e00138f907f44b5145c6b5ade24e1b5b05554fcad": {
+      "cases": 12,
+      "cpu_seconds": 0.265171,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.162517308,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "3b956ae937f43c7b8b04059d8f114cabda0fc0a9ddfa28888532e45aedbbd81b": {
+      "cases": 12,
+      "cpu_seconds": 0.52105,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.437846436,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "C",
+      "task": "poisson"
+    },
+    "3d901d55087d5f6ede50c68284334fc6d2d832167f059bee5c295a6198efec25": {
+      "cases": 12,
+      "cpu_seconds": 1.192522,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.113336714,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "40442e5c4e2ccd058cbb22de5e9f54a02136569c1db17152bbbdb7b860fe61f9": {
+      "cases": 12,
+      "cpu_seconds": 3.992119,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 3.962316109,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g1-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "4142624acf899add051763172964058ff52d39e0e5de7fd50b6abce9b4c2872e": {
+      "cases": 12,
+      "cpu_seconds": 3.852942,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 3.824726775,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g1-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "414d87c4208b47d83c51b2cf66a69a7f9ff93ec719cd2d7ab29a1b94c4ffba8b": {
+      "cases": 12,
+      "cpu_seconds": 0.537495,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 0.451781477,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "43a9ee302984f3dea0187685c95794662b63f7ab9762ac2a3cf0a302a9871285": {
+      "cases": 12,
+      "cpu_seconds": 0.562028,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.459838213,
+      "kind": "author",
+      "owner": "baseline-heat-tsvd-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "44f6a1d6acb00f80f25841434614a3561933ed341f0f3c694984d8000834b8ea": {
+      "cases": 12,
+      "cpu_seconds": 0.26611,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.164393925,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "47523bdb7942e835c0aa3c5b57ab60efbd8a318d0be96af456636e3b430532d7": {
+      "cases": 12,
+      "cpu_seconds": 1.176303,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.109824361,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "4d89578e93fbdc01f3a9cde79d2f017579d6886f34396dbf87520e15de54d326": {
+      "cases": 12,
+      "cpu_seconds": 0.598277,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.518959142,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "4d95c0d38170ad1bfd99f6eda09bb4b35c8164d2dfba7ba676622fb3fabdff06": {
+      "cases": 12,
+      "cpu_seconds": 17.79405,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 17.918936632,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g3-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "5285e90e5c6ead078c6dae18ad2708c73709dfe1a9537f69fcf5679ed0e3b7e2": {
+      "cases": 12,
+      "cpu_seconds": 5.615498,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 5.546609787,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "53e4224145f6eb25b39d495a33005240df3c2ca4d17fdebc8806d8c7114b1def": {
+      "cases": 12,
+      "cpu_seconds": 0.264917,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.164389171,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g1-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "55b37c4995377cb2570787238e93d3bdec81ba001089cfee0fefd541ecb88761": {
+      "cases": 12,
+      "cpu_seconds": 0.267782,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.16502129,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "55cc59e0323a659259f9a54a15d487265197b70d1765b452e094bc41a1e69ef8": {
+      "cases": 12,
+      "cpu_seconds": 0.594862,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.513145153,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "5ca64255408161becb720494471034a54e39c9920bd8ca4c1bce483ea46ed3af": {
+      "cases": 12,
+      "cpu_seconds": 0.569635,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.464872712,
+      "kind": "author",
+      "owner": "baseline-ode-raw-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "61af1d612274a1b7ed168d93b2e73f0b900d46b1bf897392fcebb1c890541aa2": {
+      "cases": 12,
+      "cpu_seconds": 1.192738,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.10981145,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "6932f05687c44aad36889fc4db8ea6b2fa3c80fc632c9f3f6e4c0535291f201e": {
+      "cases": 12,
+      "cpu_seconds": 0.584413,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.498760003,
+      "kind": "author",
+      "owner": "baseline-heat-ls-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "69cd848d01d3b5d8556f5829d5e6c7db1b83a5b681c9821b699b361d77619566": {
+      "cases": 12,
+      "cpu_seconds": 0.269958,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.168206736,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "6f64226836c1365b0a1f1f7793a70141c605c672bc726596414f4f7b70b6abe7": {
+      "cases": 12,
+      "cpu_seconds": 1.191798,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.119107396,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "7650f44ddfcb1eae109f9bd6d66f30c8c6201ff27467aeca63fa7190ec09edb4": {
+      "cases": 12,
+      "cpu_seconds": 17.854069,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 17.818353359,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g3-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "76c16230db5fe39fee53a7e4b4a23034b24f9c49ebddc0f459b7e3641009fef6": {
+      "cases": 12,
+      "cpu_seconds": 0.580172,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.494863635,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "76f5bf3c06e9597f5326630179151a2a0688a97a4feb82b0ac29bb67420ac43b": {
+      "cases": 12,
+      "cpu_seconds": 0.273169,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.167454355,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "7853ee50b9a77bfd659e76f68a8b990bdcd5d802634a8b2c1720a3280bf2dbb9": {
+      "cases": 12,
+      "cpu_seconds": 0.553416,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.452786407,
+      "kind": "author",
+      "owner": "baseline-heat-discrepancy-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "79044c266664710dc466d1f315a0c0044c8f85d61114484161caf2f5a2399811": {
+      "cases": 12,
+      "cpu_seconds": 0.467827,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 0.386571098,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "C",
+      "task": "poisson"
+    },
+    "796f5c2fa8cc8e565d38a1c520a8e72b6ec211bd161c38dbf3bd92bf902558ee": {
+      "cases": 12,
+      "cpu_seconds": 0.550192,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.447953922,
+      "kind": "author",
+      "owner": "baseline-ode-fixed-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "81ee83173419e5e9b87191ab0ceae5ce0d3bade5ce2ebaae12125a75b43b0957": {
+      "cases": 12,
+      "cpu_seconds": 0.267057,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.177764332,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r2:first",
+      "role": null,
+      "task": "heat"
+    },
+    "8497f102d6945884a483a63dc1579920f9727b8ffd9f14c458e8d52f7d263a36": {
+      "cases": 12,
+      "cpu_seconds": 17.844311,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 17.987433587,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g3-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "85adac07767a99485e3cad78b1f11321adc3aa55ae7c615c77f9985deff45766": {
+      "cases": 12,
+      "cpu_seconds": 0.27421,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.171296985,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "8e0281fc49ad5feb5bf2eeaf70b95332ff8be94cf782b20c7a11c4599131b38f": {
+      "cases": 12,
+      "cpu_seconds": 0.558727,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.456763838,
+      "kind": "author",
+      "owner": "baseline-heat-tsvd-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "8e1eddcd668f71dfb22ac55759a41c86f780cc28af1d6bfdee9eb3cd566a5046": {
+      "cases": 12,
+      "cpu_seconds": 1.174746,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.104332334,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "91ae5685c6b7a6cd0b7a2ebc81fe096d3a5860e955198b10684ca7df9e0b95a5": {
+      "cases": 12,
+      "cpu_seconds": 0.279678,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.17478719,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "922cfed0bc6eb71835633c355731b213852e0e93f3848fd518b81a6e637aa2be": {
+      "cases": 12,
+      "cpu_seconds": 0.54581,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.443306332,
+      "kind": "author",
+      "owner": "baseline-ode-raw-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "934c5b988d8cb27fa807578774b727891a820ca8304dffe820d3150f0c6f685b": {
+      "cases": 12,
+      "cpu_seconds": 1.197228,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.11257205,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "938df72c230cdf799a9348ab57b98067ed4c81cd0cac7f6d98d16a6d683d2563": {
+      "cases": 12,
+      "cpu_seconds": 5.612174,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 5.563132758,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "9689164b34b6528f10ca73e7def7b8298fb7648eccd71f7feb42ecdde3792184": {
+      "cases": 12,
+      "cpu_seconds": 0.462816,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 0.376782367,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "C",
+      "task": "poisson"
+    },
+    "9b4d6522afd89642b32f25c77a8f873887b2ecec3340c5e362dd84f499df6734": {
+      "cases": 12,
+      "cpu_seconds": 0.268129,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.16225491,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r2:first",
+      "role": null,
+      "task": "heat"
+    },
+    "a1e70b853a8d059de9fedbaf790f20ac8586fcc45acfa3654cbe7728bda6a7c2": {
+      "cases": 12,
+      "cpu_seconds": 48.223727,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 48.550611716,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g2-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "a84a749870a13f6403602e4758ede8ce6c466e9c0134941e3240700cce9ff989": {
+      "cases": 12,
+      "cpu_seconds": 1.193518,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 1.113631934,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "a9b217ab798b4e94ea68c3c0993a92893be5eed7fcb8884a5c2d6c1a9c1bd739": {
+      "cases": 12,
+      "cpu_seconds": 0.529288,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.45039176,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "C",
+      "task": "poisson"
+    },
+    "acb323f9871cfa9b4a1670bde58c9712e09824ae11552c6824df2d8177f04317": {
+      "cases": 12,
+      "cpu_seconds": 1.188216,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.104821633,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "b440f51ca812c7fe66c5df3e92d94e6d05021894f2a32d4de1a74d882554aa8b": {
+      "cases": 12,
+      "cpu_seconds": 0.648093,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.523780577,
+      "kind": "author",
+      "owner": "baseline-heat-rank5-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "b4682cbee299af212f56cf7b31c9e55ed118146fedd62689c1c0fba9b6b2fa34": {
+      "cases": 12,
+      "cpu_seconds": 0.272801,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.171041695,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g2-r1:final",
+      "role": null,
+      "task": "heat"
+    },
+    "b4cd17ef8b81bbcd5a39903492e209bed27a4b993123d24e7fe1b722cdd25e1d": {
+      "cases": 12,
+      "cpu_seconds": 0.565526,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.464432903,
+      "kind": "author",
+      "owner": "baseline-heat-discrepancy-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "b56e3a3dbdabbc3541f86431fa66f53dd47862f25e33feb3f88ff5dc11e2aa32": {
+      "cases": 12,
+      "cpu_seconds": 0.545072,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.441551798,
+      "kind": "author",
+      "owner": "baseline-heat-tikhonov-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "b78a844385ff207030963823f31e081444d785efb5bf22248a541a737438e7a0": {
+      "cases": 12,
+      "cpu_seconds": 0.551801,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.448538237,
+      "kind": "author",
+      "owner": "baseline-ode-fixed-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "b7d3863e7ea95c5c6ad806bb663407304e1514519613e122f1e8233c820b1d4d": {
+      "cases": 12,
+      "cpu_seconds": 0.536411,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.446389442,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "ba958a31993ea15830506ef2720d61609f27314bc883985bdcbd44cc81972536": {
+      "cases": 12,
+      "cpu_seconds": 1.198418,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.129723175,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "B",
+      "task": "poisson"
+    },
+    "bba17e3f2e8801a40695cc2555f2caaae078c9e51a14da5c92ac47b35cb30ecd": {
+      "cases": 12,
+      "cpu_seconds": 1.192438,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.106253408,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "bd72d689549735806297b301768cbaf40f8e16ce9b201267f8c219a63ccd757a": {
+      "cases": 12,
+      "cpu_seconds": 0.27306,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.165328413,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g1-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "bdc4cd50b6019449abf6459e400c14b6e6379cedc09d45c42a345cbf8353c136": {
+      "cases": 12,
+      "cpu_seconds": 0.536685,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.45132749,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "c1aa2c943aed39c3252f524b3e99411cbc68e894ac55983653ce945a111819ff": {
+      "cases": 12,
+      "cpu_seconds": 0.543957,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.444849814,
+      "kind": "author",
+      "owner": "baseline-heat-tikhonov-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "c1bf0502538188b45304efe596230bec81c94072447f9028fe8301167a412f57": {
+      "cases": 12,
+      "cpu_seconds": 0.584151,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.497604054,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "c270d10b72a5505c2d613a64aa62521f9e998376d3d992e5c9b051b56c1168e1": {
+      "cases": 12,
+      "cpu_seconds": 1.193609,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.110678271,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "c45f88907669809d2935fb59040953a1655aaf81aad40bfdc363fc139786574c": {
+      "cases": 12,
+      "cpu_seconds": 1.189062,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.109809508,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "c7bbfcab44b585b7bff0a5ebe21d93188003f36730748cb558973794ab889ee7": {
+      "cases": 12,
+      "cpu_seconds": 1.192599,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.109507526,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "c7fca20669839e8977f9e9cec420c87ab9b9c5817c7c95ef787a1874747c18e5": {
+      "cases": 12,
+      "cpu_seconds": 5.625116,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 5.553004326,
+      "kind": "author",
+      "owner": "baseline-poisson-cg-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "cb1b8c1093c5cb4d2809e7125e3b73155cf425f76a9d55eb73d8937eb9c35ac8": {
+      "cases": 12,
+      "cpu_seconds": 0.267454,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.16600848,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-heat-g3-r1:first",
+      "role": null,
+      "task": "heat"
+    },
+    "ce956c8a1045be347a94a6e88ab40074652542b3acfe610a14b8c3ffea53dfff": {
+      "cases": 12,
+      "cpu_seconds": 1.670598,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.591289417,
+      "kind": "author",
+      "owner": "baseline-ode-search-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "d1cd894229ff28e447793d4b4ebb6db18148a4a52e14a19a7cec456e164081ed": {
+      "cases": 12,
+      "cpu_seconds": 1.698757,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.618159506,
+      "kind": "author",
+      "owner": "baseline-ode-search-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "d5b0cb677f5082f735e4204ea92b3c8ffad787d14fd1bf7b6b6853400a075521": {
+      "cases": 12,
+      "cpu_seconds": 0.584103,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.502420872,
+      "kind": "author",
+      "owner": "baseline-poisson-lu-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "e500eb27a2d2e8d75071688dcc2ba462d1777270fad5692271f12937587ed117": {
+      "cases": 12,
+      "cpu_seconds": 0.556553,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.452510491,
+      "kind": "author",
+      "owner": "baseline-ode-fixed-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "e8163a8fae54720d6004efb51e5ee7f29b4ecb3b12a08c3f450f2c9a941ba4cf": {
+      "cases": 12,
+      "cpu_seconds": 0.591952,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.510031261,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g1-r1:first",
+      "role": "C",
+      "task": "poisson"
+    },
+    "e9e26c7811dfc11a5accebbcfa2b5d4ec6454f28c13aa7e932132febd600f94c": {
+      "cases": 12,
+      "cpu_seconds": 0.549798,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.448238017,
+      "kind": "author",
+      "owner": "baseline-heat-ls-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "effa2310db22605392cf4042adf33d19d23d2bb41d84186b6f1305a2ba7dfaf8": {
+      "cases": 12,
+      "cpu_seconds": 1.196379,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.113409035,
+      "kind": "author",
+      "owner": "baseline-poisson-jacobi-a001",
+      "role": "C",
+      "task": "poisson"
+    },
+    "f18b81428e873657c3963dc095a4e57021fbe2eb5d269f17cf2245148b7a0eef": {
+      "cases": 12,
+      "cpu_seconds": 0.54379,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 0.446222665,
+      "kind": "author",
+      "owner": "baseline-heat-tsvd-a001",
+      "role": null,
+      "task": "heat"
+    },
+    "f204a5fb5ed9ed6e74eb1c9acc4cfe791decb0a0c1959c471179e636d48819a3": {
+      "cases": 12,
+      "cpu_seconds": 48.323564,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 48.705039866,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-ode-g2-r1:first",
+      "role": null,
+      "task": "ode"
+    },
+    "f35a8d3c209bd21a171011775660a0b4bbb396474b042f1edaa7f8287184fb37": {
+      "cases": 12,
+      "cpu_seconds": 1.201459,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 1.118250904,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:first",
+      "role": "B",
+      "task": "poisson"
+    },
+    "f726105f8c2526aaf6846774a032ef8e9c44d556414aed537082e27e3ac8b6ac": {
+      "cases": 12,
+      "cpu_seconds": 1.671856,
+      "evaluation_status": "valid",
+      "execution_wall_seconds": 1.590992321,
+      "kind": "author",
+      "owner": "baseline-ode-search-a001",
+      "role": null,
+      "task": "ode"
+    },
+    "f7c27ecdf3c7e30190ddfa2a6af08dbe796f7e9d8e24ae831f7cf7ed87156c66": {
+      "cases": 12,
+      "cpu_seconds": 1.195336,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 1.11845497,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "B",
+      "task": "poisson"
+    },
+    "fef5a44cdc407929ca9ff06134b3e9c724d0fdba7e6fc95f37e702c8b1dda169": {
+      "cases": 12,
+      "cpu_seconds": 0.467066,
+      "evaluation_status": "evaluation_invalid",
+      "execution_wall_seconds": 0.385167785,
+      "kind": "research",
+      "owner": "research-6615cd7900ba0750-poisson-g2-r1:final",
+      "role": "C",
+      "task": "poisson"
+    }
+  }
+}

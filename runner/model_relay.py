@@ -24,7 +24,7 @@ import time
 import uuid
 
 
-MODEL = "deepseek-v4-pro"
+MODEL = "deepseek-flash"
 UPSTREAM_URL = "https://api.deepseek.com/anthropic/v1/messages"
 MAX_EVENT_BYTES = 65_536
 MAX_RESPONSE_BYTES = 8 * 1024 * 1024
@@ -96,13 +96,14 @@ class Limits:
     model: str = MODEL
     request_output_limit: int = 4096
     session_output_limit: int = 32768
-    session_seconds: float = 1500
+    session_seconds: float | None = 1500
     request_seconds: float = 120
     max_body_bytes: int = 1024 * 1024
     max_concurrency: int = 4
-    max_requests: int = 512
+    max_requests: int | None = 512
     expected_system_sha256: str | None = None
     expected_tools_sha256: str | None = None
+    expected_compaction_system_sha256: str | None = None
 
     def __post_init__(self):
         if self.model != MODEL:
@@ -113,17 +114,27 @@ class Limits:
             for value in hashes
         ):
             raise ValueError("expected system/tools hashes must both be lowercase SHA256 values")
+        compaction = self.expected_compaction_system_sha256
+        if compaction is not None and (self.expected_system_sha256 is None
+                or not isinstance(compaction, str) or len(compaction) != 64
+                or any(c not in "0123456789abcdef" for c in compaction)
+                or compaction == self.expected_system_sha256):
+            raise ValueError("compaction requires a distinct frozen SHA256 and the research policy")
         for field in ("request_output_limit", "session_output_limit", "max_body_bytes",
                       "max_concurrency", "max_requests"):
             value = getattr(self, field)
+            if field == "max_requests" and value is None:
+                continue
             if type(value) is not int or value <= 0:
                 raise ValueError(f"{field} must be a positive integer")
         if self.request_output_limit > self.session_output_limit:
             raise ValueError("request limit exceeds session limit")
-        if self.max_body_bytes > 4 * 1024 * 1024 or self.max_concurrency > 16 or self.max_requests > 4096:
+        if self.max_body_bytes > 4 * 1024 * 1024 or self.max_concurrency > 16 or (self.max_requests is not None and self.max_requests > 4096):
             raise ValueError("relay safety bound exceeded")
         for field in ("session_seconds", "request_seconds"):
             value = getattr(self, field)
+            if field == "session_seconds" and value is None:
+                continue
             if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value) or value <= 0:
                 raise ValueError(f"{field} must be positive and finite")
 
@@ -171,6 +182,7 @@ class Ledger:
     def __init__(self, limits: Limits, events: EventLog, clock=time.monotonic):
         self.limits, self.events, self.clock = limits, events, clock
         self.started = clock()
+        self.deadline = math.inf if limits.session_seconds is None else self.started + limits.session_seconds
         self.lock = threading.Lock()
         self.active: dict[str, Reservation] = {}
         self.request_count = self.successful = self.failed = self.rejected = 0
@@ -191,16 +203,16 @@ class Ledger:
             available = self.limits.session_output_limit - self.charged - self.reserved
             if self.evidence_error or self.protocol_violation:
                 raise Rejected(503, "relay_failed_closed")
-            if now >= self.started + self.limits.session_seconds:
+            if now >= self.deadline:
                 raise Rejected(410, "session_expired")
             if deadline is not None and now >= deadline:
                 raise Rejected(408, "request_timeout")
-            if available <= 0 or self.request_count >= self.limits.max_requests:
+            if available <= 0 or (self.limits.max_requests is not None and self.request_count >= self.limits.max_requests):
                 raise Rejected(429, "budget_exhausted")
             effective = min(requested, self.limits.request_output_limit, available)
             item = Reservation(uuid.uuid4().hex, requested, effective,
                                min(now + self.limits.request_seconds,
-                                   self.started + self.limits.session_seconds,
+                                   self.deadline,
                                    deadline if deadline is not None else math.inf))
             hashes = {}
             if request_body is not None:
@@ -211,7 +223,10 @@ class Ledger:
             mismatches = [field for field in ("system", "tools")
                           if getattr(self.limits, "expected_" + field + "_sha256") is not None
                           and hashes.get(field + "_sha256") != getattr(self.limits, "expected_" + field + "_sha256")]
-            if mismatches:
+            compaction = (self.limits.expected_compaction_system_sha256 is not None
+                          and hashes.get("system_sha256") == self.limits.expected_compaction_system_sha256
+                          and request_body is not None and "tools" not in request_body)
+            if mismatches and not compaction:
                 self.protocol_violation = True
                 self.last_outcome = self.last_failure_reason = "request_policy_mismatch"
                 self.failure_counts["request_policy_mismatch"] += 1
@@ -227,6 +242,7 @@ class Ledger:
                 self.events.append({"event": "request_accepted", "request_id": item.request_id,
                                     "requested_max_tokens": requested, "effective_max_tokens": effective,
                                     "requested_temperature": temperature, "effective_temperature": 0.0,
+                                    "request_kind": "native_compaction" if compaction else "research",
                                     **hashes})
             except Exception:
                 self.evidence_error = True
@@ -239,7 +255,7 @@ class Ledger:
     def finish(self, item: Reservation, outcome: str, status=None, request_id_hash=None,
                output_tokens=None, input_tokens=None, violation=False,
                cache_read_input_tokens=None, cache_creation_input_tokens=None,
-               failure_reason=None):
+               failure_reason=None, usage_violation=None):
         with self.lock:
             if item.request_id not in self.active:
                 raise RuntimeError("reservation already finished")
@@ -262,6 +278,7 @@ class Ledger:
                                     "upstream_request_id_sha256": request_id_hash,
                                     "upstream_status": status, "outcome": outcome,
                                     "failure_reason": failure_reason,
+                                    "usage_violation": usage_violation,
                                     "requested_max_tokens": item.requested, "effective_max_tokens": item.effective,
                                     "output_tokens": output_tokens, "input_tokens": input_tokens,
                                     "output_usage_complete": success,
@@ -277,8 +294,8 @@ class Ledger:
     def status(self) -> dict:
         with self.lock:
             remaining = self.limits.session_output_limit - self.charged - self.reserved
-            expired = self.clock() >= self.started + self.limits.session_seconds
-            exhausted = remaining <= 0 or self.request_count >= self.limits.max_requests
+            expired = self.clock() >= self.deadline
+            exhausted = remaining <= 0 or (self.limits.max_requests is not None and self.request_count >= self.limits.max_requests)
             state = ("failed_closed" if self.protocol_violation or self.evidence_error else
                      "expired" if expired else "budget_exhausted" if exhausted else "ready")
             return {"schema_version": 1, "state": state, "model": self.limits.model,
@@ -468,6 +485,7 @@ class StreamTracker:
             attribute = "observed_output_tokens" if field == "output_tokens" else field
             previous = getattr(self, attribute)
             if previous is not None and value < previous:
+                self.usage_violation = {"field": field, "previous": previous, "observed": value}
                 raise ProtocolError("usage_decreased")
             if field == "output_tokens" and value > self.limit:
                 raise ProtocolError("usage_exceeds_reservation")
@@ -634,7 +652,7 @@ class Relay:
                                tracker.input_tokens if not violation else None, violation,
                                tracker.cache_read_input_tokens if not violation else None,
                                tracker.cache_creation_input_tokens if not violation else None,
-                               failure_reason)
+                               failure_reason, getattr(tracker, "usage_violation", None))
 
     @staticmethod
     def _emit_error(emit, code):
@@ -650,7 +668,7 @@ class RelayHandler(BaseHTTPRequestHandler):
 
     def setup(self):
         self.deadline = min(self.server.relay.clock() + self.server.relay.limits.request_seconds,
-                            self.server.relay.ledger.started + self.server.relay.limits.session_seconds)
+                            self.server.relay.ledger.deadline)
         super().setup()
 
     def log_message(self, *_):
@@ -766,7 +784,7 @@ class RelayServer(ThreadingHTTPServer):
 
     def process_request_thread(self, request, client_address):
         # Covers parsing, slow bodies, streaming and client backpressure.
-        remaining = self.relay.ledger.started + self.relay.limits.session_seconds - self.relay.clock()
+        remaining = self.relay.ledger.deadline - self.relay.clock()
         timeout = max(1, min(self.relay.limits.request_seconds, remaining))
         request.settimeout(timeout)
         timer = threading.Timer(timeout, disconnect, (request,))
@@ -790,18 +808,22 @@ def main(argv=None):
     parser.add_argument("--model", choices=[MODEL], default=MODEL)
     parser.add_argument("--session-output-limit", type=int, default=32768)
     parser.add_argument("--request-output-limit", type=int, default=4096)
-    parser.add_argument("--session-seconds", type=float, default=1500)
+    parser.add_argument("--session-seconds", type=lambda value: None if value == "none" else float(value), default=1500)
     parser.add_argument("--request-seconds", type=float, default=120)
+    parser.add_argument("--max-requests", type=lambda value: None if value == "none" else int(value), default=512)
     parser.add_argument("--expected-system-sha256")
     parser.add_argument("--expected-tools-sha256")
+    parser.add_argument("--expected-compaction-system-sha256")
     args = parser.parse_args(argv)
     relay = Relay(os.environ.get("BENCH_RELAY_PROVIDER_KEY", ""),
                   os.environ.get("BENCH_RELAY_SESSION_TOKEN", ""), args.events,
                   Limits(model=args.model, session_output_limit=args.session_output_limit,
                          request_output_limit=args.request_output_limit,
                          session_seconds=args.session_seconds, request_seconds=args.request_seconds,
+                         max_requests=args.max_requests,
                          expected_system_sha256=args.expected_system_sha256,
-                         expected_tools_sha256=args.expected_tools_sha256))
+                         expected_tools_sha256=args.expected_tools_sha256,
+                         expected_compaction_system_sha256=args.expected_compaction_system_sha256))
     server = RelayServer((args.bind, args.port), relay)
     try:
         server.serve_forever(poll_interval=0.2)

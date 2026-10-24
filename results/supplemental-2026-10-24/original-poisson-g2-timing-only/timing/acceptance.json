@@ -1,0 +1,167 @@
+{
+  "hidden_scores_accessed": false,
+  "host_observations_sha256": "8e5f42c03330d49851c2b45ef6997597065fdf7df8075b1cd979235870532e0d",
+  "model_calls": 0,
+  "observer_errors": [],
+  "status": "host_preflight_rejected",
+  "violations": [
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 7.269308893772505,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847738.645408
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 7.784308257793379,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847740.700825
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 10.201494151018327,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847742.759347
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 7.739551774222239,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847744.8266501
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 5.38898329821257,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847748.9325912
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 10.216249263332491,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847750.98814
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 5.83837341027558,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847755.109212
+    },
+    {
+      "active": [
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 13.10805566474476,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847757.169014
+    },
+    {
+      "active": [
+        {
+          "command": "(AMPLibraryAgent)",
+          "core_percent": 65.03670526608978,
+          "pid": "47944"
+        },
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 5.338834014380563,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792847759.229389
+    }
+  ]
+}

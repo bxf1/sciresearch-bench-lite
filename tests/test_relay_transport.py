@@ -9,7 +9,7 @@ from runner import relay_transport as relay
 
 
 def admission():
-    return {"schema_version":1,"model":"deepseek-v4-pro","token":"a"*64,
+    return {"schema_version":1,"model":"deepseek-flash","token":"a"*64,
             "container_name":"sciresearch-relay-"+"b"*12,"network_name":"sciresearch-relay-"+"b"*12,
             "container_id":"c"*64,"image_id":"sha256:"+"d"*64,"relay_ip":"172.31.0.2",
             "relay_port":8787,"base_url":"http://172.31.0.2:8787"}
@@ -102,3 +102,29 @@ def test_status_token_goes_only_to_stdin():
         assert relay.read_status(admission())=={'request_count':0}
     assert admission()['token'] not in ' '.join(captured['args'])
     assert json.loads(captured['kwargs']['input'])['token']==admission()['token']
+
+
+def test_compaction_policy_reaches_relay_process_and_public_receipt(tmp_path):
+    calls=[]
+    def fake(*args,**kwargs):
+        calls.append(args)
+        if args[:2]==('image','inspect'):
+            value=[{'Id':admission()['image_id']}]
+        elif args[0]=='inspect':
+            name=args[1]
+            value=[{'Id':admission()['container_id'],
+                'NetworkSettings':{'Networks':{name:{'IPAddress':'172.31.0.2'}}},
+                'HostConfig':dict.fromkeys(('CapDrop','SecurityOpt','PidsLimit','Memory','MemorySwap','NanoCpus','ReadonlyRootfs')),
+                'Mounts':[]}]
+        else:
+            value={}
+        return SimpleNamespace(returncode=0,stdout=json.dumps(value),stderr='')
+    with patch.object(relay,'docker',side_effect=fake):
+        relay.start_relay(tmp_path/'relay',image=admission()['image_id'],provider_key='synthetic-provider-key',
+            expected_system_sha256='a'*64,expected_tools_sha256='b'*64,expected_compaction_system_sha256='c'*64,
+            session_output_limit=200000,max_requests=3125)
+    command=next(args for args in calls if args[0]=='create')
+    assert command[command.index('--expected-compaction-system-sha256')+1]=='c'*64
+    assert command[command.index('--session-output-limit')+1]=='200000'
+    assert command[command.index('--max-requests')+1]=='3125'
+    assert json.loads((tmp_path/'relay/startup.json').read_text())['expected_compaction_system_sha256']=='c'*64

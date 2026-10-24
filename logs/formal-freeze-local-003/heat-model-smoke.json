@@ -1,0 +1,20 @@
+{
+  "model_id": "deepseek-flash",
+  "new_budget_native_live": {
+    "path": "logs/formal-freeze-local-003/native-live-summary/result.json",
+    "sha256": "485778d2f44c9ad197e602b4bb95fc5708fd12df41284399d2b786c253e59746"
+  },
+  "prior_harbor_pilot": {
+    "path": "logs/harbor-native-compaction-pilot-001/result.json",
+    "sha256": "1bb5e6211eabacf7b3d963810b359673ee1a62d322e596f3cda694bf46b254bc"
+  },
+  "prior_task_policy": {
+    "path": "logs/model-policy-capture-compaction-local-003/heat/policy.json",
+    "sha256": "a9c52aeb210aaa2983692ec34cd9f3ede5709b1511293e9837a09b2b474a9c87"
+  },
+  "revision_impact": {
+    "path": "logs/formal-freeze-local-003/revision-impact.json",
+    "sha256": "25ac807ecc33e49e44ae71d083980d2e2793ddc23e73c36393c21773d1d6975c"
+  },
+  "status": "passed"
+}

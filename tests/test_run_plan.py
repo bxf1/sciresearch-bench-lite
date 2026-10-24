@@ -125,6 +125,52 @@ class RunPlanTests(unittest.TestCase):
             self.assertEqual((row["research_seconds"], row["max_evaluations"], row["solver_seed"], row["resume"]), (1800, 20, 0, False))
             self.assertFalse((self.project / row["workdir"]).exists())
 
+    def test_revision_preserves_order_and_budgets_but_replaces_all_identities(self):
+        old_id, old = run_plan.matrix("01" * 32)
+        new_id, new = run_plan.matrix("01" * 32, identity_revision="compaction-001")
+        self.assertNotEqual(old_id, new_id)
+        for before, after in zip(old, new):
+            for key in before:
+                if key in ("run_id", "session_id", "workdir"):
+                    self.assertNotEqual(before[key], after[key])
+                else:
+                    self.assertEqual(before[key], after[key])
+        for value in ("", "../escape", 1):
+            with self.assertRaises(ValueError):
+                run_plan.matrix("01" * 32, identity_revision=value)
+
+    def test_compaction_policy_binds_system_absence_and_installed_sources(self):
+        from runner.policy_capture import COMPACTION_SOURCES
+        plan = self.fixture()
+        policy_path = self.project / "policy.json"
+        policy = read_json(policy_path)
+        system = self.project / "compaction.json"
+        write_json(system, [{"type": "text", "text": "Synthetic compaction"}])
+        audit = self.project / "audit.json"
+        sources = {name: "a" * 64 for name in COMPACTION_SOURCES}
+        write_json(audit, {"source_sha256": sources})
+        policy["native_compaction"] = {"status": "verified", "tools": "absent",
+            "system": self.ref(system), "wire_system_sha256": digest(encoded(read_json(system))),
+            "installed_audit": self.ref(audit), "source_sha256": sources}
+        def update():
+            write_json(policy_path, policy)
+            plan["tool_config"]["runtime_enforcement"] = self.ref(policy_path)
+            plan["tool_config_sha256"] = digest(canonical(plan["tool_config"]))
+            for task, ref in plan["freezes"].items():
+                frozen = read_json(self.project / ref["path"])
+                frozen["research"]["tool_config_sha256"] = plan["tool_config_sha256"]
+                write_json(self.project / ref["path"], frozen)
+                plan["freezes"][task] = self.ref(self.project / ref["path"])
+        update()
+        run_plan.validate_start(plan, self.project)
+        policy["native_compaction"]["tools"] = []
+        update()
+        self.blocked(plan, "require absent tools")
+        policy["native_compaction"]["tools"] = "absent"
+        policy["native_compaction"]["source_sha256"] = {}
+        update()
+        self.blocked(plan, "source hashes are unbound")
+
     def test_draft_missing_status_and_status_only_cannot_start(self):
         self.blocked(self.draft, "draft cannot start")
         missing = copy.deepcopy(self.draft)

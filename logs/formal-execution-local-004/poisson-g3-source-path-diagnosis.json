@@ -1,0 +1,34 @@
+{
+  "observed_at_unix": 1792729069.792331,
+  "scope": "Offline inert source-path fixture. No container, model request, scientific solver, hidden data, or frozen source changed.",
+  "artifact_gate_sha256": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+  "rows": [
+    {
+      "source": ".",
+      "status": "rejected",
+      "error_type": "ArtifactError",
+      "error_summary": "unsafe path"
+    },
+    {
+      "source": "solve.py",
+      "status": "rejected",
+      "error_type": "NotADirectoryError",
+      "error_summary": "source is not a directory"
+    },
+    {
+      "source": "candidate",
+      "status": "rejected",
+      "error_type": "NotADirectoryError",
+      "error_summary": "source is not a directory"
+    }
+  ],
+  "live_requests": [
+    ".",
+    "solve.py",
+    "."
+  ],
+  "live_feedback": "source preparation failed: ReadError: empty file",
+  "interpretation": "Frozen snapshot guard rejects dot path segments and requires a real source directory. export_source exits before a tar stream on these failures; the host tar reader raises first, masking the detailed exporter stderr. The common prompt says relative-source-dir but does not explicitly explain exclusion of dot. Preserve the scientific attempt and report this interface limitation; no mid-study patch.",
+  "status": "rejected_diagnostic_fixture",
+  "rejection_reason": "The fixture used a non-canonical macOS temp path through a symlink, so its valid-directory control also failed. Superseded by canonical-path fixture 002; do not use these rows as evidence."
+}

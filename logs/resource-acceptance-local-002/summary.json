@@ -1,0 +1,73 @@
+{
+  "capacity": {
+    "acceptance_source": "frozen plan plus actual daemon capacity; no acceptance was promoted",
+    "actual_memory_bytes": 10401181696,
+    "actual_vcpu": 6,
+    "minimum_memory_bytes": 9126805504,
+    "minimum_vcpu": 6
+  },
+  "checks": {
+    "concurrent_r_w_near_limit": true,
+    "fresh_worker_after_oom": true,
+    "heat_r_cpu_workload": true,
+    "heat_r_limits": true,
+    "no_remaining_containers": true,
+    "ode_r_cpu_workload": true,
+    "ode_r_limits": true,
+    "oom_classified_as_valid_scientific_zero": true,
+    "oom_cleanup": true,
+    "poisson_r_cpu_workload": true,
+    "poisson_r_limits": true,
+    "r_375gib_physically_touched": true,
+    "r_holder_clean_exit": true,
+    "real_4gib_cgroup_oom": true,
+    "w_limits_and_cleanup": true
+  },
+  "controller_sha256": "1ee1592e2574868638815030b52fcdef0a036b3badb064e06d3c2be5d5ea4105",
+  "final_test_scores_accessed": false,
+  "formal_resources_accepted": true,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "model_calls": 0,
+  "numeric_image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "research_images": {
+    "heat": {
+      "container_id": "88e8a82c2ee833fe6e0cdb8031b4dd4d3c619bafb0771753415ced13e09c21b4",
+      "cpu_usage_usec": 12243634,
+      "image_id": "sha256:6619dd1526ec8d635d0e57d068dc3e750821ddd82443d44777fe847340944bdb"
+    },
+    "ode": {
+      "container_id": "92a2e7eb554278d98b7d624f0dfdd147b16b9a64d3d1919174de6ebdb3700c92",
+      "cpu_usage_usec": 12175621,
+      "image_id": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11"
+    },
+    "poisson": {
+      "container_id": "8cf9b39f5afe2ed268a350e180c1d2143725b782b5eb8fa83f7770dcc3bf68a9",
+      "cpu_usage_usec": 12276876,
+      "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629"
+    }
+  },
+  "resources": {
+    "filesystem_depth": 32,
+    "filesystem_entries": 2000,
+    "heat_ode_worker_seconds": 120,
+    "judge_seconds": 1200,
+    "max_evaluations": 20,
+    "output_bytes": 268435456,
+    "poisson_worker_seconds": 60,
+    "research_memory_bytes": 4294967296,
+    "research_seconds": 1800,
+    "research_vcpu": 4,
+    "source_bytes": 20971520,
+    "source_files": 1000,
+    "tmp_bytes": 67108864,
+    "worker_memory_bytes": 4294967296,
+    "worker_pids": 128,
+    "worker_swap_bytes": 0,
+    "worker_threads": 1,
+    "worker_vcpu": 1
+  },
+  "scope": "Offline R images at formal resource limits, actual W executor, concurrent touched memory, and W/J failure classification; no native model trial",
+  "status": "passed",
+  "timer_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "worker_sha256": "c851c5bf2d6f97157d8bc1cc23acf063047987950b5ea498926ea9312cd49984"
+}

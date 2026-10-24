@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-10-23T08:11:32.537883+00:00",
+  "evaluation_status": "valid",
+  "final_test_scores_accessed": true,
+  "host_observations_sha256": "b50bdacd819ce66936bb37a90ea48244233cf78c1f9e9c295039551ee6ac7674",
+  "identity": "jacobi",
+  "kind": "baseline",
+  "model_calls": 0,
+  "no_running_containers": true,
+  "observer_errors": [],
+  "operation_result_sha256": "7cd0589235128e01d4343454fb01f5ba50b64e6e62ae3437de016cfffe2e92e2",
+  "status": "passed",
+  "violations": []
+}

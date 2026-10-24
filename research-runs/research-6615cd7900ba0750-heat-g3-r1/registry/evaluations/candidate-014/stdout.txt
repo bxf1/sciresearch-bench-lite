@@ -1,0 +1,4 @@
+OUT /output IN /input
+out exists True
+out listing []
+in listing ['cases', 'manifest.json']

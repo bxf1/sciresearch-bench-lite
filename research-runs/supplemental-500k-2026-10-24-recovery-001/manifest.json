@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "attempt_status": "api_failed",
+      "final_id": null,
+      "first_id": null,
+      "original_run_id": "research-6615cd7900ba0750-poisson-g3-r1",
+      "registry": {
+        "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/registry/state.json",
+        "sha256": "f470dfb54fc2c0cb29d64453c1b70af9c6ea3eccae88359bbdb90c0ef63f550d"
+      },
+      "result": {
+        "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/result.json",
+        "sha256": "f7d6b4e6d14cec584c96410d5e03f80414c524f9a052e7d5e4fabfa9a298b543"
+      },
+      "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001",
+      "status": "research_invalid"
+    }
+  ],
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-001.json",
+    "sha256": "dfc4a5ab2a47370ce9dfc066d46e5850c3c769b8788d2c38b51eec64949de345"
+  },
+  "study_kind": "selective_supplemental"
+}

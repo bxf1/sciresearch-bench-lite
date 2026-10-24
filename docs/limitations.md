@@ -1,6 +1,8 @@
 # 当前局限与未完成验收
 
-本项目现在有三项任务的可执行实现、90例GT QC、本机11方法校准、W与R的部分隔离攻击证据、真实文件桥和真实模型pilot；同宿主干净源码及新依赖环境重放已通过，经用户明确批准，[远端已核验至536c0d9](../logs/github-remote-head-local-003.txt)，包含0a84f0c证据与后续基线代码。**正式三组研究、final-test重放和性能冻结仍缺失。** 当前正式研究为0格、0会话，所有final-test求解成绩未查看；缺项也在README首段和验收表显式列出。最新[完整Harbor Trial与模型代理pilot](native-relay-pilot.md)已跑通，实际策略/用量记录、显式finalize、三次独立重放与清理均通过；不据此降低正式门槛。
+当前 [第三版正式执行](formal-results-2026-10-23.md)已收束：15 次研究、11 种作者方法、全部 first/final 操作已执行；有效科学评分为 14/15、8/9 格。Poisson G2 实际计时遇到后台 VPN CPU 峰值，性能留空且按用户要求不重测，完整有效科学验收未达成。6 次无有效提交、4 个无效研究 attempt 均保留。以下历史 pilot/校准的边界继续成立，但不再代表正式研究尚未开始。
+
+新增实测局限包括：原生工具调用长段重复；仅改变文件名掩盖相同计算；持续改变随机种子却不提交；源码目录约束与笼统的空 tar 反馈影响提交。62 次公开评估中 24 次导出失败，不能全部解释为数学能力不足。研究中没有据此改提示或替模型提交。详见[提交诊断](submission-diagnosis-2026-10-23.md)。
 
 ## 研究与因果解释
 
@@ -20,17 +22,17 @@
 
 ## 环境、隔离与性能
 
-宿主Docker仅2 CPU、约3.81 GiB总内存且有其他长期运行服务。用户已经授权本机继续功能开发；正式R的4 vCPU/4 GiB预算仍未满足。W cgroup限制已实测为1 CPU、4 GiB、禁swap、pids128，但这不创造额外物理内存。为保护共享服务，尚未做真实4 GiB OOM压力；内存配额文字/实际cgroup检查不能替代OOM分类探针。
+2026-10-23 按用户授权将Colima调整为6 vCPU/10 GiB，Docker实际可用约9.69 GiB，其他8个容器保持停止。三个R镜像的4 vCPU/4 GiB配额、R/W并发3.75 GiB逐页写入、W真实4 GiB OOM及零分分类均已通过，资源15/15。该验收使用离线R镜像和真实W执行器，没有重新运行正式模型会话；原2 CPU/3.81 GiB状态仅对应历史功能轮次。
 
-W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配额、PID、超时和日志限制；首轮日志洪泛误分类和timer002的超时误分类均保留。最新[worker005](../logs/runtime-probes-005/summary.json)11项和[timer004](../logs/process-timer-probe-004/summary.json)5项真实回归通过。各轮仍只对应保留的源码哈希；4 GiB OOM未测。
+W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配额、PID、超时和日志限制；首轮日志洪泛误分类和timer002的超时误分类均保留。最新[worker005](../logs/runtime-probes-005/summary.json)11项和[timer004](../logs/process-timer-probe-004/summary.json)5项真实回归通过。各轮仍只对应保留的源码哈希；真实4 GiB OOM另由[资源验收002](../logs/resource-acceptance-local-002/summary.json)补齐。
 
 [网络005](../logs/research-network-probe-005/result.json)已验证非root、ALL-drop、无swap配置下模型域名可连接、两个HTTP/TLS对照被阻断、标记/raw socket创建被拒绝，未做全面DNS/TLS绕过审计，也未运行Pi setup或模型请求。[文件桥001](../logs/file-bridge-runtime-001/result.json)已在真实R/W检查9项功能与边界，未调用模型。真实pilot001另记录Harbor可信配置helper所需CHOWN/DAC_OVERRIDE/FOWNER，研究进程有效capabilities仍为0，并实测setup后的限网；它与005配置不同。后续[harbor-native-pilot-001](../logs/harbor-native-pilot-001/result.json)已再次调用真实模型验证完整生命周期；它另外通过relay精确IP/端口限制和Docker DNS阻断，原网络005不追认这些新检查。
 
-新版可信计时已覆盖Python启动至全部后代退出，排除Docker准备，原始日志仍为formal=false。公开dev完整BCCBBC及三组校准已经运行，均通过数值检查，但处于共享本机，不能冻结正式T3加速比或效率profile。当前正式T3 score/reward保持null，数值正确性单独报告；详见[计时说明](timing.md)。
+新版可信计时覆盖Python启动至全部后代退出，排除Docker准备，原始日志保持formal=false。历史公开dev与三组诊断没有正式资格；新增[正式校准005](resource-timing-acceptance-2026-10-23.md)在独立观察窗口通过三组完整BCCBBC，LU speedup为2.250×、2.227×、2.213×，冻结efficiency_gate_1.5。该结果限于M4/Colima和当前作者校准集，不能外推模型研究或final-test。macOS/VM缓存未清除，OS/GUI/控制开销与383页全局swap-in保留记录，swap-out为0；后续测量需要新独占窗口。
 
 ## 复现与发布
 
-同熵重建已经在同固定Linux镜像复现90例、369个公开文件；它仍是同一宿主，不能替代独立干净环境重跑。Harbor/Pi pilot记录请求的 `deepseek-v4-pro`，没有独立的供应商服务端模型修订证明。本轮[官方文档取证](../logs/model-policy-documentation-local-001/result.json)已确认当前别名对应 `DeepSeek-V4-Pro-0813`，记录在新的运行草稿；这是供应商公开映射，正式冻结前须重新核验，不能追认早期pilot版本或证明内部二进制身份。系统提示/实际工具定义已在三个R镜像中离线捕获，可信代理已实测每请求4096、会话32768的输出额度和请求哈希门禁；这些不证明供应商未公开的内部模型修订。历史实际计费未核实，金额为null；不将当前公开价格代入过去调用，也不假定免费。
+同熵重建已经在同固定Linux镜像复现90例、369个公开文件；它仍是同一宿主，不能替代独立干净环境重跑。Harbor/Pi pilot记录请求的 `deepseek-v4-pro`，没有独立的供应商服务端模型修订证明。历史[Pro文档取证](../logs/model-policy-documentation-local-001/result.json)保留原观察日期；最新[Flash冻结前复核](../logs/model-policy-documentation-local-003/result.json)确认 `deepseek-flash` 对应 `DeepSeek-V4.1-Flash-1017`，已纳入正式冻结。这是供应商公开映射，不能追认早期pilot版本或证明不可变内部二进制身份。系统提示/实际工具定义已在三个R镜像中离线捕获，第一版可信代理曾实测每请求4096、会话32768的输出额度；第三版每会话累计输出上限为200000，并包含严格匹配的原生压缩请求和研究请求哈希门禁；这些不证明供应商未公开的内部模型修订。历史实际计费未核实，金额为null；不将当前公开价格代入过去调用，也不假定免费。
 
 [干净源码重放](../logs/clean-replay-local-001/result.json)使用首提交 `af5a19dcffe1cda8d3fed570e715d97f2b954ccc` 的Git archive展开新目录，并启动新的W/J容器；三任务参考和真实heat候选各3/3通过，T3 score/reward仍为null。工作源码和归档源码的保存日志均为184项通过。但它仍复用本机宿主依赖、同一Docker daemon和固定数值镜像，只支持fresh-source/fresh-container复现结论，不能冒充第二台干净机器、完整依赖重装或新增模型研究。
 
@@ -38,8 +40,13 @@ W已测私有路径、socket、奖励伪造、链接、后台进程、tmpfs配�
 
 后续[清洁重放002](../logs/clean-replay-local-002/result.json)已使用源码提交 `28da96e1c1a8a50911c6a08dbb99bb6b72f145c9`、重新安装的95个锁定依赖加固定Harbor源码，以及全新W/J。三任务参考和最新真实模型候选各3/3通过；[归档源码328项测试](../logs/clean-replay-local-002/archived-unit-tests.txt)通过。它没有复用旧site-packages，但仍复用同一物理宿主、Python二进制、Docker daemon与数值镜像，不能写成第二台机器或正式性能验收。依赖安装的早期TLS失败、修正后成功记录及原安装阶段状态均保留。
 
-[正式研究控制器](study.md)已实现逐会话固定预算、研究与final分离、全部attempt留档、显式关联重试和T3至多一次经调查的重测；这些分支目前是合成测试证据。完整真实native pilot仅覆盖本机heat功能链路，正式三个任务的15会话没有执行。
+[正式研究控制器](study.md)已实现逐会话固定预算、研究与final分离、全部attempt留档、显式关联重试和T3至多一次经调查的重测；这些分支原有合成测试证据。第三版的15次真实研究及全部隐藏操作现已执行；这不意味着所有异常恢复分支都由真实故障覆盖，也不抹除Poisson G2的无效性能窗口。
 
 仓库可见性以[最新核验003](../logs/github-repository-local-003.json)为准：当前为PUBLIC。初次001的PRIVATE记录仅代表当时状态；本轮没有改变仓库可见性。随后报告仅修复了读取最新元数据的逻辑，独立回归通过，不涉及求解/执行/计时/科学指标。
 
 公开推送0a84f0c与536c0d9曾被自动审批拒绝，因为具体内容须获公开授权。用户随后分别明确批准这两个提交，推送及远端核验均已完成，见[发布记录](../logs/publication-local-003/result.json)。该记录仅证明所列提交，不追认任何未来提交的授权；正式研究和资源门槛不因发布完成而改变。
+
+
+## 本轮交付范围
+
+当前工作树包含冻结和执行所需的未提交修改；本轮没有新的 GitHub 提交、推送或发布。最终本地证据包与[交付审计](../logs/formal-execution-local-004/final-audit-001.json)保留失败、null成本、无效窗口及两个被修正的审计草稿。此前公开授权只适用于相应历史提交。私有数值数组未装入证据包，仍需本地原数据、固定镜像和依赖才能完整复现。

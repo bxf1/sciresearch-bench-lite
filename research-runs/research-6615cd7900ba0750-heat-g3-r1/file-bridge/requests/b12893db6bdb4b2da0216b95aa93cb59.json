@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-007",
+  "completed_at": 1792718386.781318,
+  "export_finished_at": 1792718386.261655,
+  "export_started_at": 1792718386.1888618,
+  "imported_source": "imported-b12893db6bdb4b2da0216b95aa93cb59",
+  "original_r_source": "probe",
+  "received_at": 1792718386.187989,
+  "record_sha256": "3d053637ced4fa16e30552dc6f31c8a0b17609031c61edf1357f7edf02df56a5",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "b12893db6bdb4b2da0216b95aa93cb59",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "b12893db6bdb4b2da0216b95aa93cb59",
+  "response": {
+    "candidate_id": "candidate-007",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.135991,
+      "formal_timing": false,
+      "memory_peak_bytes": 24166400,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.5182349998503923,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.010281978,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.135991,
+        "execution_wall_seconds": 0.010281978,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 89,
+        "memory_peak_bytes": 24166400,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.1563934157602489,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1320.9687734735198,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.5160488751716912
+      }
+    },
+    "ok": true,
+    "request_id": "b12893db6bdb4b2da0216b95aa93cb59",
+    "source_hash": "16fc47ae2d4b16959c4b0d5c2c119a6cff9def26f4313a31b4583c5d54e97dfe"
+  },
+  "status": "completed"
+}

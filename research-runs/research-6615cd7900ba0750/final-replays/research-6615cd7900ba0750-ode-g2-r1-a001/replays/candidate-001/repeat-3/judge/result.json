@@ -1,0 +1,296 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_field": 0.0004626877440493681,
+      "E_roll": 0.00045954646586198773,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "a9556b11d986dc436d98",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.00045954646586198773,
+        0.00029490811823421824,
+        0.0001932077266560981,
+        0.0002038159214165281
+      ],
+      "scientific_pass": true,
+      "score": 99.53888289504431
+    },
+    {
+      "E_field": 0.00031240560102024255,
+      "E_roll": 0.0002581503033970292,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4be7b275f21c32a294bf",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0002581503033970292,
+        0.00021407610943344375,
+        0.0002310226237676128,
+        0.00023992900547609538
+      ],
+      "scientific_pass": true,
+      "score": 99.71472204779137
+    },
+    {
+      "E_field": 0.0004752043153108124,
+      "E_roll": 0.00037263549791516376,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "e755c9214c879f6137b8",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.00025028882742501646,
+        0.0002727889019295581,
+        0.0003406058173787251,
+        0.00037263549791516376
+      ],
+      "scientific_pass": true,
+      "score": 99.576080093387
+    },
+    {
+      "E_field": 0.00036537006354120307,
+      "E_roll": 0.0002889896045448247,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "71ba5a3e48b9514ef960",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 0,
+      "rollout_errors": [
+        0.0002889896045448247,
+        0.000280215953672685,
+        0.00018118266176001726,
+        0.00016782281017796338
+      ],
+      "scientific_pass": true,
+      "score": 99.67282016595699
+    },
+    {
+      "E_field": 0.00021129890942070244,
+      "E_roll": 0.0003198238901299411,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "5f6a155a5b2224647f8f",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.0003198238901299411,
+        0.00029245332615456654,
+        0.00019029280693250115,
+        0.00018324469881688668
+      ],
+      "scientific_pass": true,
+      "score": 99.73443860022468
+    },
+    {
+      "E_field": 0.0016779631640933118,
+      "E_roll": 0.0013681144162214166,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "9f995c7ad7a6ef5b848e",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.0013681144162214166,
+        0.000972623278296057,
+        0.0005044634258494926,
+        0.0005113420095891073
+      ],
+      "scientific_pass": true,
+      "score": 98.47696120984264
+    },
+    {
+      "E_field": 0.0004297878894045009,
+      "E_roll": 0.0005410473903036929,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "e4b85b83c72fd847ba9b",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.0004734974449361488,
+        0.0004461240718944244,
+        0.0005410473903036929,
+        0.0005176496500604724
+      ],
+      "scientific_pass": true,
+      "score": 99.5145823601459
+    },
+    {
+      "E_field": 0.0011469977720949905,
+      "E_roll": 0.001475583291362033,
+      "K": 4,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "1ac363eba3b5453126db",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 1,
+      "rollout_errors": [
+        0.001475583291362033,
+        0.0011982797469422062,
+        0.0009199268236990965,
+        0.0009749047055916296
+      ],
+      "scientific_pass": true,
+      "score": 98.68870946827148
+    },
+    {
+      "E_field": 0.004883162969599675,
+      "E_roll": 0.0019151360730608003,
+      "K": 6,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0addd5193a5fb093e74d",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0019151360730608003,
+        0.0016249656344748463,
+        0.0008952096269471576,
+        0.0010621211648572295
+      ],
+      "scientific_pass": true,
+      "score": 96.60085047866977
+    },
+    {
+      "E_field": 0.0011312837154559294,
+      "E_roll": 0.001881481976034846,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "025d4ecf8359a07ac9a3",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0016545921883251908,
+        0.001802793492566984,
+        0.001881481976034846,
+        0.0018401191285637157
+      ],
+      "scientific_pass": true,
+      "score": 98.49361715425461
+    },
+    {
+      "E_field": 0.003472648336239959,
+      "E_roll": 0.001144785014778054,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "e1a297aca66dc6544f98",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0006995085776523404,
+        0.0008562782740402323,
+        0.0010944695105842065,
+        0.001144785014778054
+      ],
+      "scientific_pass": true,
+      "score": 97.691283324491
+    },
+    {
+      "E_field": 0.0022339437832652517,
+      "E_roll": 0.0021338328046183316,
+      "K": 5,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "ec9f80efcb7e8a103a4c",
+      "integration_status": [
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "level": 2,
+      "rollout_errors": [
+        0.0021338328046183316,
+        0.0016600619580061187,
+        0.0018851344661489657,
+        0.0019793659347518053
+      ],
+      "scientific_pass": true,
+      "score": 97.81611170605822
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "e22411c0bd4c0e7f297c60c5a433777cd1df5e3658fe32a0bb7d879d602feb8c",
+  "judge_wall_seconds": 1.6290099583566189,
+  "passed": 12,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": true,
+    "freeze_sha256": "637c75228be020d864b9a7356665bbc105da3d0570c1d9a4da4ad0378beeb660",
+    "profile": "accuracy",
+    "split": "final-test"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 98.79325495867816,
+  "total": 12
+}

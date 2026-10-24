@@ -1,0 +1,71 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": false,
+      "id": "4549893e7753717d3ca1",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/4549893e7753717d3ca1/solution.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "6103d8a7b17a67b85bde",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/6103d8a7b17a67b85bde/solution.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "842bbbfcbaa65cf8c192",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/842bbbfcbaa65cf8c192/solution.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "ca507d4594ca727cc307",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/ca507d4594ca727cc307/solution.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "d8e78b2115453c1ce7d6",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/d8e78b2115453c1ce7d6/solution.npy'"
+    },
+    {
+      "artifact_valid": false,
+      "id": "c001ae8fbb3f52c2c996",
+      "reason": "[Errno 2] No such file or directory: '/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-poisson-g1-r1/retries/research-6615cd7900ba0750-poisson-g1-r1-a002/registry/evaluations/candidate-004/sample-6-C/quarantine/cases/c001ae8fbb3f52c2c996/solution.npy'"
+    }
+  ],
+  "container_id": "a30f1c777a45f1f83ad298b6b729cb0e01a5f8ae7c5ab240109742f832952356",
+  "container_name": "sciresearch-w-03d9fa360c0d",
+  "cpu_seconds": 0.138879,
+  "docker_execution_wall_seconds": 0.11717883264645934,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 0.008077066,
+  "exit_code": 0,
+  "finished_monotonic_ns": 44488548368610,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "input_sha256": "08e46b2e45b9855d10c1228be64471c00a1aad50f5f9b46660dad3e0ecef6257",
+  "log_bytes_observed": 3,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "memory_peak_bytes": 24199168,
+  "oom_killed": false,
+  "output_initially_empty": true,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 0.15601420775055885,
+  "research_timeout_seconds": 1525.0032367445529,
+  "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "source_hash": "8051ced1fdde9c486d7d56a89d904cf988260043cd31bf74c7dd353500efe2d0",
+  "started_monotonic_ns": 44488540291544,
+  "timeout_seconds": 60,
+  "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 0.5057969158515334
+}

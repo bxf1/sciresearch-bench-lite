@@ -1,0 +1,56 @@
+{
+  "attempt_status": "research_timeout",
+  "bridge_errors": [],
+  "cleanup_errors": {},
+  "deadline_fired": false,
+  "native_exception": null,
+  "reason": "trusted relay output token quota exhausted",
+  "relay_status": {
+    "budget_exhausted": true,
+    "charged_output_tokens": 200000,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_failure_reason": null,
+    "last_request_outcome": "success",
+    "last_upstream_status": 200,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "output_config",
+        "service_tier",
+        "container"
+      ],
+      "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+      "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 2700.0,
+      "stream_required": true,
+      "temperature": 0.0,
+      "thinking": {
+        "type": "disabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-flash",
+    "protocol_violation": false,
+    "rejected_requests": 4,
+    "remaining_output_tokens": 0,
+    "request_count": 734,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "budget_exhausted",
+    "successful_requests": 734
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "staged_files": 8347,
+  "bytes": 169025315,
+  "known_provider_and_session_credentials": "no_matches",
+  "staged_bytes_equal_scanned_bytes": true,
+  "large_archives_in_release_only": true,
+  "explicit_user_authorization": "publication-authorization.json"
+}

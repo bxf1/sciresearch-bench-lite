@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b0224627-f020-488a-a3fc-c8d8aff45f36",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.archify/workflow-asi-bench-20261024-1200/candidate.json",
+  "output": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.archify/workflow-asi-bench-20261024-1200/asi-bench.html",
+  "specification": {
+    "sha256": "866a1c3577a04f7d61962c5aeae12ec6b92de5d29ed907b58318fd02af25c70e",
+    "bytes": 4645
+  },
+  "artifact": {
+    "sha256": "2569b89b28720fc0b181e961d4dc6658aa3bdea460170adadb741ef77af73acc",
+    "bytes": 757589
+  }
+}

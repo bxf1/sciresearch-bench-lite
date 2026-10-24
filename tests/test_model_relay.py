@@ -136,6 +136,87 @@ class RelayTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 Limits(**settings)
 
+    def test_native_compaction_is_exact_and_shares_research_budget(self):
+        research = request(system="research", tools=[{"name": "bash", "input_schema": {"type": "object"}}])
+        summary = request(system="native summary")
+        hashes = {"expected_" + field + "_sha256": hashlib.sha256(encoded(research[field])).hexdigest()
+                  for field in ("system", "tools")}
+        compaction_sha = hashlib.sha256(encoded(summary["system"])).hexdigest()
+        limits = Limits(request_output_limit=6, session_output_limit=6,
+                        expected_compaction_system_sha256=compaction_sha, **hashes)
+        relay = self.relay(limits=limits)
+        self.dispatch(relay, research)
+        relay.upstream = FakeUpstream()
+        self.dispatch(relay, summary)
+        self.assertEqual(relay.ledger.status()["charged_output_tokens"], 6)
+        self.assertEqual(relay.ledger.status()["successful_requests"], 2)
+        self.assertEqual(relay.ledger.status()["failed_requests"], 0)
+        with self.assertRaises(Rejected):
+            self.dispatch(relay, research)
+        events = [json.loads(line) for line in (self.root / "events-0.jsonl").read_text().splitlines()]
+        self.assertEqual([row["request_kind"] for row in events if row["event"] == "request_accepted"],
+                         ["research", "native_compaction"])
+        for malformed in ({**summary, "tools": []}, {**summary, "tools": None},
+                          {**summary, "tools": research["tools"]}, {**summary, "system": "unknown"},
+                          request(system="research")):
+            broken = self.relay(limits=limits)
+            with self.assertRaises(Rejected):
+                self.dispatch(broken, malformed)
+            self.assertEqual(broken.upstream.calls, [])
+        old = self.relay(limits=Limits(**hashes))
+        with self.assertRaisesRegex(Rejected, "request_policy_mismatch"):
+            self.dispatch(old, summary)
+        for kwargs in ({"expected_compaction_system_sha256": compaction_sha},
+                       {**hashes, "expected_compaction_system_sha256": hashes["expected_system_sha256"]},
+                       {**hashes, "expected_compaction_system_sha256": "BAD"}):
+            with self.assertRaises(ValueError):
+                Limits(**kwargs)
+
+    def test_200k_budget_is_shared_and_last_request_is_trimmed(self):
+        research = request(max_tokens=16384, system="research", tools=[])
+        summary = request(max_tokens=16384, system="native summary")
+        hashes = {"expected_" + field + "_sha256": hashlib.sha256(encoded(research[field])).hexdigest()
+                  for field in ("system", "tools")}
+        relay = self.relay(limits=Limits(request_output_limit=4096, session_output_limit=200000,
+            max_requests=3125, expected_compaction_system_sha256=hashlib.sha256(encoded(summary["system"])).hexdigest(),
+            **hashes))
+        effective = []
+
+        def upstream(body, timeout):
+            effective.append(json.loads(body)["max_tokens"])
+            return FakeResponse(body=stream(output=effective[-1]))
+
+        relay.upstream = upstream
+        for index in range(49):
+            self.dispatch(relay, research if index % 2 == 0 else summary)
+        self.assertEqual(effective, [4096] * 48 + [3392])
+        status = relay.ledger.status()
+        self.assertEqual(status["charged_output_tokens"], 200000)
+        self.assertEqual(status["successful_requests"], 49)
+        self.assertEqual(status["failed_requests"], 0)
+        with self.assertRaisesRegex(Rejected, "budget_exhausted"):
+            self.dispatch(relay, research)
+
+    def test_scaled_request_guard_allows_more_than_512_calls(self):
+        relay = self.relay(limits=Limits(session_output_limit=200000, max_requests=3125))
+        relay.upstream = lambda body, timeout: FakeResponse(body=stream(output=1))
+        for _ in range(513):
+            self.dispatch(relay, request(max_tokens=1))
+        status = relay.ledger.status()
+        self.assertEqual(status["successful_requests"], 513)
+        self.assertEqual(status["charged_output_tokens"], 513)
+        self.assertFalse(status["budget_exhausted"])
+
+    def test_cli_passes_scaled_limits_to_running_relay(self):
+        from runner.model_relay import main
+        with patch("runner.model_relay.Relay") as relay, patch("runner.model_relay.RelayServer"):
+            main(["--events", str(self.root / "cli.jsonl"), "--session-output-limit", "200000",
+                  "--max-requests", "3125"])
+        limits = relay.call_args.args[3]
+        self.assertEqual(limits.session_output_limit, 200000)
+        self.assertEqual(limits.request_output_limit, 4096)
+        self.assertEqual(limits.max_requests, 3125)
+
     @contextmanager
     def server(self, relay):
         # Exercise the actual stdlib HTTP parser without binding a network port.
@@ -234,6 +315,8 @@ class RelayTests(unittest.TestCase):
             self.assertTrue(state["protocol_violation"])
             self.assertEqual(state["last_request_failure_reason"], "usage_decreased")
             self.assertNotIn(b"event: message_stop", output)
+            row = json.loads((self.root / f"events-{len(self.relays) - 1}.jsonl").read_text().splitlines()[-1])
+            self.assertEqual(row["usage_violation"], {"field": "output_tokens", "previous": 8 if prefix == starts[0] else 9, "observed": 3})
 
     def test_all_cumulative_input_and_cache_usage_must_be_monotonic(self):
         for field in ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
@@ -247,6 +330,7 @@ class RelayTests(unittest.TestCase):
             self.assertEqual(state["charged_output_tokens"], 10)
             row = json.loads((self.root / f"events-{len(self.relays) - 1}.jsonl").read_text().splitlines()[-1])
             self.assertFalse(row["output_usage_complete"])
+            self.assertEqual(row["usage_violation"], {"field": field, "previous": 9, "observed": 3})
             for token_field in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
                 self.assertIsNone(row[token_field])
 

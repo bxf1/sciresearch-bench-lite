@@ -1,0 +1,29 @@
+{
+  "all_owned_resources_removed": true,
+  "balance_availability": {
+    "path": "logs/formal-execution-local-004/ode-g1-api-402-investigation/balance-availability.json",
+    "sha256": "6b6ba1591ffe04276ca05675040eaaa86e8bdf1b77673863edad263fd0202a45"
+  },
+  "charged_output_tokens": 73924,
+  "diagnosis": "Formal Messages request and one synthetic short Messages probe both returned 402. Official meaning is insufficient balance; read-only balance endpoint says is_available=true. Current discrepancy requires account/billing resolution, not a blind research retry.",
+  "failed_request_actual_usage": null,
+  "hidden_scores_accessed": false,
+  "http_status": 402,
+  "next_retry_of": "research-6615cd7900ba0750-ode-g1-r1-a002",
+  "next_run_id": "research-6615cd7900ba0750-ode-g1-r1",
+  "observed_at_unix": 1792722389.142973,
+  "parent_attempt": "research-6615cd7900ba0750-ode-g1-r1-a002",
+  "probe": {
+    "path": "logs/formal-execution-local-004/ode-g1-api-402-investigation/synthetic-probe.json",
+    "sha256": "d47dc3b3c303ce8782da0db0559d09eeada842a5f7c5ff01ce0c7f2fc9f5ad42"
+  },
+  "provider_documentation": "https://api-docs.deepseek.com/quick_start/error_codes/",
+  "result": {
+    "path": "research-runs/research-6615cd7900ba0750-ode-g1-r1/retries/research-6615cd7900ba0750-ode-g1-r1-a002/result.json",
+    "sha256": "520b5bf927b13caaf8f48b85b31af19fe07397c5494334cc906c38e89c91c164"
+  },
+  "resume_condition": "Verify Messages API is usable after account/billing resolution, then create a linked new attempt under unchanged version003 and continue the fixed order.",
+  "status": "external_provider_unavailable",
+  "successful_output_tokens": 69828,
+  "successful_requests": 253
+}

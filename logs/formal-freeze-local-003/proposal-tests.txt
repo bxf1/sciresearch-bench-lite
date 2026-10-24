@@ -1,0 +1,106 @@
+....F...........................................F.............F......... [ 59%]
+..................................................                       [100%]
+=================================== FAILURES ===================================
+__________ RelayTests.test_cli_passes_scaled_limits_to_running_relay ___________
+
+self = <test_model_relay.RelayTests testMethod=test_cli_passes_scaled_limits_to_running_relay>
+
+    def test_cli_passes_scaled_limits_to_running_relay(self):
+        from runner.model_relay import main
+        with patch("runner.model_relay.Relay") as relay, patch("runner.model_relay.RelayServer"):
+>           main(["--events", str(self.root / "cli.jsonl"), "--session-output-limit", "200000",
+                  "--max-requests", "3125"])
+
+tests/test_model_relay.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../runner/model_relay.py:809: in main
+    args = parser.parse_args(argv)
+../../../.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/argparse.py:1908: in parse_args
+    self.error(msg)
+../../../.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/argparse.py:2650: in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = ArgumentParser(prog='__main__.py', usage=None, description='A bounded, fixed-destination Anthropic streaming relay.\n\..., not network isolation.\n', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+status = 2
+message = '__main__.py: error: unrecognized arguments: --max-requests 3125\n'
+
+    def exit(self, status=0, message=None):
+        if message:
+            self._print_message(message, _sys.stderr)
+>       _sys.exit(status)
+E       SystemExit: 2
+
+../../../.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/argparse.py:2637: SystemExit
+----------------------------- Captured stderr call -----------------------------
+usage: __main__.py [-h] [--bind BIND] [--port PORT] --events EVENTS
+                   [--model {deepseek-flash}]
+                   [--session-output-limit SESSION_OUTPUT_LIMIT]
+                   [--request-output-limit REQUEST_OUTPUT_LIMIT]
+                   [--session-seconds SESSION_SECONDS]
+                   [--request-seconds REQUEST_SECONDS]
+                   [--expected-system-sha256 EXPECTED_SYSTEM_SHA256]
+                   [--expected-tools-sha256 EXPECTED_TOOLS_SHA256]
+                   [--expected-compaction-system-sha256 EXPECTED_COMPACTION_SYSTEM_SHA256]
+__main__.py: error: unrecognized arguments: --max-requests 3125
+_______ test_compaction_policy_reaches_relay_process_and_public_receipt ________
+
+tmp_path = PosixPath('/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/pytest-of-baixiongfei/pytest-22/test_compaction_policy_reaches0')
+
+    def test_compaction_policy_reaches_relay_process_and_public_receipt(tmp_path):
+        calls=[]
+        def fake(*args,**kwargs):
+            calls.append(args)
+            if args[:2]==('image','inspect'):
+                value=[{'Id':admission()['image_id']}]
+            elif args[0]=='inspect':
+                name=args[1]
+                value=[{'Id':admission()['container_id'],
+                    'NetworkSettings':{'Networks':{name:{'IPAddress':'172.31.0.2'}}},
+                    'HostConfig':dict.fromkeys(('CapDrop','SecurityOpt','PidsLimit','Memory','MemorySwap','NanoCpus','ReadonlyRootfs')),
+                    'Mounts':[]}]
+            else:
+                value={}
+            return SimpleNamespace(returncode=0,stdout=json.dumps(value),stderr='')
+        with patch.object(relay,'docker',side_effect=fake):
+>           relay.start_relay(tmp_path/'relay',image=admission()['image_id'],provider_key='synthetic-provider-key',
+                expected_system_sha256='a'*64,expected_tools_sha256='b'*64,expected_compaction_system_sha256='c'*64,
+                session_output_limit=200000,max_requests=3125)
+E           TypeError: start_relay() got an unexpected keyword argument 'max_requests'
+
+tests/test_relay_transport.py:123: TypeError
+_ OutcomeTests.test_formal_setup_hashes_models_without_installing_a_turn_extension _
+
+self = <test_harbor_pilot.OutcomeTests testMethod=test_formal_setup_hashes_models_without_installing_a_turn_extension>
+
+    async def test_formal_setup_hashes_models_without_installing_a_turn_extension(self):
+        settings = dict(pilot_settings(), formal=True, max_turns=None,
+                        expected_system_sha256="a" * 64, expected_tools_sha256="b" * 64)
+        config = {"providers": {"custom": {"apiKey": "$BENCH_RELAY_KEY"}}}
+        expected = {"models.json": digest((json.dumps(config, indent=2) + "\n").encode())}
+        observed = {"version": "0.84.1", "configuration_sha256": expected, "installed_source_sha256": {"dist/core/tools/bash.js": "f" * 64}}
+        env = SimpleNamespace(exec=AsyncMock(return_value=SimpleNamespace(return_code=0, stdout=json.dumps(observed))))
+        fresh = status(request_count=0, successful_requests=0, last_request_outcome=None,
+                       limits={"thinking": {"type": "disabled"}, "temperature": 0.0, "top_p": 1.0,
+                               "request_output_limit": 4096, "session_output_limit": 32768,
+                               "expected_system_sha256": "a" * 64, "expected_tools_sha256": "b" * 64})
+        # An agent without _build_max_turns_extension is sufficient in formal mode.
+        result = await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
+        self.assertIsNone(result["max_turns"])
+        settings["max_requests"] = 3125
+>       with self.assertRaisesRegex(RuntimeError, "request count limit"):
+E       AssertionError: RuntimeError not raised
+
+tests/test_harbor_pilot.py:199: AssertionError
+=============================== warnings summary ===============================
+logs/formal-freeze-local-003/proposed-source/tests/test_harbor_pilot.py::NativeTrialTests::test_native_admission_failure_cannot_reach_agent_or_verification
+logs/formal-freeze-local-003/proposed-source/tests/test_harbor_pilot.py::NativeTrialTests::test_native_trial_factory_and_lifecycle_hooks_without_container_or_model
+  /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/trial/trial.py:1090: DeprecationWarning: Task.checksum will be deprecated soon. Use TrialLock.task.digest from the trial lock when you need the task content hash.
+    task_checksum=self.task.checksum,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_model_relay.py::RelayTests::test_cli_passes_scaled_limits_to_running_relay
+FAILED tests/test_relay_transport.py::test_compaction_policy_reaches_relay_process_and_public_receipt
+FAILED tests/test_harbor_pilot.py::OutcomeTests::test_formal_setup_hashes_models_without_installing_a_turn_extension
+3 failed, 119 passed, 2 warnings in 4.63s

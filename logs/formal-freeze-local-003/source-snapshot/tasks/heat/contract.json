@@ -1,0 +1,26 @@
+{
+  "artifact_transfer": "only trusted W outputs can enter J; automatic Harbor research artifacts excluded",
+  "case_path": "cases/<id>",
+  "contract_version": "0.3.0",
+  "entrypoint": "python solve.py --input /input --output /output --seed 0",
+  "max_output_bytes": 268435456,
+  "max_path_depth": 32,
+  "max_registered_evaluations": 20,
+  "max_source_bytes": 20971520,
+  "max_source_entries": 2000,
+  "max_source_files": 1000,
+  "max_tmp_bytes": 67108864,
+  "numeric_format": "little-endian binary64; finite real values; no pickle/object/complex",
+  "output": {
+    "name": "u0.npy",
+    "shape": [
+      256
+    ]
+  },
+  "research_bridge": "host FileBridge polls bounded requests under /workspace/.bench; controller must start it before Pi",
+  "research_feedback_split": "public-dev only",
+  "research_seconds": 1800,
+  "status": "prepared_not_frozen",
+  "task": "heat",
+  "worker_seconds": 120
+}

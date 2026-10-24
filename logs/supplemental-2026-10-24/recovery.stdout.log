@@ -1,0 +1,23 @@
+{"run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001", "original_run_id": "research-6615cd7900ba0750-poisson-g3-r1", "status": "running"}
+Task sciresearch/poisson: Configured runtime overrides apply only to the agent environment and are not propagated to separate verifier environments (extra_docker_compose: /Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/research-security-compose.json). Bake grading dependencies into the verifier image under tests/ or declare required agent outputs as artifacts.
+{"status": "research_invalid", "formal": true, "model_run_started": true, "score": null, "reward": null}
+{"run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001", "original_run_id": "research-6615cd7900ba0750-poisson-g3-r1", "status": "research_invalid", "attempt_status": "api_failed", "result": {"path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/result.json", "sha256": "f7d6b4e6d14cec584c96410d5e03f80414c524f9a052e7d5e4fabfa9a298b543"}, "registry": {"path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-001/registry/state.json", "sha256": "f470dfb54fc2c0cb29d64453c1b70af9c6ea3eccae88359bbdb90c0ef63f550d"}, "first_id": null, "final_id": null}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "logs/supplemental-2026-10-24/resume_controller.py", line 6, in <module>
+    asyncio.run(supplemental.run_all())
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/runner/supplemental.py", line 166, in run_all
+    raise RuntimeError("supplemental infrastructure failure; retained for investigation")
+RuntimeError: supplemental infrastructure failure; retained for investigation

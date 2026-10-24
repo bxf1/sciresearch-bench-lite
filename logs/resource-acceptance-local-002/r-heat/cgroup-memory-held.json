@@ -1,0 +1,12 @@
+{
+  "boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "cpu.max": "400000 100000",
+  "cpu.stat": "usage_usec 13972316\nuser_usec 12599244\nsystem_usec 1373072\ncore_sched.force_idle_usec 0\nnr_periods 51\nnr_throttled 30\nthrottled_usec 6005249\nnr_bursts 0\nburst_usec 0",
+  "memory.current": "4053729280",
+  "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+  "memory.max": "4294967296",
+  "memory.peak": "4054200320",
+  "memory.swap.current": "0",
+  "memory.swap.max": "0",
+  "pids.max": "128"
+}

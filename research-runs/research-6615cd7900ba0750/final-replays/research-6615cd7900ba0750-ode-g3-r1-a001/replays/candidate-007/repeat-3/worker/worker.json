@@ -1,0 +1,101 @@
+{
+  "all_processes_terminated": true,
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "budget_timeout": false,
+  "candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "cases": [
+    {
+      "artifact_valid": true,
+      "id": "a9556b11d986dc436d98",
+      "sha256": "b50cc379b5bbd0d39a8479bc396d8e95281b2d93c5705f365d983d15aa75de5b"
+    },
+    {
+      "artifact_valid": true,
+      "id": "4be7b275f21c32a294bf",
+      "sha256": "07d70c4d2366373e5cf1c37a3bc5bc19c74e1d7661f89209a960188a26ab3768"
+    },
+    {
+      "artifact_valid": true,
+      "id": "e755c9214c879f6137b8",
+      "sha256": "6ef3952d154f16fc7eb2d33af6d877cea45ca32a115a6888a842135474591d40"
+    },
+    {
+      "artifact_valid": true,
+      "id": "71ba5a3e48b9514ef960",
+      "sha256": "9495ff9e9eb7d26520e7002e6435768a9d4d403ad018ed7fea525f39e0ec0bf3"
+    },
+    {
+      "artifact_valid": true,
+      "id": "5f6a155a5b2224647f8f",
+      "sha256": "e281012f9d42612a8a76d7a44eea971ae573636581d9be41172278a1bf7cd1dc"
+    },
+    {
+      "artifact_valid": true,
+      "id": "9f995c7ad7a6ef5b848e",
+      "sha256": "725fb85eff74bcf1edddde2b05fb6f2794e569beeba2f1156435a309df7060e7"
+    },
+    {
+      "artifact_valid": true,
+      "id": "e4b85b83c72fd847ba9b",
+      "sha256": "8717aee3bc79ef4a5b010b6385d536bab9956d6316d55da284599e2510339824"
+    },
+    {
+      "artifact_valid": true,
+      "id": "1ac363eba3b5453126db",
+      "sha256": "f2016533b2c703dc07124f7d756874346c2d1ac9c693de1fddaef62215975ae6"
+    },
+    {
+      "artifact_valid": true,
+      "id": "0addd5193a5fb093e74d",
+      "sha256": "18447cceccdeb3381cf51d92a185726a01f2fc44d6e1aae857d085874f374fe9"
+    },
+    {
+      "artifact_valid": true,
+      "id": "025d4ecf8359a07ac9a3",
+      "sha256": "746bdd514c2f8da9237f939a30eccd1d7ecda2091d42419a64de7bbe60b0e735"
+    },
+    {
+      "artifact_valid": true,
+      "id": "e1a297aca66dc6544f98",
+      "sha256": "1f3fd035d79a6b07bc3cce17d8f1e5c443d42b547c6c6b01149db85120fc9995"
+    },
+    {
+      "artifact_valid": true,
+      "id": "ec9f80efcb7e8a103a4c",
+      "sha256": "219b08fab3da4f4cae014171f0e9fc25d556ce5cfd0de82b3b3a93d1eb4b3dcc"
+    }
+  ],
+  "container_id": "8497f102d6945884a483a63dc1579920f9727b8ffd9f14c458e8d52f7d263a36",
+  "container_name": "sciresearch-w-3f74f569de92",
+  "cpu_seconds": 17.844311,
+  "docker_execution_wall_seconds": 18.098169290926307,
+  "evaluation_status": "not_evaluated",
+  "execution_wall_seconds": 17.987433587,
+  "exit_code": 0,
+  "finished_monotonic_ns": 57219204275195,
+  "formal_timing": false,
+  "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "input_sha256": "a4065cca1e87289c3369a1c6506495a08faae0cbbb353f4013af93820ccf8b63",
+  "log_bytes_observed": 0,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "memory_peak_bytes": 71733248,
+  "oom_killed": false,
+  "output_initially_empty": true,
+  "performance_status": "not_measured",
+  "processes_quiesced_at_seconds": 18.145355666056275,
+  "research_timeout_seconds": null,
+  "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+  "resource_limits_verified": true,
+  "scientific_pass": false,
+  "source_hash": "76a7a9fdbebc8343bd06b1cbf4277a42928b450a2d43376c02e4d31844360979",
+  "started_monotonic_ns": 57201216841608,
+  "timeout_seconds": 120,
+  "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+  "timer_uid": 65533,
+  "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+  "timing_complete": true,
+  "timing_scope": "python_spawn_to_all_descendants_exit",
+  "total_wall_seconds": 18.53141550021246
+}

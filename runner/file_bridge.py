@@ -14,7 +14,7 @@ from public.bridge_io import MAX_PENDING, REQUEST_ID, validate_request
 from .artifact_gate import MAX_FILES, MAX_SOURCE, extract_tar, regular_tree
 from .common import canonical, digest, read_json, write_json
 from .phase import validate_manifest
-from .registry import Registry
+from .registry import Registry, remaining_seconds
 from .public_evaluation import run_public_evaluation
 
 
@@ -123,7 +123,9 @@ class FileBridge:
 
         def execute(snapshot, candidate_id, remaining):
             run = self.registry.root / "evaluations" / candidate_id
-            return run_public_evaluation(self.task, snapshot, self.input_root, run, self.image, remaining,
+            # A single evaluation retains its worker/checker protection even
+            # when the research session has no aggregate wall-clock limit.
+            return run_public_evaluation(self.task, snapshot, self.input_root, run, self.image, min(1800, remaining),
                                          execute=self.execute, check=self.check)
 
         # Registry accepts and persists the slot before reading any R source.
@@ -201,7 +203,7 @@ class FileBridge:
     def serve(self, stop_event=None, interval=.2):
         while stop_event is None or not stop_event.is_set():
             state = read_json(self.registry.root / "state.json")
-            if state["closed"] or time.time() >= state["started_at"] + state["budget_seconds"]:
+            if state["closed"] or remaining_seconds(state) <= 0:
                 break
             self.poll_once()
             if stop_event is None:

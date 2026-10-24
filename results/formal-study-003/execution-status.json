@@ -1,0 +1,19 @@
+{
+  "all_planned_operations_attempted": true,
+  "audit": {
+    "path": "logs/formal-execution-local-004/final-audit-001.json",
+    "sha256": "788b9746808aa9842e4f3d81053aff25fdc29f15120a3961cf36f3fbb31b5cde"
+  },
+  "author_methods": 11,
+  "full_valid_scientific_acceptance": false,
+  "invalid_measurement_run_ids": [
+    "research-6615cd7900ba0750-poisson-g2-r1"
+  ],
+  "pending_run_ids_interpretation": "Executed Poisson G2 lacks valid performance scoring; it is not an unstarted operation. Closed without retry under user direction.",
+  "publication": "local_only",
+  "research_attempts": 19,
+  "status": "execution_closed_with_one_invalid_performance_measurement",
+  "unattempted_operations": [],
+  "valid_research_sessions": 15,
+  "valid_scientific_sessions": 14
+}

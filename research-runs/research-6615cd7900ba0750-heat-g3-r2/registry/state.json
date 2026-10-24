@@ -1,0 +1,21 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "16f1e9557503862668faca6b3d7b5d5a4d139b5fb73b17c7c79cb027dce39c77",
+    "reason": "terminal trusted relay outcome: upstream_transport_error",
+    "recorded_at": 1792732647.570637,
+    "status": "api_failed"
+  },
+  "attempt_status": "api_failed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": 20,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792731043.906225,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g3-r2/workspace"
+}

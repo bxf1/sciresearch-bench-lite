@@ -1,0 +1,16 @@
+{"event": "starting", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g2-r1"}
+{"event": "finished", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g2-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g3-r1"}
+{"event": "finished", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g3-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g1-r1"}
+{"event": "finished", "kind": "final", "task": "heat", "identity": "research-6615cd7900ba0750-heat-g1-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g1-r1"}
+{"event": "finished", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g1-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g2-r1"}
+{"event": "finished", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g2-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g3-r1"}
+{"event": "finished", "kind": "final", "task": "ode", "identity": "research-6615cd7900ba0750-ode-g3-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "poisson", "identity": "research-6615cd7900ba0750-poisson-g3-r1"}
+{"event": "finished", "kind": "final", "task": "poisson", "identity": "research-6615cd7900ba0750-poisson-g3-r1", "exit_code": 0}
+{"event": "starting", "kind": "final", "task": "poisson", "identity": "research-6615cd7900ba0750-poisson-g2-r1"}
+{"event": "finished", "kind": "final", "task": "poisson", "identity": "research-6615cd7900ba0750-poisson-g2-r1", "exit_code": 2}

@@ -110,7 +110,7 @@ async def run(args):
     result = {
         "formal": False, "study_phase": "pilot-smoke", "task": "heat",
         "network_status": "pilot_network_unrestricted", "resource_status": "resource_limits_diagnostic",
-        "model_requested": "deepseek-v4-pro", "model_endpoint": endpoint,
+        "model_requested": "deepseek-flash", "model_endpoint": endpoint,
         "model_api_format": "anthropic_messages", "pi_version_requested": "0.84.1",
         "reasoning_effort": "off", "max_turns": 5, "research_timeout_seconds": 300,
         "cpu_request": 2, "memory_request_mb": 2048, "cost_usd": None,
@@ -161,7 +161,7 @@ async def run(args):
         limits = await env.exec(command="python -c 'import json,pathlib; print(json.dumps({n:(pathlib.Path(\"/sys/fs/cgroup\")/n).read_text().strip() for n in (\"cpu.max\",\"memory.max\",\"memory.swap.max\")}))'")
         result["cgroup_limits"] = json.loads(limits.stdout)
         agent = Pi(
-            logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-v4-pro",
+            logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-flash",
             version="0.84.1", model_base_url=endpoint, model_api_key_name="BENCH_MODEL_API_KEY",
             model_api_format="anthropic_messages", extra_env={"BENCH_MODEL_API_KEY": secret},
             reasoning_effort="off", max_turns=5, mcp_servers=[])

@@ -1,0 +1,23 @@
+{
+  "attempts": [
+    {
+      "attempt_status": "infrastructure_failed",
+      "original_run_id": "research-6615cd7900ba0750-poisson-g3-r1",
+      "registry": {
+        "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1/registry/state.json",
+        "sha256": "323ea126ed261265d260745a212b566d2a6b2d8dc7d2678da49b895c8d14d05b"
+      },
+      "result": {
+        "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1/result.json",
+        "sha256": "9eab4954aea4799822242f215923ac493f593b4c7c661e031371a40e560959da"
+      },
+      "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1",
+      "status": "research_invalid"
+    }
+  ],
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24.json",
+    "sha256": "64bbb506d3dcb33038c03639f9f890059a7f1b4af2c7d6abf783db736d8e41fa"
+  },
+  "study_kind": "selective_supplemental"
+}

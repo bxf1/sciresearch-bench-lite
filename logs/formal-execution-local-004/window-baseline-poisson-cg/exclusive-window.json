@@ -1,0 +1,18 @@
+{
+  "cache_state": "Unmodified warm host/guest page cache; no cache eviction between BCCBBC samples; fresh containers and outputs. Resource probes precede a quiet settling window.",
+  "continuous_observation_required": true,
+  "machine_exclusive_verified": true,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "measurement_window_unix": [
+    1792743013.630291,
+    1792744813.630291
+  ],
+  "observer_policy": {
+    "path": "observation-policy.json",
+    "sha256": "bbb6d7c309c88ca1feb03935358945f52fbfac17a0e9c120c75e04300ac77dc8"
+  },
+  "other_host_workloads": [],
+  "quiet_preflight_seconds": 30,
+  "scope": "Continuous revision-3 observation of macOS and dedicated Colima during this actual final operation.",
+  "status": "passed"
+}

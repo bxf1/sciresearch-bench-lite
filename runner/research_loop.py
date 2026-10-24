@@ -328,7 +328,7 @@ async def run(args):
     output.mkdir(parents=True, exist_ok=False)
     (output / "controller.py").write_bytes(Path(__file__).read_bytes())
     result = {"formal": False, "study_phase": "public-dev-pilot", "task": "heat", "condition": "g1-pilot",
-              "model_requested": "deepseek-v4-pro", "pi_version_requested": "0.84.1", "reasoning_effort": "off",
+              "model_requested": "deepseek-flash", "pi_version_requested": "0.84.1", "reasoning_effort": "off",
               "max_turns": 12, "max_evaluations": 4, "research_budget_seconds": args.budget_seconds,
               "resource_status": "local_pilot_diagnostic", "network_policy": "public_setup_then_model_allowlist",
               "root_helper_capabilities": ROOT_CAPS, "root_helper_capabilities_reason": CAP_REASON,
@@ -447,14 +447,14 @@ async def run(args):
                     and state["cgroup"] == {"cpu.max": "100000 100000", "memory.max": "1073741824", "memory.swap.max": "0", "pids.max": "128"}
                     and all(sockets[key]["permission_denied"] for key in ("marked_socket", "raw_socket"))):
                 raise RuntimeError("Research process privilege/resource admission failed")
-            agent = Pi(logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-v4-pro", version="0.84.1",
+            agent = Pi(logs_dir=paths.agent_dir, logger=logger, model_name="anthropic/deepseek-flash", version="0.84.1",
                 model_base_url=endpoint, model_api_key_name="BENCH_MODEL_API_KEY", model_api_format="anthropic_messages",
                 extra_env={"BENCH_MODEL_API_KEY": secret, "ANTHROPIC_OAUTH_TOKEN": ""}, reasoning_effort="off", max_turns=12, mcp_servers=[])
             event("native_pi_setup_start")
             await asyncio.wait_for(agent.setup(env), 600)
             # Exercise Harbor's own config writers before admitting any model
             # call, including the root chown/chmod path for a nonroot agent.
-            config = agent._build_custom_models_json(agent.model_connection, "deepseek-v4-pro")
+            config = agent._build_custom_models_json(agent.model_connection, "deepseek-flash")
             await agent._write_custom_models_json(env, config)
             await agent._write_max_turns_extension(env, 12)
             version = await env.exec(command=". ~/.nvm/nvm.sh; pi --version; node --version", timeout_sec=15)

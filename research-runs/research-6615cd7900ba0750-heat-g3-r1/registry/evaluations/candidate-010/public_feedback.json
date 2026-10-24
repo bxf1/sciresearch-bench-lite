@@ -1,0 +1,32 @@
+{
+  "artifact_valid": false,
+  "attempt_status": "invalid_artifact",
+  "cpu_seconds": 0.214374,
+  "formal_timing": false,
+  "memory_peak_bytes": 29360128,
+  "public_check_status": "not_run",
+  "public_evaluation_wall_seconds": 0.647105083335191,
+  "research_budget_exhausted": false,
+  "wall_seconds": 0.085873228,
+  "worker_diagnostics": {
+    "all_processes_terminated": true,
+    "attempt_status": "invalid_artifact",
+    "budget_timeout": false,
+    "budget_timeout_stage": null,
+    "candidate_processes_terminated": true,
+    "cleanup_status": null,
+    "cpu_seconds": 0.214374,
+    "execution_wall_seconds": 0.085873228,
+    "exit_code": 0,
+    "formal_timing": false,
+    "log_bytes_observed": 0,
+    "memory_peak_bytes": 29360128,
+    "oom_killed": false,
+    "processes_quiesced_at_seconds": 0.2324343752115965,
+    "reason": "output filename not allowlisted",
+    "research_timeout_seconds": 1311.1840306580998,
+    "timeout_seconds": 120,
+    "timing_scope": "python_spawn_to_all_descendants_exit",
+    "total_wall_seconds": 0.6449148328974843
+  }
+}

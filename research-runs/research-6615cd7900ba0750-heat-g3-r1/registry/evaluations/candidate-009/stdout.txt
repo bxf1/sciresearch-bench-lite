@@ -1,0 +1,3 @@
+OUT /output
+exists True isdir True
+parent ['usr', 'tmp', 'sbin', 'opt', 'boot', 'bin', 'run', 'srv', 'sys', 'etc', 'lib', 'var', 'proc', 'home', 'root', 'dev', 'media', 'mnt', 'input', 'trusted', 'output', '.dockerenv', 'submission']

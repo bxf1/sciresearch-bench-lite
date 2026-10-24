@@ -1,0 +1,29 @@
+{
+  "status": "verified",
+  "observed_at_unix": 1792729093.338071,
+  "scope": "Offline inert canonical-path fixture with accepted-directory control. No container, model request, scientific solver, hidden data, or frozen source changed.",
+  "artifact_gate_sha256": "55e1dba69d3661af94513d982eb9fc292d2eed7b6c2c5c5ed1a52aa51819c3dc",
+  "rows": [
+    {
+      "source": ".",
+      "status": "rejected",
+      "error_type": "ArtifactError"
+    },
+    {
+      "source": "solve.py",
+      "status": "rejected",
+      "error_type": "NotADirectoryError"
+    },
+    {
+      "source": "candidate",
+      "status": "accepted"
+    }
+  ],
+  "live_requests": [
+    ".",
+    "solve.py",
+    "."
+  ],
+  "live_feedback": "source preparation failed: ReadError: empty file",
+  "interpretation": "Frozen snapshot guard rejects dot path segments and requires a real source directory. Exporter exits before writing tar for these failures; host tar reader raises first and masks detailed exporter stderr. Common prompt says relative-source-dir without explaining dot exclusion. Record this interface limitation; retain the attempt and frozen code."
+}

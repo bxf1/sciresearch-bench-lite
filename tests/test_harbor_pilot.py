@@ -27,7 +27,7 @@ IMAGE = "sha256:" + "b" * 64
 
 
 def admission(root):
-    return {"schema_version": 1, "model": "deepseek-v4-pro", "token": "a" * 64,
+    return {"schema_version": 1, "model": "deepseek-flash", "token": "a" * 64,
             "base_url": "http://172.31.0.2:8787", "relay_ip": "172.31.0.2", "relay_port": 8787,
             "container_name": "sciresearch-relay-" + "c" * 12, "container_id": "d" * 64,
             "network_name": "sciresearch-relay-" + "c" * 12, "image_id": IMAGE,
@@ -50,7 +50,7 @@ def public_cases(root, split="public-dev"):
 
 
 def status(**changes):
-    result = {"schema_version": 1, "model": "deepseek-v4-pro", "request_count": 1,
+    result = {"schema_version": 1, "model": "deepseek-flash", "request_count": 1,
               "successful_requests": 1, "failed_requests": 0, "inflight": 0,
               "protocol_violation": False, "evidence_error": False, "state": "ready",
               "last_request_outcome": "success", "budget_exhausted": False}
@@ -195,7 +195,21 @@ class OutcomeTests(unittest.IsolatedAsyncioTestCase):
         # An agent without _build_max_turns_extension is sufficient in formal mode.
         result = await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
         self.assertIsNone(result["max_turns"])
+        settings["max_requests"] = 3125
+        with self.assertRaisesRegex(RuntimeError, "request count limit"):
+            await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
+        fresh["limits"]["max_requests"] = 3125
         self.assertIn("unexpected turn cap extension", env.exec.call_args.kwargs["command"])
+        settings["expected_compaction_system_sha256"] = "c" * 64
+        with self.assertRaisesRegex(RuntimeError, "wire system/tools"):
+            await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
+        fresh["limits"]["expected_compaction_system_sha256"] = "c" * 64
+        settings["expected_compaction_sources"] = {"dist/core/compaction/compaction.js": "d" * 64}
+        with self.assertRaisesRegex(RuntimeError, "compaction source"):
+            await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
+        observed["installed_source_sha256"].update(settings["expected_compaction_sources"])
+        env.exec.return_value.stdout = json.dumps(observed)
+        await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
         fresh["limits"]["expected_system_sha256"] = "0" * 64
         with self.assertRaisesRegex(RuntimeError, "wire system/tools"):
             await native_setup_evidence(SimpleNamespace(), env, config, fresh, settings=settings)
@@ -236,6 +250,10 @@ class OutcomeTests(unittest.IsolatedAsyncioTestCase):
             controller.record.update(model_run_started=True,relay_status=status(evidence_error=True,budget_exhausted=True))
             controller.deadline_fired=True
             self.assertEqual(controller.outcome(SimpleNamespace(exception_info=None))[0],"infrastructure_failed")
+
+    def test_policy_failure_is_not_mislabeled_as_disk_evidence_failure(self):
+        self.assertEqual(relay_outcome(status(state="failed_closed", protocol_violation=True)),
+                         ("infrastructure_failed", "relay protocol violation or active upstream request"))
 
     def test_relay_token_quota_is_normal_fallback_but_upstream_429_remains_api_failure(self):
         with tempfile.TemporaryDirectory() as directory:

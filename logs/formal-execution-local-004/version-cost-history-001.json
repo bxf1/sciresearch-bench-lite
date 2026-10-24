@@ -1,0 +1,56 @@
+{
+  "scope": "Frozen formal plans only; pilots, synthetic probes, and this Codex conversation are excluded. Do not pool versions for scientific comparisons.",
+  "versions": [
+    {
+      "version": 1,
+      "plan_id": "research-5db960ec2eb8d256",
+      "attempts": 2,
+      "valid_research": 0,
+      "outcomes": {
+        "infrastructure_failed": 2
+      },
+      "successful_requests": 152,
+      "failed_requests": 0,
+      "successful_output_tokens": 43743,
+      "charged_output_tokens": 43743,
+      "failed_requests_with_unknown_output": 0,
+      "cost_usd": null
+    },
+    {
+      "version": 2,
+      "plan_id": "research-0301cbdf4d96c055",
+      "attempts": 5,
+      "valid_research": 3,
+      "outcomes": {
+        "completed": 1,
+        "research_timeout": 2,
+        "infrastructure_failed": 2
+      },
+      "successful_requests": 480,
+      "failed_requests": 2,
+      "successful_output_tokens": 102284,
+      "charged_output_tokens": 110476,
+      "failed_requests_with_unknown_output": 2,
+      "cost_usd": null
+    },
+    {
+      "version": 3,
+      "plan_id": "research-6615cd7900ba0750",
+      "attempts": 19,
+      "valid_research": 15,
+      "outcomes": {
+        "completed": 7,
+        "cancelled": 1,
+        "api_failed": 2,
+        "research_timeout": 8,
+        "infrastructure_failed": 1
+      },
+      "successful_requests": 7644,
+      "failed_requests": 6,
+      "successful_output_tokens": 2591496,
+      "charged_output_tokens": 2613274,
+      "failed_requests_with_unknown_output": 6,
+      "cost_usd": null
+    }
+  ]
+}

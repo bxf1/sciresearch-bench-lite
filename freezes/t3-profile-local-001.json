@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "kind": "t3_performance_profile",
+  "status": "frozen",
+  "created_at": "2026-10-22T16:36:38.044028+00:00",
+  "scope": "M4 MacBook Air / Colima QEMU aarch64, dedicated observed window, author-calibration only; not a full task or model freeze",
+  "profile": "efficiency_gate_1.5",
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "numeric_image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "calibration_criteria": {
+    "group_count": 3,
+    "order": "BCCBBC",
+    "cases_per_batch": 12,
+    "maximum_baseline_time_ratio": 1.2,
+    "minimum_lu_speedup": 1.8,
+    "all_correct_and_resource_qualified": true
+  },
+  "formal_reward_rule": {
+    "all_12_cases_correct": true,
+    "minimum_speedup": 1.5
+  },
+  "groups": [
+    {
+      "group": 1,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.110948739,
+        1.116471218,
+        1.099702219
+      ],
+      "candidate_seconds": [
+        0.500529597,
+        0.484622093,
+        0.493831729
+      ],
+      "baseline_median_seconds": 1.110948739,
+      "candidate_median_seconds": 0.493831729,
+      "speedup": 2.2496503844531217,
+      "baseline_time_ratio": 1.0152486725135907,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    },
+    {
+      "group": 2,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.108073357,
+        1.102899382,
+        1.095607419
+      ],
+      "candidate_seconds": [
+        0.492527305,
+        0.495275537,
+        0.502452618
+      ],
+      "baseline_median_seconds": 1.102899382,
+      "candidate_median_seconds": 0.495275537,
+      "speedup": 2.2268400104727966,
+      "baseline_time_ratio": 1.0113781065953151,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    },
+    {
+      "group": 3,
+      "order": "BCCBBC",
+      "baseline_seconds": [
+        1.106468643,
+        1.109624304,
+        1.096992055
+      ],
+      "candidate_seconds": [
+        0.489886154,
+        0.499894766,
+        0.503152858
+      ],
+      "baseline_median_seconds": 1.106468643,
+      "candidate_median_seconds": 0.499894766,
+      "speedup": 2.2134031365313396,
+      "baseline_time_ratio": 1.0115153514033426,
+      "formal_evidence_valid": true,
+      "scientific_checks_passed": 72,
+      "retry_count": 0
+    }
+  ],
+  "resource_receipt": {
+    "path": "freezes/resource-acceptance-local-001.json",
+    "sha256": "60ca58e3a592484a4396d46ca18dc308ebbfb2ceea0baa4eaf6705665cbd97e3"
+  },
+  "acceptance": {
+    "path": "logs/t3-formal-calibration-local-005/acceptance.json",
+    "sha256": "fb90ffb809b40217de15f11d7e795cd09dcdbe6c1a2f9b8ac098e19812fffeea"
+  },
+  "timing_contract": {
+    "path": "logs/t3-formal-calibration-local-005/timing-contract.json",
+    "sha256": "4c89a9b9ca76eb6ac58edc6bd808ab43c63a24c6d661a76558cfbfb54d0d2b6c"
+  },
+  "observation_policy": {
+    "path": "logs/t3-formal-calibration-local-005/observation-policy.json",
+    "sha256": "bbb6d7c309c88ca1feb03935358945f52fbfac17a0e9c120c75e04300ac77dc8"
+  },
+  "calibration_summary": {
+    "path": "logs/t3-formal-calibration-local-005/calibration/summary.json",
+    "sha256": "130b60ddd6b8b9bbe1aad970fed3bf73797081e19a47bae12877e8bf12ab2470"
+  },
+  "evidence_manifest": {
+    "path": "logs/t3-formal-calibration-local-005/evidence-manifest.json",
+    "sha256": "4efd3f14b100d32aa7946b1bb500ca97058f6c887ade7cce240c3c5102c0f799"
+  },
+  "source_manifest": {
+    "path": "logs/t3-formal-calibration-local-005/source-manifest.json",
+    "sha256": "55c34eee71e4e53f7d40f3eb943594ec2726cca6a3a6abb3ee45c149c6560396"
+  },
+  "data_manifest": {
+    "path": "logs/t3-formal-calibration-local-005/data-manifest.json",
+    "sha256": "21432b85cec87e41678c8228917f422a68be96856284224e4c1beb7e44504242"
+  },
+  "verification": {
+    "path": "logs/t3-formal-calibration-local-005/verification.json",
+    "sha256": "edc048cc89d3450ecd5554c63f85b01f2d988db531bf322034f6632fbc0a3342"
+  },
+  "prior_attempts": [
+    {
+      "path": "logs/t3-formal-calibration-local-001/acceptance.json",
+      "sha256": "6496bb15c19967b2fdc244da84490915eca0542878ef172875e38d7c2ef9abd1"
+    },
+    {
+      "path": "logs/t3-formal-calibration-local-002/acceptance.json",
+      "sha256": "322bdb3f5e5fc99d94a5ee6c67846250d191a2e54e6dc64ea3f5ccb72b1cf40e"
+    },
+    {
+      "path": "logs/t3-formal-calibration-local-003/acceptance.json",
+      "sha256": "125d0387c16a39762b9075bc74fa28a7e4c7e95493bd427613082bd9654f8ae4"
+    },
+    {
+      "path": "logs/t3-formal-calibration-local-004/acceptance.json",
+      "sha256": "7d07cc286d3fde5b5837991b92363fd536dac37fd064508a20655cff1ec0218a"
+    }
+  ],
+  "formal_study_frozen": false,
+  "formal_research_sessions": 0,
+  "final_test_scores_accessed": false,
+  "next_measurement_requires_new_observed_window": true
+}

@@ -1,0 +1,21 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "f0ed4687b241f9bc26ae923d4ed489a1c0f3f3ad1af8601eb72c3411468950eb",
+    "reason": "trusted relay output token quota exhausted",
+    "recorded_at": 1792741348.1994398,
+    "status": "research_timeout"
+  },
+  "attempt_status": "research_timeout",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g1",
+  "evaluations": [],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": 20,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792740239.553647,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-6615cd7900ba0750-heat-g1-r3/workspace"
+}

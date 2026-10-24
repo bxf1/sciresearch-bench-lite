@@ -1,0 +1,16 @@
+{
+  "adopted_processes_reaped": 0,
+  "all_candidate_processes_terminated": true,
+  "candidate_uid": 65534,
+  "clock": "CLOCK_MONOTONIC",
+  "execution_wall_seconds": 5.546609787,
+  "finished_monotonic_ns": 56717007372936,
+  "formal_timing": false,
+  "launcher_pid": 13,
+  "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+  "output_initially_empty": true,
+  "schema_version": 1,
+  "started_monotonic_ns": 56711460763149,
+  "timer_uid": 65533,
+  "timing_scope": "python_spawn_to_all_descendants_exit"
+}

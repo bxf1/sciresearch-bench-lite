@@ -1,0 +1,56 @@
+{
+  "candidate_id": "candidate-011",
+  "completed_at": 1792718397.908067,
+  "export_finished_at": 1792718397.309828,
+  "export_started_at": 1792718397.2312791,
+  "imported_source": "imported-2cd6418fd7b145edab0a365d1de6fff2",
+  "original_r_source": "probe",
+  "received_at": 1792718397.230165,
+  "record_sha256": "949e219c03ab477c135a9cba7363346e575ed7849a7b04d8b3b7749ed35ecbcf",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "2cd6418fd7b145edab0a365d1de6fff2",
+    "source": "probe",
+    "version": 1
+  },
+  "request_id": "2cd6418fd7b145edab0a365d1de6fff2",
+  "response": {
+    "candidate_id": "candidate-011",
+    "feedback": {
+      "artifact_valid": false,
+      "attempt_status": "invalid_artifact",
+      "cpu_seconds": 0.217325,
+      "formal_timing": false,
+      "memory_peak_bytes": 29347840,
+      "public_check_status": "not_run",
+      "public_evaluation_wall_seconds": 0.596715500112623,
+      "research_budget_exhausted": false,
+      "wall_seconds": 0.085784224,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "invalid_artifact",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 0.217325,
+        "execution_wall_seconds": 0.085784224,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 29347840,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 0.23771033296361566,
+        "reason": "output filename not allowlisted",
+        "research_timeout_seconds": 1309.9205529163592,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 0.5945062092505395
+      }
+    },
+    "ok": true,
+    "request_id": "2cd6418fd7b145edab0a365d1de6fff2",
+    "source_hash": "74332b602c3828dc3f87f484bfaa6c7259ef5a08d3c7f9452e7d0d065e239ddb"
+  },
+  "status": "completed"
+}

@@ -1,0 +1,32 @@
+{
+  "exclusivity_evidence": {
+    "path": "exclusive-window.json",
+    "sha256": "41639da8454a99b15d7bd0afbc4d4acf6fb37f8ea246b0776cd9eea76d94fbad"
+  },
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "resource_evidence": {
+    "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/resource-acceptance-local-002/summary.json",
+    "sha256": "bd333f53d9785f56deb975b7c31aabb98e39e9b97e8d4af18f301b2f777dce2f"
+  },
+  "resources": {
+    "filesystem_depth": 32,
+    "filesystem_entries": 2000,
+    "heat_ode_worker_seconds": 120,
+    "judge_seconds": 1200,
+    "max_evaluations": 20,
+    "output_bytes": 268435456,
+    "poisson_worker_seconds": 60,
+    "research_memory_bytes": 4294967296,
+    "research_seconds": 1800,
+    "research_vcpu": 4,
+    "source_bytes": 20971520,
+    "source_files": 1000,
+    "tmp_bytes": 67108864,
+    "worker_memory_bytes": 4294967296,
+    "worker_pids": 128,
+    "worker_swap_bytes": 0,
+    "worker_threads": 1,
+    "worker_vcpu": 1
+  },
+  "status": "frozen"
+}

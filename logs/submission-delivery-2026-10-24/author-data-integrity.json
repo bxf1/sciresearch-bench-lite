@@ -1,0 +1,7 @@
+{
+  "archive": "author-data-v0.3.tar.gz",
+  "sha256": "b4dcff0acd251c9060ce73faf11b85d61217445334017339ec7eba15e33ca68b",
+  "bytes": 27088532,
+  "files": 1364,
+  "purpose": "Author-side reproducibility only. Never expose private truth or entropy to research container."
+}

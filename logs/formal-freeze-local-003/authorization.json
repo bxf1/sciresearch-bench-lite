@@ -1,0 +1,10 @@
+{
+  "formal_hidden_scores_accessed": false,
+  "interpretation": "Per independent research session cumulative output upper limit 200000 tokens; each request remains capped at 4096. Research 1800 seconds and 20 evaluations unchanged.",
+  "old_dispatcher_action": "SIGSTOP parent only; current ODE child 22738 continues to its normal close.",
+  "old_dispatcher_pid": 22736,
+  "protocol": "Fresh version of the same 15-session matrix with new identities; preserve both previous versions and all attempts.",
+  "request": "\u9884\u7b97\u52a0\u5927\u4e00\u70b9\uff0c\u52a0\u5230\u4e0a\u965020w token",
+  "request_safety_cap": "Scale the existing 512-request guard in proportion to 32768 -> 200000 output tokens, to 3125 requests (within the existing hard maximum 4096).",
+  "source": "direct user message in this conversation"
+}

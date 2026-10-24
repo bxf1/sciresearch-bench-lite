@@ -1,0 +1,10 @@
+task,contrast,paired_scientific_n,paired_score_n,pairs,median_delta_score,min_delta_score,max_delta_score
+heat,g1-g3,3,3,"[{""repeat"":1,""delta_score"":2.098600520469091,""delta_reward"":0},{""repeat"":2,""delta_score"":0.0,""delta_reward"":0},{""repeat"":3,""delta_score"":0.0,""delta_reward"":0}]",0.0,0.0,2.098600520469091
+heat,g2-g3,3,3,"[{""repeat"":1,""delta_score"":-4.321561663947108,""delta_reward"":-1},{""repeat"":2,""delta_score"":19.553466778833197,""delta_reward"":0},{""repeat"":3,""delta_score"":0.0,""delta_reward"":0}]",0.0,-4.321561663947108,19.553466778833197
+heat,g1-g2,3,3,"[{""repeat"":1,""delta_score"":6.420162184416199,""delta_reward"":1},{""repeat"":2,""delta_score"":-19.553466778833197,""delta_reward"":0},{""repeat"":3,""delta_score"":0.0,""delta_reward"":0}]",0.0,-19.553466778833197,6.420162184416199
+ode,g1-g3,1,1,"[{""repeat"":1,""delta_score"":-2.5171145864009077,""delta_reward"":0}]",-2.5171145864009077,-2.5171145864009077,-2.5171145864009077
+ode,g2-g3,1,1,"[{""repeat"":1,""delta_score"":-0.27474949237780777,""delta_reward"":0}]",-0.27474949237780777,-0.27474949237780777,-0.27474949237780777
+ode,g1-g2,1,1,"[{""repeat"":1,""delta_score"":-2.2423650940231,""delta_reward"":0}]",-2.2423650940231,-2.2423650940231,-2.2423650940231
+poisson,g1-g3,1,1,"[{""repeat"":1,""delta_score"":44.30807640649213,""delta_reward"":1}]",44.30807640649213,44.30807640649213,44.30807640649213
+poisson,g2-g3,0,0,[],null,null,null
+poisson,g1-g2,0,0,[],null,null,null

@@ -1,11 +1,16 @@
 """Host-owned research records and snapshots, outside the research workspace."""
 from __future__ import annotations
 import fcntl
+import math
 import os
 from pathlib import Path
 import time
 from .artifact_gate import regular_tree, snapshot_source, MAX_SOURCE, MAX_FILES, ArtifactError
 from .common import canonical, digest, read_json, write_json, tree_hashes
+
+def remaining_seconds(state):
+    budget = state["budget_seconds"]
+    return math.inf if budget is None else state["started_at"] + budget - time.time()
 
 class Registry:
     def __init__(self, root):
@@ -37,9 +42,9 @@ class Registry:
         with (self.root / ".lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
             state = read_json(self.root / "state.json")
-            if state["closed"] or time.time() >= state["started_at"] + state["budget_seconds"]:
+            if state["closed"] or remaining_seconds(state) <= 0:
                 raise ValueError("research deadline reached")
-            if len(state["evaluations"]) >= state["max_evaluations"]:
+            if state["max_evaluations"] is not None and len(state["evaluations"]) >= state["max_evaluations"]:
                 raise ValueError("evaluation budget exhausted")
             workspace = Path(state["workspace"])
             # Every accepted request consumes a slot, including invalid source or worker failure.
@@ -50,14 +55,14 @@ class Registry:
             self._event("evaluate_accepted", {"id":candidate_id,"path":relative_source})
             try:
                 if prepare_source is not None:
-                    remaining = state["started_at"] + state["budget_seconds"] - time.time()
+                    remaining = remaining_seconds(state)
                     if remaining <= 0:
                         raise ArtifactError("research deadline reached before source preparation")
                     try:
                         relative_source = prepare_source(relative_source, candidate_id, remaining)
                     except Exception as exc:
                         raise ArtifactError("source preparation failed: " + type(exc).__name__ + ": " + str(exc)[:1024]) from exc
-                    if time.time() >= state["started_at"] + state["budget_seconds"]:
+                    if remaining_seconds(state) <= 0:
                         raise ArtifactError("research deadline reached during source preparation")
                 snapshot = self.root / "snapshots" / candidate_id
                 snapshot_source(workspace, relative_source, snapshot)
@@ -68,7 +73,7 @@ class Registry:
                 for p in snapshot.rglob("*"):
                     p.chmod(0o555 if p.is_dir() else 0o444)
                 snapshot.chmod(0o555)
-                remaining = max(0, state["started_at"] + state["budget_seconds"] - time.time())
+                remaining = max(0, remaining_seconds(state))
                 if remaining <= 0:
                     raise ArtifactError("research deadline reached while snapshotting")
                 try:
@@ -89,7 +94,7 @@ class Registry:
         with (self.root / ".lock").open("a") as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
             state=read_json(self.root / "state.json")
-            if state["closed"] or time.time() >= state["started_at"]+state["budget_seconds"]:
+            if state["closed"] or remaining_seconds(state) <= 0:
                 raise ValueError("research is closed")
             exists=any(row["id"]==candidate_id and row["source_hash"] is not None and "completed_at" in row for row in state["evaluations"])
             if not exists:

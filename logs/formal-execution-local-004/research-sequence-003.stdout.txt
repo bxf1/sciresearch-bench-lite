@@ -1,0 +1,14 @@
+{"event": "starting", "sequence": 5, "run_id": "research-6615cd7900ba0750-ode-g2-r1"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-ode-g2-r1", "exit_code": 0, "status": "research_frozen", "attempt_status": "completed", "cleanup_errors": {}, "bridge_errors": []}
+{"event": "verified", "completed": 5, "evaluations": 4, "first_id": "candidate-001", "final_id": "candidate-001"}
+{"event": "starting", "sequence": 6, "run_id": "research-6615cd7900ba0750-ode-g3-r1"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-ode-g3-r1", "exit_code": 0, "status": "research_frozen", "attempt_status": "research_timeout", "cleanup_errors": {}, "bridge_errors": []}
+{"event": "verified", "completed": 6, "evaluations": 7, "first_id": "candidate-007", "final_id": "candidate-007"}
+{"event": "starting", "sequence": 7, "run_id": "research-6615cd7900ba0750-poisson-g3-r1"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-poisson-g3-r1", "exit_code": 0, "status": "research_frozen", "attempt_status": "research_timeout", "cleanup_errors": {}, "bridge_errors": []}
+{"event": "verified", "completed": 7, "evaluations": 3, "first_id": null, "final_id": null}
+{"event": "starting", "sequence": 8, "run_id": "research-6615cd7900ba0750-poisson-g2-r1"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-poisson-g2-r1", "exit_code": 0, "status": "research_frozen", "attempt_status": "completed", "cleanup_errors": {}, "bridge_errors": []}
+{"event": "verified", "completed": 8, "evaluations": 8, "first_id": "candidate-003", "final_id": "candidate-007"}
+{"event": "starting", "sequence": 9, "run_id": "research-6615cd7900ba0750-poisson-g1-r1"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-poisson-g1-r1", "exit_code": 1, "status": "research_invalid", "attempt_status": "infrastructure_failed", "cleanup_errors": {}, "bridge_errors": []}

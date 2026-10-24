@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/submission/solve.py", line 3, in <module>
+    open('/workspace/probe_info.json','w').write(json.dumps(info,indent=1))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/probe_info.json'

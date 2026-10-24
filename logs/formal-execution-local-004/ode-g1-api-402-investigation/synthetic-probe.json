@@ -1,0 +1,12 @@
+{
+  "complete": false,
+  "formal": false,
+  "http_status": 402,
+  "model": "deepseek-flash",
+  "observed_at_unix": 1792722312.224658,
+  "request_output_limit": 4096,
+  "request_sha256": "6298c4ecf31778bd11212d6aa0540429a042694622e434d025b52a9c1abe546b",
+  "response_sha256": "59df540eeacea9aa89d8ce2712c2bb9cd1af92a55fc430694259d534ced3bac1",
+  "scope": "Single synthetic short connectivity probe after HTTP 402 and available=true. Same model endpoint, sampling and per-request cap; no scientific data or hidden tests.",
+  "usage_observations": []
+}

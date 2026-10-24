@@ -1,0 +1,5 @@
+{
+  "observed_date": "2026-10-23",
+  "scope": "Read-only documentation check during research. The compatibility page lists request/message/tool fields, but does not provide field-by-field streaming usage monotonicity rules. It therefore does not resolve the older usage_decreased failures. No admission/accounting rule changed.",
+  "source": "https://api-docs.deepseek.com/guides/anthropic_api/"
+}

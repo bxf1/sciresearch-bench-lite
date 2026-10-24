@@ -1,0 +1,5 @@
+{
+  "status": "rejected_audit_draft",
+  "reason": "Reused final checkpoints retain exact copies of the first checkpoint repeat evidence with replay_count=0. Draft incorrectly required the evidence list to be absent. The accepted audit compares source hashes and repeat records, then counts no new physical replay. No experimental records changed.",
+  "draft": "audit_final_delivery-draft-002.py"
+}

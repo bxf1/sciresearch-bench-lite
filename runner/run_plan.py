@@ -20,7 +20,7 @@ from .phase import ACCEPTANCE, IMAGE_ID, RESOURCES, checked_hashes, validate_fre
 
 GROUPS = ("g1", "g2", "g3")
 BLOCKS = (("heat", 1), ("ode", 1), ("poisson", 1), ("heat", 2), ("heat", 3))
-MODEL_FIXED = {"model_id": "deepseek-v4-pro", "pi_version": "0.84.1",
+MODEL_FIXED = {"model_id": "deepseek-flash", "pi_version": "0.84.1",
                "harbor_commit": "38b9be0164a910015a0be9a37ba6e8e78c562dfe",
                "api_format": "anthropic_messages", "endpoint": "https://api.deepseek.com/anthropic"}
 PARAMETERS = ("thinking", "temperature", "output_token_limit")
@@ -45,12 +45,17 @@ class RunPlanError(ValueError):
         super().__init__("Formal research is blocked: " + "; ".join(blockers))
 
 
-def matrix(order_entropy):
+def matrix(order_entropy, *, identity_revision=None):
     """Hash-ranking gives a stable randomized order independent of library PRNGs."""
     if not isinstance(order_entropy, str) or SHA256.fullmatch(order_entropy) is None:
         raise ValueError("order entropy must be 32 bytes encoded as lowercase hex")
     entropy = bytes.fromhex(order_entropy)
-    namespace = uuid.UUID(bytes=bytes.fromhex(digest(b"run-plan-v1\0" + entropy)[:32]))
+    identity = b"run-plan-v1\0" + entropy
+    if identity_revision is not None:
+        if not isinstance(identity_revision, str) or re.fullmatch(r"[a-z][a-z0-9-]{0,63}", identity_revision) is None:
+            raise ValueError("invalid protocol identity revision")
+        identity += b"\0revision\0" + identity_revision.encode()
+    namespace = uuid.UUID(bytes=bytes.fromhex(digest(identity)[:32]))
     plan_id = "research-" + namespace.hex[:16]
     runs = []
     for block, (task, repeat) in enumerate(BLOCKS, 1):
@@ -80,16 +85,17 @@ def snapshots(project):
     return result
 
 
-def create_draft(project, *, order_entropy=None):
+def create_draft(project, *, order_entropy=None, identity_revision=None):
     project = Path(project)
     entropy = order_entropy if order_entropy is not None else secrets.token_hex(32)
-    plan_id, runs = matrix(entropy)
+    plan_id, runs = matrix(entropy, identity_revision=identity_revision)
     tool_config = {"files": {name: file_hash(project / name) for name in trusted_tool_files(project)},
                    "skills": [], "extensions": [], "mcp_servers": [], "resume": False,
                    "runtime_tools": None, "runtime_enforcement": None}
     return {
         "schema_version": 1, "contract_version": VERSION, "status": "draft", "formal_ready": False,
         "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "plan_id": plan_id,
+        **({"identity_revision": identity_revision} if identity_revision is not None else {}),
         "order": {"algorithm": ORDER_ALGORITHM, "entropy_hex": entropy,
                   "scope": "Independent of private data-generation entropy; condition order within task/repeat blocks."},
         "runs": runs, "run_matrix_sha256": digest(canonical(runs)),
@@ -137,7 +143,15 @@ def start_blockers(plan, project):
         order = plan["order"]
         if order["algorithm"] != ORDER_ALGORITHM:
             raise ValueError("unsupported ordering algorithm")
-        plan_id, expected = matrix(order["entropy_hex"])
+        revision = plan.get("identity_revision")
+        plan_id, expected = matrix(order["entropy_hex"], identity_revision=revision)
+        if revision is not None:
+            prior = read_json(_file_ref(project, plan.get("previous_plan")))
+            if prior.get("order") != order or prior.get("plan_id") == plan_id:
+                raise ValueError("revision must preserve the previous order with fresh identities")
+            stable = lambda rows: [{k: v for k, v in row.items() if k not in ("run_id", "session_id", "workdir")} for row in rows]
+            if stable(prior["runs"]) != stable(expected):
+                raise ValueError("revision changed the previous matrix or budgets")
         if plan.get("plan_id") != plan_id or plan.get("runs") != expected:
             raise ValueError("matrix differs from the predeclared 15 independent sessions or their full budgets")
         if plan.get("run_matrix_sha256") != digest(canonical(expected)):
@@ -223,6 +237,23 @@ def start_blockers(plan, project):
             raise ValueError("wire tool inventory differs from frozen runtime tools")
         if policy.get("wire_system_sha256") != digest(encoded(system)) or policy.get("wire_tools_sha256") != digest(encoded(inventory)):
             raise ValueError("wire system/tools hash does not bind the retained policy JSON")
+        if "native_compaction" in policy:
+            from .policy_capture import COMPACTION_SOURCES
+            from .model_relay import Limits
+            compaction = policy["native_compaction"]
+            if not isinstance(compaction, dict) or compaction.get("status") != "verified" or compaction.get("tools") != "absent":
+                raise ValueError("native compaction policy must be verified and require absent tools")
+            summary = read_json(_file_ref(project, compaction.get("system")))
+            if not isinstance(summary, list) or not summary or digest(encoded(summary)) != compaction.get("wire_system_sha256"):
+                raise ValueError("native compaction system hash mismatch")
+            Limits(expected_system_sha256=policy["wire_system_sha256"], expected_tools_sha256=policy["wire_tools_sha256"],
+                   expected_compaction_system_sha256=compaction["wire_system_sha256"])
+            audit = read_json(_file_ref(project, compaction.get("installed_audit")))
+            sources = compaction.get("source_sha256")
+            if (not isinstance(sources, dict) or set(sources) != set(COMPACTION_SOURCES)
+                    or any(not isinstance(sha, str) or SHA256.fullmatch(sha) is None
+                           or audit.get("source_sha256", {}).get(name) != sha for name, sha in sources.items())):
+                raise ValueError("native compaction installed source hashes are unbound")
     except (ValueError, OSError, TypeError) as exc:
         blockers.append("tool configuration: " + str(exc))
 

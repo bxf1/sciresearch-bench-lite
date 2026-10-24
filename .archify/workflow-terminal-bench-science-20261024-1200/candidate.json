@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Terminal-Bench-Science：研究工作流与任务质量闭环",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-terminal-bench-science-20261024-1200/terminal-bench-science.html",
+    "repository": {
+      "url": "https://github.com/harbor-framework/terminal-bench-science",
+      "revision": "de562a2863f372795d7dd09ff28876f779b3aa33"
+    }
+  },
+  "lanes": [
+    {
+      "id": "author",
+      "label": "任务与数据构造"
+    },
+    {
+      "id": "run",
+      "label": "执行与独立评分"
+    },
+    {
+      "id": "audit",
+      "label": "诊断与改进"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "domain",
+      "lane": "author",
+      "col": 0,
+      "label": "专家科研工作流",
+      "sublabel": "生命／物理／地球／数学／工程",
+      "type": "external",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 20,
+          "end_line": 45
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "lane": "author",
+      "col": 1,
+      "label": "任务包与数据",
+      "sublabel": "指令、环境、测试与参考解",
+      "type": "database",
+      "width": 180,
+      "sources": [
+        {
+          "path": "AGENTS.md",
+          "line": 5,
+          "end_line": 39
+        }
+      ]
+    },
+    {
+      "id": "oracle",
+      "lane": "author",
+      "col": 2,
+      "label": "环境与判题验收",
+      "sublabel": "Oracle 通过／Nop 失败",
+      "type": "security",
+      "width": 180,
+      "sources": [
+        {
+          "path": "TASK_REVIEW_AUTOMATION.md",
+          "line": 26,
+          "end_line": 44
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "lane": "run",
+      "col": 2,
+      "label": "Harbor 执行",
+      "sublabel": "终端 Agent 产生文件",
+      "type": "backend",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 56,
+          "end_line": 88
+        }
+      ]
+    },
+    {
+      "id": "judge",
+      "lane": "run",
+      "col": 3,
+      "label": "独立验证器",
+      "sublabel": "检查产物并写 reward",
+      "type": "security",
+      "width": 180,
+      "sources": [
+        {
+          "path": "tasks/mathematical-sciences/applied-mathematics/traffic-flux-inversion/tests/test.sh",
+          "line": 6,
+          "end_line": 38
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "lane": "audit",
+      "col": 3,
+      "label": "测试结果与轨迹",
+      "sublabel": "数值门槛与迁移检查",
+      "type": "database",
+      "width": 180,
+      "sources": [
+        {
+          "path": "tasks/mathematical-sciences/applied-mathematics/traffic-flux-inversion/tests/test_flux.py",
+          "line": 81,
+          "end_line": 145
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "lane": "audit",
+      "col": 2,
+      "label": "试验质量归因",
+      "sublabel": "规范、判题、阻塞与难度",
+      "type": "backend",
+      "width": 180,
+      "sources": [
+        {
+          "path": "rubrics/trial-analysis.toml",
+          "line": 1,
+          "end_line": 166
+        }
+      ]
+    },
+    {
+      "id": "repair",
+      "lane": "audit",
+      "col": 1,
+      "label": "任务版本修订",
+      "sublabel": "专家复核后更新任务",
+      "type": "external",
+      "width": 180,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 92,
+          "end_line": 130
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "from": "domain",
+      "to": "data",
+      "label": "实现"
+    },
+    {
+      "id": "e1",
+      "from": "data",
+      "to": "oracle",
+      "label": "验收"
+    },
+    {
+      "id": "e2",
+      "from": "oracle",
+      "to": "agent",
+      "label": "运行"
+    },
+    {
+      "id": "e3",
+      "from": "agent",
+      "to": "judge",
+      "label": "产物"
+    },
+    {
+      "id": "e4",
+      "from": "judge",
+      "to": "status",
+      "label": "记录"
+    },
+    {
+      "id": "e5",
+      "from": "status",
+      "to": "analysis",
+      "label": "归因"
+    },
+    {
+      "id": "e6",
+      "from": "analysis",
+      "to": "repair",
+      "label": "复核"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "以具体任务展示验证边界",
+      "items": [
+        "traffic-flux-inversion 在独立环境以非特权用户执行候选；清理后由可信测试评分。",
+        "测试门槛和隔离配置属于该任务，不能据此概括每条任务的全部实现。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "持续改进的对象",
+      "items": [
+        "任务质量分析帮助作者修正歧义、判题漏洞和非科学障碍。",
+        "持续维护 benchmark 与 Agent 自身递归改进是不同机制。"
+      ]
+    }
+  ]
+}

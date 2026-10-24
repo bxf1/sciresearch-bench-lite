@@ -1,0 +1,20 @@
+{
+  "calls": 242,
+  "tool_names": {
+    "bash": 242
+  },
+  "unique_arguments": 15,
+  "largest_identical_call_count": 228,
+  "longest_identical_streak": 228,
+  "tool_results": 242,
+  "error_tool_results": 0,
+  "dominant_arguments_sha256": [
+    [
+      "35a2b1b9259cc3fc3e2fc227eb8507446d56257153949d8b487f8723d751d69d",
+      228
+    ]
+  ],
+  "last_tool": "bash",
+  "observed_at_unix": 1792717403.89822,
+  "scope": "Read-only snapshot during research; no tool output or model input modified."
+}

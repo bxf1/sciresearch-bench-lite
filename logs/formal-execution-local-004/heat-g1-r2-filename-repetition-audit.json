@@ -1,0 +1,20 @@
+{
+  "attempt_id": "research-6615cd7900ba0750-heat-g1-r2-a001",
+  "native_logs": [
+    {
+      "path": "research-runs/research-6615cd7900ba0750-heat-g1-r2/auxiliary-agent/pi/sessions/2026-10-23T05-54-14-406Z_01a16752-fd06-7503-be5f-1712726e574d.jsonl",
+      "sha256": "39274277fa931b44133b2daacff1778eebf134ff337930b0733d8271c26cebd8"
+    }
+  ],
+  "normalization": "Replace only whole filenames matching \\bexplore\\d+\\.py\\b with explore<N>.py; no other changes.",
+  "bash_calls": 523,
+  "raw_unique_commands": 523,
+  "normalized_unique_commands": 9,
+  "dominant_normalized_command_count": 515,
+  "longest_normalized_identical_streak": 515,
+  "dominant_normalized_command_sha256": "479530c8b5c8d35486e68dd7533889424a4292035f0f9133c0d09aa5e7611591",
+  "dominant_normalized_command": "cd /workspace && cat > explore<N>.py <<'EOF'\nimport numpy as np, json, glob\nnp.set_printoptions(precision=4, suppress=True)\nfor d in sorted(glob.glob('/input/cases/*/')):\n    m=json.load(open(d+'metadata.json'))\n    o=np.genfromtxt(d+'observations.csv',delimiter=',',names=True)\n    x,t,y=o['x'],o['t'],o['y']\n    kap=m['kappa']; sig=m['sigma']; K=32\n    A=np.sin(np.pi*np.outer(x,np.arange(1,K+1)))*np.exp(-kap*np.pi**2*np.outer(t,np.arange(1,K+1)**2))\n    D=np.diag(np.arange(1,K+1)**2.0)\n    M=A@np.linalg.inv(D)\n    U,s,Vt=np.linalg.svd(M,full_matrices=False)\n    uty=U.T@y\n    print(d.split('/')[-2], 'm',len(y),'sigma',round(sig,4))\n    print('  s:',s[:12])\n    print('  |uty|:',np.abs(uty[:12]))\n    print('  |uty|/s:',np.abs(uty[:12])/s[:12])\n    print('  tail median |uty|:',np.median(np.abs(uty[15:])), 'sigma',sig)\nEOF\npython explore<N>.py",
+  "matched_tool_results": 515,
+  "distinct_tool_result_text_hashes": 1,
+  "scope": "Closed attempt only; literal filename normalization diagnoses repeated command content, not internal model reasoning. No hidden data accessed."
+}

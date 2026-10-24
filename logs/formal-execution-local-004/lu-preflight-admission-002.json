@@ -1,0 +1,8 @@
+{
+  "additional_preflight_limit_this_invocation": 1,
+  "no_running_containers": true,
+  "observed_at_unix": 1792743233.109778,
+  "prior_lu_baseline_attempts": 0,
+  "reason": "One observation showed unrelated VPN processes above the fixed 5%-of-one-core quiet threshold. No LU baseline attempt or final score access occurred. Preserve the rejected window and admit LU only after a fresh 30-second quiet preflight; do not stop user applications or relax the observer. This creates no scientific remeasurement or research retry.",
+  "rejected_preflight_sha256": "fec27cee619c6bde5406f4d5c0201bac77b8ca1d56fae3f61a534383e15a636d"
+}

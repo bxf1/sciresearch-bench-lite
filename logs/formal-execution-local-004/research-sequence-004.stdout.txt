@@ -1,0 +1,2 @@
+{"event": "starting", "sequence": 10, "run_id": "research-6615cd7900ba0750-heat-g3-r2"}
+{"event": "finished", "run_id": "research-6615cd7900ba0750-heat-g3-r2", "exit_code": 1, "status": "research_invalid", "attempt_status": "api_failed", "cleanup_errors": {}, "bridge_errors": []}

@@ -1,0 +1,9 @@
+{
+  "kind": "synthetic_recovery_probe",
+  "hidden_data_accessed": false,
+  "max_output_tokens": 8,
+  "timestamp": 1792847633.4355142,
+  "complete": false,
+  "http_status": 402,
+  "error_category": "upstream_http_error"
+}

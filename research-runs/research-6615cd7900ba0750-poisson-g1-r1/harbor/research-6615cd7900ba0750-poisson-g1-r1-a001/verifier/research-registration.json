@@ -1,0 +1,11 @@
+{
+  "attempt_status": "infrastructure_failed",
+  "evaluation_status": "not_run",
+  "final_id": null,
+  "first_id": null,
+  "formal": true,
+  "registration_status": "registered",
+  "registry_sha256": "c3c65bfd3a65dc9dd50665aa121cf94a7f26d112484dd6046a9b1f3dfcd67266",
+  "reward": null,
+  "score": null
+}

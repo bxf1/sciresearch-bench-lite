@@ -1,0 +1,25 @@
+{
+  "formal": false,
+  "scope": "One synthetic availability probe after two terminal upstream transport errors; no scientific data.",
+  "observed_at_unix": 1792732825.127109,
+  "model": "deepseek-flash",
+  "request_output_limit": 4096,
+  "request_sha256": "6ce01a3d7bcf61c63c2a65c97fe362fca35867d24fba02f2789ccd4bc8222e6d",
+  "http_status": 200,
+  "complete": true,
+  "usage_observations": [
+    {
+      "input_tokens": 8,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "input_tokens": 8,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1
+    }
+  ],
+  "response_sha256": "39a46f54e928a0176f631c8d1123119bb53aa91ef77ee472553fe01ebde547df"
+}

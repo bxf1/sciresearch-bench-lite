@@ -148,6 +148,7 @@ def run_t3_attempt(snapshot, *, baseline_source, timing_contract=None, profile=N
                 evidence=lease.evidence
             except (ValueError,OSError,InfrastructureError) as exc:
                 qualification_error=str(exc)
+                evidence=lease.evidence
     attempt={"attempt_id":output.name,"baseline_method":"jacobi","candidate_method":candidate_method,
              "samples":rows,"evidence":evidence,"parent_attempt":parent_attempt,
              "interference_resolution":interference_resolution}

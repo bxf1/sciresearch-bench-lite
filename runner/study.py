@@ -70,8 +70,11 @@ def session_spec(project, plan_path, run_id, attempt_id, parent_attempt=None):
                 "session_output_limit": plan["model"]["output_token_limit"],
                 "request_output_limit": min(4096, plan["model"]["output_token_limit"]),
                 "relay_ttl_seconds": 2700,
+                "max_requests": plan.get("runtime_policy", {}).get("max_requests", 512),
                 "expected_system_sha256": policy["wire_system_sha256"],
-                "expected_tools_sha256": policy["wire_tools_sha256"]}
+                "expected_tools_sha256": policy["wire_tools_sha256"],
+                "expected_compaction_system_sha256": policy.get("native_compaction", {}).get("wire_system_sha256"),
+                "expected_compaction_sources": policy.get("native_compaction", {}).get("source_sha256", {})}
     return {"project": str(project), "plan_path": str(Path(plan_path).resolve()), "settings": settings,
             "output_root": str(output), "public_input": str(project / "tasks" / row["task"] / "environment/public-dev"),
             "research_image": plan["research_images"][row["task"]]["image_id"], "numeric_image": freeze["image_id"]}

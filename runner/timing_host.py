@@ -12,7 +12,10 @@ import copy
 import fcntl
 import json
 import math
+import os
 from pathlib import Path
+import subprocess
+import tempfile
 import time
 import uuid
 
@@ -24,13 +27,78 @@ from .worker import docker
 LOCK_PATH = Path(__file__).resolve().parents[1] / "build/t3-measurement.lock"
 
 
+class DockerEventStream:
+    """Live events with create-only barriers; no history cap or cross-host clock."""
+    def __init__(self, image, execute):
+        self.image, self.execute = image, execute
+        self.output = tempfile.TemporaryFile()
+        self.errors = tempfile.TemporaryFile()
+        self.process = None
+        self.barriers = []
+
+    def _events(self):
+        # pread leaves the shared file position used by the CLI writer untouched.
+        raw = os.pread(self.output.fileno(), os.fstat(self.output.fileno()).st_size, 0)
+        return [json.loads(line) for line in raw.split(b"\n")[:-1] if line]
+
+    def _barrier(self):
+        # Creating a container emits an ordered event but never executes its code.
+        # Retry only the initial subscription handshake, before any measured W.
+        for _ in range(3 if not self.barriers else 1):
+            if self.process.poll() is not None:
+                raise ValueError("live Docker event stream exited before its barrier")
+            identifier = self.execute("create", "--network", "none", "--label", "sciresearch-timing-marker=true",
+                                      self.image, "true").stdout.strip()
+            try:
+                deadline = time.monotonic() + 2
+                while time.monotonic() < deadline:
+                    if self.process.poll() is not None:
+                        raise ValueError("live Docker event stream interrupted")
+                    if any(event.get("Action") == "create" and event.get("Actor", {}).get("ID") == identifier
+                           for event in self._events()):
+                        self.barriers.append(identifier)
+                        return
+                    time.sleep(0.02)
+            finally:
+                self.execute("rm", identifier)
+        raise ValueError("live Docker event stream did not observe its barrier")
+
+    def start(self):
+        try:
+            self.process = subprocess.Popen(["docker", "events", "--filter", "type=container", "--format", "{{json .}}"],
+                                            stdout=self.output, stderr=self.errors)
+            self._barrier()
+        except BaseException:
+            self.close()
+            raise
+
+    def finish(self):
+        self._barrier()
+        events = self._events()
+        return {"mode": "live_stream_with_create_only_barriers", "barrier_container_ids": list(self.barriers),
+                "event_count": len(events), "start_events": [event for event in events if event.get("Action") == "start"]}
+
+    def close(self):
+        if self.process is not None and self.process.poll() is None:
+            self.process.terminate()
+            try:
+                self.process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                self.process.kill()
+                self.process.wait(timeout=5)
+        self.output.close()
+        self.errors.close()
+
+
 class TimingLease:
-    def __init__(self, contract_path, *, execute=None, lock_path=None):
+    def __init__(self, contract_path, *, execute=None, lock_path=None, event_stream_factory=None):
         self.path = Path(contract_path).resolve(strict=True)
         self.execute = execute or docker
         self.lock_path = Path(lock_path) if lock_path is not None else LOCK_PATH
         self.handle = None
         self.references = {}
+        self.event_stream_factory = event_stream_factory or DockerEventStream
+        self.event_stream = None
 
     def _reference(self, reference):
         if not isinstance(reference, dict) or set(reference) != {"path", "sha256"}:
@@ -81,6 +149,9 @@ class TimingLease:
         try:
             fcntl.flock(self.handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
             self._check_host()
+            self.event_stream = self.event_stream_factory(self.image, self.execute)
+            self.event_stream.start()
+            self._check_host()
         except Exception:
             self.__exit__(None, None, None)
             raise
@@ -101,11 +172,11 @@ class TimingLease:
             raise ValueError("each timing sample requires a distinct fresh worker container")
         allowed = set(worker_ids)
         allowed.update(row.get("judge_container_id") for row in samples)
-        events = self.execute("events", "--since", str(self.started), "--until", str(time.time()),
-                              "--filter", "type=container", "--filter", "event=start", "--format", "{{json .}}").stdout
+        capture = self.event_stream.finish()
+        self._check_host()
+        self.evidence["docker_event_capture"] = capture
         observed = []
-        for line in events.splitlines():
-            event = json.loads(line)
+        for event in capture["start_events"]:
             identifier = (event.get("Actor") or {}).get("ID", event.get("id"))
             if identifier not in allowed:
                 raise ValueError("unrelated container started during the timing window")
@@ -141,6 +212,8 @@ class TimingLease:
         return output
 
     def __exit__(self, *unused):
+        if self.event_stream is not None:
+            self.event_stream.close()
         if self.handle is not None and not self.handle.closed:
             fcntl.flock(self.handle.fileno(), fcntl.LOCK_UN)
             self.handle.close()
