@@ -7,7 +7,7 @@
 
 **最终科学结论来自原正式批次：6 次 reward=1、8 次有效未成功、1 次计时无效。** 三个任务均完成作者基线与端到端 Agent 验证，但小样本不足以证明指导组优劣。可比较的 8 次研究中，2 次改进、1 次退化、5 次未改变源码，表明可观察到迭代收益，也存在反例。
 
-2026-10-24 23:09，按用户“没有结果的就不用跑了，直接整理之前的实验报告”的要求，补跑已取消。Poisson G3 的最新尝试在 155,939 输出 token 时被用户终止，没有公开评估或有效提交；其余五个 Heat 会话未启动即取消。未进行补跑隐藏评分，Poisson G2 仍无有效新计时。取消、HTTP 402 和启动失败均单独保留，不覆盖正式结果，不补成科学零分。详情见[补跑取消与诊断](supplemental-results-2026-10-24.md)及[最终机器可读汇总](../results/submission-2026-10-24/final-summary.json)。
+本报告按作业的五项核心任务组织，以已完成的 formal-003 实验为主要证据。完整数据目录见[数据交付索引](../data/README.md)，关键执行片段见[日志与证据链](evidence.md)，复现步骤见[复现指南](reproduction.md)。另行取消的选择性补跑不进入本报告的科学分母，具体记录放在[补充附录](supplemental-results-2026-10-24.md)。
 
 ## 1. 调研结论与问题选择
 
@@ -27,7 +27,7 @@
 
 每例保留输入、真值、噪声及中间量、潜变量指纹和 QC；每个文件绑定 SHA256。Poisson 易档可复用固定算子，但 RHS 独立；这不增加独立研究样本数。详细分布、公式和输出约定见[任务卡](task_cards.md)、[Heat](heat.md)、[ODE](ode.md)、[Poisson](poisson.md)以及 `authoring/` 源码。
 
-公开材料包含三任务的 dev 数据；完整原始数值数据在作者侧保存，研究运行时不挂载到 R。数据发布与执行时隔离是不同要求：复现者可拥有作者数据，但运行 Agent 时必须继续使用受控入口，不能把整个仓库挂入研究容器。
+仓库直接包含三任务共 18 个 dev 实例。完整 90 例输入、参考真值、QC 与生成记录作为 Release 的 `author-data-v0.3.tar.gz` 发布，并提供[逐例索引](../data/case-index.csv)及[1,364 个文件的哈希清单](../data/file-manifest.json)。按 9 个 task/split 重新核对，90/90 例 QC 通过，难度数量分别符合 2/4/4 例每档；原公开输入与 Release 对应文件逐字节一致。数据发布与执行时隔离是不同要求：复现者可拥有作者数据，但运行 Agent 时必须继续使用受控入口，不能把整个仓库挂入研究容器。
 
 ## 3. 任务输入、工具、产物与成功条件
 
@@ -87,6 +87,18 @@ Heat/ODE 各候选独立重放三次；Poisson 采用 B,C,C,B,B,C 交错次序�
 
 这些检查支持三种不同难度来源：Heat 不能只拟合观测，需要稳定正则化；ODE 不能直接对噪声做差分，需要结构和去噪；Poisson 数值正确不代表高效，重复 RHS 使分解复用有价值。弱方法正常失败是基准有区分度的证据之一，但这些少量方法不能证明任务对所有 Agent 都有同样难度。
 
+### 5.1 分难度复核与解释
+
+以下由既有逐例结果重新汇总，不增加实验。每档只有 4 个不同 final-test 实例，每例 3 次独立重放；先对重复取中位数，再对 4 例取均值，不能把 12 次执行算成 12 个独立样本。[全部 33 行分难度表](../results/delivery-analysis/baseline-by-difficulty.csv)保留每种作者方法。
+
+| 固定参考 | 易档均分 | 中档均分 | 难档均分 | 各档三次均通过的实例 |
+|---|---:|---:|---:|---|
+| Heat Tikhonov | 93.622 | 95.195 | 90.997 | 4/4、4/4、4/4 |
+| ODE SG/STLSQ fixed | 98.934 | 96.744 | 90.490 | 4/4、4/4、4/4 |
+| Poisson LU | 不按单例定义效率分 | 不按单例定义效率分 | 不按单例定义效率分 | 数值正确性均 4/4 |
+
+ODE 固定参考的均分随噪声档位下降，符合导数估计更敏感的机制；Heat 中档高于易档，说明少量随机实例的得分未必严格单调，不能将“难度标签”当成经过大样本验证的排名。Heat 的未正则化 LS 和 ODE 原始差分在三个档位均为 0/4 科学通过，而各自强方法均通过，支持任务对方法选择的区分。Poisson 三种方法的 12 例均数值正确，差异主要出现在完整批次效率：CG 0.199×、Jacobi-CG 约 1×、LU 2.249×；因此其效率门槛不能由逐例正确率替代。
+
 ## 6. 端到端 Agent 结果与迭代
 
 formal-003 使用 DeepSeek-V4.1-Flash-1017 的 `deepseek-flash` 路由、temperature=0、top_p=1、thinking disabled。每请求最多 4,096 输出 token，每会话累计 200,000，30 分钟、20 次公开评估；原生上下文压缩计入预算。15 次研究中 Heat 每组 3 次，ODE/Poisson 每组各 1 次。供应商路由名与不可观察的底层模型修订不能等同。
@@ -125,6 +137,27 @@ formal-003 使用 DeepSeek-V4.1-Flash-1017 的 `deepseek-flash` 路由、tempera
 
 Heat G3 r1 是完整端到端例子：公开研究产生首次与最终候选，宿主快照冻结后在同一隐藏集重放，分数从 21.394 升至 91.532，通过数从 0/12 升至 12/12。Poisson G1 从 37.096 升至 44.308，速度从 2.163× 到 2.513×。反例 Heat G2 r1 从 93.791 降为 87.210、通过数从 12 降为 11，保留退化结果。
 
+### 6.1 端到端证据：Heat G3 r1
+
+这条会话展示“Agent 编程和实验 → 公开工具反馈 → 可信登记 → 研究关闭 → 独立隐藏评分”的完整链条。原生宿主事件在关闭 registry 时保留以下字段节选（完整行与文件 SHA256 见[日志证据](evidence.md)）：
+
+```json
+{
+  "kind": "registry_closed",
+  "fields": {
+    "attempt_status": "completed",
+    "final_id": "candidate-018",
+    "first_id": "candidate-017"
+  }
+}
+```
+
+独立评分记录中的 `diagnostics.first` 为 `candidate-017`，`replay_count=3`、`score=21.394330950607056`、`reward=0`；`diagnostics.final` 为 `candidate-018`，`replay_count=3`、`score=91.53191716630722`、`reward=1`。两个源码哈希不同，验证了产物确实修订。最终结果不是 Agent 自报分数；三次重放分别对同一冻结的 12 例判断。原始文件：[研究关闭事件](../research-runs/research-6615cd7900ba0750-heat-g3-r1/host-events.jsonl)、[独立评分结果](../research-runs/research-6615cd7900ba0750/final-replays/research-6615cd7900ba0750-heat-g3-r1-a001/result.json)。
+
+进一步对照两个候选源码，唯一差异是正则化参数默认值从 `lam=1e-4` 改为 `lam=0.1`，其余 32 模态、观测矩阵和输出路径不变（[完整逐行 diff](../results/delivery-analysis/heat-g3-source.diff)）。求解器解的是 `(AᵀA+λI)c=Aᵀy`。例如公开例 `13a841e7b6de490e68f4`，归一化观测残差 R 从 0.90585 升至 0.98150，而 roughness 从 2774.714 降至 44.839；两个公开反馈均确认产物合法，且不包含隐藏初场误差。原始反馈片段见[日志证据](evidence.md)。
+
+这与病态逆问题中“增加正则化、容许稍大的观测残差、抑制不稳定高频”的机制一致；最终隐藏误差与通过数验证了这次修改的效果。它也说明单纯最小化公开观测残差并不等于恢复真实初场。这里是既有代码和反馈的事后解释，不能据此补写 Agent 未记录的假设，也不证明所有数据上更大的 λ 都更好。
+
 8 个有候选且可比较的会话中，2 个提升、1 个退化、5 个源码不变；6 个无提交及 1 个计时无效不能判断迭代变化。first→final 是同会话观测，不是反馈因果试验。各指导组样本太小，不能宣称某组稳定更优；三任务分数也不直接跨任务平均。
 
 15 次有效研究累计已知输出 2,324,341 token；连同 4 个无效 attempt，已知输出 2,591,496，代理 charged 为 2,613,274。差额是失败请求的保守额度，真实用量未知，不是实测账单。有效研究墙钟合计约 5.276 小时；请求、候选 CPU 和隐藏 CPU 等详见原报告。不能把输出 token 当作总输入或货币费用。
@@ -142,6 +175,8 @@ Heat G3 r1 是完整端到端例子：公开研究产生首次与最终候选，
 | 本次聊天中断 | 宿主控制器退出而研究容器继续调用 | 已保留无效 attempt、清理遗留资源并采用关联恢复；不是科学零分 |
 
 已完成的可信验证包括：独立 GT/QC、产物 schema 与恶意路径测试、错误模型与弱基线、环境边界与资源检查、冻结文件哈希、重复重放和连续宿主计时观察。第三版冻结时 357 项测试通过；token-only 支持新增后 360 项通过。测试通过只覆盖已测行为，不能作为完美安全隔离或数学实现永远正确的证明。
+
+原冻结测试日志末行为 `357 passed, 2 warnings in 14.07s`。资源验收、研究停止、registry 关闭、三次隐藏重放、Poisson G2 拒绝窗口和全局 93 个 worker 批次均有原始记录，集中节选在[日志与证据链](evidence.md)。本次交付整理只重新汇总表格并验证文件一致性，没有调用模型或重跑候选，不能把交付审计当作新增科学重放。
 
 ## 8. 已取消补跑：范围、重复循环与解释边界
 
@@ -164,13 +199,14 @@ Heat G3 r1 是完整端到端例子：公开研究产生首次与最终候选，
 
 | 作业要求 | 交付位置 |
 |---|---|
-| Benchmark 调研、论文与源码、逻辑框图 | [survey.md](survey.md) 与 `.archify/` 两张带源码引用的 HTML |
-| 至少 3 条完整任务及数据 | `tasks/{heat,ode,poisson}/`、[task_cards.md](task_cards.md)、`authoring/` |
+| 1. Benchmark 调研、论文与源码、逻辑框图 | [survey.md](survey.md) 与 `.archify/` 两张带源码引用的 HTML |
+| 2. 选择一个领域 | 科学计算；本报告第 1 节与三条数学任务 |
+| 3. 至少 3 条完整任务及数据 | `tasks/{heat,ode,poisson}/`、[task_cards.md](task_cards.md)、[90 例数据索引](../data/README.md)、`authoring/` |
 | 环境配置与基线 | `environment/`、`freezes/host-requirements.lock`、`baselines/` |
-| 自动独立评分与隐藏隔离 | `judge/`、`runner/`、[protocol.md](protocol.md) |
-| 全任务基线与端到端结果 | [formal-results](formal-results-2026-10-23.md)、`results/formal-study-003/` |
+| 4. 自动独立评分与隐藏隔离 | `judge/`、`runner/`、[protocol.md](protocol.md) |
+| 5. 全任务基线与端到端结果 | 本报告第 5–7 节、[日志节选](evidence.md)、[formal-results](formal-results-2026-10-23.md)、`results/formal-study-003/` |
 | 失败模式、难度、可靠性与扩展 | 本报告第 5–9 节、[提交诊断](submission-diagnosis-2026-10-23.md) |
 | 补跑取消、重复循环与清理证据 | [补充实验](supplemental-results-2026-10-24.md) |
-| 安装、复现与证据入口 | 仓库 [README](../README.md)、[复现指南](reproduction.md) |
+| 安装、复现与证据入口 | 仓库 [README](../README.md)、[复现指南](reproduction.md)、`python3 tools/verify_delivery.py` |
 
 历史报告中的“尚未冻结”“不再重试”“未推送”是当时记录，不是 2026-10-24 新授权后的当前状态。以本报告、补充实验状态和当前 README 为交付入口，原始证据不覆盖。

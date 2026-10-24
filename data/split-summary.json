@@ -1,0 +1,105 @@
+{
+  "instances": 90,
+  "source": "mathematically generated synthetic data",
+  "splits": [
+    {
+      "task": "heat",
+      "split": "public-dev",
+      "instances": 6,
+      "levels": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "qc_passed": 6
+    },
+    {
+      "task": "heat",
+      "split": "author-calibration",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    },
+    {
+      "task": "heat",
+      "split": "final-test",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    },
+    {
+      "task": "ode",
+      "split": "public-dev",
+      "instances": 6,
+      "levels": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "qc_passed": 6
+    },
+    {
+      "task": "ode",
+      "split": "author-calibration",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    },
+    {
+      "task": "ode",
+      "split": "final-test",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    },
+    {
+      "task": "poisson",
+      "split": "public-dev",
+      "instances": 6,
+      "levels": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "qc_passed": 6
+    },
+    {
+      "task": "poisson",
+      "split": "author-calibration",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    },
+    {
+      "task": "poisson",
+      "split": "final-test",
+      "instances": 12,
+      "levels": {
+        "0": 4,
+        "1": 4,
+        "2": 4
+      },
+      "qc_passed": 12
+    }
+  ]
+}

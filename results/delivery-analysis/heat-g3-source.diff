@@ -1,0 +1,5 @@
+--- research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/snapshots/candidate-017/solve.py
++++ research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/snapshots/candidate-018/solve.py
+@@ -53 +53 @@
+-def solve_case(case_dir, lam=1e-4):
++def solve_case(case_dir, lam=0.1):

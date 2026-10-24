@@ -1,0 +1,23 @@
+{
+  "formal_sessions": 15,
+  "valid_scores": 14,
+  "reward_one": 6,
+  "iteration": {
+    "improved": 2,
+    "declined": 1,
+    "unchanged": 5,
+    "unavailable": 7
+  },
+  "inputs": [
+    {
+      "path": "results/formal-study-003/checkpoints.csv",
+      "sha256": "0a90f3983c885d3efdb2a78f5bf10052d993cd8ef5ceaf1cbd41d54bf0671ec0"
+    },
+    {
+      "path": "results/formal-study-003/baseline-cases.csv",
+      "sha256": "1e821581f5ace03c403036023e926e7614446e4d4007c9534625b835ef26d209"
+    }
+  ],
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}
