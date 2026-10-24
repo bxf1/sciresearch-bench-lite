@@ -1,0 +1,26 @@
+{
+  "author_baseline_methods": 11,
+  "formal_plan": {
+    "path": "freezes/research-run-plan-formal-003.json",
+    "sha256": "47356b71b90acb1178dc86f94ec4f58041d933d00a67b4594cc0c697b568a033"
+  },
+  "formal_results": {
+    "path": "results/formal-study-003/summary.json",
+    "sha256": "435207e1a52fe5c6afe0d9b1d471ff2853ed9b0f1a18961172aaf39f779c84e4"
+  },
+  "formal_sessions": 15,
+  "generated_instances": 90,
+  "invalid_scoring_sessions": 1,
+  "normal_no_submission_sessions": 6,
+  "original_results_replaced": false,
+  "status": "finalized_from_completed_formal_experiments",
+  "submitted_sessions": 9,
+  "successful_sessions": 6,
+  "supplemental_closure": {
+    "path": "logs/supplemental-2026-10-24/user-stop-confirmation.json",
+    "sha256": "0ef2f63383bfe560d0c676b30c6c2683d8126a628f48ca3b2b1076b227593d03"
+  },
+  "supplemental_in_scientific_denominator": false,
+  "valid_scoring": 14,
+  "valid_unsuccessful_sessions": 8
+}

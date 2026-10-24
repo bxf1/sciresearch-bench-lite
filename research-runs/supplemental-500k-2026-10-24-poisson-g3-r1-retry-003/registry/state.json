@@ -1,0 +1,21 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "570eee865055af5b77fcbeecfbd9c4956da933f66b7962defcdeb5e46606dfb8",
+    "reason": "host trial was cancelled",
+    "recorded_at": 1792854565.514677,
+    "status": "cancelled"
+  },
+  "attempt_status": "cancelled",
+  "budget_seconds": null,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": null,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792851602.133224,
+  "task": "poisson",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-003/workspace"
+}

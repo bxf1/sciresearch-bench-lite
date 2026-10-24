@@ -14,6 +14,9 @@ def main():
     parser.add_argument('--plan',type=Path,default=PLAN)
     args=parser.parse_args()
     plan=read(args.plan)
+    closure_path=ROOT/'logs/supplemental-2026-10-24/user-stop-confirmation.json'
+    closure=read(closure_path) if closure_path.exists() else {}
+    cancelled={row['run_id']:row['status'] for row in closure.get('runs',[])} if closure.get('plan',{}).get('path')==args.plan.resolve().relative_to(ROOT).as_posix() else {}
     ledger=ROOT/'research-runs'/plan['plan_id']/'manifest.json'
     entries={row['run_id']:row for row in read(ledger)['attempts']} if ledger.exists() else {}
     rows=[]
@@ -23,6 +26,8 @@ def main():
         row={'run_id':identifier,'task':settings['task'],'group':settings['group'],'repeat':settings['repeat'],
              'status':entry.get('status','not_started'),'output_token_limit':settings['session_output_limit'],
              'research_wall_seconds_limit':settings['research_seconds']}
+        if identifier in cancelled:
+            row.update(recorded_research_status=row['status'],status=cancelled[identifier])
         root=ROOT/'research-runs'/identifier
         if (root/'registry/state.json').exists():
             state=read(root/'registry/state.json')

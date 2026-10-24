@@ -1,0 +1,11 @@
+{
+  "authorization": "User cancelled runs without results and requested consolidation of previously completed experimental reports.",
+  "cancel_remaining_five": true,
+  "do_not_start_scoring_pipeline": true,
+  "frozen_settings_changed": false,
+  "pid": 81449,
+  "plan": "freezes/supplemental-500k-2026-10-24-recovery-003.json",
+  "requested_at": 1792854557.715673,
+  "signal": "SIGINT",
+  "status": "requested"
+}

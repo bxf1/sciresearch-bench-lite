@@ -1,0 +1,106 @@
+{
+  "authorization": {
+    "path": "logs/supplemental-2026-10-24/user-stop-request.json",
+    "sha256": "dd5f4a1b70399399d27f3b6a5b8e0b75ec1c42db88c9208a492a1cd5f77166bb"
+  },
+  "automation_deleted": true,
+  "cleanup_confirmed": true,
+  "closed_at": "2026-10-24T23:09:26.814680+08:00",
+  "current_attempt": {
+    "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-003/result.json",
+    "sha256": "f70c2cf4cc71b225964bedb9fc836c2808f5af3e083d13111df1bfeb9ac23804"
+  },
+  "frozen_source_hashes_unchanged": true,
+  "hidden_replay_performed": false,
+  "no_new_scientific_scores": true,
+  "original_g2_retiming": "prior_preflight_rejected; no new timing performed; original invalid result retained",
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-003.json",
+    "sha256": "2376ca1b528e17f34315342ce010827e967821f05ea6388b1939675d6b7878b5"
+  },
+  "repetition_audit": {
+    "path": "logs/supplemental-2026-10-24/repetition-audit-final.json",
+    "sha256": "af554cfe0c704c9592cf7353316fd1e2de72ad52834b61d4119da4acb0c3b668"
+  },
+  "runs": [
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g3",
+      "known_output_tokens": 155939,
+      "public_evaluations": 0,
+      "repeat": 1,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-003",
+      "score": null,
+      "status": "cancelled_by_user",
+      "task": "poisson"
+    },
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g3",
+      "known_output_tokens": 0,
+      "public_evaluations": 0,
+      "repeat": 2,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-heat-g3-r2",
+      "score": null,
+      "status": "cancelled_before_start",
+      "task": "heat"
+    },
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g1",
+      "known_output_tokens": 0,
+      "public_evaluations": 0,
+      "repeat": 2,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-heat-g1-r2",
+      "score": null,
+      "status": "cancelled_before_start",
+      "task": "heat"
+    },
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g3",
+      "known_output_tokens": 0,
+      "public_evaluations": 0,
+      "repeat": 3,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-heat-g3-r3",
+      "score": null,
+      "status": "cancelled_before_start",
+      "task": "heat"
+    },
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g1",
+      "known_output_tokens": 0,
+      "public_evaluations": 0,
+      "repeat": 3,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-heat-g1-r3",
+      "score": null,
+      "status": "cancelled_before_start",
+      "task": "heat"
+    },
+    {
+      "final_id": null,
+      "first_id": null,
+      "group": "g2",
+      "known_output_tokens": 0,
+      "public_evaluations": 0,
+      "repeat": 3,
+      "reward": null,
+      "run_id": "supplemental-500k-2026-10-24-heat-g2-r3",
+      "score": null,
+      "status": "cancelled_before_start",
+      "task": "heat"
+    }
+  ],
+  "status": "cancelled_by_user"
+}

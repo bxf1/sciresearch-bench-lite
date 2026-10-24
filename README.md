@@ -4,11 +4,11 @@
 
 已公开发布：[完整证据与作者数据](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。5 个附件的服务端 SHA256 与本地文件一致。
 
-**[提交报告](docs/submission-report-2026-10-24.md)** · **[Benchmark 调研与逻辑图](docs/survey.md)** · **[复现指南](docs/reproduction.md)** · **[50 万 token 补充实验](docs/supplemental-results-2026-10-24.md)**
+**[最终实验报告](docs/submission-report-2026-10-24.md)** · **[Benchmark 调研与逻辑图](docs/survey.md)** · **[复现指南](docs/reproduction.md)** · **[补跑取消与诊断记录](docs/supplemental-results-2026-10-24.md)**
 
 2026-10-24 当前状态：三任务共 90 例数据完成生成与 QC；11 种作者基线、15 次原正式研究及全部隐藏评分操作已执行。原批次 9 次有提交、6 次正常无提交，有效评分 14/15（包括零分）；Poisson G2 计时无效留空。各任务均有端到端 Agent 评测，原结果满足三任务基线与至少一条端到端验证的交付要求。
 
-用户授权的补充批次在 2026-10-24 晚间确认账户恢复后重新启动（接口 HTTP 200，当前恢复计划 recovery-003）：仅补跑原 6 个无提交会话，每会话 500,000 输出 token、无研究总墙钟上限；Poisson G3 先运行，五个 Heat 会话按冻结顺序排队。全部研究关闭后自动执行隐藏重放及 Poisson G2 原候选计时准入。此前 HTTP 402 和启动失败记录保留，尚无新增有效科学成绩；详情见补充报告。补跑是选择性新批次，不能合并为等预算指导比较。
+最终报告以原正式实验为依据：15 次研究中，6 次 reward=1、8 次有效未成功（含 6 次正常无提交）、1 次计时无效。2026-10-24 23:09 按用户要求取消无结果的补跑并直接整理既有报告：Poisson G3 在 155,939 输出 token 时终止，公开评估及有效提交均为 0；其余五个 Heat 会话未启动即取消。控制器、容器和专用网络已清理，定期检查已删除，不再排队执行研究或计时。取消记录不加入原科学分母，也不记作新的科学零分。见[最终汇总](results/submission-2026-10-24/final-summary.json)与补跑诊断。
 
 [原正式结果与成本](docs/formal-results-2026-10-23.md) · [机器可读结果](results/formal-study-003/summary.json) · [失败诊断](docs/submission-diagnosis-2026-10-23.md) · [数据卡](docs/task_cards.md)
 

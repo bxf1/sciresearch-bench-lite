@@ -1,0 +1,152 @@
+{
+  "bench_evaluate_calls": 0,
+  "bench_finalize_calls": 0,
+  "compactions": 3,
+  "longest_consecutive": [
+    {
+      "arguments": {
+        "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp\nimport solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlevels=[solve.Level(A,(128,128))]\ncur=levels[-1]\nn=cur.shape[0]\nR=solve._restrict_matrix(n)\nP=R.T.tocsr()\nAc=(R@cur.A@P).tocsr()\nAc.sort_indices()\nlv=solve.Level(Ac,(n//2,n//2))\nlv.P=P; lv.R=R\nlevels.append(lv)\nprint([(l.n,l.P is None) for l in levels])\nprint(solve.build_hierarchy.__code__.co_consts)\nprint(solve.build_hierarchy.__code__.co_names)\nprint(solve.build_hierarchy.__code__.co_varnames)\nprint(solve.build_hierarchy.__code__.co_code[0:0])\nEOF"
+      },
+      "completed_tools": 236,
+      "count": 236,
+      "first_line": 602,
+      "first_timestamp": "2026-10-24T14:43:31.419Z",
+      "last_line": 1072,
+      "last_timestamp": "2026-10-24T15:01:39.426Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 236,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 236
+    },
+    {
+      "arguments": {
+        "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp\nimport solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlevels=[solve.Level(A,(128,128))]\ncur=levels[-1]\nn=cur.shape[0]\nR=solve._restrict_matrix(n)\nP=R.T.tocsr()\nAc=(R@cur.A@P).tocsr()\nAc.sort_indices()\nlv=solve.Level(Ac,(n//2,n//2))\nlv.P=P; lv.R=R\nlevels.append(lv)\nprint([(l.n,l.P is None) for l in levels])\nprint(solve.build_hierarchy.__code__.co_consts)\nprint(solve.build_hierarchy.__code__.co_names)\nprint(solve.build_hierarchy.__code__.co_varnames)\nprint(solve.build_hierarchy.__code__.co_code[0:0])\nEOF"
+      },
+      "completed_tools": 188,
+      "count": 188,
+      "first_line": 218,
+      "first_timestamp": "2026-10-24T14:28:22.910Z",
+      "last_line": 592,
+      "last_timestamp": "2026-10-24T14:42:59.651Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 188,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 188
+    },
+    {
+      "arguments": {
+        "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp, solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlv=solve.build_hierarchy(A,(128,128))\nprint([(l.n,l.P is None) for l in lv])\nEOF"
+      },
+      "completed_tools": 107,
+      "count": 107,
+      "first_line": 1090,
+      "first_timestamp": "2026-10-24T15:02:32.712Z",
+      "last_line": 1302,
+      "last_timestamp": "2026-10-24T15:09:18.753Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 107,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 107
+    },
+    {
+      "arguments": {
+        "command": "cd /workspace && python -c \"\nimport numpy as np, scipy.sparse as sp\nfor cid in ['842bbbfcbaa65cf8c192','ca507d4594ca727cc307','d8e78b2115453c1ce7d6','c001ae8fbb3f52c2c996']:\n    A=sp.load_npz(f'/input/cases/{cid}/A.npz').tocsr()\n    n=int(round(A.shape[0]**0.5))\n    d=A.diagonal()\n    print('==',cid,'n',n)\n    bad=0; tot=0; ex=[]\n    for i in range(A.shape[0]):\n        s,e=A.indptr[i],A.indptr[i+1]\n        for j,v in zip(A.indices[s:e],A.data[s:e]):\n            if j==i: continue\n            tot+=1\n            if abs(v + np.sqrt(d[i]*d[j])/4)>1e-9*abs(d[i]):\n                bad+=1\n                if len(ex)<8: ex.append((i,j,v,-np.sqrt(d[i]*d[j])/4, d[i],d[j]))\n    print(' bad',bad,'/',tot)\n    for e in ex: print('  ',e)\n\"\n"
+      },
+      "completed_tools": 53,
+      "count": 53,
+      "first_line": 20,
+      "first_timestamp": "2026-10-24T14:20:32.972Z",
+      "last_line": 124,
+      "last_timestamp": "2026-10-24T14:24:45.384Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 53,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 53
+    }
+  ],
+  "method": "Native session assistant toolCall entries counted once; exact tool name and JSON arguments, no normalization.",
+  "scope": "Post-hoc observation, not model-internal causal diagnosis; no hidden data or intervention.",
+  "source": {
+    "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-003/auxiliary-agent/pi/sessions/2026-10-24T14-20-04-798Z_01a16e48-753e-7a8d-b5c1-945dd994275b.jsonl",
+    "sha256": "781caeee97922bea8ce93503b8c2a3a6b3710110207b36d52cd166895b65bae9"
+  },
+  "terminal_streak": {
+    "arguments": {
+      "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp, solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlv=solve.build_hierarchy(A,(128,128))\nprint([(l.n,l.P is None) for l in lv])\nEOF"
+    },
+    "completed_tools": 107,
+    "count": 107,
+    "first_line": 1090,
+    "first_timestamp": "2026-10-24T15:02:32.712Z",
+    "last_line": 1302,
+    "last_timestamp": "2026-10-24T15:09:18.753Z",
+    "tool_errors": 0,
+    "tool_name": "bash",
+    "unique_call_ids": 107,
+    "unique_output_hashes": 1,
+    "unique_response_ids": 107
+  },
+  "tool_counts": {
+    "bash": 644,
+    "edit": 2,
+    "read": 1,
+    "write": 1
+  },
+  "top_repeated": [
+    {
+      "arguments": {
+        "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp\nimport solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlevels=[solve.Level(A,(128,128))]\ncur=levels[-1]\nn=cur.shape[0]\nR=solve._restrict_matrix(n)\nP=R.T.tocsr()\nAc=(R@cur.A@P).tocsr()\nAc.sort_indices()\nlv=solve.Level(Ac,(n//2,n//2))\nlv.P=P; lv.R=R\nlevels.append(lv)\nprint([(l.n,l.P is None) for l in levels])\nprint(solve.build_hierarchy.__code__.co_consts)\nprint(solve.build_hierarchy.__code__.co_names)\nprint(solve.build_hierarchy.__code__.co_varnames)\nprint(solve.build_hierarchy.__code__.co_code[0:0])\nEOF"
+      },
+      "completed_tools": 424,
+      "count": 424,
+      "first_line": 218,
+      "first_timestamp": "2026-10-24T14:28:22.910Z",
+      "last_line": 1072,
+      "last_timestamp": "2026-10-24T15:01:39.426Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 424,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 424
+    },
+    {
+      "arguments": {
+        "command": "cd /workspace && python - <<'EOF'\nimport numpy as np, scipy.sparse as sp, solve\nA=sp.load_npz('/input/cases/d8e78b2115453c1ce7d6/A.npz').tocsr()\nlv=solve.build_hierarchy(A,(128,128))\nprint([(l.n,l.P is None) for l in lv])\nEOF"
+      },
+      "completed_tools": 107,
+      "count": 107,
+      "first_line": 1090,
+      "first_timestamp": "2026-10-24T15:02:32.712Z",
+      "last_line": 1302,
+      "last_timestamp": "2026-10-24T15:09:18.753Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 107,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 107
+    },
+    {
+      "arguments": {
+        "command": "cd /workspace && python -c \"\nimport numpy as np, scipy.sparse as sp\nfor cid in ['842bbbfcbaa65cf8c192','ca507d4594ca727cc307','d8e78b2115453c1ce7d6','c001ae8fbb3f52c2c996']:\n    A=sp.load_npz(f'/input/cases/{cid}/A.npz').tocsr()\n    n=int(round(A.shape[0]**0.5))\n    d=A.diagonal()\n    print('==',cid,'n',n)\n    bad=0; tot=0; ex=[]\n    for i in range(A.shape[0]):\n        s,e=A.indptr[i],A.indptr[i+1]\n        for j,v in zip(A.indices[s:e],A.data[s:e]):\n            if j==i: continue\n            tot+=1\n            if abs(v + np.sqrt(d[i]*d[j])/4)>1e-9*abs(d[i]):\n                bad+=1\n                if len(ex)<8: ex.append((i,j,v,-np.sqrt(d[i]*d[j])/4, d[i],d[j]))\n    print(' bad',bad,'/',tot)\n    for e in ex: print('  ',e)\n\"\n"
+      },
+      "completed_tools": 53,
+      "count": 53,
+      "first_line": 20,
+      "first_timestamp": "2026-10-24T14:20:32.972Z",
+      "last_line": 124,
+      "last_timestamp": "2026-10-24T14:24:45.384Z",
+      "tool_errors": 0,
+      "tool_name": "bash",
+      "unique_call_ids": 53,
+      "unique_output_hashes": 1,
+      "unique_response_ids": 53
+    }
+  ],
+  "total_calls": 648,
+  "unique_call_ids": 648,
+  "unique_commands": 66
+}
