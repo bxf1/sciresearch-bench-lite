@@ -1,0 +1,9 @@
+{
+  "error_category": "RuntimeError",
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-002.json",
+    "sha256": "8e20af80ee648bc6305d07d2a238492ec515580e953df9c82fb1f1f411673862"
+  },
+  "stage": "stopped",
+  "updated_at": 1792851442.418061
+}

@@ -1,0 +1,19 @@
+{
+  "attempts": [
+    {
+      "attempt_status": "infrastructure_failed",
+      "original_run_id": "research-6615cd7900ba0750-poisson-g3-r1",
+      "result": {
+        "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-002/result.json",
+        "sha256": "a3db2e6c730edcb91548427f985310d7fe403764a1f70ce778e2636e6d96c515"
+      },
+      "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-002",
+      "status": "research_invalid"
+    }
+  ],
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-002.json",
+    "sha256": "8e20af80ee648bc6305d07d2a238492ec515580e953df9c82fb1f1f411673862"
+  },
+  "study_kind": "selective_supplemental"
+}

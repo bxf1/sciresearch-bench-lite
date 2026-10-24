@@ -1,0 +1,23 @@
+{
+  "attempt_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-002-a003",
+  "attempt_status": "infrastructure_failed",
+  "error": "Command '['docker', 'exec', '-i', '3eff09ac2263c4a373dc0507346e45c3378b79113c8e36f388693280fd84c530', 'python', '-I', '-c', \"import json,sys,urllib.request\\nconfig=json.load(sys.stdin)\\nheaders={'x-api-key':config['token']} if config.get('token') else {}\\nopener=urllib.request.build_opener(urllib.request.ProxyHandler({}))\\nwith opener.open(urllib.request.Request('http://127.0.0.1:8787'+config['path'],headers=headers),timeout=3) as response:\\n    data=response.read(65537)\\n    if len(data)>65536: raise ValueError('oversize relay response')\\n    print(json.dumps(json.loads(data)))\\n\"]' timed out after 5 seconds",
+  "evaluation_status": "not_run",
+  "formal": true,
+  "group": "g3",
+  "model_run_started": false,
+  "parent_attempt": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-001-a002",
+  "plan_ref": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-002.json",
+    "sha256": "8e20af80ee648bc6305d07d2a238492ec515580e953df9c82fb1f1f411673862"
+  },
+  "repeat": 1,
+  "replay_split": null,
+  "reward": null,
+  "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-002",
+  "score": null,
+  "session_id": "de136800-84dd-489a-aa8b-351d27dcf0c3",
+  "status": "research_invalid",
+  "study_phase": "public-dev",
+  "task": "poisson"
+}

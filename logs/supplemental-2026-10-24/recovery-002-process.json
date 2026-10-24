@@ -1,0 +1,12 @@
+{
+  "after_research": "all-six-closed barrier, hidden replay, original G2 timing-only; new output root",
+  "controller": "logs/supplemental-2026-10-24/recovery_002_controller.py",
+  "detached": true,
+  "output_token_limit": 500000,
+  "pid": 81101,
+  "plan": "freezes/supplemental-500k-2026-10-24-recovery-002.json",
+  "research_sessions": 6,
+  "research_wall_limit": null,
+  "sleep_inhibited_while_running": true,
+  "started_at": 1792851436.256198
+}

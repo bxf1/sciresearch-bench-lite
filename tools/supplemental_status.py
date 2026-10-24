@@ -1,15 +1,19 @@
 """Print current supplemental progress without reading hidden tests or credentials."""
 from pathlib import Path
+import argparse
 import json
 
 ROOT=Path(__file__).resolve().parents[1]
-PLAN=ROOT/'freezes/supplemental-500k-2026-10-24-recovery-001.json'
+PLAN=ROOT/'freezes/supplemental-500k-2026-10-24-recovery-003.json'
 
 def read(path):
     return json.loads(path.read_text())
 
 def main():
-    plan=read(PLAN)
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--plan',type=Path,default=PLAN)
+    args=parser.parse_args()
+    plan=read(args.plan)
     ledger=ROOT/'research-runs'/plan['plan_id']/'manifest.json'
     entries={row['run_id']:row for row in read(ledger)['attempts']} if ledger.exists() else {}
     rows=[]

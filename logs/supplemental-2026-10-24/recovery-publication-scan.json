@@ -1,0 +1,93 @@
+{
+  "files": [
+    {
+      "bytes": 14979,
+      "path": "README.md",
+      "sha256": "c38132a9a6dce153c731906d139bb9c6f2b69d54537086bae8da623ca2e5999b"
+    },
+    {
+      "bytes": 15137,
+      "path": "docs/submission-report-2026-10-24.md",
+      "sha256": "959f75b235a6c72cbaf6ba05368423ae2f5e8a8c8cecb331d6c8097c12f4a64c"
+    },
+    {
+      "bytes": 6187,
+      "path": "docs/supplemental-results-2026-10-24.md",
+      "sha256": "b09638a7db36e3af539c25682ef90962393423a9ab82f96dd27fd1f1713d06a9"
+    },
+    {
+      "bytes": 77767,
+      "path": "freezes/supplemental-500k-2026-10-24-recovery-002.json",
+      "sha256": "8e20af80ee648bc6305d07d2a238492ec515580e953df9c82fb1f1f411673862"
+    },
+    {
+      "bytes": 78228,
+      "path": "freezes/supplemental-500k-2026-10-24-recovery-003.json",
+      "sha256": "2376ca1b528e17f34315342ce010827e967821f05ea6388b1939675d6b7878b5"
+    },
+    {
+      "bytes": 372,
+      "path": "logs/supplemental-2026-10-24/api-recovery-probe.json",
+      "sha256": "5c4ecbd896b815f572bcffb770088035dd27b78d7a8835c577cb64586a67b08e"
+    },
+    {
+      "bytes": 450,
+      "path": "logs/supplemental-2026-10-24/recovery-002-process.json",
+      "sha256": "4d78ebc625a3280702e17ec77124e4c80b082bff29e5ff53d22d753e1c7eb7e7"
+    },
+    {
+      "bytes": 264,
+      "path": "logs/supplemental-2026-10-24/recovery-002-state.json",
+      "sha256": "e418158adc5dd8dfd79a0e15c204df1fdb281c05be370a799203a84b30fe760f"
+    },
+    {
+      "bytes": 2253,
+      "path": "logs/supplemental-2026-10-24/recovery-003-observation.json",
+      "sha256": "ad79ba2ca9ec8e76d17f40a24bf8b289c7f8d6083831256a1a89c4859afd8503"
+    },
+    {
+      "bytes": 450,
+      "path": "logs/supplemental-2026-10-24/recovery-003-process.json",
+      "sha256": "44d462bf1f59e4004607ea5c94b22d0b7dd01623e670b6e95a3ef4b40fa635bf"
+    },
+    {
+      "bytes": 2213,
+      "path": "logs/supplemental-2026-10-24/recovery_002_controller.py",
+      "sha256": "a57c1ec7ba3a2cb7c3b189ab401d0d540dc1079799b0fd870a78cd3320954662"
+    },
+    {
+      "bytes": 2213,
+      "path": "logs/supplemental-2026-10-24/recovery_003_controller.py",
+      "sha256": "5eb734693226b5298684a80fdbb025f67ed16797281c30dfa9bb52b0cb7da9dc"
+    },
+    {
+      "bytes": 4428,
+      "path": "logs/supplemental-2026-10-24/relay-preflight-002.json",
+      "sha256": "68013458fd4dc7dbc1e3b433b8e875cf267969f77dc5d33f389ca86db65920c8"
+    },
+    {
+      "bytes": 1570,
+      "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-002/relay-startup-failure.json",
+      "sha256": "993df48c7c487973a09441430d802ccac3fc80852dc6db6890f694c64a11e355"
+    },
+    {
+      "bytes": 1400,
+      "path": "research-runs/supplemental-500k-2026-10-24-poisson-g3-r1-retry-002/result.json",
+      "sha256": "a3db2e6c730edcb91548427f985310d7fe403764a1f70ce778e2636e6d96c515"
+    },
+    {
+      "bytes": 680,
+      "path": "research-runs/supplemental-500k-2026-10-24-recovery-002/manifest.json",
+      "sha256": "c0b8bf6ba2d1bf8c7f659a1fe5c2cdb266c4864d79bc28f73b20220b2d5e3aca"
+    },
+    {
+      "bytes": 2734,
+      "path": "tools/supplemental_status.py",
+      "sha256": "e445d45122df2987703c632d267f03826f63aa7059b3692b99e67fff5d0ebdbb"
+    }
+  ],
+  "known_credential_matches": 0,
+  "scanned_at": 1792851712.202107,
+  "scope": "Recovery plans, public startup evidence, controller and report updates; no live admission or live research logs.",
+  "staged_files": 17
+}

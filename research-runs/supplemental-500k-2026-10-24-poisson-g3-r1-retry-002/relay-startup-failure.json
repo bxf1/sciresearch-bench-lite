@@ -1,0 +1,25 @@
+{
+  "error": "TimeoutExpired: Command '['docker', 'exec', '-i', '3eff09ac2263c4a373dc0507346e45c3378b79113c8e36f388693280fd84c530', 'python', '-I', '-c', \"import json,sys,urllib.request\\nconfig=json.load(sys.stdin)\\nheaders={'x-api-key':config['token']} if config.get('token') else {}\\nopener=urllib.request.build_opener(urllib.request.ProxyHandler({}))\\nwith opener.open(urllib.request.Request('http://127.0.0.1:8787'+config['path'],headers=headers),timeout=3) as response:\\n    data=response.read(65537)\\n    if len(data)>65536: raise ValueError('oversize relay response')\\n    print(json.dumps(json.loads(data)))\\n\"]' timed out after 5 seconds",
+  "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+  "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+  "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+  "failure_cleanup": {
+    "container": {
+      "returncode": 0
+    },
+    "network": {
+      "returncode": 0
+    }
+  },
+  "formal": false,
+  "identity": "sciresearch-relay-045565d6ce2c",
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "max_requests": null,
+  "provider_endpoint": "https://api.deepseek.com/anthropic/v1/messages",
+  "provider_key_in_R": false,
+  "relay_source_sha256": "580af9e1efa4952527c4c7e86352275230e28e4d8a9ca2f588b47703d62a32d7",
+  "request_output_limit": 4096,
+  "session_output_limit": 500000,
+  "session_seconds": null,
+  "status": "failed"
+}

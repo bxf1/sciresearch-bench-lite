@@ -1,0 +1,76 @@
+{
+  "observed_at": 1792851708.6477172,
+  "plan": {
+    "path": "freezes/supplemental-500k-2026-10-24-recovery-003.json",
+    "sha256": "2376ca1b528e17f34315342ce010827e967821f05ea6388b1939675d6b7878b5"
+  },
+  "progress": {
+    "hidden_data_read": false,
+    "runs": [
+      {
+        "charged_output_tokens": 7520,
+        "closed": false,
+        "completed_requests": 24,
+        "final_id": null,
+        "first_id": null,
+        "group": "g3",
+        "known_output_tokens": 7520,
+        "output_token_limit": 500000,
+        "public_evaluations": 0,
+        "repeat": 1,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-poisson-g3-r1-retry-003",
+        "status": "running",
+        "successful_requests": 24,
+        "task": "poisson"
+      },
+      {
+        "group": "g3",
+        "output_token_limit": 500000,
+        "repeat": 2,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-heat-g3-r2",
+        "status": "not_started",
+        "task": "heat"
+      },
+      {
+        "group": "g1",
+        "output_token_limit": 500000,
+        "repeat": 2,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-heat-g1-r2",
+        "status": "not_started",
+        "task": "heat"
+      },
+      {
+        "group": "g3",
+        "output_token_limit": 500000,
+        "repeat": 3,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-heat-g3-r3",
+        "status": "not_started",
+        "task": "heat"
+      },
+      {
+        "group": "g1",
+        "output_token_limit": 500000,
+        "repeat": 3,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-heat-g1-r3",
+        "status": "not_started",
+        "task": "heat"
+      },
+      {
+        "group": "g2",
+        "output_token_limit": 500000,
+        "repeat": 3,
+        "research_wall_seconds_limit": null,
+        "run_id": "supplemental-500k-2026-10-24-heat-g2-r3",
+        "status": "not_started",
+        "task": "heat"
+      }
+    ],
+    "study_kind": "selective_supplemental"
+  },
+  "scope": "Startup observation only; subsequent live ledger and result files take precedence."
+}
