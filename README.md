@@ -2,6 +2,8 @@
 
 科学计算 Auto Research Benchmark：热逆问题、动力学辨识与稀疏求解优化。
 
+已公开发布：[完整证据与作者数据](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。5 个附件的服务端 SHA256 与本地文件一致。
+
 **[提交报告](docs/submission-report-2026-10-24.md)** · **[Benchmark 调研与逻辑图](docs/survey.md)** · **[复现指南](docs/reproduction.md)** · **[50 万 token 补充实验](docs/supplemental-results-2026-10-24.md)**
 
 2026-10-24 当前状态：三任务共 90 例数据完成生成与 QC；11 种作者基线、15 次原正式研究及全部隐藏评分操作已执行。原批次 9 次有提交、6 次正常无提交，有效评分 14/15（包括零分）；Poisson G2 计时无效留空。各任务均有端到端 Agent 评测，原结果满足三任务基线与至少一条端到端验证的交付要求。

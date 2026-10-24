@@ -1,0 +1,55 @@
+{
+  "status": "published",
+  "repository": "https://github.com/bxf1/sciresearch-bench-lite",
+  "main_submission_commit": "ea182900676cdaac3d279a07f8b66b26faca2790",
+  "release": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "release_id": 422744491,
+  "published_at": "2026-10-24T13:22:41Z",
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/author-data-integrity.json",
+      "digest": "sha256:a724db5d4558ce3e17374fb045e1eb81703af52e8bed423577fb9cb5cf70a512",
+      "name": "author-data-integrity.json",
+      "size": 272,
+      "state": "uploaded"
+    },
+    {
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/author-data-v0.3.tar.gz",
+      "digest": "sha256:b4dcff0acd251c9060ce73faf11b85d61217445334017339ec7eba15e33ca68b",
+      "name": "author-data-v0.3.tar.gz",
+      "size": 27088532,
+      "state": "uploaded"
+    },
+    {
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/evidence.tar.gz",
+      "digest": "sha256:a7c6c809dc87340f66c0dd65fef3a88b032d3e0dd6ee50e981d0cc60a9076faa",
+      "name": "evidence.tar.gz",
+      "size": 489437835,
+      "state": "uploaded"
+    },
+    {
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/file-manifest.json",
+      "digest": "sha256:fb774f5a3905283570c33f5dcdf48003ff89f981a078f9e8527ca47b069984dc",
+      "name": "file-manifest.json",
+      "size": 1900937,
+      "state": "uploaded"
+    },
+    {
+      "browser_download_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/integrity.json",
+      "digest": "sha256:6ad464bee9fab34e6ad4242f13d4299aeef8252ca3597a31fe7b11365157dc87",
+      "name": "integrity.json",
+      "size": 274,
+      "state": "uploaded"
+    }
+  ],
+  "all_asset_sizes_and_server_sha256_verified": true,
+  "known_credentials_scan": "passed",
+  "scientific_status": {
+    "original_research_closed": 15,
+    "original_valid_scoring": 14,
+    "original_no_submission": 6,
+    "supplemental_research": "blocked_by_upstream_HTTP_402",
+    "original_g2_retiming": "host_preflight_rejected_no_candidate_execution"
+  },
+  "authorization": "publication-authorization.json"
+}
