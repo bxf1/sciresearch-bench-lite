@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0,
+  "files": [
+    {
+      "path": "logs/poisson-timing-delivery-2026-10-25/poisson-timing-recheck-manifest-20261025.json",
+      "sha256": "096e968e51dd37a3eec22f3302e55268bbd2204c21ac93285a0be2e5255d9669"
+    },
+    {
+      "path": "logs/poisson-timing-delivery-2026-10-25/poisson-timing-recheck-SHA256SUMS-20261025.txt",
+      "sha256": "3d07ff6f1098efd15a59b548a3ccfa72f111447a6b1aafa95412c03fcdd4f2bf"
+    },
+    {
+      "path": "logs/poisson-timing-delivery-2026-10-25/release-notes.md",
+      "sha256": "1d655f0499f7e2b570850fc69f8cf54e163d528109d4fb2401211240446d50d9"
+    },
+    {
+      "path": "logs/poisson-timing-delivery-2026-10-25/publication-verification.json",
+      "sha256": "8d9be3c8923237b6bb0f98e56b9feadfba4bc7c85d57fe67f2f73a72386e33d5"
+    }
+  ]
+}

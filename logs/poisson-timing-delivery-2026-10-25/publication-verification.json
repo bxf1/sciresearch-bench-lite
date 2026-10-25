@@ -1,0 +1,59 @@
+{
+  "status": "published_and_verified",
+  "scientific_scope": "G1 valid; G2 recheck remains timing-invalid, not all scientific timings resolved",
+  "verified_at": "2026-10-25T10:46:38.771297+00:00",
+  "source_commit": "e20f7763c0c47b4970af819f6987464b527d8c1c",
+  "remote_main": "e20f7763c0c47b4970af819f6987464b527d8c1c",
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "repository": {
+    "html_url": "https://github.com/bxf1/sciresearch-bench-lite",
+    "private": false,
+    "visibility": "public"
+  },
+  "release_notes_verified": true,
+  "retained_original_assets": 14,
+  "retained_asset_ids": [
+    672320213,
+    672320224,
+    672320218,
+    672320217,
+    672584624,
+    672584623,
+    672584625,
+    672320215,
+    672658333,
+    672658332,
+    672658331,
+    674559418,
+    674559417,
+    674559421
+  ],
+  "assets": [
+    {
+      "name": "poisson-timing-recheck-20261025.tar.gz",
+      "bytes": 97703445,
+      "sha256": "9bd6bcfaecc34e9951031b51a575c2e4d0c0ed13e360133449ffb599d0385675",
+      "server_digest_matched": true,
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/poisson-timing-recheck-20261025.tar.gz"
+    },
+    {
+      "name": "poisson-timing-recheck-manifest-20261025.json",
+      "bytes": 209640,
+      "sha256": "096e968e51dd37a3eec22f3302e55268bbd2204c21ac93285a0be2e5255d9669",
+      "server_digest_matched": true,
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/poisson-timing-recheck-manifest-20261025.json"
+    },
+    {
+      "name": "poisson-timing-recheck-SHA256SUMS-20261025.txt",
+      "bytes": 217,
+      "sha256": "3d07ff6f1098efd15a59b548a3ccfa72f111447a6b1aafa95412c03fcdd4f2bf",
+      "server_digest_matched": true,
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/poisson-timing-recheck-SHA256SUMS-20261025.txt"
+    }
+  ],
+  "research_reruns": 0,
+  "model_calls": 0,
+  "current_valid_final_scores": 14,
+  "current_reward_one": 14,
+  "remaining_invalid_run": "research-98719c3c1cf3fc92-poisson-g2-r1"
+}
