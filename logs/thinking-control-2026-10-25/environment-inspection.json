@@ -1,0 +1,14 @@
+{
+  "docker": {
+    "Architecture": "aarch64",
+    "CgroupVersion": "2",
+    "KernelVersion": "6.8.0-100-generic",
+    "MemTotal": 10401181696,
+    "NCPU": 6
+  },
+  "observed_at_utc": "2026-10-25T03:18:12.982931+00:00",
+  "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22544483)\t100%; charged; 0:00 remaining present: true\n",
+  "running_containers": [],
+  "status": "verified",
+  "vm_boot_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b"
+}

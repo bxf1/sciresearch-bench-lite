@@ -51,9 +51,14 @@ def session_spec(project, plan_path, run_id, attempt_id, parent_attempt=None):
         raise ValueError("attempt identity must belong to the planned run")
     freeze = read_json(_file_ref(project, plan["freezes"][row["task"]]))
     policy = read_json(_file_ref(project, plan["tool_config"]["runtime_enforcement"]))
-    if (plan["model"]["thinking"] not in ("off", {"type": "disabled"})
-            or plan["model"]["temperature"] not in (None, 0)):
-        raise ValueError("native relay supports only the frozen disabled-thinking/zero-temperature policy")
+    thinking_max = (plan["model"]["thinking"] == {"type": "enabled"}
+                    and plan["model"].get("output_config") == {"effort": "max"}
+                    and plan["model"]["temperature"] is None)
+    disabled = (plan["model"]["thinking"] in ("off", {"type": "disabled"})
+                and plan["model"]["temperature"] in (None, 0)
+                and plan["model"].get("output_config") is None)
+    if not (thinking_max or disabled):
+        raise ValueError("native relay requires verified disabled-thinking or thinking-max policy")
     base = project / "research-runs" / run_id
     output = base if parent_attempt is None else base / "retries" / attempt_id
     prompt = ((project / "prompts" / row["task"] / "common.md").read_bytes() + b"\n\n"
@@ -61,6 +66,7 @@ def session_spec(project, plan_path, run_id, attempt_id, parent_attempt=None):
     if digest(prompt) != plan["tasks"][row["task"]]["combined_prompt_hashes"][row["group"]]:
         raise ValueError("combined research prompt changed")
     settings = {"formal": True, **{key: row[key] for key in ("task", "group", "run_id", "repeat")},
+                **({"thinking_effort": "max"} if thinking_max else {}),
                 "research_seconds": 1800, "max_evaluations": 20, "research_vcpu": 4,
                 "research_memory_bytes": 4 * 1024**3, "max_turns": None,
                 "attempt_id": attempt_id, "parent_attempt": parent_attempt,

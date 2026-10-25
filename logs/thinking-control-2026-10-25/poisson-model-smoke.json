@@ -1,0 +1,27 @@
+{
+  "live_smoke": {
+    "path": "logs/thinking-control-2026-10-25/live-smoke-result.json",
+    "sha256": "01cc59e0c63fb264b82b1a465d60d7ed2a9b8c3c7e7c4819e9ed073b0691327c"
+  },
+  "nonempty_thinking": {
+    "path": "logs/thinking-control-2026-10-25/live-reasoning-roundtrip/result.json",
+    "sha256": "fee87cd4eb470fab9e3fa74746d99bb249ab322a27fe6552ae8eedd119c548b3"
+  },
+  "research_image_unchanged": {
+    "build_context_sha256": "382b13b34a796411a246c2a065b06711937b39d3ca7ad4781f472b3347c9c197",
+    "image_id": "sha256:29c3702340ac411f4051cd7f91782ff702491e09cb7dff6058b6604bc3405629",
+    "inspection": {
+      "path": "logs/run-plan-local-draft-002b/research-images/poisson.json",
+      "sha256": "e40ebe3a1d3790f4cbd539eb80ba86cca7c54cd2c2ca64a0883e64bc9d5452d0"
+    }
+  },
+  "revision_impact": {
+    "path": "logs/thinking-control-2026-10-25/revision-impact.json",
+    "sha256": "b051efa0ac7a2db3af50bf495eff19851bdc683bf0c710d1774ca4d2e5b739cc"
+  },
+  "status": "passed",
+  "unchanged_task_wire_policy": {
+    "path": "logs/model-policy-capture-compaction-local-003/poisson/policy.json",
+    "sha256": "07b7568ffd2c900c121982053253576eab5f09418cd9afc46020048ceb15d7c6"
+  }
+}

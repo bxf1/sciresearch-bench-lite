@@ -126,10 +126,13 @@ async def native_setup_evidence(agent, environment, config, relay_status, *, set
     """Hash the native setup before R can write research code or call a model."""
     settings = settings or pilot_settings()
     limits = relay_status.get("limits", {})
+    from .model_relay import Limits
+    policy = Limits(thinking_effort=settings.get("thinking_effort")).public()
     if (relay_status.get("state") != "ready" or relay_status.get("request_count") != 0
             or relay_status.get("model") != "deepseek-flash" or relay_status.get("inflight") != 0
             or relay_status.get("protocol_violation") is not False or relay_status.get("evidence_error") is not False
-            or limits.get("thinking") != {"type": "disabled"} or limits.get("temperature") != 0.0
+            or limits.get("thinking") != policy["thinking"] or limits.get("temperature") != policy["temperature"]
+            or limits.get("output_config") != policy.get("output_config")
             or limits.get("top_p") != 1.0 or limits.get("request_output_limit") != settings["request_output_limit"]
             or limits.get("session_output_limit") != settings["session_output_limit"]):
         raise RuntimeError("fresh relay policy differs from the research contract")
@@ -171,7 +174,7 @@ print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(
     return {**observed, "native_requested_reasoning_effort": "off",
             "max_turns": settings["max_turns"],
             "relay_enforced_policy": limits, "fresh_upstream_request_count": 0,
-            "policy_source": "trusted relay status; native off alone does not prove disabled thinking"}
+            "policy_source": "trusted relay enforces the frozen thinking/effort policy independently of native request defaults"}
 
 
 def retain_safe_records(output, trial_directory, admission):
@@ -692,7 +695,8 @@ async def run(args, *, session_spec=None):
                                              expected_system_sha256=settings.get("expected_system_sha256"),
                                              expected_tools_sha256=settings.get("expected_tools_sha256"),
                                              expected_compaction_system_sha256=settings.get("expected_compaction_system_sha256"),
-                                             max_requests=settings.get("max_requests", 512)))
+                                             max_requests=settings.get("max_requests", 512),
+                                             thinking_effort=settings.get("thinking_effort")))
         validate_admission(admission)
         private_root = Path(admission["output_root"]).resolve()
         if not private_root.is_relative_to((root / "build").resolve()) or not Path(admission["admission_path"]).resolve().is_relative_to(private_root):

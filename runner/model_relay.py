@@ -104,10 +104,13 @@ class Limits:
     expected_system_sha256: str | None = None
     expected_tools_sha256: str | None = None
     expected_compaction_system_sha256: str | None = None
+    thinking_effort: str | None = None
 
     def __post_init__(self):
         if self.model != MODEL:
             raise ValueError("only the frozen model is supported")
+        if self.thinking_effort not in (None, "max"):
+            raise ValueError("thinking effort must be absent or max")
         hashes = (self.expected_system_sha256, self.expected_tools_sha256)
         if any(value is not None for value in hashes) and not all(
             isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
@@ -139,9 +142,13 @@ class Limits:
                 raise ValueError(f"{field} must be positive and finite")
 
     def public(self) -> dict:
-        return {**self.__dict__, "stream_required": True,
-                "thinking": {"type": "disabled"}, "temperature": 0.0, "top_p": 1.0,
-                "dropped_fields": ["top_k", "output_config", "service_tier", "container"],
+        values = {k: v for k, v in self.__dict__.items() if k != "thinking_effort"}
+        return {**values, "stream_required": True,
+                "thinking": {"type": "enabled" if self.thinking_effort else "disabled"},
+                "temperature": None if self.thinking_effort else 0.0, "top_p": 1.0,
+                **({"output_config": {"effort": self.thinking_effort}} if self.thinking_effort else {}),
+                "dropped_fields": ["top_k", "service_tier", "container", "temperature"] if self.thinking_effort else
+                                  ["top_k", "output_config", "service_tier", "container"],
                 "max_response_bytes": MAX_RESPONSE_BYTES,
                 "max_event_bytes": MAX_EVENT_BYTES}
 
@@ -241,7 +248,11 @@ class Ledger:
             try:
                 self.events.append({"event": "request_accepted", "request_id": item.request_id,
                                     "requested_max_tokens": requested, "effective_max_tokens": effective,
-                                    "requested_temperature": temperature, "effective_temperature": 0.0,
+                                    "requested_temperature": temperature,
+                                    "effective_temperature": None if self.limits.thinking_effort else 0.0,
+                                    **({"effective_thinking": {"type": "enabled"},
+                                        "effective_output_config": {"effort": self.limits.thinking_effort}}
+                                       if self.limits.thinking_effort else {}),
                                     "request_kind": "native_compaction" if compaction else "research",
                                     **hashes})
             except Exception:
@@ -383,8 +394,9 @@ class FixedUpstream:
 
 
 class StreamTracker:
-    def __init__(self, model: str, limit: int):
+    def __init__(self, model: str, limit: int, *, allow_thinking=False):
         self.model, self.limit = model, limit
+        self.allow_thinking = allow_thinking
         self.started = self.stopped = False
         self.final_usage = self.input_tokens = None
         self.observed_output_tokens = None
@@ -449,11 +461,13 @@ class StreamTracker:
             self.stopped = True
         elif kind == "content_block_start":
             block = value.get("content_block")
-            if not self.started or not isinstance(block, dict) or block.get("type") not in {"text", "tool_use"}:
+            allowed = {"text", "tool_use"} | ({"thinking"} if self.allow_thinking else set())
+            if not self.started or not isinstance(block, dict) or block.get("type") not in allowed:
                 raise ProtocolError("unexpected_content_block")
         elif kind == "content_block_delta":
             delta = value.get("delta")
-            if not self.started or not isinstance(delta, dict) or delta.get("type") not in {"text_delta", "input_json_delta"}:
+            allowed = {"text_delta", "input_json_delta"} | ({"thinking_delta", "signature_delta"} if self.allow_thinking else set())
+            if not self.started or not isinstance(delta, dict) or delta.get("type") not in allowed:
                 raise ProtocolError("unexpected_content_delta")
         elif kind == "content_block_stop":
             if not self.started:
@@ -556,10 +570,14 @@ class Relay:
         # Do not echo arbitrary client text into evidence.
         if temperature is not None and (type(temperature) not in {int, float} or not -2 <= temperature <= 2):
             temperature = "non_numeric"
-        value["thinking"] = {"type": "disabled"}
-        value["temperature"] = 0.0
+        policy = self.limits.public()
+        value["thinking"] = policy["thinking"]
+        if self.limits.thinking_effort:
+            value["output_config"] = policy["output_config"]
+        else:
+            value["temperature"] = 0.0
         value["top_p"] = 1.0
-        for field in ("top_k", "output_config", "service_tier", "container"):
+        for field in policy["dropped_fields"]:
             value.pop(field, None)
         try:
             if len(encoded(value)) > self.limits.max_body_bytes:
@@ -572,7 +590,7 @@ class Relay:
         response = None
         status = request_id_hash = None
         outcome, violation, failure_reason = "upstream_transport_error", False, None
-        tracker = StreamTracker(self.limits.model, item.effective)
+        tracker = StreamTracker(self.limits.model, item.effective, allow_thinking=bool(self.limits.thinking_effort))
         begun = False
         try:
             remaining = item.deadline - self.clock()
@@ -814,6 +832,7 @@ def main(argv=None):
     parser.add_argument("--expected-system-sha256")
     parser.add_argument("--expected-tools-sha256")
     parser.add_argument("--expected-compaction-system-sha256")
+    parser.add_argument("--thinking-effort", choices=["max"])
     args = parser.parse_args(argv)
     relay = Relay(os.environ.get("BENCH_RELAY_PROVIDER_KEY", ""),
                   os.environ.get("BENCH_RELAY_SESSION_TOKEN", ""), args.events,
@@ -821,6 +840,7 @@ def main(argv=None):
                          request_output_limit=args.request_output_limit,
                          session_seconds=args.session_seconds, request_seconds=args.request_seconds,
                          max_requests=args.max_requests,
+                         thinking_effort=args.thinking_effort,
                          expected_system_sha256=args.expected_system_sha256,
                          expected_tools_sha256=args.expected_tools_sha256,
                          expected_compaction_system_sha256=args.expected_compaction_system_sha256))

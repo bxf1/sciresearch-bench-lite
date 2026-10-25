@@ -1,0 +1,18 @@
+{
+  "requested_at_client_date": "2026-10-25",
+  "timezone": "Asia/Shanghai",
+  "user_instruction": "这15个实验重新跑一次，作为对照组，开启thinking,effort设置为max,token还是这是为20w",
+  "sessions": 15,
+  "thinking": {
+    "type": "enabled"
+  },
+  "output_config": {
+    "effort": "max"
+  },
+  "session_output_limit": 200000,
+  "preserve_prior_results": true,
+  "same_task_data_prompts_order_resources_scoring": true,
+  "research_seconds": 1800,
+  "max_evaluations": 20,
+  "request_output_limit": 4096
+}

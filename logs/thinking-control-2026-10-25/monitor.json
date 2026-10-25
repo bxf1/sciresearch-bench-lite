@@ -1,0 +1,5 @@
+{
+  "automation_id": "thinking-max",
+  "interval_minutes": 15,
+  "notify": "actionable problem or final verified delivery"
+}

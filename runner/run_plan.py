@@ -206,6 +206,16 @@ def start_blockers(plan, project):
         except (ValueError, OSError, TypeError, AttributeError) as exc:
             blockers.append(f"{parameter} enforcement: {exc}")
     try:
+        if model.get("thinking") == {"type": "enabled"}:
+            if model.get("output_config") != {"effort": "max"} or model.get("temperature") is not None:
+                raise ValueError("thinking control requires max effort and unsupported temperature recorded as null")
+            enforcement = model.get("enforcement", {}).get("output_config", {})
+            if enforcement.get("status") != "verified":
+                raise ValueError("thinking effort requires verified wire enforcement")
+            _file_ref(project, enforcement.get("evidence"))
+    except (ValueError, OSError, TypeError) as exc:
+        blockers.append("thinking effort: " + str(exc))
+    try:
         _file_ref(project, plan.get("system_prompt"))
     except (ValueError, OSError, TypeError) as exc:
         blockers.append("system prompt: " + str(exc))
@@ -291,6 +301,7 @@ def start_blockers(plan, project):
             frozen = validate_freeze_document(read_json(_file_ref(project, freezes[task])), task)
             research = frozen["research"]
             expected = {"model_id": MODEL_FIXED["model_id"], "model_version": model.get("model_version"),
+                        **({"output_config": model["output_config"]} if model.get("thinking") == {"type": "enabled"} else {}),
                         "pi_version": MODEL_FIXED["pi_version"], "harbor_commit": MODEL_FIXED["harbor_commit"],
                         "temperature": model.get("temperature"), "reasoning_configuration": model.get("thinking"),
                         "output_token_limit": model.get("output_token_limit"),

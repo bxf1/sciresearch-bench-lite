@@ -1,0 +1,33 @@
+{
+  "current_environment": {
+    "path": "logs/thinking-control-2026-10-25/environment-inspection.json",
+    "sha256": "b3b9516411f6fe6877166827ab94ff6ed473c42811fcb971bf4c2f882ecafd35"
+  },
+  "formal_resources_accepted": true,
+  "prior_acceptance": {
+    "path": "logs/resource-acceptance-local-002/summary.json",
+    "sha256": "bd333f53d9785f56deb975b7c31aabb98e39e9b97e8d4af18f301b2f777dce2f"
+  },
+  "resources": {
+    "filesystem_depth": 32,
+    "filesystem_entries": 2000,
+    "heat_ode_worker_seconds": 120,
+    "judge_seconds": 1200,
+    "max_evaluations": 20,
+    "output_bytes": 268435456,
+    "poisson_worker_seconds": 60,
+    "research_memory_bytes": 4294967296,
+    "research_seconds": 1800,
+    "research_vcpu": 4,
+    "source_bytes": 20971520,
+    "source_files": 1000,
+    "tmp_bytes": 67108864,
+    "worker_memory_bytes": 4294967296,
+    "worker_pids": 128,
+    "worker_swap_bytes": 0,
+    "worker_threads": 1,
+    "worker_vcpu": 1
+  },
+  "scope": "Same VM, images and resource contract; prior stress probes retained. Poisson still needs a fresh observed timing window.",
+  "status": "passed"
+}

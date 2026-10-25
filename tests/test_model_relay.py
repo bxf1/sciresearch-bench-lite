@@ -405,6 +405,41 @@ class RelayTests(unittest.TestCase):
         self.assertIn('"requested_max_tokens":16384', log)
         self.assertIn('"requested_temperature":1.9', log)
 
+    def test_thinking_max_forces_wire_policy_and_charges_full_stream(self):
+        reasoning = (frame("content_block_start", index=1, content_block={"type": "thinking", "thinking": ""}) +
+                     frame("content_block_delta", index=1, delta={"type": "thinking_delta", "thinking": PROMPT}) +
+                     frame("content_block_delta", index=1, delta={"type": "signature_delta", "signature": "test-signature"}) +
+                     frame("content_block_stop", index=1))
+        body = stream(10).replace(frame("content_block_start", index=0, content_block={"type": "text", "text": ""}),
+                                 reasoning + frame("content_block_start", index=0, content_block={"type": "text", "text": ""}))
+        relay = self.relay(FakeResponse(body=body), limits=Limits(request_output_limit=10, session_output_limit=15,
+                                                               thinking_effort="max"))
+        output = self.dispatch(relay, request(max_tokens=30, temperature=1, thinking={"type": "disabled"},
+                                              output_config={"effort": "low"}))
+        self.assertIn(PROMPT.encode(), output)
+        self.assertIn(b"event: message_stop", output)
+        sent = relay.upstream.calls[0][0]
+        self.assertEqual(sent["thinking"], {"type": "enabled"})
+        self.assertEqual(sent["output_config"], {"effort": "max"})
+        self.assertNotIn("temperature", sent)
+        self.assertEqual(relay.ledger.status()["charged_output_tokens"], 10)
+        relay.upstream.response = FakeResponse(body=stream(5))
+        self.dispatch(relay)
+        self.assertEqual(relay.upstream.calls[1][0]["max_tokens"], 5)
+        with self.assertRaises(Rejected):
+            relay.ledger.reserve(1, None)
+        log = (self.root / "events-0.jsonl").read_text()
+        self.assertNotIn(PROMPT, log)
+        self.assertIn('"effective_output_config":{"effort":"max"}', log)
+
+    def test_thinking_max_cannot_relax_usage_or_effort_validation(self):
+        relay = self.relay(FakeResponse(body=stream(11)),
+                           limits=Limits(request_output_limit=10, session_output_limit=30, thinking_effort="max"))
+        self.assertNotIn(b"event: message_stop", self.dispatch(relay))
+        self.assertTrue(relay.ledger.status()["protocol_violation"])
+        with self.assertRaises(ValueError):
+            Limits(thinking_effort="high")
+
     def test_actual_body_system_and_tools_hashes_and_optional_cache_usage(self):
         body = stream().replace(b'"input_tokens":9', b'"input_tokens":9,"cache_read_input_tokens":30,"cache_creation_input_tokens":4')
         relay = self.relay(FakeResponse(body=body))

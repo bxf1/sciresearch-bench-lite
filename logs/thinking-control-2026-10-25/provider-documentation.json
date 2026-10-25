@@ -1,0 +1,22 @@
+{
+  "status": "verified",
+  "client_date": "2026-10-25",
+  "retrieved_at_utc": "2026-10-25T03:17:02.116084+00:00",
+  "model_id": "deepseek-flash",
+  "documented_version": "DeepSeek-V4.1-Flash-1017",
+  "sources": [
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "finding": "deepseek-flash maps to DeepSeek-V4.1-Flash-1017; both thinking and non-thinking are supported."
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/thinking_mode/",
+      "finding": "Anthropic thinking.type=enabled, output_config.effort=max; max maps to max. Temperature is ignored in thinking mode. Flash top_p=1.0 is supported."
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/anthropic_api/",
+      "finding": "Anthropic thinking and output_config.effort supported; thinking.budget_tokens ignored; max_tokens supported."
+    }
+  ],
+  "scope": "Provider-declared mapping and controls. Internal effort cannot be independently observed; native response thinking and actual enforced request fields are checked separately."
+}

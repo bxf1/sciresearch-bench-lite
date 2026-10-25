@@ -1,0 +1,156 @@
+{
+  "cases": [
+    {
+      "status": "success",
+      "text": "## Goal\n- The session contains only a synthetic placeholder exchange: the user requested \u201cOK\u201d and the assistant responded \u201cOK.\u201d No substantive task, question, or objective was specified.\n\n## Constraints & Preferences\n- (none)\n\n## Progress\n### Done\n- [x] User issued a placeholder/synthetic request (\u201cOK\u201d).\n- [x] Assistant acknowledged with \u201cOK.\u201d\n\n### In Progress\n- [ ] No active work; awaiting a real user request or task definition.\n\n### Blocked\n- Nothing to proceed with \u2014 the conversation contains no scientific data, files, code, or actionable requirements.\n\n## Key Decisions\n- **No decisions made**: The exchange was purely synthetic and contained no task content requiring choices.\n\n## Next Steps\n1. Wait for the user to provide an actual task, question, or dataset.\n2. If continuing, confirm what the user wants to accomplish before taking any action.\n\n## Critical Context\n- Conversation contents in full: \u201cSynthetic conversation: user requests OK; assistant responds OK. No scientific data.\u201d\n- No file paths, function names, error messages, or references were provided.",
+      "usage": {
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "cacheWrite1h": 0,
+        "cost": {
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "input": 0,
+          "output": 0,
+          "total": 0
+        },
+        "input": 313,
+        "output": 324,
+        "totalTokens": 637
+      }
+    },
+    {
+      "status": "success",
+      "text": "## Goal\n[Synthetic placeholder conversation \u2014 no substantive task. Preserve prior context: \"Synthetic previous summary.\"]\n\n## Constraints & Preferences\n- Synthetic conversation only; no scientific data is present.\n- Responses are limited to the literal exchange \"OK.\"\n\n## Progress\n### Done\n- [x] User sent a synthetic request: \"OK.\"\n- [x] Assistant responded: \"OK.\"\n- [x] Incorporated the previous synthetic summary context.\n\n### In Progress\n- [ ] None \u2014 the synthetic exchange is complete.\n\n### Blocked\n- None.\n\n## Key Decisions\n- **Minimal response**: Reply with \"OK\" to match the synthetic user request.\n\n## Next Steps\n1. Await any new conversation messages; no active task remains.\n\n## Critical Context\n- The entire conversation is synthetic: user requests OK; assistant responds OK. No scientific data.\n- Prior summary was \"Synthetic previous summary.\"",
+      "usage": {
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "cacheWrite1h": 0,
+        "cost": {
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "input": 0,
+          "output": 0,
+          "total": 0
+        },
+        "input": 406,
+        "output": 357,
+        "totalTokens": 763
+      }
+    }
+  ],
+  "cleanup": {
+    "all_removed": true,
+    "container_id": "7374fb55fd928864a020527b0f6c94d93b3ffaf2daec501fe20396fa90565e69",
+    "container_remove_returncode": 0,
+    "errors": {},
+    "network_name": "sciresearch-relay-e558889fc589",
+    "network_remove_returncode": 0,
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "status_before_stop": {
+      "budget_exhausted": false,
+      "charged_output_tokens": 681,
+      "evidence_error": false,
+      "expired": false,
+      "failed_requests": 0,
+      "failure_counts": {},
+      "inflight": 0,
+      "last_request_failure_reason": null,
+      "last_request_outcome": "success",
+      "last_upstream_status": 200,
+      "limits": {
+        "dropped_fields": [
+          "top_k",
+          "service_tier",
+          "container",
+          "temperature"
+        ],
+        "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+        "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+        "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+        "max_body_bytes": 1048576,
+        "max_concurrency": 4,
+        "max_event_bytes": 65536,
+        "max_requests": 3125,
+        "max_response_bytes": 8388608,
+        "model": "deepseek-flash",
+        "output_config": {
+          "effort": "max"
+        },
+        "request_output_limit": 4096,
+        "request_seconds": 120,
+        "session_output_limit": 200000,
+        "session_seconds": 600.0,
+        "stream_required": true,
+        "temperature": null,
+        "thinking": {
+          "type": "enabled"
+        },
+        "top_p": 1.0
+      },
+      "model": "deepseek-flash",
+      "protocol_violation": false,
+      "rejected_requests": 0,
+      "remaining_output_tokens": 199319,
+      "request_count": 2,
+      "reserved_output_tokens": 0,
+      "schema_version": 1,
+      "state": "ready",
+      "successful_requests": 2
+    }
+  },
+  "kind": "compaction",
+  "relay_status": {
+    "budget_exhausted": false,
+    "charged_output_tokens": 681,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_failure_reason": null,
+    "last_request_outcome": "success",
+    "last_upstream_status": 200,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "service_tier",
+        "container",
+        "temperature"
+      ],
+      "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+      "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+      "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "output_config": {
+        "effort": "max"
+      },
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 600.0,
+      "stream_required": true,
+      "temperature": null,
+      "thinking": {
+        "type": "enabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-flash",
+    "protocol_violation": false,
+    "rejected_requests": 0,
+    "remaining_output_tokens": 199319,
+    "request_count": 2,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "ready",
+    "successful_requests": 2
+  },
+  "status": "passed"
+}

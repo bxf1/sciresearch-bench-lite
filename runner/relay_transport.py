@@ -95,12 +95,13 @@ def read_status(admission):
 def start_relay(output, *, image, provider_key=None, session_seconds=600,
                 session_output_limit=32768, request_output_limit=4096,
                 expected_system_sha256=None, expected_tools_sha256=None,
-                expected_compaction_system_sha256=None, max_requests=512):
+                expected_compaction_system_sha256=None, max_requests=512, thinking_effort=None):
     from .model_relay import Limits
     Limits(session_seconds=session_seconds, session_output_limit=session_output_limit,
            request_output_limit=request_output_limit, expected_system_sha256=expected_system_sha256,
            expected_tools_sha256=expected_tools_sha256,
-           expected_compaction_system_sha256=expected_compaction_system_sha256, max_requests=max_requests)
+           expected_compaction_system_sha256=expected_compaction_system_sha256, max_requests=max_requests,
+           thinking_effort=thinking_effort)
     secret = provider_key if provider_key is not None else os.environ.get("ANTHROPIC_AUTH_TOKEN", "")
     if not secret:
         raise ValueError("Provider credential unavailable")
@@ -134,6 +135,8 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
                          ["--expected-system-sha256", expected_system_sha256, "--expected-tools-sha256", expected_tools_sha256])
         if expected_compaction_system_sha256 is not None:
             expected_args += ["--expected-compaction-system-sha256", expected_compaction_system_sha256]
+        if thinking_effort is not None:
+            expected_args += ["--thinking-effort", thinking_effort]
         docker("create", "--name", identity, "--label", "sciresearch.project=benchmark-v0.3",
                "--network", identity, "--cpus", "0.25", "--memory", "256m", "--memory-swap", "256m",
                "--pids-limit", "64", "--cap-drop", "ALL", "--security-opt", "no-new-privileges",

@@ -1,0 +1,32 @@
+{
+  "accounting": "All provider-reported output tokens including thinking and native compaction share the session limit; failed requests reserve their full effective allowance.",
+  "evidence_scope": "Actual normalized request policy and returned thinking. Provider internal effort is not independently measurable.",
+  "max_requests": 3125,
+  "native_live": {
+    "path": "logs/thinking-control-2026-10-25/live-smoke-result.json",
+    "sha256": "01cc59e0c63fb264b82b1a465d60d7ed2a9b8c3c7e7c4819e9ed073b0691327c"
+  },
+  "nonempty_thinking_and_tool_continuation": {
+    "path": "logs/thinking-control-2026-10-25/live-reasoning-roundtrip/result.json",
+    "sha256": "fee87cd4eb470fab9e3fa74746d99bb249ab322a27fe6552ae8eedd119c548b3"
+  },
+  "output_config": {
+    "effort": "max"
+  },
+  "provider_documentation": {
+    "path": "logs/thinking-control-2026-10-25/provider-documentation.json",
+    "sha256": "ec344d9c895f5d8a8f1ce12de8a3c135bf1b0cbfa7c3154c7676033d6ed38dd6"
+  },
+  "request_output_limit": 4096,
+  "session_output_limit": 200000,
+  "status": "verified",
+  "temperature": null,
+  "tests": {
+    "path": "logs/thinking-control-2026-10-25/unit-tests-final.txt",
+    "sha256": "846119099b748379a676cf42571ae84dc6cd7205a2f717de8bdb015f91820f62"
+  },
+  "thinking": {
+    "type": "enabled"
+  },
+  "top_p": 1.0
+}

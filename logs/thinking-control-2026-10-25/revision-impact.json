@@ -1,0 +1,76 @@
+{
+  "added_trusted_files": [
+    "runner/supplemental.py"
+  ],
+  "changed_trusted_files": {
+    "runner/file_bridge.py": {
+      "new": "f85a9002b9c9c7aacde5c0be1ac0ab592b65545d190ec25b2c2b6bbdee8e71b6",
+      "old": "86a32a8edd69b2cf8aead1e25c25915f71c787ebc1561a76e9c740bca2c1cdc7"
+    },
+    "runner/harbor_pilot.py": {
+      "new": "a0a9861eb33ee068de0b65ff09d00b2ca95f02b3847cdb7e0c7f1b7259d31f2e",
+      "old": "8e72bfcdb73f5147d60da3d6f779a1042509521ab1dd906bbbb5b1c1b64636b6"
+    },
+    "runner/model_relay.py": {
+      "new": "881f65f0e563e3bb9cfee0a084fe43d766a38b41713b83ecbfd1891b6a86dc59",
+      "old": "712823b4fbb49ac1369755583ce99bc8e0838df003d94e4cec7294147ab87969"
+    },
+    "runner/registry.py": {
+      "new": "a17533cbf43372f4785ab89d122fa9056c606b53e9b6c94769a604852ed7aaf5",
+      "old": "42dea7690998bc453a5d2abee9bc0ad8d3cad63c0fa6b2805b7251463b9b6eb9"
+    },
+    "runner/relay_transport.py": {
+      "new": "aa3dadc0ecb2aee70d618d5875e8e07b3e385ed1f0cd1ea501a8bad82ae07fe8",
+      "old": "475146d11be0e5e5da776c215d027e94092f8a9f57486c1a2aea873cc2b0fe1b"
+    },
+    "runner/run_plan.py": {
+      "new": "fe68a57212c2bc62ce6d203cd494b53080043b9ad19398e132bb0a2e3e968081",
+      "old": "e098d3576eb45b7777f601a742cd2a60f1dd8e60067659d7a9c5b017d21a15cf"
+    },
+    "runner/study.py": {
+      "new": "887bc9deb52ff99c1f2098e306366f492d1a2c966ab069c36173df88f6c670ca",
+      "old": "82be72c0e8db62bad27bd948e0903c41c28cfcd447dcb68b01bda6981066c0c2"
+    }
+  },
+  "historical_nullable_budget_support": "Prior file_bridge/registry/supplemental changes retained; this control uses original non-null 1800s/20-evaluation limits.",
+  "new_changes": "Thinking/max wire enforcement, allowed thinking/signature SSE, and verified native-session policy. Default disabled mode unchanged.",
+  "numerical_and_public_sources_unchanged": [
+    "baselines/heat/solve.py",
+    "baselines/ode/solve.py",
+    "baselines/poisson/solve.py",
+    "judge/batch.py",
+    "judge/heat.py",
+    "judge/ode.py",
+    "judge/poisson.py",
+    "public/bench.py",
+    "public/bridge_io.py",
+    "public/export_source.py",
+    "public/file_bench.py",
+    "public/heat.py",
+    "public/ode.py",
+    "public/poisson.py",
+    "public/poisson_compare.py",
+    "runner/artifact_gate.py",
+    "runner/common.py",
+    "runner/performance.py",
+    "runner/phase.py",
+    "runner/process_timer.py",
+    "runner/replay.py",
+    "runner/worker.py"
+  ],
+  "same": [
+    "15 conditions/order",
+    "200000 total output tokens",
+    "4096 output tokens/request",
+    "1800 research seconds",
+    "20 public evaluations",
+    "data",
+    "prompts",
+    "images",
+    "resources",
+    "scientific scores"
+  ],
+  "scope": "Post-hoc matched comparison on previously used hidden data, not randomized causal identification or fresh held-out validation.",
+  "status": "passed",
+  "temperature": "Original effective 0; thinking mode unsupported, omitted and recorded as null."
+}

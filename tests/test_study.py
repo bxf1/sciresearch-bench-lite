@@ -91,6 +91,36 @@ class StudyTests(unittest.IsolatedAsyncioTestCase):
         await study.start(self.project, self.plan_path, second["run_id"], launch=self.launch)
         self.assertEqual(len(self.manifest()["attempts"]), 2)
 
+    async def test_thinking_control_is_frozen_through_native_session(self):
+        model = self.plan['model']
+        evidence = model['enforcement']['thinking']['evidence']
+        model.update(thinking={'type': 'enabled'}, output_config={'effort': 'max'}, temperature=None,
+                     output_token_limit=200000)
+        model['enforcement']['temperature'] = {'status': 'unsupported', 'reason': 'Synthetic provider ignores temperature.',
+                                               'evidence': evidence}
+        model['enforcement']['output_config'] = {'status': 'verified', 'evidence': evidence}
+        for task, ref in self.plan['freezes'].items():
+            path = self.project / ref['path']
+            frozen = read_json(path)
+            frozen['research'].update(reasoning_configuration=model['thinking'], output_config=model['output_config'],
+                                      temperature=None, output_token_limit=200000,
+                                      model_parameter_enforcement=model['enforcement'])
+            write_json(path, frozen)
+            self.plan['freezes'][task] = self.fixture.ref(path)
+        write_json(self.plan_path, self.plan)
+        row = self.plan['runs'][0]
+        spec = study.session_spec(self.project, self.plan_path, row['run_id'], row['run_id'] + '-a001')
+        self.assertEqual(spec['settings']['thinking_effort'], 'max')
+        self.assertEqual(spec['settings']['session_output_limit'], 200000)
+        self.assertEqual(spec['settings']['request_output_limit'], 4096)
+        self.assertIs(study.validate_session(spec), spec)
+        model['output_config'] = {'effort': 'high'}
+        write_json(self.plan_path, self.plan)
+        launch = AsyncMock()
+        with self.assertRaisesRegex(ValueError, 'thinking effort'):
+            await study.start(self.project, self.plan_path, row['run_id'], launch=launch)
+        launch.assert_not_awaited()
+
     async def test_failure_retained_explicit_linked_retry_is_fresh(self):
         row = self.plan["runs"][0]
         launch = AsyncMock(side_effect=RuntimeError("daemon capacity below formal contract"))
