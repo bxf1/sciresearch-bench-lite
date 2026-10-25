@@ -159,9 +159,15 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
         admission["base_url"] = f"http://{admission['relay_ip']}:{PORT}"
         validate_admission(admission)
         ready = None
-        for _ in range(30):
-            health = docker("exec", "-i", admission["container_id"], "python", "-I", "-c", _LOCAL_GET,
-                            input=json.dumps({"path": "/health"}), check=False, timeout=5)
+        for attempt in range(30):
+            record["health_checks_attempted"] = attempt + 1
+            try:
+                health = docker("exec", "-i", admission["container_id"], "python", "-I", "-c", _LOCAL_GET,
+                                input=json.dumps({"path": "/health"}), check=False, timeout=5)
+            except subprocess.TimeoutExpired:
+                record["health_check_timeouts"] = record.get("health_check_timeouts", 0) + 1
+                time.sleep(.1)
+                continue
             if health.returncode == 0:
                 ready = json.loads(health.stdout)
                 break

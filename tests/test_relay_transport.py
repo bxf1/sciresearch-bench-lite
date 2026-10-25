@@ -1,5 +1,6 @@
 import asyncio
 import json
+import subprocess
 from types import SimpleNamespace
 from unittest.mock import patch
 
@@ -128,3 +129,45 @@ def test_compaction_policy_reaches_relay_process_and_public_receipt(tmp_path):
     assert command[command.index('--session-output-limit')+1]=='200000'
     assert command[command.index('--max-requests')+1]=='3125'
     assert json.loads((tmp_path/'relay/startup.json').read_text())['expected_compaction_system_sha256']=='c'*64
+
+
+@pytest.mark.parametrize('timeouts', [1, 30])
+def test_health_timeout_uses_existing_bounded_startup_retries(tmp_path, timeouts):
+    calls=[]
+    checks=0
+    def fake(*args, **kwargs):
+        nonlocal checks
+        calls.append(args)
+        if args[:2]==('image','inspect'):
+            value=[{'Id':admission()['image_id']}]
+        elif args[0]=='inspect':
+            value=[{'Id':admission()['container_id'],
+                    'NetworkSettings':{'Networks':{args[1]:{'IPAddress':'172.31.0.2'}}},
+                    'HostConfig':dict.fromkeys(('CapDrop','SecurityOpt','PidsLimit','Memory','MemorySwap','NanoCpus','ReadonlyRootfs')),
+                    'Mounts':[]}]
+        elif args[0]=='exec':
+            checks+=1
+            assert kwargs['timeout']==5
+            assert json.loads(kwargs['input'])=={'path':'/health'}
+            if checks<=timeouts:
+                raise subprocess.TimeoutExpired('synthetic health check',5)
+            value={}
+        else:
+            value={}
+        return SimpleNamespace(returncode=0,stdout=json.dumps(value),stderr='')
+    with patch.object(relay,'docker',side_effect=fake), patch.object(relay.time,'sleep'):
+        if timeouts==30:
+            with pytest.raises(RuntimeError,match='did not become ready'):
+                relay.start_relay(tmp_path/'relay',image=admission()['image_id'],provider_key='synthetic-provider-key')
+        else:
+            relay.start_relay(tmp_path/'relay',image=admission()['image_id'],provider_key='synthetic-provider-key')
+    record=json.loads((tmp_path/'relay/startup.json').read_text())
+    assert record['health_check_timeouts']==timeouts
+    assert record['health_checks_attempted']==min(timeouts+1,30)
+    command=next(args for args in calls if args[0]=='create')
+    assert command[command.index('--cpus')+1]=='0.25'
+    assert command[command.index('--memory')+1]=='256m'
+    assert record['status']==('failed' if timeouts==30 else 'ready')
+    assert (tmp_path/'relay/admission.json').exists()==(timeouts<30)
+    if timeouts==30:
+        assert record['failure_cleanup']=={'container':{'returncode':0},'network':{'returncode':0}}

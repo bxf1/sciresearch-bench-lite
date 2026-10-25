@@ -1,0 +1,61 @@
+{
+  "attempt_policy": "Retain four closed scientific sessions including Heat G1 r1 a002 (research_timeout, 3 evaluations, final candidate-003). No new retry; continue remaining 11 unstarted sessions.",
+  "evidence": {
+    "authorization": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/authorization.json",
+      "sha256": "74a26a8b3e357ef2155c8b249cb030743412af1f648099cd315f8acdc53f188c"
+    },
+    "native_patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/native-patch.json",
+      "sha256": "f0fd69c9a3271afbd3522eb6e503938ac38ba6ebcd347852e2879c99e36185db"
+    },
+    "native_tests": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/native-tests.json",
+      "sha256": "26088407a010c6d06bceee47e5146353225f34107503e8b1a22d9236668f6b48"
+    },
+    "original_evidence": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/original-evidence-sha256.json",
+      "sha256": "1e77964d83f81c0b6162f55b409dcec63cd93c5042f44b351760eba3d75707a7"
+    },
+    "patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/infrastructure.patch",
+      "sha256": "2178e4d46f1609f26d72f7e22517378756d70ad45a73e3f49463125460606752"
+    },
+    "regression_tests": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/unit-tests.txt",
+      "sha256": "9728300777b13920557b874fdd923df320a61968fd2d8e6c49ac7de9baa7af96"
+    },
+    "synthetic_probe": {
+      "path": "logs/thinking-control-2026-10-25/recovery-003/live-context-probe-a004/result.json",
+      "sha256": "e14666fbbb278dabd07bd68a67e3056bc814a05bc3ad7ecb9c08b9535b348c59"
+    }
+  },
+  "files": {
+    "runner/harbor_pilot.py": {
+      "after_sha256": "387aeb4e5afb8b1686340eb376d1add863df0af0064c00d3e795834712fee43e",
+      "before_sha256": "4f94640c4d1c96632cd6cfff31f2a749e87716d44aade69614b4391b76150fe4"
+    },
+    "runner/relay_transport.py": {
+      "after_sha256": "6a2fda373ba0003e5a5783ace198cfb01938638b3fa0b34fe46c746272d63bc8",
+      "before_sha256": "aa3dadc0ecb2aee70d618d5875e8e07b3e385ed1f0cd1ea501a8bad82ae07fe8"
+    },
+    "runner/run_plan.py": {
+      "after_sha256": "752f22b82482035c74b1b2f60b84e4a29aee015a4903fbaa95d1826ef5e790f1",
+      "before_sha256": "bc87df42d8ffe500067e58395e6100ac7e23ce0327064b3474b0c72155e4d2f9"
+    }
+  },
+  "kind": "pi_context_compaction_handoff",
+  "previous_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-thinking-repair.json",
+    "sha256": "76c8af25a26c7b1d982deeb3267dc449b4134da87d1a2df0a9911e8b353596c7"
+  },
+  "run_plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "schema_version": 1,
+  "scope": "Continue nonempty thinking-only length only at the fixed 4096 output cap; hand smaller length responses to existing native compact-and-retry. Permit only truncated thinking assistant fragments at continuation entry after compaction, preserving their context. Ordinary assistant completion remains non-continuable.",
+  "startup_scope": "A timed-out relay health check consumes one of the existing 30 startup checks, instead of aborting before retries. Per-check timeout 5 seconds, CPU 0.25, memory 256 MiB and all research settings unchanged.",
+  "synthetic_probe_limit": "Initial assistant usage is a synthetic boundary fixture, not a provider response and not charged. Real network calls are separately measured: 3 successful requests, 520 output tokens. Earlier 3 relay startup failures are retained separately.",
+  "unchanged": "Original frozen plan bytes, 128000 native context-window default, 8 pinned native compaction sources and their settings, prompts, data, order, scoring, resources, 4096 request cap, 200000 session output including thinking/compaction, 1800 research seconds, 20 public evaluations."
+}

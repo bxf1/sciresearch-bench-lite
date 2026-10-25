@@ -89,6 +89,27 @@ class ContinuationRetryTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaisesRegex(ValueError, 'parent evidence changed'):
             thinking_truncation_retry(self.project, self.fx.plan, altered)
 
+    async def test_context_repair_requires_exact_prior_chain_and_does_not_add_retry(self):
+        await study.start(self.project, self.fx.plan_path, self.row['run_id'], launch=self.fx.launch)
+        parent = self.fx.manifest()['attempts'][0]
+        prior = self.authorize(parent)
+        root = self.project
+        source = root / 'runner/harbor_pilot.py'
+        before = file_hash(source)
+        source.write_text('# synthetic context handoff repair\n')
+        value = read_json(root / prior['path'])
+        value.update(kind='pi_context_compaction_handoff', previous_repair=prior,
+                     files={'runner/harbor_pilot.py': {'before_sha256': before, 'after_sha256': file_hash(source)}})
+        value.pop('authorized_retry')
+        path = root / 'freezes' / (self.fx.plan['plan_id'] + '-pi-context-repair.json')
+        write_json(path, value)
+        study.frozen_plan(root, self.fx.plan_path)
+        self.assertEqual(thinking_truncation_retry(root, self.fx.plan, parent), prior)
+        value['previous_repair'] = {**prior, 'sha256': '0'*64}
+        write_json(path, value)
+        with self.assertRaisesRegex(ValueError, 'repair chain changed'):
+            study.frozen_plan(root, self.fx.plan_path)
+
 
 class NativeContinuationInstallTests(unittest.IsolatedAsyncioTestCase):
     async def test_exact_source_patch_and_mismatched_source_rejected(self):
@@ -128,3 +149,60 @@ class NativeContinuationInstallTests(unittest.IsolatedAsyncioTestCase):
                 target.write_text('unexpected installed source')
                 with self.assertRaisesRegex(RuntimeError, 'source checks'):
                     await install_thinking_continuation(environment, {'formal': True, 'plan_ref': {'path': 'plan.json'}})
+
+    async def test_multiple_native_transitions_are_applied_and_audited_in_order(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            package = root / 'package'
+            (package / 'dist').mkdir(parents=True)
+            executable = package / 'dist/cli.js'
+            executable.write_text('#!/usr/bin/env node\n')
+            executable.chmod(0o755)
+            (root / 'bin').mkdir()
+            (root / 'bin/pi').symlink_to(executable)
+            loop = 'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js'
+            agent = 'node_modules/@earendil-works/pi-agent-core/dist/agent.js'
+            def transition(relative, before, after):
+                target = package / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(after)
+                after_sha = file_hash(target)
+                target.write_text(before)
+                return {'path': relative, 'before_sha256': file_hash(target), 'after_sha256': after_sha,
+                        'replace_before': before, 'replace_after': after}
+            second = transition(loop, 'middle', 'final')
+            first = transition(loop, 'original', 'middle')
+            third = transition(agent, 'before', 'after')
+            write_json(root / 'plan.json', {})
+            write_json(root / 'first.json', first)
+            write_json(root / 'second.json', {'patches': [second, third]})
+            async def execute(command, **kwargs):
+                env = {**os.environ, 'PATH': str(root / 'bin') + os.pathsep + os.environ['PATH']}
+                result = subprocess.run([sys.executable, '-I', '-c', shlex.split(command)[-1]],
+                                        env=env, capture_output=True, text=True)
+                return SimpleNamespace(return_code=result.returncode, stdout=result.stdout)
+            environment = SimpleNamespace(exec=AsyncMock(side_effect=execute))
+            records = [({'path': name}, {'kind': kind, 'evidence': {'native_patch': {'path': filename}}})
+                       for name, kind, filename in [('prior', 'pi_thinking_continuation', 'first.json'),
+                                                    ('next', 'pi_context_compaction_handoff', 'second.json')]]
+            with patch('runner.run_plan._file_ref', side_effect=lambda project, ref: root / ref['path']), \
+                 patch('runner.run_plan.tool_repair_records', return_value=records):
+                result = await install_thinking_continuation(environment, {'formal': True, 'plan_ref': {'path': 'plan.json'}})
+            self.assertEqual((package / loop).read_text(), 'final')
+            self.assertEqual((package / agent).read_text(), 'after')
+            self.assertEqual([r['path'] for r in result['patch_chain']], [loop, loop, agent])
+            self.assertEqual([r['authorization']['path'] for r in result['patch_chain']], ['prior', 'next', 'next'])
+
+    async def test_context_patch_cannot_target_other_native_source(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_json(root / 'plan.json', {})
+            write_json(root / 'patch.json', {'patches': [{'path': 'dist/core/agent-session.js'}]})
+            record = ({'path': 'repair.json'}, {'kind': 'pi_context_compaction_handoff',
+                                              'evidence': {'native_patch': {'path': 'patch.json'}}})
+            environment = SimpleNamespace(exec=AsyncMock())
+            with patch('runner.run_plan._file_ref', side_effect=lambda project, ref: root / ref['path']), \
+                 patch('runner.run_plan.tool_repair_records', return_value=[record]):
+                with self.assertRaisesRegex(RuntimeError, 'unexpected native continuation patch target'):
+                    await install_thinking_continuation(environment, {'formal': True, 'plan_ref': {'path': 'plan.json'}})
+            environment.exec.assert_not_awaited()

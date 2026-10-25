@@ -129,14 +129,27 @@ async def install_thinking_continuation(environment, settings):
     from .run_plan import _file_ref, tool_repair_records
     root = Path(__file__).resolve().parents[1]
     plan = read_json(_file_ref(root, settings["plan_ref"]))
+    receipts = []
     for ref, repair in tool_repair_records(plan, root):
-        if repair["kind"] != "pi_thinking_continuation":
+        if repair["kind"] not in {"pi_thinking_continuation", "pi_context_compaction_handoff"}:
             continue
         patch_ref = repair["evidence"]["native_patch"]
-        patch = read_json(_file_ref(root, patch_ref))
-        if patch.get("path") != "node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js":
+        manifest = read_json(_file_ref(root, patch_ref))
+        patches = manifest.get("patches", [manifest])
+        expected = {"node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js"}
+        if repair["kind"] == "pi_context_compaction_handoff":
+            expected.add("node_modules/@earendil-works/pi-agent-core/dist/agent.js")
+        if (not isinstance(patches, list) or len(patches) != len(expected)
+                or any(not isinstance(p, dict) for p in patches) or {p.get("path") for p in patches} != expected):
             raise RuntimeError("unexpected native continuation patch target")
-        program = """import hashlib,json,pathlib,shutil
+        for patch in patches:
+            receipts.append(await _install_native_patch(environment, patch, ref, patch_ref))
+    return {**receipts[-1], "patch_chain": receipts} if receipts else None
+
+
+async def _install_native_patch(environment, patch, ref, patch_ref):
+    """Check and record each exact transition in the approved native patch chain."""
+    program = """import hashlib,json,pathlib,shutil
 patch=json.loads(PATCH_JSON)
 root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
 path=root/patch['path']
@@ -150,14 +163,13 @@ path.write_text(updated)
 assert sha(path.read_text())==patch['after_sha256']
 print(json.dumps({'path':patch['path'],'before_sha256':patch['before_sha256'],'after_sha256':patch['after_sha256'],'applied':True}))
 """.replace("PATCH_JSON", repr(json.dumps(patch)))
-        result = await environment.exec(command=". ~/.nvm/nvm.sh && python -I -c " + shlex.quote(program), timeout_sec=15)
-        if result.return_code:
-            raise RuntimeError("native thinking continuation patch failed its source checks")
-        receipt = json.loads(result.stdout)
-        if receipt.get("after_sha256") != patch["after_sha256"] or receipt.get("applied") is not True:
-            raise RuntimeError("native thinking continuation receipt mismatch")
-        return {"authorization": ref, "native_patch": patch_ref, **receipt}
-    return None
+    result = await environment.exec(command=". ~/.nvm/nvm.sh && python -I -c " + shlex.quote(program), timeout_sec=15)
+    if result.return_code:
+        raise RuntimeError("native thinking continuation patch failed its source checks")
+    receipt = json.loads(result.stdout)
+    if receipt.get("after_sha256") != patch["after_sha256"] or receipt.get("applied") is not True:
+        raise RuntimeError("native thinking continuation receipt mismatch")
+    return {"authorization": ref, "native_patch": patch_ref, **receipt}
 
 
 async def native_setup_evidence(agent, environment, config, relay_status, *, settings=None):
@@ -188,7 +200,7 @@ root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
 package=json.loads((root/'package.json').read_text())
 assert package['name']=='@earendil-works/pi-coding-agent'
 config=pathlib.Path('/tmp/harbor-pi-agent')
-sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js']
+sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent.js']
 tools=sorted((root/'dist/core/tools').rglob('*.js'))
 assert tools
 sources+=tools
@@ -210,8 +222,10 @@ print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(
     for name, sha in settings.get("expected_compaction_sources", {}).items():
         if observed.get("installed_source_sha256", {}).get(name) != sha:
             raise RuntimeError("native Pi compaction source hash mismatch: " + name)
-    if continuation and observed.get("installed_source_sha256", {}).get(continuation["path"]) != continuation["after_sha256"]:
-        raise RuntimeError("native thinking continuation installed source hash mismatch")
+    if continuation:
+        targets = {receipt["path"]: receipt["after_sha256"] for receipt in continuation["patch_chain"]}
+        if any(observed.get("installed_source_sha256", {}).get(path) != sha for path, sha in targets.items()):
+            raise RuntimeError("native thinking continuation installed source hash mismatch")
     return {**observed, "native_requested_reasoning_effort": "off",
             **({"thinking_continuation_repair": continuation} if continuation else {}),
             "max_turns": settings["max_turns"],

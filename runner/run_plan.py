@@ -138,6 +138,7 @@ def tool_repair_records(plan, project):
     scopes = [
         ("relay-usage-repair", "relay_input_usage_compatibility", {"runner/model_relay.py", "runner/run_plan.py"}),
         ("pi-thinking-repair", "pi_thinking_continuation", {"runner/run_plan.py", "runner/harbor_pilot.py", "runner/study.py", "runner/study_report.py"}),
+        ("pi-context-repair", "pi_context_compaction_handoff", {"runner/run_plan.py", "runner/harbor_pilot.py", "runner/relay_transport.py"}),
     ]
     records = []
     for suffix, kind, allowed in scopes:
@@ -151,13 +152,15 @@ def tool_repair_records(plan, project):
         if (not isinstance(repair, dict) or repair.get("schema_version") != 1 or repair.get("kind") != kind
                 or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
             raise ValueError("infrastructure repair is not bound to this unchanged frozen plan")
-        if kind == "pi_thinking_continuation" and repair.get("previous_repair") != (records[-1][0] if records else None):
+        if kind in {"pi_thinking_continuation", "pi_context_compaction_handoff"} and repair.get("previous_repair") != (records[-1][0] if records else None):
             raise ValueError("infrastructure repair chain changed")
+        if kind == "pi_context_compaction_handoff" and (not records or records[-1][1]["kind"] != "pi_thinking_continuation"):
+            raise ValueError("context handoff repair requires the prior thinking repair")
         files = repair.get("files")
         if not isinstance(files, dict) or not files or not set(files) <= allowed:
             raise ValueError("trusted tooling files changed outside repair scope")
         required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
-        if kind == "pi_thinking_continuation":
+        if kind in {"pi_thinking_continuation", "pi_context_compaction_handoff"}:
             required |= {"native_patch", "native_tests", "original_evidence"}
         evidence = repair.get("evidence")
         if not isinstance(evidence, dict) or set(evidence) != required:

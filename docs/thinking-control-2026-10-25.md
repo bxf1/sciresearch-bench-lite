@@ -78,9 +78,28 @@ Heat G1 r1 的 `a001` 在第 4 次模型响应中达到每请求 4,096 输出 to
 - [配置与保全验证](../logs/thinking-control-2026-10-25/recovery-002/validation.json)：全部 15 个配置通过，新旧 attempt 仅身份、父 attempt 和会话 ID 不同；此前 635 个证据文件哈希一致。
 - [恢复控制器模拟](../logs/thinking-control-2026-10-25/recovery-002/controller-simulation.json)：确认先进行一次关联重试、保留已关闭会话、再执行剩余 11 个会话；新失败会停止调度，全局关闭屏障通过前不执行隐藏评分。
 
-部署时只暂停旧调度器，正在执行的 ODE G1 r1 按原 1,800 秒期限关闭，登记 `candidate-001` 后正常清理；该会话和已结束的 Heat G2、Heat G3 均保留。13:00（北京时间）已启动 `research-98719c3c1cf3fc92-heat-g1-r1-a002`，明确关联父 `a001`，使用空白研究工作区。当前控制器为 `controller-recovery-002.py`，进程记录和输出位于 `logs/thinking-control-2026-10-25/recovery-002/`，共享状态仍为上级目录的 `state.json`。
+部署时只暂停旧调度器，正在执行的 ODE G1 r1 按原 1,800 秒期限关闭，登记 `candidate-001` 后正常清理；该会话和已结束的 Heat G2、Heat G3 均保留。13:00（北京时间）启动 `research-98719c3c1cf3fc92-heat-g1-r1-a002`，明确关联父 `a001`，使用空白研究工作区。当时控制器为 `controller-recovery-002.py`，进程记录和输出位于 `logs/thinking-control-2026-10-25/recovery-002/`，共享状态为上级目录的 `state.json`。
 
 这次修复改变了批次中途的执行器续接行为，最终分析必须按 attempt 标注执行器版本，单列原失败与重试开销，并保留顺序和中途修复带来的比较限制。原失败与重试不能当作两个独立科学样本。
+
+## 2026-10-25 长上下文衔接修复与继续执行
+
+Heat G1 r1 `a002` 的普通 4,096 token thinking 截断已多次成功续接，且登记了 3 次公开评估。但随后出现另一边界：Pi 根据上下文余量逐步缩小实际请求额度，最终降到 1 token；初版续接逻辑继续内层循环，未进入 `agent_end` 后的原生压缩恢复流程。返回的 `I`、`Let` 等是非空片段，过滤空白无法解决。[诊断与原始快照](../logs/thinking-control-2026-10-25/diagnostics/thinking-one-token-loop-20261025/diagnosis.md)保留了请求额度、原生终止原因、源码依据和调度暂停记录。冻结上限没有改成 1；这是原生客户端按上下文余量主动缩小请求的结果。
+
+发现异常后只暂停后续调度，当前研究仍按原 1,800 秒期限在 13:31:35 关闭。`a002` 原结局保留为 `research_timeout`，first=`candidate-001`、final=`candidate-003`；297 次 HTTP 成功响应、74,089 输出 token 中，252 次为实际请求上限 1 的无进展续接。这些响应不能算作有效研究迭代，也不能省略其时间和输入开销。该 attempt 已有科学候选，保留并在全局研究关闭后评分，不追加重跑，不把原正常超时结局改写为基础设施失败。
+
+后续修复只让达到 4,096 输出的非空 thinking-only 截断直接续接；较小的截断返回现有压缩恢复流程。压缩后若保留了先前被截断的纯 thinking 片段，恢复入口允许从这些 assistant 片段继续；普通已完成回答仍不能续接。不改原生上下文窗口、8 个冻结压缩源码、摘要提示、压缩设置或一次恢复上限，不追加研究提示。完整 AgentSession 测试验证了连续片段、压缩后的额度恢复，以及再次失败时的原有停止边界。
+
+验收期间另发现 relay 冷启动在原 0.25 CPU 配额下偶尔超过单次 5 秒健康检查，旧启动器遇到超时会直接退出。现在超时只消耗原定 30 次检查中的一次，单次超时、次数上限、0.25 CPU、256 MiB 和所有研究配置均保持不变，并记录 `health_check_timeouts`。前三次合成探测的启动失败均保留，未产生模型请求；第 4 次在一次健康检查超时后成功启动。
+
+[上下文修复附录](../freezes/research-98719c3c1cf3fc92-pi-context-repair.json) SHA256 为 `991f1fe979ea921d6d1f8b04bcfe949162175c780716fa3cdfaa904302629dcf`，串接前两份不可变附录，绑定三处宿主源码变更及两个原生文件的精确补丁。原计划 SHA256 仍为 `25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e`。
+
+- [完整回归](../logs/thinking-control-2026-10-25/recovery-003/unit-tests.txt)：378 项通过，2 项既有弃用警告。
+- [原生验证](../logs/thinking-control-2026-10-25/recovery-003/native-tests.json)：11 个循环用例和 4 个完整 AgentSession 用例通过；初版集成测试暴露的恢复入口失败也保留在同目录。
+- [真实接口验收](../logs/thinking-control-2026-10-25/recovery-003/live-context-probe-a004/result.json)：1 token 截断后完成原生压缩、恢复正常请求额度、返回最终 `OK`，3 次真实请求全部成功，实际输出共 520 token。测试以合成 assistant usage 124,100／4,096 触发上下文边界；该注入值不是供应商用量，不计入 relay 消耗。真实请求由相同的 4,096／200,000 上限约束，探测不含科学数据，不计入实验成绩。
+- [保全与配置检查](../logs/thinking-control-2026-10-25/recovery-003/validation.json)：15 个配置通过，此前 821 个证据文件哈希不变；[控制器模拟](../logs/thinking-control-2026-10-25/recovery-003/controller-simulation.json)确认保留 4 个已关闭会话、只启动剩余 11 个、失败则停止，全局评分屏障不变。
+
+13:58（北京时间）启动 `controller-recovery-003.py`，从 ODE G2 r1 继续。当前进程及输出位于 `logs/thinking-control-2026-10-25/recovery-003/`；此前暂停记录仅为历史证据。最终比较须继续区分各 attempt 的执行器版本和无进展开销，不能据此次恢复宣称科学成绩已经通过。
 
 ## 分析边界
 
