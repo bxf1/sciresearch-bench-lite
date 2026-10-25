@@ -122,6 +122,44 @@ def relay_outcome(status, *, interrupted=False):
     return None
 
 
+async def install_thinking_continuation(environment, settings):
+    """Install an authorized, exact native loop patch before research begins."""
+    if not settings.get("formal") or not settings.get("plan_ref"):
+        return None
+    from .run_plan import _file_ref, tool_repair_records
+    root = Path(__file__).resolve().parents[1]
+    plan = read_json(_file_ref(root, settings["plan_ref"]))
+    for ref, repair in tool_repair_records(plan, root):
+        if repair["kind"] != "pi_thinking_continuation":
+            continue
+        patch_ref = repair["evidence"]["native_patch"]
+        patch = read_json(_file_ref(root, patch_ref))
+        if patch.get("path") != "node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js":
+            raise RuntimeError("unexpected native continuation patch target")
+        program = """import hashlib,json,pathlib,shutil
+patch=json.loads(PATCH_JSON)
+root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
+path=root/patch['path']
+source=path.read_text()
+sha=lambda text:hashlib.sha256(text.encode()).hexdigest()
+assert sha(source)==patch['before_sha256'], 'native continuation source differs'
+assert source.count(patch['replace_before'])==1, 'native continuation anchor differs'
+updated=source.replace(patch['replace_before'],patch['replace_after'])
+assert sha(updated)==patch['after_sha256'], 'native continuation patch differs'
+path.write_text(updated)
+assert sha(path.read_text())==patch['after_sha256']
+print(json.dumps({'path':patch['path'],'before_sha256':patch['before_sha256'],'after_sha256':patch['after_sha256'],'applied':True}))
+""".replace("PATCH_JSON", repr(json.dumps(patch)))
+        result = await environment.exec(command=". ~/.nvm/nvm.sh && python -I -c " + shlex.quote(program), timeout_sec=15)
+        if result.return_code:
+            raise RuntimeError("native thinking continuation patch failed its source checks")
+        receipt = json.loads(result.stdout)
+        if receipt.get("after_sha256") != patch["after_sha256"] or receipt.get("applied") is not True:
+            raise RuntimeError("native thinking continuation receipt mismatch")
+        return {"authorization": ref, "native_patch": patch_ref, **receipt}
+    return None
+
+
 async def native_setup_evidence(agent, environment, config, relay_status, *, settings=None):
     """Hash the native setup before R can write research code or call a model."""
     settings = settings or pilot_settings()
@@ -144,12 +182,13 @@ async def native_setup_evidence(agent, environment, config, relay_status, *, set
         raise RuntimeError("fresh relay wire system/tools policy differs from the frozen research contract")
     if settings["formal"] and limits.get("max_requests", 512) != settings.get("max_requests", 512):
         raise RuntimeError("fresh relay request count limit differs from the frozen research contract")
+    continuation = await install_thinking_continuation(environment, settings)
     program = """import hashlib,json,pathlib,shutil
 root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
 package=json.loads((root/'package.json').read_text())
 assert package['name']=='@earendil-works/pi-coding-agent'
 config=pathlib.Path('/tmp/harbor-pi-agent')
-sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js']
+sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js']
 tools=sorted((root/'dist/core/tools').rglob('*.js'))
 assert tools
 sources+=tools
@@ -171,7 +210,10 @@ print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(
     for name, sha in settings.get("expected_compaction_sources", {}).items():
         if observed.get("installed_source_sha256", {}).get(name) != sha:
             raise RuntimeError("native Pi compaction source hash mismatch: " + name)
+    if continuation and observed.get("installed_source_sha256", {}).get(continuation["path"]) != continuation["after_sha256"]:
+        raise RuntimeError("native thinking continuation installed source hash mismatch")
     return {**observed, "native_requested_reasoning_effort": "off",
+            **({"thinking_continuation_repair": continuation} if continuation else {}),
             "max_turns": settings["max_turns"],
             "relay_enforced_policy": limits, "fresh_upstream_request_count": 0,
             "policy_source": "trusted relay enforces the frozen thinking/effort policy independently of native request defaults"}

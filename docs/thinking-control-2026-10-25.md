@@ -61,9 +61,26 @@ Heat G3 r1 的 `a001` 在自行编写的 `sim2.py` 中触发不可终止的求�
 - [配置与证据验证](../logs/thinking-control-2026-10-25/recovery-001/validation.json)：15 个配置通过；重试只改变 attempt、父 attempt 和会话 ID；原失败相关 101 个文件及记录哈希保持一致。
 - [恢复控制器模拟](../logs/thinking-control-2026-10-25/recovery-001/controller-simulation.json)：确认关联重试后按序继续、失败时停止、已完成 attempt 不重跑；没有调用模型或隐藏评分。
 
-12:05（北京时间）已启动 `research-98719c3c1cf3fc92-heat-g3-r1-a002`，父 attempt 为 `...-a001`，使用新的空白研究工作区。此前脚本的诊断没有反馈给研究 Agent。Heat G2 r1 的已完成结果保留，之后依原顺序执行其余 13 个会话。当前控制器为 `controller-recovery-001.py`，当前进程记录和输出在 `logs/thinking-control-2026-10-25/recovery-001/`；旧控制器、启动记录和失败证据均保留。全部研究关闭前仍不执行隐藏评分。
+12:05（北京时间）启动 `research-98719c3c1cf3fc92-heat-g3-r1-a002`，父 attempt 为 `...-a001`，使用新的空白研究工作区。此前脚本的诊断没有反馈给研究 Agent。Heat G2 r1 的已完成结果保留，之后依原顺序继续。当时控制器为 `controller-recovery-001.py`，进程记录和输出在 `logs/thinking-control-2026-10-25/recovery-001/`；旧控制器、启动记录和失败证据均保留。该重试已正常关闭，登记两次公开评估，first=`candidate-001`、final=`candidate-002`；隐藏成绩仍未读取。
 
 报告须注明执行期间发生过基础设施修复；不能把原失败与重试作为两个独立科学样本，也不能省略此前死循环这一研究行为。
+
+## 2026-10-25 Pi thinking 截断续接修复
+
+Heat G1 r1 的 `a001` 在第 4 次模型响应中达到每请求 4,096 输出 token 上限，返回 `rawStopReason=max_tokens`、`stopReason=length`，内容只有非空 thinking。Pi 随后发出 `agent_end`，没有第 5 次请求。此前 6 次工具调用均成功；总输出仅 4,535 token，公开评估和候选均为零。原生执行约 34 秒，既没有耗尽 20 万额度，也没有触及 30 分钟期限。[只读诊断](../logs/thinking-control-2026-10-25/diagnostics/heat-g1-r1-early-end/diagnosis.md)将此归为截断后未续接的执行协议缺陷，不能解释为 Agent 主动完成研究。原 `completed` 标签、轨迹、用量和无提交记录保持原样。
+
+用户随后明确授权修复并用新 attempt 重试。修复只在响应因长度终止、且内容全部为 thinking 并含非空思考文本时，在同一原生循环中继续请求。此前 assistant thinking 原样进入上下文，不追加“继续”提示或研究建议；仍由同一 relay 账本与研究截止时间约束后续请求。正常结束、普通文本截断及不完整工具参数沿用原行为。每次新研究容器安装前检查原生 `agent-loop.js` 的原始 SHA256，安装后检查目标 SHA256，并写入原生设置审计；不匹配则拒绝启动。
+
+[Pi 修复附录](../freezes/research-98719c3c1cf3fc92-pi-thinking-repair.json)的 SHA256 为 `76c8af25a26c7b1d982deeb3267dc449b4134da87d1a2df0a9911e8b353596c7`，串接此前 relay 附录，绑定四个宿主文件的精确变更和原生循环补丁。原冻结计划 SHA256、每请求 4,096、每会话 200,000、1,800 秒、20 次公开评估，以及提示、数据、评分和资源均不变。允许正常结束记录重试的例外只绑定 Heat G1 r1 `a001` 的原始结果、无候选注册表和截断轨迹；其他科学零分或正常无提交不能使用这一例外。
+
+- [373 项完整回归测试](../logs/thinking-control-2026-10-25/recovery-002/unit-tests.txt)通过；[8 个原生循环用例](../logs/thinking-control-2026-10-25/recovery-002/native-loop-tests.json)覆盖连续截断、工具调用、预算错误停止和原有结束行为。
+- [真实合成截断探测](../logs/thinking-control-2026-10-25/recovery-002/live-probe/result.json)：首次人为设为 256 token 以触发截断，随后请求为 4,096；自动续接携带原 thinking，成功调用工具并结束，共 3 个成功请求、504 输出 token。此探测不使用科学数据，不计入研究结果；研究请求上限没有改成 256。
+- [配置与保全验证](../logs/thinking-control-2026-10-25/recovery-002/validation.json)：全部 15 个配置通过，新旧 attempt 仅身份、父 attempt 和会话 ID 不同；此前 635 个证据文件哈希一致。
+- [恢复控制器模拟](../logs/thinking-control-2026-10-25/recovery-002/controller-simulation.json)：确认先进行一次关联重试、保留已关闭会话、再执行剩余 11 个会话；新失败会停止调度，全局关闭屏障通过前不执行隐藏评分。
+
+部署时只暂停旧调度器，正在执行的 ODE G1 r1 按原 1,800 秒期限关闭，登记 `candidate-001` 后正常清理；该会话和已结束的 Heat G2、Heat G3 均保留。13:00（北京时间）已启动 `research-98719c3c1cf3fc92-heat-g1-r1-a002`，明确关联父 `a001`，使用空白研究工作区。当前控制器为 `controller-recovery-002.py`，进程记录和输出位于 `logs/thinking-control-2026-10-25/recovery-002/`，共享状态仍为上级目录的 `state.json`。
+
+这次修复改变了批次中途的执行器续接行为，最终分析必须按 attempt 标注执行器版本，单列原失败与重试开销，并保留顺序和中途修复带来的比较限制。原失败与重试不能当作两个独立科学样本。
 
 ## 分析边界
 

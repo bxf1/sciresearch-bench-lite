@@ -19,7 +19,7 @@ from .common import canonical, digest, file_hash, read_json, tree_hashes, write_
 from .calibrate import METHODS, FIXED
 from .phase import checked_hashes, guard_replay
 from .registry import Registry
-from .run_plan import _file_ref, validate_start
+from .run_plan import _file_ref, thinking_truncation_retry, validate_start
 
 NORMAL = {"completed", "research_timeout"}
 FAILED = {"api_failed", "infrastructure_failed", "cancelled"}
@@ -191,9 +191,12 @@ async def start(project, plan_path, run_id, *, retry_of=None, launch=None):
         if row["task"] in manifest["finalized_tasks"]:
             raise ValueError("task research is permanently closed after final replay admission")
         prior = [entry for entry in manifest["attempts"] if entry["run_id"] == run_id]
+        retry_authorization = None
         if prior:
             previous = read_attempt(project, prior[-1])
-            if retry_of != prior[-1]["attempt_id"] or previous["attempt_status"] not in FAILED:
+            if retry_of == prior[-1]["attempt_id"] and previous["attempt_status"] == "completed":
+                retry_authorization = thinking_truncation_retry(project, plan, prior[-1])
+            if retry_of != prior[-1]["attempt_id"] or (previous["attempt_status"] not in FAILED and retry_authorization is None):
                 raise ValueError("only an explicit linked retry of a non-scientific failure is permitted")
         elif retry_of is not None:
             raise ValueError("retry parent does not exist")
@@ -212,6 +215,8 @@ async def start(project, plan_path, run_id, *, retry_of=None, launch=None):
                    "score": None, "reward": None, "model_run_started": False, "started_at": time.time()}
         write_json(host_path, pending)
         entry = {"run_id": run_id, "attempt_id": attempt_id, "parent_attempt": retry_of, "result": reference(project, host_path)}
+        if retry_authorization:
+            entry["retry_authorization"] = retry_authorization
         manifest["attempts"].append(entry)
         write_json(manifest_path, manifest)
         try:
@@ -227,6 +232,8 @@ async def start(project, plan_path, run_id, *, retry_of=None, launch=None):
             result = dict(pending, status="research_invalid", attempt_status="cancelled" if isinstance(exc, (asyncio.CancelledError, KeyboardInterrupt)) else "infrastructure_failed",
                           error=f"{type(exc).__name__}: {exc}"[:2048], finished_at=time.time())
         result = retain_post_registry_failure(result, spec["output_root"])
+        if retry_authorization:
+            result = dict(result, retry_authorization=retry_authorization, retry_kind="thinking_truncation_protocol_repair")
         write_json(host_path, result)
         entry["result"] = reference(project, host_path)
         output = Path(spec["output_root"])

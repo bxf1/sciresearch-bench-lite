@@ -3,7 +3,8 @@
 Manifest references use project-relative {path, sha256} objects. A replay
 reference wraps the existing verifier diagnostics with formal=true,
 split=final-test, freeze_sha256 and registry_sha256. Research-only attempts
-remain unscored. No input arrays, agent logs, credentials or solver are read.
+remain unscored. No input arrays, credentials or solver are read. An explicitly
+authorized truncation retry verifies stop metadata in its bound native transcript.
 """
 from __future__ import annotations
 
@@ -17,7 +18,7 @@ import statistics
 from .calibrate import FIXED, METHODS
 from .common import canonical, digest, file_hash, read_json, write_json
 from .report import _csv
-from .run_plan import GROUPS, SHA256, _file_ref, validate_start
+from .run_plan import GROUPS, SHA256, _file_ref, thinking_truncation_retry, validate_start
 
 NONSCIENTIFIC = {"api_failed", "infrastructure_failed", "cancelled"}
 NORMAL = {"completed", "research_timeout"}
@@ -536,9 +537,17 @@ def export_study(project, plan_path, manifest_path, output):
         parent = entry.get("parent_attempt")
         if parent != previous.get(run["run_id"]):
             raise ValueError("retries must link to the preceding attempt of the same planned run")
+        retry_authorization = None
         if parent and seen[parent]["attempt_status"] not in NONSCIENTIFIC:
-            raise ValueError("a scientific result, including zero, cannot be replaced by a retry")
+            parent_entry = next(item for item in manifest["attempts"] if item["attempt_id"] == parent)
+            retry_authorization = thinking_truncation_retry(project, plan, parent_entry)
+            if retry_authorization is None or entry.get("retry_authorization") != retry_authorization:
+                raise ValueError("a scientific result, including zero, cannot be replaced by a retry")
+            seen[parent]["failure_reason"] = "thinking-only output truncated without native continuation"
+            seen[parent]["protocol_repair_authorization"] = retry_authorization
         result = _read(project, entry.get("result"))
+        if retry_authorization and result.get("retry_authorization") != retry_authorization:
+            raise ValueError("truncation retry result authorization differs from its ledger")
         validate_research_result(result, run)
         registry = _read(project, entry["registry"]) if entry.get("registry") else None
         status = result["attempt_status"]
@@ -559,6 +568,7 @@ def export_study(project, plan_path, manifest_path, output):
         common = {key: run[key] for key in ("run_id", "task", "group", "repeat")}
         common.update(attempt_id=attempt_id, parent_attempt=parent, formal=True)
         row = {**common, "attempt_status": status, "research_status": result.get("status"), "cost_usd": None,
+               "retry_authorization": retry_authorization,
                "registry_attempt_status": registry.get("attempt_status") if registry else None,
                "post_registry_failure": post_registry_failure,
                "research_valid": status in NORMAL and result.get("status") == "research_frozen"

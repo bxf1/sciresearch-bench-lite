@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import copy
 import datetime
+import json
 from pathlib import Path
 import re
 import secrets
@@ -130,38 +131,93 @@ def _file_ref(project, ref):
     return path
 
 
+def tool_repair_records(plan, project):
+    """Read the bounded, hash-linked infrastructure addenda; never edit a plan."""
+    if not re.fullmatch(r"research-[0-9a-f]{16}", plan["plan_id"]):
+        raise ValueError("invalid plan identity for infrastructure repair")
+    scopes = [
+        ("relay-usage-repair", "relay_input_usage_compatibility", {"runner/model_relay.py", "runner/run_plan.py"}),
+        ("pi-thinking-repair", "pi_thinking_continuation", {"runner/run_plan.py", "runner/harbor_pilot.py", "runner/study.py", "runner/study_report.py"}),
+    ]
+    records = []
+    for suffix, kind, allowed in scopes:
+        path = Path(project) / "freezes" / (plan["plan_id"] + "-" + suffix + ".json")
+        if not path.exists():
+            continue
+        if not path.is_file() or path.is_symlink() or path.stat().st_size > 65536:
+            raise ValueError("invalid bounded infrastructure repair addendum")
+        ref = {"path": path.relative_to(project).as_posix(), "sha256": file_hash(path)}
+        repair = read_json(_file_ref(project, ref))
+        if (not isinstance(repair, dict) or repair.get("schema_version") != 1 or repair.get("kind") != kind
+                or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
+            raise ValueError("infrastructure repair is not bound to this unchanged frozen plan")
+        if kind == "pi_thinking_continuation" and repair.get("previous_repair") != (records[-1][0] if records else None):
+            raise ValueError("infrastructure repair chain changed")
+        files = repair.get("files")
+        if not isinstance(files, dict) or not files or not set(files) <= allowed:
+            raise ValueError("trusted tooling files changed outside repair scope")
+        required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
+        if kind == "pi_thinking_continuation":
+            required |= {"native_patch", "native_tests", "original_evidence"}
+        evidence = repair.get("evidence")
+        if not isinstance(evidence, dict) or set(evidence) != required:
+            raise ValueError("infrastructure repair requires complete hash-bound evidence")
+        for item in evidence.values():
+            _file_ref(project, item)
+        records.append((ref, repair))
+    return records
+
+
 def validate_tool_files(plan, project):
-    """Allow only an explicitly evidenced relay repair of an unchanged plan."""
-    frozen = plan["tool_config"]["files"]
+    """Apply exact approved source-hash transitions; all other files stay frozen."""
+    expected = dict(plan["tool_config"]["files"])
     actual = {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}
-    if frozen == actual:
-        return
-    if set(frozen) != set(actual):
+    if set(expected) != set(actual):
         raise ValueError("trusted tooling files changed")
-    changed = {name for name in frozen if frozen[name] != actual[name]}
-    allowed = {"runner/model_relay.py", "runner/run_plan.py"}
-    if not changed <= allowed or not re.fullmatch(r"research-[0-9a-f]{16}", plan["plan_id"]):
-        raise ValueError("trusted tooling files changed")
-    path = Path(project) / "freezes" / (plan["plan_id"] + "-relay-usage-repair.json")
-    if not path.is_file() or path.is_symlink() or path.stat().st_size > 65536:
-        raise ValueError("trusted tooling files changed; missing bounded relay repair addendum")
-    repair = read_json(path)
-    if (not isinstance(repair, dict) or repair.get("schema_version") != 1
-            or repair.get("kind") != "relay_input_usage_compatibility"
-            or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
-        raise ValueError("relay repair is not bound to this unchanged frozen plan")
-    files = repair.get("files")
-    if not isinstance(files, dict) or set(files) != changed:
-        raise ValueError("relay repair file set differs from actual changes")
-    for name in changed:
-        if files[name] != {"before_sha256": frozen[name], "after_sha256": actual[name]}:
+    records = tool_repair_records(plan, project)
+    for _, repair in records:
+        for name, change in repair["files"].items():
+            if (name not in expected or not isinstance(change, dict)
+                    or set(change) != {"before_sha256", "after_sha256"}
+                    or change["before_sha256"] != expected[name]
+                    or not isinstance(change["after_sha256"], str) or SHA256.fullmatch(change["after_sha256"]) is None
+                    or change["before_sha256"] == change["after_sha256"]):
+                raise ValueError("relay repair source hash mismatch")
+            expected[name] = change["after_sha256"]
+    if expected != actual:
+        if records and all(name in {"runner/model_relay.py", "runner/run_plan.py"} for name in expected if expected[name] != actual[name]):
             raise ValueError("relay repair source hash mismatch")
-    evidence = repair.get("evidence")
-    required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
-    if not isinstance(evidence, dict) or set(evidence) != required:
-        raise ValueError("relay repair requires authorization, tests, probe and exact patch evidence")
-    for ref in evidence.values():
-        _file_ref(project, ref)
+        raise ValueError("trusted tooling files changed")
+
+
+def thinking_truncation_retry(project, plan, entry):
+    """One explicitly authorized unsubmitted length-stop retry; keep old outcome."""
+    for ref, repair in tool_repair_records(plan, project):
+        if repair["kind"] != "pi_thinking_continuation":
+            continue
+        retry = repair.get("authorized_retry", {})
+        if retry.get("parent_attempt") != entry["attempt_id"]:
+            continue
+        if retry.get("parent_result") != entry["result"] or entry.get("replay"):
+            raise ValueError("truncation retry parent evidence changed or was already scored")
+        result = read_json(_file_ref(project, entry["result"]))
+        registry = read_json(_file_ref(project, entry.get("registry")))
+        if (result.get("attempt_status") != "completed" or result.get("status") != "research_frozen"
+                or result.get("cleanup_errors") or result.get("bridge_errors")
+                or registry.get("closed") is not True or registry.get("evaluations") != []
+                or registry.get("first_id") is not None or registry.get("final_id") is not None):
+            raise ValueError("only an unsubmitted, cleanly closed thinking truncation may use this retry")
+        records = [json.loads(line) for line in _file_ref(project, retry.get("transcript")).read_text().splitlines()]
+        messages = [row["message"] for row in records if row.get("message", {}).get("role") == "assistant"]
+        last = messages[-1] if messages else {}
+        content = last.get("content", [])
+        if (last.get("stopReason") != "length" or last.get("rawStopReason") != "max_tokens"
+                or last.get("usage", {}).get("output") != min(4096, plan["model"]["output_token_limit"])
+                or not content or any(block.get("type") != "thinking" for block in content)
+                or not any(block.get("thinking") for block in content)):
+            raise ValueError("authorized retry is missing the original thinking-only truncation evidence")
+        return ref
+    return None
 
 
 def start_blockers(plan, project):

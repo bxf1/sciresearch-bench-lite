@@ -1,0 +1,79 @@
+{
+  "authorized_retry": {
+    "parent_attempt": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+    "parent_result": {
+      "path": "research-runs/research-98719c3c1cf3fc92/host-attempts/research-98719c3c1cf3fc92-heat-g1-r1-a001.json",
+      "sha256": "a6d369b9d19502bd007e892885be413e334da556e244c14f62701c397dd92d7a"
+    },
+    "transcript": {
+      "path": "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/auxiliary-agent/pi/sessions/2026-10-25T04-16-30-741Z_01a17146-3c15-71a3-b090-b47555787641.jsonl",
+      "sha256": "fdbf4165cd06abb92ffc8509f86ac4dad021ea965fb3ff598292e67b446e6520"
+    }
+  },
+  "comparison_limit": "Infrastructure revision changes mid-batch; report each attempt and failed-attempt costs separately.",
+  "evidence": {
+    "authorization": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/authorization.json",
+      "sha256": "870435ae5b0d4f4d0c65f78518946b50ae06df400857f368d1fe68ede1a21c0a"
+    },
+    "native_patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/native-patch.json",
+      "sha256": "ad43706f9a0e542f9b047dd2dc68e50c30be12a73c452226b888017c12f6069d"
+    },
+    "native_tests": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/native-loop-tests.json",
+      "sha256": "3290653a597f0a1f3f1ba8381c2a1f4ffa9e256a2740a856235a01920f1dbdc8"
+    },
+    "original_evidence": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/original-evidence-sha256.json",
+      "sha256": "f462582153276d226083eafa5bbbe77f851bdc80588318e4d7f8ad809e253855"
+    },
+    "patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/infrastructure.patch",
+      "sha256": "d4edf0976afdb3488759ae8f56d50446f4d89ab41141d219398415c9653377ec"
+    },
+    "regression_tests": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/unit-tests.txt",
+      "sha256": "557ed87ca4292291bd27e6774852c2d3f7b00ed6ee91899761ddbf4df3a5354a"
+    },
+    "synthetic_probe": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/live-probe/result.json",
+      "sha256": "5d52e8c5820a0ccced2297989f51d01763d81c8f58b217876c3687f21d3322ab"
+    }
+  },
+  "files": {
+    "runner/harbor_pilot.py": {
+      "after_sha256": "4f94640c4d1c96632cd6cfff31f2a749e87716d44aade69614b4391b76150fe4",
+      "before_sha256": "a0a9861eb33ee068de0b65ff09d00b2ca95f02b3847cdb7e0c7f1b7259d31f2e"
+    },
+    "runner/run_plan.py": {
+      "after_sha256": "bc87df42d8ffe500067e58395e6100ac7e23ce0327064b3474b0c72155e4d2f9",
+      "before_sha256": "84627253b0a200b20dad46e5d455b44d56e8df61d00c1f5c1509e4ce585ba9fa"
+    },
+    "runner/study.py": {
+      "after_sha256": "5e59caf195baeafe10996584a6d1361378cb8ef4258ad79ee04b7c6c0bdeb55e",
+      "before_sha256": "887bc9deb52ff99c1f2098e306366f492d1a2c966ab069c36173df88f6c670ca"
+    },
+    "runner/study_report.py": {
+      "after_sha256": "3ae326c17c4e4d46bf9c4d59b033ed323dd5c5dbe3547edb1d1cc3971430894c",
+      "before_sha256": "15331217b08ce3fb221d2ed4d3e4d9947c820f1464ebfa0140bd6460e939bca1"
+    }
+  },
+  "kind": "pi_thinking_continuation",
+  "previous_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-relay-usage-repair.json",
+    "sha256": "de2c9860b1b3764d1579591f82bbd2b0d427e4ca413cd10435c5f5bef09d4864"
+  },
+  "retained_closed_sessions": [
+    "heat-g2-r1-a001",
+    "heat-g3-r1-a002",
+    "ode-g1-r1-a001"
+  ],
+  "run_plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "schema_version": 1,
+  "scope": "Continue nonempty thinking-only length stops within the existing native loop, preserving assistant thinking and adding no user instruction. Install in fresh research containers from Heat G1 r1 a002 onward. Keep original completed outcome and records; separately annotate authorized protocol repair retry.",
+  "unchanged_parameters": "4096 output tokens/request, 200000 cumulative output tokens/session including thinking and compaction, 1800 seconds, 20 public evaluations, same prompts/data/scoring/resources and remaining sequence."
+}
