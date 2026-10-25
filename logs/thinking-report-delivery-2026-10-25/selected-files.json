@@ -1,0 +1,139 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 9611,
+      "sha256": "0a84daea9c09ea898037601d13474c40cda376961a7699a5611ea9dd4426e9bb"
+    },
+    {
+      "path": "archives/pre-thinking-only-20261025/README.md",
+      "bytes": 359,
+      "sha256": "754e68549f6c2ef9d85d30cebe118c93a55fdaa7c47bfbb7d58b5885f9c63481"
+    },
+    {
+      "path": "archives/pre-thinking-only-20261025/manifest.json",
+      "bytes": 3979,
+      "sha256": "7c3bce2c45c87085afb38186f9d31806040d93a7fe1a05ca8a488d58b6dcfaec"
+    },
+    {
+      "path": "archives/pre-thinking-only-20261025/previous-comparison-report.tar.gz",
+      "bytes": 2308654,
+      "sha256": "ef4e988ce5bd1455f132a385c994b3973cf23152f1df27f7dd05c0c130b74246"
+    },
+    {
+      "path": "docs/delivery-audit-thinking-2026-10-25.md",
+      "bytes": 3996,
+      "sha256": "799c6005fe173a1b2fa07af89e21356e51d26845f390e806d1d2c6198f5add3c"
+    },
+    {
+      "path": "docs/figures/thinking-report/first-final-scores.png",
+      "bytes": 134281,
+      "sha256": "c562b24c4c240a3afdea9a143a25874da7ce648cd2cee8811a2d55a3bb16806e"
+    },
+    {
+      "path": "docs/figures/thinking-report/first-final-scores.svg",
+      "bytes": 101229,
+      "sha256": "32ed65f691d68e6115c5c35f686a7535654083745ec9cfbf0de1b543a4640f2e"
+    },
+    {
+      "path": "docs/figures/thinking-report/g2-diagnostic.png",
+      "bytes": 76860,
+      "sha256": "b955a60f4164ed5fae8e2daad7833ceaac2adb41d77f6704d1e71278372dce10"
+    },
+    {
+      "path": "docs/figures/thinking-report/g2-diagnostic.svg",
+      "bytes": 88973,
+      "sha256": "75ac59299b04dc470f3cb16bbad96c6f0d80d886507028350fb671ce8bcdb91b"
+    },
+    {
+      "path": "docs/figures/thinking-report/outcomes.png",
+      "bytes": 45986,
+      "sha256": "0b6f082f684a717111e55e83356e6bb3fee39e0e36279d55fe98a18373c57c0b"
+    },
+    {
+      "path": "docs/figures/thinking-report/outcomes.svg",
+      "bytes": 54739,
+      "sha256": "9d3900a267d8a8641c8ea8d9239f81aa448f8db3e6218f6f939a1cbb46f9bcc0"
+    },
+    {
+      "path": "docs/reproduction.md",
+      "bytes": 10277,
+      "sha256": "f5a8ee7d00d5c76c8388c3c82621e926454fe7f8935e92af3ccae3c573ac2c8c"
+    },
+    {
+      "path": "docs/submission-report-2026-10-24.html",
+      "bytes": 402645,
+      "sha256": "ddca93c8656470e6ab236fbc1264eba01fd4f870a97da609ab582057245ba6c0"
+    },
+    {
+      "path": "docs/submission-report-2026-10-24.md",
+      "bytes": 39550,
+      "sha256": "e4ac4dafdd7de81f56e3205bb6842256a44d25f4200082548079f535e903e8e9"
+    },
+    {
+      "path": "docs/survey.md",
+      "bytes": 11982,
+      "sha256": "c7f997f0eddcb32366f3c9c1e515ea59ce2e70369e64a9433b31719def2df2ad"
+    },
+    {
+      "path": "docs/thinking-report-evidence-2026-10-25.md",
+      "bytes": 13139,
+      "sha256": "fe3aa423dc0ecf8c5b28061fee21dda27126dd4704b4444b8a4c2bffc8e8fabc"
+    },
+    {
+      "path": "logs/thinking-report-delivery-2026-10-25/raw-evidence-audit.json",
+      "bytes": 426,
+      "sha256": "35d3f45ce0f834b8ee57e7a9453c3ee13ef63d3b0b92ab31666704a50a4f2fa7"
+    },
+    {
+      "path": "logs/thinking-report-delivery-2026-10-25/report-qa.json",
+      "bytes": 469,
+      "sha256": "2873fbe18c899d45368982d0dfec2895edc77e28391cf3097cbd95a97cd62954"
+    },
+    {
+      "path": "output/pdf/sciresearch-thinking-report-20261025.pdf",
+      "bytes": 1790600,
+      "sha256": "a1111bf6f6aec1c73299044a4e069574cf1bffb15358b809cb740ff56a4886a4"
+    },
+    {
+      "path": "results/thinking-report-2026-10-25/analysis.json",
+      "bytes": 53318,
+      "sha256": "325bdedacdbc8d73cae445a378dd6cf0216dbf5c9b607c99cdeb850115b4530c"
+    },
+    {
+      "path": "results/thinking-report-2026-10-25/figure-manifest.json",
+      "bytes": 1112,
+      "sha256": "35ff01d40e9feae044271d841f634ead9da8c5f353cad4e3eac2805bb52d673a"
+    },
+    {
+      "path": "results/thinking-report-2026-10-25/ordered-results.md",
+      "bytes": 3509,
+      "sha256": "54611e50f65268345c49cd1ec4ae271d4d3689c2063e67b87fac2287b102dd65"
+    },
+    {
+      "path": "tools/audit_thinking_report.py",
+      "bytes": 8584,
+      "sha256": "043faf28ca16435de02f02bdb5295e7c7341780134311232327955a84825ab7c"
+    },
+    {
+      "path": "tools/build_delivery_manifest.py",
+      "bytes": 1543,
+      "sha256": "6b2648a61f4be94fa261772a191d486b29ae36a8053760c3581c5911f24f3272"
+    },
+    {
+      "path": "tools/build_final_report.py",
+      "bytes": 22827,
+      "sha256": "a6e34603183759d9a84b1e9c16dca4a3aff8255667467e3da5665f6b67652cf0"
+    },
+    {
+      "path": "tools/render_final_report.cjs",
+      "bytes": 1981,
+      "sha256": "e14fa4321301ead4caa992cd04d659081a8b5e6cc7c9cf6de500c38324280daa"
+    },
+    {
+      "path": "tools/verify_delivery.py",
+      "bytes": 7267,
+      "sha256": "77d4b13cc66cdffbe83e09d0cb56ed220922e655b213a82a9be41b9873927520"
+    }
+  ]
+}

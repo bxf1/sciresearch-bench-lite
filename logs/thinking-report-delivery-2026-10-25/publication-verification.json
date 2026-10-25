@@ -1,0 +1,51 @@
+{
+  "status": "verified",
+  "verified_at_utc": "2026-10-25T11:56:41.395181+00:00",
+  "source_commit": "1c8b452c6ea7c29c655cbda2f4f999fc15c7f575",
+  "remote_main": "1c8b452c6ea7c29c655cbda2f4f999fc15c7f575",
+  "release_visible": true,
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "old_assets_retained": 22,
+  "total_assets": 27,
+  "assets": [
+    {
+      "name": "thinking-only-report-20261025.tar.gz",
+      "bytes": 4047757,
+      "sha256": "a0f3a2f3791d12b3c16737b5d34041ee27d503a18e9fcc1c70b6b10caed53536",
+      "server_sha256": "sha256:a0f3a2f3791d12b3c16737b5d34041ee27d503a18e9fcc1c70b6b10caed53536",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-only-report-20261025.tar.gz"
+    },
+    {
+      "name": "thinking-only-report-manifest-20261025.json",
+      "bytes": 5266,
+      "sha256": "7f68bc7a6c513237344d56810327a42cd76fe9a0ac83e180cf4fd130f84826ab",
+      "server_sha256": "sha256:7f68bc7a6c513237344d56810327a42cd76fe9a0ac83e180cf4fd130f84826ab",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-only-report-manifest-20261025.json"
+    },
+    {
+      "name": "thinking-only-report-SHA256SUMS-20261025.txt",
+      "bytes": 428,
+      "sha256": "e07ee033354815c420c1a3fcfa30b5e5390c2cdb65f6ca93b2e69dc9734ba652",
+      "server_sha256": "sha256:e07ee033354815c420c1a3fcfa30b5e5390c2cdb65f6ca93b2e69dc9734ba652",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-only-report-SHA256SUMS-20261025.txt"
+    },
+    {
+      "name": "sciresearch-thinking-report-20261025.pdf",
+      "bytes": 1790600,
+      "sha256": "a1111bf6f6aec1c73299044a4e069574cf1bffb15358b809cb740ff56a4886a4",
+      "server_sha256": "sha256:a1111bf6f6aec1c73299044a4e069574cf1bffb15358b809cb740ff56a4886a4",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-thinking-report-20261025.pdf"
+    },
+    {
+      "name": "sciresearch-thinking-report-20261025.html",
+      "bytes": 402645,
+      "sha256": "ddca93c8656470e6ab236fbc1264eba01fd4f870a97da609ab582057245ba6c0",
+      "server_sha256": "sha256:ddca93c8656470e6ab236fbc1264eba01fd4f870a97da609ab582057245ba6c0",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-thinking-report-20261025.html"
+    }
+  ],
+  "scope": "Thinking-only final report; original experiment records and previous report preserved.",
+  "g2_formal_score": null,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

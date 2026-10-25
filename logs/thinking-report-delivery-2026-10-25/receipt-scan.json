@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "files": 14,
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0,
+  "assets_verified_with_server_sha256": 5,
+  "historical_release_assets_retained": 22
+}

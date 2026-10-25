@@ -1,0 +1,4 @@
+a0f3a2f3791d12b3c16737b5d34041ee27d503a18e9fcc1c70b6b10caed53536  thinking-only-report-20261025.tar.gz
+7f68bc7a6c513237344d56810327a42cd76fe9a0ac83e180cf4fd130f84826ab  thinking-only-report-manifest-20261025.json
+a1111bf6f6aec1c73299044a4e069574cf1bffb15358b809cb740ff56a4886a4  sciresearch-thinking-report-20261025.pdf
+ddca93c8656470e6ab236fbc1264eba01fd4f870a97da609ab582057245ba6c0  sciresearch-thinking-report-20261025.html
