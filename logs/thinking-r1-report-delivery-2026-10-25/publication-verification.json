@@ -1,0 +1,53 @@
+{
+  "status": "verified",
+  "verified_at_utc": "2026-10-25T12:42:43.171130+00:00",
+  "source_commit": "d376b1731d50ac0f6f8ff8e9a639816aecf0addd",
+  "remote_main": "d376b1731d50ac0f6f8ff8e9a639816aecf0addd",
+  "release_visible": true,
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "old_assets_retained": 27,
+  "total_assets": 32,
+  "assets": [
+    {
+      "name": "thinking-r1-report-20261025.tar.gz",
+      "bytes": 1766140,
+      "sha256": "893139c9fbaf07f0082e75354bc20b59e34c1c20645f39a1830f7d3a34f64b25",
+      "server_sha256": "sha256:893139c9fbaf07f0082e75354bc20b59e34c1c20645f39a1830f7d3a34f64b25",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-r1-report-20261025.tar.gz"
+    },
+    {
+      "name": "thinking-r1-report-manifest-20261025.json",
+      "bytes": 4733,
+      "sha256": "3570cf87d7d37c279a741ffb0b22a84b2c1e87ec875478c2d7943ccf50fee318",
+      "server_sha256": "sha256:3570cf87d7d37c279a741ffb0b22a84b2c1e87ec875478c2d7943ccf50fee318",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-r1-report-manifest-20261025.json"
+    },
+    {
+      "name": "thinking-r1-report-SHA256SUMS-20261025.txt",
+      "bytes": 430,
+      "sha256": "f92c1628d7ff40377a011733db9c4215adb3bb32c556cc08717f2caa605fa01e",
+      "server_sha256": "sha256:f92c1628d7ff40377a011733db9c4215adb3bb32c556cc08717f2caa605fa01e",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-r1-report-SHA256SUMS-20261025.txt"
+    },
+    {
+      "name": "sciresearch-thinking-r1-report-20261025.pdf",
+      "bytes": 1834367,
+      "sha256": "9fe8abd8d0a27bb9e87b5f8800a05177481e9cef746266767f1e53599b9a6ef5",
+      "server_sha256": "sha256:9fe8abd8d0a27bb9e87b5f8800a05177481e9cef746266767f1e53599b9a6ef5",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-thinking-r1-report-20261025.pdf"
+    },
+    {
+      "name": "sciresearch-thinking-r1-report-20261025.html",
+      "bytes": 402606,
+      "sha256": "4a5ff6076ee99e70779162586d1d872db4a6807fed0efbd6266d2ae3bdc60226",
+      "server_sha256": "sha256:4a5ff6076ee99e70779162586d1d872db4a6807fed0efbd6266d2ae3bdc60226",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-thinking-r1-report-20261025.html"
+    }
+  ],
+  "scope": "Main report 9 r1 sessions; appendix 6 Heat repeats; complete original logs and retries retained.",
+  "main_sessions": 9,
+  "appendix_sessions": 6,
+  "g2_formal_score": null,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

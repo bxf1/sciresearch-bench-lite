@@ -1,0 +1,27 @@
+[
+  {
+    "name": "thinking-r1-report-20261025.tar.gz",
+    "bytes": 1766140,
+    "sha256": "893139c9fbaf07f0082e75354bc20b59e34c1c20645f39a1830f7d3a34f64b25"
+  },
+  {
+    "name": "thinking-r1-report-manifest-20261025.json",
+    "bytes": 4733,
+    "sha256": "3570cf87d7d37c279a741ffb0b22a84b2c1e87ec875478c2d7943ccf50fee318"
+  },
+  {
+    "name": "thinking-r1-report-SHA256SUMS-20261025.txt",
+    "bytes": 430,
+    "sha256": "f92c1628d7ff40377a011733db9c4215adb3bb32c556cc08717f2caa605fa01e"
+  },
+  {
+    "name": "sciresearch-thinking-r1-report-20261025.pdf",
+    "bytes": 1834367,
+    "sha256": "9fe8abd8d0a27bb9e87b5f8800a05177481e9cef746266767f1e53599b9a6ef5"
+  },
+  {
+    "name": "sciresearch-thinking-r1-report-20261025.html",
+    "bytes": 402606,
+    "sha256": "4a5ff6076ee99e70779162586d1d872db4a6807fed0efbd6266d2ae3bdc60226"
+  }
+]

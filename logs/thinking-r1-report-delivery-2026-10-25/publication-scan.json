@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "files_scanned": 18791,
+  "bytes_scanned": 485342733,
+  "selected_files": 24,
+  "old_deliverable_files_unchanged": 18684,
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "g2_formal_score": null
+}
