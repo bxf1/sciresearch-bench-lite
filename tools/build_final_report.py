@@ -203,6 +203,7 @@ def html_report():
     from markdown_it import MarkdownIt
     md = MarkdownIt('commonmark', {'html': True}).enable('table')
     body = md.render(REPORT.read_text())
+    assert '**' not in body, 'Unrendered Markdown emphasis in HTML'
     # Keep offline HTML self-contained; evidence links open the public repository.
     def image_data(m):
         path = (REPORT.parent / m.group(1)).resolve()

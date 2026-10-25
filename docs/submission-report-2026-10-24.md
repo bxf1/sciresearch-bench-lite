@@ -305,7 +305,7 @@ G2 有合法候选，并在两轮测量中均完成三次候选批次；每次�
 
 最近一次拒绝来自一个约 2.028 秒的区间：VPN 进程增加约 0.11 秒 CPU，用量折算为 5.423%，略高于冻结的 5% 单核阈值。没有新增 swap-out；记录的 swap-in 仅作诊断。首次窗口则同时出现其他进程活跃和 swap-out。两轮比值接近，支持“候选有加速迹象”的诊断描述，但不能证明环境干扰没有影响。
 
-本报告采用最近补测的**实测 2.488×**作为明确标注的诊断数值，不估填分数。完整记录见[计时报告](poisson-timing-recheck-2026-10-25.md)、[补测结果](../logs/poisson-timing-recheck-2026-10-25/g2-window-002/operation-result.json)与[宿主观察](../logs/poisson-timing-recheck-2026-10-25/g2-window-002/host-observations.jsonl)。正式性能仍待合格环境中的新测量；本次报告整理没有启动新的 Agent 或测量。
+本报告采用最近补测的 **实测 2.488×** 作为明确标注的诊断数值，不估填分数。完整记录见[计时报告](poisson-timing-recheck-2026-10-25.md)、[补测结果](../logs/poisson-timing-recheck-2026-10-25/g2-window-002/operation-result.json)与[宿主观察](../logs/poisson-timing-recheck-2026-10-25/g2-window-002/host-observations.jsonl)。正式性能仍待合格环境中的新测量；本次报告整理没有启动新的 Agent 或测量。
 
 ## 8. 端到端案例：一次可核验的迭代改进
 

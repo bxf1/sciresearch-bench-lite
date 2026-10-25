@@ -282,13 +282,13 @@
     },
     {
       "path": "docs/submission-report-2026-10-24.html",
-      "bytes": 418231,
-      "sha256": "276439ab13095e59de8fd6b7d86c1761fbcc574d88492929d9f55ac493ff5513"
+      "bytes": 418246,
+      "sha256": "6a186f6585d5e99d48ff9d0631d70935f2fd9cdb49d01275438d512076633b9b"
     },
     {
       "path": "docs/submission-report-2026-10-24.md",
-      "bytes": 40332,
-      "sha256": "a480a10ec4dcfebe797413dfdad5f160c43219646852cdd7833a4ba53ee0180c"
+      "bytes": 40334,
+      "sha256": "9e8ab31660481ecbd01f3f3fedb40adacc5379e436eb3c51ae69fe2a5ab4c7a7"
     },
     {
       "path": "docs/supplemental-results-2026-10-24.md",
@@ -25627,8 +25627,8 @@
     },
     {
       "path": "output/pdf/sciresearch-final-report-20261025.pdf",
-      "bytes": 1858241,
-      "sha256": "08aac7f0900ce151a8c99dbf40572472f6f6096a1ab2ddcb3e784d4f5080a2d8"
+      "bytes": 1858212,
+      "sha256": "8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d"
     },
     {
       "path": "prompts/heat/common.md",
@@ -93377,8 +93377,8 @@
     },
     {
       "path": "tools/build_final_report.py",
-      "bytes": 17015,
-      "sha256": "2b0b0487f9c157a54763072cae86097c319a1e4bfd7b0d9d3bc99787a1c78069"
+      "bytes": 17083,
+      "sha256": "9ae35d0b2eae7521431f6f4d97221ce6afc82dd8b86980accd35e406c8482889"
     },
     {
       "path": "tools/prepare_delivery.py",
