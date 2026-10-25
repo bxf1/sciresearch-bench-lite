@@ -1,0 +1,7 @@
+/submission/solve.py:234: UserWarning: 
+The maximal number of iterations maxit (set to 20 by the program)
+allowed for finding a smoothing spline with fp=s has been reached: s
+too small.
+There is an approximation returned but the corresponding weighted sum
+of squared residuals does not satisfy the condition abs(fp-s)/s < tol.
+  sp = UnivariateSpline(t, yy[:, j], s=s, k=3)

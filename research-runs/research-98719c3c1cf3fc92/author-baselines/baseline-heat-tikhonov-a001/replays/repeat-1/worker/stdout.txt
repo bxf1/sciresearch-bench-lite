@@ -1,0 +1,12 @@
+{"case": "273a52125139ec691e1d", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "7c3f908c02b6598ecca8", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "8853895fa73d6a5ac35b", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "2976beadccde5cf99832", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "3775d953b18f6d657a8a", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "459a1602b21e014bcaad", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "62ee06bc5e9898f53bc4", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "0d60054291232409f33d", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "f5a878618c11b4ad49b6", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "2910aa03c3657da09354", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "75c3d5d3265d489c8a5f", "method": "tikhonov", "fallback": false, "alpha": 1e-05}
+{"case": "78c5955a685be4cda8f6", "method": "tikhonov", "fallback": false, "alpha": 1e-05}

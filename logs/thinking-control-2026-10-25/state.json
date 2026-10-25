@@ -1,0 +1,36 @@
+{
+  "all_15_research_closed": true,
+  "controller_pid": 88908,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-context-repair.json",
+    "sha256": "991f1fe979ea921d6d1f8b04bcfe949162175c780716fa3cdfaa904302629dcf"
+  },
+  "operation_failures": [
+    {
+      "action": "attempted_once",
+      "exit_code": 2,
+      "identity": "jacobi",
+      "kind": "baseline",
+      "task": "poisson"
+    },
+    {
+      "action": "attempted_once",
+      "exit_code": 2,
+      "identity": "research-98719c3c1cf3fc92-poisson-g2-r1",
+      "kind": "final",
+      "task": "poisson"
+    },
+    {
+      "action": "attempted_once",
+      "exit_code": 2,
+      "identity": "research-98719c3c1cf3fc92-poisson-g1-r1",
+      "kind": "final",
+      "task": "poisson"
+    }
+  ],
+  "plan": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+  "publication_complete": false,
+  "results": "results/thinking-control-2026-10-25",
+  "stage": "results_ready_for_review",
+  "updated_at": 1792917626.82894
+}

@@ -1,0 +1,207 @@
+{
+  "cleanup": {
+    "all_removed": true,
+    "container_id": "c4943d8f3a52c6510af48af376aed1f85dc69ee4a50c1c5291e40969ca76eb6a",
+    "container_remove_returncode": 0,
+    "errors": {},
+    "network_name": "sciresearch-relay-d4799e6147ea",
+    "network_remove_returncode": 0,
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "status_before_stop": {
+      "budget_exhausted": false,
+      "charged_output_tokens": 520,
+      "evidence_error": false,
+      "expired": false,
+      "failed_requests": 0,
+      "failure_counts": {},
+      "inflight": 0,
+      "last_request_failure_reason": null,
+      "last_request_outcome": "success",
+      "last_upstream_status": 200,
+      "limits": {
+        "dropped_fields": [
+          "top_k",
+          "service_tier",
+          "container",
+          "temperature"
+        ],
+        "expected_compaction_system_sha256": null,
+        "expected_system_sha256": null,
+        "expected_tools_sha256": null,
+        "max_body_bytes": 1048576,
+        "max_concurrency": 4,
+        "max_event_bytes": 65536,
+        "max_requests": 3125,
+        "max_response_bytes": 8388608,
+        "model": "deepseek-flash",
+        "output_config": {
+          "effort": "max"
+        },
+        "request_output_limit": 4096,
+        "request_seconds": 120,
+        "session_output_limit": 200000,
+        "session_seconds": 600.0,
+        "stream_required": true,
+        "temperature": null,
+        "thinking": {
+          "type": "enabled"
+        },
+        "top_p": 1.0
+      },
+      "model": "deepseek-flash",
+      "protocol_violation": false,
+      "rejected_requests": 0,
+      "remaining_output_tokens": 199480,
+      "request_count": 3,
+      "reserved_output_tokens": 0,
+      "schema_version": 1,
+      "state": "ready",
+      "successful_requests": 3
+    }
+  },
+  "formal": false,
+  "native": {
+    "events": [
+      {
+        "hasResult": false,
+        "type": "agent_end",
+        "willRetry": false
+      },
+      {
+        "hasResult": false,
+        "reason": "overflow",
+        "type": "compaction_start"
+      },
+      {
+        "hasResult": true,
+        "reason": "overflow",
+        "type": "compaction_end",
+        "willRetry": true
+      },
+      {
+        "hasResult": false,
+        "type": "agent_end",
+        "willRetry": false
+      }
+    ],
+    "real_calls": 3,
+    "real_native_agent_session": true,
+    "responses": [
+      {
+        "blocks": [
+          "thinking"
+        ],
+        "output": 4096,
+        "rawStopReason": "max_tokens",
+        "stopReason": "length",
+        "text": "",
+        "thinkingChars": 76
+      },
+      {
+        "blocks": [
+          "thinking"
+        ],
+        "output": 1,
+        "rawStopReason": "max_tokens",
+        "stopReason": "length",
+        "text": "",
+        "thinkingChars": 3
+      },
+      {
+        "blocks": [
+          "thinking",
+          "text"
+        ],
+        "output": 34,
+        "rawStopReason": "end_turn",
+        "stopReason": "stop",
+        "text": "OK",
+        "thinkingChars": 141
+      }
+    ],
+    "scientific_data_accessed": false,
+    "status": "passed",
+    "synthetic_initial_assistant_usage": {
+      "charged_to_relay": false,
+      "input": 124100,
+      "output": 4096
+    },
+    "wires": [
+      {
+        "last_role": "assistant",
+        "prior_thinking_blocks": 0,
+        "requested_max_tokens": 1,
+        "summary": false,
+        "user_messages": 7
+      },
+      {
+        "last_role": "user",
+        "prior_thinking_blocks": 0,
+        "requested_max_tokens": 13107,
+        "summary": true,
+        "user_messages": 1
+      },
+      {
+        "last_role": "assistant",
+        "prior_thinking_blocks": 0,
+        "requested_max_tokens": 16384,
+        "summary": false,
+        "user_messages": 4
+      }
+    ]
+  },
+  "relay_status": {
+    "budget_exhausted": false,
+    "charged_output_tokens": 520,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_failure_reason": null,
+    "last_request_outcome": "success",
+    "last_upstream_status": 200,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "service_tier",
+        "container",
+        "temperature"
+      ],
+      "expected_compaction_system_sha256": null,
+      "expected_system_sha256": null,
+      "expected_tools_sha256": null,
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "output_config": {
+        "effort": "max"
+      },
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 600.0,
+      "stream_required": true,
+      "temperature": null,
+      "thinking": {
+        "type": "enabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-flash",
+    "protocol_violation": false,
+    "rejected_requests": 0,
+    "remaining_output_tokens": 199480,
+    "request_count": 3,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "ready",
+    "successful_requests": 3
+  },
+  "scientific_data_accessed": false,
+  "status": "passed"
+}

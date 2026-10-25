@@ -1,0 +1,8 @@
+{
+  "controller_pid": 52550,
+  "error": "all related research must finish validly before final data can be read",
+  "error_type": "ValueError",
+  "plan": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+  "stage": "stopped",
+  "updated_at": 1792900293.170212
+}

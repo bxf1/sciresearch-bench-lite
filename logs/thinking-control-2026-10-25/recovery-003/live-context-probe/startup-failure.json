@@ -1,0 +1,25 @@
+{
+  "error": "TimeoutExpired: Command '['docker', 'exec', '-i', '0917aa8ba589d97296e891e9c94a45b67d61b9edf59615f9a693ec48cdaeb790', 'python', '-I', '-c', \"import json,sys,urllib.request\\nconfig=json.load(sys.stdin)\\nheaders={'x-api-key':config['token']} if config.get('token') else {}\\nopener=urllib.request.build_opener(urllib.request.ProxyHandler({}))\\nwith opener.open(urllib.request.Request('http://127.0.0.1:8787'+config['path'],headers=headers),timeout=3) as response:\\n    data=response.read(65537)\\n    if len(data)>65536: raise ValueError('oversize relay response')\\n    print(json.dumps(json.loads(data)))\\n\"]' timed out after 5 seconds",
+  "expected_compaction_system_sha256": null,
+  "expected_system_sha256": null,
+  "expected_tools_sha256": null,
+  "failure_cleanup": {
+    "container": {
+      "returncode": 0
+    },
+    "network": {
+      "returncode": 0
+    }
+  },
+  "formal": false,
+  "identity": "sciresearch-relay-b3e3c249ed00",
+  "image_id": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+  "max_requests": 3125,
+  "provider_endpoint": "https://api.deepseek.com/anthropic/v1/messages",
+  "provider_key_in_R": false,
+  "relay_source_sha256": "e5283bab59c1eee51218c80bb72ecb8b36030b196b802b68968688f1ddb18cf5",
+  "request_output_limit": 4096,
+  "session_output_limit": 200000,
+  "session_seconds": 600,
+  "status": "failed"
+}

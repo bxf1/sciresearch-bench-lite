@@ -1,0 +1,261 @@
+[
+  {
+    "Config": {
+      "Labels": {
+        "com.docker.compose.config-hash": "a76e01cf9a5e6d328278848c320927a49291662166315fa0bb3acfcdd38e2bd6",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "harbor-docker-egress-control-sidecar:service_healthy:false",
+        "com.docker.compose.image": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "research-98719c3c1cf3fc92-ode-g3-r1-a001__env",
+        "com.docker.compose.project.config_files": "/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmp3jacbszm/research-98719c3c1cf3fc92-ode-g3-r1-a001__env-docker-compose-resources.json,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-prebuilt.yaml,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g3-r1/research-security-compose.json,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpsztt_6yk/docker-compose-environment.json,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmp24bstff3/docker-compose-mounts.json,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpcza1ho7a/docker-compose-egress-control-services.json",
+        "com.docker.compose.project.working_dir": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g3-r1/build/task/environment",
+        "com.docker.compose.service": "main",
+        "com.docker.compose.version": "5.1.4"
+      },
+      "User": "researcher",
+      "environment_variable_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED",
+        "OPENBLAS_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "VECLIB_MAXIMUM_THREADS",
+        "NUMEXPR_NUM_THREADS",
+        "HOME",
+        "PYTHONPATH"
+      ]
+    },
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": null,
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": [
+        "CAP_CHOWN",
+        "CAP_DAC_OVERRIDE",
+        "CAP_FOWNER"
+      ],
+      "CapDrop": [
+        "ALL"
+      ],
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 4294967296,
+      "MemoryReservation": 0,
+      "MemorySwap": 4294967296,
+      "MemorySwappiness": null,
+      "NanoCpus": 4000000000,
+      "NetworkMode": "container:4a5278592b47dfaa163ebd93739dcc2f29e11bd325c03bf3f5d1e11f459502ed",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": 128,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "Id": "2055b00d1f0afd6f135223195f41bf1dd67a6ee16dcf6a5bc7dbf0044de25c30",
+    "Image": "sha256:c01f7a36320ffbba34200c5b04a1aeb55053641440b2fcaaa6c4555189a89f11",
+    "Mounts": []
+  },
+  {
+    "Config": {
+      "Labels": {
+        "com.docker.compose.config-hash": "885eca664ccf311993ed10336dadaf2a024737a06d9f65949fdb7a6c93be8f3f",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:db417066dc87f39c9aae48fc36485fc2c72f5460cc32612c7cbf5d0110a1a3ec",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "research-98719c3c1cf3fc92-ode-g3-r1-a001__env",
+        "com.docker.compose.project.config_files": "/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmp3jacbszm/research-98719c3c1cf3fc92-ode-g3-r1-a001__env-docker-compose-resources.json,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-prebuilt.yaml,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g3-r1/research-security-compose.json,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpsztt_6yk/docker-compose-environment.json,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmp24bstff3/docker-compose-mounts.json,/Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml,/private/var/folders/6d/gk4c0wcx0j9d48018g1vx5980000gn/T/tmpcza1ho7a/docker-compose-egress-control-services.json",
+        "com.docker.compose.project.working_dir": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g3-r1/build/task/environment",
+        "com.docker.compose.service": "harbor-docker-egress-control-sidecar",
+        "com.docker.compose.version": "5.1.4"
+      },
+      "User": "",
+      "environment_variable_names": [
+        "EGRESS_CONTROL_INITIAL_NETWORK_MODE",
+        "EGRESS_CONTROL_INITIAL_ALLOWED_HOSTS",
+        "PATH"
+      ]
+    },
+    "HostConfig": {
+      "AutoRemove": false,
+      "Binds": null,
+      "BlkioDeviceReadBps": null,
+      "BlkioDeviceReadIOps": null,
+      "BlkioDeviceWriteBps": null,
+      "BlkioDeviceWriteIOps": null,
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": null,
+      "CapAdd": [
+        "CAP_NET_ADMIN",
+        "CAP_NET_RAW"
+      ],
+      "CapDrop": null,
+      "Cgroup": "",
+      "CgroupParent": "",
+      "CgroupnsMode": "private",
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "ContainerIDFile": "",
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpuShares": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "Devices": null,
+      "Dns": null,
+      "DnsOptions": null,
+      "DnsSearch": null,
+      "ExtraHosts": [],
+      "GroupAdd": null,
+      "IOMaximumBandwidth": 0,
+      "IOMaximumIOps": 0,
+      "Init": true,
+      "IpcMode": "private",
+      "Isolation": "",
+      "Links": null,
+      "LogConfig": {
+        "Config": {},
+        "Type": "json-file"
+      },
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "Memory": 134217728,
+      "MemoryReservation": 0,
+      "MemorySwap": 134217728,
+      "MemorySwappiness": null,
+      "NanoCpus": 250000000,
+      "NetworkMode": "sciresearch-relay-3ed8c87e3705",
+      "OomKillDisable": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "PidsLimit": null,
+      "PortBindings": {},
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ],
+      "ReadonlyRootfs": false,
+      "RestartPolicy": {
+        "MaximumRetryCount": 0,
+        "Name": "no"
+      },
+      "Runtime": "runc",
+      "SecurityOpt": null,
+      "ShmSize": 67108864,
+      "UTSMode": "",
+      "Ulimits": null,
+      "UsernsMode": "",
+      "VolumeDriver": "",
+      "VolumesFrom": null
+    },
+    "Id": "4a5278592b47dfaa163ebd93739dcc2f29e11bd325c03bf3f5d1e11f459502ed",
+    "Image": "sha256:db417066dc87f39c9aae48fc36485fc2c72f5460cc32612c7cbf5d0110a1a3ec",
+    "Mounts": []
+  }
+]

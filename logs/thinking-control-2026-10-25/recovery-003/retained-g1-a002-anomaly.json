@@ -1,0 +1,27 @@
+{
+  "attempt_id": "research-98719c3c1cf3fc92-heat-g1-r1-a002",
+  "attempt_status": "research_timeout",
+  "charged_output_tokens": 74089,
+  "exclude_cost_from_report": false,
+  "exclude_from_research_progress": true,
+  "final_id": "candidate-003",
+  "first_id": "candidate-001",
+  "hidden_data_accessed": false,
+  "one_token_no_progress_requests": 252,
+  "one_token_output_tokens": 252,
+  "public_evaluations": 3,
+  "relay_events": {
+    "path": "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/retries/research-98719c3c1cf3fc92-heat-g1-r1-a002/relay-evidence/evidence/events.jsonl",
+    "sha256": "9f46b73f379a4e20a4cc7b1509c4a7c7724740f49b9f1998bfba82615b3290ea"
+  },
+  "rerun": false,
+  "successful_requests": 297,
+  "unchanged_registry": {
+    "path": "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/retries/research-98719c3c1cf3fc92-heat-g1-r1-a002/registry/state.json",
+    "sha256": "f3fc2a91be342b4cb965798d7d1ac7302bd65b3aee24c8ab9a2cfb9c4438fb8e"
+  },
+  "unchanged_result": {
+    "path": "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/retries/research-98719c3c1cf3fc92-heat-g1-r1-a002/result.json",
+    "sha256": "69bfa5aacb5b5e76ef5c1a64aa9afd5089f253404506d57851c713aad2a5850d"
+  }
+}

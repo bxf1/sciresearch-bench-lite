@@ -1,0 +1,13 @@
+{
+  "authorization": "把 Pi 在 thinking 被截断后不自动续接的问题修好，保留 Heat G1 r1 这次记录，用新 attempt 重试，再继续剩余实验。每请求 4096、每会话 20 万 token 和其他冻结参数不要改。",
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "retry_parent": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+  "retry_attempt": "research-98719c3c1cf3fc92-heat-g1-r1-a002",
+  "unchanged_scientific_parameters_required": true,
+  "original_records_to_preserve": 635,
+  "ode_g1_retained": "research_timeout with candidate-001; original deadline honored before deployment",
+  "repair_scope": "Only automatically request continuation of nonempty thinking-only length stops; carry prior assistant thinking unchanged, no added user instruction. Same relay ledger and research deadline. Preserve original completed label and document protocol-defect retry separately."
+}

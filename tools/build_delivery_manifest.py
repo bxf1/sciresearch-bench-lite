@@ -5,14 +5,15 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = ('delivery-manifest.json', 'logs/submission-delivery-2026-10-24/')
+EXCLUDED = ('delivery-manifest.json', 'logs/submission-delivery-2026-10-24/',
+            'logs/thinking-delivery-2026-10-25/')
 
 
 def main():
     names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0')
     rows = []
     for name in sorted(filter(None, names)):
-        if name == EXCLUDED[0] or name.startswith(EXCLUDED[1]):
+        if name == EXCLUDED[0] or name.startswith(EXCLUDED[1:]):
             continue
         path = ROOT / name
         if not path.is_file() or path.is_symlink():

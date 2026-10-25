@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-10-25T08:38:23.428665+00:00",
+  "evaluation_status": "valid",
+  "final_test_scores_accessed": true,
+  "host_observations_sha256": "7193e40407f7fea955d8e1b528a1c12ac9e4a3ba9167fad365dc1350458555f6",
+  "identity": "research-98719c3c1cf3fc92-poisson-g3-r1",
+  "kind": "final",
+  "model_calls": 0,
+  "no_running_containers": true,
+  "observer_errors": [],
+  "operation_result_sha256": "e1c2fb41893ecbc8f4de7993f465af1a804e24288bf536c5ce3830be104723d4",
+  "status": "passed",
+  "violations": []
+}

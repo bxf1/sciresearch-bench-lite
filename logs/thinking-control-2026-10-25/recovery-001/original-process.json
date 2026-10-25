@@ -1,0 +1,22 @@
+{
+  "after_research": "Full 15-session closure barrier, independent baseline/candidate scoring, retained invalid windows, report.",
+  "controller": "logs/thinking-control-2026-10-25/controller.py",
+  "controller_sha256": "27d935f89a47f806f6069cad7d3f842b19bb4a24b3a0cdb64ba0972a0b8e6760",
+  "detached": true,
+  "output_config": {
+    "effort": "max"
+  },
+  "output_token_limit": 200000,
+  "pid": 52550,
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "plan_id": "research-98719c3c1cf3fc92",
+  "sessions": 15,
+  "sleep_inhibited_while_running": true,
+  "started_at": 1792898408.6282449,
+  "thinking": {
+    "type": "enabled"
+  }
+}

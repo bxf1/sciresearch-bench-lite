@@ -1,0 +1,10 @@
+{
+  "native_records_scanned": true,
+  "private_admission_copied": false,
+  "relay_evidence_sha256": {
+    "cleanup.json": "30380e7fd800006ee769eb575bbbc9df3b3fe98ab78150f6720d91d20f75a7f0",
+    "evidence/events.jsonl": "f99c8c319bd2c0f7c4ab3c98f50dd1fdda154516273ffe8d48da91af981215b8",
+    "startup.json": "2ada7323995cb9a1426f639862bee70eecf848c1cb03906b6a7028c26f552031"
+  },
+  "token_redactions": []
+}

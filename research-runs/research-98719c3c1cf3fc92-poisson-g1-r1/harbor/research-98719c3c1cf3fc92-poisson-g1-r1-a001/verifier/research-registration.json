@@ -1,0 +1,11 @@
+{
+  "attempt_status": "completed",
+  "evaluation_status": "not_run",
+  "final_id": "candidate-003",
+  "first_id": "candidate-001",
+  "formal": true,
+  "registration_status": "registered",
+  "registry_sha256": "e6bf7cbef9c9f22a9dd721fef9bef1eb30c41debb3d72d8cd4f777d3480aed2c",
+  "reward": null,
+  "score": null
+}

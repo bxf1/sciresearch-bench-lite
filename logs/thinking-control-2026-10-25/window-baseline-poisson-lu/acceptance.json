@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-10-25T08:28:43.270685+00:00",
+  "evaluation_status": "valid",
+  "final_test_scores_accessed": true,
+  "host_observations_sha256": "3e946a1b6fedac85a69f132bad9ba27b405b061d51698bb106375a0e9369fc00",
+  "identity": "lu",
+  "kind": "baseline",
+  "model_calls": 0,
+  "no_running_containers": true,
+  "observer_errors": [],
+  "operation_result_sha256": "a7be92a82936eb67926affdb614a0bf047bc85185b4dce4b087d5a8669c00c8e",
+  "status": "passed",
+  "violations": []
+}

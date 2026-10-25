@@ -1,0 +1,284 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "c16c803165c9b7c513fe8f6ad483643c5efef44bf273d16e9f519beecb63959a",
+    "reason": "native Pi returned",
+    "recorded_at": 1792911119.760366,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [
+    {
+      "accepted_at": 1792910608.9508312,
+      "artifact_valid": false,
+      "completed_at": 1792910609.1033542,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": false,
+        "attempt_status": "submission_failed",
+        "reason": "source preparation failed: ReadError: empty file"
+      },
+      "source_hash": null
+    },
+    {
+      "accepted_at": 1792910621.848784,
+      "artifact_valid": true,
+      "completed_at": 1792910668.724461,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "677b9a2d151ff70c6e10",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.005148931851502601,
+              0.005126222569500301
+            ],
+            "validation_mean": 0.00513757721050145
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "f82d125dd9cef7170507",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.004926266904503359,
+              0.005085980442669037
+            ],
+            "validation_mean": 0.0050061236735861984
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "f9220f7a4cd047832b15",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.01453553833912017,
+              0.015195050927358556
+            ],
+            "validation_mean": 0.014865294633239363
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "b4da37f25d6bc95ee155",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.015414360877577216,
+              0.015077550852381579
+            ],
+            "validation_mean": 0.015245955864979397
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "d597bf08ace1c7ec1368",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.031271529594082206,
+              0.030532731547754766
+            ],
+            "validation_mean": 0.030902130570918486
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "4f49905d2c9a6bbb918b",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.02966684122600036,
+              0.031231501667693614
+            ],
+            "validation_mean": 0.030449171446846987
+          }
+        ],
+        "cpu_seconds": 43.026171,
+        "formal_timing": false,
+        "memory_peak_bytes": 76005376,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 46.79376916727051,
+        "research_budget_exhausted": false,
+        "wall_seconds": 43.378692635,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 43.026171,
+          "execution_wall_seconds": 43.378692635,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 374,
+          "memory_peak_bytes": 76005376,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 43.5591867081821,
+          "reason": null,
+          "research_timeout_seconds": 633.3244895185344,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 43.986184417270124
+        }
+      },
+      "source_hash": "a38dd5d4de6ab4c139961efac097d7be1995840898f94f55f2d323257205ebc6"
+    },
+    {
+      "accepted_at": 1792911081.3877308,
+      "artifact_valid": true,
+      "completed_at": 1792911098.119943,
+      "id": "candidate-003",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "677b9a2d151ff70c6e10",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.005148931852184435,
+              0.005126222569181837
+            ],
+            "validation_mean": 0.005137577210683136
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "f82d125dd9cef7170507",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.004926266901346168,
+              0.005085980443884016
+            ],
+            "validation_mean": 0.005006123672615092
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "f9220f7a4cd047832b15",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.014547203908217966,
+              0.015188742662533589
+            ],
+            "validation_mean": 0.014867973285375778
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "b4da37f25d6bc95ee155",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.015419005546464758,
+              0.01508996946614957
+            ],
+            "validation_mean": 0.015254487506307163
+          },
+          {
+            "K": 6,
+            "artifact_valid": true,
+            "id": "d597bf08ace1c7ec1368",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.03127701496348948,
+              0.03052699959457318
+            ],
+            "validation_mean": 0.03090200727903133
+          },
+          {
+            "K": 6,
+            "artifact_valid": true,
+            "id": "4f49905d2c9a6bbb918b",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.029668594516664336,
+              0.031239510829464495
+            ],
+            "validation_mean": 0.030454052673064416
+          }
+        ],
+        "cpu_seconds": 13.248501,
+        "formal_timing": false,
+        "memory_peak_bytes": 76095488,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 16.64678900036961,
+        "research_budget_exhausted": false,
+        "wall_seconds": 13.24702391,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 13.248501,
+          "execution_wall_seconds": 13.24702391,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 374,
+          "memory_peak_bytes": 76095488,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 13.427295874804258,
+          "reason": null,
+          "research_timeout_seconds": 173.7933406936936,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 13.837059165816754
+        }
+      },
+      "source_hash": "5d4fbcb6d7fc9fd358616e2a222caf11ad5bedaef75fa3d0650e94bb0b9ff863"
+    }
+  ],
+  "final_id": "candidate-003",
+  "finalization_invalid": false,
+  "first_id": "candidate-002",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1792909455.268188,
+  "task": "ode",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g3-r1/workspace"
+}

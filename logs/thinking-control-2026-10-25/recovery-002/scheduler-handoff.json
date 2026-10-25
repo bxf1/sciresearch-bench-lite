@@ -1,0 +1,13 @@
+{
+  "controller_pid": 65981,
+  "action": "SIGSTOP scheduler only",
+  "time": 1792903585.0851462,
+  "current_research_untouched": "research-98719c3c1cf3fc92-ode-g1-r1-a001",
+  "reason": "User-authorized Pi thinking continuation repair; let running child close under original policy, prevent launching next session before deployment.",
+  "scheduler_retired_at": 1792903764.0170891,
+  "current_research_closed_normally": "research_timeout",
+  "first_id": "candidate-001",
+  "final_id": "candidate-001",
+  "all_containers_closed": true,
+  "action_after_child_closed": "SIGKILL stopped scheduler only; no research process signalled"
+}

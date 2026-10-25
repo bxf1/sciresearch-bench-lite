@@ -1,6 +1,69 @@
 # Thinking/max：15 会话匹配对照
 
-2026-10-25（Asia/Shanghai）。本批已授权并冻结，实验进行中；尚无完整对照结论。原 formal-003 的 15 次结果保持原记录，不用新结果替换旧失败。
+2026-10-25（Asia/Shanghai）。本批研究与独立评分已完成并核对，以下报告包含有效成绩、计时拒绝和全部关联尝试。原 formal-003 的 15 次结果保持原记录，不用新结果替换旧失败。
+
+## 已完成结果与配对比较
+
+15 个研究会话全部关闭，15/15 均登记了通过公开产物校验的 final；独立评分于 2026-10-25 16:40（北京时间）结束。13/15 获得有效最终成绩，13 项 reward 均为 1；Poisson G1、G2 的宿主计时准入被拒绝，成绩保持 null。**有提交、有效评分和科研成功是三个不同统计口径。** 研究共 17 个 attempt，包含两个保留原记录的关联重试，不是 17 个独立科学样本。
+
+原 formal-003 仍是 9/15 有提交、14/15 有效评分（包含无提交零分）、6 次 reward=1、8 次有效未成功、1 次计时无效。新旧按 task/group/repeat 配对：13 项可比较最终分数中 11 项上升、2 项下降；其中 6 项上升来自原无提交零分。只看两批都有提交且评分有效的 7 对，则是 5 升、2 降。不同任务的分数不合并求平均，也不把新旧批次拼成 30 次同条件样本。
+
+以下数值保留三位小数；完整精度、候选、用量、执行器版本、终态及来源 SHA256 见[机器可读核对结果](../results/thinking-control-2026-10-25/reviewed-comparison.json)，由 [analyze_thinking_control.py](../tools/analyze_thinking_control.py)从原始 JSON 重建，不执行模型或候选。原始 [summary.json](../results/thinking-control-2026-10-25/summary.json) 中的 pending 是通用汇总器对缺失有效成绩的标签；本批三项拒绝已有终态，不表示还在排队。
+
+| 会话 | 原最终分数 | thinking/max 最终分数 | 配对差值 | 本批结果 |
+|---|---:|---:|---:|---|
+| Heat G2 r1 | 87.210 | 93.328 | 6.118 | reward=1 |
+| Heat G3 r1 | 91.532 | 93.041 | 1.509 | reward=1 |
+| Heat G1 r1 | 93.631 | 93.388 | -0.243 | reward=1 |
+| ODE G1 r1 | 96.551 | 99.266 | 2.715 | reward=1 |
+| ODE G2 r1 | 98.793 | 99.266 | 0.473 | reward=1 |
+| ODE G3 r1 | 99.068 | 98.994 | -0.074 | reward=1 |
+| Poisson G3 r1 | 0.000（无提交） | 44.169 | 44.169 | reward=1 |
+| Poisson G2 r1 | null | null | null | 计时拒绝 |
+| Poisson G1 r1 | 44.308 | null | null | 计时拒绝 |
+| Heat G3 r2 | 0.000（无提交） | 93.625 | 93.625 | reward=1 |
+| Heat G1 r2 | 0.000（无提交） | 93.627 | 93.627 | reward=1 |
+| Heat G2 r2 | 19.553 | 93.637 | 74.084 | reward=1 |
+| Heat G3 r3 | 0.000（无提交） | 93.424 | 93.424 | reward=1 |
+| Heat G1 r3 | 0.000（无提交） | 91.957 | 91.957 | reward=1 |
+| Heat G2 r3 | 0.000（无提交） | 93.688 | 93.688 | reward=1 |
+
+Heat 的 9 项有效成绩均通过 12/12 隐藏例，范围 91.957–93.688；G1/G2/G3 中位数分别为 93.388、93.637、93.424。ODE 三项均通过 12/12，范围 98.994–99.266。Poisson G3 有效分数 44.169、reward=1。每组 1 或 3 个会话不足以判定指导强度的稳定优势。
+
+本批首次→最终候选：4 项分数改善、4 项下降、5 项源码相同，另 2 项因计时拒绝不可比较。Heat G3 r1 从 93.625 降至 93.041，Heat G1 r3 从 93.271 降至 91.957；公开反馈后的改动并不保证隐藏成绩提高。相同源码复用已有重放结果，`replay_count=0` 是复用标记，不能误认为独立验证缺失。Heat/ODE 的不同候选各做 3 次重放；Poisson 使用其冻结的性能评测流程。
+
+## 计时拒绝、作者基线与日志
+
+本批 26 个评分操作均已进入终态：11 项作者基线操作、15 项会话 first/final 操作（一个会话操作内部处理两个候选）。其中 23 项执行成功、3 项返回拒绝。全局研究关闭屏障已从全部 host attempt 的 finished_at 与最早基线 started_at 交叉核对；最后研究在 16:25:31.410 关闭，最早基线在 16:25:31.969 启动。评分未给仍开放的研究会话提供反馈。
+
+| 被拒操作 | 原始证据 | 结论 |
+|---|---|---|
+| Poisson Jacobi 作者基线 | [acceptance.json](../logs/thinking-control-2026-10-25/window-baseline-poisson-jacobi/acceptance.json) | 评分前发现 VPN 后台进程超过冻结宿主活跃阈值，未访问 final-test，无本批成绩 |
+| Poisson G2 r1 | [acceptance.json](../logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1/acceptance.json) | 评测窗口中 node 进程约 7.34 core%，Swapins=4、Swapouts=4116；已访问测试但正式计时无效 |
+| Poisson G1 r1 | [acceptance.json](../logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json) | 评分前 WeChatAppExRenderer 约 5.34 core%，准入拒绝，未访问 final-test |
+
+以下是 Poisson G2 原始判定的字段节选，不是新执行日志；完整观测与哈希在上表链接及机器可读核对结果中：
+
+```json
+{"status":"rejected","evaluation_status":"invalid","final_test_scores_accessed":true,"model_calls":0,"issues":["unrelated_active_process","host_swapout"],"swap":{"Swapins":4,"Swapouts":4116}}
+```
+
+不把两项 Agent 计时拒绝或 Jacobi 准入拒绝计为科学零分，也不为获得可用成绩追加计时窗口。原正式批次 11 种作者基线已完成的事实保留；本对照批次为 10 项有效基线、1 项拒绝。有效基线分数：Heat ls 19.556（reward=0）、rank5 89.893、tikhonov 93.271、discrepancy 91.651、tsvd 92.192；ODE raw 0（reward=0）、fixed 95.389、search 95.647；Poisson cg 0（数值通过、效率未达标，reward=0）、lu 38.758。其他有效基线 reward=1。原始结果见 [baselines.csv](../results/thinking-control-2026-10-25/baselines.csv)，基线不是额外的研究样本。
+
+## 用量、失败开销与执行器版本
+
+15 个保留 attempt 累计已知输出 **896,210 token**（含 thinking、普通输出和原生压缩），代理 charged 同为 896,210；975 次成功响应、0 失败、32 次公开评估，研究墙钟合计约 **3.580 小时**。这些响应中包含 Heat G1 r1 a002 的 252 次无进展单 token 续接，不能按 HTTP 成功数衡量科研迭代。
+
+计入两次旧 attempt 后，17 次尝试合计已知输出 **925,815**，charged **929,911**，1,003 次成功响应、1 次失败。差额 4,096 是不完整失败请求的保守额度，既不是已知实际输出，也不是货币账单。原 Heat G3 r1 a001 已知输出 25,070、charged 29,166；原 Heat G1 r1 a001 输出 4,535。合成验收探测不进入这些科学实验用量。原批次 15 次保留研究输出为 2,324,341；不能将这两个总量的差异归因为 thinking 的单独因果效应。
+
+| 执行器阶段 | 使用的 attempt | 已知影响 |
+|---|---|---|
+| 初始冻结版 | Heat G2 r1 a001；Heat G3 r1 a001 | 后者 relay 输入 usage 下调被误拒，保留 infrastructure_failed |
+| relay 修复版 | Heat G3 r1 a002；Heat G1 r1 a001；ODE G1 r1 a001 | Heat G1 原 completed 标签保留，但纯 thinking 截断未续接，属于协议缺陷 |
+| Pi 首次续接修复版 | Heat G1 r1 a002 | 30 分钟正常截止，保留 research_timeout、3 个候选和 252 次无进展续接 |
+| 上下文衔接修复版 | 从 ODE G2 r1 起的剩余 11 个 a001 | 正常截断续接与原生压缩衔接；无新增重试 |
+
+每项宿主源码哈希、原生安装证据和 parent attempt 均在机器可读记录中逐项列出。三个修复附录串接原冻结计划，科学参数未变。后续 ODE G3 的真实研究日志已观察到 1 token 截断→原生压缩→632 token 工具调用→工具结果，见[实际压缩恢复记录](../logs/thinking-control-2026-10-25/recovery-003/ode-g3-live-compaction-observation-20261025T064911Z.json)；这与注入合成 usage 的验收探测分开报告。
 
 ## 研究问题与条件
 
@@ -61,7 +124,7 @@ Heat G3 r1 的 `a001` 在自行编写的 `sim2.py` 中触发不可终止的求�
 - [配置与证据验证](../logs/thinking-control-2026-10-25/recovery-001/validation.json)：15 个配置通过；重试只改变 attempt、父 attempt 和会话 ID；原失败相关 101 个文件及记录哈希保持一致。
 - [恢复控制器模拟](../logs/thinking-control-2026-10-25/recovery-001/controller-simulation.json)：确认关联重试后按序继续、失败时停止、已完成 attempt 不重跑；没有调用模型或隐藏评分。
 
-12:05（北京时间）启动 `research-98719c3c1cf3fc92-heat-g3-r1-a002`，父 attempt 为 `...-a001`，使用新的空白研究工作区。此前脚本的诊断没有反馈给研究 Agent。Heat G2 r1 的已完成结果保留，之后依原顺序继续。当时控制器为 `controller-recovery-001.py`，进程记录和输出在 `logs/thinking-control-2026-10-25/recovery-001/`；旧控制器、启动记录和失败证据均保留。该重试已正常关闭，登记两次公开评估，first=`candidate-001`、final=`candidate-002`；隐藏成绩仍未读取。
+12:05（北京时间）启动 `research-98719c3c1cf3fc92-heat-g3-r1-a002`，父 attempt 为 `...-a001`，使用新的空白研究工作区。此前脚本的诊断没有反馈给研究 Agent。Heat G2 r1 的已完成结果保留，之后依原顺序继续。当时控制器为 `controller-recovery-001.py`，进程记录和输出在 `logs/thinking-control-2026-10-25/recovery-001/`；旧控制器、启动记录和失败证据均保留。该重试已正常关闭，登记两次公开评估，first=`candidate-001`、final=`candidate-002`；该恢复阶段尚未读取隐藏成绩，现已在全局关闭后完成独立评分。
 
 报告须注明执行期间发生过基础设施修复；不能把原失败与重试作为两个独立科学样本，也不能省略此前死循环这一研究行为。
 
@@ -99,8 +162,8 @@ Heat G1 r1 `a002` 的普通 4,096 token thinking 截断已多次成功续接，�
 - [真实接口验收](../logs/thinking-control-2026-10-25/recovery-003/live-context-probe-a004/result.json)：1 token 截断后完成原生压缩、恢复正常请求额度、返回最终 `OK`，3 次真实请求全部成功，实际输出共 520 token。测试以合成 assistant usage 124,100／4,096 触发上下文边界；该注入值不是供应商用量，不计入 relay 消耗。真实请求由相同的 4,096／200,000 上限约束，探测不含科学数据，不计入实验成绩。
 - [保全与配置检查](../logs/thinking-control-2026-10-25/recovery-003/validation.json)：15 个配置通过，此前 821 个证据文件哈希不变；[控制器模拟](../logs/thinking-control-2026-10-25/recovery-003/controller-simulation.json)确认保留 4 个已关闭会话、只启动剩余 11 个、失败则停止，全局评分屏障不变。
 
-13:58（北京时间）启动 `controller-recovery-003.py`，从 ODE G2 r1 继续。当前进程及输出位于 `logs/thinking-control-2026-10-25/recovery-003/`；此前暂停记录仅为历史证据。最终比较须继续区分各 attempt 的执行器版本和无进展开销，不能据此次恢复宣称科学成绩已经通过。
+13:58（北京时间）启动 `controller-recovery-003.py`，从 ODE G2 r1 继续。历史进程及输出位于 `logs/thinking-control-2026-10-25/recovery-003/`；此前暂停记录仅为历史证据。最终比较须继续区分各 attempt 的执行器版本和无进展开销，不能据此次恢复宣称科学成绩已经通过。
 
 ## 分析边界
 
-这是看到旧结果后追加的匹配对照，thinking 与 max 同时改变，且 temperature 的语义随模式变化。沿用已经使用过的隐藏集、先后运行条件、单宿主及小样本限制因果解释。完成后分别报告有效提交、有效评分、reward、首次/最终变化、输出用量、墙钟和失败开销；缺失或无效值保持缺失。
+这是看到旧结果后追加的匹配对照，thinking 与 max 同时改变，且 temperature 的语义随模式变化。沿用已经使用过的隐藏集、先后运行条件、单宿主及小样本限制因果解释。本报告分别列出有效提交、有效评分、reward、首次/最终变化、输出用量、墙钟和失败开销；缺失或无效值保持缺失。

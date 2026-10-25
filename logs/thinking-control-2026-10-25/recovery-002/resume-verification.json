@@ -1,0 +1,72 @@
+{
+  "automation": "thinking-max ACTIVE every 15 minutes, recovery-002",
+  "charged_output_tokens": 14982,
+  "checked_at": 1792904614.505175,
+  "container": "research-98719c3c1cf3fc92-heat-g1-r1-a002__env-main-1",
+  "final_id": null,
+  "first_id": "candidate-001",
+  "hidden_data_accessed": false,
+  "last_relay_event_age_seconds": 5.33,
+  "native_runtime": {
+    "path": "/home/researcher/.nvm/versions/node/v22.23.4/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js",
+    "pi_version": "0.84.1",
+    "sha256": "0f0218bc065b4fd3861a341f9ad97c84192de3de088f730c555626956c3aa9ea"
+  },
+  "original_evidence_files_verified": 635,
+  "original_evidence_unchanged": true,
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "process": "78487     1 02:48 Ss   /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python /Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/thinking-control-2026-10-25/controller-recovery-002.py",
+  "public_evaluations": 1,
+  "registry_closed": false,
+  "relay_limits": {
+    "dropped_fields": [
+      "top_k",
+      "service_tier",
+      "container",
+      "temperature"
+    ],
+    "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+    "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+    "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+    "max_body_bytes": 1048576,
+    "max_concurrency": 4,
+    "max_event_bytes": 65536,
+    "max_requests": 3125,
+    "max_response_bytes": 8388608,
+    "model": "deepseek-flash",
+    "output_config": {
+      "effort": "max"
+    },
+    "request_output_limit": 4096,
+    "request_seconds": 120,
+    "session_output_limit": 200000,
+    "session_seconds": 2700.0,
+    "stream_required": true,
+    "temperature": null,
+    "thinking": {
+      "type": "enabled"
+    },
+    "top_p": 1.0
+  },
+  "remaining_unstarted": 11,
+  "requests_accepted": 11,
+  "requests_failed": 0,
+  "requests_successful": 10,
+  "retry_entry": {
+    "attempt_id": "research-98719c3c1cf3fc92-heat-g1-r1-a002",
+    "parent_attempt": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+    "result": {
+      "path": "research-runs/research-98719c3c1cf3fc92/host-attempts/research-98719c3c1cf3fc92-heat-g1-r1-a002.json",
+      "sha256": "7a8858ba2dd63df2cc32c849ec049d528b976e9b21b59c5e3c5d0920a1773c37"
+    },
+    "retry_authorization": {
+      "path": "freezes/research-98719c3c1cf3fc92-pi-thinking-repair.json",
+      "sha256": "76c8af25a26c7b1d982deeb3267dc449b4134da87d1a2df0a9911e8b353596c7"
+    },
+    "run_id": "research-98719c3c1cf3fc92-heat-g1-r1"
+  },
+  "status": "passed"
+}

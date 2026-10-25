@@ -1,0 +1,145 @@
+{
+  "cases": [
+    {
+      "case": "linked_retry_then_remaining",
+      "commands": [
+        {
+          "name": "research-03-a002",
+          "retry_of": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r1"
+        },
+        {
+          "name": "research-05",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-ode-g2-r1"
+        },
+        {
+          "name": "research-06",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-ode-g3-r1"
+        },
+        {
+          "name": "research-07",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g3-r1"
+        },
+        {
+          "name": "research-08",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1"
+        },
+        {
+          "name": "research-09",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1"
+        },
+        {
+          "name": "research-10",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g3-r2"
+        },
+        {
+          "name": "research-11",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r2"
+        },
+        {
+          "name": "research-12",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g2-r2"
+        },
+        {
+          "name": "research-13",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g3-r3"
+        },
+        {
+          "name": "research-14",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r3"
+        },
+        {
+          "name": "research-15",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g2-r3"
+        }
+      ],
+      "outcome": "full_research_barrier"
+    },
+    {
+      "case": "failed_retry_stops",
+      "commands": [
+        {
+          "name": "research-03-a002",
+          "retry_of": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r1"
+        }
+      ],
+      "outcome": "stopped_before_next_research"
+    },
+    {
+      "case": "already_completed_retry_retained",
+      "commands": [
+        {
+          "name": "research-05",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-ode-g2-r1"
+        },
+        {
+          "name": "research-06",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-ode-g3-r1"
+        },
+        {
+          "name": "research-07",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g3-r1"
+        },
+        {
+          "name": "research-08",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1"
+        },
+        {
+          "name": "research-09",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1"
+        },
+        {
+          "name": "research-10",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g3-r2"
+        },
+        {
+          "name": "research-11",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r2"
+        },
+        {
+          "name": "research-12",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g2-r2"
+        },
+        {
+          "name": "research-13",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g3-r3"
+        },
+        {
+          "name": "research-14",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g1-r3"
+        },
+        {
+          "name": "research-15",
+          "retry_of": null,
+          "run_id": "research-98719c3c1cf3fc92-heat-g2-r3"
+        }
+      ],
+      "outcome": "full_research_barrier"
+    }
+  ],
+  "scientific_data_accessed": false,
+  "status": "passed",
+  "synthetic_only": true
+}

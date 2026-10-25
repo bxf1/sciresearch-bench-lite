@@ -1,0 +1,30 @@
+{
+  "after_research": "Original full closure barrier, independent scoring, report, then authorized publication.",
+  "completed_retained": 3,
+  "controller": "logs/thinking-control-2026-10-25/controller-recovery-002.py",
+  "controller_sha256": "f1499db89f6805ed5859a0c5c711da42c9ebc4148d4b8c37aeb02eaaf9606316",
+  "detached": true,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-thinking-repair.json",
+    "sha256": "76c8af25a26c7b1d982deeb3267dc449b4134da87d1a2df0a9911e8b353596c7"
+  },
+  "output_config": {
+    "effort": "max"
+  },
+  "output_token_limit": 200000,
+  "pid": 78487,
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "plan_id": "research-98719c3c1cf3fc92",
+  "prior_failure_preserved": true,
+  "remaining_unstarted": 11,
+  "retry_attempt": "research-98719c3c1cf3fc92-heat-g1-r1-a002",
+  "retry_parent": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+  "sleep_inhibited_while_running": true,
+  "started_at": 1792904446.993464,
+  "thinking": {
+    "type": "enabled"
+  }
+}

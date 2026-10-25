@@ -1,0 +1,21 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "610320602ee83b799d6da30d669e558d84605738a1c16056b0f4fc9e4e764651",
+    "reason": "native Pi returned",
+    "recorded_at": 1792901824.099415,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g1",
+  "evaluations": [],
+  "final_id": null,
+  "finalization_invalid": false,
+  "first_id": null,
+  "max_evaluations": 20,
+  "selection_reason": "no_valid_submission",
+  "started_at": 1792901788.286737,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-heat-g1-r1/workspace"
+}

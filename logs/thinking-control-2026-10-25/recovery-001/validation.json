@@ -1,0 +1,29 @@
+{
+  "hidden_data_accessed": false,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-relay-usage-repair.json",
+    "sha256": "de2c9860b1b3764d1579591f82bbd2b0d427e4ca413cd10435c5f5bef09d4864"
+  },
+  "original_evidence_unchanged": true,
+  "parameter_differences": {
+    "attempt_id": {
+      "original": "research-98719c3c1cf3fc92-heat-g3-r1-a001",
+      "retry": "research-98719c3c1cf3fc92-heat-g3-r1-a002"
+    },
+    "parent_attempt": {
+      "original": null,
+      "retry": "research-98719c3c1cf3fc92-heat-g3-r1-a001"
+    },
+    "session_id": {
+      "original": "1654aa62-fc20-5412-a61f-fc38ec35e3f6",
+      "retry": "fd45e4b3-0cdb-5acd-81d1-b82fba737d26"
+    }
+  },
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "status": "passed",
+  "unchanged_scientific_settings": true,
+  "validated_sessions": 15
+}

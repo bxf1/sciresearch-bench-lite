@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-10-25T12:39:04.232804+08:00",
+  "attempt_id": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+  "diagnosis": "per_request_output_limit_during_thinking_without_continuation",
+  "original_attempt_status_unchanged": "completed",
+  "not_an_explicit_completed_answer": true,
+  "not_a_transport_or_tool_failure": true,
+  "native_execution_seconds": 34.168193,
+  "total_attempt_seconds": 92.63882303237915,
+  "assistant_requests": 4,
+  "successful_tool_calls": 6,
+  "tool_errors": 0,
+  "last_response": {
+    "transcript_line": 14,
+    "rawStopReason": "max_tokens",
+    "stopReason": "length",
+    "output_tokens": 4096,
+    "content_types": [
+      "thinking"
+    ],
+    "text_blocks": 0,
+    "tool_calls": 0
+  },
+  "pi_agent_end": {
+    "pi_txt_line": 63,
+    "willRetry": false
+  },
+  "known_output_tokens": 4535,
+  "remaining_output_tokens": 195465,
+  "relay_failed_requests": 0,
+  "budget_exhausted": false,
+  "public_evaluations": 0,
+  "first_id": null,
+  "final_id": null,
+  "research_guidance_or_resume_added": false,
+  "hidden_data_accessed": false,
+  "evidence": {
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/result.json": "a6d369b9d19502bd007e892885be413e334da556e244c14f62701c397dd92d7a",
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/auxiliary-agent/pi/sessions/2026-10-25T04-16-30-741Z_01a17146-3c15-71a3-b090-b47555787641.jsonl": "fdbf4165cd06abb92ffc8509f86ac4dad021ea965fb3ff598292e67b446e6520",
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/auxiliary-agent/pi.txt": "d3ba13e2f10f348b5e8ce433c506a9524c4d43e057cef23167ac1bbca02ae716",
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/host-events.jsonl": "6773a7a64e660acae802fc310eb5b43e777731b69066a1d745c158e1d95951a6",
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/relay-evidence/evidence/events.jsonl": "f0300d778394a7c30840fd6e51351b6d4978773aa5e28a9a6bfeeab9bb1aec95",
+    "research-runs/research-98719c3c1cf3fc92-heat-g1-r1/registry/state.json": "2e6fd092e3fb6f3e81a22122b10654ef6e7e9d77f5c8be5b91f90687a53a08ef"
+  },
+  "interpretation": "Host completed means native Pi returned normally. It does not mean a deliberate completed research answer. Preserve the original record; annotate truncation/no-continuation as the observed failure mode."
+}

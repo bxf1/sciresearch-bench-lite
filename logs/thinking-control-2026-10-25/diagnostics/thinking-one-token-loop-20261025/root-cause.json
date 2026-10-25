@@ -1,0 +1,37 @@
+{
+  "current_attempt_action": "Keep active research running to original 1800-second deadline; preserve first/final candidates and original outcome. No rerun authorized for this submitted candidate.",
+  "facts": {
+    "client_context_safety_tokens": 4096,
+    "compaction_check_called_after_agent_end": true,
+    "direct_thinking_continuation_does_not_emit_agent_end": true,
+    "frozen_request_upper_bound": 4096,
+    "frozen_session_output_limit": 200000,
+    "native_models_context_window_override": null,
+    "provider_default_context_window": 128000,
+    "relay_respects_smaller_client_cap": true,
+    "requests_shrink_to_one_in_native_client": true,
+    "short_thinking_non_whitespace": true
+  },
+  "hidden_data_accessed": false,
+  "next_step": "After all active containers close, validate a narrowly scoped continuation handoff to existing native compaction before restarting remaining research; preserve scientific settings and all prior repair evidence.",
+  "source_modified": false,
+  "source_refs": {
+    "client_output_clamp": {
+      "path": "build/pi-policy-cache-local-001/nvm/versions/node/v22.23.4/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/@earendil-works/pi-ai/dist/api/simple-options.js",
+      "sha256": "52bfce3a553fb83ba3ec07b3484fb66f5042573db338cc4400aab28aa4905b2e"
+    },
+    "installed_loop_patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-002/native-patch.json",
+      "sha256": "ad43706f9a0e542f9b047dd2dc68e50c30be12a73c452226b888017c12f6069d"
+    },
+    "provider_model_defaults": {
+      "path": "build/pi-policy-cache-local-001/nvm/versions/node/v22.23.4/lib/node_modules/@earendil-works/pi-coding-agent/dist/core/provider-composer.js",
+      "sha256": "0aa496b035f94f82d09f779e60e30c26e4391b0c5c5f2b1a314c134874b2b174"
+    },
+    "session_compaction": {
+      "path": "build/pi-policy-cache-local-001/nvm/versions/node/v22.23.4/lib/node_modules/@earendil-works/pi-coding-agent/dist/core/agent-session.js",
+      "sha256": "91e72d5497f665e731cbd79da6a6e826d8cae7d2ce156a7dee39f8ca205e32c8"
+    }
+  },
+  "status": "diagnosed_dispatch_held"
+}

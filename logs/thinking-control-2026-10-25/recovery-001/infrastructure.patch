@@ -1,0 +1,120 @@
+diff --git a/runner/model_relay.py b/runner/model_relay.py
+index dd49a7e..e3d5d11 100644
+--- a/runner/model_relay.py
++++ b/runner/model_relay.py
+@@ -266,7 +266,7 @@ class Ledger:
+     def finish(self, item: Reservation, outcome: str, status=None, request_id_hash=None,
+                output_tokens=None, input_tokens=None, violation=False,
+                cache_read_input_tokens=None, cache_creation_input_tokens=None,
+-               failure_reason=None, usage_violation=None):
++               failure_reason=None, usage_violation=None, input_usage_revisions=None):
+         with self.lock:
+             if item.request_id not in self.active:
+                 raise RuntimeError("reservation already finished")
+@@ -290,6 +290,7 @@ class Ledger:
+                                     "upstream_status": status, "outcome": outcome,
+                                     "failure_reason": failure_reason,
+                                     "usage_violation": usage_violation,
++                                    "input_usage_revisions": input_usage_revisions or {},
+                                     "requested_max_tokens": item.requested, "effective_max_tokens": item.effective,
+                                     "output_tokens": output_tokens, "input_tokens": input_tokens,
+                                     "output_usage_complete": success,
+@@ -401,6 +402,7 @@ class StreamTracker:
+         self.final_usage = self.input_tokens = None
+         self.observed_output_tokens = None
+         self.cache_read_input_tokens = self.cache_creation_input_tokens = None
++        self.input_usage_revisions = {}
+         self.stop_frame = None
+ 
+     def consume(self, raw: bytes) -> bytes | None:
+@@ -489,8 +491,10 @@ class StreamTracker:
+         return value
+ 
+     def observe_usage(self, usage, require_output=False):
+-        # All usage values are cumulative. Initial/nonterminal observations count
+-        # too: a smaller terminal value must never unlock a refund.
++        # Output usage enforces the budget: even an initial/nonterminal high
++        # count cannot later decrease to unlock a refund. DeepSeek may revise
++        # input/cache accounting downwards; retain its latest values and audit
++        # those revisions separately. They never determine the output charge.
+         updates = {}
+         for field in ("output_tokens", "input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
+             value = self.usage(usage.get(field), required=require_output and field == "output_tokens")
+@@ -499,8 +503,11 @@ class StreamTracker:
+             attribute = "observed_output_tokens" if field == "output_tokens" else field
+             previous = getattr(self, attribute)
+             if previous is not None and value < previous:
+-                self.usage_violation = {"field": field, "previous": previous, "observed": value}
+-                raise ProtocolError("usage_decreased")
++                if field == "output_tokens":
++                    self.usage_violation = {"field": field, "previous": previous, "observed": value}
++                    raise ProtocolError("usage_decreased")
++                revision = self.input_usage_revisions.setdefault(field, {"count": 0, "first_previous": previous})
++                revision.update(count=revision["count"] + 1, last_previous=previous, last_observed=value)
+             if field == "output_tokens" and value > self.limit:
+                 raise ProtocolError("usage_exceeds_reservation")
+             updates[attribute] = value
+@@ -670,7 +677,7 @@ class Relay:
+                                tracker.input_tokens if not violation else None, violation,
+                                tracker.cache_read_input_tokens if not violation else None,
+                                tracker.cache_creation_input_tokens if not violation else None,
+-                               failure_reason, getattr(tracker, "usage_violation", None))
++                               failure_reason, getattr(tracker, "usage_violation", None), tracker.input_usage_revisions)
+ 
+     @staticmethod
+     def _emit_error(emit, code):
+diff --git a/runner/run_plan.py b/runner/run_plan.py
+index ef68018..4a3c195 100644
+--- a/runner/run_plan.py
++++ b/runner/run_plan.py
+@@ -130,6 +130,40 @@ def _file_ref(project, ref):
+     return path
+ 
+ 
++def validate_tool_files(plan, project):
++    """Allow only an explicitly evidenced relay repair of an unchanged plan."""
++    frozen = plan["tool_config"]["files"]
++    actual = {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}
++    if frozen == actual:
++        return
++    if set(frozen) != set(actual):
++        raise ValueError("trusted tooling files changed")
++    changed = {name for name in frozen if frozen[name] != actual[name]}
++    allowed = {"runner/model_relay.py", "runner/run_plan.py"}
++    if not changed <= allowed or not re.fullmatch(r"research-[0-9a-f]{16}", plan["plan_id"]):
++        raise ValueError("trusted tooling files changed")
++    path = Path(project) / "freezes" / (plan["plan_id"] + "-relay-usage-repair.json")
++    if not path.is_file() or path.is_symlink() or path.stat().st_size > 65536:
++        raise ValueError("trusted tooling files changed; missing bounded relay repair addendum")
++    repair = read_json(path)
++    if (not isinstance(repair, dict) or repair.get("schema_version") != 1
++            or repair.get("kind") != "relay_input_usage_compatibility"
++            or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
++        raise ValueError("relay repair is not bound to this unchanged frozen plan")
++    files = repair.get("files")
++    if not isinstance(files, dict) or set(files) != changed:
++        raise ValueError("relay repair file set differs from actual changes")
++    for name in changed:
++        if files[name] != {"before_sha256": frozen[name], "after_sha256": actual[name]}:
++            raise ValueError("relay repair source hash mismatch")
++    evidence = repair.get("evidence")
++    required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
++    if not isinstance(evidence, dict) or set(evidence) != required:
++        raise ValueError("relay repair requires authorization, tests, probe and exact patch evidence")
++    for ref in evidence.values():
++        _file_ref(project, ref)
++
++
+ def start_blockers(plan, project):
+     """Return every independently checkable blocker without executing any workload."""
+     blockers = []
+@@ -224,8 +258,7 @@ def start_blockers(plan, project):
+     try:
+         if not isinstance(tools, dict) or plan.get("tool_config_sha256") != digest(canonical(tools)):
+             raise ValueError("missing or mismatched tool configuration hash")
+-        if tools.get("files") != {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}:
+-            raise ValueError("trusted tooling files changed")
++        validate_tool_files(plan, project)
+         if any(tools.get(key) != [] for key in ("skills", "extensions", "mcp_servers")) or tools.get("resume") is not False:
+             raise ValueError("unrelated skills/extensions/MCP or session resume must be disabled")
+         if not isinstance(tools.get("runtime_tools"), list) or not tools["runtime_tools"] or not all(isinstance(x, str) and x for x in tools["runtime_tools"]):

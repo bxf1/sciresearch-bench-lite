@@ -1,0 +1,39 @@
+{"stage": "research_running", "sequence": 5, "run_id": "research-98719c3c1cf3fc92-ode-g2-r1", "closed_sessions": 4, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 6, "run_id": "research-98719c3c1cf3fc92-ode-g3-r1", "closed_sessions": 5, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 7, "run_id": "research-98719c3c1cf3fc92-poisson-g3-r1", "closed_sessions": 6, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 8, "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1", "closed_sessions": 7, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 9, "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1", "closed_sessions": 8, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 10, "run_id": "research-98719c3c1cf3fc92-heat-g3-r2", "closed_sessions": 9, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 11, "run_id": "research-98719c3c1cf3fc92-heat-g1-r2", "closed_sessions": 10, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 12, "run_id": "research-98719c3c1cf3fc92-heat-g2-r2", "closed_sessions": 11, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 13, "run_id": "research-98719c3c1cf3fc92-heat-g3-r3", "closed_sessions": 12, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 14, "run_id": "research-98719c3c1cf3fc92-heat-g1-r3", "closed_sessions": 13, "hidden_data_accessed": false}
+{"stage": "research_running", "sequence": 15, "run_id": "research-98719c3c1cf3fc92-heat-g2-r3", "closed_sessions": 14, "hidden_data_accessed": false}
+{"stage": "scoring_running", "all_15_research_closed": true, "hidden_data_accessed": true}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-heat-ls", "completed_operations": 0}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-heat-rank5", "completed_operations": 1}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-heat-tikhonov", "completed_operations": 2}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-heat-discrepancy", "completed_operations": 3}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-heat-tsvd", "completed_operations": 4}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-ode-raw", "completed_operations": 5}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-ode-fixed", "completed_operations": 6}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-ode-search", "completed_operations": 7}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-poisson-cg", "completed_operations": 8}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-poisson-jacobi", "completed_operations": 9}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "baseline-poisson-lu", "completed_operations": 10}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g2-r1", "completed_operations": 11}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g3-r1", "completed_operations": 12}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g1-r1", "completed_operations": 13}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-ode-research-98719c3c1cf3fc92-ode-g1-r1", "completed_operations": 14}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-ode-research-98719c3c1cf3fc92-ode-g2-r1", "completed_operations": 15}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-ode-research-98719c3c1cf3fc92-ode-g3-r1", "completed_operations": 16}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-poisson-research-98719c3c1cf3fc92-poisson-g3-r1", "completed_operations": 17}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1", "completed_operations": 18}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1", "completed_operations": 19}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g3-r2", "completed_operations": 20}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g1-r2", "completed_operations": 21}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g2-r2", "completed_operations": 22}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g3-r3", "completed_operations": 23}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g1-r3", "completed_operations": 24}
+{"stage": "scoring_running", "all_15_research_closed": true, "operation": "final-heat-research-98719c3c1cf3fc92-heat-g2-r3", "completed_operations": 25}
+{"stage": "results_ready_for_review", "all_15_research_closed": true, "results": "results/thinking-control-2026-10-25", "operation_failures": [{"kind": "baseline", "task": "poisson", "identity": "jacobi", "exit_code": 2, "action": "attempted_once"}, {"kind": "final", "task": "poisson", "identity": "research-98719c3c1cf3fc92-poisson-g2-r1", "exit_code": 2, "action": "attempted_once"}, {"kind": "final", "task": "poisson", "identity": "research-98719c3c1cf3fc92-poisson-g1-r1", "exit_code": 2, "action": "attempted_once"}], "publication_complete": false}

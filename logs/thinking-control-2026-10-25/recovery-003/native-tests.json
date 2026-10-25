@@ -1,0 +1,21 @@
+{
+  "loop_results": {
+    "path": "logs/thinking-control-2026-10-25/recovery-003/native-loop-tests.json",
+    "sha256": "73fbe92a4971cace48b3aca728a63a6ca5a1c91ae844711cf149f18c19c422d9"
+  },
+  "loop_script": {
+    "path": "logs/thinking-control-2026-10-25/recovery-003/native-loop-test.mjs",
+    "sha256": "ea189ac0f687df6e8b83bfa7e9f009c8f0e64a850ffa47c943a9140c813688a4"
+  },
+  "native_loop_cases": 11,
+  "native_session_cases": 4,
+  "session_results": {
+    "path": "logs/thinking-control-2026-10-25/recovery-003/native-session-tests.json",
+    "sha256": "70059a47d59eb65fd9f4c452d793f136d85cbada8746bd9360bce3d7510ae2ac"
+  },
+  "session_script": {
+    "path": "logs/thinking-control-2026-10-25/recovery-003/native-session-test.mjs",
+    "sha256": "fe85af822dde41724e15caac8637b35437fd1c91cc2b22a5673c4db81fe0baf7"
+  },
+  "status": "passed"
+}

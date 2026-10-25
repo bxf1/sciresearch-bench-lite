@@ -1,0 +1,10 @@
+task,group,planned_sessions,attempts,scientific_sessions,score_n,unscored_scientific_sessions,non_scientific_attempts,unscored_attempts,reward_zero_sessions,score_zero_sessions,score_median,score_min,score_max,interpretation
+heat,g1,3,4,3,3,0,0,1,0,0,93.38772336507992,91.9574012396198,93.62686679721844,n=3 is exploratory; no broad significance claim
+heat,g2,3,3,3,3,0,0,0,0,0,93.63703319082748,93.32793147725887,93.68793660222542,n=3 is exploratory; no broad significance claim
+heat,g3,3,4,3,3,0,1,1,0,0,93.42412425883583,93.0409979762482,93.62503692157128,n=3 is exploratory; no broad significance claim
+ode,g1,1,1,1,1,0,0,0,0,0,99.26610435632573,99.26610435632573,99.26610435632573,n=1 is descriptive only
+ode,g2,1,1,1,1,0,0,0,0,0,99.2661042981281,99.2661042981281,99.2661042981281,n=1 is descriptive only
+ode,g3,1,1,1,1,0,0,0,0,0,98.99439733731155,98.99439733731155,98.99439733731155,n=1 is descriptive only
+poisson,g1,1,1,0,0,0,0,1,0,0,null,null,null,n=1 is descriptive only
+poisson,g2,1,1,0,0,0,0,1,0,0,null,null,null,n=1 is descriptive only
+poisson,g3,1,1,1,1,0,0,0,0,0,44.16903901178499,44.16903901178499,44.16903901178499,n=1 is descriptive only

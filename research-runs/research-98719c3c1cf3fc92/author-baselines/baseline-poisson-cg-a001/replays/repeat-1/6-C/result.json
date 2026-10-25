@@ -1,0 +1,398 @@
+{
+  "artifact_valid": true,
+  "attempt_status": "completed",
+  "cases": [
+    {
+      "E_res": [
+        9.479385715810883e-11,
+        9.752128391709604e-11,
+        8.772965717332772e-11,
+        8.514316247509907e-11
+      ],
+      "E_sol": [
+        5.853958619667275e-10,
+        4.0739252180447707e-10,
+        5.596494100572343e-10,
+        4.527961741083384e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "5f27995ec718b8513d89",
+      "level": 0,
+      "max_relative_residual": 9.752128391709604e-11,
+      "max_solution_error": 5.853958619667275e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.625026116518902e-11,
+        8.867717820363643e-11,
+        7.705934641595461e-11,
+        8.212498917243253e-11
+      ],
+      "E_sol": [
+        6.407122262282958e-10,
+        5.575095571708355e-10,
+        4.871364259863148e-10,
+        5.575655807845158e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "c91c2b3304ee5c82fae7",
+      "level": 0,
+      "max_relative_residual": 9.625026116518902e-11,
+      "max_solution_error": 6.407122262282958e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        8.668338985251778e-11,
+        9.433984336286364e-11,
+        7.309816287800248e-11,
+        8.22078979922262e-11
+      ],
+      "E_sol": [
+        4.776324717023524e-10,
+        5.929176048092027e-10,
+        4.113898720795374e-10,
+        5.1875189641193e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "ea1a1cf8c901957a7f8a",
+      "level": 0,
+      "max_relative_residual": 9.433984336286364e-11,
+      "max_solution_error": 5.929176048092027e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        8.239899877139643e-11,
+        9.556621298913183e-11,
+        9.305014299427192e-11,
+        6.976280777491329e-11
+      ],
+      "E_sol": [
+        5.386213888860106e-10,
+        6.420627201165716e-10,
+        6.664327637922518e-10,
+        4.289361940269644e-10
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "25c11e9dd8e45f960bb0",
+      "level": 0,
+      "max_relative_residual": 9.556621298913183e-11,
+      "max_solution_error": 6.664327637922518e-10,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.97478072921959e-11,
+        9.977496252142371e-11,
+        8.142649828589796e-11,
+        8.287492244537378e-11
+      ],
+      "E_sol": [
+        1.729669634105077e-08,
+        1.1297291336391494e-08,
+        4.138130876273916e-08,
+        1.6608817160920743e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "1e4761ea323dc43d1fce",
+      "level": 1,
+      "max_relative_residual": 9.977496252142371e-11,
+      "max_solution_error": 4.138130876273916e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        7.40271355092809e-11,
+        9.548716571663498e-11,
+        9.023480766184171e-11,
+        9.847311561216833e-11
+      ],
+      "E_sol": [
+        1.4014073081206151e-08,
+        1.6098679751817108e-08,
+        7.095808210368711e-09,
+        1.2077752121555808e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "923c28c89dc1c9be878f",
+      "level": 1,
+      "max_relative_residual": 9.847311561216833e-11,
+      "max_solution_error": 1.6098679751817108e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.518933000448105e-11,
+        8.712415307661444e-11,
+        9.668498432232273e-11,
+        7.138771647230749e-11
+      ],
+      "E_sol": [
+        1.440432686080729e-08,
+        1.2820394330251079e-08,
+        1.7451065855968863e-08,
+        1.2079041834084414e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "2f4293242f6633d45d68",
+      "level": 1,
+      "max_relative_residual": 9.668498432232273e-11,
+      "max_solution_error": 1.7451065855968863e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        8.944065510656698e-11,
+        7.633664652728006e-11,
+        7.422588029647235e-11,
+        9.983175115889707e-11
+      ],
+      "E_sol": [
+        1.2278073025838379e-08,
+        1.8888605850476663e-08,
+        1.0897663664315044e-08,
+        1.3561928208209383e-08
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "8c812f7fa098e4690ec8",
+      "level": 1,
+      "max_relative_residual": 9.983175115889707e-11,
+      "max_solution_error": 1.8888605850476663e-08,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.745452136049272e-11,
+        9.669994407325435e-11,
+        9.845931842882453e-11,
+        9.412106359730286e-11
+      ],
+      "E_sol": [
+        1.8945649312987955e-07,
+        3.429632582259446e-07,
+        2.842703864122231e-07,
+        4.036422274718325e-07
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "ac47a61e936809cbc366",
+      "level": 2,
+      "max_relative_residual": 9.845931842882453e-11,
+      "max_solution_error": 4.036422274718325e-07,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.997455287823899e-11,
+        8.642767286961774e-11,
+        9.572485974835298e-11,
+        9.222758824539794e-11
+      ],
+      "E_sol": [
+        2.5579246390413406e-07,
+        4.4275606368034024e-07,
+        2.4772954685664863e-07,
+        3.0115589683969284e-07
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "5a557952b6392bf22208",
+      "level": 2,
+      "max_relative_residual": 9.997455287823899e-11,
+      "max_solution_error": 4.4275606368034024e-07,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.630045212262573e-11,
+        8.508531391369435e-11,
+        9.912092632909314e-11,
+        9.90528505983093e-11
+      ],
+      "E_sol": [
+        3.890563563045622e-07,
+        3.5888783092403843e-07,
+        3.0552941602674735e-07,
+        2.762018512682683e-07
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "4a89155d3ef98eb04fc7",
+      "level": 2,
+      "max_relative_residual": 9.912092632909314e-11,
+      "max_solution_error": 3.890563563045622e-07,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    },
+    {
+      "E_res": [
+        9.377778144296092e-11,
+        9.02824672802933e-11,
+        9.501341351353575e-11,
+        7.529888235857898e-11
+      ],
+      "E_sol": [
+        2.822351874132293e-07,
+        2.478146480462848e-07,
+        2.424572782507977e-07,
+        3.9369266830199093e-07
+      ],
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "ba52ac78c61a8b14499a",
+      "level": 2,
+      "max_relative_residual": 9.501341351353575e-11,
+      "max_solution_error": 3.9369266830199093e-07,
+      "performance_status": "pending_host_measurement",
+      "scientific_pass": true,
+      "score": null
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "006661620a5b4c2be3b432e5154c1eebf143a914b851a418b42a2f1fc5f9eb5e",
+  "judge_wall_seconds": 0.8344492502510548,
+  "passed": 12,
+  "performance_status": "not_measured",
+  "phase": {
+    "formal": true,
+    "freeze_sha256": "3a5bb2e5b177121f382bc025a40e8b38aeee1d01017262bc3f1b60ca01e77969",
+    "profile": "efficiency_gate_1.5",
+    "split": "final-test"
+  },
+  "reward": null,
+  "scientific_pass": true,
+  "score": null,
+  "total": 12,
+  "worker": {
+    "all_processes_terminated": true,
+    "artifact_valid": true,
+    "attempt_status": "completed",
+    "budget_timeout": false,
+    "candidate_processes_terminated": true,
+    "candidate_uid": 65534,
+    "cases": [
+      {
+        "artifact_valid": true,
+        "id": "5f27995ec718b8513d89",
+        "sha256": "1304d452ed3a3b4507394db043aaad30844edfb697c5a9fbaf10ecb5a58d54ff"
+      },
+      {
+        "artifact_valid": true,
+        "id": "c91c2b3304ee5c82fae7",
+        "sha256": "b877b6bd5b0d748a696d6f5907ca8cbbefe24c8a479a80060bf8596135da1e11"
+      },
+      {
+        "artifact_valid": true,
+        "id": "ea1a1cf8c901957a7f8a",
+        "sha256": "51d48e595ce7be12fecf2a133f2d882ae7fde80815409697a3f4c68e37ef8da0"
+      },
+      {
+        "artifact_valid": true,
+        "id": "25c11e9dd8e45f960bb0",
+        "sha256": "64051574d87a3f7b8e27e81aa86f142e542546c9522f36a5f9c785cf16f1fb53"
+      },
+      {
+        "artifact_valid": true,
+        "id": "1e4761ea323dc43d1fce",
+        "sha256": "ca43db2611d0bff626e6cfae031e9e17ac5ed381e7f3981ee3f99defdb9228a3"
+      },
+      {
+        "artifact_valid": true,
+        "id": "923c28c89dc1c9be878f",
+        "sha256": "49006f901bca869bfbabcd623f1e299c0223ab39887b42c122880f3671d139e8"
+      },
+      {
+        "artifact_valid": true,
+        "id": "2f4293242f6633d45d68",
+        "sha256": "2b15a8b9fc28cbe441bfaec9277400823cbac1a0d2e5828f856608bff7562cdd"
+      },
+      {
+        "artifact_valid": true,
+        "id": "8c812f7fa098e4690ec8",
+        "sha256": "aab0033744443cb09ed60e3151be413b1af611f1353ae3c691c6ba22f1cc0aec"
+      },
+      {
+        "artifact_valid": true,
+        "id": "ac47a61e936809cbc366",
+        "sha256": "62acb830b965403d6d9447089718483d58f851de9b554fbc05d59e80fbf736c0"
+      },
+      {
+        "artifact_valid": true,
+        "id": "5a557952b6392bf22208",
+        "sha256": "2c68cff431f8f0e2eca4f44d346ebad512b7f9c52c2dd7044a1d652580229ec1"
+      },
+      {
+        "artifact_valid": true,
+        "id": "4a89155d3ef98eb04fc7",
+        "sha256": "e05059ac683020f9e0cdeac4597365aad90b41b64b1005b439cc073925c1e122"
+      },
+      {
+        "artifact_valid": true,
+        "id": "ba52ac78c61a8b14499a",
+        "sha256": "48a0a57f81916136ee9bf90c4c4369e0d25e82f489683148cb6c423d18a96667"
+      }
+    ],
+    "container_id": "bcce8ffa788dccd8ac1569c2f38baab83c1d0fcb1a6bb48a0c4cb7068b8c4db6",
+    "container_name": "sciresearch-w-ce9cc28bf0a2",
+    "cpu_seconds": 5.557918,
+    "docker_execution_wall_seconds": 5.630809749942273,
+    "evaluation_status": "not_evaluated",
+    "execution_wall_seconds": 5.511712432,
+    "exit_code": 0,
+    "finished_monotonic_ns": 148624079380176,
+    "formal_timing": false,
+    "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+    "input_sha256": "daf311c96c00b146c47c30baff79f62dff5c7eee8c1f2995e65da9122029c102",
+    "log_bytes_observed": 0,
+    "machine_id": "646832dd-c4b9-4d74-b3ab-36a09bf24d4b",
+    "memory_peak_bytes": 57245696,
+    "oom_killed": false,
+    "output_initially_empty": true,
+    "performance_status": "not_measured",
+    "processes_quiesced_at_seconds": 5.692836583126336,
+    "research_timeout_seconds": null,
+    "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+    "resource_limits_verified": true,
+    "scientific_pass": false,
+    "source_hash": "69e630261fdde37de4c129424c8c9ec2072d432c753216235babc7a6a999b889",
+    "started_monotonic_ns": 148618567667744,
+    "timeout_seconds": 60,
+    "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+    "timer_uid": 65533,
+    "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+    "timing_complete": true,
+    "timing_scope": "python_spawn_to_all_descendants_exit",
+    "total_wall_seconds": 6.10694979224354
+  }
+}

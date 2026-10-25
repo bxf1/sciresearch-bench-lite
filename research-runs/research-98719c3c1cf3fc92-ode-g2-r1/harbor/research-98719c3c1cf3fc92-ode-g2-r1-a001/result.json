@@ -1,0 +1,145 @@
+{
+    "id": "e805cbb1-9bc8-4f49-b40f-31a3d7c3c44a",
+    "task_name": "sciresearch/ode",
+    "trial_name": "research-98719c3c1cf3fc92-ode-g2-r1-a001",
+    "trial_uri": "file:///Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/harbor/research-98719c3c1cf3fc92-ode-g2-r1-a001",
+    "task_id": {
+        "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/build/task"
+    },
+    "source": null,
+    "task_checksum": "0de8a89bf32d738022f90b2f101b85a6e7b4330b1e7bab1333ba0f64adbf4aa4",
+    "config": {
+        "task": {
+            "path": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/build/task",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "research-98719c3c1cf3fc92-ode-g2-r1-a001",
+        "trials_dir": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/harbor",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "pi",
+            "import_path": null,
+            "model_name": "anthropic/deepseek-flash",
+            "model_base_url": "http://172.21.0.2:8787",
+            "model_api_key_name": "BENCH_RELAY_KEY",
+            "model_api_format": "anthropic_messages",
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": 1800.0,
+            "override_setup_timeout_sec": 600.0,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "exclude_logs": [
+                "*",
+                "**/*"
+            ],
+            "kwargs": {
+                "version": "0.84.1",
+                "reasoning_effort": "off",
+                "max_turns": null
+            },
+            "env": {
+                "BENCH_RELAY_KEY": "6fa2****9d5",
+                "ANTHROPIC_OAUTH_TOKEN": ""
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "runner.harbor_environment:ResearchDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "limit",
+            "memory_enforcement_policy": "limit",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [
+                "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/research-security-compose.json"
+            ],
+            "kwargs": {
+                "auto_mounting": false,
+                "enable_environment_dir_upload": false,
+                "pilot_audit_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/environment-audit",
+                "formal": true
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "import_path": "runner.study:RegistrationVerifier",
+            "kwargs": {
+                "registry_root": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-98719c3c1cf3fc92-ode-g2-r1/registry",
+                "task_name": "ode"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": null,
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "pi",
+        "version": "0.84.1",
+        "model_info": {
+            "name": "deepseek-flash",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": null
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-25T05:58:52.288615Z",
+    "finished_at": "2026-10-25T06:23:25.691872Z",
+    "environment_setup": {
+        "started_at": "2026-10-25T05:58:52.401295Z",
+        "finished_at": "2026-10-25T05:58:55.095531Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-25T05:58:55.095623Z",
+        "finished_at": "2026-10-25T05:59:20.313118Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-25T05:59:33.125811Z",
+        "finished_at": "2026-10-25T06:23:09.801569Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-25T06:23:11.364820Z",
+        "finished_at": "2026-10-25T06:23:25.691836Z"
+    },
+    "step_results": null
+}

@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "id": "677b9a2d151ff70c6e10",
+      "level": 0,
+      "path": "cases/677b9a2d151ff70c6e10"
+    },
+    {
+      "id": "f82d125dd9cef7170507",
+      "level": 0,
+      "path": "cases/f82d125dd9cef7170507"
+    },
+    {
+      "id": "f9220f7a4cd047832b15",
+      "level": 1,
+      "path": "cases/f9220f7a4cd047832b15"
+    },
+    {
+      "id": "b4da37f25d6bc95ee155",
+      "level": 1,
+      "path": "cases/b4da37f25d6bc95ee155"
+    },
+    {
+      "id": "d597bf08ace1c7ec1368",
+      "level": 2,
+      "path": "cases/d597bf08ace1c7ec1368"
+    },
+    {
+      "id": "4f49905d2c9a6bbb918b",
+      "level": 2,
+      "path": "cases/4f49905d2c9a6bbb918b"
+    }
+  ],
+  "contract_version": "0.3.0",
+  "split": "public-dev",
+  "task": "ode"
+}

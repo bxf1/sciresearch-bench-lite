@@ -1,0 +1,14 @@
+{
+  "closed_sessions": 3,
+  "controller_pid": 65981,
+  "hidden_data_accessed": false,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-relay-usage-repair.json",
+    "sha256": "de2c9860b1b3764d1579591f82bbd2b0d427e4ca413cd10435c5f5bef09d4864"
+  },
+  "plan": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+  "run_id": "research-98719c3c1cf3fc92-ode-g1-r1",
+  "sequence": 4,
+  "stage": "research_running",
+  "updated_at": 1792901840.213661
+}

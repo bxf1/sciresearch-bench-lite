@@ -1,0 +1,41 @@
+{
+  "checked_at_beijing": "2026-10-25T13:07:31.721690+08:00",
+  "attempt_id": "research-98719c3c1cf3fc92-heat-g1-r1-a002",
+  "research_elapsed_seconds": 356,
+  "status": {
+    "sequence": 3,
+    "task": "heat",
+    "group": "g1",
+    "repeat": 1,
+    "run_id": "research-98719c3c1cf3fc92-heat-g1-r1",
+    "status": "research_running",
+    "output_limit": 200000,
+    "attempt_status": "running",
+    "closed": false,
+    "public_evaluations": 1,
+    "first_id": "candidate-001",
+    "final_id": null,
+    "successful_requests": 26,
+    "failed_requests": 0,
+    "known_output_tokens": 46856,
+    "charged_output_tokens": 46856,
+    "event_age_seconds": 2.3,
+    "effective_thinking": {
+      "type": "enabled"
+    },
+    "effective_output_config": {
+      "effort": "max"
+    }
+  },
+  "public_candidates": [
+    {
+      "id": "candidate-001",
+      "artifact_valid": true,
+      "case_count": 6,
+      "cases_ok": 6
+    }
+  ],
+  "continuation_check": "logs/thinking-control-2026-10-25/recovery-002/continuation-check-20261025T050704Z.json",
+  "hidden_data_accessed": false,
+  "closed_sessions": 3
+}

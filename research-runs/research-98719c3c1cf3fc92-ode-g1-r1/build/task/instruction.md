@@ -1,0 +1,27 @@
+Identify a compact, two-dimensional autonomous dynamical system from noisy trajectories. States z1 and z2 and time are dimensionless. The right-hand side is a polynomial of total degree at most three. Each instance is independent; implement one program that handles every case in an input batch.
+
+Run as `python solve.py --input /input --output /output --seed 0`. `/input/manifest.json` lists cases with `id`, relative `path`, and `level`. Each case supplies `train.npy` (6,301,2), `validation.npy` (2,301,2), `t.npy` (301,), `train_initial.npy` (6,2), `validation_initial.npy` (2,2), and `metadata.json`. The time grid is 0 through 6 inclusive. Observations include independent Gaussian noise at every time, including time zero; the separately supplied initial states are exact. Metadata specifies the actual standard deviation for each trajectory and channel.
+
+Write only `cases/<id>/model.json` with exactly `{"coefficients": [...]}`. The finite numeric coefficient array has shape (10,2), with columns dz1/dt and dz2/dt. Its row basis is `[1,z1,z2,z1^2,z1*z2,z2^2,z1^3,z1^2*z2,z1*z2^2,z2^3]`. If you rescale coordinates internally, return coefficients in the original coordinates. JSON duplicate keys, NaN, Infinity, strings in place of numbers, or additional output files are invalid.
+
+Coefficients with absolute value strictly below 1e-6 are set to zero before scoring. Let K be the number of remaining coefficients. Each case must have K <= 10, maximum relative Frobenius error <= 0.05 across four unseen trajectories over [0,8], and relative vector-field error <= 0.05 on a 21 by 21 grid over [-1.5,1.5]^2. This grid is not a bound on trajectories. Rollouts use DOP853, rtol=1e-9, atol=1e-11, 401 equally spaced times, and a 5-second limit per trajectory. Any incomplete or nonfinite rollout fails the case. The continuous score is 100 times the mean of equally weighted clipped terms `1-E_roll/0.10` and `1-E_field/0.10`; excess K, invalid artifacts, or failed rollouts score zero. All 12 final cases must pass in each of three clean repetitions for task reward 1.
+
+Registered public evaluation runs your program on all six development cases and returns the two noisy validation rollout errors, their mean, K, and integration status. It does not expose hidden trajectories or vector-field truth. Public validation uses the same integrator and tolerances on the 301 input times.
+
+Research has a 30-minute wall-clock and 20 accepted-evaluation limit; public evaluation is inside that budget. Candidate execution is limited to one CPU, 4 GiB, 120 seconds per batch, and one numerical-library thread. Candidate execution has no network. Submit using the provided `bench evaluate` interface and select an already evaluated snapshot with `bench finalize`. Files must be ordinary files; no links or path traversal. Source is limited to 20 MiB and 1,000 files, output to 256 MiB, and temporary storage to 64 MiB. A valid but inaccurate initial submission remains the first valid checkpoint. The final program must generalize to unseen instances, not hardcode development answers.
+
+
+Use a denoised derivative estimate followed by a sparse polynomial fit as an initial method. For each training trajectory and channel, apply a Savitzky-Golay filter with window length 31 and polynomial degree 3 to obtain both smoothed states and the first derivative; use the sample spacing from t.npy. Discard the first and last 15 time points. Evaluate all ten public monomials on the smoothed states and stack trajectories. Fit both derivative columns using least squares.
+
+Apply sequential thresholded least squares for eight rounds. In each derivative column, keep coefficients whose absolute value is at least 0.02, set the others to zero, and refit on the retained dictionary columns. If a column has no retained terms, leave it zero. Do not assume any term is present or absent before fitting. Convert any internal normalization back to the original coordinates.
+
+Pseudocode:
+1. Load training states, times, and exact validation initial states.
+2. Smooth and differentiate; trim 15 points at each end; build the full ten-column dictionary.
+3. Fit coefficients and perform eight threshold/refit rounds.
+4. Export the coefficient array and register an evaluation of the fixed method.
+5. Optionally explore window lengths 11, 21, 31 with polynomial degree 3, trimming half the respective window, and thresholds 0, 0.02, 0.05, 0.1. Use the same eight rounds.
+6. For each explored candidate, set absolute coefficients below 1e-6 to zero, reject K > 10, and integrate from both exact public validation initial states using the specified public integrator. Reject incomplete, nonfinite, or timed-out trajectories.
+7. Select the valid candidate minimizing mean noisy validation relative Frobenius error plus 1e-4*K. If no search candidate qualifies, retain the fixed window31/threshold0.02 method. A failing fixed result remains a reported failure.
+
+Use public diagnostics to check whether changes help. This method is a starting point, and you may investigate other methods within the same interface and budget.

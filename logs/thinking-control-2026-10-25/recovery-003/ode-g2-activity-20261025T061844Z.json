@@ -1,0 +1,102 @@
+{
+  "checked_at": 1792909126.2653952,
+  "pending_tools": [
+    {
+      "timestamp": "2026-10-25T06:06:51.468Z",
+      "name": "bash",
+      "arguments_keys": [
+        "command",
+        "timeout"
+      ],
+      "timeout": 900,
+      "command": "cd /workspace && cat > synthgeneric.py <<'PY'\nimport numpy as np, time\nfrom scipy.integrate import solve_ivp\nfrom scipy.signal import savgol_filter\nfrom scipy.optimize import least_squares\nfrom proto2 import basis, simulate, stlsq\n\nrng=np.random.default_rng(42)\nt=np.linspace(0,6,301);t8=np.linspace(0,8,401)\ntrain_init=np.array([[1.2,0],[-1.2,0],[0,1.2],[0,-1.2],[.8,.8],[-.8,-.8]])\nval_init=np.array([[.7,-.5],[-.6,.9]])\nhidden_init=np.array([[1.0,.2],[-.9,.7],[.3,-1.1],[-1.1,-.4]])\n\ndef gen(cc,init,t,rel):\n    X=[];sig=[]\n    for ini in init:\n        sol=solve_ivp(lambda tt,y:basis(y)@cc,(t[0],t[-1]),ini,t_eval=t,method='DOP853',rtol=1e-10,atol=1e-12)\n        if not sol.success:return None,None\n        x=sol.y.T\n        if not np.isfinite(x).all() or np.max(np.abs(x))>5:return None,None\n        s=np.sqrt(np.mean(x*x,axis=0))*rel\n        X.append(x+rng.normal(size=x.shape)*s);sig.append(s)\n    return np.array(X),np.array(sig)\n\ndef fit_support(X,init,sig,t,support,p0):\n    def unpack(p):\n        cc=np.zeros((10,2))\n        for k,(i,c) in enumerate(support):cc[i,c]=p[k]\n        return cc\n    def resid(p):\n        cc=unpack(p);rr=[]\n        for i in range(X.shape[0]):\n            pred=simulate(cc,t,init[i]);rr.append(((pred-X[i])/sig[i]).ravel())\n        return np.concatenate(rr)\n    if not support:return np.zeros((10,2))\n    res=least_squares(resid,p0,method='trf',xtol=1e-10,ftol=1e-10,gtol=1e-10,max_nfev=150)\n    return unpack(res.x)\n\ndef fielderr(cc,truth):\n    z=np.linspace(-1.5,1.5,21);Z1,Z2=np.meshgrid(z,z);S=np.stack([Z1.ravel(),Z2.ravel()],axis=-1)\n    B=basis(S);return np.linalg.norm(B@(cc-truth))/max(np.linalg.norm(B@truth),1e-12)\n\ndef rollerr(cc,truth,init,t8):\n    a=solve_ivp(lambda tt,y:basis(y)@truth,(0,8),init,t_eval=t8,method='DOP853',rtol=1e-9,atol=1e-11)\n  \n...\nic:-abs(c0[ic]))[:10]\n    p0=np.array([c0[i,c] for i,c in support])\n    cf=fit_support(X,init,sig,t,support,p0)\n    e=max(rollerr(cf,cc,ini,t8) for ini in hidden_init) if all(np.isfinite(cf)) else 99\n    f=fielderr(cf,cc)\n    K=np.count_nonzero(cf)\n    ok=(e<=.05 and f<=.05 and K<=10)\n    stats.append((e,f,K))\n    if not ok:\n        fails.append((trial,rel,cc,support,np.round(cf,4),e,f,K))\nprint('tested',len(stats),'fails',len(fails),'time',time.time()-start)\nprint('median/max e',np.median([x[0] for x in stats]),max(x[0] for x in stats),'f',np.median([x[1] for x in stats]),max(x[1] for x in stats))\nfor x in fails[:10]:\n    print('\\nFAIL trial',x[0],'rel',x[1],'e',x[5],'f',x[6],'K',x[7])\n    print('support',x[3]);print('true\\n',np.round(x[2],4));print('fit\\n',x[4])\nPY\npython synthgeneric.py"
+    }
+  ],
+  "processes": [
+    {
+      "pid": 1,
+      "ppid": 0,
+      "comm": "sh",
+      "state": "S",
+      "cpu_ticks": 1,
+      "wchan": "do_wait",
+      "scripts": []
+    },
+    {
+      "pid": 7,
+      "ppid": 1,
+      "comm": "sleep",
+      "state": "S",
+      "cpu_ticks": 0,
+      "wchan": "do_poll.constprop.0",
+      "scripts": []
+    },
+    {
+      "pid": 1758,
+      "ppid": 0,
+      "comm": "bash",
+      "state": "S",
+      "cpu_ticks": 0,
+      "wchan": "do_wait",
+      "scripts": []
+    },
+    {
+      "pid": 1764,
+      "ppid": 1758,
+      "comm": "bash",
+      "state": "S",
+      "cpu_ticks": 0,
+      "wchan": "do_wait",
+      "scripts": []
+    },
+    {
+      "pid": 1977,
+      "ppid": 1764,
+      "comm": "pi",
+      "state": "S",
+      "cpu_ticks": 723,
+      "wchan": "ep_poll",
+      "scripts": []
+    },
+    {
+      "pid": 1978,
+      "ppid": 1764,
+      "comm": "grep",
+      "state": "S",
+      "cpu_ticks": 34,
+      "wchan": "pipe_read",
+      "scripts": []
+    },
+    {
+      "pid": 1979,
+      "ppid": 1764,
+      "comm": "tee",
+      "state": "S",
+      "cpu_ticks": 0,
+      "wchan": "pipe_read",
+      "scripts": []
+    },
+    {
+      "pid": 7515,
+      "ppid": 1977,
+      "comm": "python",
+      "state": "R",
+      "cpu_ticks": 71474,
+      "wchan": "0",
+      "scripts": [
+        "synthgeneric.py"
+      ]
+    },
+    {
+      "pid": 16417,
+      "ppid": 0,
+      "comm": "python",
+      "state": "R",
+      "cpu_ticks": 0,
+      "wchan": "0",
+      "scripts": [
+        "/opt/bench/bridge_io.py"
+      ]
+    }
+  ]
+}

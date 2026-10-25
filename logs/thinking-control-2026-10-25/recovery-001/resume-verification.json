@@ -1,0 +1,37 @@
+{
+  "active_attempt": "research-98719c3c1cf3fc92-heat-g3-r1-a002",
+  "hidden_data_accessed": false,
+  "original_evidence_unchanged": true,
+  "parent_attempt": "research-98719c3c1cf3fc92-heat-g3-r1-a001",
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "public_progress": {
+    "attempt_status": "running",
+    "charged_output_tokens": 9636,
+    "closed": false,
+    "effective_output_config": {
+      "effort": "max"
+    },
+    "effective_thinking": {
+      "type": "enabled"
+    },
+    "event_age_seconds": 0.3,
+    "failed_requests": 0,
+    "final_id": null,
+    "first_id": null,
+    "group": "g3",
+    "known_output_tokens": 9636,
+    "output_limit": 200000,
+    "public_evaluations": 0,
+    "repeat": 1,
+    "run_id": "research-98719c3c1cf3fc92-heat-g3-r1",
+    "sequence": 2,
+    "status": "research_running",
+    "successful_requests": 9,
+    "task": "heat"
+  },
+  "relay_source_sha256": "e5283bab59c1eee51218c80bb72ecb8b36030b196b802b68968688f1ddb18cf5",
+  "status": "running_verified"
+}

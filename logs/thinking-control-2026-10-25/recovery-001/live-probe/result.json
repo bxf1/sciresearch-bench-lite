@@ -1,0 +1,189 @@
+{
+  "cleanup": {
+    "all_removed": true,
+    "container_id": "bafb5935844669efc01972b53ebccd43561d80dd28becfacbee9b1c5e9bc3fd2",
+    "container_remove_returncode": 0,
+    "errors": {},
+    "network_name": "sciresearch-relay-09d81c16b69e",
+    "network_remove_returncode": 0,
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "status_before_stop": {
+      "budget_exhausted": false,
+      "charged_output_tokens": 508,
+      "evidence_error": false,
+      "expired": false,
+      "failed_requests": 0,
+      "failure_counts": {},
+      "inflight": 0,
+      "last_request_failure_reason": null,
+      "last_request_outcome": "success",
+      "last_upstream_status": 200,
+      "limits": {
+        "dropped_fields": [
+          "top_k",
+          "service_tier",
+          "container",
+          "temperature"
+        ],
+        "expected_compaction_system_sha256": null,
+        "expected_system_sha256": null,
+        "expected_tools_sha256": null,
+        "max_body_bytes": 1048576,
+        "max_concurrency": 4,
+        "max_event_bytes": 65536,
+        "max_requests": 3125,
+        "max_response_bytes": 8388608,
+        "model": "deepseek-flash",
+        "output_config": {
+          "effort": "max"
+        },
+        "request_output_limit": 4096,
+        "request_seconds": 120,
+        "session_output_limit": 200000,
+        "session_seconds": 600.0,
+        "stream_required": true,
+        "temperature": null,
+        "thinking": {
+          "type": "enabled"
+        },
+        "top_p": 1.0
+      },
+      "model": "deepseek-flash",
+      "protocol_violation": false,
+      "rejected_requests": 0,
+      "remaining_output_tokens": 199492,
+      "request_count": 2,
+      "reserved_output_tokens": 0,
+      "schema_version": 1,
+      "state": "ready",
+      "successful_requests": 2
+    }
+  },
+  "formal": false,
+  "native": {
+    "records": [
+      {
+        "errorMessage": null,
+        "stopReason": "toolUse",
+        "text": "",
+        "thinkingBlocks": 1,
+        "thinkingChars": 982,
+        "toolCalls": [
+          {
+            "arguments": {
+              "text": "331"
+            },
+            "name": "echo"
+          }
+        ],
+        "turn": 0,
+        "usage": {
+          "cacheRead": 128,
+          "cacheWrite": 0,
+          "cacheWrite1h": 0,
+          "cost": {
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "input": 0,
+            "output": 0,
+            "total": 0
+          },
+          "input": 219,
+          "output": 506,
+          "totalTokens": 853
+        },
+        "wire": {
+          "priorThinkingBlocks": 0,
+          "requestedThinking": null,
+          "tools": 1
+        }
+      },
+      {
+        "errorMessage": null,
+        "stopReason": "stop",
+        "text": "OK",
+        "thinkingBlocks": 1,
+        "thinkingChars": 0,
+        "toolCalls": [],
+        "turn": 1,
+        "usage": {
+          "cacheRead": 640,
+          "cacheWrite": 0,
+          "cacheWrite1h": 0,
+          "cost": {
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "input": 0,
+            "output": 0,
+            "total": 0
+          },
+          "input": 226,
+          "output": 2,
+          "totalTokens": 868
+        },
+        "wire": {
+          "priorThinkingBlocks": 1,
+          "requestedThinking": null,
+          "tools": 1
+        }
+      }
+    ],
+    "status": "passed"
+  },
+  "relay_source_sha256": "e5283bab59c1eee51218c80bb72ecb8b36030b196b802b68968688f1ddb18cf5",
+  "relay_status": {
+    "budget_exhausted": false,
+    "charged_output_tokens": 508,
+    "evidence_error": false,
+    "expired": false,
+    "failed_requests": 0,
+    "failure_counts": {},
+    "inflight": 0,
+    "last_request_failure_reason": null,
+    "last_request_outcome": "success",
+    "last_upstream_status": 200,
+    "limits": {
+      "dropped_fields": [
+        "top_k",
+        "service_tier",
+        "container",
+        "temperature"
+      ],
+      "expected_compaction_system_sha256": null,
+      "expected_system_sha256": null,
+      "expected_tools_sha256": null,
+      "max_body_bytes": 1048576,
+      "max_concurrency": 4,
+      "max_event_bytes": 65536,
+      "max_requests": 3125,
+      "max_response_bytes": 8388608,
+      "model": "deepseek-flash",
+      "output_config": {
+        "effort": "max"
+      },
+      "request_output_limit": 4096,
+      "request_seconds": 120,
+      "session_output_limit": 200000,
+      "session_seconds": 600.0,
+      "stream_required": true,
+      "temperature": null,
+      "thinking": {
+        "type": "enabled"
+      },
+      "top_p": 1.0
+    },
+    "model": "deepseek-flash",
+    "protocol_violation": false,
+    "rejected_requests": 0,
+    "remaining_output_tokens": 199492,
+    "request_count": 2,
+    "reserved_output_tokens": 0,
+    "schema_version": 1,
+    "state": "ready",
+    "successful_requests": 2
+  },
+  "scientific_data_accessed": false,
+  "scope": "Synthetic native thinking/tool transport; excluded from research and scores.",
+  "status": "passed"
+}

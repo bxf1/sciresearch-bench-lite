@@ -1,0 +1,5 @@
+{
+  "container": "ee505601ec127ca9f8bc810b1a8773094ec77a3df8dbc534129500526ba82b84",
+  "logs": "",
+  "state": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":2587793,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-25T05:50:11.548024596Z\",\"FinishedAt\":\"0001-01-01T00:00:00Z\"}\n"
+}

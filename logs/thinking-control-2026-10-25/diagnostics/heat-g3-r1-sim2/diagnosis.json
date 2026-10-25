@@ -1,0 +1,58 @@
+{
+  "status": "nonterminating_branch_reproduced",
+  "checked_at": 1792900292.957186,
+  "source_sha256": "2188912072650a5f3197944cd3f7c5b1ccf8b867e11079ff6e550b35b02d140d",
+  "case_id": "04f4c0643b4ee1f2cbb1",
+  "method": "con",
+  "p_true": 1.75,
+  "p_est": 2.0,
+  "rep_zero_based": 3,
+  "prior_completed_mean_repetitions": 600,
+  "f_zero": -0.008901450630764085,
+  "lambda_lower_bound": -0.10392930896309514,
+  "first_midpoint_f": -0.003267030757015732,
+  "bounded_iterations": [
+    {
+      "iteration": 1,
+      "hi_before": -0.10392930896309514,
+      "mid": -0.05196465448154757,
+      "f_mid": -0.003267030757015732
+    },
+    {
+      "iteration": 2,
+      "hi_before": -0.05196465448154757,
+      "mid": -0.025982327240773786,
+      "f_mid": -0.0064131131866744795
+    },
+    {
+      "iteration": 3,
+      "hi_before": -0.025982327240773786,
+      "mid": -0.012991163620386893,
+      "f_mid": -0.007707400932882802
+    },
+    {
+      "iteration": 4,
+      "hi_before": -0.012991163620386893,
+      "mid": -0.0064955818101934465,
+      "f_mid": -0.008314870046836287
+    },
+    {
+      "iteration": 5,
+      "hi_before": -0.0064955818101934465,
+      "mid": -0.0032477909050967232,
+      "f_mid": -0.00861056942685412
+    },
+    {
+      "iteration": 64,
+      "hi_before": -1.1268038256270496e-20,
+      "mid": -5.634019128135248e-21,
+      "f_mid": -0.008901450630764085
+    }
+  ],
+  "floating_point_fixed_point": -0.0,
+  "f_at_fixed_point": -0.008901450630764085,
+  "mathematical_reason": "B is positive definite and f(lambda)=sum_i((Q.T@g)_i/(eigenvalue_i+lambda))^2-2 decreases as lambda increases. When f(hi/2)<0, replacing hi by hi/2 moves toward zero, so f remains negative. Rounding eventually fixes hi=mid=-0.0; the loop can never reach its else/break.",
+  "mode": "Host-side bounded diagnosis using original seed and public inputs; no signal, tracing, modification, or feedback to the running researcher.",
+  "hidden_data_accessed": false,
+  "new_scientific_score": false
+}

@@ -94,3 +94,10 @@ Heat G3 r1 最终候选的源码快照已保留。以下是在 calibration 上�
 普通读者无需执行此生成脚本即可查看和验证已提交表格。完整性哈希只证明文件与清单一致，不能独立证明科学结论；还应核对评分源码、阈值、QC、运行状态和重放环境。
 
 原 formal-003 证据包含 9,252 个文件，SHA256 为 `a7c6c809dc87340f66c0dd65fef3a88b032d3e0dd6ee50e981d0cc60a9076faa`。历史日志中的 `local_only` 或“未发布”是当时状态，原文不改写。原正式结果、失败尝试与取消记录均保留，交付分析不增加研究分母。
+
+
+## 已关闭 thinking/max 对照的核验
+
+2026-10-25 对照已完成，结果及计时拒绝见 [thinking-control 报告](thinking-control-2026-10-25.md)。在 main 的完整检出中运行 `python3 tools/analyze_thinking_control.py`，仅从已存 JSON、事件和哈希重建 `reviewed-comparison.json`；不发起模型请求、不执行候选、不追加计时窗口。先执行 `python3 tools/verify_delivery.py` 可校验交付完整性。两个工具均使用标准库。
+
+Release 的 `thinking-control-evidence-20261025.tar.gz` 是本轮独立命名的增量证据，包含全部 17 个 attempt、独立评分、原生轨迹及修复/拒绝记录；`thinking-control-manifest-20261025.json` 列逐文件 SHA256，`thinking-control-SHA256SUMS-20261025.txt` 校验附件。原正式证据及作者数据附件仍保留。增量包不是完整仓库替代品，应与 main 和原作者数据结合使用。包内不含私有 relay admission、环境秘密或依赖缓存。

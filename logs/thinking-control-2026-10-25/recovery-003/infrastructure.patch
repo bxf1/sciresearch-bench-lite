@@ -1,0 +1,133 @@
+diff --git a/runner/harbor_pilot.py b/runner/harbor_pilot.py
+index bad385e..d9fe834 100644
+--- a/runner/harbor_pilot.py
++++ b/runner/harbor_pilot.py
+@@ -129,14 +129,27 @@ async def install_thinking_continuation(environment, settings):
+     from .run_plan import _file_ref, tool_repair_records
+     root = Path(__file__).resolve().parents[1]
+     plan = read_json(_file_ref(root, settings["plan_ref"]))
++    receipts = []
+     for ref, repair in tool_repair_records(plan, root):
+-        if repair["kind"] != "pi_thinking_continuation":
++        if repair["kind"] not in {"pi_thinking_continuation", "pi_context_compaction_handoff"}:
+             continue
+         patch_ref = repair["evidence"]["native_patch"]
+-        patch = read_json(_file_ref(root, patch_ref))
+-        if patch.get("path") != "node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js":
++        manifest = read_json(_file_ref(root, patch_ref))
++        patches = manifest.get("patches", [manifest])
++        expected = {"node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js"}
++        if repair["kind"] == "pi_context_compaction_handoff":
++            expected.add("node_modules/@earendil-works/pi-agent-core/dist/agent.js")
++        if (not isinstance(patches, list) or len(patches) != len(expected)
++                or any(not isinstance(p, dict) for p in patches) or {p.get("path") for p in patches} != expected):
+             raise RuntimeError("unexpected native continuation patch target")
+-        program = """import hashlib,json,pathlib,shutil
++        for patch in patches:
++            receipts.append(await _install_native_patch(environment, patch, ref, patch_ref))
++    return {**receipts[-1], "patch_chain": receipts} if receipts else None
++
++
++async def _install_native_patch(environment, patch, ref, patch_ref):
++    """Check and record each exact transition in the approved native patch chain."""
++    program = """import hashlib,json,pathlib,shutil
+ patch=json.loads(PATCH_JSON)
+ root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
+ path=root/patch['path']
+@@ -150,14 +163,13 @@ path.write_text(updated)
+ assert sha(path.read_text())==patch['after_sha256']
+ print(json.dumps({'path':patch['path'],'before_sha256':patch['before_sha256'],'after_sha256':patch['after_sha256'],'applied':True}))
+ """.replace("PATCH_JSON", repr(json.dumps(patch)))
+-        result = await environment.exec(command=". ~/.nvm/nvm.sh && python -I -c " + shlex.quote(program), timeout_sec=15)
+-        if result.return_code:
+-            raise RuntimeError("native thinking continuation patch failed its source checks")
+-        receipt = json.loads(result.stdout)
+-        if receipt.get("after_sha256") != patch["after_sha256"] or receipt.get("applied") is not True:
+-            raise RuntimeError("native thinking continuation receipt mismatch")
+-        return {"authorization": ref, "native_patch": patch_ref, **receipt}
+-    return None
++    result = await environment.exec(command=". ~/.nvm/nvm.sh && python -I -c " + shlex.quote(program), timeout_sec=15)
++    if result.return_code:
++        raise RuntimeError("native thinking continuation patch failed its source checks")
++    receipt = json.loads(result.stdout)
++    if receipt.get("after_sha256") != patch["after_sha256"] or receipt.get("applied") is not True:
++        raise RuntimeError("native thinking continuation receipt mismatch")
++    return {"authorization": ref, "native_patch": patch_ref, **receipt}
+ 
+ 
+ async def native_setup_evidence(agent, environment, config, relay_status, *, settings=None):
+@@ -188,7 +200,7 @@ root=pathlib.Path(shutil.which('pi')).resolve().parent.parent
+ package=json.loads((root/'package.json').read_text())
+ assert package['name']=='@earendil-works/pi-coding-agent'
+ config=pathlib.Path('/tmp/harbor-pi-agent')
+-sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js']
++sources=[root/'dist/core/provider-composer.js',root/'node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js',root/'node_modules/@earendil-works/pi-ai/dist/api/simple-options.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js',root/'node_modules/@earendil-works/pi-agent-core/dist/agent.js']
+ tools=sorted((root/'dist/core/tools').rglob('*.js'))
+ assert tools
+ sources+=tools
+@@ -210,8 +222,10 @@ print(json.dumps({'version':package['version'],'configuration_sha256':{name:sha(
+     for name, sha in settings.get("expected_compaction_sources", {}).items():
+         if observed.get("installed_source_sha256", {}).get(name) != sha:
+             raise RuntimeError("native Pi compaction source hash mismatch: " + name)
+-    if continuation and observed.get("installed_source_sha256", {}).get(continuation["path"]) != continuation["after_sha256"]:
+-        raise RuntimeError("native thinking continuation installed source hash mismatch")
++    if continuation:
++        targets = {receipt["path"]: receipt["after_sha256"] for receipt in continuation["patch_chain"]}
++        if any(observed.get("installed_source_sha256", {}).get(path) != sha for path, sha in targets.items()):
++            raise RuntimeError("native thinking continuation installed source hash mismatch")
+     return {**observed, "native_requested_reasoning_effort": "off",
+             **({"thinking_continuation_repair": continuation} if continuation else {}),
+             "max_turns": settings["max_turns"],
+diff --git a/runner/relay_transport.py b/runner/relay_transport.py
+index 5386abe..0901ac2 100644
+--- a/runner/relay_transport.py
++++ b/runner/relay_transport.py
+@@ -159,9 +159,15 @@ def start_relay(output, *, image, provider_key=None, session_seconds=600,
+         admission["base_url"] = f"http://{admission['relay_ip']}:{PORT}"
+         validate_admission(admission)
+         ready = None
+-        for _ in range(30):
+-            health = docker("exec", "-i", admission["container_id"], "python", "-I", "-c", _LOCAL_GET,
+-                            input=json.dumps({"path": "/health"}), check=False, timeout=5)
++        for attempt in range(30):
++            record["health_checks_attempted"] = attempt + 1
++            try:
++                health = docker("exec", "-i", admission["container_id"], "python", "-I", "-c", _LOCAL_GET,
++                                input=json.dumps({"path": "/health"}), check=False, timeout=5)
++            except subprocess.TimeoutExpired:
++                record["health_check_timeouts"] = record.get("health_check_timeouts", 0) + 1
++                time.sleep(.1)
++                continue
+             if health.returncode == 0:
+                 ready = json.loads(health.stdout)
+                 break
+diff --git a/runner/run_plan.py b/runner/run_plan.py
+index 65efc43..2c218a3 100644
+--- a/runner/run_plan.py
++++ b/runner/run_plan.py
+@@ -138,6 +138,7 @@ def tool_repair_records(plan, project):
+     scopes = [
+         ("relay-usage-repair", "relay_input_usage_compatibility", {"runner/model_relay.py", "runner/run_plan.py"}),
+         ("pi-thinking-repair", "pi_thinking_continuation", {"runner/run_plan.py", "runner/harbor_pilot.py", "runner/study.py", "runner/study_report.py"}),
++        ("pi-context-repair", "pi_context_compaction_handoff", {"runner/run_plan.py", "runner/harbor_pilot.py", "runner/relay_transport.py"}),
+     ]
+     records = []
+     for suffix, kind, allowed in scopes:
+@@ -151,13 +152,15 @@ def tool_repair_records(plan, project):
+         if (not isinstance(repair, dict) or repair.get("schema_version") != 1 or repair.get("kind") != kind
+                 or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
+             raise ValueError("infrastructure repair is not bound to this unchanged frozen plan")
+-        if kind == "pi_thinking_continuation" and repair.get("previous_repair") != (records[-1][0] if records else None):
++        if kind in {"pi_thinking_continuation", "pi_context_compaction_handoff"} and repair.get("previous_repair") != (records[-1][0] if records else None):
+             raise ValueError("infrastructure repair chain changed")
++        if kind == "pi_context_compaction_handoff" and (not records or records[-1][1]["kind"] != "pi_thinking_continuation"):
++            raise ValueError("context handoff repair requires the prior thinking repair")
+         files = repair.get("files")
+         if not isinstance(files, dict) or not files or not set(files) <= allowed:
+             raise ValueError("trusted tooling files changed outside repair scope")
+         required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
+-        if kind == "pi_thinking_continuation":
++        if kind in {"pi_thinking_continuation", "pi_context_compaction_handoff"}:
+             required |= {"native_patch", "native_tests", "original_evidence"}
+         evidence = repair.get("evidence")
+         if not isinstance(evidence, dict) or set(evidence) != required:

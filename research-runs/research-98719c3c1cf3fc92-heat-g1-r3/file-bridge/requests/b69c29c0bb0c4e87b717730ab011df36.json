@@ -1,0 +1,18 @@
+{
+  "completed_at": 1792916268.6688352,
+  "received_at": 1792916268.666071,
+  "record_sha256": "89c433390f661b02c4a2861f8e0fb4e279994f573f3cdc48e6fc154f4429998b",
+  "request": {
+    "candidate_id": "candidate-004",
+    "operation": "finalize",
+    "request_id": "b69c29c0bb0c4e87b717730ab011df36",
+    "version": 1
+  },
+  "request_id": "b69c29c0bb0c4e87b717730ab011df36",
+  "response": {
+    "finalized": "candidate-004",
+    "ok": true,
+    "request_id": "b69c29c0bb0c4e87b717730ab011df36"
+  },
+  "status": "completed"
+}

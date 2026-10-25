@@ -1,0 +1,33 @@
+{
+  "final_test_scores_accessed": false,
+  "host_observations_sha256": "f38e14bbcdb9e6b579de4394f51df31344d9f072c9507754c404843b44c918a5",
+  "identity": "jacobi",
+  "kind": "baseline",
+  "model_calls": 0,
+  "observer_errors": [],
+  "status": "host_preflight_rejected",
+  "violations": [
+    {
+      "active": [
+        {
+          "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+          "core_percent": 5.357761984878738,
+          "pid": "32184"
+        },
+        {
+          "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+          "core_percent": 6.331900527550236,
+          "pid": "46632"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792916852.950191
+    }
+  ]
+}

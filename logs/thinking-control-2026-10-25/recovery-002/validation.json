@@ -1,0 +1,34 @@
+{
+  "hidden_data_accessed": false,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-thinking-repair.json",
+    "sha256": "76c8af25a26c7b1d982deeb3267dc449b4134da87d1a2df0a9911e8b353596c7"
+  },
+  "live_probe_output_tokens": 504,
+  "live_probe_requests": 3,
+  "native_loop_cases_passed": 8,
+  "original_evidence_files_verified": 635,
+  "original_evidence_unchanged": true,
+  "parameter_differences": {
+    "attempt_id": {
+      "original": "research-98719c3c1cf3fc92-heat-g1-r1-a001",
+      "retry": "research-98719c3c1cf3fc92-heat-g1-r1-a002"
+    },
+    "parent_attempt": {
+      "original": null,
+      "retry": "research-98719c3c1cf3fc92-heat-g1-r1-a001"
+    },
+    "session_id": {
+      "original": "702d4eb9-7aba-5259-8ff4-4a75c8f56251",
+      "retry": "43344935-4f23-5f3c-a2bf-6174e9c3a269"
+    }
+  },
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "status": "passed",
+  "unchanged_scientific_settings": true,
+  "unit_tests_passed": 373,
+  "validated_sessions": 15
+}

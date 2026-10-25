@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "id": "13a841e7b6de490e68f4",
+      "level": 0,
+      "path": "cases/13a841e7b6de490e68f4"
+    },
+    {
+      "id": "04f4c0643b4ee1f2cbb1",
+      "level": 0,
+      "path": "cases/04f4c0643b4ee1f2cbb1"
+    },
+    {
+      "id": "e0eb9d7e4704b51f884c",
+      "level": 1,
+      "path": "cases/e0eb9d7e4704b51f884c"
+    },
+    {
+      "id": "409ab21b0f5310a9d96e",
+      "level": 1,
+      "path": "cases/409ab21b0f5310a9d96e"
+    },
+    {
+      "id": "fca8a41a2ec5084c6760",
+      "level": 2,
+      "path": "cases/fca8a41a2ec5084c6760"
+    },
+    {
+      "id": "16f9197b92a286dc0148",
+      "level": 2,
+      "path": "cases/16f9197b92a286dc0148"
+    }
+  ],
+  "contract_version": "0.3.0",
+  "split": "public-dev",
+  "task": "heat"
+}

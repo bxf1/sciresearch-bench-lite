@@ -57,6 +57,19 @@ def main():
     evidence = read(ROOT / 'results/delivery-analysis/evidence-excerpts.json')
     for row in evidence:
         assert digest(ROOT / row['source']) == row['source_sha256']
+    thinking = read(ROOT / 'results/thinking-control-2026-10-25/reviewed-comparison.json')
+    assert thinking['status'] == 'reviewed_terminal'
+    assert (thinking['research_sessions'], thinking['valid_public_submissions'],
+            thinking['valid_final_scores'], thinking['reward_one']) == (15, 15, 13, 13)
+    assert thinking['timing_rejected_sessions'] == 2
+    assert len(thinking['attempt_records']) == 17 and len(thinking['pairs']) == 15
+    for name, expected_hash in thinking['source_sha256'].items():
+        assert digest(ROOT / name) == expected_hash, 'Thinking evidence mismatch: ' + name
+    for pair in thinking['pairs']:
+        if pair['terminal_status'] != 'valid':
+            assert pair['delta_score'] is None and not pair['comparable']
+            assert pair['after'] is None or pair['after']['score'] is None
+    assert thinking['latest_research_finished_at'] < thinking['first_baseline_started_at']
     archive_verified = False
     if args.author_archive:
         assert digest(args.author_archive) == dataset['archive_sha256'], 'Author archive checksum mismatch'
@@ -71,6 +84,8 @@ def main():
     print(json.dumps({'status': 'passed', 'verified_files': len(manifest['files']), 'indexed_instances': 90,
                       'public_instances_in_clone': 18, 'author_baseline_methods': 11, 'formal_sessions': 15,
                       'valid_scores': 14, 'reward_one': 6, 'author_archive_verified': archive_verified,
+                      'thinking_sessions': 15, 'thinking_valid_scores': 13,
+                      'thinking_reward_one': 13, 'thinking_timing_rejected': 2,
                       'new_model_calls': 0, 'new_candidate_executions': 0,
                       'scope': 'Delivery consistency and integrity audit; not a new scientific replay.'}, indent=2))
 

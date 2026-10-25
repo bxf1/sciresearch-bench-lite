@@ -1,0 +1,140 @@
+{
+  "artifact_valid": true,
+  "cases": [
+    {
+      "E_forward": 0.0005848379997717099,
+      "E_init": 0.014960503712203784,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "273a52125139ec691e1d",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 95.81558634348842
+    },
+    {
+      "E_forward": 0.0006538843464247392,
+      "E_init": 0.01347230721038287,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "7c3f908c02b6598ecca8",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 96.18942329508965
+    },
+    {
+      "E_forward": 0.0009217929242187501,
+      "E_init": 0.009842080391197402,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "8853895fa73d6a5ac35b",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 97.06818092094112
+    },
+    {
+      "E_forward": 0.0008222768192426008,
+      "E_init": 0.04328309929161839,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "2976beadccde5cf99832",
+      "level": 0,
+      "scientific_pass": true,
+      "score": 88.1837479158209
+    },
+    {
+      "E_forward": 0.0021730746342321695,
+      "E_init": 0.019498730563548314,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "3775d953b18f6d657a8a",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 94.0759803049764
+    },
+    {
+      "E_forward": 0.0017088646131569133,
+      "E_init": 0.022935452505401015,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "459a1602b21e014bcaad",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 93.3142577941741
+    },
+    {
+      "E_forward": 0.002543845429175014,
+      "E_init": 0.017256457367653636,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "62ee06bc5e9898f53bc4",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 94.5503295589007
+    },
+    {
+      "E_forward": 0.0015830388747964136,
+      "E_init": 0.03557668932333752,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "0d60054291232409f33d",
+      "level": 1,
+      "scientific_pass": true,
+      "score": 89.98520322217786
+    },
+    {
+      "E_forward": 0.005071907144024293,
+      "E_init": 0.029361321400957693,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "f5a878618c11b4ad49b6",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 90.4796785784032
+    },
+    {
+      "E_forward": 0.001563671996322854,
+      "E_init": 0.04899776810946172,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "2910aa03c3657da09354",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 86.41270450536926
+    },
+    {
+      "E_forward": 0.002520262956779802,
+      "E_init": 0.0668342640363205,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "75c3d5d3265d489c8a5f",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 81.33744193805461
+    },
+    {
+      "E_forward": 0.004745383684381653,
+      "E_init": 0.022583562285637584,
+      "artifact_valid": true,
+      "evaluation_status": "valid",
+      "id": "78c5955a685be4cda8f6",
+      "level": 2,
+      "scientific_pass": true,
+      "score": 92.39592216236943
+    }
+  ],
+  "evaluation_status": "valid",
+  "judge_container_id": "f83dcf036d1f33950dae777fc3294ae665da1fa302357759729be70ff830844e",
+  "judge_wall_seconds": 0.530964832752943,
+  "passed": 12,
+  "performance_status": "not_applicable",
+  "phase": {
+    "formal": true,
+    "freeze_sha256": "bd9bdb131e3e2bf87e8f21941a76013715020bab80aa9cd3376f2b1d8e8d741d",
+    "profile": "accuracy",
+    "split": "final-test"
+  },
+  "reward": 1,
+  "scientific_pass": true,
+  "score": 91.65070471164715,
+  "total": 12
+}

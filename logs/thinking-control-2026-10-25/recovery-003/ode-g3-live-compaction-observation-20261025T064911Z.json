@@ -1,0 +1,18 @@
+{
+  "observed_at_beijing": "2026-10-25T14:49:11+08:00",
+  "run_id": "research-98719c3c1cf3fc92-ode-g3-r1",
+  "attempt_id": "research-98719c3c1cf3fc92-ode-g3-r1-a001",
+  "source": "Read-only metadata from the active container /logs/agent/pi/sessions/*.jsonl",
+  "events": [
+    {"timestamp": "2026-10-25T06:48:43.799Z", "role": "assistant", "stop_reason": "length", "output_tokens": 1, "blocks": ["thinking"]},
+    {"timestamp": "2026-10-25T06:49:05.314Z", "type": "compaction"},
+    {"timestamp": "2026-10-25T06:49:10.904Z", "role": "assistant", "stop_reason": "toolUse", "output_tokens": 632, "blocks": ["thinking", "toolCall"]},
+    {"timestamp": "2026-10-25T06:49:11.329Z", "role": "toolResult", "blocks": ["text"]}
+  ],
+  "interpretation": "Observed native compaction and subsequent tool use after a one-token thinking-only length response in an actual research session; no synthetic fixture or human intervention.",
+  "status_at_check": {"closed_sessions": 5, "attempt_closed": false, "successful_requests": 73, "failed_requests": 0, "known_output_tokens": 57157, "public_evaluations": 2, "first_id": "candidate-002", "final_id": null},
+  "public_candidate_checks": {"candidate-001": "submission_failed: source preparation failed: ReadError: empty file", "candidate-002": "artifact_valid=true; all six public cases valid"},
+  "original_fitting_tool": {"started_at": "2026-10-25T06:31:54.214Z", "ended_at": "2026-10-25T06:36:54.280Z", "outcome": "Command timed out after 300 seconds; subsequent Agent calls and valid candidate evaluation observed"},
+  "changes_to_experiment": false,
+  "hidden_scores_accessed": false
+}

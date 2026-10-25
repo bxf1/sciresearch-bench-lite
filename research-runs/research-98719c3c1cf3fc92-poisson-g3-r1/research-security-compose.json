@@ -1,0 +1,34 @@
+{
+  "networks": {
+    "bench_model_transport": {
+      "external": true,
+      "name": "sciresearch-relay-90af8bc87caf"
+    }
+  },
+  "services": {
+    "harbor-docker-egress-control-sidecar": {
+      "cpus": 0.25,
+      "mem_limit": "128m",
+      "memswap_limit": "128m",
+      "networks": [
+        "bench_model_transport"
+      ]
+    },
+    "main": {
+      "cap_add": [
+        "CHOWN",
+        "DAC_OVERRIDE",
+        "FOWNER"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "mem_limit": 4294967296,
+      "memswap_limit": 4294967296,
+      "pids_limit": 128,
+      "security_opt": [
+        "no-new-privileges:true"
+      ]
+    }
+  }
+}

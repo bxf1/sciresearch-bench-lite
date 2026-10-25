@@ -1,0 +1,219 @@
+{
+  "path": "/logs/agent/pi/sessions/2026-10-25T05-01-37-752Z_01a1716f-8a58-769c-a3e1-bec53b7552d0.jsonl",
+  "checked_at": 1792904825.502899,
+  "mtime_age_seconds": 12.09,
+  "assistant_responses": 24,
+  "thinking_only_truncations": [
+    {
+      "truncated": {
+        "line": 19,
+        "timestamp": "2026-10-25T05:02:34.421Z",
+        "role": "assistant",
+        "stopReason": "length",
+        "rawStopReason": "max_tokens",
+        "output_tokens": 4096,
+        "blocks": [
+          "thinking"
+        ],
+        "tool_names": [],
+        "tool_result_error": null
+      },
+      "next_assistant": {
+        "line": 20,
+        "timestamp": "2026-10-25T05:02:39.156Z",
+        "role": "assistant",
+        "stopReason": "toolUse",
+        "rawStopReason": "tool_use",
+        "output_tokens": 146,
+        "blocks": [
+          "thinking",
+          "toolCall"
+        ],
+        "tool_names": [
+          "bash"
+        ],
+        "tool_result_error": null
+      },
+      "intervening_roles": []
+    },
+    {
+      "truncated": {
+        "line": 42,
+        "timestamp": "2026-10-25T05:05:20.954Z",
+        "role": "assistant",
+        "stopReason": "length",
+        "rawStopReason": "max_tokens",
+        "output_tokens": 4096,
+        "blocks": [
+          "thinking"
+        ],
+        "tool_names": [],
+        "tool_result_error": null
+      },
+      "next_assistant": {
+        "line": 43,
+        "timestamp": "2026-10-25T05:05:25.920Z",
+        "role": "assistant",
+        "stopReason": "toolUse",
+        "rawStopReason": "tool_use",
+        "output_tokens": 561,
+        "blocks": [
+          "thinking",
+          "toolCall"
+        ],
+        "tool_names": [
+          "bash"
+        ],
+        "tool_result_error": null
+      },
+      "intervening_roles": []
+    },
+    {
+      "truncated": {
+        "line": 51,
+        "timestamp": "2026-10-25T05:06:37.266Z",
+        "role": "assistant",
+        "stopReason": "length",
+        "rawStopReason": "max_tokens",
+        "output_tokens": 4096,
+        "blocks": [
+          "thinking"
+        ],
+        "tool_names": [],
+        "tool_result_error": null
+      },
+      "next_assistant": {
+        "line": 52,
+        "timestamp": "2026-10-25T05:06:53.361Z",
+        "role": "assistant",
+        "stopReason": "toolUse",
+        "rawStopReason": "tool_use",
+        "output_tokens": 2376,
+        "blocks": [
+          "thinking",
+          "toolCall"
+        ],
+        "tool_names": [
+          "bash"
+        ],
+        "tool_result_error": null
+      },
+      "intervening_roles": []
+    }
+  ],
+  "recent_messages": [
+    {
+      "line": 46,
+      "timestamp": "2026-10-25T05:05:52.461Z",
+      "role": "toolResult",
+      "stopReason": null,
+      "rawStopReason": null,
+      "output_tokens": null,
+      "blocks": [
+        "text"
+      ],
+      "tool_names": [],
+      "tool_result_error": false
+    },
+    {
+      "line": 47,
+      "timestamp": "2026-10-25T05:05:59.826Z",
+      "role": "assistant",
+      "stopReason": "toolUse",
+      "rawStopReason": "tool_use",
+      "output_tokens": 878,
+      "blocks": [
+        "thinking",
+        "toolCall"
+      ],
+      "tool_names": [
+        "bash"
+      ],
+      "tool_result_error": null
+    },
+    {
+      "line": 48,
+      "timestamp": "2026-10-25T05:06:01.367Z",
+      "role": "toolResult",
+      "stopReason": null,
+      "rawStopReason": null,
+      "output_tokens": null,
+      "blocks": [
+        "text"
+      ],
+      "tool_names": [],
+      "tool_result_error": false
+    },
+    {
+      "line": 49,
+      "timestamp": "2026-10-25T05:06:08.401Z",
+      "role": "assistant",
+      "stopReason": "toolUse",
+      "rawStopReason": "tool_use",
+      "output_tokens": 829,
+      "blocks": [
+        "thinking",
+        "toolCall"
+      ],
+      "tool_names": [
+        "bash"
+      ],
+      "tool_result_error": null
+    },
+    {
+      "line": 50,
+      "timestamp": "2026-10-25T05:06:08.759Z",
+      "role": "toolResult",
+      "stopReason": null,
+      "rawStopReason": null,
+      "output_tokens": null,
+      "blocks": [
+        "text"
+      ],
+      "tool_names": [],
+      "tool_result_error": false
+    },
+    {
+      "line": 51,
+      "timestamp": "2026-10-25T05:06:37.266Z",
+      "role": "assistant",
+      "stopReason": "length",
+      "rawStopReason": "max_tokens",
+      "output_tokens": 4096,
+      "blocks": [
+        "thinking"
+      ],
+      "tool_names": [],
+      "tool_result_error": null
+    },
+    {
+      "line": 52,
+      "timestamp": "2026-10-25T05:06:53.361Z",
+      "role": "assistant",
+      "stopReason": "toolUse",
+      "rawStopReason": "tool_use",
+      "output_tokens": 2376,
+      "blocks": [
+        "thinking",
+        "toolCall"
+      ],
+      "tool_names": [
+        "bash"
+      ],
+      "tool_result_error": null
+    },
+    {
+      "line": 53,
+      "timestamp": "2026-10-25T05:06:53.412Z",
+      "role": "toolResult",
+      "stopReason": null,
+      "rawStopReason": null,
+      "output_tokens": null,
+      "blocks": [
+        "text"
+      ],
+      "tool_names": [],
+      "tool_result_error": false
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "after_research": "Original full closure barrier, independent scoring, report, then authorized publication.",
+  "closed_retained": 4,
+  "controller": "logs/thinking-control-2026-10-25/controller-recovery-003.py",
+  "controller_sha256": "4e685bcc6d34d623706fb388a4afa53d573245f2a6a1dbb2821531cfeec678e9",
+  "detached": true,
+  "infrastructure_repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-context-repair.json",
+    "sha256": "991f1fe979ea921d6d1f8b04bcfe949162175c780716fa3cdfaa904302629dcf"
+  },
+  "new_retries": 0,
+  "output_config": {
+    "effort": "max"
+  },
+  "output_token_limit": 200000,
+  "pid": 88908,
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "plan_id": "research-98719c3c1cf3fc92",
+  "prior_evidence_preserved": true,
+  "remaining_unstarted": 11,
+  "request_output_limit": 4096,
+  "sleep_inhibited_while_running": true,
+  "started_at": 1792907922.209888,
+  "thinking": {
+    "type": "enabled"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "files_scanned": 21488,
+  "bytes_scanned": 765440669,
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0,
+  "private_runtime_paths": 0,
+  "archive_files_selected": 8785,
+  "archive_input_bytes": 400232783,
+  "selected_files_staged": 5629,
+  "excluded": [
+    {
+      "path": "logs/thinking-control-2026-10-25/__pycache__/controller.cpython-312.pyc",
+      "reason": "dependency/cache/symlink"
+    },
+    {
+      "path": "logs/thinking-control-2026-10-25/__pycache__/status.cpython-312.pyc",
+      "reason": "dependency/cache/symlink"
+    },
+    {
+      "path": "logs/thinking-control-2026-10-25/__pycache__/observed_final.cpython-312.pyc",
+      "reason": "dependency/cache/symlink"
+    }
+  ],
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

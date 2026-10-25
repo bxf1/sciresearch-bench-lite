@@ -1,0 +1,7 @@
+{
+  "path": "node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js",
+  "before_sha256": "43cc779ddaf90df41768d3d2d0f7d7ba8b8bce7bedc9dc6062ca8b4de84ae880",
+  "after_sha256": "0f0218bc065b4fd3861a341f9ad97c84192de3de088f730c555626956c3aa9ea",
+  "replace_before": "            hasMoreToolCalls = false;\n            if (toolCalls.length > 0) {",
+  "replace_after": "            // Continue a nonempty thinking-only response truncated by the\n            // per-request output cap. Keep the original context and thinking;\n            // add no user instruction and let the relay enforce the shared budget.\n            hasMoreToolCalls = message.stopReason === \"length\" &&\n                message.content.length > 0 &&\n                message.content.every((c) => c.type === \"thinking\") &&\n                message.content.some((c) => typeof c.thinking === \"string\" && c.thinking.length > 0);\n            if (toolCalls.length > 0) {"
+}

@@ -1,0 +1,77 @@
+{
+  "all_8_compaction_sources_unchanged": true,
+  "automation": "thinking-max ACTIVE every 15 minutes; recovery-003",
+  "charged_output_tokens": 12241,
+  "checked_at": 1792908116.777892,
+  "hidden_data_accessed": false,
+  "last_relay_event_age_seconds": 39.15,
+  "native_runtime": {
+    "sources": {
+      "dist/core/agent-session.js": "91e72d5497f665e731cbd79da6a6e826d8cae7d2ce156a7dee39f8ca205e32c8",
+      "dist/core/compaction/branch-summarization.js": "4a7bb44988126ff4164fd0c6b3d70df0f4791862d82c5f42e7f7103fcaee9a3c",
+      "dist/core/compaction/compaction.js": "fcb12f1eb4d38578978e1a8e3e382a3fccfd5e0ccf87bc86979a9a8d9c145c7b",
+      "dist/core/compaction/index.js": "2ab40284c2650bf3c3f195442be00497f0ee3cb726ac47c29bfa4b3ae209697e",
+      "dist/core/compaction/utils.js": "eba26429c8ed717754bcdc3c1164715b1d2f2d68655530cf1e0df975c18f6891",
+      "dist/core/provider-composer.js": "0aa496b035f94f82d09f779e60e30c26e4391b0c5c5f2b1a314c134874b2b174",
+      "node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js": "e59f6f1236e747888d6f86a842e443ab2d0bc61326253f0361252d4f839b8545",
+      "node_modules/@earendil-works/pi-agent-core/dist/agent.js": "b594ba373fb11b9a4471da781a9a58cbd49d309d4626444c9073eef7c610cc17",
+      "node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js": "56185b5210f946dfaa99796e72f370606baf9bedbdf391fd6675c612d7070adc",
+      "node_modules/@earendil-works/pi-ai/dist/api/simple-options.js": "52bfce3a553fb83ba3ec07b3484fb66f5042573db338cc4400aab28aa4905b2e"
+    },
+    "version": "0.84.1"
+  },
+  "new_attempt": "research-98719c3c1cf3fc92-ode-g2-r1-a001",
+  "original_evidence_files_verified": 821,
+  "original_evidence_unchanged": true,
+  "parent_attempt": null,
+  "plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "process": "88908     1 03:14 Ss   /Users/baixiongfei/Documents/Projects/build_bench/benchmark/.venv/bin/python /Users/baixiongfei/Documents/Projects/build_bench/benchmark/logs/thinking-control-2026-10-25/controller-recovery-003.py",
+  "public_evaluations": 0,
+  "relay_limits": {
+    "dropped_fields": [
+      "top_k",
+      "service_tier",
+      "container",
+      "temperature"
+    ],
+    "expected_compaction_system_sha256": "2b61101f62e3b292e99d434018dbe204cc389850f12730d2a33aaca40cba077c",
+    "expected_system_sha256": "77b9bf237a01f9bc8581e44920b2d82878f2fa1dcaa1f14628f737e428d168bd",
+    "expected_tools_sha256": "99653ba38839a24430523861d5b974d2ccc9a68e1506a3aa0394880caa2c515a",
+    "max_body_bytes": 1048576,
+    "max_concurrency": 4,
+    "max_event_bytes": 65536,
+    "max_requests": 3125,
+    "max_response_bytes": 8388608,
+    "model": "deepseek-flash",
+    "output_config": {
+      "effort": "max"
+    },
+    "request_output_limit": 4096,
+    "request_seconds": 120,
+    "session_output_limit": 200000,
+    "session_seconds": 2700.0,
+    "stream_required": true,
+    "temperature": null,
+    "thinking": {
+      "type": "enabled"
+    },
+    "top_p": 1.0
+  },
+  "relay_startup": {
+    "health_check_timeouts": 1,
+    "health_checks_attempted": 2,
+    "status": "ready"
+  },
+  "repair": {
+    "path": "freezes/research-98719c3c1cf3fc92-pi-context-repair.json",
+    "sha256": "991f1fe979ea921d6d1f8b04bcfe949162175c780716fa3cdfaa904302629dcf"
+  },
+  "requests_failed": 0,
+  "requests_successful": 11,
+  "retained_closed_sessions": 4,
+  "status": "passed",
+  "unstarted_remaining_after_current": 10
+}
