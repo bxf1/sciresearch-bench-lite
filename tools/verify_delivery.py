@@ -70,6 +70,12 @@ def main():
             assert pair['delta_score'] is None and not pair['comparable']
             assert pair['after'] is None or pair['after']['score'] is None
     assert thinking['latest_research_finished_at'] < thinking['first_baseline_started_at']
+    timing = read(ROOT / 'results/poisson-timing-recheck-2026-10-25/reviewed-results.json')
+    assert (timing['research_sessions'], timing['new_research_sessions'], timing['new_model_calls']) == (15, 0, 0)
+    assert (timing['valid_final_scores'], timing['reward_one'], timing['timing_invalid_sessions']) == (14, 14, 1)
+    for name, expected_hash in timing['source_sha256'].items():
+        assert digest(ROOT / name) == expected_hash, 'Timing recheck evidence mismatch: ' + name
+    assert timing['research_usage_unchanged'] == thinking['all_attempt_usage']
     archive_verified = False
     if args.author_archive:
         assert digest(args.author_archive) == dataset['archive_sha256'], 'Author archive checksum mismatch'
@@ -84,8 +90,10 @@ def main():
     print(json.dumps({'status': 'passed', 'verified_files': len(manifest['files']), 'indexed_instances': 90,
                       'public_instances_in_clone': 18, 'author_baseline_methods': 11, 'formal_sessions': 15,
                       'valid_scores': 14, 'reward_one': 6, 'author_archive_verified': archive_verified,
-                      'thinking_sessions': 15, 'thinking_valid_scores': 13,
-                      'thinking_reward_one': 13, 'thinking_timing_rejected': 2,
+                      'thinking_sessions': 15, 'thinking_initial_valid_scores': 13,
+                      'thinking_valid_scores': timing['valid_final_scores'],
+                      'thinking_reward_one': timing['reward_one'],
+                      'thinking_timing_rejected': timing['timing_invalid_sessions'],
                       'new_model_calls': 0, 'new_candidate_executions': 0,
                       'scope': 'Delivery consistency and integrity audit; not a new scientific replay.'}, indent=2))
 

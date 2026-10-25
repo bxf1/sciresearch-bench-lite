@@ -101,3 +101,6 @@ Heat G3 r1 最终候选的源码快照已保留。以下是在 calibration 上�
 2026-10-25 对照已完成，结果及计时拒绝见 [thinking-control 报告](thinking-control-2026-10-25.md)。在 main 的完整检出中运行 `python3 tools/analyze_thinking_control.py`，仅从已存 JSON、事件和哈希重建 `reviewed-comparison.json`；不发起模型请求、不执行候选、不追加计时窗口。先执行 `python3 tools/verify_delivery.py` 可校验交付完整性。两个工具均使用标准库。
 
 Release 的 `thinking-control-evidence-20261025.tar.gz` 是本轮独立命名的增量证据，包含全部 17 个 attempt、独立评分、原生轨迹及修复/拒绝记录；`thinking-control-manifest-20261025.json` 列逐文件 SHA256，`thinking-control-SHA256SUMS-20261025.txt` 校验附件。原正式证据及作者数据附件仍保留。增量包不是完整仓库替代品，应与 main 和原作者数据结合使用。包内不含私有 relay admission、环境秘密或依赖缓存。
+
+
+Poisson 后续计时补测独立保存在 [poisson-timing-recheck 报告](poisson-timing-recheck-2026-10-25.md)。运行 `python3 tools/analyze_poisson_timing_recheck.py` 从保留证据重建当前合并视图，不执行候选。新 Release 附件 `poisson-timing-recheck-20261025.tar.gz` 包含准入拒绝、G1 有效重放、G2 再次无效重放及逐批产物；对应 `poisson-timing-recheck-manifest-20261025.json` 和 `poisson-timing-recheck-SHA256SUMS-20261025.txt` 提供清单及完整性校验。原 thinking 对照包和全部历史附件均保留。

@@ -44,13 +44,13 @@ Agent 只看到 public-dev，提交源码后由宿主生成不可改写快照。
 
 ## Thinking/max 匹配对照（2026-10-25）
 
-原 15 格按 thinking=enabled、effort=max、每请求 4,096／每会话 200,000 输出重跑，仍保留 30 分钟和 20 次公开评估。**15/15 有提交，13/15 最终评分有效且 reward=1；Poisson G1、G2 计时拒绝，成绩为 null。** Heat 91.957–93.688、ODE 98.994–99.266、Poisson G3 44.169。对照批次 10 项作者基线有有效成绩，Jacobi 准入拒绝；原正式批次全部 11 项基线保留。
+原 15 格按 thinking=enabled、effort=max、每请求 4,096／每会话 200,000 输出重跑，仍保留 30 分钟和 20 次公开评估。**15/15 有提交；计入新授权的 Poisson G1 计时补测后，14/15 最终评分有效且 reward=1，G2 仍因计时干扰为 null。** Heat 91.957–93.688、ODE 98.994–99.266、Poisson G3 44.169；G1 新计时分数 68.376、加速比 4.145×。首次发布的 13 项有效成绩和两项拒绝原样保留。对照批次 10 项作者基线有有效成绩，Jacobi 准入拒绝；原正式批次全部 11 项基线保留。
 
-13 对可比较最终分数为 11 升、2 降（6 项提升来自原无提交）；本批首次→最终则为 4 升、4 降、5 同源码、2 无法比较。15 个保留 attempt 输出 896,210 token；包括两个旧 attempt 后已知输出 925,815，代理 charged 929,911。中途三次基础设施修复、两次关联重试以及 252 次无进展续接均单列，不增加独立样本数。
+当前 14 对可比较最终分数为 12 升、2 降（6 项提升来自原无提交）；本批首次→最终为 5 升、4 降、5 同源码、1 无法比较。15 个保留 attempt 输出 896,210 token；包括两个旧 attempt 后已知输出 925,815，代理 charged 929,911。中途三次基础设施修复、两次关联重试以及 252 次无进展续接均单列，不增加独立样本数。
 
 这是事后匹配对照：thinking 与 max 同时变化，temperature 不生效，复用了旧隐藏集，且先后运行、中途修复。不能宣称严格因果收益或全新盲测，不能合并为 30 次同条件样本。
 
-[完整对照报告与日志](docs/thinking-control-2026-10-25.md) · [配对结果、用量和哈希](results/thinking-control-2026-10-25/reviewed-comparison.json) · [原始评分表](results/thinking-control-2026-10-25/checkpoints.csv)
+[完整对照报告与日志](docs/thinking-control-2026-10-25.md) · [Poisson 计时补测与拒绝记录](docs/poisson-timing-recheck-2026-10-25.md) · [当前配对结果](results/poisson-timing-recheck-2026-10-25/reviewed-results.json) · [首次发布用量和哈希](results/thinking-control-2026-10-25/reviewed-comparison.json) · [原始评分表](results/thinking-control-2026-10-25/checkpoints.csv)
 
 ## 快速核验
 
@@ -86,5 +86,7 @@ tools/             交付表格生成和完整性核验
 ```
 
 大型完整轨迹另存 Release：原始证据包约 467 MiB、作者数据约 27 MB；历史附件保留，最新交付包使用独立名称。Release 的历史标签保留初次提交，**当前交付以 main 为准；`submission-ready-20261024.tar.gz` 为 10 月 24 日历史快照，thinking 对照增量证据见 `thinking-control-evidence-20261025.tar.gz`**，不要将页面自动生成的旧标签源码 ZIP 当作最新报告。
+
+Poisson 后续计时证据另存 `poisson-timing-recheck-20261025.tar.gz`，保留原拒绝窗口。G2 需要先消除 VPN 活跃负载才能取得有效计时，本轮未放宽阈值或循环补测。
 
 本项目只验证受控合成分布上的求解器研究，不声称原创科学发现或已实现真正 RSI；同宿主、小样本及模型路由可变等限制见[最终报告](docs/submission-report-2026-10-24.md)。历史日志保持原文，以本 README 和最终报告作为当前入口。

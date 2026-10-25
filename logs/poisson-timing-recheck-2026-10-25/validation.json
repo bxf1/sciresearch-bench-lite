@@ -1,0 +1,59 @@
+{
+  "status": "validated",
+  "selected": [
+    {
+      "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1",
+      "group": "g1",
+      "attempt_id": "research-98719c3c1cf3fc92-poisson-g1-r1-a001",
+      "registry": {
+        "path": "research-runs/research-98719c3c1cf3fc92-poisson-g1-r1/registry/state.json",
+        "sha256": "e6bf7cbef9c9f22a9dd721fef9bef1eb30c41debb3d72d8cd4f777d3480aed2c"
+      },
+      "host_attempt": {
+        "path": "research-runs/research-98719c3c1cf3fc92/host-attempts/research-98719c3c1cf3fc92-poisson-g1-r1-a001.json",
+        "sha256": "0f264d3d497f28fdbdb2bab9acf809512cd574e80ebf56c4d9df0a90722e0133"
+      },
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json",
+        "sha256": "ce2bf36ac44ff6057a95fbaa7ddc9fbb2f647edc975b725189b89e0e01c30b6c"
+      },
+      "parent_replay": null,
+      "first_id": "candidate-001",
+      "final_id": "candidate-003",
+      "source_hashes": {
+        "first": "aab8d4e7bd5798631167f2d5f87617529b14bbdcf7ed0969de3a3f9922f81491",
+        "final": "8ceb3038a59a78c1bdf324ea4a75530568c869ffffb0a1fc9036c8f84be9dbd4"
+      }
+    },
+    {
+      "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1",
+      "group": "g2",
+      "attempt_id": "research-98719c3c1cf3fc92-poisson-g2-r1-a001",
+      "registry": {
+        "path": "research-runs/research-98719c3c1cf3fc92-poisson-g2-r1/registry/state.json",
+        "sha256": "54f26e49ac3f7c8dfaa1701711f55aac59a25c3f01affc015863afe690157211"
+      },
+      "host_attempt": {
+        "path": "research-runs/research-98719c3c1cf3fc92/host-attempts/research-98719c3c1cf3fc92-poisson-g2-r1-a001.json",
+        "sha256": "53070d1a38b0d0cef379208f5b81915ee232524dbc58f2ef461c60961f0cd2c3"
+      },
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1/acceptance.json",
+        "sha256": "ce435bc12f11b6866102404cbbe10cd6fc6b3312382cd6bf7e732f2c7f43cc7d"
+      },
+      "parent_replay": {
+        "path": "research-runs/research-98719c3c1cf3fc92/final-replays/research-98719c3c1cf3fc92-poisson-g2-r1-a001/result.json",
+        "sha256": "1e8903234317a47c03cde374e2152b15e229ad50a2e18488d6d912e902e73f74"
+      },
+      "first_id": "candidate-001",
+      "final_id": "candidate-001",
+      "source_hashes": {
+        "first": "6b91b9fb352b3c48ae1918d76d574b8880682c6a9403cf53cafc716ab218ef6a",
+        "final": "6b91b9fb352b3c48ae1918d76d574b8880682c6a9403cf53cafc716ab218ef6a"
+      }
+    }
+  ],
+  "model_calls": 0,
+  "research_launches": 0,
+  "scoring_calls": 0
+}

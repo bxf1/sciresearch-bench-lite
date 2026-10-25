@@ -2,7 +2,13 @@
 
 2026-10-25（Asia/Shanghai）。本批研究与独立评分已完成并核对，以下报告包含有效成绩、计时拒绝和全部关联尝试。原 formal-003 的 15 次结果保持原记录，不用新结果替换旧失败。
 
-## 已完成结果与配对比较
+## 最新计时补测状态（18:36）
+
+用户在首次发布后授权独立重放 Poisson G1/G2 已有候选。G1 新窗口有效：最终 68.376175 分、reward=1、加速比 4.144750×；G2 的新测量仍因 VPN 后台 5.423% > 5% 单核阈值被拒绝，保持 null。没有启动 Agent、调用模型或改变冻结参数。
+
+因此当前为 **14/15 项有效成绩，14 项 reward=1，1 项计时无效**；配对 12 升、2 降、1 不可比较，首次→最终 5 升、4 降、5 同源码、1 不可比较。首次发布结果、原拒绝和全部新拒绝窗口均保留，未重写原账本。详见[独立补测报告](poisson-timing-recheck-2026-10-25.md)与[当前机器可读结果](../results/poisson-timing-recheck-2026-10-25/reviewed-results.json)。下文的 13/15 是 16:40 首次评分的历史结果。
+
+## 首次评分结果与配对比较（16:40）
 
 15 个研究会话全部关闭，15/15 均登记了通过公开产物校验的 final；独立评分于 2026-10-25 16:40（北京时间）结束。13/15 获得有效最终成绩，13 项 reward 均为 1；Poisson G1、G2 的宿主计时准入被拒绝，成绩保持 null。**有提交、有效评分和科研成功是三个不同统计口径。** 研究共 17 个 attempt，包含两个保留原记录的关联重试，不是 17 个独立科学样本。
 
@@ -48,7 +54,7 @@ Heat 的 9 项有效成绩均通过 12/12 隐藏例，范围 91.957–93.688；G
 {"status":"rejected","evaluation_status":"invalid","final_test_scores_accessed":true,"model_calls":0,"issues":["unrelated_active_process","host_swapout"],"swap":{"Swapins":4,"Swapouts":4116}}
 ```
 
-不把两项 Agent 计时拒绝或 Jacobi 准入拒绝计为科学零分，也不为获得可用成绩追加计时窗口。原正式批次 11 种作者基线已完成的事实保留；本对照批次为 10 项有效基线、1 项拒绝。有效基线分数：Heat ls 19.556（reward=0）、rank5 89.893、tikhonov 93.271、discrepancy 91.651、tsvd 92.192；ODE raw 0（reward=0）、fixed 95.389、search 95.647；Poisson cg 0（数值通过、效率未达标，reward=0）、lu 38.758。其他有效基线 reward=1。原始结果见 [baselines.csv](../results/thinking-control-2026-10-25/baselines.csv)，基线不是额外的研究样本。
+首次发布时，不把两项 Agent 计时拒绝或 Jacobi 准入拒绝计为科学零分，且当时没有追加计时窗口。用户之后明确授权的独立补测另列于本文顶部；本节原始结果不改写。原正式批次 11 种作者基线已完成的事实保留；本对照批次为 10 项有效基线、1 项拒绝。有效基线分数：Heat ls 19.556（reward=0）、rank5 89.893、tikhonov 93.271、discrepancy 91.651、tsvd 92.192；ODE raw 0（reward=0）、fixed 95.389、search 95.647；Poisson cg 0（数值通过、效率未达标，reward=0）、lu 38.758。其他有效基线 reward=1。原始结果见 [baselines.csv](../results/thinking-control-2026-10-25/baselines.csv)，基线不是额外的研究样本。
 
 ## 用量、失败开销与执行器版本
 

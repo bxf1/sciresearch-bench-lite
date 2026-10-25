@@ -1,0 +1,23 @@
+{
+  "completed_at": "2026-10-25T10:35:11.849479+00:00",
+  "evaluation_status": "valid",
+  "final_test_scores_accessed": true,
+  "host_observations_sha256": "03ce0bc0d998090f0751fc689b78318bd1dffb229de437cb48e6e1d96e47305e",
+  "model_calls": 0,
+  "no_running_containers": true,
+  "observer_errors": [],
+  "operation_result": {
+    "path": "logs/poisson-timing-recheck-2026-10-25/g1-window-002/operation-result.json",
+    "sha256": "d0d6bc6443c34c731536bd3dc23f51cc9f9666ba3e960edc5e4c1daa7275053f"
+  },
+  "parent_refusal": {
+    "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json",
+    "sha256": "ce2bf36ac44ff6057a95fbaa7ddc9fbb2f647edc975b725189b89e0e01c30b6c"
+  },
+  "parent_replay": null,
+  "research_launches": 0,
+  "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1",
+  "status": "passed",
+  "violations": [],
+  "window": 2
+}

@@ -1,0 +1,40 @@
+{
+  "completed_at": "2026-10-25T10:34:11.104326+00:00",
+  "final_test_scores_accessed": false,
+  "host_observations_sha256": "58fb86f35013e9e2d3432a09a7079ad4c3b51d1504de6af2fcda6b56ef5916af",
+  "model_calls": 0,
+  "observer_errors": [],
+  "parent_refusal": {
+    "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json",
+    "sha256": "ce2bf36ac44ff6057a95fbaa7ddc9fbb2f647edc975b725189b89e0e01c30b6c"
+  },
+  "parent_replay": null,
+  "research_launches": 0,
+  "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1",
+  "status": "host_preflight_rejected",
+  "violations": [
+    {
+      "active": [
+        {
+          "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+          "core_percent": 5.3518292559431915,
+          "pid": "32184"
+        },
+        {
+          "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+          "core_percent": 7.7844789176955755,
+          "pid": "46632"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 0,
+        "Swapouts": 0
+      },
+      "unix": 1792924429.328783
+    }
+  ],
+  "window": 1
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "verified_files": 18666,
+  "indexed_instances": 90,
+  "public_instances_in_clone": 18,
+  "author_baseline_methods": 11,
+  "formal_sessions": 15,
+  "valid_scores": 14,
+  "reward_one": 6,
+  "author_archive_verified": false,
+  "thinking_sessions": 15,
+  "thinking_initial_valid_scores": 13,
+  "thinking_valid_scores": 14,
+  "thinking_reward_one": 14,
+  "thinking_timing_rejected": 1,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "scope": "Delivery consistency and integrity audit; not a new scientific replay."
+}

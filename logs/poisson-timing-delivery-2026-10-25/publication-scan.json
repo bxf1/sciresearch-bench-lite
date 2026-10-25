@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "files_scanned": 19135,
+  "bytes_scanned": 573994086,
+  "archive_files": 804,
+  "archive_source_bytes": 119060234,
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0,
+  "staged_evidence_files": 371
+}

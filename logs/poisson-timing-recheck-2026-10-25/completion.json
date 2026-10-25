@@ -1,0 +1,164 @@
+{
+  "all_two_passed": false,
+  "model_calls": 0,
+  "original_files_unchanged": 8851,
+  "outcomes": [
+    {
+      "completed_at": "2026-10-25T10:34:11.104326+00:00",
+      "final_test_scores_accessed": false,
+      "host_observations_sha256": "58fb86f35013e9e2d3432a09a7079ad4c3b51d1504de6af2fcda6b56ef5916af",
+      "model_calls": 0,
+      "observer_errors": [],
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json",
+        "sha256": "ce2bf36ac44ff6057a95fbaa7ddc9fbb2f647edc975b725189b89e0e01c30b6c"
+      },
+      "parent_replay": null,
+      "research_launches": 0,
+      "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1",
+      "status": "host_preflight_rejected",
+      "violations": [
+        {
+          "active": [
+            {
+              "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+              "core_percent": 5.3518292559431915,
+              "pid": "32184"
+            },
+            {
+              "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+              "core_percent": 7.7844789176955755,
+              "pid": "46632"
+            }
+          ],
+          "issues": [
+            "unrelated_active_process"
+          ],
+          "swap": {
+            "Swapins": 0,
+            "Swapouts": 0
+          },
+          "unix": 1792924429.328783
+        }
+      ],
+      "window": 1
+    },
+    {
+      "completed_at": "2026-10-25T10:35:11.849479+00:00",
+      "evaluation_status": "valid",
+      "final_test_scores_accessed": true,
+      "host_observations_sha256": "03ce0bc0d998090f0751fc689b78318bd1dffb229de437cb48e6e1d96e47305e",
+      "model_calls": 0,
+      "no_running_containers": true,
+      "observer_errors": [],
+      "operation_result": {
+        "path": "logs/poisson-timing-recheck-2026-10-25/g1-window-002/operation-result.json",
+        "sha256": "d0d6bc6443c34c731536bd3dc23f51cc9f9666ba3e960edc5e4c1daa7275053f"
+      },
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g1-r1/acceptance.json",
+        "sha256": "ce2bf36ac44ff6057a95fbaa7ddc9fbb2f647edc975b725189b89e0e01c30b6c"
+      },
+      "parent_replay": null,
+      "research_launches": 0,
+      "run_id": "research-98719c3c1cf3fc92-poisson-g1-r1",
+      "status": "passed",
+      "violations": [],
+      "window": 2
+    },
+    {
+      "completed_at": "2026-10-25T10:35:42.203483+00:00",
+      "final_test_scores_accessed": false,
+      "host_observations_sha256": "19a391918b9ed3e7f4413964d85126b2dc1c84fbe90b63fea525d35213b1e4d4",
+      "model_calls": 0,
+      "observer_errors": [],
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1/acceptance.json",
+        "sha256": "ce435bc12f11b6866102404cbbe10cd6fc6b3312382cd6bf7e732f2c7f43cc7d"
+      },
+      "parent_replay": {
+        "path": "research-runs/research-98719c3c1cf3fc92/final-replays/research-98719c3c1cf3fc92-poisson-g2-r1-a001/result.json",
+        "sha256": "1e8903234317a47c03cde374e2152b15e229ad50a2e18488d6d912e902e73f74"
+      },
+      "research_launches": 0,
+      "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1",
+      "status": "host_preflight_rejected",
+      "violations": [
+        {
+          "active": [
+            {
+              "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+              "core_percent": 8.746606608499444,
+              "pid": "32184"
+            },
+            {
+              "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+              "core_percent": 11.17621955528766,
+              "pid": "46632"
+            },
+            {
+              "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+              "core_percent": 6.316993661683609,
+              "pid": "75931"
+            }
+          ],
+          "issues": [
+            "unrelated_active_process"
+          ],
+          "swap": {
+            "Swapins": 8,
+            "Swapouts": 0
+          },
+          "unix": 1792924530.78119
+        }
+      ],
+      "window": 1
+    },
+    {
+      "completed_at": "2026-10-25T10:36:28.762848+00:00",
+      "evaluation_status": "invalid",
+      "final_test_scores_accessed": true,
+      "host_observations_sha256": "219f8fed301f7f4e8b0dc4bc7c0ac28bf9292c77ff3699fde9a4656c3b3088e8",
+      "model_calls": 0,
+      "no_running_containers": true,
+      "observer_errors": [],
+      "operation_result": {
+        "path": "logs/poisson-timing-recheck-2026-10-25/g2-window-002/operation-result.json",
+        "sha256": "2b4bad6ef11142267c01335c83184e6eca063548afb2e0b0f66da45e93be3730"
+      },
+      "parent_refusal": {
+        "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1/acceptance.json",
+        "sha256": "ce435bc12f11b6866102404cbbe10cd6fc6b3312382cd6bf7e732f2c7f43cc7d"
+      },
+      "parent_replay": {
+        "path": "research-runs/research-98719c3c1cf3fc92/final-replays/research-98719c3c1cf3fc92-poisson-g2-r1-a001/result.json",
+        "sha256": "1e8903234317a47c03cde374e2152b15e229ad50a2e18488d6d912e902e73f74"
+      },
+      "research_launches": 0,
+      "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1",
+      "status": "rejected",
+      "violations": [
+        {
+          "active": [
+            {
+              "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+              "core_percent": 5.423065670712305,
+              "pid": "46632"
+            }
+          ],
+          "issues": [
+            "unrelated_active_process"
+          ],
+          "swap": {
+            "Swapins": 35,
+            "Swapouts": 0
+          },
+          "unix": 1792924577.7267709
+        }
+      ],
+      "window": 2
+    }
+  ],
+  "research_launches": 0,
+  "status": "measurements_closed"
+}

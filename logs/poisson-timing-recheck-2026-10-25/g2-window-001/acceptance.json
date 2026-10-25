@@ -1,0 +1,48 @@
+{
+  "completed_at": "2026-10-25T10:35:42.203483+00:00",
+  "final_test_scores_accessed": false,
+  "host_observations_sha256": "19a391918b9ed3e7f4413964d85126b2dc1c84fbe90b63fea525d35213b1e4d4",
+  "model_calls": 0,
+  "observer_errors": [],
+  "parent_refusal": {
+    "path": "logs/thinking-control-2026-10-25/window-final-poisson-research-98719c3c1cf3fc92-poisson-g2-r1/acceptance.json",
+    "sha256": "ce435bc12f11b6866102404cbbe10cd6fc6b3312382cd6bf7e732f2c7f43cc7d"
+  },
+  "parent_replay": {
+    "path": "research-runs/research-98719c3c1cf3fc92/final-replays/research-98719c3c1cf3fc92-poisson-g2-r1-a001/result.json",
+    "sha256": "1e8903234317a47c03cde374e2152b15e229ad50a2e18488d6d912e902e73f74"
+  },
+  "research_launches": 0,
+  "run_id": "research-98719c3c1cf3fc92-poisson-g2-r1",
+  "status": "host_preflight_rejected",
+  "violations": [
+    {
+      "active": [
+        {
+          "command": "/Library/SystemExtensions/8048E815-BE1B-4B47-89D6-D3E263814D8A/io.nekohasekai.sfavt.system.systemextension/Contents/MacOS/io.nekohasekai.sfavt.system",
+          "core_percent": 8.746606608499444,
+          "pid": "32184"
+        },
+        {
+          "command": "/Applications/iKuuuVPN.app/Contents/MacOS/iKuuuVPNCore",
+          "core_percent": 11.17621955528766,
+          "pid": "46632"
+        },
+        {
+          "command": "/Applications/WeChat.app/Contents/MacOS/WeChat",
+          "core_percent": 6.316993661683609,
+          "pid": "75931"
+        }
+      ],
+      "issues": [
+        "unrelated_active_process"
+      ],
+      "swap": {
+        "Swapins": 8,
+        "Swapouts": 0
+      },
+      "unix": 1792924530.78119
+    }
+  ],
+  "window": 1
+}
