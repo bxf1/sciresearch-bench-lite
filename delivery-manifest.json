@@ -79,8 +79,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10501,
-      "sha256": "2110412d2d3ac42e66cba01a6fd73b478154ad510680b2132b5d0bc673d12b15"
+      "bytes": 12133,
+      "sha256": "bd3fbf20639a55c29756d41d2847a4a7842cf48e153a1a345f75da5c2c7079b2"
     },
     {
       "path": "archives/pre-thinking-only-20261025/README.md",
@@ -344,8 +344,8 @@
     },
     {
       "path": "docs/reproduction.md",
-      "bytes": 10698,
-      "sha256": "2ec2c0be6cfab1a66d36a6a9874ee9fb86dbf957d325d23566732dce4220fdc4"
+      "bytes": 11023,
+      "sha256": "1a30c24818dbe1f50a563ba9a1f8543028b0e8aaf0469adcbedc7b624b903de8"
     },
     {
       "path": "docs/resource-timing-acceptance-2026-10-23.md",

@@ -61,19 +61,19 @@ Heat 5 种、ODE 3 种、Poisson 3 种方法分别记录容器配置、源码/�
 
 ## 4. 重放已有 Agent 产物（不调用模型）
 
-Heat G3 r1 最终候选的源码快照已保留。以下是在 calibration 上进行新的功能重放，**不等于原 final-test 成绩复现**：
+使用当前 thinking/max 报告端到端案例 Heat G1 r1 a002 的最终候选 `candidate-003`。以下是在 calibration 上进行新的功能重放，**不等于原 final-test 成绩复现**：
 
 ```bash
 .venv/bin/python -m runner.replay \
   --task heat \
-  --source research-runs/research-6615cd7900ba0750-heat-g3-r1/registry/snapshots/candidate-018 \
+  --source research-runs/research-98719c3c1cf3fc92-heat-g1-r1/retries/research-98719c3c1cf3fc92-heat-g1-r1-a002/registry/snapshots/candidate-003 \
   --input authoring/data/author-data-v0.3/inputs/heat/author-calibration \
   --truth authoring/data/author-data-v0.3/private/heat/author-calibration \
-  --output results/reproduction-heat-g3-candidate-new \
+  --output results/reproduction-thinking-heat-g1-r1-new \
   --image sciresearch-numeric:0.3.0
 ```
 
-该命令仍通过隔离 W/J 执行与判题；原 final 的 91.532 分来自 12 例 final-test 的三次独立重放，见[证据链](evidence.md)。正式 final-test 入口会要求完整 freeze 和关闭研究的登记证据，不能删除约束来得到所谓正式成绩。
+该命令仍通过隔离 W/J 执行与判题；报告中的 93.388 分来自 12 例 final-test 的三次独立重放，见[当前报告](submission-report-2026-10-24.md)及[逐会话证据索引](thinking-report-evidence-2026-10-25.md)的 M01。a001 原记录、a002 的 research_timeout 和关联重试说明均保留；此处只重放既有候选，不重新运行 Agent。正式 final-test 入口会要求完整 freeze 和关闭研究的登记证据，不能删除约束来得到所谓正式成绩。
 
 ## 5. 新 Agent 研究到隐藏评分
 
