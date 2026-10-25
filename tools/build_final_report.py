@@ -10,10 +10,11 @@ import json
 from pathlib import Path
 import re
 import statistics
+from collections import Counter
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'results/thinking-report-2026-10-25'
-FIG = ROOT / 'docs/figures/thinking-report'
+OUT = ROOT / 'results/thinking-r1-report-2026-10-25'
+FIG = ROOT / 'docs/figures/thinking-r1-report'
 REPORT = ROOT / 'docs/submission-report-2026-10-24.md'
 TASKS = ('heat', 'ode', 'poisson')
 NAMES = {'heat': 'Heat', 'ode': 'ODE', 'poisson': 'Poisson'}
@@ -123,7 +124,32 @@ def build_data():
             'max_solution_error':max(v['max_solution_error'] for r in samples['C'] for v in r['cases'])})
     assert len(rows)==15 and sum(r['thinking_reward']==1 for r in rows)==14
     assert sum(r['output_tokens'] for r in rows)==thinking['retained_usage']['known_output_tokens']
+    groups = {'main':[r for r in rows if r['repeat']==1],
+              'appendix':[r for r in rows if r['repeat']>1], 'all':rows}
+    for section,prefix in [('main','M'),('appendix','A')]:
+        for index,r in enumerate(groups[section],1):
+            r['report_section']=section
+            r['report_id']=f'{prefix}{index:02d}'
+    statistics_by_scope = {}
+    for section,selected in groups.items():
+        run_ids={r['run_id'] for r in selected}
+        scoped_attempts=[a for a in thinking['attempt_records'] if a['run_id'] in run_ids]
+        statistics_by_scope[section]={
+            'run_ids':[r['run_id'] for r in selected], 'sessions':len(selected),
+            'submissions':sum(r['thinking_has_submission'] for r in selected),
+            'valid_final_scores':sum(r['thinking_final_score'] is not None for r in selected),
+            'reward_one':sum(r['thinking_reward']==1 for r in selected),
+            'timing_invalid':sum(r['thinking_final_score'] is None for r in selected),
+            'first_final_direction':dict(Counter(r['first_final_direction'] for r in selected)),
+            'retained_output_tokens':sum(r['output_tokens'] for r in selected),
+            'public_evaluations':sum(r['public_evaluations'] for r in selected),
+            'research_wall_seconds':sum(r['research_wall_seconds'] for r in selected),
+            'attempt_count':len(scoped_attempts),
+            'all_attempt_known_output_tokens':sum(a['known_output_tokens'] for a in scoped_attempts),
+            'all_attempt_charged_output_tokens':sum(a['charged_output_tokens'] for a in scoped_attempts)}
     data={'scope':'Thinking/max only. Saved results, no new execution. G2 diagnostic times are not formal scores.',
+          'presentation_rule':'Main: all tasks/groups r1. Appendix: Heat r2/r3. Post hoc presentation choice; no score-based selection or deleted observations.',
+          'statistics_by_scope':statistics_by_scope,
           'display_order':'task Heat/ODE/Poisson, group G1/G2/G3, repeat r1/r2/r3',
           'repeat_definition':'Fresh research session, not a retry, difficulty or scoring replay.',
           'rows':rows,'author_baselines':baselines,'g2_diagnostics':diagnostics,
@@ -136,15 +162,21 @@ def build_data():
 
 def fill_tables(data):
     rows=data['rows']
-    table='| 序号 | 会话 | 最终分 | 数值通过 | reward | 正式加速比 | 结局 |\n|---:|---|---:|---|---:|---:|---|\n'
-    detail='| 序号 | 会话 | first 分 | final 分 | 公开评估次数 | 输出 token | 研究用时（分钟） | 实际计划序号 |\n|---:|---|---:|---:|---:|---:|---:|---:|\n'
-    for r in rows:
-        note='成功' if r['thinking_reward']==1 else '计时无效；非零分'
-        if r['task']=='poisson' and r['group']=='g1':note='成功（独立计时补测）'
-        reward='—' if r['thinking_reward'] is None else str(r['thinking_reward'])
-        speed='—' if r['formal_speedup'] is None else f"{r['formal_speedup']:.3f}×"
-        table+=f"| {r['display_order']:02d} | {r['label']} | {fmt(r['thinking_final_score'])} | 12 / 12 | {reward} | {speed} | {note} |\n"
-        detail+=f"| {r['display_order']:02d} | {r['label']} | {fmt(r['thinking_first_score'])} | {fmt(r['thinking_final_score'])} | {r['public_evaluations']} | {r['output_tokens']:,} | {r['research_wall_seconds']/60:.2f} | {r['execution_sequence']} |\n"
+    def row_tables(rows):
+        table='| 序号 | 会话 | 最终分 | 数值通过 | reward | 正式加速比 | 结局 |\n|---:|---|---:|---|---:|---:|---|\n'
+        detail='| 序号 | 会话 | first 分 | final 分 | 公开评估次数 | 输出 token | 研究用时（分钟） | 实际计划序号 |\n|---:|---|---:|---:|---:|---:|---:|---:|\n'
+        for r in rows:
+            note='成功' if r['thinking_reward']==1 else '计时无效；非零分'
+            if r['task']=='poisson' and r['group']=='g1':note='成功（独立计时补测）'
+            reward='—' if r['thinking_reward'] is None else str(r['thinking_reward'])
+            speed='—' if r['formal_speedup'] is None else f"{r['formal_speedup']:.3f}×"
+            table+=f"| {r['report_id']} | {r['label']} | {fmt(r['thinking_final_score'])} | 12 / 12 | {reward} | {speed} | {note} |\n"
+            detail+=f"| {r['report_id']} | {r['label']} | {fmt(r['thinking_first_score'])} | {fmt(r['thinking_final_score'])} | {r['public_evaluations']} | {r['output_tokens']:,} | {r['research_wall_seconds']/60:.2f} | {r['execution_sequence']} |\n"
+        return table,detail
+    main_rows=[r for r in rows if r['report_section']=='main']
+    appendix_rows=[r for r in rows if r['report_section']=='appendix']
+    table,detail=row_tables(main_rows)
+    appendix_table,appendix_detail=row_tables(appendix_rows)
     baseline='| 任务 | 作者方法及直观含义 | 分数 | 正确例 / 12 | reward | 正式加速比 |\n|---|---|---:|---:|---:|---:|\n'
     for b in data['author_baselines']:
         integer=lambda x:'—' if x is None else str(x)
@@ -153,17 +185,28 @@ def fill_tables(data):
     diag='| 测量 | 基线中位耗时（秒） | G2 中位耗时（秒） | 原始耗时比（仅诊断） | 正式分数 |\n|---|---:|---:|---:|---|\n'
     for label,d in zip(('首次测量','独立补测'),data['g2_diagnostics']):
         diag+=f"| {label} | {d['baseline_median_seconds']:.6f} | {d['candidate_median_seconds']:.6f} | {d['raw_median_ratio_diagnostic_only']:.3f}× | 未取得有效计时，留空 |\n"
+    main=data['statistics_by_scope']['main']
+    overview='| 指标 | 正文 r1 子集 |\n|---|---:|\n'
+    for label,value in [('展示会话数',main['sessions']),('有提交',f"{main['submissions']} / {main['sessions']}（100%）"),('有效最终评分',f"{main['valid_final_scores']} / {main['sessions']}"),('成功，reward=1',f"{main['reward_one']} / {main['sessions']}（{main['reward_one']/main['sessions']*100:.1f}%）"),('有效但未成功',main['valid_final_scores']-main['reward_one']),('计时无效',main['timing_invalid'])]:
+        overview+=f'| {label} | {value} |\n'
+    usage='| 用量口径 | 正文 r1 子集 |\n|---|---:|\n'
+    for label,value in [('9 个保留 attempt 的已知输出 token',f"{main['retained_output_tokens']:,}"),('含两个旧失败 attempt 的已知输出 token',f"{main['all_attempt_known_output_tokens']:,}"),('含失败 attempt 的 relay charged 额度',f"{main['all_attempt_charged_output_tokens']:,}"),('保留研究墙钟合计',f"{main['research_wall_seconds']/3600:.3f} 小时"),('公开评估次数合计',main['public_evaluations'])]:
+        usage+=f'| {label} | {value} |\n'
+    scope_table='| 统计范围 | 会话数 | 有提交 | 正式成功 | 计时无效 | 保留输出 token | 公开评估次数 | 研究用时（小时） |\n|---|---:|---:|---:|---:|---:|---:|---:|\n'
+    for key,label in [('main','正文 r1'),('appendix','附录 Heat r2/r3'),('all','完整批次')]:
+        st=data['statistics_by_scope'][key]
+        scope_table+=f"| {label} | {st['sessions']} | {st['submissions']} | {st['reward_one']} | {st['timing_invalid']} | {st['retained_output_tokens']:,} | {st['public_evaluations']} | {st['research_wall_seconds']/3600:.3f} |\n"
     text=REPORT.read_text()
-    for key,block in [('thinking-results',table),('session-details',detail),('g2-diagnostics',diag),('thinking-baselines',baseline)]:
+    for key,block in [('thinking-results',table),('session-details',detail),('g2-diagnostics',diag),('thinking-baselines',baseline),('main-overview',overview),('main-usage',usage),('appendix-results',appendix_table),('appendix-details',appendix_detail),('scope-statistics',scope_table)]:
         text,n=re.subn(rf'<!-- BEGIN {key} -->.*?<!-- END {key} -->',f'<!-- BEGIN {key} -->\n{block}<!-- END {key} -->',text,flags=re.S)
         assert n==1,key
     REPORT.write_text(text)
-    (OUT/'ordered-results.md').write_text('# Thinking/max 结果（任务、组别、重复次数顺序）\n\n'+table+'\n'+detail+'\n'+baseline+'\n'+diag)
-    evidence='# Thinking/max 原始证据索引\n\n与主报告 01–15 行一一对应。每个链接均指向保存的原始文件；完整 SHA256 见[机器可读索引](../results/thinking-report-2026-10-25/analysis.json)。主报告与图表由同一索引生成，读者可沿评分 → 登记 → 候选源码 → 研究/relay 日志回查。独立补测另列，初次评分与拒绝记录保留。\n\n| 序号 | 会话（保留 attempt） | 研究与用量 | 登记与源码 | 当前独立评分 | 初次评分 |\n|---:|---|---|---|---|---|\n'
-    for r in rows:
+    (OUT/'ordered-results.md').write_text('# Thinking/max：正文 r1 与附录重复实验\n\n## 正文（M01–M09）\n\n'+overview+'\n'+table+'\n'+detail+'\n'+usage+'\n## 附录（A01–A06）\n\n'+appendix_table+'\n'+appendix_detail+'\n'+scope_table+'\n## 本批基线与 G2 诊断\n\n'+baseline+'\n'+diag)
+    evidence='# Thinking/max 原始证据索引\n\n与正文 M01–M09、附录 A01–A06 一一对应。每个链接均指向保存的原始文件；完整 SHA256 见[机器可读索引](../results/thinking-r1-report-2026-10-25/analysis.json)。主报告与图表由同一索引生成，读者可沿评分 → 登记 → 候选源码 → 研究/relay 日志回查。独立补测另列，初次评分与拒绝记录保留。\n\n| 序号 | 会话（保留 attempt） | 研究与用量 | 登记与源码 | 当前独立评分 | 初次评分 |\n|---:|---|---|---|---|---|\n'
+    for r in main_rows+appendix_rows:
         link=lambda key,label:f"[{label}](../{r[key]['path']})"
         registry=Path(r['registry_evidence']['path']).parent
-        evidence+=f"| {r['display_order']:02d} | {r['label']} / {r['attempt_id'].rsplit('-',1)[1]} | {link('host_evidence','host')} · {link('relay_evidence','relay')} | {link('registry_evidence','登记')} · [源码](../{registry}/snapshots/{r['final_id']}) | {link('score_evidence','评分')} | {link('original_replay_evidence','原记录')} |\n"
+        evidence+=f"| {r['report_id']} | {r['label']} / {r['attempt_id'].rsplit('-',1)[1]} | {link('host_evidence','host')} · {link('relay_evidence','relay')} | {link('registry_evidence','登记')} · [源码](../{registry}/snapshots/{r['final_id']}) | {link('score_evidence','评分')} | {link('original_replay_evidence','原记录')} |\n"
     evidence+='\n## 本批作者基线\n\n| 任务 | 方法 | 原始结果或准入拒绝 |\n|---|---|---|\n'
     for b in data['author_baselines']:evidence+=f"| {NAMES[b['task']]} | {b['method']} | [原记录](../{b['evidence']['path']}) |\n"
     evidence+='\n## 历史保全与核验\n\n两个失败 attempt 及三次执行器修复见[本批技术附录](thinking-control-2026-10-25.md)（该历史附录保留当时的跨批比较，当前主报告仅列 thinking）。G2 窗口拒绝见[计时附录](poisson-timing-recheck-2026-10-25.md)。上一版完整阅读报告已[独立归档](../archives/pre-thinking-only-20261025/README.md)，没有覆盖原始数据。\n\n运行 `python3 tools/verify_delivery.py` 检查交付哈希，再运行 `python3 tools/audit_thinking_report.py` 核对 15 行、图表来源、候选、用量、基线及主报告日志节选。两个命令均不调用模型或执行候选。\n'
@@ -187,20 +230,20 @@ def figures(data,font):
         svg=FIG/(name+'.svg');svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n');plt.close(fig)
     fig,axes=plt.subplots(1,2,figsize=(11,3.5),layout='constrained')
     for i,t in enumerate(TASKS):
-        rs=[r for r in data['rows'] if r['task']==t];n=len(rs);success=sum(r['thinking_reward']==1 for r in rs)
+        rs=[r for r in data['rows'] if r['task']==t and r['report_section']=='main'];n=len(rs);success=sum(r['thinking_reward']==1 for r in rs)
         axes[0].barh(NAMES[t],n,color=blue);axes[0].text(n-.2,i,f'{n}/{n}',ha='right',va='center',color='white',weight='bold')
         axes[1].barh(NAMES[t],success,color=blue,label='正式成功' if i==0 else None)
         axes[1].text(success/2,i,str(success),ha='center',va='center',color='white',weight='bold')
         if n-success:
             axes[1].barh(NAMES[t],n-success,left=success,color=gray,label='计时无效')
             axes[1].text(success+.5,i,'1',ha='center',va='center',color='white',weight='bold')
-    axes[0].set_title('A. 有提交：共 15 / 15');axes[1].set_title('B. 正式成功 14，计时无效 1')
+    axes[0].set_title('A. 正文 r1 有提交：9 / 9');axes[1].set_title('B. 正文 r1 正式成功 8，计时无效 1')
     axes[1].legend(loc='lower center',bbox_to_anchor=(.5,-.42),ncol=2)
-    for ax in axes:ax.invert_yaxis();ax.set(xlim=(0,10),xlabel='研究会话数',xticks=range(0,10,3));ax.spines[['top','right']].set_visible(False)
+    for ax in axes:ax.invert_yaxis();ax.set(xlim=(0,3.5),xlabel='正文 r1 会话数',xticks=range(4));ax.spines[['top','right']].set_visible(False)
     save(fig,'outcomes')
     fig,axes=plt.subplots(3,1,figsize=(11,10),layout='constrained')
     for ax,task in zip(axes,TASKS):
-        rs=[r for r in data['rows'] if r['task']==task]
+        rs=[r for r in data['rows'] if r['task']==task and r['report_section']=='main']
         for i,r in enumerate(rs):
             for shift,key,color in [(-.18,'thinking_first_score',blue),(.18,'thinking_final_score',orange)]:
                 v=r[key]
@@ -208,7 +251,7 @@ def figures(data,font):
                 else:
                     ax.bar(i+shift,v,.33,color=color);ax.text(i+shift,v+1.8,f'{v:.1f}',ha='center',fontsize=8)
         ax.set_xticks(range(len(rs)),[f"{r['group'].upper()} r{r['repeat']}" for r in rs])
-        ax.set(ylim=(0,112),title=f'{NAMES[task]}：同一会话首次与最终候选',ylabel='任务内分数（0–100）')
+        ax.set(ylim=(0,112),title=f'{NAMES[task]}：r1 首次与最终候选',ylabel='任务内分数（0–100）')
         ax.spines[['top','right']].set_visible(False);ax.grid(axis='y',alpha=.15);ax.set_axisbelow(True)
     from matplotlib.patches import Patch
     from matplotlib.lines import Line2D
@@ -226,7 +269,8 @@ def figures(data,font):
         ax.text(.5,1.44,f"原始比值 {d['raw_median_ratio_diagnostic_only']:.3f}× · 仅诊断",ha='center',color='#9C3A26',weight='bold')
     save(fig, 'g2-diagnostic')
     manifest={'analysis_sha256':hashlib.sha256((OUT/'analysis.json').read_bytes()).hexdigest(),
-              'figures':{'outcomes':'rows: submission and reward counts by task','first-final-scores':'rows: thinking_first_score/thinking_final_score in display order','g2-diagnostic':'g2_diagnostics: raw baseline_seconds/candidate_seconds, diagnostic only'},
+              'main_run_ids':data['statistics_by_scope']['main']['run_ids'],
+              'figures':{'outcomes':'Main r1 rows only: submission and reward counts by task','first-final-scores':'Main r1 rows only: thinking_first_score/thinking_final_score in report order','g2-diagnostic':'g2_diagnostics: raw baseline_seconds/candidate_seconds, diagnostic only'},
               'files':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(FIG.iterdir()) if p.suffix in ('.png','.svg')}}
     (OUT/'figure-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 
@@ -279,6 +323,6 @@ if __name__ == '__main__':
     fill_tables(data)
     if args.figures: figures(data, args.font)
     if args.html: html_report()
-    print(json.dumps({'ordered_rows': len(data['rows']), 'valid_thinking_scores': 14, 'g2_formal_score': None,
+    print(json.dumps({'ordered_rows': len(data['rows']), 'main_rows': 9, 'appendix_rows': 6, 'main_valid_scores': 8, 'valid_thinking_scores': 14, 'g2_formal_score': None,
                       'new_model_calls': 0, 'new_candidate_executions': 0, 'figures_generated': args.figures,
                       'html_generated': args.html}))

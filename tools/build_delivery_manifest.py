@@ -7,7 +7,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = ('delivery-manifest.json', 'logs/submission-delivery-2026-10-24/',
             'logs/thinking-delivery-2026-10-25/', 'logs/poisson-timing-delivery-2026-10-25/',
-            'logs/final-report-delivery-2026-10-25/', 'logs/thinking-report-delivery-2026-10-25/')
+            'logs/final-report-delivery-2026-10-25/', 'logs/thinking-report-delivery-2026-10-25/', 'logs/thinking-r1-report-delivery-2026-10-25/')
 
 
 def main():

@@ -23,7 +23,7 @@ def close(a,b):
 
 
 def audit():
-    data=read('results/thinking-report-2026-10-25/analysis.json')
+    data=read('results/thinking-r1-report-2026-10-25/analysis.json')
     for p,h in data['source_sha256'].items():assert sha(p)==h,p
     rows=data['rows']
     expected=[(t,g,r) for t in ('heat','ode','poisson') for g in ('g1','g2','g3') for r in range(1,4 if t=='heat' else 2)]
@@ -104,11 +104,45 @@ def audit():
         assert phrase not in report,phrase
     # Verify verbatim selected fields against actual raw records, not a generated summary.
     snippets=[json.loads(v) for v in re.findall(r'```json\n(.*?)\n```',report,re.S)]
-    example=next(r for r in rows if r['label']=='Heat G1 r2')
-    reg=read(example['registry_evidence']['path']);raw=read(example['score_evidence']['path'])['diagnostics']
-    assert snippets[0]=={k:reg[k] for k in snippets[0]}
-    assert snippets[1]=={role:{k:raw[role][k] for k in snippets[1][role]} for role in snippets[1]}
-    assert '93.271450' in report and '93.626867' in report
+    assert len(snippets)==4
+    for offset,label in [(0,'Heat G1 r1'),(2,'Heat G1 r2')]:
+        example=next(r for r in rows if r['label']==label)
+        reg=read(example['registry_evidence']['path']);raw=read(example['score_evidence']['path'])['diagnostics']
+        assert snippets[offset]=={k:reg[k] for k in snippets[offset]}
+        assert snippets[offset+1]=={role:{k:raw[role][k] for k in snippets[offset+1][role]} for role in snippets[offset+1]}
+    main_text,appendix_text=report.split('## 附录 A.',1)
+    assert '93.387723' in main_text and '93.626867' not in main_text
+    assert '93.626867' in appendix_text
+    main=[r for r in rows if r['repeat']==1];extra=[r for r in rows if r['repeat']>1]
+    assert len(main)==9 and len(extra)==6
+    assert [r['report_id'] for r in main]==[f'M{i:02d}' for i in range(1,10)]
+    assert [r['report_id'] for r in extra]==[f'A{i:02d}' for i in range(1,7)]
+    for r in rows:
+        target=main_text if r['repeat']==1 else appendix_text
+        assert f"| {r['report_id']} | {r['label']} |" in target
+    assert not re.search(r'\| A\d\d \|',main_text)
+    assert not re.search(r'\|[^\n]*Heat G[123] r[23] \|',main_text)
+    from collections import Counter
+    attempts=read('results/thinking-control-2026-10-25/reviewed-comparison.json')['attempt_records']
+    for key,selected in [('main',main),('appendix',extra),('all',rows)]:
+        st=data['statistics_by_scope'][key]
+        assert st['run_ids']==[r['run_id'] for r in selected]
+        assert st['sessions']==len(selected)
+        assert st['submissions']==sum(r['thinking_has_submission'] for r in selected)
+        assert st['valid_final_scores']==sum(r['thinking_final_score'] is not None for r in selected)
+        assert st['reward_one']==sum(r['thinking_reward']==1 for r in selected)
+        assert st['timing_invalid']==sum(r['thinking_final_score'] is None for r in selected)
+        assert st['first_final_direction']==dict(Counter(r['first_final_direction'] for r in selected))
+        assert st['retained_output_tokens']==sum(r['output_tokens'] for r in selected)
+        assert st['public_evaluations']==sum(r['public_evaluations'] for r in selected)
+        close(st['research_wall_seconds'],sum(r['research_wall_seconds'] for r in selected))
+        scoped=[a for a in attempts if a['run_id'] in st['run_ids']]
+        assert st['attempt_count']==len(scoped)
+        assert st['all_attempt_known_output_tokens']==sum(a['known_output_tokens'] for a in scoped)
+        assert st['all_attempt_charged_output_tokens']==sum(a['charged_output_tokens'] for a in scoped)
+    assert data['statistics_by_scope']['main']['reward_one']==8
+    assert data['statistics_by_scope']['main']['retained_output_tokens']==587172
+    assert data['statistics_by_scope']['appendix']['retained_output_tokens']==309038
     # Check all current local Markdown destinations; historical files remain independently hashed.
     link_count=0
     for name in ('README.md','docs/submission-report-2026-10-24.md','docs/thinking-report-evidence-2026-10-25.md','docs/reproduction.md'):
@@ -117,11 +151,12 @@ def audit():
             path=(ROOT/name).parent/target.split('#')[0]
             assert path.exists(),(name,target)
             link_count+=1
-    fig=read('results/thinking-report-2026-10-25/figure-manifest.json')
-    assert fig['analysis_sha256']==sha('results/thinking-report-2026-10-25/analysis.json')
+    fig=read('results/thinking-r1-report-2026-10-25/figure-manifest.json')
+    assert fig['analysis_sha256']==sha('results/thinking-r1-report-2026-10-25/analysis.json')
+    assert fig['main_run_ids']==[r['run_id'] for r in main]
     assert len(fig['files'])==6
     for name,h in fig['files'].items():assert sha(name)==h
-    assert len(re.findall(r'!\[.*?\]\(figures/thinking-report/.*?\.png\)',report))==3
+    assert len(re.findall(r'!\[.*?\]\(figures/thinking-r1-report/.*?\.png\)',report))==3
     archive='archives/pre-thinking-only-20261025/previous-comparison-report.tar.gz'
     saved=read('archives/pre-thinking-only-20261025/manifest.json')
     assert sha(archive)==saved['archive_sha256']
@@ -130,7 +165,7 @@ def audit():
         for member,row in zip(members,saved['files']):
             assert member.isfile() and member.name.endswith(row['path'])
             assert hashlib.sha256(tar.extractfile(member).read()).hexdigest()==row['sha256']
-    return {'status':'passed','scope':'thinking_only','sessions':15,'valid_scores':14,'reward_one':14,
+    return {'status':'passed','scope':'thinking_r1_main_with_complete_appendix','main_sessions':9,'appendix_sessions':6,'main_reward_one':8,'main_output_tokens':587172,'appendix_output_tokens':309038,'sessions':15,'valid_scores':14,'reward_one':14,
       'baseline_valid':10,'baseline_preflight_rejected':1,'raw_case_records_checked':checked_cases,
       'source_hashes_verified':len(data['source_sha256']),'local_links_checked':link_count,
       'figure_files_verified':6,'previous_report_files_preserved':len(saved['files']),

@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "pdf_pages": 19,
+  "main_sessions": 9,
+  "appendix_sessions": 6,
+  "all_pages_rendered_and_visually_reviewed": true,
+  "details_reviewed": [
+    "main_result_table",
+    "main_r1_figures",
+    "appendix_result_table",
+    "appendix_statistics",
+    "E2E_log_excerpts"
+  ],
+  "overflow": false,
+  "loaded_figures": 3,
+  "current_report_scope": "main r1; complete Heat r2/r3 appendix",
+  "deterministic_standard_library_rebuild": true,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

@@ -7,7 +7,8 @@
     "logs/thinking-delivery-2026-10-25/",
     "logs/poisson-timing-delivery-2026-10-25/",
     "logs/final-report-delivery-2026-10-25/",
-    "logs/thinking-report-delivery-2026-10-25/"
+    "logs/thinking-report-delivery-2026-10-25/",
+    "logs/thinking-r1-report-delivery-2026-10-25/"
   ],
   "exclusion_reason": "The manifest cannot hash itself; publication receipts are recorded after packaging.",
   "files": [
@@ -78,8 +79,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9611,
-      "sha256": "0a84daea9c09ea898037601d13474c40cda376961a7699a5611ea9dd4426e9bb"
+      "bytes": 9850,
+      "sha256": "89208ae95edfc592ee58dad699abd0e4bba793447507cbbe04b24f003d483d77"
     },
     {
       "path": "archives/pre-thinking-only-20261025/README.md",
@@ -172,6 +173,11 @@
       "sha256": "799c6005fe173a1b2fa07af89e21356e51d26845f390e806d1d2c6198f5add3c"
     },
     {
+      "path": "docs/delivery-audit-thinking-r1-2026-10-25.md",
+      "bytes": 3093,
+      "sha256": "ef183b80a0ac63102488b71768d9ad5ff66bc4dd7c8933a0826f68508a6ef9bb"
+    },
+    {
       "path": "docs/evidence.md",
       "bytes": 6750,
       "sha256": "3c604a0f309c8f54793bbdbb92e9202d252251b1e06038e15547b9f4ad6880f8"
@@ -225,6 +231,36 @@
       "path": "docs/figures/final-report/paired-scores.svg",
       "bytes": 96049,
       "sha256": "5051fe584913397dad20d1d399a18d8d1cf7c3f5ac70daf261cedce9388a552c"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/first-final-scores.png",
+      "bytes": 125777,
+      "sha256": "089b88b6f7df921324d06fed4523039e3d220e9b045f92ee7c59197d3fff461c"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/first-final-scores.svg",
+      "bytes": 84938,
+      "sha256": "81e86f08726c62ab33e09b02e57b3d0e2a53c4f345538fd4a6b3140e7b6b8050"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/g2-diagnostic.png",
+      "bytes": 76860,
+      "sha256": "b955a60f4164ed5fae8e2daad7833ceaac2adb41d77f6704d1e71278372dce10"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/g2-diagnostic.svg",
+      "bytes": 88973,
+      "sha256": "75ac59299b04dc470f3cb16bbad96c6f0d80d886507028350fb671ce8bcdb91b"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/outcomes.png",
+      "bytes": 47763,
+      "sha256": "36ea3c8840ca7f3634fbc5f07861136cac45e2f86d19a1c21339de625dd9bc2d"
+    },
+    {
+      "path": "docs/figures/thinking-r1-report/outcomes.svg",
+      "bytes": 51983,
+      "sha256": "aa61aef85955e1c3c9817ad450a9a9ad31f79e2b73dcd568318c16e0f2cab5ee"
     },
     {
       "path": "docs/figures/thinking-report/first-final-scores.png",
@@ -308,8 +344,8 @@
     },
     {
       "path": "docs/reproduction.md",
-      "bytes": 10277,
-      "sha256": "f5a8ee7d00d5c76c8388c3c82621e926454fe7f8935e92af3ccae3c573ac2c8c"
+      "bytes": 10698,
+      "sha256": "2ec2c0be6cfab1a66d36a6a9874ee9fb86dbf957d325d23566732dce4220fdc4"
     },
     {
       "path": "docs/resource-timing-acceptance-2026-10-23.md",
@@ -333,13 +369,13 @@
     },
     {
       "path": "docs/submission-report-2026-10-24.html",
-      "bytes": 402645,
-      "sha256": "ddca93c8656470e6ab236fbc1264eba01fd4f870a97da609ab582057245ba6c0"
+      "bytes": 402606,
+      "sha256": "4a5ff6076ee99e70779162586d1d872db4a6807fed0efbd6266d2ae3bdc60226"
     },
     {
       "path": "docs/submission-report-2026-10-24.md",
-      "bytes": 39550,
-      "sha256": "e4ac4dafdd7de81f56e3205bb6842256a44d25f4200082548079f535e903e8e9"
+      "bytes": 45870,
+      "sha256": "e327324b390c5c38a08e303e83521be2289c85ac705abdb7e78f9514f07ebfa4"
     },
     {
       "path": "docs/supplemental-results-2026-10-24.md",
@@ -363,8 +399,8 @@
     },
     {
       "path": "docs/thinking-report-evidence-2026-10-25.md",
-      "bytes": 13139,
-      "sha256": "fe3aa423dc0ecf8c5b28061fee21dda27126dd4704b4444b8a4c2bffc8e8fabc"
+      "bytes": 13172,
+      "sha256": "d34db38add62c5ccfd7a88df2e91d6d3756f3ac3f2d536db9a53290ca2a3c852"
     },
     {
       "path": "docs/timing.md",
@@ -25685,6 +25721,11 @@
       "path": "output/pdf/sciresearch-final-report-20261025.pdf",
       "bytes": 1858212,
       "sha256": "8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d"
+    },
+    {
+      "path": "output/pdf/sciresearch-thinking-r1-report-20261025.pdf",
+      "bytes": 1834367,
+      "sha256": "9fe8abd8d0a27bb9e87b5f8800a05177481e9cef746266767f1e53599b9a6ef5"
     },
     {
       "path": "output/pdf/sciresearch-thinking-report-20261025.pdf",
@@ -92482,6 +92523,21 @@
       "sha256": "a7d005675b8ad11899a447693db83fa7aef9eaddca87a23325002d3afc5b6c94"
     },
     {
+      "path": "results/thinking-r1-report-2026-10-25/analysis.json",
+      "bytes": 57515,
+      "sha256": "a9ddc6a98b513f38976adf6140edc4a889fb88f9210be76c2b4d16950495f7ea"
+    },
+    {
+      "path": "results/thinking-r1-report-2026-10-25/figure-manifest.json",
+      "bytes": 1581,
+      "sha256": "48971227729b27482ac51f8a9554e42c9a7d06dc0b3ccfb79eee1281394002f7"
+    },
+    {
+      "path": "results/thinking-r1-report-2026-10-25/ordered-results.md",
+      "bytes": 4769,
+      "sha256": "91e74e5f6b979f58ad17a68ebe359dac247791dfb73c236cb019eca475cb36a6"
+    },
+    {
       "path": "results/thinking-report-2026-10-25/analysis.json",
       "bytes": 53318,
       "sha256": "325bdedacdbc8d73cae445a378dd6cf0216dbf5c9b607c99cdeb850115b4530c"
@@ -93448,18 +93504,18 @@
     },
     {
       "path": "tools/audit_thinking_report.py",
-      "bytes": 8584,
-      "sha256": "043faf28ca16435de02f02bdb5295e7c7341780134311232327955a84825ab7c"
+      "bytes": 11234,
+      "sha256": "d1e95e264a13acd7e4abb712ba090ec371c4aa9a330f171cd9fb3228e4139e0d"
     },
     {
       "path": "tools/build_delivery_manifest.py",
-      "bytes": 1543,
-      "sha256": "6b2648a61f4be94fa261772a191d486b29ae36a8053760c3581c5911f24f3272"
+      "bytes": 1591,
+      "sha256": "611f90cb081d940f474e28d93820bb8b8bc78c422595f3868903692a88fd17b4"
     },
     {
       "path": "tools/build_final_report.py",
-      "bytes": 22827,
-      "sha256": "a6e34603183759d9a84b1e9c16dca4a3aff8255667467e3da5665f6b67652cf0"
+      "bytes": 27268,
+      "sha256": "5348398bf7e911266e41054ca6170c3280bab203d8621dd509883dd18f223277"
     },
     {
       "path": "tools/prepare_delivery.py",
@@ -93468,8 +93524,8 @@
     },
     {
       "path": "tools/render_final_report.cjs",
-      "bytes": 1981,
-      "sha256": "e14fa4321301ead4caa992cd04d659081a8b5e6cc7c9cf6de500c38324280daa"
+      "bytes": 1984,
+      "sha256": "e76f9865ffc9548735d43485825f2d289751e9e8b3908dbd78aa8d8f01d5e904"
     },
     {
       "path": "tools/report-requirements.txt",

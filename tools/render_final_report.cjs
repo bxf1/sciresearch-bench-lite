@@ -22,7 +22,7 @@ const root = path.resolve(__dirname, '..');
     const dir = path.join(root, 'output/pdf');
     fs.mkdirSync(dir, {recursive: true});
     await page.pdf({
-      path: path.join(dir, 'sciresearch-thinking-report-20261025.pdf'),
+      path: path.join(dir, 'sciresearch-thinking-r1-report-20261025.pdf'),
       format: 'A4', printBackground: true, preferCSSPageSize: true,
       displayHeaderFooter: true, headerTemplate: '<span></span>',
       footerTemplate: '<div style="font:9px Arial;color:#6b7c8b;width:100%;text-align:center">SciResearch-Bench-Lite · <span class="pageNumber"></span> / <span class="totalPages"></span></div>',
