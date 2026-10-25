@@ -4,6 +4,10 @@
 
 **提交链接：[github.com/bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)**
 
+**最新版报告 PDF（19 页，含附录）：[在仓库中查看](output/pdf/sciresearch-thinking-r1-report-20261025.pdf) · [直接下载](https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-thinking-r1-report-20261025.pdf)**
+
+分享上面的仓库链接即可访问全部交付材料：报告 PDF、文档、代码、公开任务数据、实验结果和日志索引均已上传；完整作者数据与大型原始日志归档位于本仓库的 [Release 附件](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。阅读和下载不依赖作者本地文件。
+
 [最终实验报告](docs/submission-report-2026-10-24.md) · [Benchmark 调研](docs/survey.md) · [数据索引](data/README.md) · [真实日志与证据链](docs/thinking-report-evidence-2026-10-25.md) · [复现指南](docs/reproduction.md) · [Release 与完整附件](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)
 
 ## 作业阅读入口
