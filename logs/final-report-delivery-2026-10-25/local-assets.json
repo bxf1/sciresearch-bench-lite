@@ -1,0 +1,27 @@
+[
+  {
+    "name": "final-report-readable-20261025.tar.gz",
+    "bytes": 1789010,
+    "sha256": "489b47e5d7c2703aa482698302fea6904eb0ab67db57f13f80306b6bd08bf0c5"
+  },
+  {
+    "name": "final-report-readable-manifest-20261025.json",
+    "bytes": 4044,
+    "sha256": "6f45815c4d404c4363c5b4203e5407372a9a7b29146fffaddeeee1ffb2c5c7c4"
+  },
+  {
+    "name": "final-report-readable-SHA256SUMS-20261025.txt",
+    "bytes": 424,
+    "sha256": "e2ee2bd5a63cf42f6b824d0d59bb078feda43729456e1594d50a71ba2184d0d9"
+  },
+  {
+    "name": "sciresearch-final-report-20261025.pdf",
+    "bytes": 1858212,
+    "sha256": "8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d"
+  },
+  {
+    "name": "sciresearch-final-report-20261025.html",
+    "bytes": 418246,
+    "sha256": "6a186f6585d5e99d48ff9d0631d70935f2fd9cdb49d01275438d512076633b9b"
+  }
+]

@@ -1,0 +1,4 @@
+489b47e5d7c2703aa482698302fea6904eb0ab67db57f13f80306b6bd08bf0c5  final-report-readable-20261025.tar.gz
+6f45815c4d404c4363c5b4203e5407372a9a7b29146fffaddeeee1ffb2c5c7c4  final-report-readable-manifest-20261025.json
+8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d  sciresearch-final-report-20261025.pdf
+6a186f6585d5e99d48ff9d0631d70935f2fd9cdb49d01275438d512076633b9b  sciresearch-final-report-20261025.html

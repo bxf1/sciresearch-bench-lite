@@ -1,0 +1,53 @@
+{
+  "status": "published_and_verified",
+  "source_commit": "4b0436e4e9de0ab04513f8b263f4680cf65efb9a",
+  "remote_main_matches_source_commit": true,
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "release_public": true,
+  "prior_assets_preserved": 17,
+  "total_assets": 22,
+  "new_assets": [
+    {
+      "name": "final-report-readable-20261025.tar.gz",
+      "size": 1789010,
+      "server_digest": "sha256:489b47e5d7c2703aa482698302fea6904eb0ab67db57f13f80306b6bd08bf0c5",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-readable-20261025.tar.gz",
+      "matches_local": true
+    },
+    {
+      "name": "final-report-readable-manifest-20261025.json",
+      "size": 4044,
+      "server_digest": "sha256:6f45815c4d404c4363c5b4203e5407372a9a7b29146fffaddeeee1ffb2c5c7c4",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-readable-manifest-20261025.json",
+      "matches_local": true
+    },
+    {
+      "name": "final-report-readable-SHA256SUMS-20261025.txt",
+      "size": 424,
+      "server_digest": "sha256:e2ee2bd5a63cf42f6b824d0d59bb078feda43729456e1594d50a71ba2184d0d9",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/final-report-readable-SHA256SUMS-20261025.txt",
+      "matches_local": true
+    },
+    {
+      "name": "sciresearch-final-report-20261025.pdf",
+      "size": 1858212,
+      "server_digest": "sha256:8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-final-report-20261025.pdf",
+      "matches_local": true
+    },
+    {
+      "name": "sciresearch-final-report-20261025.html",
+      "size": 418246,
+      "server_digest": "sha256:6a186f6585d5e99d48ff9d0631d70935f2fd9cdb49d01275438d512076633b9b",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/sciresearch-final-report-20261025.html",
+      "matches_local": true
+    }
+  ],
+  "report_pages": 16,
+  "figures": 3,
+  "ordered_experiment_rows": 15,
+  "g2_formal_score": null,
+  "g2_diagnostic_ratio": 2.4884745147835194,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}
