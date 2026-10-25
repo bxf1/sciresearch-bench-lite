@@ -318,21 +318,84 @@ class RelayTests(unittest.TestCase):
             row = json.loads((self.root / f"events-{len(self.relays) - 1}.jsonl").read_text().splitlines()[-1])
             self.assertEqual(row["usage_violation"], {"field": "output_tokens", "previous": 8 if prefix == starts[0] else 9, "observed": 3})
 
-    def test_all_cumulative_input_and_cache_usage_must_be_monotonic(self):
+    def test_input_and_cache_revisions_do_not_invalidate_output_accounting(self):
         for field in ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
             prefix = frame("message_start", message={"model": MODEL, "usage": {field: 9, "output_tokens": 0}})
             body = prefix + frame("message_delta", delta={"stop_reason": "end_turn"},
                                   usage={field: 3, "output_tokens": 3}) + frame("message_stop")
             relay = self.relay(FakeResponse(body=body))
-            self.dispatch(relay)
+            output = self.dispatch(relay)
             state = relay.ledger.status()
-            self.assertEqual(state["last_request_failure_reason"], "usage_decreased")
-            self.assertEqual(state["charged_output_tokens"], 10)
+            self.assertIsNone(state["last_request_failure_reason"])
+            self.assertEqual(state["charged_output_tokens"], 3)
+            self.assertEqual(state["successful_requests"], 1)
+            self.assertFalse(state["protocol_violation"])
+            self.assertIn(b"event: message_stop", output)
             row = json.loads((self.root / f"events-{len(self.relays) - 1}.jsonl").read_text().splitlines()[-1])
-            self.assertFalse(row["output_usage_complete"])
-            self.assertEqual(row["usage_violation"], {"field": field, "previous": 9, "observed": 3})
-            for token_field in ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
-                self.assertIsNone(row[token_field])
+            self.assertTrue(row["output_usage_complete"])
+            self.assertIsNone(row["usage_violation"])
+            self.assertEqual(row[field], 3)
+            self.assertEqual(row["input_usage_revisions"], {
+                field: {"count": 1, "first_previous": 9, "last_previous": 9, "last_observed": 3}})
+
+    def test_heat_g3_input_revision_keeps_final_usage_and_shared_budget(self):
+        # Reproduce the observed 268 -> 140 input correction; the remaining
+        # values are synthetic so this fixture is not a claimed full raw replay.
+        initial = {"input_tokens": 268, "cache_read_input_tokens": 1000, "output_tokens": 0}
+        final = {"input_tokens": 140, "cache_read_input_tokens": 1128, "output_tokens": 3}
+        body = (frame("message_start", message={"model": MODEL, "usage": initial}) +
+                frame("message_delta", delta={"stop_reason": "tool_use"}, usage=final) + frame("message_stop"))
+        relay = self.relay(FakeResponse(body=body), limits=Limits(request_output_limit=6, session_output_limit=6))
+        self.dispatch(relay)
+        relay.upstream = FakeUpstream(FakeResponse(body=body))
+        self.dispatch(relay)
+        with self.assertRaises(Rejected):
+            self.dispatch(relay)
+        self.assertEqual(relay.ledger.status()["charged_output_tokens"], 6)
+        self.assertEqual(relay.ledger.status()["successful_requests"], 2)
+        row = json.loads((self.root / "events-0.jsonl").read_text().splitlines()[-1])
+        for field, value in final.items():
+            self.assertEqual(row[field], value)
+
+    def test_input_revision_does_not_allow_output_decrease_or_incomplete_refund(self):
+        for final_output, terminal in ((3, True), (9, False)):
+            body = (frame("message_start", message={"model": MODEL, "usage": {"input_tokens": 268, "output_tokens": 8}}) +
+                    frame("message_delta", delta={"stop_reason": "end_turn"},
+                          usage={"input_tokens": 140, "output_tokens": final_output}))
+            if terminal:
+                body += frame("message_stop")
+            relay = self.relay(FakeResponse(body=body))
+            output = self.dispatch(relay)
+            state = relay.ledger.status()
+            self.assertEqual(state["charged_output_tokens"], 10)
+            self.assertTrue(state["protocol_violation"])
+            self.assertNotIn(b"event: message_stop", output)
+            self.assertEqual(state["last_request_failure_reason"], "usage_decreased" if terminal else "incomplete_stream")
+
+    def test_invalid_revised_input_usage_still_fails_closed(self):
+        for field in ("input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
+            for invalid in (-1, 1.5, True, "140", 2**63):
+                body = (frame("message_start", message={"model": MODEL, "usage": {field: 268, "output_tokens": 0}}) +
+                        frame("message_delta", delta={"stop_reason": "end_turn"},
+                              usage={field: invalid, "output_tokens": 3}) + frame("message_stop"))
+                relay = self.relay(FakeResponse(body=body))
+                self.dispatch(relay)
+                state = relay.ledger.status()
+                self.assertEqual(state["last_request_failure_reason"], "invalid_usage")
+                self.assertEqual(state["charged_output_tokens"], 10)
+
+    def test_repeated_input_revisions_keep_bounded_audit_and_latest_present_count(self):
+        body = frame("message_start", message={"model": MODEL, "usage": {"input_tokens": 268, "output_tokens": 0}})
+        for count in (140, 160, 120):
+            body += frame("message_delta", delta={}, usage={"input_tokens": count, "output_tokens": 1})
+        body += frame("message_delta", delta={"stop_reason": "end_turn"}, usage={"output_tokens": 3}) + frame("message_stop")
+        relay = self.relay(FakeResponse(body=body))
+        self.dispatch(relay)
+        row = json.loads((self.root / "events-0.jsonl").read_text().splitlines()[-1])
+        self.assertEqual(row["input_tokens"], 120)
+        self.assertEqual(row["input_usage_revisions"], {"input_tokens": {
+            "count": 2, "first_previous": 268, "last_previous": 160, "last_observed": 120}})
+        self.assertEqual(row["charged_output_tokens"], 3)
 
     def test_delta_input_and_cache_updates_are_recorded_after_complete_stream(self):
         initial = {"input_tokens": 2, "cache_read_input_tokens": 4, "cache_creation_input_tokens": None, "output_tokens": 0}

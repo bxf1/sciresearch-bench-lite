@@ -266,7 +266,7 @@ class Ledger:
     def finish(self, item: Reservation, outcome: str, status=None, request_id_hash=None,
                output_tokens=None, input_tokens=None, violation=False,
                cache_read_input_tokens=None, cache_creation_input_tokens=None,
-               failure_reason=None, usage_violation=None):
+               failure_reason=None, usage_violation=None, input_usage_revisions=None):
         with self.lock:
             if item.request_id not in self.active:
                 raise RuntimeError("reservation already finished")
@@ -290,6 +290,7 @@ class Ledger:
                                     "upstream_status": status, "outcome": outcome,
                                     "failure_reason": failure_reason,
                                     "usage_violation": usage_violation,
+                                    "input_usage_revisions": input_usage_revisions or {},
                                     "requested_max_tokens": item.requested, "effective_max_tokens": item.effective,
                                     "output_tokens": output_tokens, "input_tokens": input_tokens,
                                     "output_usage_complete": success,
@@ -401,6 +402,7 @@ class StreamTracker:
         self.final_usage = self.input_tokens = None
         self.observed_output_tokens = None
         self.cache_read_input_tokens = self.cache_creation_input_tokens = None
+        self.input_usage_revisions = {}
         self.stop_frame = None
 
     def consume(self, raw: bytes) -> bytes | None:
@@ -489,8 +491,10 @@ class StreamTracker:
         return value
 
     def observe_usage(self, usage, require_output=False):
-        # All usage values are cumulative. Initial/nonterminal observations count
-        # too: a smaller terminal value must never unlock a refund.
+        # Output usage enforces the budget: even an initial/nonterminal high
+        # count cannot later decrease to unlock a refund. DeepSeek may revise
+        # input/cache accounting downwards; retain its latest values and audit
+        # those revisions separately. They never determine the output charge.
         updates = {}
         for field in ("output_tokens", "input_tokens", "cache_read_input_tokens", "cache_creation_input_tokens"):
             value = self.usage(usage.get(field), required=require_output and field == "output_tokens")
@@ -499,8 +503,11 @@ class StreamTracker:
             attribute = "observed_output_tokens" if field == "output_tokens" else field
             previous = getattr(self, attribute)
             if previous is not None and value < previous:
-                self.usage_violation = {"field": field, "previous": previous, "observed": value}
-                raise ProtocolError("usage_decreased")
+                if field == "output_tokens":
+                    self.usage_violation = {"field": field, "previous": previous, "observed": value}
+                    raise ProtocolError("usage_decreased")
+                revision = self.input_usage_revisions.setdefault(field, {"count": 0, "first_previous": previous})
+                revision.update(count=revision["count"] + 1, last_previous=previous, last_observed=value)
             if field == "output_tokens" and value > self.limit:
                 raise ProtocolError("usage_exceeds_reservation")
             updates[attribute] = value
@@ -670,7 +677,7 @@ class Relay:
                                tracker.input_tokens if not violation else None, violation,
                                tracker.cache_read_input_tokens if not violation else None,
                                tracker.cache_creation_input_tokens if not violation else None,
-                               failure_reason, getattr(tracker, "usage_violation", None))
+                               failure_reason, getattr(tracker, "usage_violation", None), tracker.input_usage_revisions)
 
     @staticmethod
     def _emit_error(emit, code):

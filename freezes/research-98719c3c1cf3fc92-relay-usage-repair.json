@@ -1,0 +1,38 @@
+{
+  "evidence": {
+    "authorization": {
+      "path": "logs/thinking-control-2026-10-25/recovery-001/authorization.json",
+      "sha256": "e678524ea4d0fb82ca3fd1fcc021bd19e73ab450b8142a74c7f33bc112d74bea"
+    },
+    "patch": {
+      "path": "logs/thinking-control-2026-10-25/recovery-001/infrastructure.patch",
+      "sha256": "ac9a4e161df7ed85635c94c1b3e6f36cb262fc075b9ad99aa271a95d43adafc0"
+    },
+    "regression_tests": {
+      "path": "logs/thinking-control-2026-10-25/recovery-001/unit-tests.txt",
+      "sha256": "d8e65752d8f450dd6fdee123030bec7461a5db4acbde32286eb9713b21cc9a63"
+    },
+    "synthetic_probe": {
+      "path": "logs/thinking-control-2026-10-25/recovery-001/live-probe/result.json",
+      "sha256": "27cadd30bfca7a99a9594bc49102bd29a5f915e4280fca63ee243f925d3492e6"
+    }
+  },
+  "files": {
+    "runner/model_relay.py": {
+      "after_sha256": "e5283bab59c1eee51218c80bb72ecb8b36030b196b802b68968688f1ddb18cf5",
+      "before_sha256": "881f65f0e563e3bb9cfee0a084fe43d766a38b41713b83ecbfd1891b6a86dc59"
+    },
+    "runner/run_plan.py": {
+      "after_sha256": "84627253b0a200b20dad46e5d455b44d56e8df61d00c1f5c1509e4ce585ba9fa",
+      "before_sha256": "fe68a57212c2bc62ce6d203cd494b53080043b9ad19398e132bb0a2e3e968081"
+    }
+  },
+  "kind": "relay_input_usage_compatibility",
+  "output_budget_semantics": "Unchanged cumulative output incl. thinking/compaction; output decrease or incomplete stream still fails closed.",
+  "run_plan": {
+    "path": "freezes/research-run-plan-thinking-max-2026-10-25.json",
+    "sha256": "25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e"
+  },
+  "schema_version": 1,
+  "scope": "Original plan and scientific settings unchanged. Applies from Heat G3 r1 a002 onward; original a001 failure and Heat G2 r1 remain immutable."
+}

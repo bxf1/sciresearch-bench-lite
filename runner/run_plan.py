@@ -130,6 +130,40 @@ def _file_ref(project, ref):
     return path
 
 
+def validate_tool_files(plan, project):
+    """Allow only an explicitly evidenced relay repair of an unchanged plan."""
+    frozen = plan["tool_config"]["files"]
+    actual = {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}
+    if frozen == actual:
+        return
+    if set(frozen) != set(actual):
+        raise ValueError("trusted tooling files changed")
+    changed = {name for name in frozen if frozen[name] != actual[name]}
+    allowed = {"runner/model_relay.py", "runner/run_plan.py"}
+    if not changed <= allowed or not re.fullmatch(r"research-[0-9a-f]{16}", plan["plan_id"]):
+        raise ValueError("trusted tooling files changed")
+    path = Path(project) / "freezes" / (plan["plan_id"] + "-relay-usage-repair.json")
+    if not path.is_file() or path.is_symlink() or path.stat().st_size > 65536:
+        raise ValueError("trusted tooling files changed; missing bounded relay repair addendum")
+    repair = read_json(path)
+    if (not isinstance(repair, dict) or repair.get("schema_version") != 1
+            or repair.get("kind") != "relay_input_usage_compatibility"
+            or read_json(_file_ref(project, repair.get("run_plan"))) != plan):
+        raise ValueError("relay repair is not bound to this unchanged frozen plan")
+    files = repair.get("files")
+    if not isinstance(files, dict) or set(files) != changed:
+        raise ValueError("relay repair file set differs from actual changes")
+    for name in changed:
+        if files[name] != {"before_sha256": frozen[name], "after_sha256": actual[name]}:
+            raise ValueError("relay repair source hash mismatch")
+    evidence = repair.get("evidence")
+    required = {"authorization", "regression_tests", "synthetic_probe", "patch"}
+    if not isinstance(evidence, dict) or set(evidence) != required:
+        raise ValueError("relay repair requires authorization, tests, probe and exact patch evidence")
+    for ref in evidence.values():
+        _file_ref(project, ref)
+
+
 def start_blockers(plan, project):
     """Return every independently checkable blocker without executing any workload."""
     blockers = []
@@ -224,8 +258,7 @@ def start_blockers(plan, project):
     try:
         if not isinstance(tools, dict) or plan.get("tool_config_sha256") != digest(canonical(tools)):
             raise ValueError("missing or mismatched tool configuration hash")
-        if tools.get("files") != {name: file_hash(Path(project) / name) for name in trusted_tool_files(project)}:
-            raise ValueError("trusted tooling files changed")
+        validate_tool_files(plan, project)
         if any(tools.get(key) != [] for key in ("skills", "extensions", "mcp_servers")) or tools.get("resume") is not False:
             raise ValueError("unrelated skills/extensions/MCP or session resume must be disabled")
         if not isinstance(tools.get("runtime_tools"), list) or not tools["runtime_tools"] or not all(isinstance(x, str) and x for x in tools["runtime_tools"]):

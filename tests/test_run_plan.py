@@ -340,6 +340,49 @@ class RunPlanTests(unittest.TestCase):
         (self.project / "baselines/poisson/solve.py").write_text("# changed comparator\n")
         self.blocked(plan, "trusted tooling files changed")
 
+    def relay_repair_fixture(self):
+        plan = self.fixture()
+        original = self.project / "freezes/original-plan.json"
+        write_json(original, plan)
+        files = {}
+        for name in ("runner/model_relay.py", "runner/run_plan.py"):
+            path = self.project / name
+            path.write_text("# synthetic repaired source\n")
+            files[name] = {"before_sha256": plan["tool_config"]["files"][name], "after_sha256": file_hash(path)}
+        evidence = self.ref(self.project / "evidence.txt")
+        repair = {"schema_version": 1, "kind": "relay_input_usage_compatibility", "run_plan": self.ref(original),
+                  "files": files, "evidence": {key: evidence for key in
+                    ("authorization", "regression_tests", "synthetic_probe", "patch")}}
+        path = self.project / "freezes" / (plan["plan_id"] + "-relay-usage-repair.json")
+        write_json(path, repair)
+        return plan, path, repair
+
+    def test_hash_bound_relay_repair_preserves_all_other_frozen_gates(self):
+        plan, path, repair = self.relay_repair_fixture()
+        self.assertEqual(run_plan.start_blockers(plan, self.project), [])
+        for name in ("runner/study.py", "judge/heat.py", "baselines/poisson/solve.py"):
+            target = self.project / name
+            original = target.read_bytes()
+            target.write_text("# unauthorized extra change\n")
+            self.blocked(plan, "trusted tooling files changed")
+            target.write_bytes(original)
+        changed = copy.deepcopy(plan)
+        changed["model"]["output_token_limit"] += 1
+        self.blocked(changed, "unchanged frozen plan")
+        (self.project / "runner/model_relay.py").write_text("# different repair\n")
+        self.blocked(plan, "relay repair source hash mismatch")
+
+    def test_relay_repair_rejects_unbound_incomplete_and_changed_evidence(self):
+        plan, path, repair = self.relay_repair_fixture()
+        for field in ("run_plan", "files", "evidence"):
+            broken = copy.deepcopy(repair)
+            broken.pop(field)
+            write_json(path, broken)
+            self.assertTrue(run_plan.start_blockers(plan, self.project))
+        write_json(path, repair)
+        (self.project / "evidence.txt").write_text("changed")
+        self.assertTrue(run_plan.start_blockers(plan, self.project))
+
 
 class PublicTaskPackageTests(unittest.TestCase):
     def test_three_packages_have_six_dev_cases_and_exact_public_allowlist(self):
