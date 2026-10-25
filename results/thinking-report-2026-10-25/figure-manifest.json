@@ -1,0 +1,16 @@
+{
+  "analysis_sha256": "325bdedacdbc8d73cae445a378dd6cf0216dbf5c9b607c99cdeb850115b4530c",
+  "figures": {
+    "outcomes": "rows: submission and reward counts by task",
+    "first-final-scores": "rows: thinking_first_score/thinking_final_score in display order",
+    "g2-diagnostic": "g2_diagnostics: raw baseline_seconds/candidate_seconds, diagnostic only"
+  },
+  "files": {
+    "docs/figures/thinking-report/first-final-scores.png": "c562b24c4c240a3afdea9a143a25874da7ce648cd2cee8811a2d55a3bb16806e",
+    "docs/figures/thinking-report/first-final-scores.svg": "32ed65f691d68e6115c5c35f686a7535654083745ec9cfbf0de1b543a4640f2e",
+    "docs/figures/thinking-report/g2-diagnostic.png": "b955a60f4164ed5fae8e2daad7833ceaac2adb41d77f6704d1e71278372dce10",
+    "docs/figures/thinking-report/g2-diagnostic.svg": "75ac59299b04dc470f3cb16bbad96c6f0d80d886507028350fb671ce8bcdb91b",
+    "docs/figures/thinking-report/outcomes.png": "0b6f082f684a717111e55e83356e6bb3fee39e0e36279d55fe98a18373c57c0b",
+    "docs/figures/thinking-report/outcomes.svg": "9d3900a267d8a8641c8ea8d9239f81aa448f8db3e6218f6f939a1cbb46f9bcc0"
+  }
+}

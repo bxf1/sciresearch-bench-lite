@@ -94,6 +94,8 @@ def main():
     for diagnostic in report['g2_diagnostics']:
         assert diagnostic['formal_score'] is None and diagnostic['formal_timing_accepted'] is False
         assert diagnostic['unique_cases'] == 12 and diagnostic['passed_per_replay'] == [12, 12, 12]
+    from audit_thinking_report import audit
+    thinking_report_audit = audit()
     archive_verified = False
     if args.author_archive:
         assert digest(args.author_archive) == dataset['archive_sha256'], 'Author archive checksum mismatch'
@@ -106,14 +108,15 @@ def main():
                 assert len(value) == ref['bytes'] and hashlib.sha256(value).hexdigest() == ref['sha256'], member.name
         archive_verified = True
     print(json.dumps({'status': 'passed', 'verified_files': len(manifest['files']), 'indexed_instances': 90,
-                      'public_instances_in_clone': 18, 'author_baseline_methods': 11, 'formal_sessions': 15,
-                      'valid_scores': 14, 'reward_one': 6, 'author_archive_verified': archive_verified,
+                      'public_instances_in_clone': 18, 'author_baseline_methods': 11,
+                      'historical_evidence_verified': True, 'author_archive_verified': archive_verified,
                       'thinking_sessions': 15, 'thinking_initial_valid_scores': 13,
                       'thinking_valid_scores': timing['valid_final_scores'],
                       'thinking_reward_one': timing['reward_one'],
                       'thinking_timing_rejected': timing['timing_invalid_sessions'],
                       'new_model_calls': 0, 'new_candidate_executions': 0,
                       'ordered_report_rows': len(report_rows), 'g2_diagnostic_groups': 2,
+                      'thinking_only_report_audit': thinking_report_audit,
                       'scope': 'Delivery consistency and integrity audit; not a new scientific replay.'}, indent=2))
 
 

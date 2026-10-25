@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "thinking_only",
+  "sessions": 15,
+  "valid_scores": 14,
+  "reward_one": 14,
+  "baseline_valid": 10,
+  "baseline_preflight_rejected": 1,
+  "raw_case_records_checked": 1440,
+  "source_hashes_verified": 77,
+  "local_links_checked": 178,
+  "figure_files_verified": 6,
+  "previous_report_files_preserved": 21,
+  "g2_formal_score": null,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

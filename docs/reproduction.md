@@ -107,7 +107,7 @@ Poisson 后续计时补测独立保存在 [poisson-timing-recheck 报告](poisso
 
 ## 最终报告、排序数据与图表
 
-`python3 tools/build_final_report.py` 使用标准库从既有记录生成 `results/final-report-2026-10-25/analysis.json`、排序表以及主报告中的数据块。它保留 G2 正式分数为空，并单列两轮原始耗时比，不执行模型、候选或新的计时。
+`python3 tools/build_final_report.py` 使用标准库从既有记录生成 `results/thinking-report-2026-10-25/analysis.json`、排序表以及主报告中的数据块。它保留 G2 正式分数为空，并单列两轮原始耗时比，不执行模型、候选或新的计时。
 
 图表和离线 HTML 使用独立的排版环境，不能修改原研究环境。可在新的虚拟环境安装：
 
@@ -119,6 +119,8 @@ python3 -m venv .report-venv
 
 `--font` 指向本机中文字体；macOS 可使用 `/System/Library/Fonts/Hiragino Sans GB.ttc`。没有指定时采用 matplotlib 的本地字体配置，字体缺失可能导致中文显示不全。数值数据不依赖字体，绘图排版在不同平台不承诺逐字节相同。PNG 供报告阅读，SVG 供放大和导出，三张图都由完整未取整数据生成。
 
-离线 HTML 位于 `docs/submission-report-2026-10-24.html`，图像已内嵌，可下载后直接打开或浏览器打印；外部证据链接指向 GitHub。Release 的 `final-report-readable-20261025.tar.gz` 保存报告、图表、排序分析和生成脚本；配套 manifest 与 SHA256SUMS 校验附件。它是阅读与分析增量包，不替代完整实验轨迹或作者数据。
+离线 HTML 位于 `docs/submission-report-2026-10-24.html`，图像已内嵌，可下载后直接打开或浏览器打印；外部证据链接指向 GitHub。Release 的 `thinking-only-report-20261025.tar.gz` 保存本轮 thinking 专版报告、图表、排序分析和生成脚本；配套 manifest 与 SHA256SUMS 校验附件。它是阅读与分析增量包，不替代完整实验轨迹或作者数据。
 
-仓库还提供 `output/pdf/sciresearch-final-report-20261025.pdf`。PDF 从同一 HTML 的打印样式生成；在独立 Node 环境安装 `playwright@1.62.1` 并安装其 Chromium 后，可执行 `node tools/render_final_report.cjs`。也可通过 `REPORT_CHROMIUM_PATH` 指定本机 Chrome 可执行文件。该脚本使用独立无头实例、阻止网络请求，不使用登录会话。本次 PDF 元数据记录 Chrome 156，运行器 Playwright 1.62.1；PDF 分页会随字体和浏览器版本变化，科学数据不变。
+仓库还提供 `output/pdf/sciresearch-thinking-report-20261025.pdf`。PDF 从同一 HTML 的打印样式生成；在独立 Node 环境安装 `playwright@1.62.1` 并安装其 Chromium 后，可执行 `node tools/render_final_report.cjs`。也可通过 `REPORT_CHROMIUM_PATH` 指定本机 Chrome 可执行文件。该脚本使用独立无头实例、阻止网络请求，不使用登录会话。本次 PDF 元数据记录 Chrome 156，运行器 Playwright 1.62.1；PDF 分页会随字体和浏览器版本变化，科学数据不变。
+
+当前主报告只列 thinking/max。上一版跨批阅读材料已[暂存](../archives/pre-thinking-only-20261025/README.md)，历史专项分析保持原记录。`python3 tools/audit_thinking_report.py` 独立核对本版原始逐例指标、源码快照、relay 用量、图表与日志节选，不执行科学重放。

@@ -4,16 +4,16 @@
 
 **提交链接：[github.com/bxf1/sciresearch-bench-lite](https://github.com/bxf1/sciresearch-bench-lite)**
 
-[最终实验报告](docs/submission-report-2026-10-24.md) · [Benchmark 调研](docs/survey.md) · [数据索引](data/README.md) · [真实日志与证据链](docs/evidence.md) · [复现指南](docs/reproduction.md) · [Release 与完整附件](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)
+[最终实验报告](docs/submission-report-2026-10-24.md) · [Benchmark 调研](docs/survey.md) · [数据索引](data/README.md) · [真实日志与证据链](docs/thinking-report-evidence-2026-10-25.md) · [复现指南](docs/reproduction.md) · [Release 与完整附件](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)
 
 ## 作业阅读入口
 
-建议先读[最终实验报告](docs/submission-report-2026-10-24.md)：按背景、调研、实验设计、评测规则、实验结果、预期与原因分析、改进和复现组织，含三张结果图及全部 15 格配对数据。另提供[阅读打印版 PDF](output/pdf/sciresearch-final-report-20261025.pdf)与[离线 HTML 阅读版](docs/submission-report-2026-10-24.html)，HTML 图像内嵌；GitHub 上请下载后打开。
+建议先读[最终实验报告](docs/submission-report-2026-10-24.md)：按背景、调研、实验设计、评测规则、实验结果、预期与原因分析、改进和复现组织，含三张结果图及本轮 15 个 thinking/max 会话数据。另提供[阅读打印版 PDF](output/pdf/sciresearch-thinking-report-20261025.pdf)与[离线 HTML 阅读版](docs/submission-report-2026-10-24.html)，HTML 图像内嵌；GitHub 上请下载后打开。
 
 - **G1 / G2 / G3**：详细方法指导 / 方向指导 / 共同任务契约。
 - **r1 / r2 / r3**：同一任务和指导组的第 1 / 2 / 3 次独立研究会话。Heat 每组有三次；ODE、Poisson 每组只有 r1。
 - **a001 / a002**：同一会话的执行尝试和关联重试；提交后的三次评分重放也不是新的研究会话。
-- 数据按 Heat → ODE → Poisson、G1 → G2 → G3、r1 → r2 → r3 排列，另列实际执行序号。[排序数据及来源哈希](results/final-report-2026-10-25/analysis.json)由脚本读取既有证据生成。
+- 数据按 Heat → ODE → Poisson、G1 → G2 → G3、r1 → r2 → r3 排列，另列实际执行序号。[排序数据及来源哈希](results/thinking-report-2026-10-25/analysis.json)由脚本读取既有证据生成。
 
 Poisson G2 的候选数值检查通过；独立补测的原始中位耗时比为 **2.488×（仅诊断）**。正式计时因宿主背景进程 5.423% 超过冻结的 5% 阈值而无效，正式分数继续为空。诊断比值没有换算为正式分数，也不计入成功数。
 
@@ -23,9 +23,9 @@ Poisson G2 的候选数值检查通过；独立补测的原始中位耗时比为
 |---|---|
 | 调研 Auto Research、AI Scientist、Research Agent、RSI | [调研文档](docs/survey.md)：ASI-Bench、Terminal-Bench-Science 等 6 项工作，比较任务、工具、环境、评分和局限，附固定源码引用及逻辑图 |
 | 选择一个科研领域 | 科学计算；三类问题分别考察逆问题稳定化、动力学结构识别和正确性约束下的效率优化 |
-| 至少 3 条完整任务、数据与基线 | [任务卡](docs/task_cards.md)、[90 例数据清单](data/README.md)、[11 种基线及逐例结果](results/formal-study-003/baselines.csv) |
+| 至少 3 条完整任务、数据与基线 | [任务卡](docs/task_cards.md)、[90 例数据清单](data/README.md)、[本轮 11 种方法的结果及拒绝索引](docs/thinking-report-evidence-2026-10-25.md#本批作者基线) |
 | 可复现环境与自动独立评分 | [环境和复现](docs/reproduction.md)、[隔离协议](docs/protocol.md)、[评分代码](judge/)、[可信执行器](runner/) |
-| 端到端验证、失败与可靠性分析 | [最终报告第 6–10 节](docs/submission-report-2026-10-24.md)、[原始日志节选](docs/evidence.md)、[提交与循环诊断](docs/submission-diagnosis-2026-10-23.md) |
+| 端到端验证、失败与可靠性分析 | [最终报告第 6–10 节](docs/submission-report-2026-10-24.md)、[原始日志节选](docs/thinking-report-evidence-2026-10-25.md) |
 
 ## 任务与数据
 
@@ -39,29 +39,25 @@ Poisson G2 的候选数值检查通过；独立补测的原始中位耗时比为
 
 Agent 只看到 public-dev，提交源码后由宿主生成不可改写快照。独立 W 容器运行候选，J 只读数值产物和真值，不执行候选代码；隐藏评分在研究关闭后进行。完整作者数据的公开下载不改变运行时隔离规则，不能将整个仓库或作者数据挂入研究容器。
 
-## 已有实验结论
+## Thinking/max 实验结果
 
-正式批次为 [formal-003](freezes/research-run-plan-formal-003.json)：同一模型路由、三种指导强度，Heat 每组 3 次，ODE/Poisson 每组各 1 次；每会话 200,000 输出 token、30 分钟、20 次公开评估。
+本版只展示 [thinking 冻结计划](freezes/research-run-plan-thinking-max-2026-10-25.json)下的结果：thinking=enabled、effort=max，每请求 4,096／每会话 200,000 输出 token，最多 30 分钟、20 次公开评估。
 
-- **三任务、11 种作者基线全部完成**。弱基线失败如实保留；Poisson 数值正确与效率达标分别统计。
-- **15 次研究：9 次有提交、6 次正常无提交**。14/15 有有效评分，其中 **6 次 reward=1、8 次有效未成功**；Poisson G2 计时环境无效，成绩为 null。
-- **三任务均有端到端 Agent 验证**。Heat G3 r1 的独立隐藏分数从 21.394 升至 91.532，通过数从 0/12 升至 12/12，首次和最终候选各重放 3 次；[真实登记与评分日志](docs/evidence.md)可追溯。
-- 8 个可比较会话中 2 个改进、1 个退化、5 个源码不变。样本小，不能证明某指导组更优，也不将三任务分数直接平均。
-- 原冻结版本测试日志为 **357 passed**；后续 token-only 支持版本为 360 passed。交付校验只核对文件和已存结果，不冒充新科学实验。
+- **15/15 有提交，14/15 最终评分有效且成功。** Poisson G2 计时无效，正式成绩为空；不记零分、不估填。
+- Heat 九次最终分为 91.957–93.688，ODE 三次为 98.994–99.266。Poisson G1 为 68.376（独立计时补测），G3 为 44.169；不同任务不计算总平均分。
+- **三条任务均完成有效基线验证。** 本轮 11 种作者方法中 10 项有有效结果，Jacobi-CG 独立基线的准入拒绝留空；弱方法未成功也如实列出。
+- 会话内 first → final 为 5 升、4 降、5 同源码、1 无法比较。Heat G1 r2 的真实端到端案例由 93.271 小幅提高到 93.627，首次和最终都通过 12/12。
+- 15 个保留 attempt 输出 896,210 token；包括两个旧 attempt 后已知输出 925,815，代理 charged 929,911。三次执行器修复、两次关联重试及 252 次无进展续接单列。
 
-[15 次会话表](results/delivery-analysis/run-summary.csv) · [基线分难度表](results/delivery-analysis/baseline-by-difficulty.csv) · [完整正式结果与成本](docs/formal-results-2026-10-23.md)
+本轮是事后追加的实验，沿用已使用过的隐藏集、串行执行且中途修复。不能据此宣称 thinking 的因果收益、指导组稳定优劣或全新盲测。
 
-选择性扩大到 500,000 token 的补跑已提前取消，没有新增有效科学结果；相关尝试、循环诊断及计时拒绝记录保留在[补充附录](docs/supplemental-results-2026-10-24.md)，不加入原等预算比较。
+[完整排序数据](results/thinking-report-2026-10-25/analysis.json) · [15 行原始证据索引](docs/thinking-report-evidence-2026-10-25.md) · [计时补测与拒绝记录](docs/poisson-timing-recheck-2026-10-25.md)
 
-## Thinking/max 匹配对照（2026-10-25）
+## 上一版材料暂存
 
-原 15 格按 thinking=enabled、effort=max、每请求 4,096／每会话 200,000 输出重跑，仍保留 30 分钟和 20 次公开评估。**15/15 有提交；计入新授权的 Poisson G1 计时补测后，14/15 最终评分有效且 reward=1，G2 仍因计时干扰为 null。** Heat 91.957–93.688、ODE 98.994–99.266、Poisson G3 44.169；G1 新计时分数 68.376、加速比 4.145×。首次发布的 13 项有效成绩和两项拒绝原样保留。对照批次 10 项作者基线有有效成绩，Jacobi 准入拒绝；原正式批次全部 11 项基线保留。
+上一版跨批比较的报告、PDF、图表、数据、README 和生成脚本已保存为[独立快照](archives/pre-thinking-only-20261025/README.md)，附逐文件清单和 SHA256。原始实验、失败、修复、拒绝记录及全部原 Release 附件均保留，当前主报告不再混列历史非 thinking 成绩。历史专项文档用于溯源，不作为本版结果表。
 
-当前 14 对可比较最终分数为 12 升、2 降（6 项提升来自原无提交）；本批首次→最终为 5 升、4 降、5 同源码、1 无法比较。15 个保留 attempt 输出 896,210 token；包括两个旧 attempt 后已知输出 925,815，代理 charged 929,911。中途三次基础设施修复、两次关联重试以及 252 次无进展续接均单列，不增加独立样本数。
-
-这是事后匹配对照：thinking 与 max 同时变化，temperature 不生效，复用了旧隐藏集，且先后运行、中途修复。不能宣称严格因果收益或全新盲测，不能合并为 30 次同条件样本。
-
-[完整对照报告与日志](docs/thinking-control-2026-10-25.md) · [Poisson 计时补测与拒绝记录](docs/poisson-timing-recheck-2026-10-25.md) · [当前配对结果](results/poisson-timing-recheck-2026-10-25/reviewed-results.json) · [首次发布用量和哈希](results/thinking-control-2026-10-25/reviewed-comparison.json) · [原始评分表](results/thinking-control-2026-10-25/checkpoints.csv)
+[本次作业要求检查与修正清单](docs/delivery-audit-thinking-2026-10-25.md)记录证据审计、排版检查及仍保留的限制。
 
 ## 快速核验
 
@@ -73,7 +69,7 @@ cd sciresearch-bench-lite
 python3 tools/verify_delivery.py
 ```
 
-该命令核对交付清单、90 例索引、仓库内公开数据、原 11 种基线、15 次正式研究，以及 thinking 对照的 15 个会话终态、配对表和日志来源哈希。完整数据另行下载后可加 `--author-archive <文件路径>` 逐文件校验。
+该命令核对交付清单、90 例索引、仓库内公开数据、原 11 种基线、历史证据，以及当前 thinking 的 15 个会话终态、候选、评分、用量和图表来源哈希。可再运行 `python3 tools/audit_thinking_report.py` 查看本版专项审计。完整数据另行下载后可加 `--author-archive <文件路径>` 逐文件校验。
 
 实际数值重放需要 **Python 3.12、锁定依赖与 Docker**。请按[复现指南](docs/reproduction.md)安装，再运行全部基线或已有候选；新机器须重新验收资源与计时环境。正式 Agent 研究另需模型凭据、研究镜像、受控代理与新的冻结计划。历史 freeze 绑定原机器和原实验，不能直接改哈希以绕过验收。
 
@@ -98,6 +94,6 @@ tools/             交付表格生成和完整性核验
 
 大型完整轨迹另存 Release：原始证据包约 467 MiB、作者数据约 27 MB；历史附件保留，最新交付包使用独立名称。Release 的历史标签保留初次提交，**当前交付以 main 为准；`submission-ready-20261024.tar.gz` 为 10 月 24 日历史快照，thinking 对照增量证据见 `thinking-control-evidence-20261025.tar.gz`**，不要将页面自动生成的旧标签源码 ZIP 当作最新报告。
 
-Poisson 后续计时证据另存 `poisson-timing-recheck-20261025.tar.gz`，保留原拒绝窗口。G2 的正式性能需要新的合格宿主窗口验证；本轮报告整理只读取既有证据。阅读版及图表另存 `final-report-readable-20261025.tar.gz`，它是报告与分析增量包，与 main 和已有实验附件配合使用。
+Poisson 后续计时证据另存 `poisson-timing-recheck-20261025.tar.gz`，保留原拒绝窗口。G2 的正式性能需要新的合格宿主窗口验证；本轮报告整理只读取既有证据。当前 thinking 专版另存 `thinking-only-report-20261025.tar.gz`，配套独立 PDF、HTML、manifest 和 SHA256SUMS；与 main 及已有实验附件配合使用。`final-report-readable-20261025.tar.gz` 是保留的上一版阅读材料。
 
 本项目只验证受控合成分布上的求解器研究，不声称原创科学发现或已实现真正 RSI；同宿主、小样本及模型路由可变等限制见[最终报告](docs/submission-report-2026-10-24.md)。历史日志保持原文，以本 README 和最终报告作为当前入口。

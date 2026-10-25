@@ -1,12 +1,10 @@
-"""Build ordered report tables and optional figures/HTML from saved evidence only.
+"""Build the thinking-only report from immutable saved evidence, without execution.
 
-No model calls, candidate executions, or changes to historical scoring records.
-Standard library suffices for JSON/tables. --figures needs matplotlib 3.10.7;
---html needs markdown-it-py 4.0.0. Both are presentation-only dependencies.
+Standard library builds JSON/tables and verifies provenance. Optional presentation
+packages are isolated in tools/report-requirements.txt; no research code changes.
 """
 import argparse
 import base64
-import csv
 import hashlib
 import json
 from pathlib import Path
@@ -14,28 +12,28 @@ import re
 import statistics
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'results/final-report-2026-10-25'
-FIG = ROOT / 'docs/figures/final-report'
+OUT = ROOT / 'results/thinking-report-2026-10-25'
+FIG = ROOT / 'docs/figures/thinking-report'
 REPORT = ROOT / 'docs/submission-report-2026-10-24.md'
 TASKS = ('heat', 'ode', 'poisson')
 NAMES = {'heat': 'Heat', 'ode': 'ODE', 'poisson': 'Poisson'}
 SOURCES = [
     'results/poisson-timing-recheck-2026-10-25/reviewed-results.json',
     'results/thinking-control-2026-10-25/reviewed-comparison.json',
-    'results/delivery-analysis/run-summary.csv',
     'freezes/research-run-plan-thinking-max-2026-10-25.json',
     'research-runs/research-98719c3c1cf3fc92/final-replays/research-98719c3c1cf3fc92-poisson-g2-r1-a001/result.json',
     'logs/poisson-timing-recheck-2026-10-25/g2-window-002/operation-result.json',
     'logs/poisson-timing-recheck-2026-10-25/g2-window-002/host-observations.jsonl',
 ]
+METHODS = {'ls':'未正则化 LS：直接拟合全部模态', 'rank5':'rank5：只保留五个低频模态',
+ 'tikhonov':'Tikhonov：限制不稳定解（固定参考）', 'discrepancy':'discrepancy：按噪声水平选正则强度',
+ 'tsvd':'TSVD：截去不稳定的奇异方向', 'raw':'原始差分：直接从噪声轨迹估导数',
+ 'fixed':'固定去噪和稀疏回归（固定参考）', 'search':'搜索去噪与稀疏参数',
+ 'cg':'CG：未预条件的共轭梯度', 'jacobi':'Jacobi-CG：对角预条件共轭梯度', 'lu':'LU：一次分解复用四个右端项（固定参考）'}
 
 
 def read(name):
     return json.loads((ROOT / name).read_text())
-
-
-def num(value):
-    return None if value in (None, '', 'null') else float(value)
 
 
 def fmt(value):
@@ -43,149 +41,179 @@ def fmt(value):
 
 
 def build_data():
-    current, thinking = read(SOURCES[0]), read(SOURCES[1])
-    with (ROOT / SOURCES[2]).open() as stream:
-        old = {(r['task'], r['group'], int(r['repeat'])): r for r in csv.DictReader(stream)}
-    plan = read(SOURCES[3])
+    current, thinking, plan = [read(s) for s in SOURCES[:3]]
+    sources = {s: hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in SOURCES}
+    def checked(evidence):
+        name = evidence['path']
+        digest = hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+        assert digest == evidence['sha256'], name
+        sources[name] = digest
+        return read(name)
+    assert sources[SOURCES[2]] == '25c3250f8615aa5a90a24206964533085b5448f06910f7e42a969e2f66763f0e'
+    assert thinking['latest_research_finished_at'] < thinking['first_baseline_started_at']
     sequence = {r['run_id']: r['sequence'] for r in plan['runs']}
     attempts = {r['attempt_id']: r for r in thinking['attempt_records']}
     rows = []
     for p in sorted(current['pairs'], key=lambda p: (TASKS.index(p['task']), p['group'], p['repeat'])):
         a = attempts[p['attempt_id']]
-        o = old[p['task'], p['group'], p['repeat']]
-        first = a['first']
+        registry = checked(a['registry_evidence'])
+        host = checked(a['host_evidence'])
+        original_evidence = a['replay_evidence']
+        if original_evidence is None:
+            refusal = next(v for v in thinking['timing_refusals'] if v['identity']==p['run_id'])
+            original_evidence = {'path':refusal['acceptance_path'],'sha256':refusal['acceptance_sha256']}
+        original_replay = checked(original_evidence)
+        assert registry['closed'] and registry['first_id'] == a['first_id'] and registry['final_id'] == a['final_id']
+        assert host['attempt_status'] == a['raw_status']
+        relay = a['relay_evidence']; assert hashlib.sha256((ROOT/relay['path']).read_bytes()).hexdigest() == relay['sha256']
+        sources[relay['path']] = relay['sha256']
         measurement = next((m for m in current['measurements'] if m['run_id'] == p['run_id']), None)
-        if measurement:
-            first = measurement['first']
+        evidence = measurement['operation_result'] if measurement else a['replay_evidence']
+        raw = checked(evidence)['diagnostics'] if measurement else original_replay['diagnostics']
+        first, final = raw['first'], raw['final']
+        assert final['score'] == p['after']['score'] and final['reward'] == p['after']['reward']
+        for role, result in [('first', first), ('final', final)]:
+            candidate = next(e for e in registry['evaluations'] if e['id'] == registry[role+'_id'])
+            assert result['source_hash'] == candidate['source_hash'] and candidate['artifact_valid']
+        repeated = final.get('repeats') or first['repeats']
+        batches = repeated[0]['samples']['C'] if p['task']=='poisson' else repeated
+        assert len(batches) == 3 and all(b['passed'] == b['total'] == 12 for b in batches)
         rows.append({
-            'display_order': len(rows) + 1, 'execution_sequence': sequence[p['run_id']],
+            'display_order': len(rows)+1, 'execution_sequence': sequence[p['run_id']],
             'task': p['task'], 'group': p['group'], 'repeat': p['repeat'],
             'label': f"{NAMES[p['task']]} {p['group'].upper()} r{p['repeat']}",
-            'attempt_id': p['attempt_id'], 'attempt_raw_status': a['raw_status'],
-            'old_first_score': num(o['first_score']), 'old_final_score': num(o['final_score']),
-            'old_reward': num(o['reward']), 'old_has_submission': o['final_candidate'] not in ('', 'null'),
-            'thinking_first_score': first['score'] if first else None,
-            'thinking_final_score': p['after']['score'] if p['after'] else None,
-            'thinking_reward': p['after']['reward'] if p['after'] else None,
-            'thinking_has_submission': a['valid_public_candidate'],
-            'paired_delta': p['delta_score'], 'first_final_direction': p['first_final_direction'],
+            'run_id': p['run_id'], 'attempt_id': p['attempt_id'], 'attempt_raw_status': a['raw_status'],
+            'first_id': a['first_id'], 'final_id': a['final_id'],
+            'first_source_hash': first['source_hash'], 'final_source_hash': final['source_hash'],
+            'thinking_first_score': first['score'], 'thinking_final_score': final['score'],
+            'thinking_reward': final['reward'], 'thinking_has_submission': a['valid_public_candidate'],
+            'evaluation_status': final['evaluation_status'], 'numerical_passed': 12, 'unique_cases': 12,
+            'first_final_direction': p['first_final_direction'],
+            'formal_speedup': repeated[0].get('speedup') if final['score'] is not None else None,
             'output_tokens': a['known_output_tokens'], 'public_evaluations': a['public_evaluations'],
             'research_wall_seconds': a['research_wall_seconds'],
-            'score_evidence': measurement['operation_result'] if measurement else a['replay_evidence'],
+            'host_evidence': a['host_evidence'], 'registry_evidence': a['registry_evidence'],
+            'relay_evidence': relay, 'original_replay_evidence': original_evidence, 'score_evidence': evidence,
         })
+    baselines = []
+    for b in thinking['author_baselines']:
+        item = {k:b[k] for k in ('task','method','evaluation_status','score','reward','passed')}
+        item['formal_speedup'] = None
+        if b.get('result_evidence'):
+            item['evidence'] = b['result_evidence']
+            d = checked(item['evidence'])['diagnostics']
+            assert d['score'] == b['score'] and d['reward'] == b['reward']
+            item['formal_speedup'] = d['repeats'][0].get('speedup')
+        else:
+            refusal = next(v for v in thinking['timing_refusals'] if v['kind']=='baseline' and v['identity']==b['method'])
+            item['evidence'] = {'path':refusal['acceptance_path'],'sha256':refusal['acceptance_sha256']}
+            assert checked(item['evidence'])['status'] == 'host_preflight_rejected'
+        baselines.append(item)
     diagnostics = []
-    for source in SOURCES[4:6]:
-        x = read(source)
-        samples = x['diagnostics']['first']['repeats'][0]['samples']
+    for source in SOURCES[3:5]:
+        samples = read(source)['diagnostics']['first']['repeats'][0]['samples']
         b = [r['worker']['execution_wall_seconds'] for r in samples['B']]
         c = [r['worker']['execution_wall_seconds'] for r in samples['C']]
-        assert len(b) == len(c) == 3
-        assert all(r['passed'] == r['total'] == 12 for r in samples['C'])
-        diagnostics.append({
-            'source': source, 'formal_timing_accepted': False, 'formal_score': None,
-            'baseline_seconds': b, 'candidate_seconds': c,
-            'baseline_median_seconds': statistics.median(b), 'candidate_median_seconds': statistics.median(c),
-            'raw_median_ratio_diagnostic_only': statistics.median(b) / statistics.median(c),
-            'unique_cases': 12, 'candidate_replays': 3, 'passed_per_replay': [r['passed'] for r in samples['C']],
-            'max_relative_residual': max(v['max_relative_residual'] for r in samples['C'] for v in r['cases']),
-            'max_solution_error': max(v['max_solution_error'] for r in samples['C'] for v in r['cases']),
-        })
-    assert len(rows) == 15 and sum(r['thinking_final_score'] is not None for r in rows) == 14
-    assert sum(r['thinking_reward'] == 1 for r in rows) == 14
-    assert sum(r['old_reward'] == 1 for r in rows) == 6
-    assert sum(r['old_has_submission'] for r in rows) == 9
-    data = {
-        'scope': 'Descriptive analysis of saved experiments; no new executions; G2 diagnostic timings are not formal scores.',
-        'display_order': 'task Heat/ODE/Poisson, group G1/G2/G3, repeat r1/r2/r3',
-        'repeat_definition': 'Fresh independent research session within the same task/group; not an attempt retry, test difficulty, or replay.',
-        'rows': rows, 'g2_diagnostics': diagnostics,
-        'retained_thinking_usage': thinking['retained_usage'], 'all_thinking_attempt_usage': thinking['all_attempt_usage'],
-        'source_sha256': {s: hashlib.sha256((ROOT / s).read_bytes()).hexdigest() for s in SOURCES},
-    }
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / 'analysis.json').write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
+        assert len(b) == len(c) == 3 and all(r['passed']==r['total']==12 for r in samples['C'])
+        diagnostics.append({'source':source,'formal_timing_accepted':False,'formal_score':None,
+            'baseline_seconds':b,'candidate_seconds':c,'baseline_median_seconds':statistics.median(b),
+            'candidate_median_seconds':statistics.median(c),'raw_median_ratio_diagnostic_only':statistics.median(b)/statistics.median(c),
+            'unique_cases':12,'candidate_replays':3,'passed_per_replay':[r['passed'] for r in samples['C']],
+            'max_relative_residual':max(v['max_relative_residual'] for r in samples['C'] for v in r['cases']),
+            'max_solution_error':max(v['max_solution_error'] for r in samples['C'] for v in r['cases'])})
+    assert len(rows)==15 and sum(r['thinking_reward']==1 for r in rows)==14
+    assert sum(r['output_tokens'] for r in rows)==thinking['retained_usage']['known_output_tokens']
+    data={'scope':'Thinking/max only. Saved results, no new execution. G2 diagnostic times are not formal scores.',
+          'display_order':'task Heat/ODE/Poisson, group G1/G2/G3, repeat r1/r2/r3',
+          'repeat_definition':'Fresh research session, not a retry, difficulty or scoring replay.',
+          'rows':rows,'author_baselines':baselines,'g2_diagnostics':diagnostics,
+          'retained_thinking_usage':thinking['retained_usage'],'all_thinking_attempt_usage':thinking['all_attempt_usage'],
+          'source_sha256':dict(sorted(sources.items()))}
+    OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/'analysis.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     return data
 
 
 def fill_tables(data):
-    rows = data['rows']
-    table = '| 序号 | 会话 | 原最终分 | thinking/max 最终分 | 差值 | 原 reward → 新 reward | 说明 |\n|---:|---|---:|---:|---:|---|---|\n'
+    rows=data['rows']
+    table='| 序号 | 会话 | 最终分 | 数值通过 | reward | 正式加速比 | 结局 |\n|---:|---|---:|---|---:|---:|---|\n'
+    detail='| 序号 | 会话 | first 分 | final 分 | 公开评估次数 | 输出 token | 研究用时（分钟） | 实际计划序号 |\n|---:|---|---:|---:|---:|---:|---:|---:|\n'
     for r in rows:
-        note = '原无提交，按协议记 0' if not r['old_has_submission'] else '两批均有提交'
-        if r['task'] == 'poisson' and r['group'] == 'g1': note = '新分采用获准的独立计时补测'
-        if r['task'] == 'poisson' and r['group'] == 'g2': note = '数值通过；两批正式计时无效'
-        reward = lambda v: '—' if v is None else str(int(v))
-        table += f"| {r['display_order']:02d} | {r['label']} | {fmt(r['old_final_score'])} | {fmt(r['thinking_final_score'])} | {fmt(r['paired_delta'])} | {reward(r['old_reward'])} → {reward(r['thinking_reward'])} | {note} |\n"
-    detail = '| 序号 | 会话 | first 分 | final 分 | 公开评估次数 | 输出 token | 研究用时（分钟） | 实际计划序号 |\n|---:|---|---:|---:|---:|---:|---:|---:|\n'
-    for r in rows:
-        detail += f"| {r['display_order']:02d} | {r['label']} | {fmt(r['thinking_first_score'])} | {fmt(r['thinking_final_score'])} | {r['public_evaluations']} | {r['output_tokens']:,} | {r['research_wall_seconds']/60:.2f} | {r['execution_sequence']} |\n"
-    diag = '| 测量 | 基线中位耗时（秒） | G2 中位耗时（秒） | 原始耗时比（仅诊断） | 正式分数 |\n|---|---:|---:|---:|---|\n'
-    for label, d in zip(('首次测量', '独立补测'), data['g2_diagnostics']):
-        diag += f"| {label} | {d['baseline_median_seconds']:.6f} | {d['candidate_median_seconds']:.6f} | {d['raw_median_ratio_diagnostic_only']:.3f}× | 未取得有效计时，留空 |\n"
-    text = REPORT.read_text()
-    for key, block in [('paired-results', table), ('session-details', detail), ('g2-diagnostics', diag)]:
-        pattern = rf'<!-- BEGIN {key} -->.*?<!-- END {key} -->'
-        text, n = re.subn(pattern, f'<!-- BEGIN {key} -->\n{block}<!-- END {key} -->', text, flags=re.S)
-        assert n == 1, key
+        note='成功' if r['thinking_reward']==1 else '计时无效；非零分'
+        if r['task']=='poisson' and r['group']=='g1':note='成功（独立计时补测）'
+        reward='—' if r['thinking_reward'] is None else str(r['thinking_reward'])
+        speed='—' if r['formal_speedup'] is None else f"{r['formal_speedup']:.3f}×"
+        table+=f"| {r['display_order']:02d} | {r['label']} | {fmt(r['thinking_final_score'])} | 12 / 12 | {reward} | {speed} | {note} |\n"
+        detail+=f"| {r['display_order']:02d} | {r['label']} | {fmt(r['thinking_first_score'])} | {fmt(r['thinking_final_score'])} | {r['public_evaluations']} | {r['output_tokens']:,} | {r['research_wall_seconds']/60:.2f} | {r['execution_sequence']} |\n"
+    baseline='| 任务 | 作者方法及直观含义 | 分数 | 正确例 / 12 | reward | 正式加速比 |\n|---|---|---:|---:|---:|---:|\n'
+    for b in data['author_baselines']:
+        integer=lambda x:'—' if x is None else str(x)
+        speed='—' if b['formal_speedup'] is None else f"{b['formal_speedup']:.3f}×"
+        baseline+=f"| {NAMES[b['task']]} | {METHODS[b['method']]} | {fmt(b['score'])} | {integer(b['passed'])} | {integer(b['reward'])} | {speed} |\n"
+    diag='| 测量 | 基线中位耗时（秒） | G2 中位耗时（秒） | 原始耗时比（仅诊断） | 正式分数 |\n|---|---:|---:|---:|---|\n'
+    for label,d in zip(('首次测量','独立补测'),data['g2_diagnostics']):
+        diag+=f"| {label} | {d['baseline_median_seconds']:.6f} | {d['candidate_median_seconds']:.6f} | {d['raw_median_ratio_diagnostic_only']:.3f}× | 未取得有效计时，留空 |\n"
+    text=REPORT.read_text()
+    for key,block in [('thinking-results',table),('session-details',detail),('g2-diagnostics',diag),('thinking-baselines',baseline)]:
+        text,n=re.subn(rf'<!-- BEGIN {key} -->.*?<!-- END {key} -->',f'<!-- BEGIN {key} -->\n{block}<!-- END {key} -->',text,flags=re.S)
+        assert n==1,key
     REPORT.write_text(text)
-    (OUT / 'ordered-results.md').write_text('# 按任务、指导组、重复次数排序的结果\n\n' + table + '\n' + detail + '\n' + diag)
+    (OUT/'ordered-results.md').write_text('# Thinking/max 结果（任务、组别、重复次数顺序）\n\n'+table+'\n'+detail+'\n'+baseline+'\n'+diag)
+    evidence='# Thinking/max 原始证据索引\n\n与主报告 01–15 行一一对应。每个链接均指向保存的原始文件；完整 SHA256 见[机器可读索引](../results/thinking-report-2026-10-25/analysis.json)。主报告与图表由同一索引生成，读者可沿评分 → 登记 → 候选源码 → 研究/relay 日志回查。独立补测另列，初次评分与拒绝记录保留。\n\n| 序号 | 会话（保留 attempt） | 研究与用量 | 登记与源码 | 当前独立评分 | 初次评分 |\n|---:|---|---|---|---|---|\n'
+    for r in rows:
+        link=lambda key,label:f"[{label}](../{r[key]['path']})"
+        registry=Path(r['registry_evidence']['path']).parent
+        evidence+=f"| {r['display_order']:02d} | {r['label']} / {r['attempt_id'].rsplit('-',1)[1]} | {link('host_evidence','host')} · {link('relay_evidence','relay')} | {link('registry_evidence','登记')} · [源码](../{registry}/snapshots/{r['final_id']}) | {link('score_evidence','评分')} | {link('original_replay_evidence','原记录')} |\n"
+    evidence+='\n## 本批作者基线\n\n| 任务 | 方法 | 原始结果或准入拒绝 |\n|---|---|---|\n'
+    for b in data['author_baselines']:evidence+=f"| {NAMES[b['task']]} | {b['method']} | [原记录](../{b['evidence']['path']}) |\n"
+    evidence+='\n## 历史保全与核验\n\n两个失败 attempt 及三次执行器修复见[本批技术附录](thinking-control-2026-10-25.md)（该历史附录保留当时的跨批比较，当前主报告仅列 thinking）。G2 窗口拒绝见[计时附录](poisson-timing-recheck-2026-10-25.md)。上一版完整阅读报告已[独立归档](../archives/pre-thinking-only-20261025/README.md)，没有覆盖原始数据。\n\n运行 `python3 tools/verify_delivery.py` 检查交付哈希，再运行 `python3 tools/audit_thinking_report.py` 核对 15 行、图表来源、候选、用量、基线及主报告日志节选。两个命令均不调用模型或执行候选。\n'
+    (ROOT/'docs/thinking-report-evidence-2026-10-25.md').write_text(evidence)
 
 
-def figures(data, font):
+def figures(data,font):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     from matplotlib import font_manager
     if font:
         font_manager.fontManager.addfont(font)
-        plt.rcParams['font.family'] = font_manager.FontProperties(fname=font).get_name()
-    plt.rcParams.update({'font.size': 11, 'axes.unicode_minus': False, 'svg.fonttype': 'path', 'svg.hashsalt': 'sciresearch-final-report'})
-    FIG.mkdir(parents=True, exist_ok=True)
-    blue, orange, gray = '#176B87', '#D66A28', '#9AA5B1'
-
-    def save(fig, name):
-        fig.savefig(FIG / (name + '.png'), dpi=180, bbox_inches='tight', metadata={'Software': 'SciResearch report'})
-        fig.savefig(FIG / (name + '.svg'), bbox_inches='tight', metadata={'Date': None})
-        svg = FIG / (name + '.svg')
-        svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines()) + '\n')
-        plt.close(fig)
-
-    fig, axs = plt.subplots(1, 2, figsize=(11, 3.7), layout='constrained')
-    labels = ['原批次', 'thinking/max']
-    axs[0].barh(labels, [9, 15], color=[blue, orange])
-    for y, v in enumerate((9, 15)): axs[0].text(v - .3, y, f'{v}/15', ha='right', va='center', color='white', weight='bold')
-    axs[0].set(title='A. 有提交的研究会话', xlim=(0, 16), xlabel='会话数')
-    left = [0, 0]
-    for vals, color, label in [([6, 14], blue, '成功（reward=1）'), ([8, 0], orange, '有效未成功'), ([1, 1], gray, '计时无效')]:
-        axs[1].barh(labels, vals, left=left, color=color, label=label)
-        for y, v in enumerate(vals):
-            if v: axs[1].text(left[y] + v / 2, y, str(v), ha='center', va='center', color='white', weight='bold')
-        left = [a+b for a,b in zip(left,vals)]
-    axs[1].set(title='B. 最终评测结局', xlim=(0, 16), xlabel='会话数（每批固定 15）')
-    axs[1].legend(loc='lower center', bbox_to_anchor=(.5, -.48), ncol=3, fontsize=10)
-    for ax in axs:
-        ax.invert_yaxis(); ax.spines[['top','right']].set_visible(False); ax.set_xticks([0,3,6,9,12,15])
-    save(fig, 'outcomes')
-
-    fig, axes = plt.subplots(3, 1, figsize=(11, 10), layout='constrained')
-    for ax, task in zip(axes, TASKS):
-        rs = [r for r in data['rows'] if r['task'] == task]
-        for i, r in enumerate(rs):
-            for shift, key, color in [(-.18, 'old_final_score', blue), (.18, 'thinking_final_score', orange)]:
-                v = r[key]
-                if v is None:
-                    ax.scatter([i+shift], [5], color=gray, marker='x', s=65)
+        plt.rcParams['font.family']=font_manager.FontProperties(fname=font).get_name()
+    plt.rcParams.update({'font.size':11,'axes.unicode_minus':False,'svg.fonttype':'path','svg.hashsalt':'sciresearch-thinking-report'})
+    FIG.mkdir(parents=True,exist_ok=True)
+    blue,orange,gray='#176B87','#D66A28','#9AA5B1'
+    def save(fig,name):
+        fig.savefig(FIG/(name+'.png'),dpi=180,bbox_inches='tight',metadata={'Software':'SciResearch thinking report'})
+        fig.savefig(FIG/(name+'.svg'),bbox_inches='tight',metadata={'Date':None})
+        svg=FIG/(name+'.svg');svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n');plt.close(fig)
+    fig,axes=plt.subplots(1,2,figsize=(11,3.5),layout='constrained')
+    for i,t in enumerate(TASKS):
+        rs=[r for r in data['rows'] if r['task']==t];n=len(rs);success=sum(r['thinking_reward']==1 for r in rs)
+        axes[0].barh(NAMES[t],n,color=blue);axes[0].text(n-.2,i,f'{n}/{n}',ha='right',va='center',color='white',weight='bold')
+        axes[1].barh(NAMES[t],success,color=blue,label='正式成功' if i==0 else None)
+        axes[1].text(success/2,i,str(success),ha='center',va='center',color='white',weight='bold')
+        if n-success:
+            axes[1].barh(NAMES[t],n-success,left=success,color=gray,label='计时无效')
+            axes[1].text(success+.5,i,'1',ha='center',va='center',color='white',weight='bold')
+    axes[0].set_title('A. 有提交：共 15 / 15');axes[1].set_title('B. 正式成功 14，计时无效 1')
+    axes[1].legend(loc='lower center',bbox_to_anchor=(.5,-.42),ncol=2)
+    for ax in axes:ax.invert_yaxis();ax.set(xlim=(0,10),xlabel='研究会话数',xticks=range(0,10,3));ax.spines[['top','right']].set_visible(False)
+    save(fig,'outcomes')
+    fig,axes=plt.subplots(3,1,figsize=(11,10),layout='constrained')
+    for ax,task in zip(axes,TASKS):
+        rs=[r for r in data['rows'] if r['task']==task]
+        for i,r in enumerate(rs):
+            for shift,key,color in [(-.18,'thinking_first_score',blue),(.18,'thinking_final_score',orange)]:
+                v=r[key]
+                if v is None:ax.scatter([i+shift],[5],color=gray,marker='x',s=65)
                 else:
-                    ax.bar(i+shift, v, .33, color=color)
-                    ax.text(i+shift, v+1.8, f'{v:.1f}', ha='center', fontsize=8)
-        ax.set_xticks(range(len(rs)), [f"{r['group'].upper()} r{r['repeat']}" for r in rs])
-        ax.set(ylim=(0,112), title=f'{NAMES[task]}：原批次与 thinking/max', ylabel='任务内分数（0–100）')
-        ax.spines[['top','right']].set_visible(False)
-        ax.grid(axis='y', alpha=.15); ax.set_axisbelow(True)
+                    ax.bar(i+shift,v,.33,color=color);ax.text(i+shift,v+1.8,f'{v:.1f}',ha='center',fontsize=8)
+        ax.set_xticks(range(len(rs)),[f"{r['group'].upper()} r{r['repeat']}" for r in rs])
+        ax.set(ylim=(0,112),title=f'{NAMES[task]}：同一会话首次与最终候选',ylabel='任务内分数（0–100）')
+        ax.spines[['top','right']].set_visible(False);ax.grid(axis='y',alpha=.15);ax.set_axisbelow(True)
     from matplotlib.patches import Patch
     from matplotlib.lines import Line2D
-    fig.legend(handles=[Patch(color=blue,label='原批次'),Patch(color=orange,label='thinking/max'),Line2D([],[],marker='x',color=gray,linestyle='',label='×：无有效评分，非零分')], loc='outside lower center', ncol=3)
-    save(fig, 'paired-scores')
+    fig.legend(handles=[Patch(color=blue,label='首次 first'),Patch(color=orange,label='最终 final'),Line2D([],[],marker='x',color=gray,linestyle='',label='×：无有效评分，非零分')],loc='outside lower center',ncol=3)
+    save(fig,'first-final-scores')
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.8), layout='constrained')
     for ax, label, d in zip(axes, ('首次测量：窗口拒绝', '独立补测：窗口拒绝'), data['g2_diagnostics']):
@@ -197,6 +225,10 @@ def figures(data, font):
         ax.spines[['top','right']].set_visible(False)
         ax.text(.5,1.44,f"原始比值 {d['raw_median_ratio_diagnostic_only']:.3f}× · 仅诊断",ha='center',color='#9C3A26',weight='bold')
     save(fig, 'g2-diagnostic')
+    manifest={'analysis_sha256':hashlib.sha256((OUT/'analysis.json').read_bytes()).hexdigest(),
+              'figures':{'outcomes':'rows: submission and reward counts by task','first-final-scores':'rows: thinking_first_score/thinking_final_score in display order','g2-diagnostic':'g2_diagnostics: raw baseline_seconds/candidate_seconds, diagnostic only'},
+              'files':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(FIG.iterdir()) if p.suffix in ('.png','.svg')}}
+    (OUT/'figure-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 
 
 def html_report():
@@ -230,6 +262,7 @@ def html_report():
     @media(max-width:720px){main{padding:24px 18px;margin:0}h1{font-size:25px}nav{grid-template-columns:1fr}table{display:block;overflow-x:auto;white-space:normal}}
     @media print{body{background:white;font-size:10pt;line-height:1.6}main{max-width:none;margin:0;padding:0;box-shadow:none;border:0}nav{display:none}h1{font-size:22pt}h2{font-size:16pt;break-after:avoid}h3{break-after:avoid}h2+p,h3+p,p:has(img){break-after:avoid}img,pre,tr{break-inside:avoid}table{font-size:8pt;line-height:1.5;break-inside:avoid}th,td{padding:6px}p{orphans:3;widows:3}a{color:inherit;text-decoration:none}@page{size:A4;margin:18mm 16mm}}
     '''
+    style += '@media print{footer{display:none}}'
     start = body.index('</h1>') + len('</h1>')
     body = body[:start] + '<nav aria-label="目录">' + nav + '</nav>' + body[start:]
     path = REPORT.with_suffix('.html')

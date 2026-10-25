@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "pdf_pages": 16,
+  "all_pages_rendered_and_visually_reviewed": true,
+  "details_reviewed": [
+    "ordered_results",
+    "first_final_plot",
+    "g2_diagnostic",
+    "E2E_log_excerpts",
+    "final_page"
+  ],
+  "overflow": false,
+  "loaded_figures": 3,
+  "current_report_scope": "thinking_only",
+  "deterministic_standard_library_rebuild": true,
+  "previous_report_files_preserved": 21,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0
+}

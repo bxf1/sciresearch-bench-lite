@@ -1,0 +1,113 @@
+{
+  "status": "preserved_before_edit",
+  "source_commit": "8846b592946adc7061bcbd87ff0c7222664b7dcd",
+  "scope": "Previous two-batch comparison report, all figures, ordered analysis, presentation scripts and delivery manifest; no experimental records modified. Existing Release attachments also retained.",
+  "archive_sha256": "ef4e988ce5bd1455f132a385c994b3973cf23152f1df27f7dd05c0c130b74246",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 10520,
+      "sha256": "e649c581bec41f96cd4386e9ceb163d8f3c1b3f34c275276e8e2c05d07f1f4d9"
+    },
+    {
+      "path": "delivery-manifest.json",
+      "bytes": 4674841,
+      "sha256": "a526e6436687e0c09c6ca104ac3f432b8a631da2381e0e9fd137aefe429ed480"
+    },
+    {
+      "path": "docs/figures/final-report/g2-diagnostic.png",
+      "bytes": 76851,
+      "sha256": "a23e0dc3d15bf93afaf20877976ac9b88c3fbe751bdabecd89b84ac06385594b"
+    },
+    {
+      "path": "docs/figures/final-report/g2-diagnostic.svg",
+      "bytes": 88973,
+      "sha256": "4132e710656fb913e35e55ebf473336253ec4dc6cde9be6deb74ecf7a6ae93b4"
+    },
+    {
+      "path": "docs/figures/final-report/outcomes.png",
+      "bytes": 55192,
+      "sha256": "99fc26c22de746bcc3e688ff108cb47905f8a776e0ca20fc9fe5300f56f72683"
+    },
+    {
+      "path": "docs/figures/final-report/outcomes.svg",
+      "bytes": 76609,
+      "sha256": "e4b9fdaeb52f1576db8addcf2fc6b34dcb8f49df45cb37a0ddfbc3f00b3c3695"
+    },
+    {
+      "path": "docs/figures/final-report/paired-scores.png",
+      "bytes": 135735,
+      "sha256": "fef59b88d3a179aac1775d59172bf9e1501d9b758ab05490798fc47bb7d5c0a6"
+    },
+    {
+      "path": "docs/figures/final-report/paired-scores.svg",
+      "bytes": 96049,
+      "sha256": "5051fe584913397dad20d1d399a18d8d1cf7c3f5ac70daf261cedce9388a552c"
+    },
+    {
+      "path": "docs/poisson-timing-recheck-2026-10-25.md",
+      "bytes": 6408,
+      "sha256": "3d5e1af4d74f869acf7271dfab5c3738d80f666e82d4223bfedaa0959316f243"
+    },
+    {
+      "path": "docs/reproduction.md",
+      "bytes": 9926,
+      "sha256": "fb335e23aa491a9df0f145ee9aaab4b78839bf6df5d133717e7c8fd00365369f"
+    },
+    {
+      "path": "docs/submission-report-2026-10-24.html",
+      "bytes": 418246,
+      "sha256": "6a186f6585d5e99d48ff9d0631d70935f2fd9cdb49d01275438d512076633b9b"
+    },
+    {
+      "path": "docs/submission-report-2026-10-24.md",
+      "bytes": 40334,
+      "sha256": "9e8ab31660481ecbd01f3f3fedb40adacc5379e436eb3c51ae69fe2a5ab4c7a7"
+    },
+    {
+      "path": "docs/survey.md",
+      "bytes": 12015,
+      "sha256": "541c850fdd1ce8bfbc9615db551e8383c020fd4aa4d25d81ea14bef5dc7e2d9f"
+    },
+    {
+      "path": "output/pdf/sciresearch-final-report-20261025.pdf",
+      "bytes": 1858212,
+      "sha256": "8d55afa7138f5b5d4776625181cd1261cec594fe72ef6dfe8c5e46d056b4be7d"
+    },
+    {
+      "path": "results/final-report-2026-10-25/analysis.json",
+      "bytes": 18524,
+      "sha256": "666f0c994270d4720c7d4ba86af6c6d0193fb2f62896168a1fea82db8c48a08f"
+    },
+    {
+      "path": "results/final-report-2026-10-25/ordered-results.md",
+      "bytes": 2886,
+      "sha256": "b15103ad669e71bc14859ef0c00b0e4744fa1894e13418bbb81955b93aeaca08"
+    },
+    {
+      "path": "tools/build_delivery_manifest.py",
+      "bytes": 1498,
+      "sha256": "c537350b05487aaf1a912a7436892bf011c0b1f77c2b7f557e518cd7a9f996cc"
+    },
+    {
+      "path": "tools/build_final_report.py",
+      "bytes": 17083,
+      "sha256": "9ae35d0b2eae7521431f6f4d97221ce6afc82dd8b86980accd35e406c8482889"
+    },
+    {
+      "path": "tools/render_final_report.cjs",
+      "bytes": 1978,
+      "sha256": "52ace3e862e332df1a118c70cc40b1202a1401bb767785f9df229b01f1d71ed1"
+    },
+    {
+      "path": "tools/report-requirements.txt",
+      "bytes": 129,
+      "sha256": "2d577232368044111a3d7af44e367d2ad195bc20e42d046d65b8fc4c63d36437"
+    },
+    {
+      "path": "tools/verify_delivery.py",
+      "bytes": 7134,
+      "sha256": "e6d0361f9277f6822030f28432aaf6e62d2a02bb96a239108994d7dabe9e6aac"
+    }
+  ]
+}
