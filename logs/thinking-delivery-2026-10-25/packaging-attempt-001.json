@@ -1,0 +1,9 @@
+{
+  "status": "failed_before_publication",
+  "reason": "delivery manifest regenerated after selection; archive refused changed hash",
+  "partial_archive": "incomplete-archive-a001.tar.gz",
+  "partial_archive_sha256": "a6cb5c11bef6fabcd71ed8733cc4d5353cd73dc5dcf8febaaf78b58a89b604ae",
+  "old_manifest_sha256": "79425dd61555eacd7ee4a9f5b8a20b26bcfb5425e9065b34ad72ddcbc7c610e0",
+  "new_committed_manifest_sha256": "70eb4cf9199237c81303d3f311d8418900844782a9b70d9c03c412a295082d67",
+  "resolution": "Preserve incomplete archive, update selection for committed manifest, rebuild distinct complete archive; no scientific rerun."
+}

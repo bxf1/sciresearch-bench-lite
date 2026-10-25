@@ -1,0 +1,64 @@
+{
+  "status": "published_and_verified",
+  "verified_at": "2026-10-25T08:59:03.096321+00:00",
+  "source_commit": "2d13936bf6914716536867a7f01de1296766bb48",
+  "remote_source_commit": "2d13936bf6914716536867a7f01de1296766bb48",
+  "repository": {
+    "html_url": "https://github.com/bxf1/sciresearch-bench-lite",
+    "private": false,
+    "visibility": "public"
+  },
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024",
+  "release_id": 422744491,
+  "release_draft": false,
+  "release_notes_verified": true,
+  "retained_original_assets": 11,
+  "retained_asset_ids": [
+    672320213,
+    672320224,
+    672320218,
+    672320217,
+    672584624,
+    672584623,
+    672584625,
+    672320215,
+    672658333,
+    672658332,
+    672658331
+  ],
+  "assets": [
+    {
+      "name": "thinking-control-evidence-20261025.tar.gz",
+      "id": 674559418,
+      "bytes": 310600259,
+      "sha256": "c956f8e465270c904e3c05655718807942428fe6b7923c5bd5fbe11295e0d98d",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-control-evidence-20261025.tar.gz",
+      "server_digest_matched": true
+    },
+    {
+      "name": "thinking-control-manifest-20261025.json",
+      "id": 674559417,
+      "bytes": 2391072,
+      "sha256": "118bbc1a9e84d9fd3b1e5907b068c997174594f527b836af16606443fae4e140",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-control-manifest-20261025.json",
+      "server_digest_matched": true
+    },
+    {
+      "name": "thinking-control-SHA256SUMS-20261025.txt",
+      "id": 674559421,
+      "bytes": 214,
+      "sha256": "cebc99e3faf768b5e6f5a80d93e2af36dda72bdf3490c7a834c844ddad27eeaa",
+      "url": "https://github.com/bxf1/sciresearch-bench-lite/releases/download/v0.3-submission-20261024/thinking-control-SHA256SUMS-20261025.txt",
+      "server_digest_matched": true
+    }
+  ],
+  "research_sessions": 15,
+  "valid_public_submissions": 15,
+  "valid_final_scores": 13,
+  "reward_one": 13,
+  "timing_rejected_sessions": 2,
+  "valid_author_baselines": 10,
+  "rejected_author_baselines": 1,
+  "no_scientific_reruns_during_publication": true,
+  "old_controller_state_is_execution_snapshot": true
+}

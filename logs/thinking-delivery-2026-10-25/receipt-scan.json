@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "scope": "Post-publication receipt and asset manifests",
+  "files": [
+    {
+      "path": "logs/thinking-delivery-2026-10-25/thinking-control-manifest-20261025.json",
+      "bytes": 2391072,
+      "sha256": "118bbc1a9e84d9fd3b1e5907b068c997174594f527b836af16606443fae4e140"
+    },
+    {
+      "path": "logs/thinking-delivery-2026-10-25/thinking-control-SHA256SUMS-20261025.txt",
+      "bytes": 214,
+      "sha256": "cebc99e3faf768b5e6f5a80d93e2af36dda72bdf3490c7a834c844ddad27eeaa"
+    },
+    {
+      "path": "logs/thinking-delivery-2026-10-25/publication-verification.json",
+      "bytes": 2270,
+      "sha256": "dc4d77ec59e55210d2fd2ea7a43e0fe743e605888e95829a660f99a14071eb37"
+    },
+    {
+      "path": "logs/thinking-delivery-2026-10-25/release-notes.md",
+      "bytes": 6652,
+      "sha256": "f1a45a19afbab03bcbd96053d4ddc730ca16f66d206834fbabb2c3e609a66b86"
+    },
+    {
+      "path": "logs/thinking-delivery-2026-10-25/final-clean-copy-audit.json",
+      "bytes": 716,
+      "sha256": "5bae4f0c256c5f92f72f9d3c5ac204295719e80c07622ed5cdd17c78c88578f4"
+    },
+    {
+      "path": "logs/thinking-delivery-2026-10-25/packaging-attempt-001.json",
+      "bytes": 627,
+      "sha256": "3866c928076705fe2ef2e6f4c4ab856c800fbfc47fd3d611fc5edf4eea502fb9"
+    }
+  ],
+  "known_credential_matches": 0,
+  "credential_pattern_matches": 0
+}
