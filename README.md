@@ -6,6 +6,17 @@
 
 [最终实验报告](docs/submission-report-2026-10-24.md) · [Benchmark 调研](docs/survey.md) · [数据索引](data/README.md) · [真实日志与证据链](docs/evidence.md) · [复现指南](docs/reproduction.md) · [Release 与完整附件](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)
 
+## 作业阅读入口
+
+建议先读[最终实验报告](docs/submission-report-2026-10-24.md)：按背景、调研、实验设计、评测规则、实验结果、预期与原因分析、改进和复现组织，含三张结果图及全部 15 格配对数据。另提供[阅读打印版 PDF](output/pdf/sciresearch-final-report-20261025.pdf)与[离线 HTML 阅读版](docs/submission-report-2026-10-24.html)，HTML 图像内嵌；GitHub 上请下载后打开。
+
+- **G1 / G2 / G3**：详细方法指导 / 方向指导 / 共同任务契约。
+- **r1 / r2 / r3**：同一任务和指导组的第 1 / 2 / 3 次独立研究会话。Heat 每组有三次；ODE、Poisson 每组只有 r1。
+- **a001 / a002**：同一会话的执行尝试和关联重试；提交后的三次评分重放也不是新的研究会话。
+- 数据按 Heat → ODE → Poisson、G1 → G2 → G3、r1 → r2 → r3 排列，另列实际执行序号。[排序数据及来源哈希](results/final-report-2026-10-25/analysis.json)由脚本读取既有证据生成。
+
+Poisson G2 的候选数值检查通过；独立补测的原始中位耗时比为 **2.488×（仅诊断）**。正式计时因宿主背景进程 5.423% 超过冻结的 5% 阈值而无效，正式分数继续为空。诊断比值没有换算为正式分数，也不计入成功数。
+
 ## 按题目要求阅读
 
 | 要求 | 交付内容 |
@@ -14,7 +25,7 @@
 | 选择一个科研领域 | 科学计算；三类问题分别考察逆问题稳定化、动力学结构识别和正确性约束下的效率优化 |
 | 至少 3 条完整任务、数据与基线 | [任务卡](docs/task_cards.md)、[90 例数据清单](data/README.md)、[11 种基线及逐例结果](results/formal-study-003/baselines.csv) |
 | 可复现环境与自动独立评分 | [环境和复现](docs/reproduction.md)、[隔离协议](docs/protocol.md)、[评分代码](judge/)、[可信执行器](runner/) |
-| 端到端验证、失败与可靠性分析 | [最终报告第 5–9 节](docs/submission-report-2026-10-24.md)、[原始日志节选](docs/evidence.md)、[提交与循环诊断](docs/submission-diagnosis-2026-10-23.md) |
+| 端到端验证、失败与可靠性分析 | [最终报告第 6–10 节](docs/submission-report-2026-10-24.md)、[原始日志节选](docs/evidence.md)、[提交与循环诊断](docs/submission-diagnosis-2026-10-23.md) |
 
 ## 任务与数据
 
@@ -87,6 +98,6 @@ tools/             交付表格生成和完整性核验
 
 大型完整轨迹另存 Release：原始证据包约 467 MiB、作者数据约 27 MB；历史附件保留，最新交付包使用独立名称。Release 的历史标签保留初次提交，**当前交付以 main 为准；`submission-ready-20261024.tar.gz` 为 10 月 24 日历史快照，thinking 对照增量证据见 `thinking-control-evidence-20261025.tar.gz`**，不要将页面自动生成的旧标签源码 ZIP 当作最新报告。
 
-Poisson 后续计时证据另存 `poisson-timing-recheck-20261025.tar.gz`，保留原拒绝窗口。G2 需要先消除 VPN 活跃负载才能取得有效计时，本轮未放宽阈值或循环补测。
+Poisson 后续计时证据另存 `poisson-timing-recheck-20261025.tar.gz`，保留原拒绝窗口。G2 的正式性能需要新的合格宿主窗口验证；本轮报告整理只读取既有证据。阅读版及图表另存 `final-report-readable-20261025.tar.gz`，它是报告与分析增量包，与 main 和已有实验附件配合使用。
 
 本项目只验证受控合成分布上的求解器研究，不声称原创科学发现或已实现真正 RSI；同宿主、小样本及模型路由可变等限制见[最终报告](docs/submission-report-2026-10-24.md)。历史日志保持原文，以本 README 和最终报告作为当前入口。

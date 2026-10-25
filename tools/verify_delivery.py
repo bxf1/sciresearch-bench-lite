@@ -76,6 +76,24 @@ def main():
     for name, expected_hash in timing['source_sha256'].items():
         assert digest(ROOT / name) == expected_hash, 'Timing recheck evidence mismatch: ' + name
     assert timing['research_usage_unchanged'] == thinking['all_attempt_usage']
+    report = read(ROOT / 'results/final-report-2026-10-25/analysis.json')
+    for name, expected_hash in report['source_sha256'].items():
+        assert digest(ROOT / name) == expected_hash, 'Report evidence mismatch: ' + name
+    report_rows = report['rows']
+    assert len(report_rows) == 15 and len({r['attempt_id'] for r in report_rows}) == 15
+    assert [(r['task'], r['group'], r['repeat']) for r in report_rows] == [
+        (task, group, repeat) for task in ('heat', 'ode', 'poisson')
+        for group in ('g1', 'g2', 'g3') for repeat in range(1, 4 if task == 'heat' else 2)]
+    current_pairs = {p['attempt_id']: p for p in timing['pairs']}
+    for row in report_rows:
+        pair = current_pairs[row['attempt_id']]
+        for field, source in (('old_final_score', 'before'), ('thinking_final_score', 'after')):
+            assert row[field] == (pair[source]['score'] if pair[source] else None)
+    assert sum(r['output_tokens'] for r in report_rows) == thinking['retained_usage']['known_output_tokens']
+    assert sum(r['thinking_reward'] == 1 for r in report_rows) == 14
+    for diagnostic in report['g2_diagnostics']:
+        assert diagnostic['formal_score'] is None and diagnostic['formal_timing_accepted'] is False
+        assert diagnostic['unique_cases'] == 12 and diagnostic['passed_per_replay'] == [12, 12, 12]
     archive_verified = False
     if args.author_archive:
         assert digest(args.author_archive) == dataset['archive_sha256'], 'Author archive checksum mismatch'
@@ -95,6 +113,7 @@ def main():
                       'thinking_reward_one': timing['reward_one'],
                       'thinking_timing_rejected': timing['timing_invalid_sessions'],
                       'new_model_calls': 0, 'new_candidate_executions': 0,
+                      'ordered_report_rows': len(report_rows), 'g2_diagnostic_groups': 2,
                       'scope': 'Delivery consistency and integrity audit; not a new scientific replay.'}, indent=2))
 
 

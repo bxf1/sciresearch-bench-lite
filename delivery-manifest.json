@@ -5,7 +5,8 @@
     "delivery-manifest.json",
     "logs/submission-delivery-2026-10-24/",
     "logs/thinking-delivery-2026-10-25/",
-    "logs/poisson-timing-delivery-2026-10-25/"
+    "logs/poisson-timing-delivery-2026-10-25/",
+    "logs/final-report-delivery-2026-10-25/"
   ],
   "exclusion_reason": "The manifest cannot hash itself; publication receipts are recorded after packaging.",
   "files": [
@@ -71,13 +72,13 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 138,
-      "sha256": "7057487951444fa5b04fb81ef7f0196575aea835a351705a281f87bfb8e4c1dc"
+      "bytes": 152,
+      "sha256": "1ddd2f7b06c510e644a2b9f4e1b06941af4941f81ca8559c17c78db1938beff4"
     },
     {
       "path": "README.md",
-      "bytes": 9060,
-      "sha256": "7be284611162d5e600ec2a0643c8b1c11315c596964137d80b89b33422b2852b"
+      "bytes": 10520,
+      "sha256": "e649c581bec41f96cd4386e9ceb163d8f3c1b3f34c275276e8e2c05d07f1f4d9"
     },
     {
       "path": "authoring/generate.py",
@@ -175,6 +176,36 @@
       "sha256": "8a056a7a7e104d7a20d0c5fffcdd2f13b6b2445c992e6cffed407ee2f3b3420f"
     },
     {
+      "path": "docs/figures/final-report/g2-diagnostic.png",
+      "bytes": 76851,
+      "sha256": "a23e0dc3d15bf93afaf20877976ac9b88c3fbe751bdabecd89b84ac06385594b"
+    },
+    {
+      "path": "docs/figures/final-report/g2-diagnostic.svg",
+      "bytes": 88973,
+      "sha256": "4132e710656fb913e35e55ebf473336253ec4dc6cde9be6deb74ecf7a6ae93b4"
+    },
+    {
+      "path": "docs/figures/final-report/outcomes.png",
+      "bytes": 55192,
+      "sha256": "99fc26c22de746bcc3e688ff108cb47905f8a776e0ca20fc9fe5300f56f72683"
+    },
+    {
+      "path": "docs/figures/final-report/outcomes.svg",
+      "bytes": 76609,
+      "sha256": "e4b9fdaeb52f1576db8addcf2fc6b34dcb8f49df45cb37a0ddfbc3f00b3c3695"
+    },
+    {
+      "path": "docs/figures/final-report/paired-scores.png",
+      "bytes": 135735,
+      "sha256": "fef59b88d3a179aac1775d59172bf9e1501d9b758ab05490798fc47bb7d5c0a6"
+    },
+    {
+      "path": "docs/figures/final-report/paired-scores.svg",
+      "bytes": 96049,
+      "sha256": "5051fe584913397dad20d1d399a18d8d1cf7c3f5ac70daf261cedce9388a552c"
+    },
+    {
       "path": "docs/formal-freeze-2026-10-23.md",
       "bytes": 6840,
       "sha256": "b7f7755201770617317807cb82871f896acb68fef45d8667ba373fc8344b7de9"
@@ -211,8 +242,8 @@
     },
     {
       "path": "docs/poisson-timing-recheck-2026-10-25.md",
-      "bytes": 5430,
-      "sha256": "e399abd35a56f89118ab205e0345d1bede1cd2b5a41290938d8bd03c31dc8024"
+      "bytes": 6408,
+      "sha256": "3d5e1af4d74f869acf7271dfab5c3738d80f666e82d4223bfedaa0959316f243"
     },
     {
       "path": "docs/poisson.md",
@@ -226,8 +257,8 @@
     },
     {
       "path": "docs/reproduction.md",
-      "bytes": 7908,
-      "sha256": "739c79b05073ea8d2c81c10b72aea6374ec322d902723011e86ba8509eac3923"
+      "bytes": 9926,
+      "sha256": "fb335e23aa491a9df0f145ee9aaab4b78839bf6df5d133717e7c8fd00365369f"
     },
     {
       "path": "docs/resource-timing-acceptance-2026-10-23.md",
@@ -250,9 +281,14 @@
       "sha256": "5800fb4d8011d0457f50bc68e32c31d0696fd1a2b257a23de552cdc2585bdaab"
     },
     {
+      "path": "docs/submission-report-2026-10-24.html",
+      "bytes": 418231,
+      "sha256": "276439ab13095e59de8fd6b7d86c1761fbcc574d88492929d9f55ac493ff5513"
+    },
+    {
       "path": "docs/submission-report-2026-10-24.md",
-      "bytes": 25476,
-      "sha256": "dcd776c29822cad42857b01d6f16609b88c1182dfb966415e8c0efc77ef0a5a5"
+      "bytes": 40332,
+      "sha256": "a480a10ec4dcfebe797413dfdad5f160c43219646852cdd7833a4ba53ee0180c"
     },
     {
       "path": "docs/supplemental-results-2026-10-24.md",
@@ -261,8 +297,8 @@
     },
     {
       "path": "docs/survey.md",
-      "bytes": 11852,
-      "sha256": "cafae285d45710a7bcd2a923640359404e27da30956cbbf968c27306847ea9a8"
+      "bytes": 12015,
+      "sha256": "541c850fdd1ce8bfbc9615db551e8383c020fd4aa4d25d81ea14bef5dc7e2d9f"
     },
     {
       "path": "docs/task_cards.md",
@@ -25588,6 +25624,11 @@
       "path": "logs/unit-tests-final-local-005.txt",
       "bytes": 1122,
       "sha256": "348c995fd974d0bf85af421d730a7313ffc4cb8f1dcf1f43c3fb7320f257052c"
+    },
+    {
+      "path": "output/pdf/sciresearch-final-report-20261025.pdf",
+      "bytes": 1858241,
+      "sha256": "08aac7f0900ce151a8c99dbf40572472f6f6096a1ab2ddcb3e784d4f5080a2d8"
     },
     {
       "path": "prompts/heat/common.md",
@@ -92085,6 +92126,16 @@
       "sha256": "1e150746e386b8dfb4a4470b52af689edffb340f738610452ad98a0e8d93000a"
     },
     {
+      "path": "results/final-report-2026-10-25/analysis.json",
+      "bytes": 18524,
+      "sha256": "666f0c994270d4720c7d4ba86af6c6d0193fb2f62896168a1fea82db8c48a08f"
+    },
+    {
+      "path": "results/final-report-2026-10-25/ordered-results.md",
+      "bytes": 2886,
+      "sha256": "b15103ad669e71bc14859ef0c00b0e4744fa1894e13418bbb81955b93aeaca08"
+    },
+    {
       "path": "results/formal-study-003/attempts.csv",
       "bytes": 25793,
       "sha256": "7a7fd6fd29e6390bef1931191fc79cc9683afe990240d7c49cf9bc15e760f4f7"
@@ -93321,13 +93372,28 @@
     },
     {
       "path": "tools/build_delivery_manifest.py",
-      "bytes": 1444,
-      "sha256": "1f9deaf64bb1b97ff0e863b96860136caa750d54b5d81cb69889ecd99755cc94"
+      "bytes": 1498,
+      "sha256": "c537350b05487aaf1a912a7436892bf011c0b1f77c2b7f557e518cd7a9f996cc"
+    },
+    {
+      "path": "tools/build_final_report.py",
+      "bytes": 17015,
+      "sha256": "2b0b0487f9c157a54763072cae86097c319a1e4bfd7b0d9d3bc99787a1c78069"
     },
     {
       "path": "tools/prepare_delivery.py",
       "bytes": 11575,
       "sha256": "62fe0b9a4a45b2aade3f2c1eacaa3bae33547a6f9b07ef051beda2e09a1a92c5"
+    },
+    {
+      "path": "tools/render_final_report.cjs",
+      "bytes": 1978,
+      "sha256": "52ace3e862e332df1a118c70cc40b1202a1401bb767785f9df229b01f1d71ed1"
+    },
+    {
+      "path": "tools/report-requirements.txt",
+      "bytes": 129,
+      "sha256": "2d577232368044111a3d7af44e367d2ad195bc20e42d046d65b8fc4c63d36437"
     },
     {
       "path": "tools/supplemental_status.py",
@@ -93336,8 +93402,8 @@
     },
     {
       "path": "tools/verify_delivery.py",
-      "bytes": 5711,
-      "sha256": "bc6f2554945bbdb31399d371f2e6ba760435609544a5e9a041266359c4a07e94"
+      "bytes": 7134,
+      "sha256": "e6d0361f9277f6822030f28432aaf6e62d2a02bb96a239108994d7dabe9e6aac"
     }
   ]
 }

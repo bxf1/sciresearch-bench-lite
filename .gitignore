@@ -1,4 +1,5 @@
 .venv/
+.report-venv/
 .bootstrap/
 .python/
 .cache/

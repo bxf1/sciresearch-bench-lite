@@ -12,7 +12,7 @@ python3 tools/verify_delivery.py
 
 它验证 `delivery-manifest.json` 中的文件 SHA256、90 例索引、18 例公开输入、11 种基线、15 次正式研究及节选日志来源。该检查不执行候选、不调用模型，不代替数值实验复现。
 
-按[数据说明](../data/README.md)下载并验证 `author-data-v0.3.tar.gz`，解压后数据根目录是 `authoring/data/author-data-v0.3/`，含 `inputs/` 和 `private/`。完整原始轨迹、包内清单和校验记录见 [Release](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。其历史标签源码 ZIP 对应初次提交；最新交付请使用 main 或命名为 `submission-ready-20261024.tar.gz` 的附件，提交 SHA 记录在附件完整性文件中。
+按[数据说明](../data/README.md)下载并验证 `author-data-v0.3.tar.gz`，解压后数据根目录是 `authoring/data/author-data-v0.3/`，含 `inputs/` 和 `private/`。完整原始轨迹、包内清单和校验记录见 [Release](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.3-submission-20261024)。其历史标签源码 ZIP 对应初次提交；最新交付请使用 main。`submission-ready-20261024.tar.gz` 是 10 月 24 日历史快照，后续对照、计时和阅读版分别用独立附件保存，提交 SHA 记录在对应清单中。
 
 ## 2. 安装固定依赖与数值镜像
 
@@ -104,3 +104,21 @@ Release 的 `thinking-control-evidence-20261025.tar.gz` 是本轮独立命名的
 
 
 Poisson 后续计时补测独立保存在 [poisson-timing-recheck 报告](poisson-timing-recheck-2026-10-25.md)。运行 `python3 tools/analyze_poisson_timing_recheck.py` 从保留证据重建当前合并视图，不执行候选。新 Release 附件 `poisson-timing-recheck-20261025.tar.gz` 包含准入拒绝、G1 有效重放、G2 再次无效重放及逐批产物；对应 `poisson-timing-recheck-manifest-20261025.json` 和 `poisson-timing-recheck-SHA256SUMS-20261025.txt` 提供清单及完整性校验。原 thinking 对照包和全部历史附件均保留。
+
+## 最终报告、排序数据与图表
+
+`python3 tools/build_final_report.py` 使用标准库从既有记录生成 `results/final-report-2026-10-25/analysis.json`、排序表以及主报告中的数据块。它保留 G2 正式分数为空，并单列两轮原始耗时比，不执行模型、候选或新的计时。
+
+图表和离线 HTML 使用独立的排版环境，不能修改原研究环境。可在新的虚拟环境安装：
+
+```bash
+python3 -m venv .report-venv
+.report-venv/bin/python -m pip install -r tools/report-requirements.txt
+.report-venv/bin/python tools/build_final_report.py --figures --html --font /path/to/chinese-font.ttf
+```
+
+`--font` 指向本机中文字体；macOS 可使用 `/System/Library/Fonts/Hiragino Sans GB.ttc`。没有指定时采用 matplotlib 的本地字体配置，字体缺失可能导致中文显示不全。数值数据不依赖字体，绘图排版在不同平台不承诺逐字节相同。PNG 供报告阅读，SVG 供放大和导出，三张图都由完整未取整数据生成。
+
+离线 HTML 位于 `docs/submission-report-2026-10-24.html`，图像已内嵌，可下载后直接打开或浏览器打印；外部证据链接指向 GitHub。Release 的 `final-report-readable-20261025.tar.gz` 保存报告、图表、排序分析和生成脚本；配套 manifest 与 SHA256SUMS 校验附件。它是阅读与分析增量包，不替代完整实验轨迹或作者数据。
+
+仓库还提供 `output/pdf/sciresearch-final-report-20261025.pdf`。PDF 从同一 HTML 的打印样式生成；在独立 Node 环境安装 `playwright@1.62.1` 并安装其 Chromium 后，可执行 `node tools/render_final_report.cjs`。也可通过 `REPORT_CHROMIUM_PATH` 指定本机 Chrome 可执行文件。该脚本使用独立无头实例、阻止网络请求，不使用登录会话。本次 PDF 元数据记录 Chrome 156，运行器 Playwright 1.62.1；PDF 分页会随字体和浏览器版本变化，科学数据不变。
