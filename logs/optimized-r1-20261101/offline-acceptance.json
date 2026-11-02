@@ -1,0 +1,10 @@
+{
+  "diagnostic_calibration": "3470773708296f375017cf040e00408fb44a1b3045fc1e92972e33c9da3f9bf9",
+  "gt_qc": "95c4b87cbcd186eceed8369c110685d52504517a798e03f3357fb0d38c13e03c",
+  "main_calibration": "59bc1c6bea79d32b20f30ac2f6ffe2e5bba94e2c1cb869fa651558f93c158d09",
+  "model_calls": 0,
+  "resources": "ab6296a89131ed591fc8c7dea61e113bdc25ce64dece61a99318f01883813f6a",
+  "rule_fixtures": "24c4a1e84179e82cb286b1096020a5a4b3766858f367750b1e069735aa0c035d",
+  "status": "passed",
+  "test_scores_accessed": false
+}

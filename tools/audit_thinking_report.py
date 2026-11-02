@@ -22,8 +22,8 @@ def close(a,b):
     assert math.isclose(a,b,rel_tol=1e-10,abs_tol=1e-9),(a,b)
 
 
-def audit():
-    data=read('results/thinking-r1-report-2026-10-25/analysis.json')
+def audit(*, archived=False):
+    data=read('results/thinking-r1-report-2026-10-29/analysis.json')
     for p,h in data['source_sha256'].items():assert sha(p)==h,p
     rows=data['rows']
     expected=[(t,g,r) for t in ('heat','ode','poisson') for g in ('g1','g2','g3') for r in range(1,4 if t=='heat' else 2)]
@@ -94,12 +94,25 @@ def audit():
         if b['score'] is None:
             assert read(b['evidence']['path'])['status']=='host_preflight_rejected'
         else:check_checkpoint(read(b['evidence']['path'])['diagnostics'],b['task'])
-    assert len(rows)==15 and sum(r['thinking_reward']==1 for r in rows)==14
+    assert len(rows)==15 and sum(r['thinking_reward']==1 for r in rows)==15
     assert sum(b['score'] is not None for b in data['author_baselines'])==10
     for d in data['g2_diagnostics']:
         close(d['raw_median_ratio_diagnostic_only'],statistics.median(d['baseline_seconds'])/statistics.median(d['candidate_seconds']))
         assert d['formal_score'] is None and not d['formal_timing_accepted']
-    report=(ROOT/'docs/submission-report-2026-10-24.md').read_text()
+    latest=read('results/poisson-g2-timing-recheck-2026-10-29/reviewed-results.json')
+    accepted, = [w for w in latest['windows'] if w['final_test_scores_accessed']]
+    assert accepted['status']=='passed' and not accepted['violations'] and not accepted['observer_errors']
+    observed=[json.loads(line) for line in (ROOT/Path(accepted['operation_result']['path']).parent/'host-observations.jsonl').read_text().splitlines()]
+    assert all(not row['issues'] for row in observed)
+    history=data['g2_timing_history']
+    assert len(history)==4 and [d['formal_timing_accepted'] for d in history]==[False,False,False,True]
+    close(history[-1]['formal_score'],latest['formal_score'])
+    close(history[-1]['formal_speedup'],latest['formal_speedup'])
+    if archived:
+        with tarfile.open(ROOT/'archives/pre-heat-unified-20261029/previous-current-report.tar.gz') as saved_report:
+            report=saved_report.extractfile('docs/submission-report-2026-10-24.md').read().decode()
+    else:
+        report=(ROOT/'docs/submission-report-2026-10-24.md').read_text()
     for phrase in ('原最终分','paired-scores.png','原批次 6/15','关闭 thinking |','research-6615cd7900ba0750'):
         assert phrase not in report,phrase
     # Verify verbatim selected fields against actual raw records, not a generated summary.
@@ -140,23 +153,23 @@ def audit():
         assert st['attempt_count']==len(scoped)
         assert st['all_attempt_known_output_tokens']==sum(a['known_output_tokens'] for a in scoped)
         assert st['all_attempt_charged_output_tokens']==sum(a['charged_output_tokens'] for a in scoped)
-    assert data['statistics_by_scope']['main']['reward_one']==8
+    assert data['statistics_by_scope']['main']['reward_one']==9
     assert data['statistics_by_scope']['main']['retained_output_tokens']==587172
     assert data['statistics_by_scope']['appendix']['retained_output_tokens']==309038
     # Check all current local Markdown destinations; historical files remain independently hashed.
     link_count=0
-    for name in ('README.md','docs/submission-report-2026-10-24.md','docs/thinking-report-evidence-2026-10-25.md','docs/reproduction.md'):
+    for name in ('README.md','docs/submission-report-2026-10-24.md','docs/thinking-report-evidence-2026-10-29.md','docs/reproduction.md'):
         for target in re.findall(r'\]\(([^)]+)\)',(ROOT/name).read_text()):
             if target.startswith(('https:','http:','#','mailto:')):continue
             path=(ROOT/name).parent/target.split('#')[0]
             assert path.exists(),(name,target)
             link_count+=1
-    fig=read('results/thinking-r1-report-2026-10-25/figure-manifest.json')
-    assert fig['analysis_sha256']==sha('results/thinking-r1-report-2026-10-25/analysis.json')
+    fig=read('results/thinking-r1-report-2026-10-29/figure-manifest.json')
+    assert fig['analysis_sha256']==sha('results/thinking-r1-report-2026-10-29/analysis.json')
     assert fig['main_run_ids']==[r['run_id'] for r in main]
     assert len(fig['files'])==6
     for name,h in fig['files'].items():assert sha(name)==h
-    assert len(re.findall(r'!\[.*?\]\(figures/thinking-r1-report/.*?\.png\)',report))==3
+    assert len(re.findall(r'!\[.*?\]\(figures/thinking-r1-report-2026-10-29/.*?\.png\)',report))==3
     archive='archives/pre-thinking-only-20261025/previous-comparison-report.tar.gz'
     saved=read('archives/pre-thinking-only-20261025/manifest.json')
     assert sha(archive)==saved['archive_sha256']
@@ -165,12 +178,16 @@ def audit():
         for member,row in zip(members,saved['files']):
             assert member.isfile() and member.name.endswith(row['path'])
             assert hashlib.sha256(tar.extractfile(member).read()).hexdigest()==row['sha256']
-    return {'status':'passed','scope':'thinking_r1_main_with_complete_appendix','main_sessions':9,'appendix_sessions':6,'main_reward_one':8,'main_output_tokens':587172,'appendix_output_tokens':309038,'sessions':15,'valid_scores':14,'reward_one':14,
+    return {'status':'passed','scope':'thinking_r1_main_with_complete_appendix','main_sessions':9,'appendix_sessions':6,'main_reward_one':9,'main_output_tokens':587172,'appendix_output_tokens':309038,'sessions':15,'valid_scores':15,'reward_one':15,
       'baseline_valid':10,'baseline_preflight_rejected':1,'raw_case_records_checked':checked_cases,
       'source_hashes_verified':len(data['source_sha256']),'local_links_checked':link_count,
       'figure_files_verified':6,'previous_report_files_preserved':len(saved['files']),
-      'g2_formal_score':None,'new_model_calls':0,'new_candidate_executions':0}
+      'g2_formal_score':next(r['thinking_final_score'] for r in rows if r['label']=='Poisson G2 r1'),'new_model_calls':0,'new_candidate_executions':0}
 
 
 if __name__=='__main__':
-    print(json.dumps(audit(),ensure_ascii=False,indent=2))
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--archived', action='store_true')
+    args=parser.parse_args()
+    print(json.dumps(audit(archived=args.archived),ensure_ascii=False,indent=2))

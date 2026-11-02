@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "release_tag": "v0.4-r1-complete-20261101",
+  "release_url": "https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.4-r1-complete-20261101",
+  "reported_groups": 9,
+  "scientific_sessions_accounted": 10,
+  "instances": 162,
+  "archive": {
+    "name": "sciresearch-r1-complete-evidence-20261101.tar.gz",
+    "bytes": 328671946,
+    "sha256": "faefb7a142b9356000536964ae59b1ffcd169b3847c918deff635570027ca750",
+    "manifest": "data/r1-complete-20261101/archive-manifest.json",
+    "files": 11285,
+    "identical_content_hardlinks": 5139
+  },
+  "report": {
+    "path": "output/pdf/sciresearch-r1-complete-report-20261101.pdf",
+    "bytes": 666266,
+    "sha256": "b66d247bbb4f83f8b70f09fdc60a0e7c560322b80779f16aa0c7ac91f631cfe0",
+    "pages": 22
+  },
+  "credential_scan": {
+    "text_files_scanned": 6228,
+    "findings": 0
+  },
+  "frozen_readme": "The archive preserves the original README bytes; use START-HERE.md and docs/r1-complete-report-20261101.md for the current results."
+}

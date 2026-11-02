@@ -91,6 +91,19 @@ class StudyTests(unittest.IsolatedAsyncioTestCase):
         await study.start(self.project, self.plan_path, second["run_id"], launch=self.launch)
         self.assertEqual(len(self.manifest()["attempts"]), 2)
 
+    async def test_explicit_request_cap_preserves_total_budget(self):
+        self.plan["model"]["request_output_limit"] = 16384
+        write_json(self.plan_path, self.plan)
+        row = self.plan["runs"][0]
+        spec = study.session_spec(self.project, self.plan_path, row["run_id"], row["run_id"] + "-a001")
+        # The synthetic fixture's total budget is 10000; no request can exceed it.
+        self.assertEqual(spec["settings"]["request_output_limit"], 10000)
+        self.assertEqual(spec["settings"]["session_output_limit"], 10000)
+        self.plan["model"]["request_output_limit"] = -1
+        write_json(self.plan_path, self.plan)
+        with self.assertRaisesRegex(ValueError, "request output limit"):
+            study.session_spec(self.project, self.plan_path, row["run_id"], row["run_id"] + "-a001")
+
     async def test_thinking_control_is_frozen_through_native_session(self):
         model = self.plan['model']
         evidence = model['enforcement']['thinking']['evidence']

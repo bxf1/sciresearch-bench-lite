@@ -57,3 +57,6 @@ submission failures. If no finalize occurs, the latest valid evaluated snapshot
 is selected. Your first valid and final candidates are retained, including
 valid candidates that fail scientific criteria. Implement, evaluate, and keep
 an evidence-based experiment record within the common budget.
+
+
+Common execution and submission policy: You have 1800 seconds total wall time, 20 accepted public evaluation requests, and 200000 output tokens including thinking and compaction. A single response is limited to 16384 tokens; normal context compaction remains enabled. Host reminders may arrive at model-call boundaries with approximately 10, 5 and 2 minutes remaining; a long-running command can delay a reminder. You choose your own exploration and submission schedule. Keep deliverable source, including solve.py, in a dedicated relative subdirectory, for example candidate/. Register with `bench evaluate candidate` and select with `bench finalize candidate-001` (using the actual returned ID). Do not submit the workspace root or an absolute path. At the deadline, absent an explicit selection, the latest valid registered candidate is the fallback; no valid registered candidate scores zero. Invalid submissions consume accepted evaluation slots. Local experiments and public evaluations both consume research time.

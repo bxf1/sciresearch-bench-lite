@@ -1,0 +1,132 @@
+{
+  "status": "passed",
+  "pdf": {
+    "path": "output/pdf/sciresearch-r1-complete-report-20261101.pdf",
+    "sha256": "b66d247bbb4f83f8b70f09fdc60a0e7c560322b80779f16aa0c7ac91f631cfe0"
+  },
+  "reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "render_dpi": 90,
+  "rendered_pages": [
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-01.png",
+      "sha256": "d2bd108c708d8b28af03e0f62b3f3d68b32cced056c3009e978e357daa889155"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-02.png",
+      "sha256": "2111cef2c513ac6c02c9e073fefac5d0c2d75432521de6203b3b7e58e775e052"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-03.png",
+      "sha256": "a67dcca808048f67cfc75d422a7b113c756e6e742e5751a932321f5f38fe1908"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-04.png",
+      "sha256": "d16603079bc12db9f27ad5e0c5ab3d97837b74ddca9bc9b9b58e143a059fefe5"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-05.png",
+      "sha256": "7600f03d87a68d278f9a4aaef8a337d7345209fc6a240608a49b082235515ee6"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-06.png",
+      "sha256": "363ce4aafc2a651ba8d0e6986cb53484336c25813b3b3d4439f2cfc791a5cb6b"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-07.png",
+      "sha256": "1e8aa14bdbf80bb779b5ac80d624fa395bdd50e027af1ffa867e7958e18962b4"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-08.png",
+      "sha256": "50dfd4d3d21dae0ff93fb1ab5e1d2d34a1d0511b16272444227fa7b0c223c560"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-09.png",
+      "sha256": "dfa7a0152471ff5bb43f6af8585330aafbd8dd74b663b5b84cc65b016885a5f0"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-10.png",
+      "sha256": "a4695f02dda576742ea2831ebe7bf3d2e2fa44f4d73db7b93b27d9d90aec8493"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-11.png",
+      "sha256": "75c6411863e905be93e067ad22823cf6c2c7a63bf99cc892c6be2a43e6aa04f5"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-12.png",
+      "sha256": "05c70af24fd9e26fe8263664862b62f711206b04e3674dde539b834c75eed509"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-13.png",
+      "sha256": "8d5d614ca0821565799c9964a7d389556e36b550df869e2d8d75fc5cc5c062a2"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-14.png",
+      "sha256": "0de427f328656dd615e094e2586fa6ef089786f4463a166857b8db0b3f35b3eb"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-15.png",
+      "sha256": "452d3eb330afe8355e08a6ecfeb2f563fcd2e35ac003187eaf258b7d7889ac2e"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-16.png",
+      "sha256": "520c228df9b3fc179fb3291a8ba5c9300b710d0f22d0b047005418a0bef11f5c"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-17.png",
+      "sha256": "8ab3d3ee1174a14afac628b230e33d8cee11af3a20926199b076745ac152417e"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-18.png",
+      "sha256": "c6116bef0a77dda39fb0fbe13be62b9e8699067fef36feb918b4eb208b3a2198"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-19.png",
+      "sha256": "b919cfd05cc3f6847fd0ca1c704ec2dc43f8f5d4c7e7134276bdda5aefcc2dba"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-20.png",
+      "sha256": "d23155c9d3ef4cd457d6476ddf4e794011b498364736a6f10f953677e998971b"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-21.png",
+      "sha256": "cbca3f73d8b8669c18ad245ca75b13c8cf29f954679c8fa5ad1b2b113faf8892"
+    },
+    {
+      "path": "tmp/pdfs/r1-complete-20261101-verified/page-22.png",
+      "sha256": "f9bb7892dc8b247b2898026b7d3b6c8de7d3f3adc27f590d62421874053a972b"
+    }
+  ],
+  "reviewed_at": 1793542399.3023841,
+  "checks": [
+    "All 22 pages inspected",
+    "Final page 17 re-inspected after explicit diagnostic theme ordering",
+    "Other 21 final page renders byte-identical to inspected images",
+    "Tables kept together with readable labels",
+    "Correct metric columns and diagnostic labels",
+    "No clipped text or overlapping content",
+    "Selectable text, embedded fonts, vector charts"
+  ]
+}

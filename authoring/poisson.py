@@ -144,13 +144,16 @@ def _fingerprint(*arrays):
     return digest.hexdigest()
 
 
-def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict):
+def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict, *, diagnostic=None):
     if level not in (0, 1, 2):
         raise ValueError("level must be 0, 1, or 2")
     public_dir, private_dir = Path(public_dir), Path(private_dir)
     n, contrast = ((32, 1), (64, 30), (128, 300))[level]
-    disks = np.column_stack((rngs["system"].uniform(.2, .8, (3, 2)),
-                             rngs["system"].uniform(.08, .18, 3)))
+    diagnostic = diagnostic or {}
+    n = diagnostic.get("n", n)
+    disk_count = diagnostic.get("disks", 3)
+    disks = np.column_stack((rngs["system"].uniform(.2, .8, (disk_count, 2)),
+                             rngs["system"].uniform(.08, .18, disk_count)))
     coefficient = coefficient_field(n, contrast, disks)
     matrix, interior_weights, boundary_weights = assemble(coefficient)
     truth = rngs["solution"].standard_normal((n * n, 4)).astype("<f8")
@@ -189,7 +192,7 @@ def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict):
                 "rhs_shape": [n * n, 4], "dtype": "little-endian float64", "matrix_format": "CSR",
                 "matrix_properties": ["symmetric", "positive_definite"], "indexing": "row-major i*n+j",
                 "relative_residual_limit": 1e-8, "relative_solution_error_limit": 1e-5,
-                "same_operator_different_rhs": level == 0}
+                "same_operator_different_rhs": level == 0 or diagnostic.get("cache_order", False)}
     (public_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     np.savez(private_dir / "truth.npz", solution=truth, coefficient=coefficient, disks=disks,
              independent_rhs=independent, interior_weights=interior_weights, boundary_weights=boundary_weights)

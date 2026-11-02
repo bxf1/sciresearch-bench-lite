@@ -1,0 +1,80 @@
+{
+  "reported_groups": 9,
+  "scientific_sessions": 10,
+  "selected": [
+    {
+      "final_source_hash": "e29f9212dafacd4766ea48c1baf0718e19e09a657f90858aa4d4a067849c0c7f",
+      "label": "Heat G1 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-heat-g1-r1",
+      "score": 91.5431262747909
+    },
+    {
+      "final_source_hash": "b890bf835b531f617dcbe3a91158323c9616d6e836b91d6bffaf15359422b83e",
+      "label": "Heat G2 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-heat-g2-r1",
+      "score": 83.50572122476599
+    },
+    {
+      "final_source_hash": "d4a7eaee319b52e052708992a2a4be8cd6fc2d995c37914792393bc4425b1437",
+      "label": "Heat G3 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-heat-g3-r1",
+      "score": 91.01585744074306
+    },
+    {
+      "final_source_hash": "5505ce558316e6134b552f3c56bb179d8541081bcb4524f96914947fd6d1540e",
+      "label": "ODE G1 r1",
+      "reward": 1,
+      "run_id": "research-56e485a96415c456-ode-g1-r1",
+      "score": 96.86308530752324
+    },
+    {
+      "final_source_hash": "3c1fdb9b5ae01f874eee769bdaf0a6054143ff3af029aa854e99771c40eab0ca",
+      "label": "ODE G2 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-ode-g2-r1",
+      "score": 98.93872550167008
+    },
+    {
+      "final_source_hash": "0e566903c9e329810c7ce4da3d91844c8ea0ac469db331cff8cedd023e2bd38d",
+      "label": "ODE G3 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-ode-g3-r1",
+      "score": 98.48755370429463
+    },
+    {
+      "final_source_hash": "fe039133d46e4c512c708436014ecfa520299c58689f3493f00846363c9f5cbc",
+      "label": "Poisson G1 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-poisson-g1-r1",
+      "score": 65.4493334629701
+    },
+    {
+      "final_source_hash": "7b2f4b5d137f147ff2551a5c0679a825d3098aae1d411b788836f20b227894fa",
+      "label": "Poisson G2 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-poisson-g2-r1",
+      "score": 45.62622586113101
+    },
+    {
+      "final_source_hash": "df75613875d977fc2c52529e94c9ef716e61efe7e21f36d43c7307567212317f",
+      "label": "Poisson G3 r1",
+      "reward": 1,
+      "run_id": "research-194b4260e84e36bb-poisson-g3-r1",
+      "score": 58.54022011750003
+    }
+  ],
+  "selection_policy": "One final result per group; ODE G1 uses its latest independent sealed research. All ten research sessions remain in cost accounting. Poisson G2 uses the accepted fixed-source timing record.",
+  "sources": [
+    {
+      "path": "results/optimized-r1-20261101/results.json",
+      "sha256": "c47345d4187af124e4983341b40f76a58be6c30ffb83e2cba9785abf7f91d43e"
+    },
+    {
+      "path": "results/optimized-r1-supplement-20261101/results.json",
+      "sha256": "b47ce9004ebcd9d00c64e7296b6d21ae0f9b9f90366732daacf701322b32d3ce"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "plan": {
+    "path": "freezes/research-run-plan-optimized-r1-20261101.json",
+    "sha256": "38a8ed5a2d9aa251467cffc62649c0cf87fe546e10350d000e76114a3dc322db"
+  },
+  "research_started": false,
+  "scientific_sessions": 9,
+  "status": "passed"
+}

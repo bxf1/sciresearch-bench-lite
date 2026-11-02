@@ -521,7 +521,7 @@ class StreamTracker:
 
 class Relay:
     def __init__(self, provider_key: str, session_token: str, events: Path,
-                 limits: Limits | None = None, *, upstream=None, clock=time.monotonic):
+                 limits: Limits | None = None, *, upstream=None, clock=time.monotonic, budget_path=None):
         if not provider_key or "\r" in provider_key or "\n" in provider_key:
             raise ValueError("provider key is required and must be a single line")
         if not isinstance(session_token, str) or len(session_token) < 32 or not session_token.isascii() or any(c.isspace() for c in session_token):
@@ -532,6 +532,43 @@ class Relay:
         self.events = EventLog(events)
         self.ledger = Ledger(self.limits, self.events, clock)
         self.upstream = upstream if upstream is not None else FixedUpstream(provider_key)
+        self.budget_path = Path(budget_path) if budget_path is not None else None
+        self.budget_lock = threading.Lock()
+        self.budget_sent = set()
+
+    def remind(self, value, request_id=None):
+        """Host-only budget file; inject at normal model-call boundaries, never compaction."""
+        if self.budget_path is None or not self.budget_path.exists() or "tools" not in value:
+            return
+        with self.budget_lock:
+            budget = strict_json(self.budget_path.read_bytes())
+            if (set(budget) != {"started_at", "deadline", "thresholds_seconds"}
+                    or budget["thresholds_seconds"] != [600, 300, 120]
+                    or budget["deadline"] - budget["started_at"] != 1800):
+                raise ValueError("invalid trusted research budget")
+            remaining = budget["deadline"] - time.time()
+            due = [t for t in budget["thresholds_seconds"] if remaining <= t and t not in self.budget_sent]
+            if not due or remaining <= 0:
+                return
+            message = (f"[Host research-budget reminder] Approximately {max(0, int(remaining))} seconds remain. "
+                       "The 30-minute deadline includes local experiments and evaluations. "
+                       "You remain free to choose your exploration and submission schedule. "
+                       "Register candidates with bench evaluate <relative-source-dir>; select with bench finalize <candidate-id>. "
+                       "At the deadline the latest valid registered candidate is the fallback; no candidate means zero.")
+            messages = value["messages"]
+            if messages[-1].get("role") == "user":
+                content = messages[-1]["content"]
+                blocks = [{"type": "text", "text": content}] if isinstance(content, str) else list(content)
+                messages[-1] = {**messages[-1], "content": [*blocks, {"type": "text", "text": message}]}
+            else:
+                messages.append({"role": "user", "content": message})
+            if len(encoded(value)) > self.limits.max_body_bytes:
+                raise Rejected(413, "normalized_body_too_large")
+            self.budget_sent.update(due)
+            self.events.append({"event": "research_budget_reminder", "request_id": request_id,
+                                "stage": "prepared_before_request_admission",
+                                "thresholds_crossed_seconds": due, "remaining_seconds": remaining,
+                                "text": message, "text_sha256": hashlib.sha256(message.encode()).hexdigest()})
 
     def authorize(self, headers):
         api_keys, authorization = headers.get_all("x-api-key", []), headers.get_all("Authorization", [])
@@ -755,6 +792,7 @@ class RelayHandler(BaseHTTPRequestHandler):
             if len(raw) != length:
                 raise Rejected(400, "truncated_body")
             value, temperature = self.relay.validate(raw)
+            self.relay.remind(value)
             item = self.relay.ledger.reserve(value["max_tokens"], temperature, self.deadline, value)
             value["max_tokens"] = item.effective
 
@@ -850,7 +888,8 @@ def main(argv=None):
                          thinking_effort=args.thinking_effort,
                          expected_system_sha256=args.expected_system_sha256,
                          expected_tools_sha256=args.expected_tools_sha256,
-                         expected_compaction_system_sha256=args.expected_compaction_system_sha256))
+                         expected_compaction_system_sha256=args.expected_compaction_system_sha256),
+                  budget_path=args.events.parent / "research-budget.json")
     server = RelayServer((args.bind, args.port), relay)
     try:
         server.serve_forever(poll_interval=0.2)

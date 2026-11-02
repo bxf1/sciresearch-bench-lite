@@ -1,0 +1,18 @@
+{
+  "live_probe": {
+    "path": "logs/optimized-r1-20261101/live-context-probe/result.json",
+    "sha256": "2f3ef5ec4c2f7634bebde3b00c65f42491467f90fe48e3f2ee5364812c1fef30"
+  },
+  "native_compaction_retained": true,
+  "native_tests": {
+    "path": "logs/optimized-r1-20261101/native-offline-tests.json",
+    "sha256": "8e08670f032da8842074cd134042d96b3c322443f54cd015255d9d6b38c5f958"
+  },
+  "native_tool_event_timestamps": true,
+  "request_output_limit": 16384,
+  "status": "passed",
+  "unit_tests": {
+    "path": "logs/optimized-r1-20261101/unit-acceptance.json",
+    "sha256": "42c98c308c26c65cee0560cba0b0f0a8896a53b494e3bfa37af557884a256746"
+  }
+}

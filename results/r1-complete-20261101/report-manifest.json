@@ -1,0 +1,16 @@
+{
+  "scope": "nine_group_complete_results",
+  "report_path": "docs/r1-complete-report-20261101.md",
+  "pdf_path": "output/pdf/sciresearch-r1-complete-report-20261101.pdf",
+  "source_sha256": {
+    "results/r1-complete-20261101/analysis.json": "d954a4708f5d5038b08966ef21621c31627e6abd86a869f491c80434878c931c",
+    "results/r1-complete-20261101/method-analysis.json": "e18c64ac8fc08e96beb9654d3cec5e4afbca8957a44cd08a797983c60077d360",
+    "results/r1-complete-20261101/figure-manifest.json": "2762043915a5c043b60ae0d1366b1c9fa5950e852c757dd3c47e9a914ac5a2e4",
+    "docs/r1-complete-report-20261101.md": "958bc28fc03afd82271b4478d761475e1ef9464fbb0e4d4d1d9e0cac02c8ef81",
+    "tools/templates/r1-complete-report-20261101.md": "a0bfa7aae69ceda4455f8004edef5c74cbcd4f723595d659951cb9015e718d42"
+  },
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "vector_charts": 3,
+  "embedded_font_faces": 4
+}

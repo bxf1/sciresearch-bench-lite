@@ -95,7 +95,15 @@ def main():
         assert diagnostic['formal_score'] is None and diagnostic['formal_timing_accepted'] is False
         assert diagnostic['unique_cases'] == 12 and diagnostic['passed_per_replay'] == [12, 12, 12]
     from audit_thinking_report import audit
-    thinking_report_audit = audit()
+    thinking_report_audit = audit(archived=True)
+    from audit_unified_r1_report import audit as audit_unified
+    unified_r1_audit = audit_unified()
+    from audit_ode_g1_rerun_report import audit as audit_ode_rerun
+    ode_rerun_audit = audit_ode_rerun()
+    from audit_final_submission_report import audit as audit_final_edition
+    final_edition_audit = audit_final_edition()
+    from audit_second_edition_report import audit as audit_second_edition
+    second_edition_report_audit = audit_second_edition()
     archive_verified = False
     if args.author_archive:
         assert digest(args.author_archive) == dataset['archive_sha256'], 'Author archive checksum mismatch'
@@ -110,13 +118,18 @@ def main():
     print(json.dumps({'status': 'passed', 'verified_files': len(manifest['files']), 'indexed_instances': 90,
                       'public_instances_in_clone': 18, 'author_baseline_methods': 11,
                       'historical_evidence_verified': True, 'author_archive_verified': archive_verified,
-                      'thinking_sessions': 15, 'thinking_initial_valid_scores': 13,
-                      'thinking_valid_scores': timing['valid_final_scores'],
-                      'thinking_reward_one': timing['reward_one'],
-                      'thinking_timing_rejected': timing['timing_invalid_sessions'],
+                      'historical_thinking_sessions': 15, 'thinking_initial_valid_scores': 13,
+                      'thinking_valid_scores': thinking_report_audit['valid_scores'],
+                      'thinking_reward_one': thinking_report_audit['reward_one'],
+                      'thinking_timing_rejected': thinking_report_audit['sessions'] - thinking_report_audit['valid_scores'],
                       'new_model_calls': 0, 'new_candidate_executions': 0,
-                      'ordered_report_rows': len(report_rows), 'g2_diagnostic_groups': 2,
+                      'current_report_rows': unified_r1_audit['new_sessions'],
+                      'historical_report_rows': len(report_rows), 'historical_g2_diagnostic_groups': 3,
                       'thinking_only_report_audit': thinking_report_audit,
+                      'current_uniform_nine_r1_audit': unified_r1_audit,
+                      'ode_g1_post_hoc_rerun_audit': ode_rerun_audit,
+                      'final_edition_audit': final_edition_audit,
+                      'second_edition_report_audit': second_edition_report_audit,
                       'scope': 'Delivery consistency and integrity audit; not a new scientific replay.'}, indent=2))
 
 

@@ -1,0 +1,440 @@
+{
+  "new_scientific_sessions": 1,
+  "ode": {
+    "attempt_wall_seconds": 1164.0601978302002,
+    "candidates": [
+      {
+        "files": {
+          "solve.py": {
+            "path": "research-runs/research-56e485a96415c456-ode-g1-r1/registry/snapshots/candidate-001/solve.py",
+            "sha256": "c0e6bd8d8f52e22e9ff97cc8157abd327c3445ba8ade60740dc76ed86d339911"
+          }
+        },
+        "id": "candidate-001",
+        "source_hash": "0d1bcc5f091ea1418d897d2186fd7b353edd43b82f3c5e93d272056553a07270"
+      },
+      {
+        "files": {
+          "solve.py": {
+            "path": "research-runs/research-56e485a96415c456-ode-g1-r1/registry/snapshots/candidate-002/solve.py",
+            "sha256": "4913ffe4b83d23005906183ea92b286c558f2c9aae490ba2d59436d125ee59e9"
+          }
+        },
+        "id": "candidate-002",
+        "source_hash": "57bfcc40d5103986cebe79656b99b918466b3f941ebfd01d21936314594083a3"
+      },
+      {
+        "files": {
+          "solve.py": {
+            "path": "research-runs/research-56e485a96415c456-ode-g1-r1/registry/snapshots/candidate-003/solve.py",
+            "sha256": "b7973cb541901e1792696133e730a146ad9d184859e4c4882492315fca2abf8b"
+          }
+        },
+        "id": "candidate-003",
+        "source_hash": "5505ce558316e6134b552f3c56bb179d8541081bcb4524f96914947fd6d1540e"
+      }
+    ],
+    "diagnostic_status": "evaluated",
+    "diagnostics": {
+      "coordinate_scale": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 4,
+            "max": 0.015543962016279845,
+            "median": 0.003922375142418853,
+            "min": 0.0005053228378868153
+          },
+          "E_roll": {
+            "count": 4,
+            "max": 0.009482424487388905,
+            "median": 0.005777701248276051,
+            "min": 0.0016134583441683324
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4
+        ],
+        "replays_observed": 1
+      },
+      "coordinate_swap": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 4,
+            "max": 0.007698939927383931,
+            "median": 0.004513873404315463,
+            "min": 0.0013639222222707518
+          },
+          "E_roll": {
+            "count": 4,
+            "max": 0.006449020250664368,
+            "median": 0.005371077149379568,
+            "min": 0.0010849763669178215
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4
+        ],
+        "replays_observed": 1
+      },
+      "stable_cubic": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 4,
+            "max": 0.024783327322581428,
+            "median": 0.011440563763240374,
+            "min": 0.005103838064106115
+          },
+          "E_roll": {
+            "count": 4,
+            "max": 0.012257651375058786,
+            "median": 0.005252496132020557,
+            "min": 0.0016006527192648108
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4
+        ],
+        "replays_observed": 1
+      }
+    },
+    "final": {
+      "expected_cases": 12,
+      "failures": [],
+      "metrics": {
+        "E_field": {
+          "count": 36,
+          "max": 0.01461890498501265,
+          "median": 0.002218682688364404,
+          "min": 0.0005316619678209117
+        },
+        "E_roll": {
+          "count": 36,
+          "max": 0.0070452362045120885,
+          "median": 0.0028351012100095293,
+          "min": 0.00043287708355688886
+        }
+      },
+      "observed_cases": 12,
+      "passed_all_observed_replays": 12,
+      "passed_per_replay": [
+        12,
+        12,
+        12
+      ],
+      "replays_observed": 3
+    },
+    "final_score": 96.86308530752324,
+    "first": {
+      "expected_cases": 12,
+      "failures": [],
+      "metrics": {
+        "E_field": {
+          "count": 36,
+          "max": 0.015358432785345074,
+          "median": 0.001989463463662965,
+          "min": 0.00047307020455403216
+        },
+        "E_roll": {
+          "count": 36,
+          "max": 0.00893308849504839,
+          "median": 0.0031599037195517155,
+          "min": 0.0006647454248877226
+        }
+      },
+      "observed_cases": 12,
+      "passed_all_observed_replays": 12,
+      "passed_per_replay": [
+        12,
+        12,
+        12
+      ],
+      "replays_observed": 3
+    },
+    "first_score": 96.63662292916503,
+    "host_status": "completed",
+    "main_by_level": {
+      "0": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 12,
+            "max": 0.0024045319568569436,
+            "median": 0.0008674458364138194,
+            "min": 0.0005316619678209117
+          },
+          "E_roll": {
+            "count": 12,
+            "max": 0.0017783474399268662,
+            "median": 0.000696930822399791,
+            "min": 0.00043287708355688886
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4,
+          4,
+          4
+        ],
+        "replays_observed": 3
+      },
+      "1": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 12,
+            "max": 0.002228549775777971,
+            "median": 0.001989463463662965,
+            "min": 0.0013618581869915315
+          },
+          "E_roll": {
+            "count": 12,
+            "max": 0.0036960434151305896,
+            "median": 0.0028351012100095293,
+            "min": 0.0013001342369032666
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4,
+          4,
+          4
+        ],
+        "replays_observed": 3
+      },
+      "2": {
+        "expected_cases": 4,
+        "failures": [],
+        "metrics": {
+          "E_field": {
+            "count": 12,
+            "max": 0.01461890498501265,
+            "median": 0.004907697756007395,
+            "min": 0.0035760439194079865
+          },
+          "E_roll": {
+            "count": 12,
+            "max": 0.0070452362045120885,
+            "median": 0.005192773329145381,
+            "min": 0.0033329386122672223
+          }
+        },
+        "observed_cases": 4,
+        "passed_all_observed_replays": 4,
+        "passed_per_replay": [
+          4,
+          4,
+          4
+        ],
+        "replays_observed": 3
+      }
+    },
+    "requests": {
+      "budget_reminders": 0,
+      "effective_request_caps": [
+        16384
+      ],
+      "failed_request_charged_output_tokens": 0,
+      "failed_request_durations_missing": 0,
+      "failed_request_known_output_tokens": 0,
+      "failed_request_wall_seconds": 0,
+      "failed_requests": 0,
+      "failed_requests_with_unknown_output": 0,
+      "failure_outcomes": {},
+      "largest_observed_output_tokens": 7589,
+      "native_compaction_requests": 0,
+      "native_request_retry_count": 0,
+      "native_request_retry_declared_backoff_seconds": 0.0,
+      "note": "16384 is an upper bound. Native compaction and continuation/context allowance can request fewer tokens. Failed-request duration is observed occupied time, not counterfactual overhead; it remains included in total cost. Unknown output is not zero actual usage. Native request retries do not create scientific sessions or linked research attempts.",
+      "observed": true,
+      "one_token_requests": 0,
+      "request_count": 38,
+      "requests_with_output_over_4096": 4
+    },
+    "research_seconds": 1102.7521228790283,
+    "resources": {
+      "cpu_seconds": {
+        "count": 3,
+        "max": 34.780892,
+        "median": 34.559531,
+        "min": 34.349088
+      },
+      "execution_wall_seconds": {
+        "count": 3,
+        "max": 34.947199795,
+        "median": 34.785326152,
+        "min": 34.767941225
+      },
+      "memory_peak_bytes": {
+        "count": 3,
+        "max": 76161024,
+        "median": 76156928,
+        "min": 75939840
+      }
+    },
+    "reward": 1,
+    "selection_reason": "explicit_finalize",
+    "timeline": {
+      "accepted_public_evaluations": 3,
+      "charged_output_tokens": 67596,
+      "final_id": "candidate-003",
+      "first_id": "candidate-001",
+      "first_valid_registration_seconds": 481.2669520378113,
+      "known_output_tokens": 67596,
+      "native_compaction_requests": 0,
+      "observed_shell_commands": 41,
+      "observed_shell_commands_other_than_bench": 36,
+      "observed_tool_calls": 41,
+      "one_token_requests": 0,
+      "selection_reason": "explicit_finalize",
+      "successful_model_requests": 38,
+      "unique_registered_source_hashes": 3,
+      "unique_valid_source_hashes": 3
+    }
+  },
+  "original_preservation": {
+    "files_verified": 10408,
+    "manifest": {
+      "path": "results/optimized-r1-20261101/delivery-manifest.json",
+      "sha256": "8ef8b1cd09bbfec4fb9dc57a855a7d57c58b59d5a7cf04d363978df9d02dd75f"
+    },
+    "status": "passed"
+  },
+  "poisson": {
+    "admission_windows": 1,
+    "measurement_attempts": 1,
+    "median_seconds": {
+      "B": 1.136983547,
+      "C": 0.440259061
+    },
+    "numeric": {
+      "expected_cases": 12,
+      "failures": [],
+      "metrics": {
+        "max_relative_residual": {
+          "count": 36,
+          "max": 2.1550461818095386e-16,
+          "median": 1.9082128677563834e-16,
+          "min": 1.7382221909820668e-16
+        },
+        "max_solution_error": {
+          "count": 36,
+          "max": 1.1470642083844729e-12,
+          "median": 4.028637869562871e-14,
+          "min": 1.1663184160423332e-15
+        }
+      },
+      "observed_cases": 12,
+      "passed_all_observed_replays": 12,
+      "passed_per_replay": [
+        12,
+        12,
+        12
+      ],
+      "replays_observed": 3
+    },
+    "resources": {
+      "cpu_seconds": {
+        "count": 3,
+        "max": 0.528569,
+        "median": 0.523451,
+        "min": 0.523101
+      },
+      "execution_wall_seconds": {
+        "count": 3,
+        "max": 0.442786721,
+        "median": 0.440259061,
+        "min": 0.43670023
+      },
+      "memory_peak_bytes": {
+        "count": 3,
+        "max": 97771520,
+        "median": 97218560,
+        "min": 92033024
+      }
+    },
+    "reward": 1,
+    "score": 45.62622586113101,
+    "selected_window": 1,
+    "speedup": 2.582532985050818,
+    "status": "valid",
+    "times": {
+      "B": [
+        1.158957444,
+        1.127763047,
+        1.136983547
+      ],
+      "C": [
+        0.440259061,
+        0.442786721,
+        0.43670023
+      ]
+    },
+    "windows": [
+      {
+        "acceptance": {
+          "path": "results/optimized-r1-supplement-20261101/poisson/timing/window-01/acceptance.json",
+          "sha256": "e3fa41278c4513cb536c23dd3edd9896b03d2e26524b89063e1d71323eba6762"
+        },
+        "coverage_verified": true,
+        "maximum_gap_seconds": 2.0606296062469482,
+        "measured": true,
+        "number": 1,
+        "observation_count": 23,
+        "status": "valid"
+      }
+    ]
+  },
+  "protocol": {
+    "path": "logs/optimized-r1-supplement-20261101/protocol.json",
+    "sha256": "c941d10cf965b4f6f8eda19432f8f6a681023c9eb8f1555fdaabff40cf496923"
+  },
+  "scope": "post_hoc_two_failure_supplement",
+  "service_restored": true,
+  "source_evidence": [
+    {
+      "path": "results/optimized-r1-supplement-20261101/results.json",
+      "sha256": "b47ce9004ebcd9d00c64e7296b6d21ae0f9b9f90366732daacf701322b32d3ce"
+    },
+    {
+      "path": "results/optimized-r1-supplement-20261101/ode/main-result.json",
+      "sha256": "6115aaf1d2355043e3169dfab0fded916fe01667c12f5e79fadd81cce25d3424"
+    },
+    {
+      "path": "results/optimized-r1-supplement-20261101/ode/diagnostic-result.json",
+      "sha256": "ae4b33445b8b2dcdd4495f05ae0fd4fb80dcdcd9f2404530fba44bf7b230c174"
+    },
+    {
+      "path": "results/optimized-r1-supplement-20261101/poisson/result.json",
+      "sha256": "dfd9ce4e1a30ecefb9ab7008dd0b9eb4dcaa74b8e009cc2a2755b0c7c96d68ea"
+    },
+    {
+      "path": "results/optimized-r1-supplement-20261101/exploration-timeline.json",
+      "sha256": "f4a452b31b6163770ad56cc9012feddfaa737764656e1872cbcc604faff9d61a"
+    },
+    {
+      "path": "logs/optimized-r1-supplement-20261101/research-closure.json",
+      "sha256": "efcc08d0b8e353145edb5f68757b6e1cfadcd37694a5aca8536eb89bedd25e37"
+    },
+    {
+      "path": "logs/optimized-r1-supplement-20261101/service-restoration.json",
+      "sha256": "989c23628392c3382dbcfd16ff3c71d3ed2bb9ae986824ea3e11e2a8dd60dd57"
+    }
+  ],
+  "status": "passed"
+}

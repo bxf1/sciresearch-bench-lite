@@ -1,0 +1,147 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "e47ac24507287721eaf52cab91e796aa0e1f3778067d577612a4ab794d3bc18b",
+    "reason": "native Pi returned",
+    "recorded_at": 1793508223.5468469,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g2",
+  "evaluations": [
+    {
+      "accepted_at": 1793508204.600233,
+      "artifact_valid": true,
+      "completed_at": 1793508214.548558,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "55dd557f787bd1e9fa19",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.005058115850049383,
+              0.005003556813093342
+            ],
+            "validation_mean": 0.005030836331571363
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "7a53baa3fa62ec09b0ba",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.004916641826899186,
+              0.00507014866925467
+            ],
+            "validation_mean": 0.004993395248076928
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "dc1a07bd2f840e346029",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.014593589573291698,
+              0.014480786895927978
+            ],
+            "validation_mean": 0.014537188234609838
+          },
+          {
+            "K": 4,
+            "artifact_valid": true,
+            "id": "80c2f1ba08b1cafef1a4",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.015052111661231098,
+              0.015340249932397665
+            ],
+            "validation_mean": 0.015196180796814382
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "996ef57dffcc6792367a",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.0313172763384471,
+              0.030710908837221343
+            ],
+            "validation_mean": 0.031014092587834222
+          },
+          {
+            "K": 5,
+            "artifact_valid": true,
+            "id": "97d075fa3fdc9cd81b2d",
+            "integration_status": [
+              "success",
+              "success"
+            ],
+            "validation_errors": [
+              0.030037151190923785,
+              0.030146897772200164
+            ],
+            "validation_mean": 0.030092024481561973
+          }
+        ],
+        "cpu_seconds": 5.875845,
+        "formal_timing": false,
+        "memory_peak_bytes": 63008768,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 9.767976291012019,
+        "research_budget_exhausted": false,
+        "wall_seconds": 5.819383713,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 5.875845,
+          "execution_wall_seconds": 5.819383713,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 63008768,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 6.007102375035174,
+          "reason": null,
+          "research_timeout_seconds": 238.350428877573,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 6.459596416971181
+        }
+      },
+      "source_hash": "3c1fdb9b5ae01f874eee769bdaf0a6054143ff3af029aa854e99771c40eab0ca"
+    }
+  ],
+  "final_id": "candidate-001",
+  "finalization_invalid": false,
+  "first_id": "candidate-001",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1793506643.132142,
+  "task": "ode",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-194b4260e84e36bb-ode-g2-r1/workspace"
+}

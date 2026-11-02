@@ -15,7 +15,7 @@ def _relative(predicted, truth):
     return float(np.linalg.norm(predicted - truth) / max(np.linalg.norm(truth), 1e-12))
 
 
-def _truth(input_dir, private_dir):
+def _truth(input_dir, private_dir, expected_amplitude=1.0):
     try:
         meta = json.loads((input_dir / "metadata.json").read_text())
         grid = np.load(input_dir / "target_grid.npy", allow_pickle=False)
@@ -34,15 +34,15 @@ def _truth(input_dir, private_dir):
         basis = np.sin(np.pi * grid[:, None] * k)
         expected_initial = np.sum(basis * a, axis=1)
         expected_future = np.sum(basis * (a * np.exp(-meta["kappa"] * np.pi**2 * k**2 * meta["future_time"])), axis=1)
-        if abs(np.linalg.norm(a) / np.sqrt(2) - 1) > 1e-12 or _relative(initial, expected_initial) >= 1e-10 or _relative(future, expected_future) >= 1e-10:
+        if expected_amplitude not in (.5, 1., 2.) or abs(np.linalg.norm(a) / np.sqrt(2) - expected_amplitude) > 1e-12 or _relative(initial, expected_initial) >= 1e-10 or _relative(future, expected_future) >= 1e-10:
             raise ValueError("saved GT disagrees with spectral definition")
         return meta, grid, initial, future
     except (OSError, ValueError, KeyError, TypeError, FloatingPointError, EOFError) as exc:
         raise EvaluationInvalid("T1 ground truth validation failed: " + str(exc)) from exc
 
 
-def score_case(input_dir: Path, private_dir: Path, artifact_path: Path) -> dict:
-    meta, grid, initial, future = _truth(Path(input_dir), Path(private_dir))
+def score_case(input_dir: Path, private_dir: Path, artifact_path: Path, *, expected_amplitude=1.0) -> dict:
+    meta, grid, initial, future = _truth(Path(input_dir), Path(private_dir), expected_amplitude)
     artifact_path = Path(artifact_path)
     base = {"evaluation_status": "valid", "artifact_valid": False, "scientific_pass": False, "score": 0.0, "E_init": None, "E_forward": None}
     try:

@@ -139,6 +139,19 @@ class RunPlanTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 run_plan.matrix("01" * 32, identity_revision=value)
 
+    def test_scoped_revision_keeps_all_groups_and_full_budgets(self):
+        scope = [{"task": "heat", "repeat": 1}]
+        old_id, old = run_plan.matrix("01" * 32)
+        new_id, new = run_plan.matrix("01" * 32, identity_revision="unified-001", run_scope=scope)
+        self.assertNotEqual(old_id, new_id)
+        self.assertEqual(len(new), 3)
+        self.assertEqual([r["group"] for r in old[:3]], [r["group"] for r in new])
+        for row in new:
+            self.assertEqual((row["research_seconds"], row["max_evaluations"], row["repeat"]), (1800, 20, 1))
+        for invalid in ([], scope * 2, [{"task": "heat", "repeat": 4}], [{"task": "heat", "repeat": 1, "group": "g1"}]):
+            with self.assertRaises(ValueError):
+                run_plan.matrix("01" * 32, identity_revision="unified-001", run_scope=invalid)
+
     def test_compaction_policy_binds_system_absence_and_installed_sources(self):
         from runner.policy_capture import COMPACTION_SOURCES
         plan = self.fixture()

@@ -55,12 +55,13 @@ def counters(text):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--plan',type=Path,default=ROOT/'freezes/research-run-plan-local-draft-007.json')
     args=parser.parse_args()
     out=args.output.resolve()
     out.mkdir(parents=True,exist_ok=False)
     (out/'controller.py').write_bytes(Path(__file__).read_bytes())
     if docker('ps','-q').stdout.strip(): raise RuntimeError('Other containers are running')
-    plan=read_json(ROOT/'freezes/research-run-plan-local-draft-007.json')
+    plan=read_json(args.plan)
     image=read_json(ROOT/'freezes/heat-local-draft-007.json')['image_id']
     capacity=require_host_capacity({'research_vcpu':4,'research_memory_bytes':4*GIB})
     inputs=ROOT/'authoring/data/pilot-smoke/inputs/heat/pilot-smoke'

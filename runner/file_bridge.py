@@ -11,7 +11,7 @@ import threading
 import time
 
 from public.bridge_io import MAX_PENDING, REQUEST_ID, validate_request
-from .artifact_gate import MAX_FILES, MAX_SOURCE, extract_tar, regular_tree
+from .artifact_gate import MAX_FILES, MAX_SOURCE, extract_tar, regular_tree, safe_relative
 from .common import canonical, digest, read_json, write_json
 from .phase import validate_manifest
 from .registry import Registry, remaining_seconds
@@ -52,6 +52,9 @@ class DockerFileTransport:
             raise BridgeTransportError("R response publication failed: " + result.stderr[-1024:].decode(errors="replace"))
 
     def export_source(self, relative_source, destination, timeout):
+        # Reject workspace-root/absolute/parent paths before spawning an exporter,
+        # so a bad submission reports its actual cause instead of an empty tar.
+        safe_relative(relative_source)
         payload = canonical({"source": relative_source})
         if len(payload) > 4096:
             raise BridgeTransportError("source export request exceeds bound")

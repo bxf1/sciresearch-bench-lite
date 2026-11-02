@@ -1,0 +1,105 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "51a746c237a933caec85a4c8864d2a1423caef8769ceafbfd775bc0f164ce6ff",
+    "reason": "native Pi returned",
+    "recorded_at": 1793506577.4333398,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g2",
+  "evaluations": [
+    {
+      "accepted_at": 1793506517.711583,
+      "artifact_valid": true,
+      "completed_at": 1793506518.8448079,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 0.954278864612341,
+            "artifact_valid": true,
+            "id": "31b14989ad2e69a029a5",
+            "roughness": 155.05722243512585,
+            "status": "ok"
+          },
+          {
+            "R": 1.078208961294996,
+            "artifact_valid": true,
+            "id": "e182faad068f60a45049",
+            "roughness": 176.49381240670164,
+            "status": "ok"
+          },
+          {
+            "R": 0.9353540303204811,
+            "artifact_valid": true,
+            "id": "d4936ece4efa9ca7aa57",
+            "roughness": 70.97134482591676,
+            "status": "ok"
+          },
+          {
+            "R": 0.9307213848823682,
+            "artifact_valid": true,
+            "id": "0182f6aaf010d7dee81b",
+            "roughness": 91.05745649040536,
+            "status": "ok"
+          },
+          {
+            "R": 1.1010526882600953,
+            "artifact_valid": true,
+            "id": "4a05c6d3948f5a8b41ea",
+            "roughness": 47.55590045107992,
+            "status": "ok"
+          },
+          {
+            "R": 1.0242577208718633,
+            "artifact_valid": true,
+            "id": "91613c3a1dbc032980d4",
+            "roughness": 40.84073776811243,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.255455,
+        "formal_timing": false,
+        "memory_peak_bytes": 32182272,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 0.9750697919516824,
+        "research_budget_exhausted": false,
+        "wall_seconds": 0.146747421,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 0.255455,
+          "execution_wall_seconds": 0.146747421,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 32182272,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 0.32402620802167803,
+          "reason": null,
+          "research_timeout_seconds": 1391.621694242349,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 0.7171985830063932
+        }
+      },
+      "source_hash": "b890bf835b531f617dcbe3a91158323c9616d6e836b91d6bffaf15359422b83e"
+    }
+  ],
+  "final_id": "candidate-001",
+  "finalization_invalid": false,
+  "first_id": "candidate-001",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1793506109.492227,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-194b4260e84e36bb-heat-g2-r1/workspace"
+}

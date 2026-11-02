@@ -1,0 +1,34 @@
+{
+  "attempt_id": "research-194b4260e84e36bb-ode-g1-r1-a001",
+  "diagnostics": {
+    "adapter": "study-final",
+    "evaluation_status": "valid",
+    "final": {
+      "checkpoint_id": null,
+      "evaluation_status": "valid",
+      "reason": "no_valid_submission",
+      "replay_count": 0,
+      "reward": 0,
+      "score": 0.0,
+      "source_hash": null
+    },
+    "first": {
+      "checkpoint_id": null,
+      "evaluation_status": "valid",
+      "reason": "no_valid_submission",
+      "replay_count": 0,
+      "reward": 0,
+      "score": 0.0,
+      "source_hash": null
+    },
+    "reward": 0,
+    "score": 0.0,
+    "selection_reason": "no_valid_submission"
+  },
+  "formal": true,
+  "freeze_sha256": "b553e9d0b088ae6430c2da3c7b9c5717a3be407a0d9a13762666260782502d42",
+  "registry_sha256": "f56de12ab92d931ad339d05c599dc967e8598de95c0c3556e4b72dd81e9f0afe",
+  "replay_retry_number": 0,
+  "run_id": "research-194b4260e84e36bb-ode-g1-r1",
+  "split": "final-test"
+}

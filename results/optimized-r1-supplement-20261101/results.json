@@ -1,0 +1,31 @@
+{
+  "new_scientific_sessions": 1,
+  "ode": {
+    "diagnostic": {
+      "path": "results/optimized-r1-supplement-20261101/ode/diagnostic-result.json",
+      "sha256": "ae4b33445b8b2dcdd4495f05ae0fd4fb80dcdcd9f2404530fba44bf7b230c174"
+    },
+    "main": {
+      "path": "results/optimized-r1-supplement-20261101/ode/main-result.json",
+      "sha256": "6115aaf1d2355043e3169dfab0fded916fe01667c12f5e79fadd81cce25d3424"
+    },
+    "reward": 1,
+    "score": 96.86308530752324
+  },
+  "original_nine_unchanged": true,
+  "poisson": {
+    "performance_status": "valid",
+    "result": {
+      "path": "results/optimized-r1-supplement-20261101/poisson/result.json",
+      "sha256": "dfd9ce4e1a30ecefb9ab7008dd0b9eb4dcaa74b8e009cc2a2755b0c7c96d68ea"
+    },
+    "reward": 1,
+    "score": 45.62622586113101,
+    "speedup": 2.582532985050818
+  },
+  "protocol": {
+    "path": "logs/optimized-r1-supplement-20261101/protocol.json",
+    "sha256": "c941d10cf965b4f6f8eda19432f8f6a681023c9eb8f1555fdaabff40cf496923"
+  },
+  "status": "measurements_closed"
+}

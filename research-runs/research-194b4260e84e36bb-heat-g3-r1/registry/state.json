@@ -1,0 +1,188 @@
+{
+  "attempt_outcome": {
+    "evidence_sha256": "06b91cd6ea315a41062abafc678e82eec4da340d2ea3b0568ab6e0191f568121",
+    "reason": "native Pi returned",
+    "recorded_at": 1793505451.2894652,
+    "status": "completed"
+  },
+  "attempt_status": "completed",
+  "budget_seconds": 1800,
+  "closed": true,
+  "condition": "g3",
+  "evaluations": [
+    {
+      "accepted_at": 1793505376.155274,
+      "artifact_valid": true,
+      "completed_at": 1793505377.336309,
+      "id": "candidate-001",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 0.959072651697908,
+            "artifact_valid": true,
+            "id": "31b14989ad2e69a029a5",
+            "roughness": 63.21080245991235,
+            "status": "ok"
+          },
+          {
+            "R": 1.0834788057351148,
+            "artifact_valid": true,
+            "id": "e182faad068f60a45049",
+            "roughness": 135.81519441967757,
+            "status": "ok"
+          },
+          {
+            "R": 0.9423689531234344,
+            "artifact_valid": true,
+            "id": "d4936ece4efa9ca7aa57",
+            "roughness": 21.891039528504926,
+            "status": "ok"
+          },
+          {
+            "R": 0.9432622058481911,
+            "artifact_valid": true,
+            "id": "0182f6aaf010d7dee81b",
+            "roughness": 29.279978467161815,
+            "status": "ok"
+          },
+          {
+            "R": 1.1023462811452718,
+            "artifact_valid": true,
+            "id": "4a05c6d3948f5a8b41ea",
+            "roughness": 42.562232424769185,
+            "status": "ok"
+          },
+          {
+            "R": 1.0269859563841521,
+            "artifact_valid": true,
+            "id": "91613c3a1dbc032980d4",
+            "roughness": 23.51799079013793,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.260298,
+        "formal_timing": false,
+        "memory_peak_bytes": 31834112,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 1.0369249159703031,
+        "research_budget_exhausted": false,
+        "wall_seconds": 0.15110078,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 0.260298,
+          "execution_wall_seconds": 0.15110078,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 31834112,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 0.34131975000491366,
+          "reason": null,
+          "research_timeout_seconds": 693.2399480550084,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 0.7511250000097789
+        }
+      },
+      "source_hash": "d0a1a579acac808a37ce12c2e5b6a09a49f061bce015f2fa5a716765d80ff547"
+    },
+    {
+      "accepted_at": 1793505413.1493912,
+      "artifact_valid": true,
+      "completed_at": 1793505414.115071,
+      "id": "candidate-002",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "R": 0.9634139192044884,
+            "artifact_valid": true,
+            "id": "31b14989ad2e69a029a5",
+            "roughness": 34.93218911074846,
+            "status": "ok"
+          },
+          {
+            "R": 1.0885096476545413,
+            "artifact_valid": true,
+            "id": "e182faad068f60a45049",
+            "roughness": 128.8250218766595,
+            "status": "ok"
+          },
+          {
+            "R": 0.9456528634868034,
+            "artifact_valid": true,
+            "id": "d4936ece4efa9ca7aa57",
+            "roughness": 17.397049630790328,
+            "status": "ok"
+          },
+          {
+            "R": 0.9512156682912408,
+            "artifact_valid": true,
+            "id": "0182f6aaf010d7dee81b",
+            "roughness": 18.84059318569359,
+            "status": "ok"
+          },
+          {
+            "R": 1.1046760627440222,
+            "artifact_valid": true,
+            "id": "4a05c6d3948f5a8b41ea",
+            "roughness": 41.15206871312397,
+            "status": "ok"
+          },
+          {
+            "R": 1.0275489412784689,
+            "artifact_valid": true,
+            "id": "91613c3a1dbc032980d4",
+            "roughness": 23.11803343767494,
+            "status": "ok"
+          }
+        ],
+        "cpu_seconds": 0.253136,
+        "formal_timing": false,
+        "memory_peak_bytes": 32059392,
+        "public_check_status": "completed",
+        "public_evaluation_wall_seconds": 0.872881209012121,
+        "research_budget_exhausted": false,
+        "wall_seconds": 0.145276728,
+        "worker_diagnostics": {
+          "all_processes_terminated": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "budget_timeout_stage": null,
+          "candidate_processes_terminated": true,
+          "cleanup_status": null,
+          "cpu_seconds": 0.253136,
+          "execution_wall_seconds": 0.145276728,
+          "exit_code": 0,
+          "formal_timing": false,
+          "log_bytes_observed": 0,
+          "memory_peak_bytes": 32059392,
+          "oom_killed": false,
+          "processes_quiesced_at_seconds": 0.3190675840014592,
+          "reason": null,
+          "research_timeout_seconds": 656.2970803306089,
+          "timeout_seconds": 120,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 0.6965304999612272
+        }
+      },
+      "source_hash": "d4a7eaee319b52e052708992a2a4be8cd6fc2d995c37914792393bc4425b1437"
+    }
+  ],
+  "final_id": "candidate-002",
+  "finalization_invalid": false,
+  "first_id": "candidate-001",
+  "max_evaluations": 20,
+  "selection_reason": "explicit_finalize",
+  "started_at": 1793504269.54037,
+  "task": "heat",
+  "workspace": "/Users/baixiongfei/Documents/Projects/build_bench/benchmark/research-runs/research-194b4260e84e36bb-heat-g3-r1/workspace"
+}

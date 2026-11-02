@@ -17,10 +17,14 @@ def score_batch(task, inputs, truth, artifacts, *, freeze_path=None, image=None,
     rows=[]
     for entry in manifest["cases"]:
         try:
-            row=module.score_case(Path(inputs)/entry["path"],Path(truth)/entry["path"],Path(artifacts)/"cases"/entry["id"]/OUTPUT_NAMES[task])
+            options = {}
+            if task == "heat" and manifest["split"].startswith("diagnostic-") and entry.get("profile_id") == "amplitude":
+                options["expected_amplitude"] = (.5, 2.)[entry["profile_index"] // 2]
+            row=module.score_case(Path(inputs)/entry["path"],Path(truth)/entry["path"],Path(artifacts)/"cases"/entry["id"]/OUTPUT_NAMES[task],**options)
         except Exception as exc:
             return {"evaluation_status":"evaluation_invalid","score":None,"reward":None,"reason":f"{type(exc).__name__}: {exc}","cases":rows}
-        rows.append({"id":entry["id"],"level":entry["level"],**row})
+        rows.append({"id":entry["id"],"level":entry["level"],
+                     **({"profile_id":entry["profile_id"]} if "profile_id" in entry else {}),**row})
     passed=sum(bool(row["scientific_pass"]) for row in rows)
     score=sum(row["score"] for row in rows)/len(rows) if task!="poisson" else None
     return {"evaluation_status":"valid","score":score,"reward":int(passed==len(rows)) if task!="poisson" else None,"scientific_pass":passed==len(rows),"passed":passed,"total":len(rows),"artifact_valid":all(row["artifact_valid"] for row in rows),"cases":rows,"phase":phase,"performance_status":"not_measured" if task=="poisson" else "not_applicable"}

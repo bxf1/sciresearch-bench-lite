@@ -130,6 +130,14 @@ async def install_thinking_continuation(environment, settings):
     root = Path(__file__).resolve().parents[1]
     plan = read_json(_file_ref(root, settings["plan_ref"]))
     receipts = []
+    bundle_ref = plan.get("tool_config", {}).get("native_patch_bundle")
+    if bundle_ref:
+        if tool_repair_records(plan, root):
+            raise RuntimeError("unified native patches cannot be combined with historical repairs")
+        bundle = read_json(_file_ref(root, bundle_ref))
+        for patch in bundle["patches"]:
+            receipts.append(await _install_native_patch(environment, patch, bundle["authorization"], bundle_ref))
+        return {**receipts[-1], "patch_chain": receipts}
     for ref, repair in tool_repair_records(plan, root):
         if repair["kind"] not in {"pi_thinking_continuation", "pi_context_compaction_handoff"}:
             continue
@@ -520,6 +528,11 @@ class PilotController:
         self.bridge_thread = threading.Thread(target=serve, name="harbor-pilot-file-bridge", daemon=True)
         self.bridge_thread.start()
         self.agent_started_at = read_json(self.registry.root / "state.json")["started_at"]
+        if self.settings.get("budget_reminders"):
+            budget = {"started_at": self.agent_started_at, "deadline": self.agent_started_at + 1800,
+                      "thresholds_seconds": [600, 300, 120]}
+            write_json(Path(self.admission["output_root"]) / "evidence/research-budget.json", budget)
+            self.event("research_budget_reminders_enabled", **budget)
         def deadline_stop():
             self.deadline_fired = True
             self.event("host_research_deadline")

@@ -1,0 +1,90 @@
+{
+  "task": "ode",
+  "contract_version": "0.3",
+  "level": 2,
+  "state_names": [
+    "z1",
+    "z2"
+  ],
+  "units": "dimensionless",
+  "autonomous": true,
+  "maximum_polynomial_degree": 3,
+  "basis": [
+    "1",
+    "z1",
+    "z2",
+    "z1^2",
+    "z1*z2",
+    "z2^2",
+    "z1^3",
+    "z1^2*z2",
+    "z1*z2^2",
+    "z2^3"
+  ],
+  "coefficient_shape": [
+    10,
+    2
+  ],
+  "derivative_columns": [
+    "dz1/dt",
+    "dz2/dt"
+  ],
+  "noise": {
+    "kind": "independent Gaussian",
+    "relative_clean_rms": 0.03,
+    "train_sigma": [
+      [
+        0.017803794986882046,
+        0.020116691605238782
+      ],
+      [
+        0.017803794986882046,
+        0.020116691605238782
+      ],
+      [
+        0.014189409431062557,
+        0.01722820844999579
+      ],
+      [
+        0.014189409431062557,
+        0.01722820844999579
+      ],
+      [
+        0.01660544221046801,
+        0.016982012210552153
+      ],
+      [
+        0.01660544221046801,
+        0.016982012210552153
+      ]
+    ],
+    "validation_sigma": [
+      [
+        0.010695196817160212,
+        0.013547193432612542
+      ],
+      [
+        0.012071656656951866,
+        0.01631567532006699
+      ]
+    ],
+    "includes_initial_observation": true,
+    "exact_initial_states_separate": true
+  },
+  "field_grid": {
+    "lower": -1.5,
+    "upper": 1.5,
+    "points_per_axis": 21,
+    "trajectory_bounds": false
+  },
+  "candidate_rollout": {
+    "method": "DOP853",
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "timeout_seconds": 5,
+    "hidden_t_end": 8,
+    "hidden_time_points": 401
+  },
+  "zero_threshold_strict": 1e-06,
+  "maximum_nonzero_coefficients": 10
+}

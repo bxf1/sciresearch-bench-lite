@@ -1,0 +1,163 @@
+{
+  "attempts": [
+    {
+      "attempt_id": "research-194b4260e84e36bb-heat-g3-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g3-r1/registry/state.json",
+        "sha256": "0ba2c98c4e9384a009181d276b07286cbfb2c9ebd8ea5faccf6b979c3ddbe4a1"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g3-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "c7bdaba4c42b8636d22400bfae5ceec0b1ed7e750f030b16b377272351d3ed68"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-heat-g3-r1-a001.json",
+        "sha256": "9ff621d3a7879dc847b0002140e4fa6b885463b2bf56e950013e67a0887a301b"
+      },
+      "run_id": "research-194b4260e84e36bb-heat-g3-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-heat-g1-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g1-r1/registry/state.json",
+        "sha256": "f0790d61714f5ede8ac82932f1e155100a9bb1473eeaf36a184c1e438dfd1fd6"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g1-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "7ccebd589c9afddf238248192e04779e5e0ef1c96c90811bb96b3316af4b1bef"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-heat-g1-r1-a001.json",
+        "sha256": "c0bd7584b4c8ee1a1c28a5c28a96c9957939428b0a08e27fa18a2cb4d4872d7b"
+      },
+      "run_id": "research-194b4260e84e36bb-heat-g1-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-heat-g2-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g2-r1/registry/state.json",
+        "sha256": "4870824b17ebc3696c90203d3cee6864ecbb4103ac7ba3bc7daa0e4aa71b5ee4"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-heat-g2-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "da4161c8ff34a3858ee0ff2d5779e8bd0c6444cfe8f09cc9a2988edaff004f1e"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-heat-g2-r1-a001.json",
+        "sha256": "08737110b22024f6b86805751c72f5380d2e551c68418aa2c84736c64994d5c2"
+      },
+      "run_id": "research-194b4260e84e36bb-heat-g2-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-ode-g2-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g2-r1/registry/state.json",
+        "sha256": "1925de966c1d3ad00c261ffc37fd727118cc02c95b0ba18710fbc1d31a97d2a2"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g2-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "496cee89d03daab1ac99ebb78e17c25be14a0d42389e58f92eec10289a1e823e"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-ode-g2-r1-a001.json",
+        "sha256": "6f31f311a0797aaea2481b78e255e70b5add46238a93823ef51f341699b3756a"
+      },
+      "run_id": "research-194b4260e84e36bb-ode-g2-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-ode-g1-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g1-r1/registry/state.json",
+        "sha256": "f56de12ab92d931ad339d05c599dc967e8598de95c0c3556e4b72dd81e9f0afe"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g1-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "932686fab7d2fb042b834cbff2ff2dc29a5028b55d09b71baf7d9ff431164e79"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-ode-g1-r1-a001.json",
+        "sha256": "d8c996c0cfb8b14e9bbaf2bc02ab0721551c1d9c7a6e40af8e4f49cf9cce4bf6"
+      },
+      "run_id": "research-194b4260e84e36bb-ode-g1-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-ode-g3-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g3-r1/registry/state.json",
+        "sha256": "88c008af8ea36950a6366aa76b6510696ab86212d257b79766d57a52e8f52e57"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-ode-g3-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "a6512fa535d31c71a1dd0da2bd253cf2adf79010592c44ccf42c8dabfe454581"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-ode-g3-r1-a001.json",
+        "sha256": "f838a6778e071a7adf080b22c7fe258d8b784ea2475775c634c104735c263eb7"
+      },
+      "run_id": "research-194b4260e84e36bb-ode-g3-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-poisson-g2-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g2-r1/registry/state.json",
+        "sha256": "d5987b9b99aac0e7a1c17530d74e4e8011d08608a0ce23a11e6100f65a151da2"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g2-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "167cbb432337ca3f2b038b8c4eee39b2d0ba4a61822f749410306d6937b6d94f"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-poisson-g2-r1-a001.json",
+        "sha256": "bce4f47fc25e2fda9d7da8f1e58f9063ea182cdc9f2ca96407c38cfb72600395"
+      },
+      "run_id": "research-194b4260e84e36bb-poisson-g2-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-poisson-g1-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g1-r1/registry/state.json",
+        "sha256": "31bd626f2c4589b3558da686b3249d04123d47bb1f034ba83405787c288c885f"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g1-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "8bbcb3d2c2007104d605d7acb1c6a7a2758cbd27c7e3867dc7724e3696505170"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-poisson-g1-r1-a001.json",
+        "sha256": "2958c2970744d03a871514115de1172ae8b279c6d6fd6d35eb80962c03cf60b7"
+      },
+      "run_id": "research-194b4260e84e36bb-poisson-g1-r1"
+    },
+    {
+      "attempt_id": "research-194b4260e84e36bb-poisson-g3-r1-a001",
+      "parent_attempt": null,
+      "registry": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g3-r1/registry/state.json",
+        "sha256": "77a4ce97cde9ceb37419923e80874de705ea9f792b5bf1e09fd11e2c57d6b89d"
+      },
+      "relay_events": {
+        "path": "research-runs/research-194b4260e84e36bb-poisson-g3-r1/relay-evidence/evidence/events.jsonl",
+        "sha256": "6396aae25d3f5a7f04a72568f8ce031ce7a2e06729cfc44f5cccf7915469bbb4"
+      },
+      "result": {
+        "path": "research-runs/research-194b4260e84e36bb/host-attempts/research-194b4260e84e36bb-poisson-g3-r1-a001.json",
+        "sha256": "732530dd128c140920dc0a1f4928e6438943ccf5ce6c8cad2e5d8791ea0a9387"
+      },
+      "run_id": "research-194b4260e84e36bb-poisson-g3-r1"
+    }
+  ],
+  "finalized_tasks": [],
+  "run_plan": {
+    "path": "freezes/research-run-plan-optimized-r1-20261101.json",
+    "sha256": "38a8ed5a2d9aa251467cffc62649c0cf87fe546e10350d000e76114a3dc322db"
+  },
+  "schema_version": 1
+}

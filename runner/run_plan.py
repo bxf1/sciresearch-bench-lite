@@ -32,6 +32,7 @@ def trusted_tool_files(project):
              for folder in ("runner", "public", "judge", "baselines")
              for path in (root / folder).rglob("*.py") if "__pycache__" not in path.parts}
     paths.add("authoring/package_tasks.py")  # Research input allowlist imported by the controller.
+    paths.add("tests/accepted_t3_calibration.py")  # Continuous observer used by optimized timing.
     return tuple(sorted(paths))
 
 
@@ -46,7 +47,7 @@ class RunPlanError(ValueError):
         super().__init__("Formal research is blocked: " + "; ".join(blockers))
 
 
-def matrix(order_entropy, *, identity_revision=None):
+def matrix(order_entropy, *, identity_revision=None, run_scope=None):
     """Hash-ranking gives a stable randomized order independent of library PRNGs."""
     if not isinstance(order_entropy, str) or SHA256.fullmatch(order_entropy) is None:
         raise ValueError("order entropy must be 32 bytes encoded as lowercase hex")
@@ -56,10 +57,21 @@ def matrix(order_entropy, *, identity_revision=None):
         if not isinstance(identity_revision, str) or re.fullmatch(r"[a-z][a-z0-9-]{0,63}", identity_revision) is None:
             raise ValueError("invalid protocol identity revision")
         identity += b"\0revision\0" + identity_revision.encode()
+    blocks = BLOCKS
+    if run_scope is not None:
+        if (not isinstance(run_scope, list) or not run_scope
+                or any(not isinstance(item, dict) or set(item) != {"task", "repeat"} for item in run_scope)):
+            raise ValueError("invalid run scope")
+        blocks = tuple((item["task"], item["repeat"]) for item in run_scope)
+        if blocks != tuple(block for block in BLOCKS if block in blocks):
+            raise ValueError("run scope must select complete ordered task/repeat blocks")
+        if identity_revision is None:
+            raise ValueError("scoped runs require a new protocol identity")
+        identity += b"\0scope\0" + canonical(run_scope)
     namespace = uuid.UUID(bytes=bytes.fromhex(digest(identity)[:32]))
     plan_id = "research-" + namespace.hex[:16]
     runs = []
-    for block, (task, repeat) in enumerate(BLOCKS, 1):
+    for block, (task, repeat) in enumerate(blocks, 1):
         order = sorted(GROUPS, key=lambda group: (digest(entropy + f"\0{task}\0{repeat}\0{group}".encode()), group))
         for group in order:
             run_id = f"{plan_id}-{task}-{group}-r{repeat}"
@@ -86,10 +98,10 @@ def snapshots(project):
     return result
 
 
-def create_draft(project, *, order_entropy=None, identity_revision=None):
+def create_draft(project, *, order_entropy=None, identity_revision=None, run_scope=None):
     project = Path(project)
     entropy = order_entropy if order_entropy is not None else secrets.token_hex(32)
-    plan_id, runs = matrix(entropy, identity_revision=identity_revision)
+    plan_id, runs = matrix(entropy, identity_revision=identity_revision, run_scope=run_scope)
     tool_config = {"files": {name: file_hash(project / name) for name in trusted_tool_files(project)},
                    "skills": [], "extensions": [], "mcp_servers": [], "resume": False,
                    "runtime_tools": None, "runtime_enforcement": None}
@@ -97,6 +109,7 @@ def create_draft(project, *, order_entropy=None, identity_revision=None):
         "schema_version": 1, "contract_version": VERSION, "status": "draft", "formal_ready": False,
         "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "plan_id": plan_id,
         **({"identity_revision": identity_revision} if identity_revision is not None else {}),
+        **({"run_scope": run_scope} if run_scope is not None else {}),
         "order": {"algorithm": ORDER_ALGORITHM, "entropy_hex": entropy,
                   "scope": "Independent of private data-generation entropy; condition order within task/repeat blocks."},
         "runs": runs, "run_matrix_sha256": digest(canonical(runs)),
@@ -232,21 +245,33 @@ def start_blockers(plan, project):
         blockers.append("run-plan schema/contract mismatch")
     if plan.get("status") != "frozen" or plan.get("formal_ready") is not True:
         blockers.append("run plan requires status=frozen and formal_ready=true; draft cannot start")
+    if "execution_policy" in plan:
+        expected_policy = {"budget_reminders": True, "max_infrastructure_retries": 1,
+                           "global_research_closure_before_hidden_scoring": True, "max_timing_attempts": 3}
+        if plan["execution_policy"] != expected_policy:
+            blockers.append("optimized execution policy differs from the predeclared contract")
     try:
         order = plan["order"]
         if order["algorithm"] != ORDER_ALGORITHM:
             raise ValueError("unsupported ordering algorithm")
         revision = plan.get("identity_revision")
-        plan_id, expected = matrix(order["entropy_hex"], identity_revision=revision)
+        scope = plan.get("run_scope")
+        plan_id, expected = matrix(order["entropy_hex"], identity_revision=revision, run_scope=scope)
         if revision is not None:
             prior = read_json(_file_ref(project, plan.get("previous_plan")))
             if prior.get("order") != order or prior.get("plan_id") == plan_id:
                 raise ValueError("revision must preserve the previous order with fresh identities")
             stable = lambda rows: [{k: v for k, v in row.items() if k not in ("run_id", "session_id", "workdir")} for row in rows]
-            if stable(prior["runs"]) != stable(expected):
+            previous_rows = prior["runs"]
+            if scope is not None:
+                _file_ref(project, plan.get("revision_authorization"))
+                selected = [(item["task"], item["repeat"]) for item in scope]
+                previous_rows = [dict(row, sequence=i + 1, block=selected.index((row["task"], row["repeat"])) + 1)
+                                 for i, row in enumerate(row for row in previous_rows if (row["task"], row["repeat"]) in selected)]
+            if stable(previous_rows) != stable(expected):
                 raise ValueError("revision changed the previous matrix or budgets")
         if plan.get("plan_id") != plan_id or plan.get("runs") != expected:
-            raise ValueError("matrix differs from the predeclared 15 independent sessions or their full budgets")
+            raise ValueError("matrix differs from the predeclared independent sessions or their full budgets")
         if plan.get("run_matrix_sha256") != digest(canonical(expected)):
             raise ValueError("run matrix hash mismatch")
     except (ValueError, KeyError, TypeError) as exc:
@@ -257,6 +282,9 @@ def start_blockers(plan, project):
     model = plan.get("model")
     if not isinstance(model, dict):
         model = {}
+    request_limit = model.get("request_output_limit", 4096)
+    if type(request_limit) is not int or request_limit <= 0:
+        blockers.append("request output limit must be a positive integer")
     if any(model.get(key) != value for key, value in MODEL_FIXED.items()):
         blockers.append("model ID, endpoint, Pi or Harbor revision differs from the shared fixed configuration")
     try:
@@ -318,6 +346,20 @@ def start_blockers(plan, project):
         if not isinstance(tools, dict) or plan.get("tool_config_sha256") != digest(canonical(tools)):
             raise ValueError("missing or mismatched tool configuration hash")
         validate_tool_files(plan, project)
+        if "native_patch_bundle" in tools:
+            bundle = read_json(_file_ref(project, tools["native_patch_bundle"]))
+            _file_ref(project, bundle.get("authorization"))
+            _file_ref(project, bundle.get("validation"))
+            targets = {"node_modules/@earendil-works/pi-agent-core/dist/agent-loop.js",
+                       "node_modules/@earendil-works/pi-agent-core/dist/agent.js"}
+            patches = bundle.get("patches", [])
+            if len(patches) != 2 or {item.get("path") for item in patches} != targets:
+                raise ValueError("unexpected unified native patch targets")
+            if bundle.get("request_output_limit") != request_limit:
+                raise ValueError("native continuation and relay request limits differ")
+            for item in patches:
+                if any(SHA256.fullmatch(item.get(key, "")) is None for key in ("before_sha256", "after_sha256")):
+                    raise ValueError("invalid native source hash")
         if any(tools.get(key) != [] for key in ("skills", "extensions", "mcp_servers")) or tools.get("resume") is not False:
             raise ValueError("unrelated skills/extensions/MCP or session resume must be disabled")
         if not isinstance(tools.get("runtime_tools"), list) or not tools["runtime_tools"] or not all(isinstance(x, str) and x for x in tools["runtime_tools"]):

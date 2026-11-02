@@ -74,13 +74,15 @@ def session_spec(project, plan_path, run_id, attempt_id, parent_attempt=None):
                 "plan_ref": plan_ref, "prompt": prompt.decode("utf-8"),
                 "prompt_hashes": plan["tasks"][row["task"]]["prompt_hashes"],
                 "session_output_limit": plan["model"]["output_token_limit"],
-                "request_output_limit": min(4096, plan["model"]["output_token_limit"]),
+                "request_output_limit": min(plan["model"].get("request_output_limit", 4096), plan["model"]["output_token_limit"]),
                 "relay_ttl_seconds": 2700,
                 "max_requests": plan.get("runtime_policy", {}).get("max_requests", 512),
                 "expected_system_sha256": policy["wire_system_sha256"],
                 "expected_tools_sha256": policy["wire_tools_sha256"],
                 "expected_compaction_system_sha256": policy.get("native_compaction", {}).get("wire_system_sha256"),
                 "expected_compaction_sources": policy.get("native_compaction", {}).get("source_sha256", {})}
+    if plan.get("execution_policy", {}).get("budget_reminders"):
+        settings["budget_reminders"] = True
     return {"project": str(project), "plan_path": str(Path(plan_path).resolve()), "settings": settings,
             "output_root": str(output), "public_input": str(project / "tasks" / row["task"] / "environment/public-dev"),
             "research_image": plan["research_images"][row["task"]]["image_id"], "numeric_image": freeze["image_id"]}
@@ -193,7 +195,12 @@ async def start(project, plan_path, run_id, *, retry_of=None, launch=None):
         prior = [entry for entry in manifest["attempts"] if entry["run_id"] == run_id]
         retry_authorization = None
         if prior:
+            maximum = plan.get("execution_policy", {}).get("max_infrastructure_retries")
+            if maximum is not None and len(prior) >= maximum + 1:
+                raise ValueError("predeclared infrastructure retry allowance exhausted")
             previous = read_attempt(project, prior[-1])
+            if "execution_policy" in plan and previous["attempt_status"] not in {"api_failed", "infrastructure_failed"}:
+                raise ValueError("optimized retries are limited to API/infrastructure failures")
             if retry_of == prior[-1]["attempt_id"] and previous["attempt_status"] == "completed":
                 retry_authorization = thinking_truncation_retry(project, plan, prior[-1])
             if retry_of != prior[-1]["attempt_id"] or (previous["attempt_status"] not in FAILED and retry_authorization is None):
@@ -273,10 +280,25 @@ def closed_research(project, entry, row):
 def completed_task(project, plan, manifest, task):
     """The common pre-hidden-data barrier for research and author baselines."""
     latest = {entry["run_id"]: entry for entry in manifest["attempts"]}
-    for row in (row for row in plan["runs"] if row["task"] == task):
+    global_closure = plan.get("execution_policy", {}).get("global_research_closure_before_hidden_scoring", False)
+    for row in (row for row in plan["runs"] if global_closure or row["task"] == task):
         if row["run_id"] not in latest:
             raise ValueError("all related research must finish before final data can be read")
-        closed_research(project, latest[row["run_id"]], row)
+        entry = latest[row["run_id"]]
+        outcome = read_attempt(project, entry) if global_closure else None
+        if global_closure and outcome["attempt_status"] in {"api_failed", "infrastructure_failed"}:
+            if outcome.get("cleanup_errors") or outcome.get("bridge_errors"):
+                raise ValueError("failed research cleanup must be resolved before hidden scoring")
+            if outcome.get("model_run_started"):
+                if outcome.get("research_stop_returncode") != 0:
+                    raise ValueError("failed research is not proven stopped")
+                state = read_json(_file_ref(project, entry.get("registry")))
+                if state.get("closed") is not True or state.get("attempt_status") != outcome["attempt_status"]:
+                    raise ValueError("failed research registry must be closed")
+            if not outcome.get("finished_at"):
+                raise ValueError("failed research has no terminal host record")
+        else:
+            closed_research(project, entry, row)
     return latest
 
 

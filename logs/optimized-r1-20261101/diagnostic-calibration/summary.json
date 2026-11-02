@@ -1,0 +1,1230 @@
+{
+  "acceptance": "Reference algorithms must execute legal artifacts within resources; diagnostic accuracy is measured, not used to replace cases.",
+  "rows": [
+    {
+      "method": "tikhonov",
+      "profile": "diagnostic-calibration/all/forward",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_forward": 0.0004484133896382509,
+            "E_init": 0.02780999792114791,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "01f4e35f30d892106ca1",
+            "level": 1,
+            "profile_id": "amplitude",
+            "scientific_pass": true,
+            "score": 92.43452942448116
+          },
+          {
+            "E_forward": 0.0011869937549176218,
+            "E_init": 0.024756292355768584,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "c9856bd547a533ea932a",
+            "level": 2,
+            "profile_id": "amplitude",
+            "scientific_pass": true,
+            "score": 93.00265745348918
+          },
+          {
+            "E_forward": 0.001423758043631519,
+            "E_init": 0.052696345789246715,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "362472b61d6e605b9286",
+            "level": 1,
+            "profile_id": "amplitude",
+            "scientific_pass": true,
+            "score": 85.4730551083237
+          },
+          {
+            "E_forward": 0.004253945499153383,
+            "E_init": 0.012072089339988566,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "9a8d5ec6ab01a60a7843",
+            "level": 2,
+            "profile_id": "amplitude",
+            "scientific_pass": true,
+            "score": 95.36279434295193
+          },
+          {
+            "E_forward": 0.0019956441072769594,
+            "E_init": 0.3288686790903101,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "2d47f852dddcdfbcbf9e",
+            "level": 1,
+            "profile_id": "spectral_decay",
+            "scientific_pass": false,
+            "score": 19.334785297574346
+          },
+          {
+            "E_forward": 0.002030253124438741,
+            "E_init": 0.2539760790976253,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "847eac4ec77c5d563e28",
+            "level": 2,
+            "profile_id": "spectral_decay",
+            "scientific_pass": false,
+            "score": 31.596294532487
+          },
+          {
+            "E_forward": 0.0008127437362745812,
+            "E_init": 0.00486904279122729,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "ed38b4fccfc8ba5626b8",
+            "level": 1,
+            "profile_id": "spectral_decay",
+            "scientific_pass": true,
+            "score": 98.43067401024787
+          },
+          {
+            "E_forward": 0.0014067170388023813,
+            "E_init": 0.01194049650279948,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "f335c50236900274df21",
+            "level": 2,
+            "profile_id": "spectral_decay",
+            "scientific_pass": true,
+            "score": 96.34696191965268
+          },
+          {
+            "E_forward": 0.0019066852952535236,
+            "E_init": 0.020821544784370115,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "56873264febe8d651b72",
+            "level": 1,
+            "profile_id": "contiguous_mask",
+            "scientific_pass": true,
+            "score": 93.81202629241679
+          },
+          {
+            "E_forward": 0.0018763937727613227,
+            "E_init": 0.05528273610524786,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "84526d0ec800a709a7ca",
+            "level": 2,
+            "profile_id": "contiguous_mask",
+            "scientific_pass": true,
+            "score": 84.63247244768013
+          },
+          {
+            "E_forward": 0.0017772096434696047,
+            "E_init": 0.08081393816657259,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "9c92551c86b7595ad404",
+            "level": 1,
+            "profile_id": "contiguous_mask",
+            "scientific_pass": true,
+            "score": 77.8572132744241
+          },
+          {
+            "E_forward": 0.0028348419525334283,
+            "E_init": 0.011837290170895657,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "1e5f40afd6cf0cc6a2eb",
+            "level": 2,
+            "profile_id": "contiguous_mask",
+            "scientific_pass": true,
+            "score": 95.89844197025002
+          }
+        ],
+        "evaluation_status": "valid",
+        "judge_container_id": "a1d8c75fab3414ad597f2cd10a57abb2515bff06594098a3ab1050b9aa2accef",
+        "judge_wall_seconds": 0.4093564589857124,
+        "passed": 10,
+        "performance_status": "not_applicable",
+        "phase": {
+          "formal": false,
+          "freeze_sha256": null,
+          "profile": null,
+          "split": "diagnostic-calibration"
+        },
+        "reward": 0,
+        "scientific_pass": false,
+        "score": 80.34849217283157,
+        "total": 12,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "candidate_processes_terminated": true,
+          "candidate_uid": 65534,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "01f4e35f30d892106ca1",
+              "sha256": "32b70262f2f16177fe2c909fefa2cc7aa4d5de3aa61ec5069948afcc864fda0c"
+            },
+            {
+              "artifact_valid": true,
+              "id": "c9856bd547a533ea932a",
+              "sha256": "3334c25a488d4a3fdfb6fc4967bba791f6e309eb157c3d97015bb8efd4951c4d"
+            },
+            {
+              "artifact_valid": true,
+              "id": "362472b61d6e605b9286",
+              "sha256": "9e60f7798049133984264081d018149040686b1f0e2b43ab55b0633db1e7548c"
+            },
+            {
+              "artifact_valid": true,
+              "id": "9a8d5ec6ab01a60a7843",
+              "sha256": "ae9db8e4d00af499a3f6b170bc693071d25b84f054c0c4053c9db8975558c3ee"
+            },
+            {
+              "artifact_valid": true,
+              "id": "2d47f852dddcdfbcbf9e",
+              "sha256": "0ddb0433122b4a99f33a7e4ecb6fc5c51d29d3cce455c5e5c6afae15d0248003"
+            },
+            {
+              "artifact_valid": true,
+              "id": "847eac4ec77c5d563e28",
+              "sha256": "cfc0203072cbc749c70a5ecd440fab7b934c7def49a7ce885df368945631d571"
+            },
+            {
+              "artifact_valid": true,
+              "id": "ed38b4fccfc8ba5626b8",
+              "sha256": "be9b7fbc6b16654b0c3e9fd40ab6b2f2553f0e118e5c332ab1f61685e808d13c"
+            },
+            {
+              "artifact_valid": true,
+              "id": "f335c50236900274df21",
+              "sha256": "9d9390fecf11400eff830536467fc86147e2615f92062ec11899320a32bb4117"
+            },
+            {
+              "artifact_valid": true,
+              "id": "56873264febe8d651b72",
+              "sha256": "49e23919822047bd97afdbdb2ffce4116e4e32d4a9cfef49385674f666f39c59"
+            },
+            {
+              "artifact_valid": true,
+              "id": "84526d0ec800a709a7ca",
+              "sha256": "a2833036535b04f9dc5ec24f74322a7837853e161b71fb68c97b87fcc0c4417a"
+            },
+            {
+              "artifact_valid": true,
+              "id": "9c92551c86b7595ad404",
+              "sha256": "83dcd8a7ad4bf32e45d7542aa687c2d79ca74ce5d305f6634850d46c77edc439"
+            },
+            {
+              "artifact_valid": true,
+              "id": "1e5f40afd6cf0cc6a2eb",
+              "sha256": "55fc8e87eeeb7d321c76a5367d3581c08d2acc7f607006fec26e6e214e885a8b"
+            }
+          ],
+          "container_id": "68c3e682001ce4cc9435825bcf76030cb783359c6118da7b8843e74afdb833bd",
+          "container_name": "sciresearch-w-4be8f7ad9c5c",
+          "cpu_seconds": 0.535821,
+          "docker_execution_wall_seconds": 0.5586831250111572,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.44538989,
+          "exit_code": 0,
+          "finished_monotonic_ns": 304301331897529,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "input_sha256": "a9b70ccc7c85e26a77a76cb1c482c76d5ec0b135aaef7e2653d6d5e9abf1e6af",
+          "log_bytes_observed": 1080,
+          "machine_id": "468f8ecc-2cf6-4491-8222-1864f4a1db8a",
+          "memory_peak_bytes": 69562368,
+          "oom_killed": false,
+          "output_initially_empty": true,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.6100383750163019,
+          "research_timeout_seconds": null,
+          "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+          "resource_limits_verified": true,
+          "scientific_pass": false,
+          "source_hash": "8778e7b4651d52e6bdbdc266e0edaeac751d89f6ca63527601d2631eeb0c433c",
+          "started_monotonic_ns": 304300886507639,
+          "timeout_seconds": 120,
+          "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+          "timer_uid": 65533,
+          "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+          "timing_complete": true,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 1.027664499997627
+        }
+      },
+      "task": "heat"
+    },
+    {
+      "method": "fixed",
+      "profile": "diagnostic-calibration/all/forward",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_field": 0.008271960839983992,
+            "E_roll": 0.010379250290232843,
+            "K": 5,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "456cbc9eaa232b952f64",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "coordinate_scale",
+            "rollout_errors": [
+              0.00792548367936813,
+              0.008312546350074555,
+              0.010379250290232843,
+              0.010297436734227925
+            ],
+            "scientific_pass": true,
+            "score": 90.67439443489158
+          },
+          {
+            "E_field": 0.008349946462891967,
+            "E_roll": 0.01110263287835899,
+            "K": 6,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "1f3224c771c9cb25546e",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "coordinate_scale",
+            "rollout_errors": [
+              0.0032533539189585365,
+              0.004431797275263448,
+              0.005721404462182407,
+              0.01110263287835899
+            ],
+            "scientific_pass": true,
+            "score": 90.27371032937452
+          },
+          {
+            "E_field": 0.0008213829117126712,
+            "E_roll": 0.015462826538542758,
+            "K": 4,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "bca1087da3974a1b75f5",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "coordinate_scale",
+            "rollout_errors": [
+              0.01370562149073475,
+              0.015462826538542758,
+              0.002206204109067093,
+              0.0022399014378320617
+            ],
+            "scientific_pass": true,
+            "score": 91.85789527487228
+          },
+          {
+            "E_field": 0.03241021395914124,
+            "E_roll": 0.017673906494686295,
+            "K": 8,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "5eac7b1a7ae0a9937170",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "coordinate_scale",
+            "rollout_errors": [
+              0.010693605695149478,
+              0.012749264922582658,
+              0.01701194452748595,
+              0.017673906494686295
+            ],
+            "scientific_pass": true,
+            "score": 74.95793977308624
+          },
+          {
+            "E_field": 0.0021676949807461214,
+            "E_roll": 0.002578438836891901,
+            "K": 4,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "16d4b865b73330fb13ca",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "coordinate_swap",
+            "rollout_errors": [
+              0.0024544504289496522,
+              0.002578438836891901,
+              0.0017060404768179415,
+              0.0017728834122231793
+            ],
+            "scientific_pass": true,
+            "score": 97.62693309118097
+          },
+          {
+            "E_field": 0.004896561009485367,
+            "E_roll": 0.003582299141078059,
+            "K": 5,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "ff85cc1eb8561f5d2a01",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "coordinate_swap",
+            "rollout_errors": [
+              0.0028269428367052904,
+              0.002840045167774014,
+              0.00354584572991828,
+              0.003582299141078059
+            ],
+            "scientific_pass": true,
+            "score": 95.76056992471828
+          },
+          {
+            "E_field": 0.0067957050894575455,
+            "E_roll": 0.008677406138208242,
+            "K": 4,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "c9c3559e0788ffda9fc7",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "coordinate_swap",
+            "rollout_errors": [
+              0.0018753730734258525,
+              0.002489775049020728,
+              0.008381393297810607,
+              0.008677406138208242
+            ],
+            "scientific_pass": true,
+            "score": 92.26344438616711
+          },
+          {
+            "E_field": 0.01675533088512646,
+            "E_roll": 0.014538896152175091,
+            "K": 6,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "ff50a252b50fcc425072",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "coordinate_swap",
+            "rollout_errors": [
+              0.014538896152175091,
+              0.01089943573408571,
+              0.004164956084625496,
+              0.0043594690357854505
+            ],
+            "scientific_pass": true,
+            "score": 84.35288648134922
+          },
+          {
+            "E_field": 0.006836326684636071,
+            "E_roll": 0.0026741302373737112,
+            "K": 8,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "8e985dbd8ed053330b2a",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "stable_cubic",
+            "rollout_errors": [
+              0.0026741302373737112,
+              0.0024882560754878238,
+              0.002107846622017889,
+              0.0022268204519392616
+            ],
+            "scientific_pass": true,
+            "score": 95.24477153899511
+          },
+          {
+            "E_field": 0.02453906600289844,
+            "E_roll": 0.006051352514198062,
+            "K": 10,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "86f918bd4b6b5ac6f2fe",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "stable_cubic",
+            "rollout_errors": [
+              0.006051352514198062,
+              0.005931814386455359,
+              0.005029168827591676,
+              0.0036423365261693736
+            ],
+            "scientific_pass": true,
+            "score": 84.70479074145175
+          },
+          {
+            "E_field": 0.01917030046273288,
+            "E_roll": 0.006279160712552933,
+            "K": 9,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "1846587be89179b12b2d",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 1,
+            "profile_id": "stable_cubic",
+            "rollout_errors": [
+              0.0019410415875243182,
+              0.0018081534679985707,
+              0.00559817409191384,
+              0.006279160712552933
+            ],
+            "scientific_pass": true,
+            "score": 87.27526941235709
+          },
+          {
+            "E_field": 0.04222692452224245,
+            "E_roll": 0.011061578335531081,
+            "K": 11,
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "f8b6b2e592222dfc02d6",
+            "integration_status": [
+              "success",
+              "success",
+              "success",
+              "success"
+            ],
+            "level": 2,
+            "profile_id": "stable_cubic",
+            "reason": "coefficient_count_exceeds_10",
+            "rollout_errors": [
+              0.011061578335531081,
+              0.008307593329992457,
+              0.006317935667450763,
+              0.006544105781377011
+            ],
+            "scientific_pass": false,
+            "score": 0.0
+          }
+        ],
+        "evaluation_status": "valid",
+        "judge_container_id": "3e65bd1c423ac95e1fb018b3bb7a1c52c05a21dbe13d53b0dab4f2035ad67430",
+        "judge_wall_seconds": 1.2229945419821888,
+        "passed": 11,
+        "performance_status": "not_applicable",
+        "phase": {
+          "formal": false,
+          "freeze_sha256": null,
+          "profile": null,
+          "split": "diagnostic-calibration"
+        },
+        "reward": 0,
+        "scientific_pass": false,
+        "score": 82.08271711570369,
+        "total": 12,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "candidate_processes_terminated": true,
+          "candidate_uid": 65534,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "456cbc9eaa232b952f64",
+              "sha256": "650be4a9b25adbf838e21aa7a7c07570700065c5738d33f01d8252300563d25f"
+            },
+            {
+              "artifact_valid": true,
+              "id": "1f3224c771c9cb25546e",
+              "sha256": "fe14755be58a39e8c0e9a54ea3116c735b1c25b3adb7a18fdfbf3098bca2f1fe"
+            },
+            {
+              "artifact_valid": true,
+              "id": "bca1087da3974a1b75f5",
+              "sha256": "6c85cf013a59636114ba0f104957975fb207f7e0757540b85d89acb136ff203c"
+            },
+            {
+              "artifact_valid": true,
+              "id": "5eac7b1a7ae0a9937170",
+              "sha256": "ad3b414a7e5c558f509c968cb5fcd93f73f54fec30cd8b5997dde4be638bae52"
+            },
+            {
+              "artifact_valid": true,
+              "id": "16d4b865b73330fb13ca",
+              "sha256": "c8fd6b17bbffd50ade688d9ba44216e69b870420c1618c39a9d53e561b672cbb"
+            },
+            {
+              "artifact_valid": true,
+              "id": "ff85cc1eb8561f5d2a01",
+              "sha256": "e5386fc4fffe7f46fe8e4cc279bb45df89dfbcd65f982d37b33b7d5d4fb73bad"
+            },
+            {
+              "artifact_valid": true,
+              "id": "c9c3559e0788ffda9fc7",
+              "sha256": "491ea17bc5b4d7029dca9e0c9468108994f74070e9a188325c7cfe4e401d365d"
+            },
+            {
+              "artifact_valid": true,
+              "id": "ff50a252b50fcc425072",
+              "sha256": "4b003b18c280b94bc69dba53ed77c007c6730cbfc1b5d97d2723e91b8c83ffe0"
+            },
+            {
+              "artifact_valid": true,
+              "id": "8e985dbd8ed053330b2a",
+              "sha256": "58b49cb9ee4364d75b389c5bd64bc21ec05e07ac83f344af2c545a5e485c90db"
+            },
+            {
+              "artifact_valid": true,
+              "id": "86f918bd4b6b5ac6f2fe",
+              "sha256": "6cc6b8df8575fae0f53257cf085b3d00197c638543c16038fb8115657b239425"
+            },
+            {
+              "artifact_valid": true,
+              "id": "1846587be89179b12b2d",
+              "sha256": "3463e47acd8625f40c2a089b40a4cdba9fb731a592fa3967a98e09b5bf0119e6"
+            },
+            {
+              "artifact_valid": true,
+              "id": "f8b6b2e592222dfc02d6",
+              "sha256": "ecd0c7da44bd50d36babc169c0775d13e508441a012082eda841795f7214f993"
+            }
+          ],
+          "container_id": "9de3f4fc9d40e97a7b55b2e4d12117b9689cc8b5007fb57060cf22ac1020f107",
+          "container_name": "sciresearch-w-18a6bfcb83c1",
+          "cpu_seconds": 0.540396,
+          "docker_execution_wall_seconds": 0.5601647089933977,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.442867492,
+          "exit_code": 0,
+          "finished_monotonic_ns": 304302775138537,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "input_sha256": "18975199e0496f2febb945fc8fabad4f9c5d3c13e7d2c0ce8d5868fac6dfe8b0",
+          "log_bytes_observed": 1452,
+          "machine_id": "468f8ecc-2cf6-4491-8222-1864f4a1db8a",
+          "memory_peak_bytes": 70684672,
+          "oom_killed": false,
+          "output_initially_empty": true,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.6129728749510832,
+          "research_timeout_seconds": null,
+          "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+          "resource_limits_verified": true,
+          "scientific_pass": false,
+          "source_hash": "986bd47d73fd848bbb00fb817413a3afaf193bc01d4f9ad38cfd150022358f0e",
+          "started_monotonic_ns": 304302332271045,
+          "timeout_seconds": 120,
+          "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+          "timer_uid": 65533,
+          "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+          "timing_complete": true,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 1.0156589170219377
+        }
+      },
+      "task": "ode"
+    },
+    {
+      "method": "lu",
+      "profile": "diagnostic-calibration/large_grid/forward",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_res": [
+              3.0056823904342267e-16,
+              3.0151740575349833e-16,
+              2.989545210487152e-16,
+              2.946102334917362e-16
+            ],
+            "E_sol": [
+              1.420005509481499e-13,
+              1.8083219383376241e-13,
+              1.4569076724694144e-13,
+              5.492500582773105e-14
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "cc8a37d50e0abc13a841",
+            "level": 1,
+            "max_relative_residual": 3.0151740575349833e-16,
+            "max_solution_error": 1.8083219383376241e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "large_grid",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.9892554877285056e-16,
+              3.0101481157135324e-16,
+              2.9157743308737584e-16,
+              3.109842255360768e-16
+            ],
+            "E_sol": [
+              1.0464891106093527e-12,
+              1.0066746412332917e-12,
+              3.718320361704939e-13,
+              5.215572383989791e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "ec03d2efd0000777db01",
+            "level": 2,
+            "max_relative_residual": 3.109842255360768e-16,
+            "max_solution_error": 1.0464891106093527e-12,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "large_grid",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.8615764459617893e-16,
+              2.966346922029633e-16,
+              2.945841970054423e-16,
+              2.991769401715574e-16
+            ],
+            "E_sol": [
+              1.566732081503897e-14,
+              1.7147314902612398e-13,
+              2.950608415997096e-13,
+              7.118768678897576e-14
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "908d3f90179a9f9c6067",
+            "level": 1,
+            "max_relative_residual": 2.991769401715574e-16,
+            "max_solution_error": 2.950608415997096e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "large_grid",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              3.1501174108971855e-16,
+              3.287412946078002e-16,
+              3.1350811223970502e-16,
+              3.301237381548517e-16
+            ],
+            "E_sol": [
+              1.3257932171077353e-12,
+              2.90374469945942e-12,
+              1.2123519487371716e-13,
+              9.833926360666521e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "47da4b529f49a53bd882",
+            "level": 2,
+            "max_relative_residual": 3.301237381548517e-16,
+            "max_solution_error": 2.90374469945942e-12,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "large_grid",
+            "scientific_pass": true,
+            "score": null
+          }
+        ],
+        "evaluation_status": "valid",
+        "judge_container_id": "e34657b4ac51e381937caf6f48336126e094ee5199b6135681ef81917388bd41",
+        "judge_wall_seconds": 0.7195315420394763,
+        "passed": 4,
+        "performance_status": "not_measured",
+        "phase": {
+          "formal": false,
+          "freeze_sha256": null,
+          "profile": null,
+          "split": "diagnostic-calibration"
+        },
+        "reward": null,
+        "scientific_pass": true,
+        "score": null,
+        "total": 4,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "candidate_processes_terminated": true,
+          "candidate_uid": 65534,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "cc8a37d50e0abc13a841",
+              "sha256": "d5effbaa337f2fcbd1df79e92a563ef1cb11fd3cab11dd43fcdb0902eb389c71"
+            },
+            {
+              "artifact_valid": true,
+              "id": "ec03d2efd0000777db01",
+              "sha256": "1d21db5e33373dd3741ee5ed39aad2c608e25c6c6012c7398b9e0b9bd84c000e"
+            },
+            {
+              "artifact_valid": true,
+              "id": "908d3f90179a9f9c6067",
+              "sha256": "5a3f070df96d415578dd5619841c4b407f2db3e5ec5e97074f9651489fcba373"
+            },
+            {
+              "artifact_valid": true,
+              "id": "47da4b529f49a53bd882",
+              "sha256": "7450c69bea7d518f15c9a06503c6ae6b4417823eeee5ba7eec6951e4187e6b96"
+            }
+          ],
+          "container_id": "6ed88a71cde7edcd8e3fa25d6291790ada8b157b55c4f657c476cff8f21ec71c",
+          "container_name": "sciresearch-w-11be0d7e894d",
+          "cpu_seconds": 1.187965,
+          "docker_execution_wall_seconds": 1.2333578339894302,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 1.113386604,
+          "exit_code": 0,
+          "finished_monotonic_ns": 304305661429316,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "input_sha256": "68d5252581d3b95c8e0062b42fb5f0b51eea86329739f165780f661ba6176520",
+          "log_bytes_observed": 0,
+          "machine_id": "468f8ecc-2cf6-4491-8222-1864f4a1db8a",
+          "memory_peak_bytes": 172716032,
+          "oom_killed": false,
+          "output_initially_empty": true,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 1.2836471250047907,
+          "research_timeout_seconds": null,
+          "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+          "resource_limits_verified": true,
+          "scientific_pass": false,
+          "source_hash": "28880589e79ac3aad00c97b910577668d9944e8e9a46efd3004f39977c643f65",
+          "started_monotonic_ns": 304304548042712,
+          "timeout_seconds": 60,
+          "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+          "timer_uid": 65533,
+          "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+          "timing_complete": true,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 1.691885625012219
+        }
+      },
+      "task": "poisson"
+    },
+    {
+      "method": "lu",
+      "profile": "diagnostic-calibration/five_disks/forward",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_res": [
+              2.606759391752619e-16,
+              2.68918144411283e-16,
+              2.668813882535372e-16,
+              2.6781215223459605e-16
+            ],
+            "E_sol": [
+              6.337477048684859e-14,
+              5.6570372434906995e-14,
+              4.990599653963683e-14,
+              1.0817978444246852e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "320bfd08801640001541",
+            "level": 1,
+            "max_relative_residual": 2.68918144411283e-16,
+            "max_solution_error": 1.0817978444246852e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "five_disks",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.7009110136852804e-16,
+              2.738294350064399e-16,
+              2.7607081516462927e-16,
+              2.856950346335675e-16
+            ],
+            "E_sol": [
+              3.3501525159383407e-13,
+              1.2885579879941918e-13,
+              5.113972939512068e-13,
+              4.990767365498438e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "5c19467c3a1375c3b29a",
+            "level": 2,
+            "max_relative_residual": 2.856950346335675e-16,
+            "max_solution_error": 5.113972939512068e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "five_disks",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.7692133541134395e-16,
+              2.786784339478383e-16,
+              2.6920099469584495e-16,
+              2.7763385196525223e-16
+            ],
+            "E_sol": [
+              2.936070807863219e-14,
+              4.195759668898541e-14,
+              2.1594864599266265e-14,
+              8.74547551217295e-14
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "a3e7ddf58a5be05f73fd",
+            "level": 1,
+            "max_relative_residual": 2.786784339478383e-16,
+            "max_solution_error": 8.74547551217295e-14,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "five_disks",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.780117734122124e-16,
+              2.7962744892113547e-16,
+              2.647217844394845e-16,
+              2.8099425918315764e-16
+            ],
+            "E_sol": [
+              9.50528580540017e-13,
+              3.9452728681481e-13,
+              9.433081172461183e-13,
+              9.84851265578198e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "cafae1f740f8a1f941b7",
+            "level": 2,
+            "max_relative_residual": 2.8099425918315764e-16,
+            "max_solution_error": 9.84851265578198e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "five_disks",
+            "scientific_pass": true,
+            "score": null
+          }
+        ],
+        "evaluation_status": "valid",
+        "judge_container_id": "c09b37502488e5418427b881f7dfd21ab7ba4e26dd540c47bdffcbd73625612c",
+        "judge_wall_seconds": 0.5706890000146814,
+        "passed": 4,
+        "performance_status": "not_measured",
+        "phase": {
+          "formal": false,
+          "freeze_sha256": null,
+          "profile": null,
+          "split": "diagnostic-calibration"
+        },
+        "reward": null,
+        "scientific_pass": true,
+        "score": null,
+        "total": 4,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "candidate_processes_terminated": true,
+          "candidate_uid": 65534,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "320bfd08801640001541",
+              "sha256": "223d4dc9fe312872607a44ce4594f51a76481f0e127efd1443fa9276f882f28a"
+            },
+            {
+              "artifact_valid": true,
+              "id": "5c19467c3a1375c3b29a",
+              "sha256": "5f472840a20f4b3a64e571ba22318354c7ac2216f097716610dcb83370da3cff"
+            },
+            {
+              "artifact_valid": true,
+              "id": "a3e7ddf58a5be05f73fd",
+              "sha256": "99c2a577b989dc7e70c67048e8a3e01698368d2fd3846835f053871ce1a9c260"
+            },
+            {
+              "artifact_valid": true,
+              "id": "cafae1f740f8a1f941b7",
+              "sha256": "fef269e758a2733e73f5d722aeff6caca9f5a10bab31dd6edba9e1ecbbe38ec6"
+            }
+          ],
+          "container_id": "23e2c336afb630d7a8f7c5b82ea176d0441856603086a19a9aeb93b8dba3279d",
+          "container_name": "sciresearch-w-7d16e5ff181b",
+          "cpu_seconds": 0.542995,
+          "docker_execution_wall_seconds": 0.561016041028779,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.441840049,
+          "exit_code": 0,
+          "finished_monotonic_ns": 304307403553183,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "input_sha256": "4ba7bff04093112a0bf81f0a11733320a69a1aa5f1a12ac21405521bc0bda467",
+          "log_bytes_observed": 0,
+          "machine_id": "468f8ecc-2cf6-4491-8222-1864f4a1db8a",
+          "memory_peak_bytes": 75259904,
+          "oom_killed": false,
+          "output_initially_empty": true,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.6152383330045268,
+          "research_timeout_seconds": null,
+          "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+          "resource_limits_verified": true,
+          "scientific_pass": false,
+          "source_hash": "28880589e79ac3aad00c97b910577668d9944e8e9a46efd3004f39977c643f65",
+          "started_monotonic_ns": 304306961713134,
+          "timeout_seconds": 60,
+          "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+          "timer_uid": 65533,
+          "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+          "timing_complete": true,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 0.9825160410255194
+        }
+      },
+      "task": "poisson"
+    },
+    {
+      "method": "lu",
+      "profile": "diagnostic-calibration/cache_order/forward",
+      "result": {
+        "artifact_valid": true,
+        "attempt_status": "completed",
+        "cases": [
+          {
+            "E_res": [
+              2.8921202412975473e-16,
+              2.709357843097488e-16,
+              2.891926360832535e-16,
+              2.6753941095894643e-16
+            ],
+            "E_sol": [
+              3.509033732085761e-14,
+              1.3576868050663372e-14,
+              4.262596305423504e-14,
+              6.132462237006399e-14
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "f2edc1f6eb69b79190b3",
+            "level": 1,
+            "max_relative_residual": 2.8921202412975473e-16,
+            "max_solution_error": 6.132462237006399e-14,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "cache_order",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.653136569435128e-16,
+              2.8672396816183796e-16,
+              2.8380409696475886e-16,
+              2.72259947827806e-16
+            ],
+            "E_sol": [
+              4.67629596444699e-13,
+              5.293296878279869e-13,
+              5.729971491579066e-13,
+              6.502122626486114e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "60512821bd6b6f7e02f2",
+            "level": 2,
+            "max_relative_residual": 2.8672396816183796e-16,
+            "max_solution_error": 6.502122626486114e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "cache_order",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.9258839221989145e-16,
+              2.919309655582309e-16,
+              2.727169155224893e-16,
+              2.810270208314408e-16
+            ],
+            "E_sol": [
+              6.110500839704911e-14,
+              1.0755264258415689e-13,
+              8.765739597046882e-15,
+              1.6578068926116368e-14
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "4e605fe63603e0d2bd9d",
+            "level": 1,
+            "max_relative_residual": 2.9258839221989145e-16,
+            "max_solution_error": 1.0755264258415689e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "cache_order",
+            "scientific_pass": true,
+            "score": null
+          },
+          {
+            "E_res": [
+              2.7904753733141107e-16,
+              2.815488499900546e-16,
+              2.790097318517762e-16,
+              2.694910350600494e-16
+            ],
+            "E_sol": [
+              2.9310054681609584e-13,
+              2.5037830326805536e-13,
+              3.048474172197342e-13,
+              9.702762278878265e-13
+            ],
+            "artifact_valid": true,
+            "evaluation_status": "valid",
+            "id": "d0c3a274c8b3c208d175",
+            "level": 2,
+            "max_relative_residual": 2.815488499900546e-16,
+            "max_solution_error": 9.702762278878265e-13,
+            "performance_status": "pending_host_measurement",
+            "profile_id": "cache_order",
+            "scientific_pass": true,
+            "score": null
+          }
+        ],
+        "evaluation_status": "valid",
+        "judge_container_id": "eafbc0c134a0d906ccef8661a7459836b32b72d61b94aa2ad95ef8ca8770801b",
+        "judge_wall_seconds": 0.5615094579989091,
+        "passed": 4,
+        "performance_status": "not_measured",
+        "phase": {
+          "formal": false,
+          "freeze_sha256": null,
+          "profile": null,
+          "split": "diagnostic-calibration"
+        },
+        "reward": null,
+        "scientific_pass": true,
+        "score": null,
+        "total": 4,
+        "worker": {
+          "all_processes_terminated": true,
+          "artifact_valid": true,
+          "attempt_status": "completed",
+          "budget_timeout": false,
+          "candidate_processes_terminated": true,
+          "candidate_uid": 65534,
+          "cases": [
+            {
+              "artifact_valid": true,
+              "id": "f2edc1f6eb69b79190b3",
+              "sha256": "b89a6fd01f0dee22993748693b2baf7888721449f8aad5cceb613762c61405d4"
+            },
+            {
+              "artifact_valid": true,
+              "id": "60512821bd6b6f7e02f2",
+              "sha256": "c2b49a75e2fb34da1123978e4c0a6cec32acc2938f395e525cf156aff98bf9cd"
+            },
+            {
+              "artifact_valid": true,
+              "id": "4e605fe63603e0d2bd9d",
+              "sha256": "5171e9e132e52a4222b83b1441fa764419e93f11dc758d0b1c96f8278a15a58a"
+            },
+            {
+              "artifact_valid": true,
+              "id": "d0c3a274c8b3c208d175",
+              "sha256": "d147b8ae401ac9342d8bb53f4f042aa52ed1a11ec204ea8ef1adbaffd19fc64f"
+            }
+          ],
+          "container_id": "d46e5e16acf499cbf76173c4f3f0512e35fbb2a51c63a64d6e974891e2ac9b4b",
+          "container_name": "sciresearch-w-4ad920d0d5d0",
+          "cpu_seconds": 0.554645,
+          "docker_execution_wall_seconds": 0.5656592920422554,
+          "evaluation_status": "not_evaluated",
+          "execution_wall_seconds": 0.445028376,
+          "exit_code": 0,
+          "finished_monotonic_ns": 304309021944416,
+          "formal_timing": false,
+          "image": "sha256:e0018a98b2495aa3d53698362a4d890794c728d96e7bee618eeefa4d43e2fe6a",
+          "input_sha256": "1822a5ac51854da02da5213c105e820391919c3e2e82d2ddce94e4b80c236fe2",
+          "log_bytes_observed": 0,
+          "machine_id": "468f8ecc-2cf6-4491-8222-1864f4a1db8a",
+          "memory_peak_bytes": 74948608,
+          "oom_killed": false,
+          "output_initially_empty": true,
+          "performance_status": "not_measured",
+          "processes_quiesced_at_seconds": 0.6206814580364153,
+          "research_timeout_seconds": null,
+          "resource_contract_sha256": "d92e4c1f3836e5db4118377e0698d9a919d6f586c0767db1f3052d92198cdcb5",
+          "resource_limits_verified": true,
+          "scientific_pass": false,
+          "source_hash": "28880589e79ac3aad00c97b910577668d9944e8e9a46efd3004f39977c643f65",
+          "started_monotonic_ns": 304308576916040,
+          "timeout_seconds": 60,
+          "timer_source_sha256": "5dc0fbeabb4a201dbee5245fb60a658d496a444cb3cc6960b7a9cd868163c1b1",
+          "timer_uid": 65533,
+          "timing_acceptance": "diagnostic_until_host_resource_and_exclusivity_acceptance",
+          "timing_complete": true,
+          "timing_scope": "python_spawn_to_all_descendants_exit",
+          "total_wall_seconds": 1.0527234170003794
+        }
+      },
+      "task": "poisson"
+    }
+  ],
+  "status": "passed"
+}

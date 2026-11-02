@@ -1,0 +1,19 @@
+{
+  "documented_version": "DeepSeek-V4.1-Flash-1017",
+  "findings": {
+    "compatibility_caveat": "Provider documents exceptions to max_tokens for certain Claude Code/OpenCode main-agent calls; Pi uses the tested fixed relay route, which fails closed on output usage above its reservation.",
+    "output_config_effort": true,
+    "request_output_limit": 16384,
+    "thinking": true,
+    "thinking_temperature": "fixed by provider; omit field",
+    "top_p": 1.0
+  },
+  "model_id": "deepseek-flash",
+  "retrieved_at_utc": "2026-11-01T03:17:54.614789+00:00",
+  "scope": "Provider-declared alias mapping, not immutable backend identity.",
+  "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/",
+    "https://api-docs.deepseek.com/guides/anthropic_api/"
+  ],
+  "status": "verified"
+}

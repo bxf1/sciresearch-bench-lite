@@ -1,0 +1,142 @@
+{
+  "candidate_id": "candidate-001",
+  "completed_at": 1793510629.743846,
+  "export_finished_at": 1793510616.797118,
+  "export_started_at": 1793510616.648488,
+  "imported_source": "imported-c2ab5a05435a4fa2830c5beae9467aeb",
+  "original_r_source": "candidate",
+  "received_at": 1793510616.6464798,
+  "record_sha256": "eb57db5c445e1ea09f9fbbceeed6fceaf6820b916dca55b8d1dda738739e32e5",
+  "request": {
+    "operation": "evaluate",
+    "request_id": "c2ab5a05435a4fa2830c5beae9467aeb",
+    "source": "candidate",
+    "version": 1
+  },
+  "request_id": "c2ab5a05435a4fa2830c5beae9467aeb",
+  "response": {
+    "candidate_id": "candidate-001",
+    "feedback": {
+      "artifact_valid": true,
+      "attempt_status": "completed",
+      "cases": [
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "55dd557f787bd1e9fa19",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.005163753383332438,
+            0.005051444562064232
+          ],
+          "validation_mean": 0.005107598972698335
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "7a53baa3fa62ec09b0ba",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.004920731810759279,
+            0.005071513998254878
+          ],
+          "validation_mean": 0.004996122904507079
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "dc1a07bd2f840e346029",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.014592261206479907,
+            0.014481503352025412
+          ],
+          "validation_mean": 0.01453688227925266
+        },
+        {
+          "K": 4,
+          "artifact_valid": true,
+          "id": "80c2f1ba08b1cafef1a4",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.015060613319211403,
+            0.015338402498453948
+          ],
+          "validation_mean": 0.015199507908832675
+        },
+        {
+          "K": 5,
+          "artifact_valid": true,
+          "id": "996ef57dffcc6792367a",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.031320172836067584,
+            0.03069264210562967
+          ],
+          "validation_mean": 0.031006407470848627
+        },
+        {
+          "K": 5,
+          "artifact_valid": true,
+          "id": "97d075fa3fdc9cd81b2d",
+          "integration_status": [
+            "success",
+            "success"
+          ],
+          "validation_errors": [
+            0.030039884366703656,
+            0.03014885589113575
+          ],
+          "validation_mean": 0.030094370128919704
+        }
+      ],
+      "cpu_seconds": 9.595431,
+      "formal_timing": false,
+      "memory_peak_bytes": 59740160,
+      "public_check_status": "completed",
+      "public_evaluation_wall_seconds": 12.941692624997813,
+      "research_budget_exhausted": false,
+      "wall_seconds": 9.652346787,
+      "worker_diagnostics": {
+        "all_processes_terminated": true,
+        "attempt_status": "completed",
+        "budget_timeout": false,
+        "budget_timeout_stage": null,
+        "candidate_processes_terminated": true,
+        "cleanup_status": null,
+        "cpu_seconds": 9.595431,
+        "execution_wall_seconds": 9.652346787,
+        "exit_code": 0,
+        "formal_timing": false,
+        "log_bytes_observed": 0,
+        "memory_peak_bytes": 59740160,
+        "oom_killed": false,
+        "processes_quiesced_at_seconds": 9.820596124976873,
+        "reason": null,
+        "research_timeout_seconds": 1341.8617313181749,
+        "timeout_seconds": 120,
+        "timing_scope": "python_spawn_to_all_descendants_exit",
+        "total_wall_seconds": 10.221241666993592
+      }
+    },
+    "ok": true,
+    "request_id": "c2ab5a05435a4fa2830c5beae9467aeb",
+    "source_hash": "602ea96727e3f66f346f2f69cd395c7533b8e719798f587c449368d14ba9102c"
+  },
+  "status": "completed"
+}

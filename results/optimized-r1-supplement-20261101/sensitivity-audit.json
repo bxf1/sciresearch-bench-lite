@@ -1,0 +1,71 @@
+{
+  "kind": "post_hoc_synthetic_derivative_diagnostic",
+  "changes_candidate_or_scores": false,
+  "private_data_used": false,
+  "source": {
+    "path": "research-runs/research-56e485a96415c456-ode-g1-r1/registry/snapshots/candidate-003/solve.py",
+    "sha256": "b7973cb541901e1792696133e730a146ad9d184859e4c4882492315fca2abf8b"
+  },
+  "finite_difference_epsilon": 1e-05,
+  "raw_column_relative_error": 1.103459810339778,
+  "after_column_permutation_relative_error": 6.472616940308303e-11,
+  "observation": "SimCache sensitivities use variable-major columns; nls_fit selects columns using interleaved C.ravel indices without this permutation. This check does not quantify its effect on submitted-case scores.",
+  "time_grid": [
+    0.0,
+    0.06666666666666667,
+    0.13333333333333333,
+    0.2,
+    0.26666666666666666,
+    0.3333333333333333,
+    0.4
+  ],
+  "coefficients": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      -0.4,
+      -0.8
+    ],
+    [
+      0.8,
+      -0.5
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      -0.2,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -0.3
+    ]
+  ],
+  "initial_state": [
+    0.4,
+    -0.3
+  ],
+  "rtol": 1e-11,
+  "atol": 1e-13,
+  "finite_difference": "Central differences for each C.ravel() parameter; compare to SimCache._sim sensitivities. Reorder columns by k//2 + 10*(k%2)."
+}

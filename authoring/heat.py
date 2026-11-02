@@ -19,7 +19,7 @@ def _relative(a, b):
     return float(np.linalg.norm(a - b) / max(np.linalg.norm(b), 1e-12))
 
 
-def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict) -> dict:
+def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict, *, diagnostic=None) -> dict:
     """Generate one case with independent system/mask/noise streams, without solver screening."""
     if level not in (0, 1, 2):
         raise ValueError("level must be 0, 1 or 2")
@@ -27,12 +27,15 @@ def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict) -
     system = rngs["system"]
     k = np.arange(1, 33, dtype=float)
     p = float(system.uniform(1.5, 2.5))
+    diagnostic = diagnostic or {}
+    p = float(diagnostic.get("spectral_decay", p))
+    amplitude = float(diagnostic.get("amplitude", 1.0))
     coefficients = system.normal(size=32) / k**p
     coefficients[0] = system.choice([-1.0, 1.0]) * system.uniform(0.8, 1.2)
     norm = np.linalg.norm(coefficients)
     if not np.isfinite(norm) or norm == 0:
         raise ValueError("invalid latent field norm; do not resample")
-    coefficients *= np.sqrt(2.0) / norm
+    coefficients *= amplitude * np.sqrt(2.0) / norm
     kappa = float(system.uniform(0.5, 1.5))
     times = np.array(((.001, .004), (.003, .009), (.006, .018))[level])
     missing_rate = (0.0, .15, .30)[level]
@@ -42,6 +45,11 @@ def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict) -
             break
     else:
         raise ValueError("mask generation failed after 1000 attempts; latent system preserved")
+    if diagnostic.get("contiguous_mask"):
+        mask[:] = True
+        for row in mask:
+            start = int(rngs["mask"].integers(0, 97))
+            row[start:start + 32] = False
     x_full = np.broadcast_to(np.arange(1, 129) / 129, (2, 128))
     t_full = np.broadcast_to(times[:, None], (2, 128))
     x, t = x_full[mask], t_full[mask]
@@ -71,7 +79,7 @@ def generate_case(public_dir: Path, private_dir: Path, level: int, rngs: dict) -
     pde_residual = float(np.max(np.abs(derivative - rhs) / np.maximum(np.maximum(np.abs(derivative), np.abs(rhs)), 1e-12)))
     boundary = float(np.max(np.abs(_field(coefficients, np.array([0.0, 1.0]), 0.0, kappa))))
     qc = {
-        "continuous_rms_absolute_error": float(abs(np.linalg.norm(coefficients) / np.sqrt(2) - 1)),
+        "continuous_rms_absolute_error": float(abs(np.linalg.norm(coefficients) / np.sqrt(2) - amplitude)),
         "discrete_rms": float(np.sqrt(np.mean(initial**2))),
         "t0_relative_error": _relative(direct_t0, initial),
         "dst_coefficients_relative_error": _relative(recovered, expected),

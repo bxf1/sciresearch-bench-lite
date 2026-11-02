@@ -1,12 +1,26 @@
-# 三任务数据交付
+# 当前数据与实验材料：162 例
+
+最新实验包含 Heat / ODE / Poisson 三个任务，每任务公开开发 6 例、主任务作者校验 12 例、主测试 12 例、诊断作者校验 12 例、诊断测试 12 例，共 162 例。
+
+当前仓库中的 [Heat 开发输入](../tasks/heat/environment/public-dev/)、[ODE 开发输入](../tasks/ode/environment/public-dev/)和 [Poisson 开发输入](../tasks/poisson/environment/public-dev/)对应本批数据。
+
+- [九组完整报告](../docs/r1-complete-report-20261101.md)
+- [最新 Release](https://github.com/bxf1/sciresearch-bench-lite/releases/tag/v0.4-r1-complete-20261101)：完整数据、GT、原始实验记录和报告
+- [发布元数据与附件哈希](r1-complete-20261101/publication.json)
+- [逐文件归档清单](r1-complete-20261101/archive-manifest.json)
+- [下载与只读核验说明](../docs/r1-complete-publication-20261102.md)
+
+以下 90 例材料属于历史版本，和当前 162 例分开统计；历史开发输入从原 Release 获取。
+
+# 历史 90 例数据归档
 
 数据均由数学模型合成，不使用外部实测样本。数据集共 90 例：每任务 6 个 public-dev、12 个 author-calibration、12 个 final-test；每个 split 内三个难度均衡。数据只按预声明的合法性、独立真值与数值质量检查保留，不按方法成绩筛选。
 
-| 任务 | 仓库直接包含的公开输入 | 完整实例数 | 数据卡 |
+| 任务 | 历史公开输入（归档内路径） | 完整实例数 | 数据卡 |
 |---|---|---:|---|
-| Heat 热逆问题 | [6 个 dev 实例](../tasks/heat/environment/public-dev/) | 30 | [公式、格式与 QC](../docs/heat.md) |
-| ODE 动力学辨识 | [6 个 dev 实例](../tasks/ode/environment/public-dev/) | 30 | [公式、格式与 QC](../docs/ode.md) |
-| Poisson 稀疏求解 | [6 个 dev 实例](../tasks/poisson/environment/public-dev/) | 30 | [公式、格式与 QC](../docs/poisson.md) |
+| Heat 热逆问题 | 6 个 public-dev 实例 | 30 | [公式、格式与 QC](../docs/heat.md) |
+| ODE 动力学辨识 | 6 个 public-dev 实例 | 30 | [公式、格式与 QC](../docs/ode.md) |
+| Poisson 稀疏求解 | 6 个 public-dev 实例 | 30 | [公式、格式与 QC](../docs/poisson.md) |
 
 - [case-index.csv](case-index.csv)：90 例逐例索引、task/split/level、文件数、大小、QC 判定、路径与哈希。
 - [split-summary.json](split-summary.json)：9 个 task/split 的数量与 QC 通过统计。

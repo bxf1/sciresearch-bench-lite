@@ -15,6 +15,10 @@ from .artifact_gate import regular_tree, safe_relative
 from .common import TASKS, VERSION, canonical, digest, file_hash, read_json, write_json
 
 SPLIT_COUNTS = {"public-dev": 2, "author-calibration": 4, "final-test": 4, "pilot-smoke": 1}
+DIAGNOSTIC_SPLITS = ("diagnostic-calibration", "diagnostic-test")
+DIAGNOSTIC_PROFILES = {"heat": ("amplitude", "spectral_decay", "contiguous_mask"),
+                       "ode": ("coordinate_scale", "coordinate_swap", "stable_cubic"),
+                       "poisson": ("large_grid", "five_disks", "cache_order")}
 FORMAL_SPLITS = ("public-dev", "author-calibration", "final-test")
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
 IMAGE_ID = re.compile(r"sha256:[0-9a-f]{64}\Z")
@@ -51,16 +55,35 @@ def validate_manifest(task, input_root, *, expected_split=None):
     if not isinstance(manifest, dict) or manifest.get("task") != task or manifest.get("contract_version") != VERSION:
         raise PhaseError("manifest task/contract mismatch")
     split = manifest.get("split")
-    if split not in SPLIT_COUNTS or (expected_split is not None and split != expected_split):
+    if split not in (*SPLIT_COUNTS, *DIAGNOSTIC_SPLITS) or (expected_split is not None and split != expected_split):
         raise PhaseError("manifest split mismatch or unsupported split")
     if root.name in SPLIT_COUNTS and root.name != split:
         raise PhaseError("manifest split disagrees with input directory")
     if root.parent.name in TASKS and root.parent.name != task:
         raise PhaseError("manifest task disagrees with input directory")
     cases = manifest.get("cases")
-    per_level = SPLIT_COUNTS[split]
-    if not isinstance(cases, list) or len(cases) != 3 * per_level:
-        raise PhaseError(f"{split} requires exactly {3 * per_level} cases")
+    diagnostic = split in DIAGNOSTIC_SPLITS
+    profile = manifest.get("profile_id")
+    if diagnostic:
+        if manifest.get("purpose") != "diagnostic_only_excluded_from_main_score":
+            raise PhaseError("diagnostic purpose must exclude main scoring")
+        if profile is not None and profile not in DIAGNOSTIC_PROFILES[task]:
+            raise PhaseError("unknown diagnostic profile")
+        expected_cases = 4 if profile else 12
+        per_level = expected_cases // 2
+        expected_order = [(p, i, 1 + i % 2) for p in ([profile] if profile else DIAGNOSTIC_PROFILES[task]) for i in range(4)]
+        order = manifest.get("order", "forward")
+        if order == "reverse" and task == "poisson" and profile == "cache_order":
+            expected_order.reverse()
+        elif order != "forward":
+            raise PhaseError("reverse order is only declared for Poisson cache diagnostics")
+        if not isinstance(cases, list) or [(r.get("profile_id"), r.get("profile_index"), r.get("level")) for r in cases if isinstance(r, dict)] != expected_order:
+            raise PhaseError("diagnostic cases differ from predeclared profile/order")
+    else:
+        per_level = SPLIT_COUNTS[split]
+        expected_cases = 3 * per_level
+    if not isinstance(cases, list) or len(cases) != expected_cases:
+        raise PhaseError(f"{split} requires exactly {expected_cases} cases")
     ids, paths, levels = set(), set(), [0, 0, 0]
     anchor = root.resolve(strict=True)
     for case in cases:
@@ -82,7 +105,7 @@ def validate_manifest(task, input_root, *, expected_split=None):
         ids.add(case_id)
         paths.add(relative)
         levels[level] += 1
-    if levels != [per_level] * 3:
+    if levels != ([0, per_level, per_level] if diagnostic else [per_level] * 3):
         raise PhaseError(f"{split} requires {per_level} cases per level")
     return manifest
 
@@ -131,6 +154,19 @@ def validate_freeze_document(freeze, task):
             raise PhaseError("freeze is missing an input manifest hash")
     if freeze.get("data_sha256") != digest(canonical(data)):
         raise PhaseError("freeze data digest mismatch")
+    if "diagnostic_data" in freeze:
+        diagnostics = freeze["diagnostic_data"]
+        expected_keys = {s+"/all/forward" for s in DIAGNOSTIC_SPLITS}
+        if task == "poisson":
+            expected_keys |= {s+"/"+p+"/"+o for s in DIAGNOSTIC_SPLITS for p in DIAGNOSTIC_PROFILES[task]
+                              for o in (("forward", "reverse") if p == "cache_order" else ("forward",))}
+        if not isinstance(diagnostics, dict) or set(diagnostics) != expected_keys or freeze.get("diagnostic_data_sha256") != digest(canonical(diagnostics)):
+            raise PhaseError("diagnostic freeze profile inventory or digest mismatch")
+        for name, values in diagnostics.items():
+            if not isinstance(values, dict) or set(values) != {"input_hashes", "truth_hashes"}:
+                raise PhaseError("diagnostic split must contain input and truth hashes")
+            _hash_map(values["input_hashes"], name+" input")
+            _hash_map(values["truth_hashes"], name+" truth")
     _hash_map(freeze.get("judge_source_hashes"), "judge source")
     required = {"judge/batch.py", f"judge/{task}.py", f"public/{task}.py", "runner/common.py", "runner/artifact_gate.py", "runner/phase.py"}
     if not required.issubset(freeze["judge_source_hashes"]):
@@ -172,7 +208,8 @@ def validate_freeze_document(freeze, task):
 def guard_replay(task, input_root, truth_root, image, judge_source_root, *, freeze_path=None, profile=None):
     manifest = validate_manifest(task, input_root)
     split = manifest["split"]
-    if split != "final-test":
+    diagnostic = split == "diagnostic-test"
+    if split not in ("final-test", "diagnostic-test"):
         return {"split": split, "formal": False, "freeze_sha256": None, "profile": profile}
     if freeze_path is None:
         raise PhaseError("final-test is locked until a complete frozen configuration is supplied via --freeze")
@@ -184,14 +221,22 @@ def guard_replay(task, input_root, truth_root, image, judge_source_root, *, free
         raise PhaseError("execution image differs from frozen immutable image")
     if profile is not None and profile != freeze["profile"]:
         raise PhaseError("requested profile differs from frozen profile")
-    expected = freeze["data"][split]
+    key = diagnostic_key(manifest)
+    expected = freeze.get("diagnostic_data", {}).get(key) if diagnostic else freeze["data"][split]
+    if not isinstance(expected, dict):
+        raise PhaseError("diagnostic data absent from freeze")
     if checked_hashes(input_root) != expected["input_hashes"]:
         raise PhaseError("final-test input hashes differ from freeze")
     if checked_hashes(truth_root) != expected["truth_hashes"]:
         raise PhaseError("final-test truth hashes differ from freeze")
     if checked_hashes(judge_source_root) != freeze["judge_source_hashes"]:
         raise PhaseError("trusted judge source hashes differ from freeze")
-    return {"split": split, "formal": True, "freeze_sha256": file_hash(freeze_path), "profile": freeze["profile"]}
+    return {"split": split, "formal": True, "freeze_sha256": file_hash(freeze_path), "profile": freeze["profile"],
+            **({"diagnostic_only": True, "diagnostic_key": key} if diagnostic else {})}
+
+
+def diagnostic_key(manifest):
+    return manifest["split"] + "/" + manifest.get("profile_id", "all") + "/" + manifest.get("order", "forward")
 
 
 def create_draft(project, data_root, task, image, judge_source_root):

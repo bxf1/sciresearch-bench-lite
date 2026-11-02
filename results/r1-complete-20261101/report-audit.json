@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "reported_groups": 9,
+  "scientific_sessions_accounted": 10,
+  "chapters": 8,
+  "method_sections": 9,
+  "instances": 162,
+  "all_selected_main_pass": true,
+  "metric_column_order_checked": true,
+  "original_deliveries_preserved": [
+    {
+      "manifest": {
+        "path": "results/optimized-r1-20261101/delivery-manifest.json",
+        "sha256": "8ef8b1cd09bbfec4fb9dc57a855a7d57c58b59d5a7cf04d363978df9d02dd75f"
+      },
+      "files_verified": 10408
+    },
+    {
+      "manifest": {
+        "path": "results/optimized-r1-supplement-20261101/delivery-manifest.json",
+        "sha256": "9311ca8e4c5bf8b253909f516eb8c1f23fc96e79326c4f53010950be578ec475"
+      },
+      "files_verified": 824
+    }
+  ],
+  "source_evidence_verified": true,
+  "new_model_calls": 0,
+  "new_candidate_executions": 0,
+  "pdf": {
+    "path": "output/pdf/sciresearch-r1-complete-report-20261101.pdf",
+    "sha256": "b66d247bbb4f83f8b70f09fdc60a0e7c560322b80779f16aa0c7ac91f631cfe0",
+    "pages": [
+      {
+        "page": 1,
+        "characters": 1029
+      },
+      {
+        "page": 2,
+        "characters": 1071
+      },
+      {
+        "page": 3,
+        "characters": 1142
+      },
+      {
+        "page": 4,
+        "characters": 797
+      },
+      {
+        "page": 5,
+        "characters": 876
+      },
+      {
+        "page": 6,
+        "characters": 849
+      },
+      {
+        "page": 7,
+        "characters": 1162
+      },
+      {
+        "page": 8,
+        "characters": 1481
+      },
+      {
+        "page": 9,
+        "characters": 1591
+      },
+      {
+        "page": 10,
+        "characters": 1597
+      },
+      {
+        "page": 11,
+        "characters": 1562
+      },
+      {
+        "page": 12,
+        "characters": 1284
+      },
+      {
+        "page": 13,
+        "characters": 847
+      },
+      {
+        "page": 14,
+        "characters": 1107
+      },
+      {
+        "page": 15,
+        "characters": 963
+      },
+      {
+        "page": 16,
+        "characters": 829
+      },
+      {
+        "page": 17,
+        "characters": 813
+      },
+      {
+        "page": 18,
+        "characters": 860
+      },
+      {
+        "page": 19,
+        "characters": 1157
+      },
+      {
+        "page": 20,
+        "characters": 1360
+      },
+      {
+        "page": 21,
+        "characters": 999
+      },
+      {
+        "page": 22,
+        "characters": 647
+      }
+    ],
+    "all_fonts_embedded": true,
+    "raster_images": 0,
+    "fonts": [
+      "/AAAAAA+Arial-BoldMT",
+      "/BAAAAA+OTS-derived-font",
+      "/CAAAAA+OTS-derived-font",
+      "/DAAAAA+ArialMT",
+      "/EAAAAA+CourierNewPSMT",
+      "/FAAAAA+Helvetica",
+      "/GAAAAA+ArialMT"
+    ]
+  }
+}

@@ -1,16 +1,20 @@
 // Presentation only: npm install playwright@1.62.1 and install its Chromium.
-// Run after build_final_report.py --html. No network requests are allowed here.
+// Run after build_unified_r1_report.py --html. No network requests are allowed here.
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const root = path.resolve(__dirname, '..');
+const pdfName = process.env.REPORT_PDF_NAME || 'sciresearch-unified-r1-report-20261029.pdf';
+if (!/^[a-z0-9-]+\.pdf$/.test(pdfName)) throw new Error('REPORT_PDF_NAME must be a plain PDF filename');
+const htmlName = process.env.REPORT_HTML_NAME || 'submission-report-2026-10-24.html';
+if (!/^[a-z0-9-]+\.html$/.test(htmlName)) throw new Error('REPORT_HTML_NAME must be a plain HTML filename');
 (async () => {
   const browser = await chromium.launch({headless: true, ...(process.env.REPORT_CHROMIUM_PATH ? {executablePath: process.env.REPORT_CHROMIUM_PATH} : {})});
   try {
     const page = await browser.newPage({viewport: {width: 1280, height: 900}});
     await page.route(/^https?:\/\//, route => route.abort());
-    await page.goto(pathToFileURL(path.join(root, 'docs/submission-report-2026-10-24.html')).href);
+    await page.goto(pathToFileURL(path.join(root, 'docs', htmlName)).href);
     await page.evaluate(() => document.fonts.ready);
     const layout = await page.evaluate(() => ({
       horizontalOverflow: document.documentElement.scrollWidth > innerWidth,
@@ -22,7 +26,7 @@ const root = path.resolve(__dirname, '..');
     const dir = path.join(root, 'output/pdf');
     fs.mkdirSync(dir, {recursive: true});
     await page.pdf({
-      path: path.join(dir, 'sciresearch-thinking-r1-report-20261025.pdf'),
+      path: path.join(dir, pdfName),
       format: 'A4', printBackground: true, preferCSSPageSize: true,
       displayHeaderFooter: true, headerTemplate: '<span></span>',
       footerTemplate: '<div style="font:9px Arial;color:#6b7c8b;width:100%;text-align:center">SciResearch-Bench-Lite · <span class="pageNumber"></span> / <span class="totalPages"></span></div>',

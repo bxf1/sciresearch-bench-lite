@@ -1,0 +1,2911 @@
+{
+  "cases": 72,
+  "oracle_is_rule_check_not_algorithm_result": true,
+  "results": [
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 3.687822615457069e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999989
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "33d58a016680711aa7e3",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 4.0641486328632624e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999987
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "79b9055eadd49a9fdc4a",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.4549272867519254e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999993
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "a23c68b37669e05fa6c0",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 3.711416677262486e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999987
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f266699b4b86ec93b077",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 1.0124588509493262e-15,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999967
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "d76df2f908101c8f9424",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 3.2447930216985567e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.9999999999999
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "7035ade2a1a246c9de9e",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 3.050402475161611e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.9999999999999
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "b07a2f9af737b9ea98d8",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.558571603831209e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999993
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "44a94ebc34ed1ea023d8",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 1.5503183442505598e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999996
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "7c77078d383b4cdd7187",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 4.61342889347548e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999986
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f92fe0b97c0f569f80cc",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 1.486319549165581e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999996
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "b2011d6c713e6044c24a",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.7803424151180245e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999991
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ae140d89c2c562f28b6c",
+      "split": "author-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 1.6175659119469825e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999996
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "01f4e35f30d892106ca1",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 5.432486035680801e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999983
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "c9856bd547a533ea932a",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 1.4683041751068878e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999996
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "362472b61d6e605b9286",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 3.3608091002332826e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999989
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "9a8d5ec6ab01a60a7843",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 6.039111111698867e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.9999999999998
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "2d47f852dddcdfbcbf9e",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 7.717809844630881e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999974
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "847eac4ec77c5d563e28",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.566701442098397e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999993
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ed38b4fccfc8ba5626b8",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 5.589791772349271e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999983
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f335c50236900274df21",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 4.588454349830362e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999986
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "56873264febe8d651b72",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 5.106945943033528e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999983
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "84526d0ec800a709a7ca",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.9360401562576144e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999991
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "9c92551c86b7595ad404",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_forward": 2.6788016944551958e-16,
+          "E_init": 0.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": true,
+          "score": 99.99999999999991
+        },
+        "zero": {
+          "E_forward": 1.0,
+          "E_init": 1.0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "1e5f40afd6cf0cc6a2eb",
+      "split": "diagnostic-calibration",
+      "task": "heat"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.962046398539766e-17,
+          "E_roll": 3.9801661567220166e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.84081278333328e-10,
+            3.494098436079362e-10,
+            3.4990836524048466e-10,
+            3.9801661567220166e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999980099166
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.0361674691410308,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.7277575383299875,
+            1.7310976696332019,
+            2.0361674691410308,
+            2.0291940738796423
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "e0f5f993a945057dbc8d",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.673393013984701e-17,
+          "E_roll": 3.1858437305741855e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.5051870275136937e-10,
+            2.8542097525418214e-10,
+            3.007573521906481e-10,
+            3.1858437305741855e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999984070777
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.007835345092776,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.8346108174748696,
+            1.8536290727559153,
+            2.007835345092776,
+            2.0069859857164287
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "605ab5e4d0a6a34e5c53",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 8.066797360492295e-17,
+          "E_roll": 4.0172952774122777e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.332596949091104e-10,
+            2.9451819390994207e-10,
+            4.0172952774122777e-10,
+            3.460519587970232e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.9999997991352
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.1193054336396626,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.6863669260056227,
+            1.6937598302688708,
+            2.1193054336396626,
+            2.1089813508803066
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "d224bcdef1140bcc909b",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.329912424063651e-17,
+          "E_roll": 3.7346888627979544e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.815406715422615e-10,
+            2.6597849875497317e-10,
+            3.3322916137359713e-10,
+            3.7346888627979544e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999981326552
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.9491450588292802,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.583672709788113,
+            1.5905447462070204,
+            1.9491450588292802,
+            1.943231399041355
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "c849e57128d4971323f2",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.443728985046896e-17,
+          "E_roll": 3.2543109612489656e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.927156553393318e-10,
+            2.5946678740289643e-10,
+            2.9472668094739236e-10,
+            3.2543109612489656e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999983728442
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.7603037211821788,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.579486789524554,
+            1.5801139991113755,
+            1.756866121013875,
+            1.7603037211821788
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "241c57f4d4b63e9b7066",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 5.56146548910475e-17,
+          "E_roll": 2.946669653809567e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.8310843585787483e-10,
+            2.722658984989347e-10,
+            2.880042253761603e-10,
+            2.946669653809567e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999985266649
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.6579231690812921,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.628778802642387,
+            1.6349395867570053,
+            1.6579231690812921,
+            1.6577118335647762
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "e84183c02f88019dc816",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.357564823687736e-17,
+          "E_roll": 3.072082591105082e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.479836302490185e-10,
+            2.515087533998142e-10,
+            2.922690660201132e-10,
+            3.072082591105082e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999984639584
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.7934059671686748,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.6431716282287059,
+            1.6570789025921628,
+            1.7883636710817727,
+            1.7934059671686748
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "6fc81704043c1206afd0",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.546097521314211e-17,
+          "E_roll": 3.8065506616669074e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.549294108053227e-10,
+            2.6213479601310994e-10,
+            3.0278736171526237e-10,
+            3.8065506616669074e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999980967243
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.9184318041072024,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.6548585515514251,
+            1.6604110879931968,
+            1.9158898984992256,
+            1.9184318041072024
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "943402b8f4494560a641",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.819004678496484e-17,
+          "E_roll": 4.437444148562832e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.446580406502235e-10,
+            3.5514652404852215e-10,
+            4.437444148562832e-10,
+            4.1124040531804465e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999977812774
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.1723044129586326,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.916379364824921,
+            1.8992473075541283,
+            2.1723044129586326,
+            2.1713521282496533
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "74b4b3fff492e4b410bd",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.245729995664476e-17,
+          "E_roll": 4.63981028822025e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            4.5386241762258567e-10,
+            2.8270076094919114e-10,
+            3.0524899751845614e-10,
+            4.63981028822025e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999976800945
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.9876215420728292,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.6870105036535712,
+            1.6780165601146058,
+            1.9876215420728292,
+            1.986071963671784
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "5a183c86db5d4ca554ba",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 8.919126281274708e-17,
+          "E_roll": 3.971741575193683e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.7724016990423937e-10,
+            2.889627740250299e-10,
+            3.971741575193683e-10,
+            3.3729998861785577e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999980141287
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.0140556367773788,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.684806980097092,
+            1.6740121222388467,
+            2.010714439284765,
+            2.0140556367773788
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "de428a8e758b785c0d43",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 4.0967112139003764e-17,
+          "E_roll": 4.5317302849374267e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.6116993416750193e-10,
+            4.5317302849374267e-10,
+            3.4620655990134637e-10,
+            4.2818905647825807e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999977341346
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.9156147804693173,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.6878000999133915,
+            1.6800510428317927,
+            1.9156147804693173,
+            1.9125976506380953
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "cf783332ce40deb1987b",
+      "split": "author-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.164743622701962e-18,
+          "E_roll": 5.811449220206537e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.359803298522865e-10,
+            3.073651044054206e-10,
+            5.811449220206537e-10,
+            5.605799169295427e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999970942753
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.9746285359236235,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.9000834676335725,
+            1.9746285359236235,
+            1.20594986929616,
+            1.2069865957236077
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "456cbc9eaa232b952f64",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.515259071508423e-18,
+          "E_roll": 3.98818804768133e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.695569200162877e-10,
+            3.98818804768133e-10,
+            2.210278897201204e-10,
+            2.158039276546732e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.9999998005906
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.4375462143634117,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.322669423311483,
+            2.4375462143634117,
+            1.3085315867091447,
+            1.3069449796740513
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "1f3224c771c9cb25546e",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.2323140261302915e-18,
+          "E_roll": 6.027645602328088e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.3881729258668027e-10,
+            3.5758914256802863e-10,
+            5.073288946224662e-10,
+            6.027645602328088e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999969861771
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.938575777930118,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.8570958491006164,
+            1.938575777930118,
+            1.1855004417352295,
+            1.1841161968200917
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "bca1087da3974a1b75f5",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 9.746442232938064e-18,
+          "E_roll": 4.0974906340051216e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.7363917861959294e-10,
+            4.0974906340051216e-10,
+            2.1433288254181382e-10,
+            2.1282063118352605e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999979512546
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.36017007933016,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.2182906813392664,
+            2.36017007933016,
+            1.2641869386285858,
+            1.2618593996895036
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "5eac7b1a7ae0a9937170",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.616814137931098e-17,
+          "E_roll": 3.5688885798958047e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.5688885798958047e-10,
+            3.464541638076072e-10,
+            2.7367778390738063e-10,
+            2.822320278968639e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999982155553
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.005615958569697,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.005615958569697,
+            1.9964929266749447,
+            1.6927445818285853,
+            1.706473614976337
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "16d4b865b73330fb13ca",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 7.195738270862373e-17,
+          "E_roll": 4.1217433784096744e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.4905327522926976e-10,
+            4.1217433784096744e-10,
+            2.9568283082406204e-10,
+            3.1190538125646006e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999979391279
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.121163997574737,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.121163997574737,
+            2.083920846340026,
+            1.9841721213651167,
+            1.9831373446664837
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ff85cc1eb8561f5d2a01",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 5.580414902312528e-17,
+          "E_roll": 3.4606363420505126e-10,
+          "K": 4,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.350827804351009e-10,
+            2.9742111176246817e-10,
+            3.0143043473943215e-10,
+            3.4606363420505126e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999982696815
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 1.909600033181999,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.909600033181999,
+            1.901552185968184,
+            1.6135843937820897,
+            1.626197394389351
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "c9c3559e0788ffda9fc7",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 6.46629823859846e-17,
+          "E_roll": 3.0055589837219125e-10,
+          "K": 5,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.933546016523896e-10,
+            3.0055589837219125e-10,
+            2.8587020398565845e-10,
+            2.9945948988828215e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999984972202
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 2.1037578831834503,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.1037578831834503,
+            2.0666896524887313,
+            1.9977846356500075,
+            1.9931578418203177
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ff50a252b50fcc425072",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 1.0149753786609311e-16,
+          "E_roll": 6.029316927056831e-10,
+          "K": 8,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            4.3783826683318587e-10,
+            6.029316927056831e-10,
+            3.216516774228026e-10,
+            3.2932260017936787e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.9999996985341
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 3.50687413361662,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.50687413361662,
+            3.3901502986726086,
+            3.4403501111137467,
+            3.477591684382792
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "8e985dbd8ed053330b2a",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 9.592589772329952e-17,
+          "E_roll": 9.031380008758455e-10,
+          "K": 8,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            9.031380008758455e-10,
+            4.075574824645005e-10,
+            5.365034925608478e-10,
+            6.088632701091264e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999954843095
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 4.060784831791277,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.8640923481684566,
+            3.7159541156958618,
+            4.059231835373193,
+            4.060784831791277
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "86f918bd4b6b5ac6f2fe",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 8.52068155921557e-17,
+          "E_roll": 4.2789874221885524e-10,
+          "K": 8,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            2.814716396071783e-10,
+            4.2789874221885524e-10,
+            2.6547865070079867e-10,
+            4.276489443025144e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999978605058
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 3.68775789225585,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            3.6636584466493276,
+            3.553852511345893,
+            3.68775789225585,
+            3.6809281343199802
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "1846587be89179b12b2d",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_field": 9.09067561964485e-17,
+          "E_roll": 1.866023616025023e-10,
+          "K": 8,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            1.545345321503807e-10,
+            1.866023616025023e-10,
+            1.1791174845161912e-10,
+            1.2858926438333264e-10
+          ],
+          "scientific_pass": true,
+          "score": 99.99999990669876
+        },
+        "zero": {
+          "E_field": 1.0,
+          "E_roll": 4.194384199094486,
+          "K": 0,
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "integration_status": [
+            "success",
+            "success",
+            "success",
+            "success"
+          ],
+          "rollout_errors": [
+            4.194384199094486,
+            4.102521715678366,
+            3.6484350156324057,
+            3.7051337798055557
+          ],
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f8b6b2e592222dfc02d6",
+      "split": "diagnostic-calibration",
+      "task": "ode"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "4c37226a425bc7bb79a0",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "2574e55584df6557200e",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f639bdaa0756daff70a6",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "bf40b9e4375bc7108659",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "3dd308e19bcea304bdbb",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "0876d3fe43c720af5af3",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f5ac5031e01fcfc26f9b",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "c84a48083039849f40f8",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "91362662eb15735325b6",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "10f343c6eb981af2725f",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "1a75d6ebcb285306a2ab",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ab8362cc96e4638b26a4",
+      "split": "author-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "cc8a37d50e0abc13a841",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "ec03d2efd0000777db01",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "908d3f90179a9f9c6067",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "47da4b529f49a53bd882",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "320bfd08801640001541",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "5c19467c3a1375c3b29a",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "a3e7ddf58a5be05f73fd",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "cafae1f740f8a1f941b7",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "f2edc1f6eb69b79190b3",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "60512821bd6b6f7e02f2",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "4e605fe63603e0d2bd9d",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    },
+    {
+      "checks": {
+        "oracle": {
+          "E_res": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "E_sol": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 0.0,
+          "max_solution_error": 0.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": true,
+          "score": null
+        },
+        "zero": {
+          "E_res": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "E_sol": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "artifact_valid": true,
+          "evaluation_status": "valid",
+          "max_relative_residual": 1.0,
+          "max_solution_error": 1.0,
+          "performance_status": "pending_host_measurement",
+          "scientific_pass": false,
+          "score": 0.0
+        }
+      },
+      "id": "d0c3a274c8b3c208d175",
+      "split": "diagnostic-calibration",
+      "task": "poisson"
+    }
+  ],
+  "status": "passed"
+}
